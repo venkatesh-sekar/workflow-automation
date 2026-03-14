@@ -219,3 +219,10 @@
 - **Quality gate:** pass (1986 errors, down from 1988)
 - **Learnings:** user-invitation.module.ts now fully ee-free (was partially cleaned in iteration 28)
 ---
+
+## Iteration #32 - fix-references
+- **Change:** Removed 4 ee/ imports from user-invitation.service.ts: smtpEmailSender, emailService, projectMemberService, projectRoleService. Replaced with inline community stubs (no SMTP emails, no RBAC members/roles).
+- **Files:** packages/server/api/src/app/user-invitations/user-invitation.service.ts
+- **Quality gate:** pass (typecheck: 1982 errors, down from 1986)
+- **Learnings:** smtpEmailSender stub returns isSmtpConfigured:false so email code paths are dead but harmless
+---

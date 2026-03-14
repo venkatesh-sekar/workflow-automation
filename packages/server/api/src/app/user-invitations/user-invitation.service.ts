@@ -4,10 +4,20 @@ import { IsNull } from 'typeorm'
 import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { domainHelper } from '../helper/domain-helper'
-import { smtpEmailSender } from '../ee/helper/email/email-sender/smtp-email-sender'
-import { emailService } from '../ee/helper/email/email-service'
-import { projectMemberService } from '../ee/projects/project-members/project-member.service'
-import { projectRoleService } from '../ee/projects/project-role/project-role.service'
+// Community stubs — no SMTP emails, no RBAC project members/roles
+const smtpEmailSender = (_log: FastifyBaseLogger) => ({
+    isSmtpConfigured: () => false,
+})
+const emailService = (_log: FastifyBaseLogger) => ({
+    sendProjectMemberAdded: async (_params: { userInvitation: UserInvitation }) => {},
+    sendInvitation: async (_params: { userInvitation: UserInvitation, invitationLink: string }) => {},
+})
+const projectMemberService = (_log: FastifyBaseLogger) => ({
+    upsert: async (_params: { projectId: string, userId: string, projectRoleName: string }) => {},
+})
+const projectRoleService = {
+    getOneOrThrowById: async (_params: { id: string }): Promise<any> => null,
+}
 import { jwtUtils } from '../helper/jwt-utils'
 import { buildPaginator } from '../helper/pagination/build-paginator'
 import { paginationHelper } from '../helper/pagination/pagination-utils'

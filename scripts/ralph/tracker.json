@@ -1,5 +1,5 @@
 {
-  "iteration": 31,
+  "iteration": 32,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -84,7 +84,8 @@
         {"iteration": 28, "description": "Created ee-authorization-stub.ts with no-op community stubs for platformMustHaveFeatureEnabled, platformMustBeOwnedByCurrentUser, projectMustBeTeamType. Updated 3 files: platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts. Errors reduced 1997→1992."},
         {"iteration": 29, "description": "Removed dedicatedWorkers ee/ import from machine-service.ts and job-queue.ts. Simplified getExecutionMode to always use system config, simplified job queue init to shared queue only, simplified getQueueName to always return shared queue. Errors reduced 1992→1989."},
         {"iteration": 30, "description": "Removed platformTemplateService ee/ import from template.service.ts, inlined CUSTOM template create/update logic using templateRepo() directly (same pattern as OFFICIAL/SHARED). Errors reduced 1989→1988."},
-        {"iteration": 31, "description": "Removed assertRoleHasPermission and projectRoleService ee/ imports from user-invitation.module.ts. Stubbed getProjectRoleAndAssertIfFound to return null (no RBAC roles in community), removed RBAC permission check. Errors reduced 1988→1986."}
+        {"iteration": 31, "description": "Removed assertRoleHasPermission and projectRoleService ee/ imports from user-invitation.module.ts. Stubbed getProjectRoleAndAssertIfFound to return null (no RBAC roles in community), removed RBAC permission check. Errors reduced 1988→1986."},
+        {"iteration": 32, "description": "Removed 4 ee/ imports from user-invitation.service.ts: smtpEmailSender, emailService, projectMemberService, projectRoleService. Replaced with inline community stubs (no SMTP emails, no RBAC members/roles). Errors reduced 1986→1982."}
       ]
     },
     "auth-replace": {

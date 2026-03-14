@@ -113,6 +113,13 @@
 - 11 source files + 5 test files with ee/ imports remain
 - Errors: 1988→1986 (−2)
 
+## Iteration 32 — user-invitation.service.ts cleaned
+- Removed 4 ee/ imports: smtpEmailSender, emailService, projectMemberService, projectRoleService
+- All replaced with inline community stubs (no SMTP, no RBAC members/roles)
+- smtpEmailSender stub returns isSmtpConfigured: false → email-sending code paths are dead but harmless
+- 10 source files + 5 test files with ee/ imports remain (down from 11)
+- Errors: 1986→1982 (−4)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
