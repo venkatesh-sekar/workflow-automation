@@ -212,3 +212,10 @@
 - **Quality gate:** pass (typecheck: 1988 errors, down from 1989)
 - **Learnings:** platformTemplateService was just a wrapper around templateRepo with platformId scoping — safe to inline
 ---
+
+## Iteration #31 - fix-references
+- **Change:** Removed assertRoleHasPermission and projectRoleService ee/ imports from user-invitation.module.ts. Stubbed getProjectRoleAndAssertIfFound to return null (no RBAC roles), removed RBAC permission check.
+- **Files:** packages/server/api/src/app/user-invitations/user-invitation.module.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (1986 errors, down from 1988)
+- **Learnings:** user-invitation.module.ts now fully ee-free (was partially cleaned in iteration 28)
+---

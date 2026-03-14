@@ -106,6 +106,13 @@
 - 12 files with ee/ imports remain (down from 13)
 - Errors: 1989→1988 (−1)
 
+## Iteration 31 — user-invitation.module.ts cleaned (remaining ee/ imports)
+- Removed assertRoleHasPermission (RBAC permission check → no-op in community)
+- Removed projectRoleService (role lookup → return null, no roles in community)
+- This file was partially cleaned in iteration 28 (ee-authorization stubs) — now fully ee-free
+- 11 source files + 5 test files with ee/ imports remain
+- Errors: 1988→1986 (−2)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

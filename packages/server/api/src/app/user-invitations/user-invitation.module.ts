@@ -24,8 +24,6 @@ import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { platformMustBeOwnedByCurrentUser, platformMustHaveFeatureEnabled, projectMustBeTeamType } from '../helper/ee-authorization-stub'
-import { assertRoleHasPermission } from '../ee/authentication/project-role/rbac-middleware'
-import { projectRoleService } from '../ee/projects/project-role/project-role.service'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
 import { userInvitationsService } from './user-invitation.service'
@@ -113,18 +111,13 @@ const invitationController: FastifyPluginAsyncZod = async (app) => {
 }
 
 
-const getProjectRoleAndAssertIfFound = async (platformId: string, request: SendUserInvitationRequest): Promise<ProjectRole | null> => {
+const getProjectRoleAndAssertIfFound = async (_platformId: string, request: SendUserInvitationRequest): Promise<ProjectRole | null> => {
     const { type } = request
     if (type === InvitationType.PLATFORM) {
         return null
     }
-    const projectRoleName = request.projectRole
-
-    const projectRole = await projectRoleService.getOneOrThrow({
-        name: projectRoleName,
-        platformId,
-    })
-    return projectRole
+    // Community edition: no project roles — return null (projectRoleId will be null)
+    return null
 }
 async function getProjectIdAndAssertPermission<R extends Principal>(
     app: FastifyInstance,
@@ -164,7 +157,7 @@ async function shouldAutoAcceptInvitation(principal: Principal, request: SendUse
 async function assertPrincipalHasPermissionToProject<R extends Principal & { platform: { id: string } }>(
     fastify: FastifyInstance,
     request: FastifyRequest, reply: FastifyReply, principal: R,
-    projectId: string, permission: Permission): Promise<void> {
+    projectId: string, _permission: Permission): Promise<void> {
     const project = await projectService(request.log).getOneOrThrow(projectId)
     if (isNil(project) || project.platformId !== principal.platform.id) {
         throw new ActivepiecesError({
@@ -175,7 +168,7 @@ async function assertPrincipalHasPermissionToProject<R extends Principal & { pla
         })
     }
     await platformMustHaveFeatureEnabled((platform) => platform.plan.projectRolesEnabled).call(fastify, request, reply)
-    await assertRoleHasPermission(request.principal, projectId, permission, request.log)
+    // Community edition: no RBAC roles — all authenticated project members have full access
 }
 
 
