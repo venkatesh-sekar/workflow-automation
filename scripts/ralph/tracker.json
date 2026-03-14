@@ -1,6 +1,6 @@
 {
-  "iteration": 8,
-  "current_phase": "copy-shared-packages",
+  "iteration": 9,
+  "current_phase": "copy-ui-core",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -17,7 +17,7 @@
       ]
     },
     "copy-shared-packages": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "typecheck",
       "criteria": [
         "All shared/common packages that server and UI depend on are copied (EXCLUDING packages/ee/)",
@@ -192,9 +192,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages"],
   "phase_queue": [
-    "copy-ui-core",
     "copy-pieces",
     "fix-references",
     "auth-replace",

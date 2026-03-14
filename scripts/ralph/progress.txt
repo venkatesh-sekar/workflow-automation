@@ -58,3 +58,10 @@
 - **Quality gate:** pass (engine typecheck has 1 pre-existing error: null vs undefined in externalId — not from our changes)
 - **Learnings:** engine depends on shared+framework+common; has isolated-vm and ai SDK deps; server/api lists engine as dependency
 ---
+
+## Iteration #9 - copy-shared-packages (phase completion)
+- **Change:** Verified all 3 acceptance criteria met; marked copy-shared-packages complete; advanced to copy-ui-core
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted inter-package dependency patterns to global learnings; UI depends on shared+framework+common, server on shared+framework+common+server-common+engine
+---
