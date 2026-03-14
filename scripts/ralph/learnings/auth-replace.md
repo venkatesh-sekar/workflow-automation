@@ -36,3 +36,11 @@
 - dev-seeds.ts was using signUp — converted to no-op (CLI scripts handle team/user creation in Flow)
 - authentication-utils.ts still has extractUserIdFromRequest used by application-events.ts and flow.controller.ts — keep it
 - Old auth test file (authentication.test.ts) had 4 tests for sign-up/sign-in — replaced with placeholder, will add team-login tests
+
+## CLI Scripts
+- CLI scripts live in packages/server/api/src/app/cli/ — run with `npx tsx <path>`
+- create-team: creates platform (singleton), user-identity, user, and project with apiKeyHash
+- Services require FastifyBaseLogger — CLI uses pino directly at warn level for quiet output
+- ProjectType.TEAM (not STANDALONE), ColorName enum for icon
+- API key format: `flow_<64-hex-chars>`, hashed with SHA-256 for storage
+- create-team currently depends on user-identity — will need update when identity is removed

@@ -422,3 +422,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
 - **Learnings:** dev-seeds.ts depended on signUp — needed update. authentication-utils.ts still used by flow.controller.ts and application-events.ts for extractUserIdFromRequest — keep it.
 ---
+
+## Iteration #61 - auth-replace
+- **Change:** Created create-team CLI script at packages/server/api/src/app/cli/create-team.ts. Accepts --name and --owner-email args, finds/creates default platform, user-identity, user, and project with apiKeyHash. Prints JSON with projectId, teamName, ownerEmail, and plaintext API key to stdout.
+- **Files:** packages/server/api/src/app/cli/create-team.ts (new)
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
+- **Learnings:** CLI scripts use pino directly (not FastifyBaseLogger); ProjectType.TEAM not STANDALONE; API key format: flow_<64-hex>, hashed with SHA-256
+---
