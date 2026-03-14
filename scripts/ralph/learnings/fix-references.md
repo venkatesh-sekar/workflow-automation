@@ -36,6 +36,12 @@
 - Pattern: create stub in helper/, update imports — reusable for other ee/ modules
 - Errors: 2012→2007 (−5, net: removed 7 ee/ imports, stub itself has 2 expected TS2307)
 
+## Iteration 20 — flow-run-hooks.ts cleaned
+- Removed alertsService ee/ import and all paidEditions dead code
+- Since we're community-only, `paidEditions` was always false → alertsService never called, function always returned early
+- Simplified to just the websocket notification logic
+- Pattern: when `paidEditions` or edition checks guard ee/ code, remove the entire guarded block
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

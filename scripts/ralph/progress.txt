@@ -135,3 +135,10 @@
 - **Quality gate:** pass (typecheck: 2007 errors, down from 2012)
 - **Learnings:** Pattern for replacing ee/ modules: create MIT-licensed stub in helper/, update all importing files. domainHelper was most-referenced ee/ module (7 files).
 ---
+
+## Iteration #20 - fix-references
+- **Change:** Removed alertsService ee/ import from flow-run-hooks.ts, removed dead paidEditions code (alert sending + early return). Simplified to community-only: just websocket notification on run finish.
+- **Files:** packages/server/api/src/app/flows/flow-run/flow-run-hooks.ts
+- **Quality gate:** pass (no new errors; alerts-service error eliminated; 37 ee/-related errors remain across other files)
+- **Learnings:** When paidEditions/edition checks guard ee/ code, remove the entire guarded block — it's dead code in community edition. Also removed unused imports (dayjs, ApEdition, isFailedState, system).
+---
