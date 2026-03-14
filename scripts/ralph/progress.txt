@@ -37,3 +37,10 @@
 - **Quality gate:** pass (framework typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
 - **Learnings:** npm workspace:* unsupported — use file: refs; must build upstream packages to produce dist/ for type resolution; tried tsconfig paths approach but rootDir constraint blocks cross-package source references
 ---
+
+## Iteration #6 - copy-shared-packages
+- **Change:** Copied @activepieces/pieces-common package (20 src files), linked to local shared+framework via file: references, built framework dist/ for type resolution
+- **Files:** packages/pieces/common/ (new), packages/pieces/framework/dist/ (rebuilt)
+- **Quality gate:** pass (pieces-common typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
+- **Learnings:** Framework dist/ wasn't persisted from prior iteration — need to rebuild upstream deps each time; pieces-common follows same pattern as framework
+---

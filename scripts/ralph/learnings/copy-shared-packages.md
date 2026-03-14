@@ -18,7 +18,12 @@
 - Build upstream packages first so dist/ exists for type resolution
 - Each package installs its own node_modules independently (no root workspace linking)
 
+## @activepieces/pieces-common
+- 20 src files, depends on pieces-framework + shared (confirmed)
+- Same file: protocol pattern for local deps works
+- Framework must have dist/ built before common can typecheck (framework didn't have dist/ from prior iteration — had to rebuild)
+- Compiles cleanly with no errors
+
 ## Remaining packages to copy
 - @activepieces/server-common (packages/server/common/) — depends on pieces-framework + shared
-- @activepieces/pieces-common (packages/pieces/common/) — likely depends on pieces-framework + shared
 - @activepieces/engine (packages/server/engine/) — depends on shared
