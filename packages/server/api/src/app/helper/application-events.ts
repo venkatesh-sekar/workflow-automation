@@ -2,7 +2,6 @@ import { AppSystemProp, networkUtils, rejectedPromiseHandler } from '@activepiec
 import { apId, ApplicationEvent, isNil, PrincipalType } from '@activepieces/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { authenticationUtils } from '../authentication/authentication-utils'
-import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
 import { system } from './system/system'
@@ -73,14 +72,13 @@ async function enrichAuditEventParam(requestOrMeta: FastifyRequest | MetaInforma
         return undefined
     }
     const user = meta.userId ? await userService(log).getOneOrFail({ id: meta.userId }) : undefined
-    const identity = !isNil(user?.identityId) ? await userIdentityService(log).getOneOrFail({ id: user.identityId }) : undefined
     const project = meta.projectId ? await projectService(log).getOne(meta.projectId) : undefined
     const eventToSave: unknown = {
         id: apId(),
         created: new Date().toISOString(),
         updated: new Date().toISOString(),
         userId: meta.userId,
-        userEmail: identity?.email,
+        userEmail: user?.email,
         projectId: meta.projectId,
         projectDisplayName: project?.displayName,
         platformId: meta.platformId,

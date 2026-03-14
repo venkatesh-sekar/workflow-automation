@@ -499,3 +499,10 @@
 - **Quality gate:** pass (0 TS errors, 165 tests pass)
 - **Learnings:** listPlatformsForIdentityWithAtleastProject was dead code (multi-platform identity feature not used in Flow)
 ---
+
+## Iteration #72 - auth-replace
+- **Change:** Removed userIdentityService import from application-events.ts. enrichAuditEventParam now uses user.email directly instead of fetching user-identity record.
+- **Files:** packages/server/api/src/app/helper/application-events.ts
+- **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
+- **Learnings:** none
+---
