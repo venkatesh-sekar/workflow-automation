@@ -1,5 +1,4 @@
 import { ActivepiecesError,
-    ApEdition,
     apId,
     ErrorCode,
     FederatedAuthnProviderConfig,
@@ -10,7 +9,6 @@ import { ActivepiecesError,
     Platform,
     PlatformId,
     PlatformPlanLimits,
-    PlatformUsage,
     PlatformWithoutSensitiveData,
     spreadIfDefined,
     UpdatePlatformRequestBody,
@@ -19,9 +17,7 @@ import { ActivepiecesError,
 } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../core/db/repo-factory'
-import { platformPlanService } from '../ee/platform/platform-plan/platform-plan.service'
 import { defaultTheme } from '../flags/theme'
-import { system } from '../helper/system/system'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
 import { PlatformEntity } from './platform.entity'
@@ -120,12 +116,6 @@ export const platformService = (log: FastifyBaseLogger) => ({
             ...spreadIfDefined('allowedAuthDomains', params.allowedAuthDomains),
             ...spreadIfDefined('pinnedPieces', params.pinnedPieces),
         }
-        if (!isNil(params.plan)) {
-            await platformPlanService(log).update({
-                platformId: params.id,
-                ...params.plan,
-            })
-        }
         log.info({ platformId: params.id }, 'Platform updated')
         return platformRepo().save(updatedPlatform)
     },
@@ -183,24 +173,16 @@ export const platformService = (log: FastifyBaseLogger) => ({
     },
 })
 
-async function getUsage(log: FastifyBaseLogger, platform: Platform): Promise<PlatformUsage | undefined> {
-    const edition = system.getEdition()
-    if (edition === ApEdition.COMMUNITY) {
-        return undefined
-    }
-    return platformPlanService(log).getUsage(platform.id)
+async function getUsage(_log: FastifyBaseLogger, _platform: Platform): Promise<undefined> {
+    return undefined
 }
 
-async function getPlan(log: FastifyBaseLogger, platform: Platform): Promise<PlatformPlanLimits> {
-    const edition = system.getEdition()
-    if (edition === ApEdition.COMMUNITY) {
-        return {
-            ...OPEN_SOURCE_PLAN,
-            stripeSubscriptionStartDate: 0,
-            stripeSubscriptionEndDate: 0,
-        }
+async function getPlan(_log: FastifyBaseLogger, _platform: Platform): Promise<PlatformPlanLimits> {
+    return {
+        ...OPEN_SOURCE_PLAN,
+        stripeSubscriptionStartDate: 0,
+        stripeSubscriptionEndDate: 0,
     }
-    return platformPlanService(log).getOrCreateForPlatform(platform.id)
 }
 
 function stripSensitiveData(providers: FederatedAuthnProviderConfig): FederatedAuthnProviderConfigWithoutSensitiveData {

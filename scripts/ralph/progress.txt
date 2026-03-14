@@ -268,3 +268,10 @@
 - **Quality gate:** pass (typecheck: 1971 errors, down from 1974)
 - **Learnings:** Flow controller had 3 separate EE concerns: RBAC permissions, billing plan limits, git sync — all removed for community edition
 ---
+
+## Iteration #39 - fix-references
+- **Change:** Removed platformPlanService ee/ import from platform.service.ts. Simplified getUsage() to return undefined, getPlan() to return OPEN_SOURCE_PLAN, removed plan update in update(). Also removed unused ApEdition, PlatformUsage, system imports.
+- **Files:** packages/server/api/src/app/platform/platform.service.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (errors 1971→1970)
+- **Learnings:** platformPlanService was guarded by edition checks in getUsage/getPlan — dead code for community. Plan update in update() is a no-op without the service.
+---

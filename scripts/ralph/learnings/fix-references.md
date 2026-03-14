@@ -166,6 +166,15 @@
 - 4 source files with ee/ imports remain (down from 5)
 - Errors: 1974→1971 (−3)
 
+## Iteration 39 — platform.service.ts cleaned
+- Removed platformPlanService ee/ import (platform billing/plan = EE feature)
+- Removed plan update call in update() method (community has no billing plans to update)
+- Simplified getUsage() to always return undefined (community has no usage tracking)
+- Simplified getPlan() to always return OPEN_SOURCE_PLAN (community has no custom plans)
+- Also removed unused ApEdition, PlatformUsage, system imports
+- 3 source files with ee/ imports remain (down from 4)
+- Errors: 1971→1970 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

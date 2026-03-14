@@ -1,5 +1,5 @@
 {
-  "iteration": 38,
+  "iteration": 39,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -91,7 +91,8 @@
         {"iteration": 35, "description": "Removed enterpriseFilteringUtils ee/ import from piece-metadata-service.ts. Community edition has no enterprise piece filtering — all pieces returned without filtering check. Errors reduced 1980→1979."},
         {"iteration": 36, "description": "Removed projectMemberService and secretManagersService ee/ imports from app-connection-service.ts. Simplified getOwners() to community-only (platform admins only, no RBAC members). Removed secret manager resolution in upsert() — community stores values directly. Also removed unused ApEdition import. Errors reduced 1979→1976."},
         {"iteration": 37, "description": "Removed openRouterApi and platformPlanService ee/ imports from ai-provider-service.ts. Stubbed enrichWithKeysIfNeeded to throw (no cloud AI credits in community edition). Errors reduced 1976→1974."},
-        {"iteration": 38, "description": "Removed 3 ee/ imports from flow.controller.ts: assertUserHasPermissionToFlow (RBAC), platformPlanService (plan limits), gitRepoService (git sync). Removed RBAC permission check, active flow limit check, and git sync on delete. Also removed unused FlowStatus, GitPushOperationType, PlatformUsageMetric imports. Errors reduced 1974→1971."}
+        {"iteration": 38, "description": "Removed 3 ee/ imports from flow.controller.ts: assertUserHasPermissionToFlow (RBAC), platformPlanService (plan limits), gitRepoService (git sync). Removed RBAC permission check, active flow limit check, and git sync on delete. Also removed unused FlowStatus, GitPushOperationType, PlatformUsageMetric imports. Errors reduced 1974→1971."},
+        {"iteration": 39, "description": "Removed platformPlanService ee/ import from platform.service.ts. Removed plan update in update(), simplified getUsage() to always return undefined, simplified getPlan() to always return OPEN_SOURCE_PLAN (community edition has no billing plans). Also removed unused ApEdition, PlatformUsage, system imports. Errors reduced 1971→1970."}
       ]
     },
     "auth-replace": {
