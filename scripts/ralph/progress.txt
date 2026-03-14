@@ -30,3 +30,10 @@
 - **Quality gate:** pass (typecheck clean, 0 errors)
 - **Learnings:** dayjs not declared in shared/package.json but used — hoisted from monorepo root; shared package compiles standalone
 ---
+
+## Iteration #5 - copy-shared-packages
+- **Change:** Copied @activepieces/pieces-framework package (43 files), used file: protocol for local shared dep, built shared dist/ for type resolution
+- **Files:** packages/pieces/framework/ (43 files new), packages/shared/dist/ (built output)
+- **Quality gate:** pass (framework typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
+- **Learnings:** npm workspace:* unsupported — use file: refs; must build upstream packages to produce dist/ for type resolution; tried tsconfig paths approach but rootDir constraint blocks cross-package source references
+---

@@ -1,5 +1,5 @@
 {
-  "iteration": 4,
+  "iteration": 5,
   "current_phase": "copy-shared-packages",
   "phases": {
     "copy-server-core": {
@@ -25,7 +25,8 @@
         "TypeScript compiles (missing module errors from uncopied packages are OK)"
       ],
       "completed_items": [
-        {"iteration": 4, "description": "Copied @activepieces/shared package (202 files), added missing dayjs dependency, typecheck passes cleanly"}
+        {"iteration": 4, "description": "Copied @activepieces/shared package (202 files), added missing dayjs dependency, typecheck passes cleanly"},
+        {"iteration": 5, "description": "Copied @activepieces/pieces-framework package (43 files), linked to local shared via file: reference, built shared dist/ for type resolution, typecheck passes cleanly"}
       ]
     },
     "copy-ui-core": {
