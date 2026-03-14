@@ -6,6 +6,7 @@ import {
     ErrorCode,
     ExportTableResponse,
     isNil,
+    FieldType,
     PopulatedTable,
     SeekPage,
     SharedTemplate,
@@ -13,6 +14,7 @@ import {
     Table,
     TableDataState,
     TableImportDataType,
+    TableState,
     TableTemplate,
     TableWebhook,
     TableWebhookEventType,
@@ -25,7 +27,6 @@ import {
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ILike, In, IsNull } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'
-import { projectStateService } from '../../ee/projects/project-release/project-state/project-state.service'
 import { getFolderIdFromRequest } from '../../flows/flow/flow.service'
 import { buildPaginator } from '../../helper/pagination/build-paginator'
 import { paginationHelper } from '../../helper/pagination/pagination-utils'
@@ -154,7 +155,19 @@ export const tableService = {
             fields,
         }
 
-        const tableState = projectStateService(log).getTableState(populatedTable)
+        const tableState: TableState = {
+            id: populatedTable.id,
+            externalId: populatedTable.externalId ?? populatedTable.id,
+            name: populatedTable.name,
+            fields: fields.map((field) => ({
+                name: field.name,
+                type: field.type,
+                externalId: field.externalId,
+                data: field.type === FieldType.STATIC_DROPDOWN ? field.data : undefined,
+            })),
+            status: null,
+            trigger: null,
+        }
 
         const records = await recordRepo().find({
             where: { tableId: table.id, projectId },

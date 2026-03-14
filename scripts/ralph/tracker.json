@@ -1,5 +1,5 @@
 {
-  "iteration": 41,
+  "iteration": 42,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -94,7 +94,8 @@
         {"iteration": 38, "description": "Removed 3 ee/ imports from flow.controller.ts: assertUserHasPermissionToFlow (RBAC), platformPlanService (plan limits), gitRepoService (git sync). Removed RBAC permission check, active flow limit check, and git sync on delete. Also removed unused FlowStatus, GitPushOperationType, PlatformUsageMetric imports. Errors reduced 1974→1971."},
         {"iteration": 39, "description": "Removed platformPlanService ee/ import from platform.service.ts. Removed plan update in update(), simplified getUsage() to always return undefined, simplified getPlan() to always return OPEN_SOURCE_PLAN (community edition has no billing plans). Also removed unused ApEdition, PlatformUsage, system imports. Errors reduced 1971→1970."},
         {"iteration": 40, "description": "Removed 4 ee/ imports from platform.controller.ts: platformToEditMustBeOwnedByCurrentUser, platformPlanService, stripeHelper, platformProjectService. Removed entire CLOUD-only DELETE /:id endpoint (dead code in community edition). Also removed unused imports: apDayjs, ApEdition, assertNotNullOrUndefined, UserStatus, system, SystemJobName, systemJobsSchedule, projectService, userRepo, userService. Errors reduced 1970→1964."},
-        {"iteration": 41, "description": "Removed gitRepoService ee/ import from table.controller.ts. Removed git sync call on table delete (community edition has no git repo integration). Also removed unused GitPushOperationType import. Errors reduced 1964→1963."}
+        {"iteration": 41, "description": "Removed gitRepoService ee/ import from table.controller.ts. Removed git sync call on table delete (community edition has no git repo integration). Also removed unused GitPushOperationType import. Errors reduced 1964→1963."},
+        {"iteration": 42, "description": "Removed projectStateService ee/ import from table.service.ts — last ee/ import in server codebase. Inlined getTableState logic (maps PopulatedTable to TableState with field type/data mapping). Zero ee/ imports remain in packages/server/api/src/. Errors reduced 1963→1962."}
       ]
     },
     "auth-replace": {

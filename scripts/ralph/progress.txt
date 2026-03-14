@@ -289,3 +289,10 @@
 - **Quality gate:** pass (typecheck: 1963 errors, down from 1964)
 - **Learnings:** 1 source file with ee/ imports remains (table.service.ts), then test files
 ---
+
+## Iteration #42 - fix-references
+- **Change:** Removed projectStateService ee/ import from table.service.ts — LAST ee/ import in server codebase. Inlined getTableState logic (maps PopulatedTable to TableState with FieldType.STATIC_DROPDOWN data check). Zero ee/ imports remain in packages/server/api/src/.
+- **Files:** packages/server/api/src/app/tables/table/table.service.ts
+- **Quality gate:** pass (typecheck: 1962 errors, down from 1963)
+- **Learnings:** All ee/ imports now removed from server source (30 files cleaned across iterations 14-42). Remaining work: test file ee/ refs, non-ee broken imports, test baseline.
+---

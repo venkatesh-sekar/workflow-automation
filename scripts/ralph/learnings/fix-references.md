@@ -190,12 +190,19 @@
 - 1 source file with ee/ imports remains: table.service.ts
 - Errors: 1964→1963 (−1)
 
+## Iteration 42 — table.service.ts cleaned (LAST ee/ import!)
+- Removed projectStateService ee/ import (project release/state = EE feature)
+- Inlined getTableState logic: maps PopulatedTable fields to {name, type, externalId, data} with FieldType.STATIC_DROPDOWN check
+- Added FieldType and TableState imports from @activepieces/shared
+- **ALL ee/ imports now removed from packages/server/api/src/** (0 remaining)
+- Errors: 1963→1962 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
 3. ~~domainHelper — stub created~~ DONE
-4. Service files with ee/ imports — stub or remove (~27 files remain: projectMemberService, platformProjectService, eeAuthorization, etc.)
+4. ~~Service files with ee/ imports~~ DONE (all 30 files cleaned, iterations 14-42)
 5. Test files referencing ee/ — remove or adapt
 6. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
-7. Non-ee typecheck errors — resolve all remaining TS errors
+7. Non-ee typecheck errors — resolve all remaining 1962 TS errors
 8. Test suite — establish passing baseline
