@@ -1,5 +1,5 @@
 {
-  "iteration": 62,
+  "iteration": 63,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -131,7 +131,8 @@
         {"iteration": 59, "description": "Implemented POST /v1/authentication/team-login endpoint: hashes API key with SHA-256, finds project by hash, verifies email via user-identity lookup, checks project membership, returns JWT. Added findByApiKeyHash to project-service."},
         {"iteration": 60, "description": "Removed old sign-up, sign-in, switch-platform, and federated-auth endpoints from controller and service. Stripped authentication.service.ts to team-login only. Updated dev-seeds.ts to no-op (CLI scripts handle team creation). Replaced old auth tests with placeholder."},
         {"iteration": 61, "description": "Created create-team CLI script at packages/server/api/src/app/cli/create-team.ts. Accepts --name and --owner-email args, creates platform/identity/user/project with API key hash, prints API key to stdout."},
-        {"iteration": 62, "description": "Created add-member CLI script at packages/server/api/src/app/cli/add-member.ts. Accepts --project-id and --email, finds/creates user-identity+user, creates default MEMBER project_role, inserts project_member row for team access."}
+        {"iteration": 62, "description": "Created add-member CLI script at packages/server/api/src/app/cli/add-member.ts. Accepts --project-id and --email, finds/creates user-identity+user, creates default MEMBER project_role, inserts project_member row for team access."},
+        {"iteration": 63, "description": "Created rotate-key CLI script at packages/server/api/src/app/cli/rotate-key.ts. Accepts --project-id, generates new API key, updates apiKeyHash, prints new key to stdout."}
       ]
     },
     "env-rebrand": {

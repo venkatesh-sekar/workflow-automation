@@ -436,3 +436,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
 - **Learnings:** project_member table has FK to project_role — need default MEMBER role per platform. Uses raw SQL since ProjectMemberEntity/ProjectRoleEntity are EE-only (not copied). Unique constraint on (projectId, userId, platformId) prevents duplicates.
 ---
+
+## Iteration #63 - auth-replace
+- **Change:** Created rotate-key CLI script at packages/server/api/src/app/cli/rotate-key.ts. Accepts --project-id, generates new API key (flow_<64-hex>), updates project apiKeyHash, prints JSON with projectId, teamName, and new plaintext key.
+- **Files:** packages/server/api/src/app/cli/rotate-key.ts (new)
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
+- **Learnings:** none
+---
