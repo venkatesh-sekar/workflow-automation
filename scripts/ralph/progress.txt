@@ -23,3 +23,10 @@
 - **Quality gate:** N/A (phase transition)
 - **Learnings:** Promoted build system and ee/ exclusion insights to global learnings
 ---
+
+## Iteration #4 - copy-shared-packages
+- **Change:** Copied @activepieces/shared package (202 files), added dayjs as missing dependency (was root-level dep in activepieces monorepo)
+- **Files:** packages/shared/ (202 files), scripts/ralph/learnings/copy-shared-packages.md (new)
+- **Quality gate:** pass (typecheck clean, 0 errors)
+- **Learnings:** dayjs not declared in shared/package.json but used — hoisted from monorepo root; shared package compiles standalone
+---
