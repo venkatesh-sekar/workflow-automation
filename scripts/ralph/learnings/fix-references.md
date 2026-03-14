@@ -42,6 +42,11 @@
 - Simplified to just the websocket notification logic
 - Pattern: when `paidEditions` or edition checks guard ee/ code, remove the entire guarded block
 
+## Iteration 21 — authorize.ts stubbed
+- Replaced rbacService ee/ import with inline no-op stub that allows all project access
+- rbac-middleware (assertUserHasPermissionToFlow, assertRoleHasPermission) still imported by flow.controller.ts and user-invitation.module.ts — needs separate stubs
+- Pattern: for authorization ee/ stubs, no-op is safe since community edition has no RBAC roles
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

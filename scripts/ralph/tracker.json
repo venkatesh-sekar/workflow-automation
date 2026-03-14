@@ -1,5 +1,5 @@
 {
-  "iteration": 20,
+  "iteration": 21,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -73,7 +73,8 @@
         {"iteration": 17, "description": "Stubbed role-seed.ts — removed ProjectRoleEntity ee/ import, replaced seed with no-op (role system will be reimplemented in auth-replace phase). Errors reduced 2016→2013."},
         {"iteration": 18, "description": "Stubbed apiKeyService ee/ import in authenticate.ts — replaced with inline no-op returning null (EE API key auth disabled, will be replaced in auth-replace phase). Errors reduced 2013→2012."},
         {"iteration": 19, "description": "Created community-edition domainHelper stub at helper/domain-helper.ts, updated 7 files to import from new location instead of ee/custom-domains/domain-helper. Errors reduced 2012→2007."},
-        {"iteration": 20, "description": "Removed alertsService ee/ import from flow-run-hooks.ts, removed dead paidEditions code (alerting + early return). Simplified to community-only logic: just websocket notification on run finish."}
+        {"iteration": 20, "description": "Removed alertsService ee/ import from flow-run-hooks.ts, removed dead paidEditions code (alerting + early return). Simplified to community-only logic: just websocket notification on run finish."},
+        {"iteration": 21, "description": "Stubbed rbacService ee/ import in authorize.ts with inline no-op — community edition allows all project access (no RBAC roles). Errors reduced 2005→2004."}
       ]
     },
     "auth-replace": {

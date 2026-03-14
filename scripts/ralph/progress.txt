@@ -142,3 +142,10 @@
 - **Quality gate:** pass (no new errors; alerts-service error eliminated; 37 ee/-related errors remain across other files)
 - **Learnings:** When paidEditions/edition checks guard ee/ code, remove the entire guarded block — it's dead code in community edition. Also removed unused imports (dayjs, ApEdition, isFailedState, system).
 ---
+
+## Iteration #21 - fix-references
+- **Change:** Stubbed rbacService ee/ import in authorize.ts with inline no-op — community edition allows all project access (no RBAC roles)
+- **Files:** packages/server/api/src/app/core/security/v2/authz/authorize.ts
+- **Quality gate:** pass (typecheck: 2004 errors, down from 2005)
+- **Learnings:** rbac-middleware (assertUserHasPermissionToFlow, assertRoleHasPermission) still imported in flow.controller.ts and user-invitation.module.ts — separate stubs needed
+---
