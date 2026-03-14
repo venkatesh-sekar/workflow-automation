@@ -2,3 +2,10 @@
 # Activepieces v0.79.2 -> Flow MVP
 # Started: 2026-03-15
 ---
+
+## Iteration #1 - copy-server-core
+- **Change:** Copied packages/server/api/ from activepieces, excluding entire ee/ directory
+- **Files:** 1053 files added under packages/server/api/
+- **Quality gate:** N/A (typecheck not yet runnable — no workspace/typescript setup; deferred to next iteration)
+- **Learnings:** Activepieces uses turbo+bun build system; tsconfig extends parent configs; need workspace setup before typecheck works; ee/ had ~20 modules all excluded
+---
