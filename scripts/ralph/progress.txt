@@ -9,3 +9,10 @@
 - **Quality gate:** N/A (typecheck not yet runnable — no workspace/typescript setup; deferred to next iteration)
 - **Learnings:** Activepieces uses turbo+bun build system; tsconfig extends parent configs; need workspace setup before typecheck works; ee/ had ~20 modules all excluded
 ---
+
+## Iteration #2 - copy-server-core
+- **Change:** Set up TypeScript workspace infrastructure — root package.json with typescript+@types/node, tsconfig.base.json (trimmed), packages/server/tsconfig.server.json
+- **Files:** package.json (new), tsconfig.base.json (new), packages/server/tsconfig.server.json (new), package-lock.json (new), node_modules/
+- **Quality gate:** pass (typecheck runs; 2089 errors all TS2307/cascading from missing packages — expected per criteria)
+- **Learnings:** npm doesn't support workspace:* protocol from bun; tsconfig.app.json overrides paths to {} so base paths don't matter for server/api compilation
+---

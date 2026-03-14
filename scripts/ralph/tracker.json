@@ -1,5 +1,5 @@
 {
-  "iteration": 1,
+  "iteration": 2,
   "current_phase": "copy-server-core",
   "phases": {
     "copy-server-core": {
@@ -12,7 +12,8 @@
         "TypeScript compiles (missing module errors from uncopied packages are OK, ee/ import errors are expected and OK)"
       ],
       "completed_items": [
-        {"iteration": 1, "description": "Copied packages/server/api/ from activepieces excluding ee/ directory (1053 files, 0 ee/ files)"}
+        {"iteration": 1, "description": "Copied packages/server/api/ from activepieces excluding ee/ directory (1053 files, 0 ee/ files)"},
+        {"iteration": 2, "description": "Set up TypeScript workspace infrastructure: root package.json, tsconfig.base.json, packages/server/tsconfig.server.json, installed typescript+@types/node. Typecheck runs — all 2089 errors are TS2307 (missing module) or cascading, as expected."}
       ]
     },
     "copy-shared-packages": {
