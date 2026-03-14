@@ -10,7 +10,7 @@ export const platformUtils = {
         const oldestPlatform = await platformService(req.log).getOldestPlatform()
         return oldestPlatform?.id ?? null
     },
-    isCustomerOnDedicatedDomain(): boolean {
+    isCustomerOnDedicatedDomain(_platform?: unknown): boolean {
         // Community edition has no custom domains
         return false
     },

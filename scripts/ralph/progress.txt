@@ -359,3 +359,10 @@
 - **Quality gate:** pass (errors 5→1)
 - **Learnings:** Cloud API returns PieceMetadata with extra fields (packageType, pieceType) not in the base type — need intersection type for cast
 ---
+
+## Iteration #52 - fix-references
+- **Change:** Fixed isCustomerOnDedicatedDomain stub to accept optional platform parameter (TS2554 error). Installed reflect-metadata for test runtime. TypeScript now compiles with ZERO errors.
+- **Files:** packages/server/api/src/app/platform/platform.utils.ts, packages/server/api/package.json
+- **Quality gate:** partial (typecheck: pass 0 errors; tests: 20/21 suites fail — pino-pretty transport resolution)
+- **Learnings:** Test suite is vitest not jest; tests are integration (need postgres/redis); pino-pretty must be installed or mocked for test env
+---

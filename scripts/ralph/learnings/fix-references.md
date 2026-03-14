@@ -265,3 +265,13 @@
 - Cast listCloudPieces response.json() to `PieceRegistryResponse[]` (local type)
 - **Errors: 5 → 1**
 - Remaining 1 error: authentication.service.ts(165,70) TS2554 — arg count mismatch (next iteration)
+
+## Iteration 52 — ZERO TypeScript errors achieved + test suite assessment
+- Fixed isCustomerOnDedicatedDomain stub in platform.utils.ts: added `_platform?: unknown` parameter (was `()` but called with `(platform)`)
+- **TypeScript errors: 0** — criteria 4 (TypeScript compiles cleanly) is now MET
+- Installed reflect-metadata (required by typeorm at runtime)
+- Test suite uses vitest (not jest) — config at packages/server/api/vitest.config.ts
+- 21 test suites total: 1 passes, 20 fail with same root cause: `unable to determine transport target for "pino-pretty"`
+- pino-pretty is used by server-common logger — needs to be installed or mocked for test environment
+- Tests are integration tests (CE suite) — may also need postgres/redis infrastructure
+- Next: fix pino-pretty resolution to unblock test suite, then assess remaining failures

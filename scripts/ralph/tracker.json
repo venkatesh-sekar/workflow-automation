@@ -1,5 +1,5 @@
 {
-  "iteration": 51,
+  "iteration": 52,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -104,7 +104,8 @@
         {"iteration": 48, "description": "Deduplicated typeorm: moved typeorm from dependencies to peerDependencies in server-common/package.json, symlinked server/common/node_modules/typeorm to server/api's copy. Fixed 31 EntitySchema type incompatibility errors. Errors reduced 47→16."},
         {"iteration": 49, "description": "Created worker-stub.ts with type definitions (OperationResponse, EngineHelperTriggerResult, EngineHelperPropResult) and no-op value exports (flowWorker, devPiecesBuilder, packageManager, registryPieceManager). Added tsconfig paths mapping for 'worker' module. Errors reduced 16→8."},
         {"iteration": 50, "description": "Added type assertions for response.json() calls in community-templates.service.ts — 3 unknown→typed casts (Template, string[], SeekPage<Template>). Errors reduced 8→5."},
-        {"iteration": 51, "description": "Added type assertions and PieceMetadata import in piece-sync-service.ts — cast response.json() to PieceMetadata & {packageType, pieceType} and PieceRegistryResponse[]. Errors reduced 5→1."}
+        {"iteration": 51, "description": "Added type assertions and PieceMetadata import in piece-sync-service.ts — cast response.json() to PieceMetadata & {packageType, pieceType} and PieceRegistryResponse[]. Errors reduced 5→1."},
+        {"iteration": 52, "description": "Fixed isCustomerOnDedicatedDomain stub to accept optional platform parameter (TS2554 arg count mismatch). Installed reflect-metadata for test runtime. TypeScript errors: 0. Tests: 20 suites fail due to missing pino-pretty transport + integration infra (postgres/redis)."}
       ]
     },
     "auth-replace": {
