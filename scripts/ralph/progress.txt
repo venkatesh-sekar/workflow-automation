@@ -128,3 +128,10 @@
 - **Quality gate:** pass (typecheck: 2012 errors, down from 2013)
 - **Learnings:** When stubbing ee/ imports, use `Promise<any>` return types to avoid introducing new TS18047 errors from typed stubs where `isNil` can't narrow (since @activepieces/shared is unresolvable)
 ---
+
+## Iteration #19 - fix-references
+- **Change:** Created community-edition domainHelper stub at helper/domain-helper.ts, updated 7 files to import from new path instead of ee/custom-domains/domain-helper
+- **Files:** packages/server/api/src/app/helper/domain-helper.ts (new), machine-service.ts, flag.service.ts, app-event-routing.module.ts, user-invitation.service.ts, step-file.service.ts, flow-run-logs-service.ts, flow-runs-queue.ts
+- **Quality gate:** pass (typecheck: 2007 errors, down from 2012)
+- **Learnings:** Pattern for replacing ee/ modules: create MIT-licensed stub in helper/, update all importing files. domainHelper was most-referenced ee/ module (7 files).
+---

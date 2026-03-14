@@ -30,11 +30,18 @@
 - Used `Promise<any>` return type to avoid introducing new TS18047 errors from typed stub + unresolvable isNil
 - Errors: 2013→2012 (−1)
 
+## Iteration 19 — domainHelper stub created
+- Created community-edition domainHelper at helper/domain-helper.ts (MIT-licensed, no custom domain support)
+- Updated 7 files: machine-service.ts, flag.service.ts, app-event-routing.module.ts, user-invitation.service.ts, step-file.service.ts, flow-run-logs-service.ts, flow-runs-queue.ts
+- Pattern: create stub in helper/, update imports — reusable for other ee/ modules
+- Errors: 2012→2007 (−5, net: removed 7 ee/ imports, stub itself has 2 expected TS2307)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
-3. Service files with ee/ imports — stub or remove (domainHelper, projectMemberService, platformPlanService, etc.)
-4. Test files referencing ee/ — remove or adapt
-5. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
-6. Non-ee typecheck errors — resolve all remaining TS errors
-7. Test suite — establish passing baseline
+3. ~~domainHelper — stub created~~ DONE
+4. Service files with ee/ imports — stub or remove (dedicatedWorkers, platformPlanService, projectMemberService, rbacService, etc.)
+5. Test files referencing ee/ — remove or adapt
+6. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
+7. Non-ee typecheck errors — resolve all remaining TS errors
+8. Test suite — establish passing baseline
