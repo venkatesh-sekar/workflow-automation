@@ -22,7 +22,6 @@ import { FastifyBaseLogger, FastifyInstance, FastifyReply, FastifyRequest } from
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
-import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { platformMustBeOwnedByCurrentUser, platformMustHaveFeatureEnabled, projectMustBeTeamType } from '../helper/ee-authorization-stub'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
@@ -145,12 +144,7 @@ async function shouldAutoAcceptInvitation(principal: Principal, request: SendUse
         return false
     }
     
-    const identity = await userIdentityService(log).getIdentityByEmail(request.email)
-    if (isNil(identity)) {
-        return false
-    }
-    
-    const user = await userService(log).getOneByIdentityIdOnly({ identityId: identity.id })
+    const user = await userService(log).getOneByEmail({ email: request.email })
     return !isNil(user)
 }
 

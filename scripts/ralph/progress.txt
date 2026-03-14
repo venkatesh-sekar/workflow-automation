@@ -492,3 +492,10 @@
 - **Quality gate:** pass (0 TS errors, 165 tests pass)
 - **Learnings:** getOrCreateWithProject now uses email-based lookup via getOneByPlatformAndEmail; identity param fully eliminated from invitation flow
 ---
+
+## Iteration #71 - auth-replace
+- **Change:** Removed 4 identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform). Added getOneByEmail. Updated user-invitation.module.ts to use email-based user lookup. Removed dead listPlatformsForIdentityWithAtleastProject from platform.service.ts.
+- **Files:** packages/server/api/src/app/user/user-service.ts, packages/server/api/src/app/user-invitations/user-invitation.module.ts, packages/server/api/src/app/platform/platform.service.ts
+- **Quality gate:** pass (0 TS errors, 165 tests pass)
+- **Learnings:** listPlatformsForIdentityWithAtleastProject was dead code (multi-platform identity feature not used in Flow)
+---

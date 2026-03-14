@@ -111,9 +111,6 @@ export const userService = (log: FastifyBaseLogger) => ({
 
         return this.getMetaInformation({ id })
     },
-    async getUsersByIdentityId({ identityId }: GetUsersByIdentityIdParams): Promise<Pick<User, 'id' | 'platformId'>[]> {
-        return userRepo().find({ where: { identityId } }).then((users) => users.map((user) => ({ id: user.id, platformId: user.platformId })))
-    },
     async list({ platformId, externalId, cursorRequest, limit }: ListParams): Promise<SeekPage<UserWithMetaInformation>> {
         const decodedCursor = paginationHelper.decodeCursor(cursorRequest)
         const paginator = buildPaginator({
@@ -132,14 +129,8 @@ export const userService = (log: FastifyBaseLogger) => ({
         const usersWithMetaInformation = await Promise.all(data.map(this.getMetaInformation))
         return paginationHelper.createPage<UserWithMetaInformation>(usersWithMetaInformation, cursor)
     },
-    async getOneByIdentityIdOnly({ identityId }: GetOneByIdentityIdOnlyParams): Promise<User | null> {
-        return userRepo().findOneBy({ identityId })
-    },
-    async getByIdentityId({ identityId }: GetByIdentityId): Promise<UserSchema[]> {
-        return userRepo().find({ where: { identityId } })
-    },
-    async getOneByIdentityAndPlatform({ identityId, platformId }: GetOneByIdentityIdParams): Promise<User | null> {
-        return userRepo().findOneBy({ identityId, platformId })
+    async getOneByEmail({ email }: { email: string }): Promise<User | null> {
+        return userRepo().findOneBy({ email })
     },
     async getOneByPlatformAndEmail({ platformId, email }: GetOneByPlatformAndEmailParams): Promise<User | null> {
         return userRepo().findOneBy({ platformId, email })
@@ -269,19 +260,6 @@ type ListParams = {
     limit?: number
 }
 
-type GetOneByIdentityIdOnlyParams = {
-    identityId: string
-}
-
-type GetByIdentityId = {
-    identityId: string
-}
-
-
-type GetOneByIdentityIdParams = {
-    identityId: string
-    platformId: PlatformId
-}
 
 type UpdateParams = {
     id: UserId
@@ -303,10 +281,6 @@ type CreateParams = {
     platformRole: PlatformRole
     isActive?: boolean
 }
-type GetUsersByIdentityIdParams = {
-    identityId: string
-}
-
 type NewUser = Omit<User, 'created' | 'updated'>
 
 type GetOneByPlatformAndEmailParams = {

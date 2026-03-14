@@ -64,6 +64,9 @@
 - DONE: getMetaInformation uses user fields directly, imageUrl hardcoded null (iteration 69)
 - DONE: getOrCreateWithProject updated to accept email/name params instead of UserIdentity (iteration 70)
 - DONE: user-invitation.service.ts uses userService.getOneByPlatformAndEmail instead of userIdentityService (iteration 70)
-- getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform still reference identityId in user-service
-- Remaining identity refs: user-entity (identityId column), database-connection (entity registration), postgres-connection (migrations), platform.service, telemetry.utils, platform-jobs, app-connection-service, analytics module, application-events
-- Next: remove identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform), then remove identity entity/service
+- DONE: Removed 4 identity-dependent methods from user-service, added getOneByEmail (iteration 71)
+- DONE: Removed dead listPlatformsForIdentityWithAtleastProject from platform.service (never called, iteration 71)
+- DONE: user-invitation.module.ts now uses getOneByEmail instead of identity lookup (iteration 71)
+- Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, platform-jobs, app-connection-service, analytics module, application-events
+- CreateParams in user-service still has identityId field (used with apId() placeholder) — remove when entity column drops
+- Next: remove user-identity entity and service files, then clean up identityId column from user entity

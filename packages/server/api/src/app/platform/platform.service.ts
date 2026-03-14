@@ -13,7 +13,6 @@ import { ActivepiecesError,
     spreadIfDefined,
     UpdatePlatformRequestBody,
     UserId,
-    UserStatus,
 } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../core/db/repo-factory'
@@ -25,24 +24,6 @@ import { PlatformEntity } from './platform.entity'
 export const platformRepo = repoFactory<Platform>(PlatformEntity)
 
 export const platformService = (log: FastifyBaseLogger) => ({
-    async listPlatformsForIdentityWithAtleastProject(params: ListPlatformsForIdentityParams): Promise<PlatformWithoutSensitiveData[]> {
-        const users = await userService(log).getByIdentityId({ identityId: params.identityId })
-
-        const platformsWithProjects = await Promise.all(users.map(async (user) => {
-            if (isNil(user.platformId) || user.status === UserStatus.INACTIVE) {
-                return null
-            }
-            const hasProjects = await projectService(log).userHasProjects({
-                platformId: user.platformId,
-                userId: user.id,
-                isPrivileged: userService(log).isUserPrivileged(user),
-            })
-            return hasProjects ? user.platformId : null
-        }))
-
-        const platforms = await Promise.all(platformsWithProjects.filter((platformId) => !isNil(platformId)).map((platformId) => this.getOneWithPlanOrThrow(platformId)))
-        return platforms
-    },
     async create(params: AddParams): Promise<Platform> {
         const {
             ownerId,
@@ -212,6 +193,3 @@ type UpdateParams = UpdatePlatformRequestBody & {
     favIconUrl?: string
 }
 
-type ListPlatformsForIdentityParams = {
-    identityId: string
-}
