@@ -37,6 +37,9 @@ export const userService = (log: FastifyBaseLogger) => ({
         const isActive = params.isActive ?? true
         const user: NewUser = {
             id: apId(),
+            email: params.email,
+            firstName: params.firstName,
+            lastName: params.lastName,
             identityId: params.identityId,
             platformRole: params.platformRole,
             status: isActive ? UserStatus.ACTIVE : UserStatus.INACTIVE,
@@ -52,6 +55,9 @@ export const userService = (log: FastifyBaseLogger) => ({
         })
         if (isNil(user)) {
             const newUser = await this.create({
+                email: identity.email,
+                firstName: identity.firstName,
+                lastName: identity.lastName,
                 identityId: identity.id,
                 platformId,
                 platformRole: PlatformRole.MEMBER,
@@ -284,6 +290,9 @@ type UpdateParams = {
 }
 
 type CreateParams = {
+    email: string
+    firstName: string
+    lastName: string
     identityId: string
     platformId: string | null
     externalId?: string

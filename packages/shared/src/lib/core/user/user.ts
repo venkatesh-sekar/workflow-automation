@@ -36,6 +36,9 @@ export const PasswordType = z.string().min(8).max(64)
 
 export const User = z.object({
     ...BaseModelSchema,
+    email: z.string(),
+    firstName: z.string(),
+    lastName: z.string(),
     platformRole: z.nativeEnum(PlatformRole),
     status: z.nativeEnum(UserStatus),
     identityId: z.string(),

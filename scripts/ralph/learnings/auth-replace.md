@@ -48,3 +48,9 @@
 - project_member table has FK to project_role — must create a default MEMBER role (all permissions) per platform
 - project_member unique constraint on (projectId, userId, platformId) — script checks for existing membership
 - applyProjectsAccessFilters in project-service checks project_member table for non-owner access
+
+## User-Identity Removal Progress
+- email, firstName, lastName columns added to user entity + shared User type (iteration 64)
+- Test mock helpers (createMockUser, mockBasicUser, mockAndSaveBasicSetup, createMockPlatformWithOwner) updated to populate these fields
+- Remaining steps: update auth service + access-token-manager to use user.email instead of identity, update CLI scripts, remove identity entity/service
+- 13 files still reference user-identity — need to migrate each one

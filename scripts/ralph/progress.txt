@@ -443,3 +443,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
 - **Learnings:** none
 ---
+
+## Iteration #64 - auth-replace
+- **Change:** Added email, firstName, lastName columns to user entity and shared User zod type. Updated CreateParams in user-service and all test mock helpers to populate these fields.
+- **Files:** packages/shared/src/lib/core/user/user.ts, packages/server/api/src/app/user/user-entity.ts, packages/server/api/src/app/user/user-service.ts, packages/server/api/test/helpers/mocks/index.ts
+- **Quality gate:** pass (0 TypeScript errors, 21 suites / 165 tests pass)
+- **Learnings:** User entity now has email/firstName/lastName — prepares for user-identity removal. Test helpers must propagate identity fields to user when creating mock setups.
+---

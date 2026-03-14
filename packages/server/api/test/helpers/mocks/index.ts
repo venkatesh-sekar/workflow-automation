@@ -124,6 +124,9 @@ export const createMockUser = (user?: Partial<User>): User => {
         id: user?.id ?? apId(),
         created: user?.created ?? faker.date.recent().toISOString(),
         updated: user?.updated ?? faker.date.recent().toISOString(),
+        email: user?.email ?? faker.internet.email().toLowerCase().trim(),
+        firstName: user?.firstName ?? faker.person.firstName(),
+        lastName: user?.lastName ?? faker.person.lastName(),
         status: user?.status ?? UserStatus.ACTIVE,
         platformRole: user?.platformRole ?? faker.helpers.enumValue(PlatformRole),
         externalId: user?.externalId,
@@ -300,6 +303,9 @@ export const createMockPlatformWithOwner = (
     const mockUserIdentity = createMockUserIdentity({})
 
     const mockOwner = createMockUser({
+        email: mockUserIdentity.email,
+        firstName: mockUserIdentity.firstName,
+        lastName: mockUserIdentity.lastName,
         identityId: mockUserIdentity.id,
         ...params?.owner,
         id: mockOwnerId,
@@ -666,6 +672,9 @@ export const mockBasicUser = async ({ userIdentity, user }: { userIdentity?: Par
     await databaseConnection().getRepository('user_identity').save(mockUserIdentity)
     const mockUser = createMockUser({
         ...user,
+        email: mockUserIdentity.email,
+        firstName: mockUserIdentity.firstName,
+        lastName: mockUserIdentity.lastName,
         identityId: mockUserIdentity.id,
     })
     await databaseConnection().getRepository('user').save(mockUser)
@@ -683,6 +692,9 @@ export const mockAndSaveBasicSetup = async (params?: MockBasicSetupParams): Prom
 
     const mockOwner = createMockUser({
         ...params?.user,
+        email: mockUserIdentity.email,
+        firstName: mockUserIdentity.firstName,
+        lastName: mockUserIdentity.lastName,
         identityId: mockUserIdentity.id,
         platformRole: PlatformRole.ADMIN,
     })
