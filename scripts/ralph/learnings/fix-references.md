@@ -300,3 +300,13 @@
   4. table.test.ts (1 failure): cross-project table access returns 200 instead of 403 — same RBAC issue
 - The 403-related failures (3 tests) are because we stubbed RBAC to no-op — project isolation isn't enforced without RBAC
 - The 500 failures (4 tests) need deeper investigation into what service/dependency is broken
+
+## Iteration 55 — dayjs.duration runtime fix
+- Root cause of auth/step-file 500 errors: `dayjs.duration is not a function`
+- In Vite SSR (vitest), each module gets isolated scope — `dayjs.extend(duration)` in server-common doesn't affect `dayjs` imported in other modules
+- Fix: added dayjs plugin registration (duration, utc, timezone) to vitest.setup.ts so plugins load before any test
+- Tests: 19/21 suites pass, 3 individual tests fail (all RBAC cross-project 403 expectations)
+- Remaining 3 failures are intentional: community RBAC no-op stubs return 200 instead of 403 for cross-project access
+  1. flow-operations.test.ts: GET and DELETE cross-project flow (2 tests)
+  2. table.test.ts: GET cross-project table (1 test)
+- These tests need to be updated to reflect community behavior (no RBAC = no cross-project denial)

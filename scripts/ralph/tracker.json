@@ -1,5 +1,5 @@
 {
-  "iteration": 54,
+  "iteration": 55,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -107,7 +107,8 @@
         {"iteration": 51, "description": "Added type assertions and PieceMetadata import in piece-sync-service.ts — cast response.json() to PieceMetadata & {packageType, pieceType} and PieceRegistryResponse[]. Errors reduced 5→1."},
         {"iteration": 52, "description": "Fixed isCustomerOnDedicatedDomain stub to accept optional platform parameter (TS2554 arg count mismatch). Installed reflect-metadata for test runtime. TypeScript errors: 0. Tests: 20 suites fail due to missing pino-pretty transport + integration infra (postgres/redis)."},
         {"iteration": 53, "description": "Fix test infrastructure: installed pino-pretty, added vitest worker alias, removed UserInvitationEntity#projectRole relation (target entity removed), patched redis-memory-server to use MALLOC=libc (jemalloc unavailable). Tests: 17 fail (down from 20), 4 pass (up from 1). Remaining failures: api_key entity missing, other integration issues."},
-        {"iteration": 54, "description": "Removed SERVICE auth type from describeWithAuth test helper — api_key entity is EE-only, community tests run as USER only. Tests: 4 suites fail (down from 8), 7 individual tests fail (down from 72), 17 suites pass (up from 13)."}
+        {"iteration": 54, "description": "Removed SERVICE auth type from describeWithAuth test helper — api_key entity is EE-only, community tests run as USER only. Tests: 4 suites fail (down from 8), 7 individual tests fail (down from 72), 17 suites pass (up from 13)."},
+        {"iteration": 55, "description": "Fixed dayjs.duration runtime error in vitest — added dayjs plugin registration (duration, utc, timezone) to vitest.setup.ts. Vite SSR module isolation prevented side-effect plugin loading from server-common. Tests: 2 suites fail (down from 4), 3 individual tests fail (down from 7), 19 suites pass (up from 17). Remaining 3 failures are RBAC cross-project tests expecting 403 (community no-op returns 200)."}
       ]
     },
     "auth-replace": {

@@ -380,3 +380,10 @@
 - **Quality gate:** partial (typecheck: pass 0 errors; tests: 4/21 suites fail with 7 individual test failures — down from 8/21 suites with 72 failures)
 - **Learnings:** describeWithAuth doubled test count by running SERVICE+USER; SERVICE depended on EE api_key entity. Remaining failures: 3 auth 500s, 3 RBAC 403-expected tests, 1 step-file 500.
 ---
+
+## Iteration #55 - fix-references
+- **Change:** Fixed dayjs.duration runtime error in vitest — added dayjs plugin registration (duration, utc, timezone) to vitest.setup.ts
+- **Files:** packages/server/api/vitest.setup.ts
+- **Quality gate:** partial (typecheck: pass 0 errors; tests: 2/21 suites fail with 3 individual failures — down from 4/21 with 7 failures)
+- **Learnings:** Vite SSR module isolation prevents side-effect dayjs plugin loading across modules. Remaining 3 test failures are RBAC cross-project 403 expectations (community no-op stubs return 200).
+---
