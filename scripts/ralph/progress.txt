@@ -275,3 +275,10 @@
 - **Quality gate:** pass (errors 1971→1970)
 - **Learnings:** platformPlanService was guarded by edition checks in getUsage/getPlan — dead code for community. Plan update in update() is a no-op without the service.
 ---
+
+## Iteration #40 - fix-references
+- **Change:** Removed 4 ee/ imports from platform.controller.ts (platformToEditMustBeOwnedByCurrentUser, platformPlanService, stripeHelper, platformProjectService). Removed entire CLOUD-only DELETE /:id endpoint and DeletePlatformRequest schema. Also removed 10 unused imports.
+- **Files:** packages/server/api/src/app/platform/platform.controller.ts
+- **Quality gate:** pass (typecheck: 1964 errors, down from 1970)
+- **Learnings:** Entire delete endpoint was CLOUD-only dead code; all 4 ee/ imports were used exclusively in that block
+---

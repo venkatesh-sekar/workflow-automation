@@ -175,6 +175,14 @@
 - 3 source files with ee/ imports remain (down from 4)
 - Errors: 1971→1970 (−1)
 
+## Iteration 40 — platform.controller.ts cleaned
+- Removed 4 ee/ imports: platformToEditMustBeOwnedByCurrentUser, platformPlanService, stripeHelper, platformProjectService
+- Entire DELETE /:id endpoint was guarded by `edition === ApEdition.CLOUD` — dead code in community
+- Removed endpoint + DeletePlatformRequest schema + all imports only used by delete block
+- Pattern: when entire route handler is edition-gated for CLOUD, remove the whole thing
+- 2 source files with ee/ imports remain (down from 3): table.controller.ts, table.service.ts
+- Errors: 1970→1964 (−6)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

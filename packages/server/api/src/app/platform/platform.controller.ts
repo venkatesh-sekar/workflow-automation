@@ -1,33 +1,19 @@
-import { apDayjs, securityAccess } from '@activepieces/server-common'
+import { securityAccess } from '@activepieces/server-common'
 import {
     ActivepiecesError,
-    ApEdition,
     ApId,
-    assertNotNullOrUndefined,
     ErrorCode,
     FileType,
     PlatformWithoutSensitiveData,
     PrincipalType,
     SERVICE_KEY_SECURITY_OPENAPI,
     UpdatePlatformRequestBody,
-    UserStatus,
 } from '@activepieces/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
-import { platformToEditMustBeOwnedByCurrentUser } from '../ee/authentication/ee-authorization'
-import { platformPlanService } from '../ee/platform/platform-plan/platform-plan.service'
-import { stripeHelper } from '../ee/platform/platform-plan/stripe-helper'
-import { platformProjectService } from '../ee/projects/platform-project-service'
 import { fileService } from '../file/file.service'
-import { system } from '../helper/system/system'
-import { SystemJobName } from '../helper/system-jobs/common'
-import { systemJobsSchedule } from '../helper/system-jobs/system-job'
-import { projectService } from '../project/project-service'
-import { userRepo, userService } from '../user/user-service'
 import { platformService } from './platform.service'
-
-const edition = system.getEdition()
 export const platformController: FastifyPluginAsyncZod = async (app) => {
     app.post('/:id', UpdatePlatformRequest, async (req, _res) => {
         const platformId = req.principal.platform.id
@@ -90,71 +76,6 @@ export const platformController: FastifyPluginAsyncZod = async (app) => {
             .send(data.data)
     })
 
-    if (edition === ApEdition.CLOUD) {
-        app.delete('/:id', DeletePlatformRequest, async (req, res) => {
-            await platformToEditMustBeOwnedByCurrentUser.call(app, req, res)
-            assertNotNullOrUndefined(req.principal.platform.id, 'platformId')
-            const isCloudNonEnterprisePlan = await platformPlanService(req.log).isCloudNonEnterprisePlan(req.params.id)
-            if (!isCloudNonEnterprisePlan) {
-                throw new ActivepiecesError({
-                    code: ErrorCode.DOES_NOT_MEET_BUSINESS_REQUIREMENTS,
-                    params: {
-                        message: 'Platform is not eligible for deletion',
-                    },
-                })
-            }
-            const platformPlan = await platformPlanService(req.log).getOrCreateForPlatform(req.params.id)
-            if (platformPlan.stripeSubscriptionId) {
-                await stripeHelper(req.log).deleteCustomer(platformPlan.stripeSubscriptionId)
-            }
-
-            const platformId = req.params.id
-
-            const user = await userService(req.log).getOneOrFail({
-                id: req.principal.id,
-            })
-
-            await userRepo().update(
-                { id: user.id, platformId },
-                { status: UserStatus.INACTIVE },
-            )
-
-            const projectIds = await projectService(req.log).getProjectIdsByPlatform(platformId)
-            await Promise.all(
-                projectIds.map((projectId) =>
-                    platformProjectService(req.log).markForDeletion({
-                        id: projectId,
-                        platformId,
-                    }),
-                ),
-            )
-
-            await systemJobsSchedule(req.log).upsertJob({
-                job: {
-                    name: SystemJobName.HARD_DELETE_PLATFORM,
-                    data: {
-                        platformId,
-                        userId: user.id,
-                        identityId: user.identityId,
-                    },
-                    jobId: `hard-delete-platform-${platformId}`,
-                },
-                schedule: {
-                    type: 'one-time',
-                    date: apDayjs(),
-                },
-                customConfig: {
-                    attempts: 25,
-                    backoff: {
-                        type: 'fixed',
-                        delay: 60000,
-                    },
-                },
-            })
-
-            return res.status(StatusCodes.NO_CONTENT).send()
-        })
-    }
 }
 
 const UpdatePlatformRequest = {
@@ -190,16 +111,6 @@ const GetPlatformRequest = {
     },
 }
 
-const DeletePlatformRequest = {
-    config: {
-        security: securityAccess.platformAdminOnly([PrincipalType.USER]),
-    },
-    schema: {
-        params: z.object({
-            id: ApId,
-        }),
-    },
-}
 
 const GetAssetRequest = {
     config: {
