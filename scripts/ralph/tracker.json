@@ -1,0 +1,205 @@
+{
+  "iteration": 0,
+  "current_phase": "copy-server-core",
+  "phases": {
+    "copy-server-core": {
+      "status": "pending",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "Server API package copied from activepieces (EXCLUDING entire ee/ directory)",
+        "No files from packages/server/api/src/app/ee/ present",
+        "package.json present and dependencies resolvable",
+        "TypeScript compiles (missing module errors from uncopied packages are OK, ee/ import errors are expected and OK)"
+      ],
+      "completed_items": []
+    },
+    "copy-shared-packages": {
+      "status": "pending",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "All shared/common packages that server and UI depend on are copied (EXCLUDING packages/ee/)",
+        "Workspace references resolve between packages",
+        "TypeScript compiles (missing module errors from uncopied packages are OK)"
+      ],
+      "completed_items": []
+    },
+    "copy-ui-core": {
+      "status": "pending",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "Frontend app package copied from activepieces",
+        "Only UI components for the 24 kept pieces included",
+        "TypeScript compiles (missing module errors from uncopied packages are OK)"
+      ],
+      "completed_items": []
+    },
+    "copy-pieces": {
+      "status": "pending",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "All 24 specified pieces copied: HTTP, Code, Branches/Conditions, Loops, Data Mapper, Math Helper, CSV, File Helper, Image Helper, PDF, Delay, Approval, Forms, Manual Trigger, Schedule, Store, GraphQL, SMTP, SFTP, Data Summarizer, Connections, Text Helper, Slack, Postgres",
+        "No other pieces present",
+        "Piece registry references only the 24 kept pieces"
+      ],
+      "completed_items": []
+    },
+    "fix-references": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "All imports referencing ee/ paths removed or stubbed with no-op implementations",
+        "All broken imports/references to non-copied modules resolved",
+        "No remaining references to packages/ee/ or app/ee/ anywhere in codebase",
+        "TypeScript compiles cleanly with no errors",
+        "All existing tests pass — test baseline established"
+      ],
+      "completed_items": []
+    },
+    "auth-replace": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "Signup, signin, password reset, OAuth callbacks removed",
+        "POST /api/v1/auth/team-login endpoint implemented and working",
+        "api_key column added to project table (encrypted, unique)",
+        "project_member used for email-based membership check",
+        "CLI scripts created: create-team, add-member, rotate-key",
+        "JWT generation reuses existing access-token-manager",
+        "user-identity service/entity removed",
+        "New tests for team-login flow and CLI scripts"
+      ],
+      "completed_items": []
+    },
+    "env-rebrand": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "All AP_ prefixes renamed to FLOW_ in AppSystemProp/WorkerSystemProp enums",
+        "system.ts env var reader and defaults updated",
+        "Docker Compose .env and docker-compose.yml updated",
+        "All hardcoded AP_ references replaced",
+        "Existing tests updated to use new env var names"
+      ],
+      "completed_items": []
+    },
+    "strip-ai-providers": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "AI provider list trimmed to OpenAI only",
+        "Anthropic, Google, Azure, OpenRouter, Cloudflare provider code removed",
+        "MCP server implementation untouched",
+        "Agents system untouched",
+        "Tests updated for single-provider setup"
+      ],
+      "completed_items": []
+    },
+    "build-audit-logs": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "New audit log entity, service, and module written from scratch in core (NOT copied from ee/)",
+        "Audit event table: id, projectId, userId, event, data, timestamp",
+        "Logs cover: flow create/update/delete, connection changes, member changes, flow enable/disable",
+        "API endpoint to list audit events (project-scoped)",
+        "Tests for audit log events"
+      ],
+      "completed_items": []
+    },
+    "simplify-alerts": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "Alerts module replaced with structured stdout logging",
+        "Log format: { level: error, event: flow_failed, flowId, projectId, error, timestamp }",
+        "Alert service interface kept for future swappability",
+        "Tests for structured log output"
+      ],
+      "completed_items": []
+    },
+    "modify-templates": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "OFFICIAL template type stripped",
+        "CUSTOM template type kept",
+        "scope field added to template: TEAM (project-scoped) or GLOBAL (visible to all)",
+        "Tests for template scope behavior"
+      ],
+      "completed_items": []
+    },
+    "frontend-login": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "/sign-in and /sign-up routes replaced with single /login page",
+        "Login page has two fields: email and team key",
+        "Red-branded with Flow logo",
+        "On success: JWT stored in localStorage, redirect to /automations",
+        "Tests for login flow"
+      ],
+      "completed_items": []
+    },
+    "frontend-sidebar": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "Sidebar items removed: Tables, Leaderboard/Community, Platform admin, Billing/Plans",
+        "Sidebar items kept: Automations, Connections, Runs, Agents/Chat, Templates, Settings",
+        "Tests updated for sidebar changes"
+      ],
+      "completed_items": []
+    },
+    "frontend-settings": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "Settings tabs removed: Billing, API keys, Git sync, Custom domains, Appearance (i18n)",
+        "Settings tabs kept: General (project name, icon), Team members (list/add/remove emails), Alerts (placeholder)",
+        "Tests updated for settings changes"
+      ],
+      "completed_items": []
+    },
+    "frontend-branding": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "App name Flow in all page titles, sidebar header, meta tags, favicon",
+        "Primary color set to red in Tailwind theme config",
+        "Activepieces logo replaced with Flow wordmark or placeholder",
+        "Tests updated for branding changes"
+      ],
+      "completed_items": []
+    },
+    "deployment": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "Docker Compose with 4 services: flow-api, flow-worker, postgres, redis",
+        "All FLOW_ env vars configured in compose and .env",
+        "Dockerfile builds successfully",
+        "Container starts and responds to health check"
+      ],
+      "completed_items": []
+    }
+  },
+  "completed_phases": [],
+  "phase_queue": [
+    "copy-shared-packages",
+    "copy-ui-core",
+    "copy-pieces",
+    "fix-references",
+    "auth-replace",
+    "env-rebrand",
+    "strip-ai-providers",
+    "build-audit-logs",
+    "simplify-alerts",
+    "modify-templates",
+    "frontend-login",
+    "frontend-sidebar",
+    "frontend-settings",
+    "frontend-branding",
+    "deployment"
+  ],
+  "inserted_phases": []
+}
