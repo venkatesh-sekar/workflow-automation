@@ -198,3 +198,10 @@
 - **Quality gate:** pass (typecheck: 1992 errors, down from 1997)
 - **Learnings:** Use local type alias for Fastify hook types to avoid TS2307; user-invitation.module.ts still has 2 more ee/ imports (assertRoleHasPermission, projectRoleService)
 ---
+
+## Iteration #29 - fix-references
+- **Change:** Removed dedicatedWorkers ee/ import from machine-service.ts and job-queue.ts. Simplified to community-only: no dedicated workers, all jobs use shared queue.
+- **Files:** packages/server/api/src/app/workers/machine/machine-service.ts, packages/server/api/src/app/workers/queue/job-queue.ts
+- **Quality gate:** pass (typecheck: 1989 errors, down from 1992)
+- **Learnings:** Dedicated workers is EE-only concept; community uses single shared queue for all platforms
+---

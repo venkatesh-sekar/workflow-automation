@@ -1,5 +1,5 @@
 {
-  "iteration": 28,
+  "iteration": 29,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -81,7 +81,8 @@
         {"iteration": 25, "description": "Removed platformProjectService and projectMemberRepo ee/ imports from user-service.ts, simplified getUsersForProject to community-only (platform admins only, no RBAC members), removed platformProjectService.deletePersonalProjectForUser from delete(). Errors reduced 2002→1998."},
         {"iteration": 26, "description": "Removed projectMemberService ee/ import from websockets.service.ts, replaced RBAC role check in validateProjectId with community no-op (all authenticated users allowed). Errors reduced 1998→1997."},
         {"iteration": 27, "description": "Removed customDomainService ee/ import from platform.utils.ts, removed getPlatformIdForHostname (always null in community), simplified isCustomerOnDedicatedDomain to return false (no custom domains in community). Removed unused imports (isNil, ApEdition, PlatformWithoutSensitiveData, system)."},
-        {"iteration": 28, "description": "Created ee-authorization-stub.ts with no-op community stubs for platformMustHaveFeatureEnabled, platformMustBeOwnedByCurrentUser, projectMustBeTeamType. Updated 3 files: platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts. Errors reduced 1997→1992."}
+        {"iteration": 28, "description": "Created ee-authorization-stub.ts with no-op community stubs for platformMustHaveFeatureEnabled, platformMustBeOwnedByCurrentUser, projectMustBeTeamType. Updated 3 files: platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts. Errors reduced 1997→1992."},
+        {"iteration": 29, "description": "Removed dedicatedWorkers ee/ import from machine-service.ts and job-queue.ts. Simplified getExecutionMode to always use system config, simplified job queue init to shared queue only, simplified getQueueName to always return shared queue. Errors reduced 1992→1989."}
       ]
     },
     "auth-replace": {

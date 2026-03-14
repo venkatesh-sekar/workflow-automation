@@ -92,6 +92,13 @@
 - Pattern: for shared ee/ stubs used by multiple files, create a helper file rather than inline stubs
 - Errors: 1997→1992 (−5)
 
+## Iteration 29 — dedicatedWorkers removed from machine-service.ts and job-queue.ts
+- Removed dedicatedWorkers ee/ import from both files (platform-dedicated-workers is EE)
+- machine-service.ts: simplified getExecutionMode to always return system config (no dedicated worker configs in community)
+- job-queue.ts: simplified init() to only create shared queue, simplified getQueueName() to always return QueueName.WORKER_JOBS
+- Also removed unused getPlatformQueueName import from server-common
+- Errors: 1992→1989 (−3)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
