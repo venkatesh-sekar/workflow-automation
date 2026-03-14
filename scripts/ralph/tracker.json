@@ -1,5 +1,5 @@
 {
-  "iteration": 58,
+  "iteration": 59,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -127,7 +127,8 @@
         "New tests for team-login flow and CLI scripts"
       ],
       "completed_items": [
-        {"iteration": 58, "description": "Added apiKeyHash column (nullable, unique-indexed) to project entity for API key lookup. Server-only field using SHA-256 hash — not added to shared Project type."}
+        {"iteration": 58, "description": "Added apiKeyHash column (nullable, unique-indexed) to project entity for API key lookup. Server-only field using SHA-256 hash — not added to shared Project type."},
+        {"iteration": 59, "description": "Implemented POST /v1/authentication/team-login endpoint: hashes API key with SHA-256, finds project by hash, verifies email via user-identity lookup, checks project membership, returns JWT. Added findByApiKeyHash to project-service."}
       ]
     },
     "env-rebrand": {

@@ -195,6 +195,11 @@ export const projectService = (log: FastifyBaseLogger) => ({
         await projectRepo().update(query, update)
     },
 
+    async findByApiKeyHash(apiKeyHash: string): Promise<Project | null> {
+        return projectRepo().findOneBy({
+            apiKeyHash,
+        })
+    },
     async getByPlatformIdAndExternalId({
         platformId,
         externalId,

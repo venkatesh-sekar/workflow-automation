@@ -22,3 +22,10 @@
 - ProjectMember type exists in shared/ee/project-members — it ties userId to projectId via projectRoleId
 - For Flow: we need simpler email-based membership (no roles, no userId requirement)
 - user-invitations module also exists — may be simpler to use for email-based membership
+
+## Team Login Implementation
+- Endpoint: POST /v1/authentication/team-login with zod schema { email: string, apiKey: string }
+- Flow: hash apiKey → findByApiKeyHash → getIdentityByEmail → getOneByIdentityAndPlatform → verify project access → generate JWT
+- Still depends on user-identity for email lookup and tokenVersion — will need update when user-identity is removed
+- Uses same AuthenticationResponse type as existing sign-in (includes firstName, lastName, etc from identity)
+- securityAccess.public() for unauthenticated access, same rate limiting as sign-in/sign-up

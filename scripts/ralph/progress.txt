@@ -408,3 +408,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 168/168 tests)
 - **Learnings:** Using hash (not reversible encryption) since keys are never displayed. Column added to local ProjectSchema type only, not shared Project zod schema, to avoid API leakage.
 ---
+
+## Iteration #59 - auth-replace
+- **Change:** Implemented POST /v1/authentication/team-login endpoint with teamLogin service method and findByApiKeyHash in project-service
+- **Files:** authentication.controller.ts, authentication.service.ts, project-service.ts
+- **Quality gate:** pass (typecheck clean, 168/168 tests pass)
+- **Learnings:** zod schemas used for request validation (not typebox); team-login still depends on user-identity for email lookup
+---

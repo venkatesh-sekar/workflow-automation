@@ -9,15 +9,28 @@ import { ApplicationEventName,
 } from '@activepieces/shared'
 import { RateLimitOptions } from '@fastify/rate-limit'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
+import { z } from 'zod'
 import { applicationEvents } from '../helper/application-events'
 import { system } from '../helper/system/system'
 import { platformUtils } from '../platform/platform.utils'
 import { userService } from '../user/user-service'
 import { authenticationService } from './authentication.service'
 
+const TeamLoginRequest = z.object({
+    email: z.string().email(),
+    apiKey: z.string().min(1),
+})
+
 export const authenticationController: FastifyPluginAsyncZod = async (
     app,
 ) => {
+    app.post('/team-login', TeamLoginRequestOptions, async (request) => {
+        return authenticationService(request.log).teamLogin({
+            email: request.body.email,
+            apiKey: request.body.apiKey,
+        })
+    })
+
     app.post('/sign-up', SignUpRequestOptions, async (request) => {
 
         const platformId = await platformUtils.getPlatformIdForRequest(request)
@@ -85,6 +98,16 @@ const rateLimitOptions: RateLimitOptions = {
 }
 
 
+
+const TeamLoginRequestOptions = {
+    config: {
+        security: securityAccess.public(),
+        rateLimit: rateLimitOptions,
+    },
+    schema: {
+        body: TeamLoginRequest,
+    },
+}
 
 const SwitchPlatformRequestOptions = {
     config: {
