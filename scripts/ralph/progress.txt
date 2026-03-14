@@ -331,3 +331,10 @@
 - **Quality gate:** pass (typecheck: 47 errors, down from 51)
 - **Learnings:** Piece directory names don't have `piece-` prefix (e.g., `slack` not `piece-slack`). Only slack uses app-level event routing in our 24-piece set.
 ---
+
+## Iteration #48 - fix-references
+- **Change:** Deduplicated typeorm between server/api and server/common — moved typeorm to peerDependencies in server-common/package.json, symlinked node_modules/typeorm to server/api's copy. Fixed 31 EntitySchema type incompatibility errors caused by duplicate typeorm installations.
+- **Files:** packages/server/common/package.json, packages/server/common/node_modules/typeorm (symlink), packages/server/common/dist/ (rebuilt)
+- **Quality gate:** pass (typecheck: 16 errors, down from 47)
+- **Learnings:** When two file:-linked packages share a dependency, the child should use peerDependencies to avoid TypeScript treating same-version types as incompatible due to different physical paths.
+---

@@ -234,3 +234,12 @@
 - Built slack dist/ for type resolution
 - Remaining 47 errors: ~35 TS2322 (typeorm version mismatch between server/api and server/common), 7 TS2307 (worker module), 4 TS2322 (unknown type in piece-sync/templates), 1 TS18046
 - Next priorities: (1) fix typeorm duplication (30+ errors), (2) stub worker module (7 errors), (3) fix unknown types (4 errors)
+
+## Iteration 48 — typeorm deduplication
+- Root cause: server/api and server/common each had independent typeorm@0.3.26 in node_modules — TypeScript treats types from different physical paths as incompatible
+- Fix: moved typeorm from `dependencies` to `peerDependencies` in server/common/package.json, symlinked node_modules/typeorm to server/api's copy
+- This resolved all 31 EntitySchema<X> ↔ EntitySchema<unknown> type errors
+- **Errors: 47 → 16**
+- Remaining 16 errors: 7 TS2307 (worker module), 4 TS2322 + 2 TS18046 (unknown types in piece-sync-service.ts), 3 TS2322 (unknown types in community-templates.service.ts), 1 TS2554 (authentication.service.ts arg count)
+- Pattern: when two packages in a file: dependency chain share a common dependency, the child should use peerDependencies to avoid TypeScript type duplication
+- Next priorities: (1) stub worker module (7 errors), (2) add type assertions for unknown types (7 errors), (3) fix auth.service arg error (1 error)

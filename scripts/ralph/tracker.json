@@ -1,5 +1,5 @@
 {
-  "iteration": 47,
+  "iteration": 48,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -100,7 +100,8 @@
         {"iteration": 44, "description": "Removed ee/ import from test/helpers/auth.ts — removed ExternalPrincipal/ExternalTokenPayload imports from ee/managed-authn, removed generateMockExternalToken function and MOCK_SIGNING_KEY_PRIVATE_KEY (managed auth = EE feature, not used after cloud test deletion). Kept generateMockToken and decodeToken. Remaining ee/ ref: test/helpers/mocks/index.ts."},
         {"iteration": 45, "description": "Removed 3 ee/ imports from test/helpers/mocks/index.ts: generateApiKey (inlined with secureApId+cryptoUtils), OAuthAppWithEncryptedSecret (inlined as local type), PlatformPlanEntity (removed hasMetadata check + platform_plan upsert block — entity was already removed from DB connection). ZERO ee/ imports remain in entire codebase."},
         {"iteration": 46, "description": "Installed server/api npm dependencies: replaced workspace:* with file: for 5 local packages, removed worker dep (not copied), removed 3 unused piece devDeps (facebook-leads, intercom, square), built server-common dist/. TypeScript errors reduced 1962→51."},
-        {"iteration": 47, "description": "Removed 3 non-existent piece imports (facebook-leads, intercom, square) from app-event-routing.module.ts, kept only slack. Fixed piece-slack dependency path in package.json (piece-slack→slack), built slack dist/. Errors reduced 51→47."}
+        {"iteration": 47, "description": "Removed 3 non-existent piece imports (facebook-leads, intercom, square) from app-event-routing.module.ts, kept only slack. Fixed piece-slack dependency path in package.json (piece-slack→slack), built slack dist/. Errors reduced 51→47."},
+        {"iteration": 48, "description": "Deduplicated typeorm: moved typeorm from dependencies to peerDependencies in server-common/package.json, symlinked server/common/node_modules/typeorm to server/api's copy. Fixed 31 EntitySchema type incompatibility errors. Errors reduced 47→16."}
       ]
     },
     "auth-replace": {

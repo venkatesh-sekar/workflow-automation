@@ -28,7 +28,9 @@
     "redis-memory-server": "0.15.0",
     "redlock": "5.0.0-beta.2",
     "tree-kill": "1.2.2",
-    "tslib": "2.6.2",
+    "tslib": "2.6.2"
+  },
+  "peerDependencies": {
     "typeorm": "0.3.26"
   },
   "devDependencies": {
