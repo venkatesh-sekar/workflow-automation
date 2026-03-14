@@ -1,5 +1,5 @@
 {
-  "iteration": 43,
+  "iteration": 44,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -96,7 +96,8 @@
         {"iteration": 40, "description": "Removed 4 ee/ imports from platform.controller.ts: platformToEditMustBeOwnedByCurrentUser, platformPlanService, stripeHelper, platformProjectService. Removed entire CLOUD-only DELETE /:id endpoint (dead code in community edition). Also removed unused imports: apDayjs, ApEdition, assertNotNullOrUndefined, UserStatus, system, SystemJobName, systemJobsSchedule, projectService, userRepo, userService. Errors reduced 1970→1964."},
         {"iteration": 41, "description": "Removed gitRepoService ee/ import from table.controller.ts. Removed git sync call on table delete (community edition has no git repo integration). Also removed unused GitPushOperationType import. Errors reduced 1964→1963."},
         {"iteration": 42, "description": "Removed projectStateService ee/ import from table.service.ts — last ee/ import in server codebase. Inlined getTableState logic (maps PopulatedTable to TableState with field type/data mapping). Zero ee/ imports remain in packages/server/api/src/. Errors reduced 1963→1962."},
-        {"iteration": 43, "description": "Removed entire test/integration/cloud/ directory (31 CLOUD/EE-only test files). Tests covered: OTP, cloud auth, API keys, custom domains, signing keys, managed auth, project members/roles/releases, git repos, app credentials, AppSumo, alerts, event destinations, platform billing, etc. Remaining ee/ refs: test/helpers/auth.ts and test/helpers/mocks/index.ts (next iteration)."}
+        {"iteration": 43, "description": "Removed entire test/integration/cloud/ directory (31 CLOUD/EE-only test files). Tests covered: OTP, cloud auth, API keys, custom domains, signing keys, managed auth, project members/roles/releases, git repos, app credentials, AppSumo, alerts, event destinations, platform billing, etc. Remaining ee/ refs: test/helpers/auth.ts and test/helpers/mocks/index.ts (next iteration)."},
+        {"iteration": 44, "description": "Removed ee/ import from test/helpers/auth.ts — removed ExternalPrincipal/ExternalTokenPayload imports from ee/managed-authn, removed generateMockExternalToken function and MOCK_SIGNING_KEY_PRIVATE_KEY (managed auth = EE feature, not used after cloud test deletion). Kept generateMockToken and decodeToken. Remaining ee/ ref: test/helpers/mocks/index.ts."}
       ]
     },
     "auth-replace": {
