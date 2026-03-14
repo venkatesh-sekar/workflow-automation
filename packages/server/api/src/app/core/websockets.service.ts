@@ -3,7 +3,7 @@ import { ActivepiecesError, ErrorCode, isNil, Principal, PrincipalForType, Princ
 import { FastifyBaseLogger } from 'fastify'
 import { Socket } from 'socket.io'
 import { accessTokenManager } from '../authentication/lib/access-token-manager'
-import { projectMemberService } from '../ee/projects/project-members/project-member.service'
+
 import { app } from '../server'
 
 export type WebsocketListener<T, PR extends PrincipalType.USER | PrincipalType.WORKER> = (socket: Socket) => (data: T, principal: PrincipalForType<PR>, projectId: PR extends PrincipalType.USER ? string : null, callback?: (data: unknown) => void) => Promise<void>
@@ -102,19 +102,8 @@ const validateProjectId = async ({ userId, projectId, log }: ValidateProjectIdAr
             },
         })
     }
-    const role = await projectMemberService(log).getRole({
-        projectId,
-        userId,
-    })
-
-    if (isNil(role)) {
-        throw new ActivepiecesError({
-            code: ErrorCode.AUTHORIZATION,
-            params: {
-                message: 'User not allowed to access this project',
-            },
-        })
-    }
+    // Community edition: all authenticated users are allowed project access (no RBAC roles)
+    log.debug({ userId, projectId }, 'Community edition: skipping role check for project access')
 }
 
 type ValidateProjectIdArgs = {

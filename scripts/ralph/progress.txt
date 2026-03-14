@@ -177,3 +177,10 @@
 - **Quality gate:** pass (1998 errors, down from 2002)
 - **Learnings:** platformProjectService only used for personal project deletion in user delete flow — safe to no-op for community; projectMemberRepo only used in non-COMMUNITY edition branch — safe to remove
 ---
+
+## Iteration #26 - fix-references
+- **Change:** Removed projectMemberService ee/ import from websockets.service.ts, replaced RBAC role check in validateProjectId with community no-op (all authenticated users allowed project access)
+- **Files:** packages/server/api/src/app/core/websockets.service.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (typecheck: 1997 errors, down from 1998)
+- **Learnings:** websocket validateProjectId only needs projectId nil check in community edition; role check was purely EE RBAC
+---

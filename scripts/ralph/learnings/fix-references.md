@@ -70,6 +70,13 @@
 - Also removed unused ApEdition and system imports
 - Errors: 2002→1998 (−4)
 
+## Iteration 26 — websockets.service.ts cleaned
+- Removed projectMemberService ee/ import (used for RBAC role check in websocket connection)
+- Replaced validateProjectId role check with community no-op — all authenticated users allowed project access
+- Kept projectId nil check (still needed for websocket room assignment)
+- 19 files with ee/ imports remain (down from 20)
+- Errors: 1998→1997 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
