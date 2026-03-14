@@ -44,3 +44,7 @@
 - ProjectType.TEAM (not STANDALONE), ColorName enum for icon
 - API key format: `flow_<64-hex-chars>`, hashed with SHA-256 for storage
 - create-team currently depends on user-identity — will need update when identity is removed
+- add-member: finds project by ID, creates identity+user, inserts project_member row with default MEMBER role
+- project_member table has FK to project_role — must create a default MEMBER role (all permissions) per platform
+- project_member unique constraint on (projectId, userId, platformId) — script checks for existing membership
+- applyProjectsAccessFilters in project-service checks project_member table for non-owner access

@@ -429,3 +429,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
 - **Learnings:** CLI scripts use pino directly (not FastifyBaseLogger); ProjectType.TEAM not STANDALONE; API key format: flow_<64-hex>, hashed with SHA-256
 ---
+
+## Iteration #62 - auth-replace
+- **Change:** Created add-member CLI script at packages/server/api/src/app/cli/add-member.ts. Accepts --project-id and --email args. Finds project, creates user-identity+user if needed, creates default MEMBER project_role (all permissions), inserts project_member row for team access.
+- **Files:** packages/server/api/src/app/cli/add-member.ts (new)
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
+- **Learnings:** project_member table has FK to project_role — need default MEMBER role per platform. Uses raw SQL since ProjectMemberEntity/ProjectRoleEntity are EE-only (not copied). Unique constraint on (projectId, userId, platformId) prevents duplicates.
+---
