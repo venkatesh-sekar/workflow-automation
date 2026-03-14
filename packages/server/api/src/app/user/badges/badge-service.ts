@@ -3,7 +3,10 @@ import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'
 import { websocketService } from '../../core/websockets.service'
-import { emailService } from '../../ee/helper/email/email-service'
+// Community edition: no email service — badge emails are a no-op
+const emailService = (_log: FastifyBaseLogger) => ({
+    sendBadgeAwardedEmail: async (_userId: string, _badgeName: string): Promise<void> => {},
+})
 import { applicationEvents } from '../../helper/application-events'
 import { BadgeCheck } from './badge-check'
 import { UserBadgeEntity } from './badge-entity'

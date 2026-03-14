@@ -149,3 +149,10 @@
 - **Quality gate:** pass (typecheck: 2004 errors, down from 2005)
 - **Learnings:** rbac-middleware (assertUserHasPermissionToFlow, assertRoleHasPermission) still imported in flow.controller.ts and user-invitation.module.ts — separate stubs needed
 ---
+
+## Iteration #22 - fix-references
+- **Change:** Stubbed emailService ee/ import in badge-service.ts with inline no-op — community edition skips badge-awarded emails
+- **Files:** packages/server/api/src/app/user/badges/badge-service.ts
+- **Quality gate:** pass (typecheck: 2004 errors, no new errors introduced)
+- **Learnings:** Consistent pattern for ee/ service stubs: inline no-op with matching signature
+---

@@ -47,11 +47,15 @@
 - rbac-middleware (assertUserHasPermissionToFlow, assertRoleHasPermission) still imported by flow.controller.ts and user-invitation.module.ts — needs separate stubs
 - Pattern: for authorization ee/ stubs, no-op is safe since community edition has no RBAC roles
 
+## Iteration 22 — badge-service.ts stubbed
+- Replaced emailService ee/ import with inline no-op (community edition skips badge emails)
+- Pattern consistent: for service ee/ imports, inline no-op stub with matching function signature
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
 3. ~~domainHelper — stub created~~ DONE
-4. Service files with ee/ imports — stub or remove (dedicatedWorkers, platformPlanService, projectMemberService, rbacService, etc.)
+4. Service files with ee/ imports — stub or remove (~27 files remain: projectMemberService, platformProjectService, eeAuthorization, etc.)
 5. Test files referencing ee/ — remove or adapt
 6. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
 7. Non-ee typecheck errors — resolve all remaining TS errors
