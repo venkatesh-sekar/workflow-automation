@@ -215,3 +215,14 @@
 - **ALL ee/ imports now removed from entire packages/ directory (0 remaining)**
 - Criteria 1 and 3 of fix-references phase are now fully met
 - Remaining: resolve 1962 non-ee TS errors (criteria 2,4) and establish test baseline (criteria 5)
+
+## Iteration 46 — npm dependencies installed for server/api
+- Replaced workspace:* → file: for 5 local packages (shared, server-common, pieces-framework, pieces-common, engine)
+- Removed `worker` dep (package not copied — 8 source files import it, needs stub or copy)
+- Removed 3 unused piece devDeps: piece-facebook-leads, piece-intercom, piece-square (test fixtures for pieces we don't have)
+- Kept piece-slack devDep (community piece exists at pieces/community/piece-slack)
+- Built server-common dist/ for type resolution
+- **Errors: 1962 → 51** (massive reduction)
+- Remaining 51 errors: 35 TS2322 (type mismatches), 12 TS2307 (8 worker + 4 piece refs), 4 other
+- Worker package (`worker`) is referenced by 8 files — needs to be either copied or stubbed
+- 4 piece test fixture imports remain: app-event-routing.module.ts imports piece-facebook-leads, piece-intercom, piece-square directly

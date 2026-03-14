@@ -317,3 +317,10 @@
 - **Quality gate:** pass (typecheck: 1962 errors, unchanged — test files not compiled by tsconfig.app.json)
 - **Learnings:** Criteria 1 and 3 fully met (all ee/ imports removed). Remaining: resolve 1962 non-ee TS errors + establish test baseline.
 ---
+
+## Iteration #46 - fix-references
+- **Change:** Installed server/api npm dependencies: replaced workspace:* with file: for 5 local packages, removed worker dep (not copied), removed 3 unused piece devDeps (facebook-leads, intercom, square), built server-common dist/. TypeScript errors reduced 1962→51.
+- **Files:** packages/server/api/package.json, packages/server/api/package-lock.json, packages/server/common/dist/ (built)
+- **Quality gate:** partial (typecheck: 51 errors remaining — 35 TS2322 type mismatches, 12 TS2307 missing modules, 4 other)
+- **Learnings:** Most errors were simply missing npm deps. Worker package needs copy or stub (8 imports). 4 piece test fixture imports in app-event-routing.module.ts need cleanup.
+---

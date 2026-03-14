@@ -1,5 +1,5 @@
 {
-  "iteration": 45,
+  "iteration": 46,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -98,7 +98,8 @@
         {"iteration": 42, "description": "Removed projectStateService ee/ import from table.service.ts — last ee/ import in server codebase. Inlined getTableState logic (maps PopulatedTable to TableState with field type/data mapping). Zero ee/ imports remain in packages/server/api/src/. Errors reduced 1963→1962."},
         {"iteration": 43, "description": "Removed entire test/integration/cloud/ directory (31 CLOUD/EE-only test files). Tests covered: OTP, cloud auth, API keys, custom domains, signing keys, managed auth, project members/roles/releases, git repos, app credentials, AppSumo, alerts, event destinations, platform billing, etc. Remaining ee/ refs: test/helpers/auth.ts and test/helpers/mocks/index.ts (next iteration)."},
         {"iteration": 44, "description": "Removed ee/ import from test/helpers/auth.ts — removed ExternalPrincipal/ExternalTokenPayload imports from ee/managed-authn, removed generateMockExternalToken function and MOCK_SIGNING_KEY_PRIVATE_KEY (managed auth = EE feature, not used after cloud test deletion). Kept generateMockToken and decodeToken. Remaining ee/ ref: test/helpers/mocks/index.ts."},
-        {"iteration": 45, "description": "Removed 3 ee/ imports from test/helpers/mocks/index.ts: generateApiKey (inlined with secureApId+cryptoUtils), OAuthAppWithEncryptedSecret (inlined as local type), PlatformPlanEntity (removed hasMetadata check + platform_plan upsert block — entity was already removed from DB connection). ZERO ee/ imports remain in entire codebase."}
+        {"iteration": 45, "description": "Removed 3 ee/ imports from test/helpers/mocks/index.ts: generateApiKey (inlined with secureApId+cryptoUtils), OAuthAppWithEncryptedSecret (inlined as local type), PlatformPlanEntity (removed hasMetadata check + platform_plan upsert block — entity was already removed from DB connection). ZERO ee/ imports remain in entire codebase."},
+        {"iteration": 46, "description": "Installed server/api npm dependencies: replaced workspace:* with file: for 5 local packages, removed worker dep (not copied), removed 3 unused piece devDeps (facebook-leads, intercom, square), built server-common dist/. TypeScript errors reduced 1962→51."}
       ]
     },
     "auth-replace": {
