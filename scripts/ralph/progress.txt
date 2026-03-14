@@ -163,3 +163,10 @@
 - **Quality gate:** pass (typecheck: 2003 errors, down from 2004)
 - **Learnings:** Edition switch blocks with CLOUD-only ee/ calls are dead code — remove entire switch and keep only COMMUNITY path
 ---
+
+## Iteration #24 - fix-references
+- **Change:** Removed federatedAuthnService ee/ import from flag.service.ts, replaced third-party auth redirect URL with empty string (no federated auth in community edition)
+- **Files:** packages/server/api/src/app/flags/flag.service.ts
+- **Quality gate:** pass (typecheck: 2002 errors, down from 2003)
+- **Learnings:** none
+---

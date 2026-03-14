@@ -58,6 +58,12 @@
 - Also cleaned unused imports: OtpType, ApEdition, system
 - Errors: 2004→2003 (−1)
 
+## Iteration 24 — flag.service.ts cleaned
+- Removed federatedAuthnService ee/ import (federated auth = EE SSO feature)
+- Replaced `await federatedAuthnService(log).getThirdPartyRedirectUrl(undefined)` with `''`
+- Community edition has no third-party auth redirect
+- Errors: 2003→2002 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
