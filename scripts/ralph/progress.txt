@@ -121,3 +121,10 @@
 - **Quality gate:** pass (typecheck: 2013 errors, down from 2016)
 - **Learnings:** Role seeding depends on ProjectRoleEntity which is EE — will reimplement with Flow's own auth model
 ---
+
+## Iteration #18 - fix-references
+- **Change:** Stubbed apiKeyService ee/ import in authenticate.ts — replaced with inline no-op returning null (EE API key auth disabled)
+- **Files:** packages/server/api/src/app/core/security/v2/authn/authenticate.ts
+- **Quality gate:** pass (typecheck: 2012 errors, down from 2013)
+- **Learnings:** When stubbing ee/ imports, use `Promise<any>` return types to avoid introducing new TS18047 errors from typed stubs where `isNil` can't narrow (since @activepieces/shared is unresolvable)
+---
