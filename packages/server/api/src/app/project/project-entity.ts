@@ -20,6 +20,7 @@ import {
 } from '../database/database-common'
 
 type ProjectSchema = Project & {
+    apiKeyHash: string | null
     owner: User
     flows: Flow[]
     files: File[]
@@ -75,6 +76,10 @@ export const ProjectEntity = new EntitySchema<ProjectSchema>({
             type: 'jsonb',
             nullable: true,
         },
+        apiKeyHash: {
+            type: String,
+            nullable: true,
+        },
     },
     indices: [
         {
@@ -86,6 +91,12 @@ export const ProjectEntity = new EntitySchema<ProjectSchema>({
             name: 'idx_project_platform_id_external_id',
             columns: ['platformId', 'externalId'],
             where: 'deleted IS NULL',
+            unique: true,
+        },
+        {
+            name: 'idx_project_api_key_hash',
+            columns: ['apiKeyHash'],
+            where: '"apiKeyHash" IS NOT NULL AND deleted IS NULL',
             unique: true,
         },
     ],

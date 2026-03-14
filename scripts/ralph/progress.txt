@@ -401,3 +401,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 168/168 tests)
 - **Learnings:** Promoted fix-references insights to global learnings (test infrastructure, RBAC stub behavior, worker stub pattern). Phase took 44 iterations (14-57).
 ---
+
+## Iteration #58 - auth-replace
+- **Change:** Added apiKeyHash column to project entity — nullable string with unique index (filtered on non-null, non-deleted). Server-only field for SHA-256 API key lookup.
+- **Files:** packages/server/api/src/app/project/project-entity.ts, scripts/ralph/learnings/auth-replace.md (new)
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 168/168 tests)
+- **Learnings:** Using hash (not reversible encryption) since keys are never displayed. Column added to local ProjectSchema type only, not shared Project zod schema, to avoid API leakage.
+---
