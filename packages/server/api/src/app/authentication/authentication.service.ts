@@ -10,7 +10,6 @@ import { FastifyBaseLogger } from 'fastify'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
 import { accessTokenManager } from './lib/access-token-manager'
-import { userIdentityService } from './user-identity/user-identity-service'
 
 export const authenticationService = (log: FastifyBaseLogger) => ({
     async teamLogin(params: TeamLoginParams): Promise<AuthenticationResponse> {
@@ -24,18 +23,9 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
                 },
             })
         }
-        const identity = await userIdentityService(log).getIdentityByEmail(params.email)
-        if (isNil(identity)) {
-            throw new ActivepiecesError({
-                code: ErrorCode.AUTHENTICATION,
-                params: {
-                    message: 'Invalid email or team key',
-                },
-            })
-        }
-        const user = await userService(log).getOneByIdentityAndPlatform({
-            identityId: identity.id,
+        const user = await userService(log).getOneByPlatformAndEmail({
             platformId: project.platformId,
+            email: params.email,
         })
         if (isNil(user)) {
             throw new ActivepiecesError({
@@ -66,17 +56,11 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
             platform: {
                 id: project.platformId,
             },
-            tokenVersion: identity.tokenVersion,
+            tokenVersion: user.tokenVersion ?? undefined,
         })
         log.info({ email: params.email, projectId: project.id }, 'User logged in via team key')
         return {
             ...user,
-            firstName: identity.firstName,
-            lastName: identity.lastName,
-            email: identity.email,
-            trackEvents: identity.trackEvents,
-            newsLetter: identity.newsLetter,
-            verified: identity.verified,
             token,
             projectId: project.id,
         }

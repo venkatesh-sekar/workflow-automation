@@ -143,6 +143,9 @@ export const userService = (log: FastifyBaseLogger) => ({
     async getOneByIdentityAndPlatform({ identityId, platformId }: GetOneByIdentityIdParams): Promise<User | null> {
         return userRepo().findOneBy({ identityId, platformId })
     },
+    async getOneByPlatformAndEmail({ platformId, email }: GetOneByPlatformAndEmailParams): Promise<User | null> {
+        return userRepo().findOneBy({ platformId, email })
+    },
     async get({ id }: IdParams): Promise<User | null> {
         return userRepo().findOneBy({ id })
     },
@@ -308,6 +311,11 @@ type GetUsersByIdentityIdParams = {
 }
 
 type NewUser = Omit<User, 'created' | 'updated'>
+
+type GetOneByPlatformAndEmailParams = {
+    platformId: string
+    email: string
+}
 
 type GetByPlatformAndExternalIdParams = {
     platformId: string

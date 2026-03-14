@@ -464,3 +464,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
 - **Learnings:** One fewer file depending on user-identity. Next: update authentication.service.ts teamLogin.
 ---
+
+## Iteration #67 - auth-replace
+- **Change:** Updated teamLogin and getProjectAndToken to use user fields directly instead of user-identity. Added getOneByPlatformAndEmail to user-service. Updated AuthenticationResponse to pick from User (dropped trackEvents/newsLetter). Removed dead sendTelemetry/saveNewsLetterSubscriber.
+- **Files:** authentication.service.ts, authentication-utils.ts, user-service.ts, authentication-response.ts
+- **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
+- **Learnings:** tokenVersion is Nullable on User but optional on Principal — use ?? undefined when passing
+---

@@ -54,8 +54,11 @@
 - verified, tokenVersion columns added to user entity + shared User type (iteration 65)
 - Test mock helpers (createMockUser, mockBasicUser, mockAndSaveBasicSetup, createMockPlatformWithOwner) updated to populate all fields
 - DONE: access-token-manager assertUserSession now uses user.verified/tokenVersion directly (iteration 66)
-- Next: update authentication.service.ts teamLogin to use user fields instead of identity
-- Then: update authentication-utils.ts getProjectAndToken to use user fields
-- Then: update CLI scripts to stop creating identities
+- DONE: teamLogin uses getOneByPlatformAndEmail instead of identity lookup (iteration 67)
+- DONE: getProjectAndToken uses user.verified/tokenVersion/email directly (iteration 67)
+- DONE: AuthenticationResponse picks from User instead of UserIdentity — dropped trackEvents/newsLetter (iteration 67)
+- DONE: Removed dead sendTelemetry/saveNewsLetterSubscriber from authentication-utils (iteration 67)
+- tokenVersion is Nullable (string | null) on User but optional (string | undefined) on Principal — use `?? undefined` when passing
+- Next: update CLI scripts (create-team, add-member) to stop creating user-identities
+- Then: update getMetaInformation in user-service to use user fields
 - Then: remove identity entity/service and remaining references
-- ~23 files still reference user-identity — need to migrate each one

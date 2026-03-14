@@ -1,5 +1,5 @@
 {
-  "iteration": 66,
+  "iteration": 67,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -135,7 +135,8 @@
         {"iteration": 63, "description": "Created rotate-key CLI script at packages/server/api/src/app/cli/rotate-key.ts. Accepts --project-id, generates new API key, updates apiKeyHash, prints new key to stdout."},
         {"iteration": 64, "description": "Added email, firstName, lastName columns to user entity and shared User zod type. Updated CreateParams in user-service, test mock helpers to populate these fields. Prepares for user-identity removal."},
         {"iteration": 65, "description": "Added verified and tokenVersion columns to user entity and shared User zod type. Updated CreateParams and test mocks. Prepares access-token-manager to use user directly instead of user-identity."},
-        {"iteration": 66, "description": "Updated access-token-manager assertUserSession to use user.verified/tokenVersion directly instead of fetching user-identity. Removed userIdentityService import from access-token-manager."}
+        {"iteration": 66, "description": "Updated access-token-manager assertUserSession to use user.verified/tokenVersion directly instead of fetching user-identity. Removed userIdentityService import from access-token-manager."},
+        {"iteration": 67, "description": "Updated teamLogin and getProjectAndToken to use user fields directly instead of user-identity. Added getOneByPlatformAndEmail to user-service. Updated AuthenticationResponse to pick fields from User instead of UserIdentity (dropped trackEvents/newsLetter). Removed dead sendTelemetry/saveNewsLetterSubscriber functions."}
       ]
     },
     "env-rebrand": {
