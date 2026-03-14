@@ -72,4 +72,5 @@
 - DONE: Removed userIdentityRepository from platform-jobs.ts, removed userIdentityService + assertUserIsNotEmbedded from platform-analytics.module.ts (iteration 73)
 - CreateParams in user-service still has identityId field (used with apId() placeholder) — remove when entity column drops
 - Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, app-connection-service/entity, authentication-utils
-- Next: remove identity refs from telemetry.utils.ts and app-connection-service.ts, then drop identityId column from user entity and delete user-identity entity/service files
+- DONE: telemetry.utils.ts identify() now uses User fields directly, UserIdentity import removed (iteration 74)
+- Next: remove identity refs from app-connection-service.ts and app-connection.entity.ts, then drop identityId column from user entity and delete user-identity entity/service files

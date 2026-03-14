@@ -513,3 +513,10 @@
 - **Quality gate:** pass (0 TS errors, 165 tests pass)
 - **Learnings:** platform-analytics assertUserIsNotEmbedded was checking for embedded JWT provider — irrelevant in Flow, safe to remove entirely
 ---
+
+## Iteration #74 - auth-replace
+- **Change:** Removed UserIdentity import from telemetry.utils.ts. Updated identify() to use user.email/firstName/lastName directly instead of identity parameter.
+- **Files:** packages/server/api/src/app/helper/telemetry.utils.ts
+- **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
+- **Learnings:** telemetry.identify() was not called anywhere — safe to change signature freely
+---
