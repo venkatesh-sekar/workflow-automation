@@ -72,3 +72,10 @@
 - **Quality gate:** pass (4 TS2307 errors for missing ee-embed-sdk and html-to-image — expected per criteria)
 - **Learnings:** Frontend is React 19 + Vite + Tailwind 4; ee-embed-sdk and piece-ai paths in tsconfig.app.json pointed to packages/ee/ — removed; npm needs --legacy-peer-deps for React 19 peer dep conflicts; embed routes are EE-related candidates for removal in fix-references
 ---
+
+## Iteration #11 - copy-ui-core (phase completion)
+- **Change:** Verified all 3 acceptance criteria met; marked copy-ui-core complete; advanced to copy-pieces
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted UI-specific insights to global learnings: ee-embed-sdk cleanup needed in fix-references, React 19 peer dep workaround, UI references pieces by string name only
+---

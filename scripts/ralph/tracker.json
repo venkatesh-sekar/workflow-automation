@@ -1,6 +1,6 @@
 {
-  "iteration": 10,
-  "current_phase": "copy-ui-core",
+  "iteration": 11,
+  "current_phase": "copy-pieces",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -33,7 +33,7 @@
       ]
     },
     "copy-ui-core": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "typecheck",
       "criteria": [
         "Frontend app package copied from activepieces",
@@ -194,9 +194,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core"],
   "phase_queue": [
-    "copy-pieces",
     "fix-references",
     "auth-replace",
     "env-rebrand",

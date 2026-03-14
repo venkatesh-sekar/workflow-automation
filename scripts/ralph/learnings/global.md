@@ -18,3 +18,10 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 
 ## EE Exclusion
 - Server ee/ was at `src/app/ee/` with ~20 modules — all excluded; imports to ee/ paths exist throughout server code and must be resolved in fix-references
+- UI has 3 files importing ee-embed-sdk + embed routes (src/app/routes/embed/) are EE-related — remove in fix-references
+- UI impact routes reference html-to-image — candidate for removal
+
+## UI Notes
+- Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
+- npm install needs --legacy-peer-deps for React 19 peer dep conflicts
+- UI references piece names as strings (search ranking, special-casing) — no per-piece UI code to filter
