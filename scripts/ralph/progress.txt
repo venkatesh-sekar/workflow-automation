@@ -485,3 +485,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
 - **Learnings:** imageUrl field set to null (user entity has no imageUrl column); getOrCreateWithProject still uses UserIdentity type — needs separate cleanup
 ---
+
+## Iteration #70 - auth-replace
+- **Change:** Removed userIdentityService from user-invitation.service.ts; updated getOrCreateWithProject to accept email/name params instead of UserIdentity
+- **Files:** packages/server/api/src/app/user/user-service.ts, packages/server/api/src/app/user-invitations/user-invitation.service.ts
+- **Quality gate:** pass (0 TS errors, 165 tests pass)
+- **Learnings:** getOrCreateWithProject now uses email-based lookup via getOneByPlatformAndEmail; identity param fully eliminated from invitation flow
+---

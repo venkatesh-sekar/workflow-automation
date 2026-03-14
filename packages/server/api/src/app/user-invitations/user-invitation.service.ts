@@ -1,7 +1,6 @@
 import { ActivepiecesError, apId, assertEqual, assertNotNullOrUndefined, ErrorCode, InvitationStatus, InvitationType, isNil, PlatformRole, SeekPage, spreadIfDefined, User, UserInvitation, UserInvitationWithLink } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
-import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { domainHelper } from '../helper/domain-helper'
 // Community stubs — no SMTP emails, no RBAC project members/roles
@@ -198,14 +197,19 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
         await repo().update(invitation.id, {
             status: InvitationStatus.ACCEPTED,
         })
-        const identity = await userIdentityService(log).getIdentityByEmail(invitation.email)
-        if (isNil(identity)) {
+        const existingUser = await userService(log).getOneByPlatformAndEmail({
+            platformId: invitation.platformId,
+            email: invitation.email,
+        })
+        if (isNil(existingUser)) {
             return {
                 registered: false,
             }
         }
         const user = await userService(log).getOrCreateWithProject({
-            identity,
+            email: invitation.email,
+            firstName: existingUser.firstName,
+            lastName: existingUser.lastName,
             platformId: invitation.platformId,
         })
         await this.provisionUserInvitation({

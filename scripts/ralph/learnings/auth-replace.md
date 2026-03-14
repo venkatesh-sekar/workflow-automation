@@ -62,6 +62,8 @@
 - DONE: CLI scripts (create-team, add-member) no longer create user-identities — users created directly with all fields (iteration 68)
 - identityId still required by user entity (NOT NULL column) — CLI scripts use apId() placeholder; will be removed with entity column drop
 - DONE: getMetaInformation uses user fields directly, imageUrl hardcoded null (iteration 69)
-- getOrCreateWithProject still uses UserIdentity type param — used by user-invitation.service.ts
-- getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform still reference identityId
-- Next: remove identity entity/service, drop identityId column, update remaining identity-dependent methods
+- DONE: getOrCreateWithProject updated to accept email/name params instead of UserIdentity (iteration 70)
+- DONE: user-invitation.service.ts uses userService.getOneByPlatformAndEmail instead of userIdentityService (iteration 70)
+- getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform still reference identityId in user-service
+- Remaining identity refs: user-entity (identityId column), database-connection (entity registration), postgres-connection (migrations), platform.service, telemetry.utils, platform-jobs, app-connection-service, analytics module, application-events
+- Next: remove identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform), then remove identity entity/service

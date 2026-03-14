@@ -13,7 +13,6 @@ import {
     spreadIfDefined,
     User,
     UserId,
-    UserIdentity,
     UserStatus,
     UserWithBadges,
     UserWithMetaInformation,
@@ -49,23 +48,23 @@ export const userService = (log: FastifyBaseLogger) => ({
         }
         return userRepo().save(user)
     },
-    async getOrCreateWithProject({ identity, platformId }: GetOrCreateWithProjectParams): Promise<User> {
-        const user = await this.getOneByIdentityAndPlatform({
-            identityId: identity.id,
+    async getOrCreateWithProject({ email, firstName, lastName, platformId }: GetOrCreateWithProjectParams): Promise<User> {
+        const user = await this.getOneByPlatformAndEmail({
             platformId,
+            email,
         })
         if (isNil(user)) {
             const newUser = await this.create({
-                email: identity.email,
-                firstName: identity.firstName,
-                lastName: identity.lastName,
-                identityId: identity.id,
+                email,
+                firstName,
+                lastName,
+                identityId: apId(),
                 platformId,
                 platformRole: PlatformRole.MEMBER,
             })
 
             await projectService(log).create({
-                displayName: identity.firstName + '\'s Project',
+                displayName: firstName + '\'s Project',
                 ownerId: newUser.id,
                 platformId,
                 type: ProjectType.PERSONAL,
@@ -330,6 +329,8 @@ type UpdatePlatformIdParams = {
 }
 
 type GetOrCreateWithProjectParams = {
-    identity: UserIdentity
+    email: string
+    firstName: string
+    lastName: string
     platformId: string
 }
