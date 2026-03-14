@@ -296,3 +296,10 @@
 - **Quality gate:** pass (typecheck: 1962 errors, down from 1963)
 - **Learnings:** All ee/ imports now removed from server source (30 files cleaned across iterations 14-42). Remaining work: test file ee/ refs, non-ee broken imports, test baseline.
 ---
+
+## Iteration #43 - fix-references
+- **Change:** Removed entire test/integration/cloud/ directory — 31 CLOUD/EE-only test files
+- **Files:** 31 files removed from packages/server/api/test/integration/cloud/
+- **Quality gate:** pass (typecheck unchanged at 1962 errors — cloud tests not in typecheck target)
+- **Learnings:** Cloud tests were isolated in their own directory — clean removal. Remaining ee/ refs in test/helpers/auth.ts and test/helpers/mocks/index.ts (next iteration). shared/src/index.ts ee/ refs are OK (lib/ee/ within shared package, not packages/ee/).
+---

@@ -202,7 +202,7 @@
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
 3. ~~domainHelper — stub created~~ DONE
 4. ~~Service files with ee/ imports~~ DONE (all 30 files cleaned, iterations 14-42)
-5. Test files referencing ee/ — remove or adapt
+5. ~~Test files referencing ee/ — remove or adapt~~ PARTIALLY DONE (cloud/ dir removed; test/helpers/auth.ts and test/helpers/mocks/index.ts still need cleanup)
 6. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
 7. Non-ee typecheck errors — resolve all remaining 1962 TS errors
 8. Test suite — establish passing baseline
