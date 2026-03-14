@@ -100,3 +100,10 @@
 - **Quality gate:** incremental (2089→2053 errors, -36 — matches removed imports; full gate deferred to phase completion)
 - **Learnings:** shared/src/lib/ee/ contains type definitions not EE server code — safe to keep; ~30 server files still have ee/ imports; postgres-connection.ts has ~20 ee migration imports
 ---
+
+## Iteration #15 - fix-references
+- **Change:** Removed all 17 ee/ entity imports from database-connection.ts and their references in getEntities() array
+- **Files:** packages/server/api/src/app/database/database-connection.ts
+- **Quality gate:** pass (incremental: 2053→2036, −17 matches removed imports)
+- **Learnings:** Non-ee entities kept: TemplateEntity, PlatformAnalyticsReportEntity, EventDestinationEntity
+---

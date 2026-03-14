@@ -1,5 +1,5 @@
 {
-  "iteration": 14,
+  "iteration": 15,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -67,7 +67,8 @@
         "All existing tests pass — test baseline established"
       ],
       "completed_items": [
-        {"iteration": 14, "description": "Stripped all 36 ee/ imports from app.ts, removed rbacMiddleware hook, removed edition switch (kept only COMMUNITY path inline), replaced domainHelper with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations (alertsModule, licenseKeysModule, userModule, platformProjectBackgroundJobs). Errors reduced 2089→2053."}
+        {"iteration": 14, "description": "Stripped all 36 ee/ imports from app.ts, removed rbacMiddleware hook, removed edition switch (kept only COMMUNITY path inline), replaced domainHelper with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations (alertsModule, licenseKeysModule, userModule, platformProjectBackgroundJobs). Errors reduced 2089→2053."},
+        {"iteration": 15, "description": "Removed all 17 ee/ entity imports from database-connection.ts and their references in getEntities() array. Removed: AlertEntity, ApiKeyEntity, AppCredentialEntity, AppSumoEntity, AuditEventEntity, OtpEntity, ConnectionKeyEntity, CustomDomainEntity, OAuthAppEntity, PlatformPlanEntity, ProjectMemberEntity, ProjectPlanEntity, GitRepoEntity, ProjectReleaseEntity, ProjectRoleEntity, SecretManagerEntity, SigningKeyEntity. Errors reduced 2053→2036."}
       ]
     },
     "auth-replace": {
