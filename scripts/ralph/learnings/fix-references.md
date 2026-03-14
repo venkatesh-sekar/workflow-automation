@@ -64,6 +64,12 @@
 - Community edition has no third-party auth redirect
 - Errors: 2003→2002 (−1)
 
+## Iteration 25 — user-service.ts cleaned
+- Removed platformProjectService ee/ import — used only in delete() to delete personal projects; stubbed with no-op (deferred to auth-replace)
+- Removed projectMemberRepo ee/ import — used only in non-COMMUNITY branch of getUsersForProject(); removed entire branch since we're community-only
+- Also removed unused ApEdition and system imports
+- Errors: 2002→1998 (−4)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

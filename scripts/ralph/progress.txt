@@ -170,3 +170,10 @@
 - **Quality gate:** pass (typecheck: 2002 errors, down from 2003)
 - **Learnings:** none
 ---
+
+## Iteration #25 - fix-references
+- **Change:** Removed platformProjectService and projectMemberRepo ee/ imports from user-service.ts, simplified getUsersForProject to community-only (platform admins only), removed platformProjectService.deletePersonalProjectForUser from delete()
+- **Files:** packages/server/api/src/app/user/user-service.ts
+- **Quality gate:** pass (1998 errors, down from 2002)
+- **Learnings:** platformProjectService only used for personal project deletion in user delete flow — safe to no-op for community; projectMemberRepo only used in non-COMMUNITY edition branch — safe to remove
+---
