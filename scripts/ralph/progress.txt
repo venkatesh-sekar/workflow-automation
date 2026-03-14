@@ -478,3 +478,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
 - **Learnings:** identityId column still required (NOT NULL) — CLI uses apId() placeholder until column is dropped
 ---
+
+## Iteration #69 - auth-replace
+- **Change:** Updated getMetaInformation in user-service to use user.email/firstName/lastName directly instead of fetching user-identity. Removed userIdentityService import and identity relation queries from getByPlatformRole and listProjectUsers.
+- **Files:** packages/server/api/src/app/user/user-service.ts
+- **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
+- **Learnings:** imageUrl field set to null (user entity has no imageUrl column); getOrCreateWithProject still uses UserIdentity type — needs separate cleanup
+---

@@ -1,5 +1,5 @@
 {
-  "iteration": 68,
+  "iteration": 69,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -137,7 +137,8 @@
         {"iteration": 65, "description": "Added verified and tokenVersion columns to user entity and shared User zod type. Updated CreateParams and test mocks. Prepares access-token-manager to use user directly instead of user-identity."},
         {"iteration": 66, "description": "Updated access-token-manager assertUserSession to use user.verified/tokenVersion directly instead of fetching user-identity. Removed userIdentityService import from access-token-manager."},
         {"iteration": 67, "description": "Updated teamLogin and getProjectAndToken to use user fields directly instead of user-identity. Added getOneByPlatformAndEmail to user-service. Updated AuthenticationResponse to pick fields from User instead of UserIdentity (dropped trackEvents/newsLetter). Removed dead sendTelemetry/saveNewsLetterSubscriber functions."},
-        {"iteration": 68, "description": "Updated create-team and add-member CLI scripts to stop creating user-identity records. Users now created directly with email/firstName/lastName/verified/tokenVersion fields. Removed userIdentityRepository imports from both scripts."}
+        {"iteration": 68, "description": "Updated create-team and add-member CLI scripts to stop creating user-identity records. Users now created directly with email/firstName/lastName/verified/tokenVersion fields. Removed userIdentityRepository imports from both scripts."},
+        {"iteration": 69, "description": "Updated getMetaInformation in user-service to use user.email/firstName/lastName directly instead of fetching user-identity. Removed userIdentityService import and identity relation queries. imageUrl set to null."}
       ]
     },
     "env-rebrand": {

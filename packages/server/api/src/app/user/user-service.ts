@@ -21,7 +21,6 @@ import {
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
-import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { buildPaginator } from '../helper/pagination/build-paginator'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
@@ -188,11 +187,11 @@ export const userService = (log: FastifyBaseLogger) => ({
     },
 
     async getByPlatformRole(id: PlatformId, role: PlatformRole): Promise<UserSchema[]> {
-        return userRepo().find({ where: { platformId: id, platformRole: role }, relations: { identity: true } })
+        return userRepo().find({ where: { platformId: id, platformRole: role } })
     },
     async listProjectUsers({ platformId, projectId }: ListUsersForProjectParams): Promise<UserWithMetaInformation[]> {
         const users = await getUsersForProject(platformId, projectId)
-        const usersWithMetaInformation = await userRepo().find({ where: { platformId, id: In(users) }, relations: { identity: true } }).then((users) => users.map(this.getMetaInformation))
+        const usersWithMetaInformation = await userRepo().find({ where: { platformId, id: In(users) } }).then((users) => users.map(this.getMetaInformation))
         return Promise.all(usersWithMetaInformation)
     },
     async getByPlatformAndExternalId({
@@ -206,12 +205,11 @@ export const userService = (log: FastifyBaseLogger) => ({
     },
     async getMetaInformation({ id }: IdParams): Promise<UserWithMetaInformation> {
         const user = await userRepo().findOneByOrFail({ id })
-        const identity = await userIdentityService(log).getBasicInformation(user.identityId)
         return {
             id: user.id,
-            email: identity.email,
-            firstName: identity.firstName,
-            lastName: identity.lastName,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
             platformId: user.platformId,
             platformRole: user.platformRole,
             status: user.status,
@@ -219,7 +217,7 @@ export const userService = (log: FastifyBaseLogger) => ({
             created: user.created,
             updated: user.updated,
             lastActiveDate: user.lastActiveDate,
-            imageUrl: identity.imageUrl,
+            imageUrl: null,
         }
     },
 

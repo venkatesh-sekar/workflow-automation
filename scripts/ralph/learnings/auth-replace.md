@@ -61,5 +61,7 @@
 - tokenVersion is Nullable (string | null) on User but optional (string | undefined) on Principal — use `?? undefined` when passing
 - DONE: CLI scripts (create-team, add-member) no longer create user-identities — users created directly with all fields (iteration 68)
 - identityId still required by user entity (NOT NULL column) — CLI scripts use apId() placeholder; will be removed with entity column drop
-- Next: update getMetaInformation in user-service to use user fields instead of identity lookup
-- Then: remove identity entity/service and remaining references
+- DONE: getMetaInformation uses user fields directly, imageUrl hardcoded null (iteration 69)
+- getOrCreateWithProject still uses UserIdentity type param — used by user-invitation.service.ts
+- getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform still reference identityId
+- Next: remove identity entity/service, drop identityId column, update remaining identity-dependent methods
