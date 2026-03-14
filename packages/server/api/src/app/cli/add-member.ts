@@ -15,11 +15,10 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, PlatformRole, Permission, RoleType, UserIdentityProvider, UserStatus } from '@activepieces/shared'
+import { apId, PlatformRole, Permission, RoleType, UserStatus } from '@activepieces/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'
-import { userIdentityRepository } from '../authentication/user-identity/user-identity-service'
 
 const log = pino({ level: 'warn' })
 
@@ -59,32 +58,9 @@ function parseArgs(): { projectId: string, email: string, firstName: string, las
     return { projectId, email: email.toLowerCase().trim(), firstName, lastName }
 }
 
-async function getOrCreateIdentity(email: string, firstName: string, lastName: string): Promise<string> {
-    const existing = await userIdentityRepository().findOne({ where: { email } })
-    if (existing) {
-        return existing.id
-    }
-
-    const identityId = apId()
-    await userIdentityRepository().save({
-        id: identityId,
-        email,
-        firstName,
-        lastName,
-        password: 'NOLOGIN',
-        provider: UserIdentityProvider.EMAIL,
-        verified: true,
-        trackEvents: false,
-        newsLetter: false,
-        tokenVersion: crypto.randomUUID(),
-        imageUrl: null,
-    })
-    return identityId
-}
-
-async function getOrCreateUser(identityId: string, platformId: string): Promise<string> {
+async function getOrCreateUser(email: string, firstName: string, lastName: string, platformId: string): Promise<string> {
     const existing = await userRepo().findOne({
-        where: { identityId, platformId },
+        where: { email, platformId },
     })
     if (existing) {
         return existing.id
@@ -93,7 +69,12 @@ async function getOrCreateUser(identityId: string, platformId: string): Promise<
     const userId = apId()
     await userRepo().save({
         id: userId,
-        identityId,
+        email,
+        firstName,
+        lastName,
+        verified: true,
+        tokenVersion: crypto.randomUUID(),
+        identityId: apId(),
         platformId,
         platformRole: PlatformRole.MEMBER,
         status: UserStatus.ACTIVE,
@@ -153,8 +134,7 @@ async function main(): Promise<void> {
         process.exit(1)
     }
 
-    const identityId = await getOrCreateIdentity(email, firstName, lastName)
-    const userId = await getOrCreateUser(identityId, project.platformId)
+    const userId = await getOrCreateUser(email, firstName, lastName, project.platformId)
     const roleId = await getOrCreateDefaultRole(project.platformId)
     await addProjectMember(projectId, project.platformId, userId, roleId)
 

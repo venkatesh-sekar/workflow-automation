@@ -15,11 +15,10 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, ColorName, PlatformRole, ProjectType, UserIdentityProvider, UserStatus } from '@activepieces/shared'
+import { apId, ColorName, PlatformRole, ProjectType, UserStatus } from '@activepieces/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'
-import { userIdentityRepository } from '../authentication/user-identity/user-identity-service'
 import { platformRepo } from '../platform/platform.service'
 import { defaultTheme } from '../flags/theme'
 import { FilteredPieceBehavior } from '@activepieces/shared'
@@ -89,32 +88,9 @@ async function getOrCreateDefaultPlatform(ownerId: string): Promise<string> {
     return platformId
 }
 
-async function getOrCreateIdentity(email: string, firstName: string, lastName: string): Promise<string> {
-    const existing = await userIdentityRepository().findOne({ where: { email } })
-    if (existing) {
-        return existing.id
-    }
-
-    const identityId = apId()
-    await userIdentityRepository().save({
-        id: identityId,
-        email,
-        firstName,
-        lastName,
-        password: 'NOLOGIN',
-        provider: UserIdentityProvider.EMAIL,
-        verified: true,
-        trackEvents: false,
-        newsLetter: false,
-        tokenVersion: crypto.randomUUID(),
-        imageUrl: null,
-    })
-    return identityId
-}
-
-async function getOrCreateUser(identityId: string, platformId: string): Promise<string> {
+async function getOrCreateUser(email: string, firstName: string, lastName: string, platformId: string): Promise<string> {
     const existing = await userRepo().findOne({
-        where: { identityId, platformId },
+        where: { email, platformId },
     })
     if (existing) {
         return existing.id
@@ -123,7 +99,12 @@ async function getOrCreateUser(identityId: string, platformId: string): Promise<
     const userId = apId()
     await userRepo().save({
         id: userId,
-        identityId,
+        email,
+        firstName,
+        lastName,
+        verified: true,
+        tokenVersion: crypto.randomUUID(),
+        identityId: apId(),
         platformId,
         platformRole: PlatformRole.ADMIN,
         status: UserStatus.ACTIVE,
@@ -143,8 +124,8 @@ async function main(): Promise<void> {
 
     await databaseConnection().initialize()
 
-    const identityId = await getOrCreateIdentity(ownerEmail, ownerFirst, ownerLast)
-    const userId = await getOrCreateUser(identityId, 'placeholder')
+    // Create user with placeholder platformId, then create/get platform
+    const userId = await getOrCreateUser(ownerEmail, ownerFirst, ownerLast, 'placeholder')
     const platformId = await getOrCreateDefaultPlatform(userId)
 
     // Update user's platformId if we just created the platform

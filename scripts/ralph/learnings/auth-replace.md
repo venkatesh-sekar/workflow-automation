@@ -59,6 +59,7 @@
 - DONE: AuthenticationResponse picks from User instead of UserIdentity — dropped trackEvents/newsLetter (iteration 67)
 - DONE: Removed dead sendTelemetry/saveNewsLetterSubscriber from authentication-utils (iteration 67)
 - tokenVersion is Nullable (string | null) on User but optional (string | undefined) on Principal — use `?? undefined` when passing
-- Next: update CLI scripts (create-team, add-member) to stop creating user-identities
-- Then: update getMetaInformation in user-service to use user fields
+- DONE: CLI scripts (create-team, add-member) no longer create user-identities — users created directly with all fields (iteration 68)
+- identityId still required by user entity (NOT NULL column) — CLI scripts use apId() placeholder; will be removed with entity column drop
+- Next: update getMetaInformation in user-service to use user fields instead of identity lookup
 - Then: remove identity entity/service and remaining references

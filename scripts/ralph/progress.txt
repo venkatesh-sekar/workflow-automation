@@ -471,3 +471,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
 - **Learnings:** tokenVersion is Nullable on User but optional on Principal — use ?? undefined when passing
 ---
+
+## Iteration #68 - auth-replace
+- **Change:** Updated create-team and add-member CLI scripts to stop creating user-identity records. Users now created directly with email/firstName/lastName/verified/tokenVersion fields on user entity. Removed userIdentityRepository imports from both scripts.
+- **Files:** packages/server/api/src/app/cli/create-team.ts, packages/server/api/src/app/cli/add-member.ts
+- **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
+- **Learnings:** identityId column still required (NOT NULL) — CLI uses apId() placeholder until column is dropped
+---
