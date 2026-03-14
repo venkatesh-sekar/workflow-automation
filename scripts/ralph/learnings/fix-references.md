@@ -134,6 +134,13 @@
 - 8 source files with ee/ imports remain (down from 9)
 - Errors: 1981→1980 (−1)
 
+## Iteration 35 — piece-metadata-service.ts cleaned
+- Removed enterpriseFilteringUtils ee/ import (enterprise piece filtering = EE feature)
+- Community edition: no piece filtering by enterprise rules — return all pieces from get()
+- Removed isFiltered check block (lines 76-83), replaced with direct return
+- 7 source files with ee/ imports remain (down from 8)
+- Errors: 1980→1979 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

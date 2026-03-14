@@ -240,3 +240,10 @@
 - **Quality gate:** pass (1980 errors, down from 1981)
 - **Learnings:** secretManagersService resolves secrets from external vault — not needed in community edition where values are stored directly in DB
 ---
+
+## Iteration #35 - fix-references
+- **Change:** Removed enterpriseFilteringUtils ee/ import from piece-metadata-service.ts. Community edition returns all pieces without enterprise filtering check.
+- **Files:** packages/server/api/src/app/pieces/metadata/piece-metadata-service.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (typecheck: 1979 errors, down from 1980)
+- **Learnings:** piece-metadata-service.ts had a second ee/ import (separate from utils/index.ts fixed in #33) — the get() method used enterpriseFilteringUtils to hide pieces per platform config
+---

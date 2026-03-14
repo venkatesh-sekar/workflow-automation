@@ -1,5 +1,5 @@
 {
-  "iteration": 34,
+  "iteration": 35,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -87,7 +87,8 @@
         {"iteration": 31, "description": "Removed assertRoleHasPermission and projectRoleService ee/ imports from user-invitation.module.ts. Stubbed getProjectRoleAndAssertIfFound to return null (no RBAC roles in community), removed RBAC permission check. Errors reduced 1988→1986."},
         {"iteration": 32, "description": "Removed 4 ee/ imports from user-invitation.service.ts: smtpEmailSender, emailService, projectMemberService, projectRoleService. Replaced with inline community stubs (no SMTP emails, no RBAC members/roles). Errors reduced 1986→1982."},
         {"iteration": 33, "description": "Removed enterpriseFilteringUtils ee/ import from pieces/metadata/utils/index.ts. Community edition returns all pieces without enterprise filtering. Errors reduced 1982→1981."},
-        {"iteration": 34, "description": "Removed secretManagersService ee/ import from app-connection-worker-controller.ts. Community edition has no external secret manager — connections return stored value directly. Also removed unused AppConnectionScope import. Errors reduced 1981→1980."}
+        {"iteration": 34, "description": "Removed secretManagersService ee/ import from app-connection-worker-controller.ts. Community edition has no external secret manager — connections return stored value directly. Also removed unused AppConnectionScope import. Errors reduced 1981→1980."},
+        {"iteration": 35, "description": "Removed enterpriseFilteringUtils ee/ import from piece-metadata-service.ts. Community edition has no enterprise piece filtering — all pieces returned without filtering check. Errors reduced 1980→1979."}
       ]
     },
     "auth-replace": {
