@@ -141,6 +141,14 @@
 - 7 source files with ee/ imports remain (down from 8)
 - Errors: 1980→1979 (−1)
 
+## Iteration 36 — app-connection-service.ts cleaned
+- Removed projectMemberService ee/ import (used in getOwners() non-COMMUNITY branch) and secretManagersService ee/ import (used in upsert() for external secret resolution)
+- Simplified getOwners() to community-only: just return platform admins (removed edition check + project member listing)
+- Simplified upsert() value validation: removed secret manager resolution, use value directly
+- Also removed unused ApEdition import
+- 6 source files with ee/ imports remain (down from 7)
+- Errors: 1979→1976 (−3)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

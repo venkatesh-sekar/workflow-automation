@@ -247,3 +247,10 @@
 - **Quality gate:** pass (typecheck: 1979 errors, down from 1980)
 - **Learnings:** piece-metadata-service.ts had a second ee/ import (separate from utils/index.ts fixed in #33) — the get() method used enterpriseFilteringUtils to hide pieces per platform config
 ---
+
+## Iteration #36 - fix-references
+- **Change:** Removed projectMemberService and secretManagersService ee/ imports from app-connection-service.ts. Simplified getOwners() to community-only (platform admins only). Removed secret manager resolution in upsert(). Removed unused ApEdition import.
+- **Files:** packages/server/api/src/app/app-connection/app-connection-service/app-connection-service.ts
+- **Quality gate:** pass (typecheck: 1976 errors, down from 1979)
+- **Learnings:** Both imports were guarded by edition checks or scope checks — safe to remove entire non-community branches
+---

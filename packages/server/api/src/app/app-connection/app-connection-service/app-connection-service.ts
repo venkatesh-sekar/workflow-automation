@@ -1,7 +1,6 @@
 import { AppSystemProp } from '@activepieces/server-common'
 import {
     ActivepiecesError,
-    ApEdition,
     ApEnvironment,
     apId,
     AppConnection,
@@ -37,8 +36,6 @@ import semver from 'semver'
 import { ArrayContains, Equal, FindOperator, FindOptionsWhere, ILike, In } from 'typeorm'
 import { OperationResponse } from 'worker'
 import { repoFactory } from '../../core/db/repo-factory'
-import { projectMemberService } from '../../ee/projects/project-members/project-member.service'
-import { secretManagersService } from '../../ee/secret-managers/secret-managers.service'
 import { flowService } from '../../flows/flow/flow.service'
 import { encryptUtils } from '../../helper/encryption'
 import { buildPaginator } from '../../helper/pagination/build-paginator'
@@ -70,7 +67,7 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
         validatePieceVersion(pieceVersion)
         await assertProjectIds(projectIds, platformId)
         const validatedConnectionValue = await validateConnectionValue({
-            value: scope === AppConnectionScope.PROJECT ? value : await secretManagersService(log).resolveObject({ value, platformId }),
+            value,
             pieceName,
             projectId: projectIds[0],
             platformId,
@@ -363,23 +360,7 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
             lastName: user.identity.lastName,
             email: user.identity.email,
         }))
-        const edition = system.getOrThrow(AppSystemProp.EDITION)
-        if (edition === ApEdition.COMMUNITY) {
-            return platformAdmins
-        }
-        const projectMembers = await projectMemberService(log).list({
-            platformId,
-            projectId,
-            cursorRequest: null,
-            limit: 1000,
-            projectRoleId: undefined,
-        })
-        const projectMembersDetails = projectMembers.data.map(pm => ({
-            firstName: pm.user.firstName,
-            lastName: pm.user.lastName,
-            email: pm.user.email,
-        }))
-        return [...platformAdmins, ...projectMembersDetails]
+        return platformAdmins
     },
 
 })
