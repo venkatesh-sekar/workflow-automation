@@ -31,5 +31,13 @@
 - Compiles cleanly with no errors
 - Located at packages/server/common/ — extends ../tsconfig.server.json (already exists)
 
-## Remaining packages to copy
-- @activepieces/engine (packages/server/engine/) — depends on shared
+## @activepieces/engine
+- 46 src files, depends on shared + pieces-framework + pieces-common
+- Has external deps: ai, axios, isolated-vm, socket.io-client, zod, etc.
+- 1 pre-existing type error: engine-constants.ts:246 — `project.externalId` is `string | null` but function returns `Promise<string | undefined>` (null vs undefined mismatch)
+- Located at packages/server/engine/, extends ../tsconfig.server.json
+- server/api package.json lists engine as a dependency
+
+## Remaining packages to assess
+- Need to check if all shared deps are now covered or if UI has additional shared deps
+- server/api still uses workspace:* for its deps — will need file: updates (possibly in fix-references phase)

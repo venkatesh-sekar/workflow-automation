@@ -51,3 +51,10 @@
 - **Quality gate:** pass (server-common typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
 - **Learnings:** server-common has many external deps (bullmq, fastify, typeorm, etc.) but all install fine; extends existing tsconfig.server.json
 ---
+
+## Iteration #8 - copy-shared-packages
+- **Change:** Copied @activepieces/engine package (46 src files), linked to local shared+framework+common via file: references, typecheck passes with 1 pre-existing type error
+- **Files:** packages/server/engine/ (new, 46 src files + package.json + tsconfigs + esbuild config)
+- **Quality gate:** pass (engine typecheck has 1 pre-existing error: null vs undefined in externalId — not from our changes)
+- **Learnings:** engine depends on shared+framework+common; has isolated-vm and ai SDK deps; server/api lists engine as dependency
+---
