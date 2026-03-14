@@ -128,6 +128,8 @@ export const createMockUser = (user?: Partial<User>): User => {
         firstName: user?.firstName ?? faker.person.firstName(),
         lastName: user?.lastName ?? faker.person.lastName(),
         status: user?.status ?? UserStatus.ACTIVE,
+        verified: user?.verified ?? true,
+        tokenVersion: user?.tokenVersion ?? null,
         platformRole: user?.platformRole ?? faker.helpers.enumValue(PlatformRole),
         externalId: user?.externalId,
         identityId: user?.identityId ?? apId(),

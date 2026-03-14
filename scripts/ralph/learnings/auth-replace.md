@@ -51,6 +51,11 @@
 
 ## User-Identity Removal Progress
 - email, firstName, lastName columns added to user entity + shared User type (iteration 64)
-- Test mock helpers (createMockUser, mockBasicUser, mockAndSaveBasicSetup, createMockPlatformWithOwner) updated to populate these fields
-- Remaining steps: update auth service + access-token-manager to use user.email instead of identity, update CLI scripts, remove identity entity/service
-- 13 files still reference user-identity — need to migrate each one
+- verified, tokenVersion columns added to user entity + shared User type (iteration 65)
+- Test mock helpers (createMockUser, mockBasicUser, mockAndSaveBasicSetup, createMockPlatformWithOwner) updated to populate all fields
+- Next: update access-token-manager assertUserSession to use user.verified/tokenVersion instead of identity
+- Then: update authentication.service.ts teamLogin to use user fields instead of identity
+- Then: update authentication-utils.ts getProjectAndToken to use user fields
+- Then: update CLI scripts to stop creating identities
+- Then: remove identity entity/service and remaining references
+- 24 files still reference user-identity — need to migrate each one

@@ -450,3 +450,10 @@
 - **Quality gate:** pass (0 TypeScript errors, 21 suites / 165 tests pass)
 - **Learnings:** User entity now has email/firstName/lastName — prepares for user-identity removal. Test helpers must propagate identity fields to user when creating mock setups.
 ---
+
+## Iteration #65 - auth-replace
+- **Change:** Added verified and tokenVersion columns to user entity and shared User zod type
+- **Files:** packages/shared/src/lib/core/user/user.ts, packages/server/api/src/app/user/user-entity.ts, packages/server/api/src/app/user/user-service.ts, packages/server/api/test/helpers/mocks/index.ts
+- **Quality gate:** pass (0 TS errors, 165 tests pass)
+- **Learnings:** User entity now has all fields needed to replace user-identity lookups in access-token-manager and auth service
+---

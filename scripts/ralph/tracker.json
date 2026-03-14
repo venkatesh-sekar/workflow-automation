@@ -1,5 +1,5 @@
 {
-  "iteration": 64,
+  "iteration": 65,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -133,7 +133,8 @@
         {"iteration": 61, "description": "Created create-team CLI script at packages/server/api/src/app/cli/create-team.ts. Accepts --name and --owner-email args, creates platform/identity/user/project with API key hash, prints API key to stdout."},
         {"iteration": 62, "description": "Created add-member CLI script at packages/server/api/src/app/cli/add-member.ts. Accepts --project-id and --email, finds/creates user-identity+user, creates default MEMBER project_role, inserts project_member row for team access."},
         {"iteration": 63, "description": "Created rotate-key CLI script at packages/server/api/src/app/cli/rotate-key.ts. Accepts --project-id, generates new API key, updates apiKeyHash, prints new key to stdout."},
-        {"iteration": 64, "description": "Added email, firstName, lastName columns to user entity and shared User zod type. Updated CreateParams in user-service, test mock helpers to populate these fields. Prepares for user-identity removal."}
+        {"iteration": 64, "description": "Added email, firstName, lastName columns to user entity and shared User zod type. Updated CreateParams in user-service, test mock helpers to populate these fields. Prepares for user-identity removal."},
+        {"iteration": 65, "description": "Added verified and tokenVersion columns to user entity and shared User zod type. Updated CreateParams and test mocks. Prepares access-token-manager to use user directly instead of user-identity."}
       ]
     },
     "env-rebrand": {

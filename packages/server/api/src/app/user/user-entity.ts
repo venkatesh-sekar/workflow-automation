@@ -31,6 +31,14 @@ export const UserEntity = new EntitySchema<UserSchema>({
             type: String,
             nullable: false,
         },
+        verified: {
+            type: Boolean,
+            default: true,
+        },
+        tokenVersion: {
+            type: String,
+            nullable: true,
+        },
         identityId: {
             type: String,
             nullable: false,
