@@ -1,5 +1,6 @@
+import { PieceMetadata } from '@activepieces/pieces-framework'
 import { AppSystemProp, apVersionUtil, rejectedPromiseHandler } from '@activepieces/server-common'
-import { groupBy, PieceSyncMode, PieceType } from '@activepieces/shared'
+import { groupBy, PackageType, PieceSyncMode, PieceType } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import semver from 'semver'
 import { system } from '../helper/system/system'
@@ -80,7 +81,7 @@ async function installNewPieces(cloudPieces: PieceRegistryResponse[], dbPieces: 
                 log.warn({ pieceName: piece.name, version: piece.version, status: response.status }, '[pieceSyncService#installNewPieces] Error reading piece metadata')
                 return
             }
-            const pieceMetadata = await response.json()
+            const pieceMetadata = await response.json() as PieceMetadata & { packageType: PackageType, pieceType: PieceType }
             await pieceMetadataService(log).create({
                 pieceMetadata,
                 packageType: pieceMetadata.packageType,
@@ -101,7 +102,7 @@ async function listCloudPieces(): Promise<PieceRegistryResponse[]> {
     if (!response.ok) {
         throw new Error(`Failed to fetch cloud pieces: ${response.status}`)
     }
-    const pieces: PieceRegistryResponse[] = await response.json()
+    const pieces = await response.json() as PieceRegistryResponse[]
     const piecesByName = groupBy(pieces, p => p.name)
     const latest = []
     const others = []

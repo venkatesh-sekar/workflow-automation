@@ -352,3 +352,10 @@
 - **Quality gate:** pass (errors 8→5)
 - **Learnings:** Node 18+ fetch .json() returns Promise<unknown> not Promise<any> — need explicit casts
 ---
+
+## Iteration #51 - fix-references
+- **Change:** Added type assertions and PieceMetadata import in piece-sync-service.ts — cast response.json() to PieceMetadata & {packageType, pieceType} and PieceRegistryResponse[]. Added PieceMetadata and PackageType imports.
+- **Files:** packages/server/api/src/app/pieces/piece-sync-service.ts
+- **Quality gate:** pass (errors 5→1)
+- **Learnings:** Cloud API returns PieceMetadata with extra fields (packageType, pieceType) not in the base type — need intersection type for cast
+---

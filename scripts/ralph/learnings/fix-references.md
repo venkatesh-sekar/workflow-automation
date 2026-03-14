@@ -259,3 +259,9 @@
 - Same pattern needed in piece-sync-service.ts (4 errors remain there)
 - **Errors: 8 → 5**
 - Remaining 5 errors: 4 in piece-sync-service.ts (unknown types), 1 in authentication.service.ts (arg count mismatch)
+## Iteration 51 — piece-sync-service.ts type assertions
+- Added PieceMetadata import from @activepieces/pieces-framework and PackageType from @activepieces/shared
+- Cast response.json() to `PieceMetadata & { packageType: PackageType, pieceType: PieceType }` (cloud API returns extra fields not in base type)
+- Cast listCloudPieces response.json() to `PieceRegistryResponse[]` (local type)
+- **Errors: 5 → 1**
+- Remaining 1 error: authentication.service.ts(165,70) TS2554 — arg count mismatch (next iteration)
