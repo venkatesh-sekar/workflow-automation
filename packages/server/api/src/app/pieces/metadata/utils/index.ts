@@ -1,11 +1,10 @@
 import { PieceCategory, PieceOrderBy, PieceSortBy, PlatformId, SuggestionType } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
-import { enterpriseFilteringUtils } from '../../../ee/pieces/filters/piece-filtering-utils'
 import { PieceMetadataSchema } from '../piece-metadata-entity'
 import { pieceSearching } from './piece-searching'
 import { pieceSorting } from './piece-sorting'
 
-export const pieceListUtils = (log: FastifyBaseLogger) => ({
+export const pieceListUtils = (_log: FastifyBaseLogger) => ({
     async filterPieces(params: FilterPiecesParams): Promise<PieceMetadataSchema[]> {
         const sortedPieces = pieceSorting.sortAndOrder(
             params.sortBy,
@@ -20,12 +19,8 @@ export const pieceListUtils = (log: FastifyBaseLogger) => ({
             suggestionType: params.suggestionType,
         })
 
-        return enterpriseFilteringUtils(log).filter({
-            pieces: userBasedPieces,
-            includeHidden: params.includeHidden,
-            platformId: params.platformId,
-            projectId: params.projectId,
-        })
+        // Community edition: no enterprise piece filtering, return all pieces
+        return userBasedPieces
     },
 })
 

@@ -226,3 +226,10 @@
 - **Quality gate:** pass (typecheck: 1982 errors, down from 1986)
 - **Learnings:** smtpEmailSender stub returns isSmtpConfigured:false so email code paths are dead but harmless
 ---
+
+## Iteration #33 - fix-references
+- **Change:** Removed enterpriseFilteringUtils ee/ import from pieces/metadata/utils/index.ts — community edition returns all pieces without enterprise filtering
+- **Files:** packages/server/api/src/app/pieces/metadata/utils/index.ts
+- **Quality gate:** pass (typecheck: 1981 errors, down from 1982)
+- **Learnings:** Enterprise piece filtering is an EE-only feature; community edition shows all pieces
+---

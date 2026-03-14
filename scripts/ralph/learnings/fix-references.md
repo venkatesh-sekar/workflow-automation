@@ -120,6 +120,12 @@
 - 10 source files + 5 test files with ee/ imports remain (down from 11)
 - Errors: 1986→1982 (−4)
 
+## Iteration 33 — pieces/metadata/utils/index.ts cleaned
+- Removed enterpriseFilteringUtils ee/ import (enterprise piece filtering = EE feature)
+- Community edition: no piece hiding/filtering by platform — return all pieces after sort+search
+- 9 source files with ee/ imports remain (down from 10)
+- Errors: 1982→1981 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
