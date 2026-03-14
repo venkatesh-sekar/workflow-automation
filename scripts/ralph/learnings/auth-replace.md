@@ -73,4 +73,6 @@
 - CreateParams in user-service still has identityId field (used with apId() placeholder) — remove when entity column drops
 - Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, app-connection-service/entity, authentication-utils
 - DONE: telemetry.utils.ts identify() now uses User fields directly, UserIdentity import removed (iteration 74)
-- Next: remove identity refs from app-connection-service.ts and app-connection.entity.ts, then drop identityId column from user entity and delete user-identity entity/service files
+- DONE: app-connection-service.ts and app-connection.entity.ts now use User fields directly, identity join removed (iteration 75)
+- Remaining identity refs: user-entity (identityId column + identity relation), user-service (identityId in CreateParams), CLI scripts (apId() placeholder), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), authentication-utils (UserIdentityProvider import)
+- Next: remove identityId column from user entity, remove identity relation, drop UserIdentityEntity from database-connection, delete user-identity entity/service files

@@ -27,7 +27,6 @@ import {
     UpsertAppConnectionRequestBody,
     User,
     UserId,
-    UserIdentity,
     UserWithMetaInformation,
     WorkerJobType,
 } from '@activepieces/shared'
@@ -300,7 +299,6 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
         const queryBuilder = appConnectionsRepo()
             .createQueryBuilder('app_connection')
             .leftJoinAndSelect('app_connection.owner', 'owner')
-            .leftJoinAndSelect('owner.identity', 'owner_identity')
             .where(querySelector)
         const { data, cursor } = await paginator.paginate(queryBuilder)
 
@@ -569,20 +567,16 @@ async function fetchFlowIdsForConnections(
     return flowIdsByExternalId
 }
 
-function mapToUserWithMetaInformation(owner: (User & { identity?: UserIdentity }) | null): UserWithMetaInformation | null {
+function mapToUserWithMetaInformation(owner: User | null): UserWithMetaInformation | null {
     if (isNil(owner)) {
-        return null
-    }
-    const identity = owner.identity
-    if (isNil(identity)) {
         return null
     }
 
     return {
         id: owner.id,
-        email: identity.email,
-        firstName: identity.firstName,
-        lastName: identity.lastName,
+        email: owner.email,
+        firstName: owner.firstName,
+        lastName: owner.lastName,
         platformId: owner.platformId,
         platformRole: owner.platformRole,
         status: owner.status,

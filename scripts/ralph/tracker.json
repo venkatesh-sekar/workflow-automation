@@ -1,5 +1,5 @@
 {
-  "iteration": 74,
+  "iteration": 75,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -143,7 +143,8 @@
         {"iteration": 71, "description": "Removed 4 identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform). Added getOneByEmail. Updated user-invitation.module.ts to use email-based user lookup. Removed dead listPlatformsForIdentityWithAtleastProject from platform.service.ts."},
         {"iteration": 72, "description": "Removed userIdentityService import from application-events.ts. enrichAuditEventParam now uses user.email directly instead of fetching user-identity record."},
         {"iteration": 73, "description": "Removed userIdentityRepository from platform-jobs.ts (no longer cleaning up identity on platform delete). Removed userIdentityService from platform-analytics.module.ts (removed embedded-user check — no JWT identity provider in Flow). Removed assertUserIsNotEmbedded function."},
-        {"iteration": 74, "description": "Removed UserIdentity import from telemetry.utils.ts. Updated identify() to use user.email/firstName/lastName directly instead of identity parameter."}
+        {"iteration": 74, "description": "Removed UserIdentity import from telemetry.utils.ts. Updated identify() to use user.email/firstName/lastName directly instead of identity parameter."},
+        {"iteration": 75, "description": "Removed UserIdentity imports from app-connection.entity.ts and app-connection-service.ts. Updated mapToUserWithMetaInformation to use user.email/firstName/lastName directly. Removed identity join from connection list query."}
       ]
     },
     "env-rebrand": {

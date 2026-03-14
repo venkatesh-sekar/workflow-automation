@@ -520,3 +520,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
 - **Learnings:** telemetry.identify() was not called anywhere — safe to change signature freely
 ---
+
+## Iteration #75 - auth-replace
+- **Change:** Removed UserIdentity imports from app-connection.entity.ts and app-connection-service.ts. Updated mapToUserWithMetaInformation to use user.email/firstName/lastName directly instead of owner.identity lookup. Removed `.leftJoinAndSelect('owner.identity', 'owner_identity')` from connection list query.
+- **Files:** packages/server/api/src/app/app-connection/app-connection.entity.ts, packages/server/api/src/app/app-connection/app-connection-service/app-connection-service.ts
+- **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
+- **Learnings:** App connection owner relation no longer needs identity join — user entity has all meta fields directly
+---
