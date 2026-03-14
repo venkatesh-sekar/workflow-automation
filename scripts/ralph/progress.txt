@@ -345,3 +345,10 @@
 - **Quality gate:** pass (errors 16→8, no errors in stub itself)
 - **Learnings:** tsconfig paths mapping is effective for stubbing uncopied packages; worker types come from shared+pieces-framework, not worker package itself
 ---
+
+## Iteration #50 - fix-references
+- **Change:** Added type assertions for response.json() calls in community-templates.service.ts — 3 casts (Template, string[], SeekPage<Template>)
+- **Files:** packages/server/api/src/app/template/community-templates.service.ts
+- **Quality gate:** pass (errors 8→5)
+- **Learnings:** Node 18+ fetch .json() returns Promise<unknown> not Promise<any> — need explicit casts
+---

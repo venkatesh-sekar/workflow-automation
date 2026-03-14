@@ -252,3 +252,10 @@
 - **Errors: 16 → 8**
 - Remaining 8 errors: 4 TS2322 + 2 TS18046 (unknown types in piece-sync-service.ts), 3 TS2322 (unknown in community-templates.service.ts), 1 TS2554 (authentication.service.ts arg count)
 - Next priorities: (1) add type assertions for unknown types (7 errors), (2) fix auth.service arg error (1 error)
+
+## Iteration 50 — community-templates.service.ts type assertions
+- Added `as Template`, `as string[]`, `as SeekPage<Template>` casts to 3 `response.json()` calls
+- Root cause: Node 18+ fetch types return `Promise<unknown>` from `.json()` (not `Promise<any>`)
+- Same pattern needed in piece-sync-service.ts (4 errors remain there)
+- **Errors: 8 → 5**
+- Remaining 5 errors: 4 in piece-sync-service.ts (unknown types), 1 in authentication.service.ts (arg count mismatch)

@@ -1,5 +1,5 @@
 {
-  "iteration": 49,
+  "iteration": 50,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -102,7 +102,8 @@
         {"iteration": 46, "description": "Installed server/api npm dependencies: replaced workspace:* with file: for 5 local packages, removed worker dep (not copied), removed 3 unused piece devDeps (facebook-leads, intercom, square), built server-common dist/. TypeScript errors reduced 1962→51."},
         {"iteration": 47, "description": "Removed 3 non-existent piece imports (facebook-leads, intercom, square) from app-event-routing.module.ts, kept only slack. Fixed piece-slack dependency path in package.json (piece-slack→slack), built slack dist/. Errors reduced 51→47."},
         {"iteration": 48, "description": "Deduplicated typeorm: moved typeorm from dependencies to peerDependencies in server-common/package.json, symlinked server/common/node_modules/typeorm to server/api's copy. Fixed 31 EntitySchema type incompatibility errors. Errors reduced 47→16."},
-        {"iteration": 49, "description": "Created worker-stub.ts with type definitions (OperationResponse, EngineHelperTriggerResult, EngineHelperPropResult) and no-op value exports (flowWorker, devPiecesBuilder, packageManager, registryPieceManager). Added tsconfig paths mapping for 'worker' module. Errors reduced 16→8."}
+        {"iteration": 49, "description": "Created worker-stub.ts with type definitions (OperationResponse, EngineHelperTriggerResult, EngineHelperPropResult) and no-op value exports (flowWorker, devPiecesBuilder, packageManager, registryPieceManager). Added tsconfig paths mapping for 'worker' module. Errors reduced 16→8."},
+        {"iteration": 50, "description": "Added type assertions for response.json() calls in community-templates.service.ts — 3 unknown→typed casts (Template, string[], SeekPage<Template>). Errors reduced 8→5."}
       ]
     },
     "auth-replace": {
