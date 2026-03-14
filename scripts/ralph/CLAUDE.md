@@ -25,7 +25,7 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
   3. Promote key learnings from `learnings/{current_phase}.md` to `learnings/global.md` (consolidate — keep global.md under 50 lines)
   4. Pop next phase from `phase_queue` and set as `current_phase`
   5. If `phase_queue` is empty and current phase is complete: create `scripts/ralph/DONE` file and END
-  6. Commit: `ralph(#{iteration}): complete {phase} — advance to {next_phase}`
+  6. Commit: `ralph(#{iteration}): chore({phase}): complete phase — advance to {next_phase}`
   7. Log phase completion in progress.txt and END this iteration
 
 ### Step 3: Pick the next smallest change
@@ -55,7 +55,7 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
    - Increment `iteration`
    - Add entry to current phase's `completed_items`: `{"iteration": N, "description": "what was done"}`
 2. Add any learnings to `scripts/ralph/learnings/{current_phase}.md`
-3. Commit all changes: `ralph(#{iteration}): {phase} — {brief description}`
+3. Commit all changes using conventional commit format: `ralph(#{iteration}): {type}({phase}): {brief description}` — where type is one of: feat, fix, refactor, chore, test, docs
 4. Append to `scripts/ralph/progress.txt`:
 ```
 ## Iteration #N - {phase}
@@ -71,7 +71,7 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
 You may reorder, split, or insert phases if you discover dependencies or issues not anticipated in the original plan. When doing so:
 1. Log the reason in `learnings/global.md`
 2. Update `phase_queue` and/or `inserted_phases` in tracker.json
-3. Commit: `ralph(#{iteration}): reorder/insert phase — {reason}`
+3. Commit: `ralph(#{iteration}): chore(phases): reorder/insert phase — {reason}`
 
 ## Learnings Management
 
