@@ -1,5 +1,5 @@
 {
-  "iteration": 72,
+  "iteration": 73,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -141,7 +141,8 @@
         {"iteration": 69, "description": "Updated getMetaInformation in user-service to use user.email/firstName/lastName directly instead of fetching user-identity. Removed userIdentityService import and identity relation queries. imageUrl set to null."},
         {"iteration": 70, "description": "Removed userIdentityService from user-invitation.service.ts. Updated accept() to use userService.getOneByPlatformAndEmail instead of identity lookup. Updated getOrCreateWithProject to accept email/name params instead of UserIdentity object. Removed UserIdentity import from user-service."},
         {"iteration": 71, "description": "Removed 4 identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform). Added getOneByEmail. Updated user-invitation.module.ts to use email-based user lookup. Removed dead listPlatformsForIdentityWithAtleastProject from platform.service.ts."},
-        {"iteration": 72, "description": "Removed userIdentityService import from application-events.ts. enrichAuditEventParam now uses user.email directly instead of fetching user-identity record."}
+        {"iteration": 72, "description": "Removed userIdentityService import from application-events.ts. enrichAuditEventParam now uses user.email directly instead of fetching user-identity record."},
+        {"iteration": 73, "description": "Removed userIdentityRepository from platform-jobs.ts (no longer cleaning up identity on platform delete). Removed userIdentityService from platform-analytics.module.ts (removed embedded-user check — no JWT identity provider in Flow). Removed assertUserIsNotEmbedded function."}
       ]
     },
     "env-rebrand": {

@@ -1,5 +1,4 @@
 import { FastifyBaseLogger } from 'fastify'
-import { userIdentityRepository } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { transaction } from '../core/db/transaction'
 import { SystemJobData, SystemJobName } from '../helper/system-jobs/common'
@@ -12,7 +11,7 @@ const platformRepo = repoFactory(PlatformEntity)
 
 export const platformBackgroundJobs = (log: FastifyBaseLogger) => ({
     hardDeletePlatformHandler: async (data: SystemJobData<SystemJobName.HARD_DELETE_PLATFORM>) => {
-        const { platformId, userId, identityId } = data
+        const { platformId, userId } = data
 
         const remainingProjects = await projectRepo()
             .createQueryBuilder('project')
@@ -31,17 +30,6 @@ export const platformBackgroundJobs = (log: FastifyBaseLogger) => ({
                 id: userId,
                 platformId,
             })
-            const usersUsingIdentity = await userRepo(entityManager).find({
-                where: {
-                    identityId,
-                },
-                withDeleted: true,
-            })
-            if (usersUsingIdentity.length === 0) {
-                await userIdentityRepository(entityManager).delete({
-                    id: identityId,
-                })
-            }
         })
 
         log.info({ platformId }, '[hardDeletePlatformHandler] Platform deleted')

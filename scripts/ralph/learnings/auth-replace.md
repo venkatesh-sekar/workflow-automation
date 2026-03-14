@@ -69,5 +69,7 @@
 - DONE: user-invitation.module.ts now uses getOneByEmail instead of identity lookup (iteration 71)
 - Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, platform-jobs, app-connection-service, analytics module
 - DONE: application-events.ts now uses user.email directly (iteration 72)
+- DONE: Removed userIdentityRepository from platform-jobs.ts, removed userIdentityService + assertUserIsNotEmbedded from platform-analytics.module.ts (iteration 73)
 - CreateParams in user-service still has identityId field (used with apId() placeholder) — remove when entity column drops
-- Next: remove userIdentityService/Repository imports from platform-jobs.ts and platform-analytics.module.ts, then delete user-identity entity/service files
+- Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, app-connection-service/entity, authentication-utils
+- Next: remove identity refs from telemetry.utils.ts and app-connection-service.ts, then drop identityId column from user entity and delete user-identity entity/service files
