@@ -1,10 +1,22 @@
 import { AuthorizationRouteSecurity, AuthorizationType, ProjectAuthorizationConfig, RouteKind } from '@activepieces/server-common'
 import { ActivepiecesError, ErrorCode, isNil, PlatformRole, Principal, PrincipalType } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
-// Community edition: no RBAC roles — all project members have full access
+import { projectRepo } from '../../../../project/project-service'
+// Community edition: no RBAC roles — enforce platform-level project isolation only
 const rbacService = (_log: any) => ({
-    async assertPrinicpalAccessToProject(_params: { principal: any, permission: any, projectId: string }): Promise<void> {
-        // No-op: community edition allows all access within a project
+    async assertPrinicpalAccessToProject({ principal, projectId }: { principal: any, permission: any, projectId: string }): Promise<void> {
+        if (!principal.platform?.id) {
+            return
+        }
+        const project = await projectRepo().findOneBy({ id: projectId })
+        if (isNil(project) || project.platformId !== principal.platform.id) {
+            throw new ActivepiecesError({
+                code: ErrorCode.AUTHORIZATION,
+                params: {
+                    message: 'not owned by current project',
+                },
+            })
+        }
     },
 })
 import { userService } from '../../../../user/user-service'

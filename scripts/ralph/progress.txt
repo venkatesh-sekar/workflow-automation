@@ -387,3 +387,10 @@
 - **Quality gate:** partial (typecheck: pass 0 errors; tests: 2/21 suites fail with 3 individual failures — down from 4/21 with 7 failures)
 - **Learnings:** Vite SSR module isolation prevents side-effect dayjs plugin loading across modules. Remaining 3 test failures are RBAC cross-project 403 expectations (community no-op stubs return 200).
 ---
+
+## Iteration #56 - fix-references
+- **Change:** Fixed RBAC stub to enforce platform-level project isolation — community edition checks project.platformId matches principal.platform.id instead of no-op
+- **Files:** packages/server/api/src/app/core/security/v2/authz/authorize.ts
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites pass, 168/168 tests pass)
+- **Learnings:** The RBAC no-op stub was too permissive — even without RBAC roles, platform-level project isolation is basic security. projectIdExtractor.fromTable extracts projectId from the entity, not the user's JWT, so the RBAC check is the only guard.
+---

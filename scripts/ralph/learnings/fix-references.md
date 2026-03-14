@@ -310,3 +310,13 @@
   1. flow-operations.test.ts: GET and DELETE cross-project flow (2 tests)
   2. table.test.ts: GET cross-project table (1 test)
 - These tests need to be updated to reflect community behavior (no RBAC = no cross-project denial)
+
+## Iteration 56 — RBAC stub fixed for platform-level project isolation
+- Root cause of 3 test failures: RBAC stub in authorize.ts was complete no-op (allowed ALL access)
+- Fix: added platform-level check — verifies project.platformId matches principal.platform.id
+- This is NOT RBAC (role-based) — it's basic project isolation via platform ownership
+- The `projectIdExtractor.fromTable` extracts projectId FROM the entity (flow/table), not the JWT — so request.projectId = entity's projectId, not user's
+- Without this check, any user could access any flow/table by ID regardless of platform
+- Used `principal: any` type to avoid union type issues with WorkerPrincipal (no platform property)
+- **ALL 21 test suites pass, ALL 168 tests pass — test baseline ESTABLISHED**
+- All 5 fix-references criteria now met
