@@ -373,3 +373,10 @@
 - **Quality gate:** partial (typecheck pass, tests 17/21 fail — down from 20/21)
 - **Learnings:** vitest needs resolve.alias for path mappings (tsconfig paths insufficient); redis-memory-server compiles redis from source, needs MALLOC=libc when jemalloc unavailable; removed EE entities must also be cleaned from test helpers
 ---
+
+## Iteration #54 - fix-references
+- **Change:** Removed SERVICE auth type from describeWithAuth test helper — api_key entity is EE-only, community tests run as USER only
+- **Files:** packages/server/api/test/helpers/describe-with-auth.ts
+- **Quality gate:** partial (typecheck: pass 0 errors; tests: 4/21 suites fail with 7 individual test failures — down from 8/21 suites with 72 failures)
+- **Learnings:** describeWithAuth doubled test count by running SERVICE+USER; SERVICE depended on EE api_key entity. Remaining failures: 3 auth 500s, 3 RBAC 403-expected tests, 1 step-file 500.
+---

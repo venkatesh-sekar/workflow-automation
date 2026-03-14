@@ -288,3 +288,15 @@
   2. Some tests get 500 errors (likely from missing entities or broken service stubs)
   3. `project_role` and `project_member` entities also referenced by test helpers (createMemberContext)
 - Pattern: when removing EE entities, also check test helpers — they may reference those entities for test setup
+
+## Iteration 54 — describeWithAuth SERVICE auth type removed
+- `describeWithAuth` ran every test suite twice: USER and SERVICE. SERVICE used `createServiceContext` which saves `api_key` records — but api_key entity is EE-only
+- Fix: removed SERVICE auth type entirely — community edition tests run as USER only
+- Tests: 17/21 suites pass, 7 individual tests fail (down from 72)
+- Remaining 7 failures across 4 categories:
+  1. authentication.test.ts (3 failures): sign up/sign in return 500 — broken service or missing dependency
+  2. flow-operations.test.ts (2 failures): cross-project access returns 200 instead of 403 — RBAC stub allows everything
+  3. step-file.test.ts (1 failure): multipart upload returns 500
+  4. table.test.ts (1 failure): cross-project table access returns 200 instead of 403 — same RBAC issue
+- The 403-related failures (3 tests) are because we stubbed RBAC to no-op — project isolation isn't enforced without RBAC
+- The 500 failures (4 tests) need deeper investigation into what service/dependency is broken
