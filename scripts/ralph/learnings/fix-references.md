@@ -275,3 +275,16 @@
 - pino-pretty is used by server-common logger — needs to be installed or mocked for test environment
 - Tests are integration tests (CE suite) — may also need postgres/redis infrastructure
 - Next: fix pino-pretty resolution to unblock test suite, then assess remaining failures
+
+## Iteration 53 — test infrastructure fixes
+- Installed pino-pretty as devDep in server/api — resolved "unable to determine transport target" error
+- Added `worker` alias to vitest.config.ts resolve.alias (tsconfig paths don't work at Vite runtime)
+- Removed `projectRole` relation from UserInvitationEntity — target entity `project_role` was removed in iteration 15 (EE entity)
+- Patched redis-memory-server to use `MALLOC=libc` instead of jemalloc (jemalloc dev libs not available on build machine)
+- Created permanent postinstall patch at packages/server/common/scripts/patch-redis-memory-server.js
+- **Tests: 17 fail (down from 20), 4 pass (up from 1), 16 individual tests pass (up from 10)**
+- Remaining test blockers:
+  1. `api_key` entity not found — removed as EE entity in iteration 15, but test-context.ts `createServiceContext` tries to save api_key records. Need to either re-add entity (it's community-needed for API auth) or remove test helper
+  2. Some tests get 500 errors (likely from missing entities or broken service stubs)
+  3. `project_role` and `project_member` entities also referenced by test helpers (createMemberContext)
+- Pattern: when removing EE entities, also check test helpers — they may reference those entities for test setup

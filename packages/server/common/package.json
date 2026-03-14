@@ -6,7 +6,8 @@
   "typings": "./dist/src/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.lib.json",
-    "lint": "eslint 'src/**/*.ts'"
+    "lint": "eslint 'src/**/*.ts'",
+    "postinstall": "node scripts/patch-redis-memory-server.js"
   },
   "dependencies": {
     "@activepieces/pieces-framework": "file:../../pieces/framework",

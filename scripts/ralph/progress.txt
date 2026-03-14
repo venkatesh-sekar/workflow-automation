@@ -366,3 +366,10 @@
 - **Quality gate:** partial (typecheck: pass 0 errors; tests: 20/21 suites fail — pino-pretty transport resolution)
 - **Learnings:** Test suite is vitest not jest; tests are integration (need postgres/redis); pino-pretty must be installed or mocked for test env
 ---
+
+## Iteration #53 - fix-references
+- **Change:** Fix test infrastructure: installed pino-pretty, added vitest worker alias, removed UserInvitationEntity#projectRole relation, patched redis-memory-server MALLOC=libc
+- **Files:** packages/server/api/package.json (pino-pretty devDep), packages/server/api/vitest.config.ts (worker alias), packages/server/api/src/app/user-invitations/user-invitation.entity.ts (removed projectRole relation), packages/server/common/package.json (postinstall script), packages/server/common/scripts/patch-redis-memory-server.js (new)
+- **Quality gate:** partial (typecheck pass, tests 17/21 fail — down from 20/21)
+- **Learnings:** vitest needs resolve.alias for path mappings (tsconfig paths insufficient); redis-memory-server compiles redis from source, needs MALLOC=libc when jemalloc unavailable; removed EE entities must also be cleaned from test helpers
+---
