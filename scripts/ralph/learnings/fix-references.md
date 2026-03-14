@@ -149,6 +149,14 @@
 - 6 source files with ee/ imports remain (down from 7)
 - Errors: 1979→1976 (−3)
 
+## Iteration 37 — ai-provider-service.ts cleaned
+- Removed openRouterApi ee/ import (OpenRouter key provisioning = cloud AI credits feature)
+- Removed platformPlanService ee/ import (platform billing/plan = EE feature)
+- Stubbed enrichWithKeysIfNeeded to throw ENTITY_NOT_FOUND (cloud AI credits not available in community)
+- The ACTIVEPIECES provider auto-creation in listProviders() still exists but is harmless — enrichment will throw if keys aren't pre-configured
+- 5 source files with ee/ imports remain (down from 6)
+- Errors: 1976→1974 (−2)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

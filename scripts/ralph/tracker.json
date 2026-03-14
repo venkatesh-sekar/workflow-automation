@@ -1,5 +1,5 @@
 {
-  "iteration": 36,
+  "iteration": 37,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -89,7 +89,8 @@
         {"iteration": 33, "description": "Removed enterpriseFilteringUtils ee/ import from pieces/metadata/utils/index.ts. Community edition returns all pieces without enterprise filtering. Errors reduced 1982→1981."},
         {"iteration": 34, "description": "Removed secretManagersService ee/ import from app-connection-worker-controller.ts. Community edition has no external secret manager — connections return stored value directly. Also removed unused AppConnectionScope import. Errors reduced 1981→1980."},
         {"iteration": 35, "description": "Removed enterpriseFilteringUtils ee/ import from piece-metadata-service.ts. Community edition has no enterprise piece filtering — all pieces returned without filtering check. Errors reduced 1980→1979."},
-        {"iteration": 36, "description": "Removed projectMemberService and secretManagersService ee/ imports from app-connection-service.ts. Simplified getOwners() to community-only (platform admins only, no RBAC members). Removed secret manager resolution in upsert() — community stores values directly. Also removed unused ApEdition import. Errors reduced 1979→1976."}
+        {"iteration": 36, "description": "Removed projectMemberService and secretManagersService ee/ imports from app-connection-service.ts. Simplified getOwners() to community-only (platform admins only, no RBAC members). Removed secret manager resolution in upsert() — community stores values directly. Also removed unused ApEdition import. Errors reduced 1979→1976."},
+        {"iteration": 37, "description": "Removed openRouterApi and platformPlanService ee/ imports from ai-provider-service.ts. Stubbed enrichWithKeysIfNeeded to throw (no cloud AI credits in community edition). Errors reduced 1976→1974."}
       ]
     },
     "auth-replace": {
