@@ -20,6 +20,11 @@
 - Migrations array also has many non-ee migrations that reference ee-related entities (e.g. AddSigningKey, AddOAuth2AppEntiity, AddApiKeys, AddAuditEvents, AddGitRepoMigration, etc.) — these are NOT from ee/ imports but from community migrations that create tables for features that straddle ee/community. Leave them for now.
 - role-seed.ts imports ProjectRoleEntity from ee/ — needs separate fix
 
+## Iteration 17 — role-seed.ts stubbed
+- Removed ProjectRoleEntity ee/ import, replaced seed body with no-op log
+- Role seeding deferred to auth-replace phase where Flow's own auth system will be built
+- Errors: 2016→2013 (−3)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

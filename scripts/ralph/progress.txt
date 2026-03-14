@@ -114,3 +114,10 @@
 - **Quality gate:** pass (typecheck errors reduced 2036→2016, −20 exact match)
 - **Learnings:** Migrations array has many non-ee migrations that create tables for features that straddle ee/community (AddSigningKey, AddApiKeys, etc.) — these are fine to keep. role-seed.ts has separate ee/ import to fix.
 ---
+
+## Iteration #17 - fix-references
+- **Change:** Stubbed role-seed.ts — removed ProjectRoleEntity ee/ import, replaced seed with no-op (deferred to auth-replace phase)
+- **Files:** packages/server/api/src/app/database/seeds/role-seed.ts
+- **Quality gate:** pass (typecheck: 2013 errors, down from 2016)
+- **Learnings:** Role seeding depends on ProjectRoleEntity which is EE — will reimplement with Flow's own auth model
+---
