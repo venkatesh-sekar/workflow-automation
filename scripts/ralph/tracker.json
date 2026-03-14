@@ -1,5 +1,5 @@
 {
-  "iteration": 9,
+  "iteration": 10,
   "current_phase": "copy-ui-core",
   "phases": {
     "copy-server-core": {
@@ -40,7 +40,9 @@
         "Only UI components for the 24 kept pieces included",
         "TypeScript compiles (missing module errors from uncopied packages are OK)"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 10, "description": "Copied packages/web/ (834 files) from activepieces, replaced workspace:* refs with file: protocol, removed ee-embed-sdk dep and tsconfig paths, installed vite for types, typecheck passes (4 expected TS2307 errors for missing ee-embed-sdk and html-to-image)"}
+      ]
     },
     "copy-pieces": {
       "status": "pending",

@@ -65,3 +65,10 @@
 - **Quality gate:** N/A (phase transition)
 - **Learnings:** Promoted inter-package dependency patterns to global learnings; UI depends on shared+framework+common, server on shared+framework+common+server-common+engine
 ---
+
+## Iteration #10 - copy-ui-core
+- **Change:** Copied packages/web/ (834 files) from activepieces, replaced workspace:* with file: protocol for shared deps, removed ee-embed-sdk dependency and tsconfig paths, installed vite as devDep for type definitions
+- **Files:** packages/web/ (834 files new), scripts/ralph/learnings/copy-ui-core.md (new)
+- **Quality gate:** pass (4 TS2307 errors for missing ee-embed-sdk and html-to-image — expected per criteria)
+- **Learnings:** Frontend is React 19 + Vite + Tailwind 4; ee-embed-sdk and piece-ai paths in tsconfig.app.json pointed to packages/ee/ — removed; npm needs --legacy-peer-deps for React 19 peer dep conflicts; embed routes are EE-related candidates for removal in fix-references
+---
