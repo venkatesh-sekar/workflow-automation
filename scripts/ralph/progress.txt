@@ -394,3 +394,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites pass, 168/168 tests pass)
 - **Learnings:** The RBAC no-op stub was too permissive — even without RBAC roles, platform-level project isolation is basic security. projectIdExtractor.fromTable extracts projectId from the entity, not the user's JWT, so the RBAC check is the only guard.
 ---
+
+## Iteration #57 - fix-references (phase completion)
+- **Change:** Removed ee-embed-sdk alias from vite.config.mts (pointed to ../../packages/ee/embed-sdk/src). Verified all 5 acceptance criteria met: zero ee/ imports, zero packages/ee/ references, TypeScript 0 errors, 168/168 tests pass. Marked fix-references complete, advanced to auth-replace.
+- **Files:** packages/web/vite.config.mts, scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 168/168 tests)
+- **Learnings:** Promoted fix-references insights to global learnings (test infrastructure, RBAC stub behavior, worker stub pattern). Phase took 44 iterations (14-57).
+---

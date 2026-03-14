@@ -4,29 +4,36 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 
 ## Build System
 - Activepieces uses turbo + bun; we use npm — `workspace:*` protocol unsupported, need explicit versioning
-- tsconfig chain: tsconfig.base.json → packages/server/tsconfig.server.json → packages/server/api/tsconfig.json → tsconfig.app.json
-- server/api package.json has devDeps on piece-facebook-leads, piece-intercom, piece-slack, piece-square (test fixtures) — will need cleanup in fix-references
-
-## Inter-package Dependencies
-- Use `file:` protocol for local deps (e.g., `"@activepieces/shared": "file:../../shared"`) — npm doesn't support `workspace:*`
+- Use `file:` protocol for local deps (e.g., `"@activepieces/shared": "file:../../shared"`)
 - Must build upstream packages (`tsc -p tsconfig.lib.json`) to produce dist/ for downstream type resolution
-- Each package installs its own node_modules independently
+- When two file:-linked packages share a dep, child should use peerDependencies to avoid TS type duplication (typeorm lesson)
+- tsconfig paths work for typecheck but NOT for vitest runtime — must also add resolve.alias in vitest.config.ts
+
+## Package Structure
 - Shared packages copied: shared, pieces-framework, pieces-common, server-common, engine
 - UI (packages/web) depends on: shared, pieces-framework, pieces-common
 - Server/api depends on: shared, pieces-framework, pieces-common, server-common, engine
-- Engine has 1 pre-existing type error (null vs undefined in externalId) — not from our changes
-
-## EE Exclusion
-- Server ee/ was at `src/app/ee/` with ~20 modules — all excluded; imports to ee/ paths exist throughout server code and must be resolved in fix-references
-- UI has 3 files importing ee-embed-sdk + embed routes (src/app/routes/embed/) are EE-related — remove in fix-references
-- UI impact routes reference html-to-image — candidate for removal
-
-## Pieces
+- Worker package NOT copied — stubbed via helper/worker-stub.ts + tsconfig paths mapping
 - 21 piece directories: 19 core + 2 community (slack, postgres); Code/Branches/Loops are built-in FlowActionTypes
-- Piece metadata is DB-driven (no static registry) — `piece-sync-service.ts` syncs from cloud.activepieces.com
-- `app-event-routing.module.ts` has direct imports of piece-facebook-leads, piece-intercom, piece-slack, piece-square — must clean in fix-references
+
+## EE Exclusion (complete)
+- All ee/ imports removed from server source (30 files), test files (3 files), and vite.config.mts
+- shared/src/lib/ee/ contains type definitions (DTOs, models) — these are in packages/shared, NOT packages/ee/, safe to keep
+- UI has 3 files importing `ee-embed-sdk` module (embed routes = EE feature) — module doesn't exist, dead code
+
+## Test Infrastructure
+- Tests use vitest (not jest) — config at packages/server/api/vitest.config.ts
+- Integration tests need postgres (pg-mem) + redis (redis-memory-server with MALLOC=libc patch)
+- dayjs plugins must be registered in vitest.setup.ts (Vite SSR isolation prevents side-effect loading)
+- reflect-metadata required at runtime (typeorm)
+- Test baseline: 21 suites, 168 tests, all passing
+
+## Auth System (for auth-replace)
+- Current auth: signup/signin with email+password, OTP verification (removed), user-identity entity
+- RBAC stub allows all access but enforces platform-level project isolation (platformId check)
+- apiKeyService stubbed as no-op (returns null) — needs reimplementation in auth-replace
+- role-seed.ts is no-op — role system deferred to auth-replace
 
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts
-- UI references piece names as strings (search ranking, special-casing) — no per-piece UI code to filter
