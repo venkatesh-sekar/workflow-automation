@@ -16,3 +16,10 @@
 - **Quality gate:** pass (typecheck runs; 2089 errors all TS2307/cascading from missing packages — expected per criteria)
 - **Learnings:** npm doesn't support workspace:* protocol from bun; tsconfig.app.json overrides paths to {} so base paths don't matter for server/api compilation
 ---
+
+## Iteration #3 - copy-server-core (phase completion)
+- **Change:** Verified all 4 acceptance criteria met; marked copy-server-core complete; advanced to copy-shared-packages
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted build system and ee/ exclusion insights to global learnings
+---
