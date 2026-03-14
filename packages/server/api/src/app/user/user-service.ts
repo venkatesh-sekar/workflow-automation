@@ -40,7 +40,6 @@ export const userService = (log: FastifyBaseLogger) => ({
             lastName: params.lastName,
             verified: params.verified ?? true,
             tokenVersion: params.tokenVersion ?? null,
-            identityId: params.identityId,
             platformRole: params.platformRole,
             status: isActive ? UserStatus.ACTIVE : UserStatus.INACTIVE,
             externalId: params.externalId,
@@ -58,7 +57,6 @@ export const userService = (log: FastifyBaseLogger) => ({
                 email,
                 firstName,
                 lastName,
-                identityId: apId(),
                 platformId,
                 platformRole: PlatformRole.MEMBER,
             })
@@ -275,7 +273,6 @@ type CreateParams = {
     lastName: string
     verified?: boolean
     tokenVersion?: string | null
-    identityId: string
     platformId: string | null
     externalId?: string
     platformRole: PlatformRole

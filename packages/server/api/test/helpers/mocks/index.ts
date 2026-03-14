@@ -67,12 +67,9 @@ import {
     TemplateStatus,
     TemplateType,
     User,
-    UserIdentity,
-    UserIdentityProvider,
     UserInvitation,
     UserStatus } from '@activepieces/shared'
 import { faker } from '@faker-js/faker'
-import bcrypt from 'bcrypt'
 import dayjs from 'dayjs'
 import { cryptoUtils } from '@activepieces/server-common'
 import { secureApId } from '@activepieces/shared'
@@ -100,25 +97,6 @@ function generateApiKey() {
 
 export const CLOUD_PLATFORM_ID = 'cloud-id'
 
-export const createMockUserIdentity = (userIdentity?: Partial<UserIdentity>): UserIdentity => {
-    return {
-        id: userIdentity?.id ?? apId(),
-        created: userIdentity?.created ?? faker.date.recent().toISOString(),
-        updated: userIdentity?.updated ?? faker.date.recent().toISOString(),
-        email: (userIdentity?.email ?? faker.internet.email()).toLowerCase().trim(),
-        firstName: userIdentity?.firstName ?? faker.person.firstName(),
-        lastName: userIdentity?.lastName ?? faker.person.lastName(),
-        tokenVersion: userIdentity?.tokenVersion ?? undefined,
-        password: userIdentity?.password
-            ? bcrypt.hashSync(userIdentity.password, 10)
-            : faker.internet.password(),
-        trackEvents: userIdentity?.trackEvents ?? faker.datatype.boolean(),
-        newsLetter: userIdentity?.newsLetter ?? faker.datatype.boolean(),
-        verified: userIdentity?.verified ?? faker.datatype.boolean(),
-        provider: userIdentity?.provider ?? UserIdentityProvider.EMAIL,
-    }
-}
-
 export const createMockUser = (user?: Partial<User>): User => {
     return {
         id: user?.id ?? apId(),
@@ -132,7 +110,6 @@ export const createMockUser = (user?: Partial<User>): User => {
         tokenVersion: user?.tokenVersion ?? null,
         platformRole: user?.platformRole ?? faker.helpers.enumValue(PlatformRole),
         externalId: user?.externalId,
-        identityId: user?.identityId ?? apId(),
         platformId: user?.platformId ?? null,
     }
 }
@@ -302,13 +279,7 @@ export const createMockPlatformWithOwner = (
     const mockOwnerId = params?.owner?.id ?? apId()
     const mockPlatformId = params?.platform?.id ?? apId()
 
-    const mockUserIdentity = createMockUserIdentity({})
-
     const mockOwner = createMockUser({
-        email: mockUserIdentity.email,
-        firstName: mockUserIdentity.firstName,
-        lastName: mockUserIdentity.lastName,
-        identityId: mockUserIdentity.id,
         ...params?.owner,
         id: mockOwnerId,
         platformId: mockPlatformId,
@@ -322,7 +293,6 @@ export const createMockPlatformWithOwner = (
     })
 
     return {
-        mockUserIdentity,
         mockPlatform,
         mockOwner,
     }
@@ -666,38 +636,20 @@ export const checkIfSolutionExistsInDb = async (solution: Solution): Promise<boo
     const cell = await databaseConnection().getRepository('cell').findOneBy({ id: solution.cell.id })
     return table !== null && connection !== null && flow !== null && flowRun !== null && flowVersion !== null && cell !== null
 }
-export const mockBasicUser = async ({ userIdentity, user }: { userIdentity?: Partial<UserIdentity>, user?: Partial<User> }) => {
-    const mockUserIdentity = createMockUserIdentity({
-        verified: true,
-        ...userIdentity,
-    })
-    await databaseConnection().getRepository('user_identity').save(mockUserIdentity)
+export const mockBasicUser = async ({ user }: { userIdentity?: unknown, user?: Partial<User> }) => {
     const mockUser = createMockUser({
+        verified: true,
         ...user,
-        email: mockUserIdentity.email,
-        firstName: mockUserIdentity.firstName,
-        lastName: mockUserIdentity.lastName,
-        identityId: mockUserIdentity.id,
     })
     await databaseConnection().getRepository('user').save(mockUser)
     return {
-        mockUserIdentity,
         mockUser,
     }
 }
 export const mockAndSaveBasicSetup = async (params?: MockBasicSetupParams): Promise<MockBasicSetup> => {
-    const mockUserIdentity = createMockUserIdentity({
-        verified: true,
-        ...params?.userIdentity,
-    })
-    await databaseConnection().getRepository('user_identity').save(mockUserIdentity)
-
     const mockOwner = createMockUser({
         ...params?.user,
-        email: mockUserIdentity.email,
-        firstName: mockUserIdentity.firstName,
-        lastName: mockUserIdentity.lastName,
-        identityId: mockUserIdentity.id,
+        verified: true,
         platformRole: PlatformRole.ADMIN,
     })
     await databaseConnection().getRepository('user').save(mockOwner)
@@ -721,7 +673,6 @@ export const mockAndSaveBasicSetup = async (params?: MockBasicSetupParams): Prom
     await databaseConnection().getRepository('project').save(mockProject)
 
     return {
-        mockUserIdentity,
         mockOwner,
         mockPlatform,
         mockProject,
@@ -863,7 +814,6 @@ type CreateMockPlatformWithOwnerParams = {
 type CreateMockPlatformWithOwnerReturn = {
     mockPlatform: Platform
     mockOwner: User
-    mockUserIdentity: UserIdentity
 }
 
 
@@ -871,11 +821,9 @@ type MockBasicSetup = {
     mockOwner: User
     mockPlatform: Platform
     mockProject: Project
-    mockUserIdentity: UserIdentity
 }
 
 type MockBasicSetupParams = {
-    userIdentity?: Partial<UserIdentity>
     user?: Partial<User>
     plan?: Partial<PlatformPlan>
     platform?: Partial<Platform>

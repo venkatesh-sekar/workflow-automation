@@ -527,3 +527,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
 - **Learnings:** App connection owner relation no longer needs identity join — user entity has all meta fields directly
 ---
+
+## Iteration #76 - auth-replace
+- **Change:** Removed identityId column, identity relation, and UserIdentityEntity from database. Removed identityId from User type, user-service, CLI scripts, system-jobs, and test mocks/helpers. Fixed remaining identity references in analytics and app-connection-service.
+- **Files:** user-entity.ts, database-connection.ts, user-service.ts, create-team.ts, add-member.ts, common.ts (system-jobs), user.ts (shared), platform-analytics-report.service.ts, app-connection-service.ts, test/helpers/mocks/index.ts, test/helpers/test-context.ts
+- **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
+- **Learnings:** analytics listUsers and app-connection getOwners still had user.identity.* references that weren't caught in earlier iterations; test count dropped from 168 to 165
+---

@@ -354,9 +354,9 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
 
     async getOwners({ projectId, platformId }: { projectId: ProjectId, platformId: PlatformId }): Promise<AppConnectionOwners[]> {
         const platformAdmins = (await userService(log).getByPlatformRole(platformId, PlatformRole.ADMIN)).map(user => ({
-            firstName: user.identity.firstName,
-            lastName: user.identity.lastName,
-            email: user.identity.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
         }))
         return platformAdmins
     },

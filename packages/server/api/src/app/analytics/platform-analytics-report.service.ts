@@ -160,16 +160,13 @@ async function listUsers(platformId: PlatformId): Promise<UserWithMetaInformatio
         where: {
             platformId,
         },
-        relations: {
-            identity: true,
-        },
     })
     return users.map((user) => {
         return {
             id: user.id,
-            email: user.identity.email,
-            firstName: user.identity.firstName,
-            lastName: user.identity.lastName,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
             status: user.status,
             lastActiveDate: user.lastActiveDate,
             platformRole: user.platformRole,

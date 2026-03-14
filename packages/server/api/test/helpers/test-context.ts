@@ -7,7 +7,6 @@ import {
     Project,
     ProjectRole,
     User,
-    UserIdentity,
 } from '@activepieces/shared'
 import { FastifyInstance, InjectOptions } from 'fastify'
 import { generateMockToken } from './auth'
@@ -20,7 +19,7 @@ import {
 } from './mocks'
 
 export async function createTestContext(app: FastifyInstance, params?: TestContextParams): Promise<TestContext> {
-    const { mockUserIdentity, mockOwner, mockPlatform, mockProject } = await mockAndSaveBasicSetup({
+    const { mockOwner, mockPlatform, mockProject } = await mockAndSaveBasicSetup({
         platform: params?.platform,
         plan: params?.plan,
         project: params?.project,
@@ -33,7 +32,6 @@ export async function createTestContext(app: FastifyInstance, params?: TestConte
     })
 
     return buildContext(app, {
-        userIdentity: mockUserIdentity,
         user: mockOwner,
         platform: mockPlatform,
         project: mockProject,
@@ -46,7 +44,7 @@ export async function createMemberContext(
     parentCtx: TestContext,
     params: MemberContextParams,
 ): Promise<TestContext> {
-    const { mockUser, mockUserIdentity } = await mockBasicUser({
+    const { mockUser } = await mockBasicUser({
         user: {
             platformId: parentCtx.platform.id,
             platformRole: PlatformRole.MEMBER,
@@ -72,7 +70,6 @@ export async function createMemberContext(
     })
 
     return buildContext(app, {
-        userIdentity: mockUserIdentity,
         user: mockUser,
         platform: parentCtx.platform,
         project: parentCtx.project,
@@ -90,7 +87,6 @@ export async function createServiceContext(
     await db.save('api_key', mockApiKey)
 
     return buildContext(app, {
-        userIdentity: parentCtx.userIdentity,
         user: parentCtx.user,
         platform: parentCtx.platform,
         project: parentCtx.project,
@@ -124,7 +120,6 @@ function buildContext(app: FastifyInstance, data: ContextData): TestContext {
     }
 
     return {
-        userIdentity: data.userIdentity,
         user: data.user,
         platform: data.platform,
         project: data.project,
@@ -160,7 +155,6 @@ type RequestOptions = {
 }
 
 type ContextData = {
-    userIdentity: UserIdentity
     user: User
     platform: Platform
     project: Project
@@ -168,7 +162,6 @@ type ContextData = {
 }
 
 export type TestContext = {
-    userIdentity: UserIdentity
     user: User
     platform: Platform
     project: Project

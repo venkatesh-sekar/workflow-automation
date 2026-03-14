@@ -43,7 +43,6 @@ export const User = z.object({
     status: z.nativeEnum(UserStatus),
     verified: z.boolean(),
     tokenVersion: Nullable(z.string()),
-    identityId: z.string(),
     externalId: Nullable(z.string()),
     platformId: Nullable(z.string()),
     lastActiveDate: Nullable(DateOrString),

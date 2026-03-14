@@ -74,7 +74,6 @@ async function getOrCreateUser(email: string, firstName: string, lastName: strin
         lastName,
         verified: true,
         tokenVersion: crypto.randomUUID(),
-        identityId: apId(),
         platformId,
         platformRole: PlatformRole.MEMBER,
         status: UserStatus.ACTIVE,

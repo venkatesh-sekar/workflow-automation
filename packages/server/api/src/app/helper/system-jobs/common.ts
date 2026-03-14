@@ -41,7 +41,6 @@ type HardDeleteProjectSystemJobData = {
 type HardDeletePlatformSystemJobData = {
     platformId: PlatformId
     userId: UserId
-    identityId: string
 }
 
 type SystemJobDataMap = {

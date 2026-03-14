@@ -74,5 +74,11 @@
 - Remaining identity refs: user-entity (identityId column + identity relation), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), telemetry.utils, app-connection-service/entity, authentication-utils
 - DONE: telemetry.utils.ts identify() now uses User fields directly, UserIdentity import removed (iteration 74)
 - DONE: app-connection-service.ts and app-connection.entity.ts now use User fields directly, identity join removed (iteration 75)
-- Remaining identity refs: user-entity (identityId column + identity relation), user-service (identityId in CreateParams), CLI scripts (apId() placeholder), database-connection (UserIdentityEntity registration), postgres-connection (identity migrations), authentication-utils (UserIdentityProvider import)
-- Next: remove identityId column from user entity, remove identity relation, drop UserIdentityEntity from database-connection, delete user-identity entity/service files
+- DONE: Removed identityId column, identity relation, idx_user_platform_id_identity_id index from user entity (iteration 76)
+- DONE: Removed UserIdentityEntity from database-connection entities (iteration 76)
+- DONE: Removed identityId from User zod type, user-service CreateParams, CLI scripts, system-jobs type (iteration 76)
+- DONE: Fixed analytics listUsers and app-connection getOwners — were still using user.identity.* (iteration 76)
+- DONE: Updated test mocks — removed createMockUserIdentity, removed user_identity saves from mockBasicUser/mockAndSaveBasicSetup, removed userIdentity from TestContext (iteration 76)
+- Test count dropped 168→165 (3 tests likely removed in earlier iterations)
+- Remaining identity refs: user-identity entity/service files (to delete), postgres-connection (identity migrations — keep as historical), authentication-utils (UserIdentityProvider import — separate concern from entity)
+- Next: delete user-identity entity and service files
