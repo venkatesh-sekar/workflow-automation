@@ -226,3 +226,11 @@
 - Remaining 51 errors: 35 TS2322 (type mismatches), 12 TS2307 (8 worker + 4 piece refs), 4 other
 - Worker package (`worker`) is referenced by 8 files — needs to be either copied or stubbed
 - 4 piece test fixture imports remain: app-event-routing.module.ts imports piece-facebook-leads, piece-intercom, piece-square directly
+
+## Iteration 47 — app-event-routing.module.ts cleaned + slack path fixed
+- Removed 3 piece imports (facebook-leads, intercom, square) — pieces not copied
+- Kept only slack in appWebhooks/pieceNames registries
+- Fixed piece-slack dep path: `pieces/community/piece-slack` → `pieces/community/slack` (dir name doesn't have `piece-` prefix)
+- Built slack dist/ for type resolution
+- Remaining 47 errors: ~35 TS2322 (typeorm version mismatch between server/api and server/common), 7 TS2307 (worker module), 4 TS2322 (unknown type in piece-sync/templates), 1 TS18046
+- Next priorities: (1) fix typeorm duplication (30+ errors), (2) stub worker module (7 errors), (3) fix unknown types (4 errors)

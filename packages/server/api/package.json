@@ -101,7 +101,7 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
-    "@activepieces/piece-slack": "file:../../pieces/community/piece-slack",
+    "@activepieces/piece-slack": "file:../../pieces/community/slack",
     "@faker-js/faker": "8.2.0",
     "@types/bcrypt": "5.0.0",
     "@types/content-disposition": "0.5.9",
