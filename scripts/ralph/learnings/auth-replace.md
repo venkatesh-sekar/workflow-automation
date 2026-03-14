@@ -29,3 +29,10 @@
 - Still depends on user-identity for email lookup and tokenVersion — will need update when user-identity is removed
 - Uses same AuthenticationResponse type as existing sign-in (includes firstName, lastName, etc from identity)
 - securityAccess.public() for unauthenticated access, same rate limiting as sign-in/sign-up
+
+## Old Auth Removal
+- Removed: sign-up, sign-in, switch-platform, federated-auth endpoints from controller
+- Removed: signUp, signInWithPassword, federatedAuthn, switchPlatform methods from service + all helper functions
+- dev-seeds.ts was using signUp — converted to no-op (CLI scripts handle team/user creation in Flow)
+- authentication-utils.ts still has extractUserIdFromRequest used by application-events.ts and flow.controller.ts — keep it
+- Old auth test file (authentication.test.ts) had 4 tests for sign-up/sign-in — replaced with placeholder, will add team-login tests

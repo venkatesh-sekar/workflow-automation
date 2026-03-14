@@ -1,5 +1,5 @@
 {
-  "iteration": 59,
+  "iteration": 60,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -128,7 +128,8 @@
       ],
       "completed_items": [
         {"iteration": 58, "description": "Added apiKeyHash column (nullable, unique-indexed) to project entity for API key lookup. Server-only field using SHA-256 hash — not added to shared Project type."},
-        {"iteration": 59, "description": "Implemented POST /v1/authentication/team-login endpoint: hashes API key with SHA-256, finds project by hash, verifies email via user-identity lookup, checks project membership, returns JWT. Added findByApiKeyHash to project-service."}
+        {"iteration": 59, "description": "Implemented POST /v1/authentication/team-login endpoint: hashes API key with SHA-256, finds project by hash, verifies email via user-identity lookup, checks project membership, returns JWT. Added findByApiKeyHash to project-service."},
+        {"iteration": 60, "description": "Removed old sign-up, sign-in, switch-platform, and federated-auth endpoints from controller and service. Stripped authentication.service.ts to team-login only. Updated dev-seeds.ts to no-op (CLI scripts handle team creation). Replaced old auth tests with placeholder."}
       ]
     },
     "env-rebrand": {

@@ -1,66 +1,19 @@
 import { AppSystemProp } from '@activepieces/server-common'
-import { ApEdition, ApEnvironment, UserIdentityProvider } from '@activepieces/shared'
-import { authenticationService } from '../../authentication/authentication.service'
-import { FlagEntity } from '../../flags/flag.entity'
+import { ApEdition, ApEnvironment } from '@activepieces/shared'
 import { system } from '../../helper/system/system'
-import { databaseConnection } from '../database-connection'
 import { DataSeed } from './data-seed'
 
-const DEV_DATA_SEEDED_FLAG = 'DEV_DATA_SEEDED'
 const log = system.globalLogger()
 
-const currentEnvIsNotDev = (): boolean => {
+const seedDevData = async (): Promise<void> => {
     const env = system.get(AppSystemProp.ENVIRONMENT)
     const edition = system.get(AppSystemProp.EDITION)
-    return env !== ApEnvironment.DEVELOPMENT  || edition === ApEdition.ENTERPRISE
-}
-
-const devDataAlreadySeeded = async (): Promise<boolean> => {
-    const flagRepo = databaseConnection().getRepository(FlagEntity)
-    const devSeedsFlag = await flagRepo.findOneBy({ id: DEV_DATA_SEEDED_FLAG })
-    return devSeedsFlag?.value === true
-}
-
-const setDevDataSeededFlag = async (): Promise<void> => {
-    const flagRepo = databaseConnection().getRepository(FlagEntity)
-
-    await flagRepo.save({
-        id: DEV_DATA_SEEDED_FLAG,
-        value: true,
-    })
-}
-
-const seedDevUser = async (): Promise<void> => {
-    const DEV_EMAIL = 'dev@ap.com'
-    const DEV_PASSWORD = '12345678'
-
-
-    await authenticationService(log).signUp({
-        email: DEV_EMAIL,
-        password: DEV_PASSWORD,
-        firstName: 'Dev',
-        lastName: 'User',
-        trackEvents: false,
-        platformId: null,
-        newsLetter: false,
-        provider: UserIdentityProvider.EMAIL,
-    })
-
-    log.info({ email: DEV_EMAIL, password: DEV_PASSWORD }, '[devSeeds#seedDevUser] Dev user created')
-}
-const seedDevData = async (): Promise<void> => {
-    if (currentEnvIsNotDev()) {
+    if (env !== ApEnvironment.DEVELOPMENT || edition === ApEdition.ENTERPRISE) {
         log.info('[devSeeds#seedDevData] Skipping, not in development environment')
         return
     }
-
-    if (await devDataAlreadySeeded()) {
-        log.info('[devSeeds#seedDevData] Skipping, already seeded')
-        return
-    }
-
-    await seedDevUser()
-    await setDevDataSeededFlag()
+    // Flow uses team-login with API keys — dev user seeding handled by CLI scripts (create-team, add-member)
+    log.info('[devSeeds#seedDevData] No-op in Flow — use CLI scripts to create teams and members')
 }
 
 export const devDataSeed: DataSeed = {

@@ -415,3 +415,10 @@
 - **Quality gate:** pass (typecheck clean, 168/168 tests pass)
 - **Learnings:** zod schemas used for request validation (not typebox); team-login still depends on user-identity for email lookup
 ---
+
+## Iteration #60 - auth-replace
+- **Change:** Removed old sign-up, sign-in, switch-platform, and federated-auth endpoints from controller and service. Stripped authentication.service.ts to teamLogin only. Updated dev-seeds.ts to no-op. Replaced old auth tests with placeholder.
+- **Files:** authentication.controller.ts, authentication.service.ts, dev-seeds.ts, authentication.test.ts
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21/21 suites, 165/165 tests)
+- **Learnings:** dev-seeds.ts depended on signUp — needed update. authentication-utils.ts still used by flow.controller.ts and application-events.ts for extractUserIdFromRequest — keep it.
+---
