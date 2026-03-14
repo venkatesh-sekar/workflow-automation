@@ -77,6 +77,13 @@
 - 19 files with ee/ imports remain (down from 20)
 - Errors: 1998→1997 (−1)
 
+## Iteration 27 — platform.utils.ts cleaned
+- Removed customDomainService ee/ import (custom domains = EE feature)
+- Removed getPlatformIdForHostname entirely — it was guarded by `edition === COMMUNITY → return null` so was dead code
+- Simplified isCustomerOnDedicatedDomain to always return false (no custom domains)
+- Removed unused imports: isNil, ApEdition, PlatformWithoutSensitiveData, system
+- Pattern: when a function is guarded by an edition check that short-circuits for COMMUNITY, remove the entire function
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

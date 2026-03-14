@@ -184,3 +184,10 @@
 - **Quality gate:** pass (typecheck: 1997 errors, down from 1998)
 - **Learnings:** websocket validateProjectId only needs projectId nil check in community edition; role check was purely EE RBAC
 ---
+
+## Iteration #27 - fix-references
+- **Change:** Removed customDomainService ee/ import from platform.utils.ts, removed getPlatformIdForHostname (always null in community), simplified isCustomerOnDedicatedDomain to return false, cleaned unused imports
+- **Files:** packages/server/api/src/app/platform/platform.utils.ts
+- **Quality gate:** pass (typecheck: 1997 errors, ee/ import error eliminated but net count unchanged due to other pre-existing errors)
+- **Learnings:** Functions guarded by edition === COMMUNITY returning null are dead code in community-only fork — remove entirely rather than stub
+---
