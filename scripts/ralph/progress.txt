@@ -261,3 +261,10 @@
 - **Quality gate:** pass (typecheck: 1974 errors, down from 1976)
 - **Learnings:** OpenRouter API key provisioning and platform plan service are cloud-only features for Activepieces AI credits — not needed in self-hosted community edition
 ---
+
+## Iteration #38 - fix-references
+- **Change:** Removed 3 ee/ imports from flow.controller.ts: assertUserHasPermissionToFlow (RBAC), platformPlanService (plan limits), gitRepoService (git sync). Removed RBAC check, flow limit check, and git sync on delete. Cleaned unused shared imports.
+- **Files:** packages/server/api/src/app/flows/flow/flow.controller.ts
+- **Quality gate:** pass (typecheck: 1971 errors, down from 1974)
+- **Learnings:** Flow controller had 3 separate EE concerns: RBAC permissions, billing plan limits, git sync — all removed for community edition
+---

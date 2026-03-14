@@ -157,6 +157,15 @@
 - 5 source files with ee/ imports remain (down from 6)
 - Errors: 1976→1974 (−2)
 
+## Iteration 38 — flow.controller.ts cleaned
+- Removed 3 ee/ imports: assertUserHasPermissionToFlow (RBAC), platformPlanService (active flow limits), gitRepoService (git sync on delete)
+- RBAC check removed entirely (community has no per-flow RBAC permissions)
+- Plan limit check removed (community has no active flow limits)
+- Git sync on delete removed (community has no git repo integration)
+- Also removed unused shared imports: FlowStatus, GitPushOperationType, PlatformUsageMetric
+- 4 source files with ee/ imports remain (down from 5)
+- Errors: 1974→1971 (−3)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
