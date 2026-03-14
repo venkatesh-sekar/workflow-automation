@@ -534,3 +534,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites, 165 tests pass)
 - **Learnings:** analytics listUsers and app-connection getOwners still had user.identity.* references that weren't caught in earlier iterations; test count dropped from 168 to 165
 ---
+
+## Iteration #77 - auth-replace
+- **Change:** Deleted user-identity entity and service files (user-identity-entity.ts, user-identity-service.ts) and removed the user-identity/ directory
+- **Files:** packages/server/api/src/app/authentication/user-identity/ (deleted)
+- **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
+- **Learnings:** Migration files in postgres-connection/sqlite-connection reference identity but are kept as historical DB migrations. UserIdentityProvider in authentication-utils is a shared type, not tied to the deleted entity.
+---

@@ -80,5 +80,6 @@
 - DONE: Fixed analytics listUsers and app-connection getOwners — were still using user.identity.* (iteration 76)
 - DONE: Updated test mocks — removed createMockUserIdentity, removed user_identity saves from mockBasicUser/mockAndSaveBasicSetup, removed userIdentity from TestContext (iteration 76)
 - Test count dropped 168→165 (3 tests likely removed in earlier iterations)
-- Remaining identity refs: user-identity entity/service files (to delete), postgres-connection (identity migrations — keep as historical), authentication-utils (UserIdentityProvider import — separate concern from entity)
-- Next: delete user-identity entity and service files
+- DONE: Deleted user-identity entity and service files + directory (iteration 77)
+- Remaining identity refs: postgres-connection + sqlite-connection (identity migration imports — kept as historical), authentication-utils (UserIdentityProvider from shared — type only, not entity)
+- Next: write tests for team-login flow and CLI scripts (last remaining criterion)
