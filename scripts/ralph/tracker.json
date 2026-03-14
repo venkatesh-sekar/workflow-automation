@@ -1,6 +1,6 @@
 {
-  "iteration": 12,
-  "current_phase": "copy-pieces",
+  "iteration": 13,
+  "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -45,7 +45,7 @@
       ]
     },
     "copy-pieces": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "typecheck",
       "criteria": [
         "All 24 specified pieces copied: HTTP, Code, Branches/Conditions, Loops, Data Mapper, Math Helper, CSV, File Helper, Image Helper, PDF, Delay, Approval, Forms, Manual Trigger, Schedule, Store, GraphQL, SMTP, SFTP, Data Summarizer, Connections, Text Helper, Slack, Postgres",
@@ -196,9 +196,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces"],
   "phase_queue": [
-    "fix-references",
     "auth-replace",
     "env-rebrand",
     "strip-ai-providers",

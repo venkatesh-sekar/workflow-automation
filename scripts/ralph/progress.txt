@@ -86,3 +86,10 @@
 - **Quality gate:** pass (server typecheck: 2089 TS2307 errors unchanged; UI typecheck: 4 errors unchanged)
 - **Learnings:** 3 of the "24 pieces" are engine-level constructs already present; actual piece directories = 21; core has 8 other pieces we excluded (crypto, qrcode, date-helper, subflows, tables, tags, webhook, xml)
 ---
+
+## Iteration #13 - copy-pieces (phase completion)
+- **Change:** Verified all 3 acceptance criteria met; marked copy-pieces complete; advanced to fix-references
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted piece metadata architecture insights to global learnings: DB-driven piece registry, app-event-routing direct imports need cleanup, piece-sync-service syncs from cloud
+---

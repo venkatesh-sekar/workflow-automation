@@ -21,6 +21,11 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - UI has 3 files importing ee-embed-sdk + embed routes (src/app/routes/embed/) are EE-related — remove in fix-references
 - UI impact routes reference html-to-image — candidate for removal
 
+## Pieces
+- 21 piece directories: 19 core + 2 community (slack, postgres); Code/Branches/Loops are built-in FlowActionTypes
+- Piece metadata is DB-driven (no static registry) — `piece-sync-service.ts` syncs from cloud.activepieces.com
+- `app-event-routing.module.ts` has direct imports of piece-facebook-leads, piece-intercom, piece-slack, piece-square — must clean in fix-references
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts
