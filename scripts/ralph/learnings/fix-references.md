@@ -99,6 +99,13 @@
 - Also removed unused getPlatformQueueName import from server-common
 - Errors: 1992→1989 (−3)
 
+## Iteration 30 — template.service.ts cleaned
+- Removed platformTemplateService ee/ import (handles CUSTOM template CRUD in EE)
+- Inlined CUSTOM template create/update using same `templateRepo()` pattern as OFFICIAL/SHARED
+- No functional difference: platformTemplateService was just a wrapper around the same repo with platformId scoping
+- 12 files with ee/ imports remain (down from 13)
+- Errors: 1989→1988 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

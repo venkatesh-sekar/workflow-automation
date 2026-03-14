@@ -205,3 +205,10 @@
 - **Quality gate:** pass (typecheck: 1989 errors, down from 1992)
 - **Learnings:** Dedicated workers is EE-only concept; community uses single shared queue for all platforms
 ---
+
+## Iteration #30 - fix-references
+- **Change:** Removed platformTemplateService ee/ import from template.service.ts, inlined CUSTOM template create/update using templateRepo() directly
+- **Files:** packages/server/api/src/app/template/template.service.ts
+- **Quality gate:** pass (typecheck: 1988 errors, down from 1989)
+- **Learnings:** platformTemplateService was just a wrapper around templateRepo with platformId scoping — safe to inline
+---
