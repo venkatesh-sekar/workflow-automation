@@ -74,17 +74,29 @@ import {
 import { faker } from '@faker-js/faker'
 import bcrypt from 'bcrypt'
 import dayjs from 'dayjs'
+import { cryptoUtils } from '@activepieces/server-common'
+import { secureApId } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { AIProviderSchema } from '../../../src/app/ai/ai-provider-entity'
 import { databaseConnection } from '../../../src/app/database/database-connection'
-import { generateApiKey } from '../../../src/app/ee/api-keys/api-key-service'
-import { OAuthAppWithEncryptedSecret } from '../../../src/app/ee/oauth-apps/oauth-app.entity'
-import { PlatformPlanEntity } from '../../../src/app/ee/platform/platform-plan/platform-plan.entity'
-import { encryptUtils } from '../../../src/app/helper/encryption'
+import { encryptUtils, EncryptedObject } from '../../../src/app/helper/encryption'
 import { PieceMetadataSchema } from '../../../src/app/pieces/metadata/piece-metadata-entity'
 import { pieceMetadataService } from '../../../src/app/pieces/metadata/piece-metadata-service'
 import { PieceTagSchema } from '../../../src/app/pieces/tags/pieces/piece-tag.entity'
 import { TagEntitySchema } from '../../../src/app/pieces/tags/tag-entity'
+
+type OAuthAppWithEncryptedSecret = OAuthApp & { clientSecret: EncryptedObject }
+
+const API_KEY_TOKEN_LENGTH = 64
+function generateApiKey() {
+    const secretValue = secureApId(API_KEY_TOKEN_LENGTH - 3)
+    const secretKey = `sk-${secretValue}`
+    return {
+        secret: secretKey,
+        secretHashed: cryptoUtils.hashSHA256(secretKey),
+        secretTruncated: secretKey.slice(-4),
+    }
+}
 
 export const CLOUD_PLATFORM_ID = 'cloud-id'
 
@@ -683,20 +695,6 @@ export const mockAndSaveBasicSetup = async (params?: MockBasicSetupParams): Prom
     })
 
     await databaseConnection().getRepository('platform').save(mockPlatform)
-    const hasPlanTable = databaseConnection().hasMetadata(PlatformPlanEntity)
-    if (hasPlanTable) {
-        const mockPlatformPlan = createMockPlatformPlan({
-            platformId: mockPlatform.id,
-            auditLogEnabled: true,
-            apiKeysEnabled: true,
-            customRolesEnabled: true,
-            teamProjectsLimit: TeamProjectsLimit.UNLIMITED,
-            customDomainsEnabled: true,
-            includedAiCredits: 1000,
-            ...params?.plan,
-        })
-        await databaseConnection().getRepository('platform_plan').upsert(mockPlatformPlan, ['platformId'])
-    }
 
     mockOwner.platformId = mockPlatform.id
     await databaseConnection().getRepository('user').save(mockOwner)

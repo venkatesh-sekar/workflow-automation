@@ -202,7 +202,16 @@
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
 3. ~~domainHelper — stub created~~ DONE
 4. ~~Service files with ee/ imports~~ DONE (all 30 files cleaned, iterations 14-42)
-5. ~~Test files referencing ee/ — remove or adapt~~ PARTIALLY DONE (cloud/ dir removed; test/helpers/auth.ts and test/helpers/mocks/index.ts still need cleanup)
+5. ~~Test files referencing ee/ — remove or adapt~~ DONE (cloud/ dir removed iter 43; auth.ts cleaned iter 44; mocks/index.ts cleaned iter 45)
 6. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)
 7. Non-ee typecheck errors — resolve all remaining 1962 TS errors
 8. Test suite — establish passing baseline
+
+## Iteration 45 — test/helpers/mocks/index.ts cleaned (LAST ee/ import!)
+- Removed 3 ee/ imports: generateApiKey, OAuthAppWithEncryptedSecret, PlatformPlanEntity
+- Inlined generateApiKey using secureApId (from @activepieces/shared) + cryptoUtils.hashSHA256 (from @activepieces/server-common)
+- Inlined OAuthAppWithEncryptedSecret as local type alias: `OAuthApp & { clientSecret: EncryptedObject }`
+- Removed PlatformPlanEntity hasMetadata check + platform_plan upsert block (entity was already removed from DB entities in iteration 15)
+- **ALL ee/ imports now removed from entire packages/ directory (0 remaining)**
+- Criteria 1 and 3 of fix-references phase are now fully met
+- Remaining: resolve 1962 non-ee TS errors (criteria 2,4) and establish test baseline (criteria 5)

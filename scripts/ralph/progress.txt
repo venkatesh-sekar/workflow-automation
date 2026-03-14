@@ -310,3 +310,10 @@
 - **Quality gate:** pass (typecheck: 1998 errors — fluctuation from cloud test dir deletion cascading; no new errors from this change)
 - **Learnings:** Error count fluctuates due to cascading effects from deleted cloud tests changing which files tsc evaluates. Remaining ee/ ref: test/helpers/mocks/index.ts (3 ee/ imports).
 ---
+
+## Iteration #45 - fix-references
+- **Change:** Removed 3 ee/ imports from test/helpers/mocks/index.ts: generateApiKey (inlined with secureApId+cryptoUtils), OAuthAppWithEncryptedSecret (inlined as local type), PlatformPlanEntity (removed hasMetadata check + platform_plan upsert). ZERO ee/ imports remain in entire codebase.
+- **Files:** packages/server/api/test/helpers/mocks/index.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (typecheck: 1962 errors, unchanged — test files not compiled by tsconfig.app.json)
+- **Learnings:** Criteria 1 and 3 fully met (all ee/ imports removed). Remaining: resolve 1962 non-ee TS errors + establish test baseline.
+---
