@@ -183,6 +183,13 @@
 - 2 source files with ee/ imports remain (down from 3): table.controller.ts, table.service.ts
 - Errors: 1970→1964 (−6)
 
+## Iteration 41 — table.controller.ts cleaned
+- Removed gitRepoService ee/ import (git sync on table delete = EE feature)
+- Removed entire gitRepoService.onDeleted() call in delete handler — community has no git repo integration
+- Also removed unused GitPushOperationType import from @activepieces/shared
+- 1 source file with ee/ imports remains: table.service.ts
+- Errors: 1964→1963 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

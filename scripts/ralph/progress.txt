@@ -282,3 +282,10 @@
 - **Quality gate:** pass (typecheck: 1964 errors, down from 1970)
 - **Learnings:** Entire delete endpoint was CLOUD-only dead code; all 4 ee/ imports were used exclusively in that block
 ---
+
+## Iteration #41 - fix-references
+- **Change:** Removed gitRepoService ee/ import from table.controller.ts, removed git sync call on table delete (community has no git repo integration), removed unused GitPushOperationType import
+- **Files:** packages/server/api/src/app/tables/table/table.controller.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md
+- **Quality gate:** pass (typecheck: 1963 errors, down from 1964)
+- **Learnings:** 1 source file with ee/ imports remains (table.service.ts), then test files
+---

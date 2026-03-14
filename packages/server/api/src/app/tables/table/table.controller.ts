@@ -1,9 +1,8 @@
 import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { ApId, CountTablesRequest, CreateTableRequest, CreateTableWebhookRequest, ExportTableResponse, GitPushOperationType, ListTablesRequest, Permission, PrincipalType, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, SharedTemplate, Table, UpdateTableRequest } from '@activepieces/shared'
+import { ApId, CountTablesRequest, CreateTableRequest, CreateTableWebhookRequest, ExportTableResponse, ListTablesRequest, Permission, PrincipalType, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, SharedTemplate, Table, UpdateTableRequest } from '@activepieces/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
-import { gitRepoService } from '../../ee/projects/project-release/git-sync/git-sync.service'
 import { userService } from '../../user/user-service'
 import { recordSideEffects } from '../record/record-side-effects'
 import { recordService } from '../record/record.service'
@@ -52,18 +51,6 @@ export const tablesController: FastifyPluginAsyncZod = async (fastify) => {
     })
 
     fastify.delete('/:id', DeleteRequest, async (request, reply) => {
-        const table = await tableService.getOneOrThrow({
-            projectId: request.projectId,
-            id: request.params.id,
-        })
-        await gitRepoService(request.log).onDeleted({
-            type: GitPushOperationType.DELETE_TABLE,
-            externalId: table.externalId,
-            userId: request.principal.id,
-            projectId: request.projectId,
-            platformId: request.principal.platform.id,
-            log: request.log,
-        })
         await tableService.delete({
             projectId: request.projectId,
             id: request.params.id,
