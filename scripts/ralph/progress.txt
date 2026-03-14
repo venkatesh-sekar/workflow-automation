@@ -93,3 +93,10 @@
 - **Quality gate:** N/A (phase transition)
 - **Learnings:** Promoted piece metadata architecture insights to global learnings: DB-driven piece registry, app-event-routing direct imports need cleanup, piece-sync-service syncs from cloud
 ---
+
+## Iteration #14 - fix-references
+- **Change:** Stripped all 36 ee/ imports from app.ts — removed rbacMiddleware hook, edition switch (kept only COMMUNITY path inline), domainHelper replaced with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations
+- **Files:** packages/server/api/src/app/app.ts, scripts/ralph/learnings/fix-references.md (new)
+- **Quality gate:** incremental (2089→2053 errors, -36 — matches removed imports; full gate deferred to phase completion)
+- **Learnings:** shared/src/lib/ee/ contains type definitions not EE server code — safe to keep; ~30 server files still have ee/ imports; postgres-connection.ts has ~20 ee migration imports
+---

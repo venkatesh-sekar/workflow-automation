@@ -1,5 +1,5 @@
 {
-  "iteration": 13,
+  "iteration": 14,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -66,7 +66,9 @@
         "TypeScript compiles cleanly with no errors",
         "All existing tests pass — test baseline established"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 14, "description": "Stripped all 36 ee/ imports from app.ts, removed rbacMiddleware hook, removed edition switch (kept only COMMUNITY path inline), replaced domainHelper with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations (alertsModule, licenseKeysModule, userModule, platformProjectBackgroundJobs). Errors reduced 2089→2053."}
+      ]
     },
     "auth-replace": {
       "status": "pending",
