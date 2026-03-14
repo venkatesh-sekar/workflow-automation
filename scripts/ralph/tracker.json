@@ -1,5 +1,5 @@
 {
-  "iteration": 11,
+  "iteration": 12,
   "current_phase": "copy-pieces",
   "phases": {
     "copy-server-core": {
@@ -52,7 +52,9 @@
         "No other pieces present",
         "Piece registry references only the 24 kept pieces"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 12, "description": "Copied 21 piece directories (19 core + 2 community, 561 files total), replaced workspace:* with file: refs. Code/Branches/Loops are built-in FlowActionTypes already in shared package."}
+      ]
     },
     "fix-references": {
       "status": "pending",

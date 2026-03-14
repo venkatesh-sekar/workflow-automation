@@ -79,3 +79,10 @@
 - **Quality gate:** N/A (phase transition)
 - **Learnings:** Promoted UI-specific insights to global learnings: ee-embed-sdk cleanup needed in fix-references, React 19 peer dep workaround, UI references pieces by string name only
 ---
+
+## Iteration #12 - copy-pieces
+- **Change:** Copied 21 piece directories (19 from core/, 2 from community/) — 561 files total. Replaced workspace:* with file: protocol in all 21 package.json files. Code/Branches/Loops are built-in FlowActionTypes (CODE, ROUTER, LOOP_ON_ITEMS) in the shared package, not separate pieces.
+- **Files:** packages/pieces/core/{19 dirs}, packages/pieces/community/{slack,postgres}, scripts/ralph/learnings/copy-pieces.md (new)
+- **Quality gate:** pass (server typecheck: 2089 TS2307 errors unchanged; UI typecheck: 4 errors unchanged)
+- **Learnings:** 3 of the "24 pieces" are engine-level constructs already present; actual piece directories = 21; core has 8 other pieces we excluded (crypto, qrcode, date-helper, subflows, tables, tags, webhook, xml)
+---
