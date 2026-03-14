@@ -44,3 +44,10 @@
 - **Quality gate:** pass (pieces-common typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
 - **Learnings:** Framework dist/ wasn't persisted from prior iteration — need to rebuild upstream deps each time; pieces-common follows same pattern as framework
 ---
+
+## Iteration #7 - copy-shared-packages
+- **Change:** Copied @activepieces/server-common package (38 src files), linked to local shared+framework via file: references, typecheck passes cleanly
+- **Files:** packages/server/common/ (new, 38 src files + package.json + tsconfigs)
+- **Quality gate:** pass (server-common typecheck clean, 0 errors; server/api still 2089 TS2307 as expected)
+- **Learnings:** server-common has many external deps (bullmq, fastify, typeorm, etc.) but all install fine; extends existing tsconfig.server.json
+---

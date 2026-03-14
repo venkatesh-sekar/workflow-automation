@@ -24,6 +24,12 @@
 - Framework must have dist/ built before common can typecheck (framework didn't have dist/ from prior iteration — had to rebuild)
 - Compiles cleanly with no errors
 
+## @activepieces/server-common
+- 38 src files, depends on pieces-framework + shared (among internal deps)
+- Has many external deps: bullmq, fastify, typeorm, ioredis, pino, redlock, axios, sentry, etc.
+- Same file: protocol pattern works for local deps
+- Compiles cleanly with no errors
+- Located at packages/server/common/ — extends ../tsconfig.server.json (already exists)
+
 ## Remaining packages to copy
-- @activepieces/server-common (packages/server/common/) — depends on pieces-framework + shared
 - @activepieces/engine (packages/server/engine/) — depends on shared
