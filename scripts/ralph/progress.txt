@@ -107,3 +107,10 @@
 - **Quality gate:** pass (incremental: 2053→2036, −17 matches removed imports)
 - **Learnings:** Non-ee entities kept: TemplateEntity, PlatformAnalyticsReportEntity, EventDestinationEntity
 ---
+
+## Iteration #16 - fix-references
+- **Change:** Removed all 20 ee/ migration imports from postgres-connection.ts and their references in the migrations array
+- **Files:** packages/server/api/src/app/database/postgres-connection.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/fix-references.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (typecheck errors reduced 2036→2016, −20 exact match)
+- **Learnings:** Migrations array has many non-ee migrations that create tables for features that straddle ee/community (AddSigningKey, AddApiKeys, etc.) — these are fine to keep. role-seed.ts has separate ee/ import to fix.
+---

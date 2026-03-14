@@ -15,9 +15,14 @@
 - Kept non-ee entities: TemplateEntity, PlatformAnalyticsReportEntity, EventDestinationEntity
 - Errors: 2053→2036 (−17, exact match)
 
+## Iteration 16 — postgres-connection.ts cleaned
+- Removed 20 ee/ migration imports and their references in migrations array
+- Migrations array also has many non-ee migrations that reference ee-related entities (e.g. AddSigningKey, AddOAuth2AppEntiity, AddApiKeys, AddAuditEvents, AddGitRepoMigration, etc.) — these are NOT from ee/ imports but from community migrations that create tables for features that straddle ee/community. Leave them for now.
+- role-seed.ts imports ProjectRoleEntity from ee/ — needs separate fix
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
-2. postgres-connection.ts — remove ee migration imports (~20 imports)
+2. ~~postgres-connection.ts — remove ee migration imports~~ DONE
 3. Service files with ee/ imports — stub or remove (domainHelper, projectMemberService, platformPlanService, etc.)
 4. Test files referencing ee/ — remove or adapt
 5. app-event-routing.module.ts — clean piece imports (facebook-leads, intercom, etc.)

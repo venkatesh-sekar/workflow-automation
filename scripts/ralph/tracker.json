@@ -1,5 +1,5 @@
 {
-  "iteration": 15,
+  "iteration": 16,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -68,7 +68,8 @@
       ],
       "completed_items": [
         {"iteration": 14, "description": "Stripped all 36 ee/ imports from app.ts, removed rbacMiddleware hook, removed edition switch (kept only COMMUNITY path inline), replaced domainHelper with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations (alertsModule, licenseKeysModule, userModule, platformProjectBackgroundJobs). Errors reduced 2089→2053."},
-        {"iteration": 15, "description": "Removed all 17 ee/ entity imports from database-connection.ts and their references in getEntities() array. Removed: AlertEntity, ApiKeyEntity, AppCredentialEntity, AppSumoEntity, AuditEventEntity, OtpEntity, ConnectionKeyEntity, CustomDomainEntity, OAuthAppEntity, PlatformPlanEntity, ProjectMemberEntity, ProjectPlanEntity, GitRepoEntity, ProjectReleaseEntity, ProjectRoleEntity, SecretManagerEntity, SigningKeyEntity. Errors reduced 2053→2036."}
+        {"iteration": 15, "description": "Removed all 17 ee/ entity imports from database-connection.ts and their references in getEntities() array. Removed: AlertEntity, ApiKeyEntity, AppCredentialEntity, AppSumoEntity, AuditEventEntity, OtpEntity, ConnectionKeyEntity, CustomDomainEntity, OAuthAppEntity, PlatformPlanEntity, ProjectMemberEntity, ProjectPlanEntity, GitRepoEntity, ProjectReleaseEntity, ProjectRoleEntity, SecretManagerEntity, SigningKeyEntity. Errors reduced 2053→2036."},
+        {"iteration": 16, "description": "Removed all 20 ee/ migration imports from postgres-connection.ts and their references in the migrations array. Removed migrations for: Stripe/billing, templates, project members, platform, custom domain, AppSumo, referral, datasources limit, etc. Also found role-seed.ts has ee/ import (separate fix). Errors reduced 2036→2016."}
       ]
     },
     "auth-replace": {
