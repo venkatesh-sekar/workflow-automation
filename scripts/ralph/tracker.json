@@ -1,5 +1,5 @@
 {
-  "iteration": 22,
+  "iteration": 23,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -75,7 +75,8 @@
         {"iteration": 19, "description": "Created community-edition domainHelper stub at helper/domain-helper.ts, updated 7 files to import from new location instead of ee/custom-domains/domain-helper. Errors reduced 2012→2007."},
         {"iteration": 20, "description": "Removed alertsService ee/ import from flow-run-hooks.ts, removed dead paidEditions code (alerting + early return). Simplified to community-only logic: just websocket notification on run finish."},
         {"iteration": 21, "description": "Stubbed rbacService ee/ import in authorize.ts with inline no-op — community edition allows all project access (no RBAC roles). Errors reduced 2005→2004."},
-        {"iteration": 22, "description": "Stubbed emailService ee/ import in badge-service.ts with inline no-op — community edition skips badge-awarded emails. Error count steady at 2004."}
+        {"iteration": 22, "description": "Stubbed emailService ee/ import in badge-service.ts with inline no-op — community edition skips badge-awarded emails. Error count steady at 2004."},
+        {"iteration": 23, "description": "Removed otpService ee/ import from authentication.service.ts, removed CLOUD-only OTP email verification code and edition switch, simplified to community-only auto-verify. Also removed dead getPersonalPlatformIdForIdentity CLOUD logic. Errors reduced 2004→2003."}
       ]
     },
     "auth-replace": {

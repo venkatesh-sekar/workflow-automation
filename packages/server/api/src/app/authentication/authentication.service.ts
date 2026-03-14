@@ -1,9 +1,7 @@
 import { cryptoUtils } from '@activepieces/server-common'
-import { ActivepiecesError, ApEdition, ApFlagId, assertNotNullOrUndefined, AuthenticationResponse, ErrorCode, isNil, OtpType, PlatformRole, PlatformWithoutSensitiveData, ProjectType, User, UserIdentity, UserIdentityProvider } from '@activepieces/shared'
+import { ActivepiecesError, ApFlagId, assertNotNullOrUndefined, AuthenticationResponse, ErrorCode, isNil, PlatformRole, PlatformWithoutSensitiveData, ProjectType, User, UserIdentity, UserIdentityProvider } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
-import { otpService } from '../ee/authentication/otp/otp-service'
 import { flagService } from '../flags/flag.service'
-import { system } from '../helper/system/system'
 import { platformService } from '../platform/platform.service'
 import { platformUtils } from '../platform/platform.utils'
 import { projectService } from '../project/project-service'
@@ -212,21 +210,8 @@ async function createUserAndPlatform(userIdentity: UserIdentity, log: FastifyBas
         type: ProjectType.PERSONAL,
     })
 
-    const cloudEdition = system.getEdition()
-
-    switch (cloudEdition) {
-        case ApEdition.CLOUD:
-            await otpService(log).createAndSend({
-                platformId: platform.id,
-                email: userIdentity.email,
-                type: OtpType.EMAIL_VERIFICATION,
-            })
-            break
-        case ApEdition.COMMUNITY:
-        case ApEdition.ENTERPRISE:
-            await userIdentityService(log).verify(userIdentity.id)
-            break
-    }
+    // Community edition: auto-verify identity (no OTP email verification)
+    await userIdentityService(log).verify(userIdentity.id)
 
     await flagService(log).save({
         id: ApFlagId.USER_CREATED,
@@ -254,13 +239,8 @@ async function getPersonalPlatformIdForFederatedAuthn(email: string, log: Fastif
     return getPersonalPlatformIdForIdentity(identity.id, log)
 }
 
-async function getPersonalPlatformIdForIdentity(identityId: string, log: FastifyBaseLogger): Promise<string | null> {
-    const edition = system.getEdition()
-    if (edition === ApEdition.CLOUD) {
-        const platforms = await platformService(log).listPlatformsForIdentityWithAtleastProject({ identityId })
-        const platform = platforms.find((platform) => !platformUtils.isCustomerOnDedicatedDomain(platform))
-        return platform?.id ?? null
-    }
+async function getPersonalPlatformIdForIdentity(_identityId: string, _log: FastifyBaseLogger): Promise<string | null> {
+    // Community edition: no personal platform lookup (CLOUD-only feature)
     return null
 }
 

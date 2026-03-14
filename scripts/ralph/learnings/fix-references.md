@@ -51,6 +51,13 @@
 - Replaced emailService ee/ import with inline no-op (community edition skips badge emails)
 - Pattern consistent: for service ee/ imports, inline no-op stub with matching function signature
 
+## Iteration 23 — authentication.service.ts cleaned
+- Removed otpService ee/ import (OTP = CLOUD-only email verification)
+- Removed ApEdition switch in createUserAndPlatform — kept only community path (auto-verify)
+- Removed dead CLOUD logic in getPersonalPlatformIdForIdentity (always returned null for community)
+- Also cleaned unused imports: OtpType, ApEdition, system
+- Errors: 2004→2003 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

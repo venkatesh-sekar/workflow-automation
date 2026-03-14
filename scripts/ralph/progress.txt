@@ -156,3 +156,10 @@
 - **Quality gate:** pass (typecheck: 2004 errors, no new errors introduced)
 - **Learnings:** Consistent pattern for ee/ service stubs: inline no-op with matching signature
 ---
+
+## Iteration #23 - fix-references
+- **Change:** Removed otpService ee/ import from authentication.service.ts, removed CLOUD-only OTP email verification and edition switch, simplified to community-only auto-verify. Removed dead getPersonalPlatformIdForIdentity CLOUD logic.
+- **Files:** packages/server/api/src/app/authentication/authentication.service.ts
+- **Quality gate:** pass (typecheck: 2003 errors, down from 2004)
+- **Learnings:** Edition switch blocks with CLOUD-only ee/ calls are dead code — remove entire switch and keep only COMMUNITY path
+---
