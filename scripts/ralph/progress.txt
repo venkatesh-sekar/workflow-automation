@@ -338,3 +338,10 @@
 - **Quality gate:** pass (typecheck: 16 errors, down from 47)
 - **Learnings:** When two file:-linked packages share a dependency, the child should use peerDependencies to avoid TypeScript treating same-version types as incompatible due to different physical paths.
 ---
+
+## Iteration #49 - fix-references
+- **Change:** Created worker-stub.ts with type definitions and no-op value exports for 'worker' module, added tsconfig paths mapping
+- **Files:** packages/server/api/src/app/helper/worker-stub.ts (new), packages/server/api/tsconfig.app.json (paths added)
+- **Quality gate:** pass (errors 16→8, no errors in stub itself)
+- **Learnings:** tsconfig paths mapping is effective for stubbing uncopied packages; worker types come from shared+pieces-framework, not worker package itself
+---
