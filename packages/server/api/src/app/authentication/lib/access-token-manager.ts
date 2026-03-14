@@ -3,7 +3,6 @@ import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { jwtUtils } from '../../helper/jwt-utils'
 import { userService } from '../../user/user-service'
-import { userIdentityService } from '../user-identity/user-identity-service'
 
 export const accessTokenManager = (log: FastifyBaseLogger) => ({
     async generateToken(principal: Principal, expiresInSeconds: number = dayjs.duration(7, 'day').asSeconds()): Promise<string> {
@@ -80,9 +79,8 @@ async function assertUserSession(log: FastifyBaseLogger, decoded: Principal | Pr
     if (decoded.type !== PrincipalType.USER) return
 
     const user = await userService(log).getOneOrFail({ id: decoded.id })
-    const identity = await userIdentityService(log).getOneOrFail({ id: user.identityId })
-    const isExpired = (identity.tokenVersion ?? null) !== (decoded.tokenVersion ?? null)
-    if (isExpired || user.status === UserStatus.INACTIVE || !identity.verified) {
+    const isExpired = (user.tokenVersion ?? null) !== (decoded.tokenVersion ?? null)
+    if (isExpired || user.status === UserStatus.INACTIVE || !user.verified) {
         throw new ActivepiecesError({
             code: ErrorCode.SESSION_EXPIRED,
             params: {

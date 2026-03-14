@@ -457,3 +457,10 @@
 - **Quality gate:** pass (0 TS errors, 165 tests pass)
 - **Learnings:** User entity now has all fields needed to replace user-identity lookups in access-token-manager and auth service
 ---
+
+## Iteration #66 - auth-replace
+- **Change:** Updated access-token-manager assertUserSession to use user.verified/tokenVersion directly instead of fetching user-identity. Removed userIdentityService import.
+- **Files:** packages/server/api/src/app/authentication/lib/access-token-manager.ts
+- **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
+- **Learnings:** One fewer file depending on user-identity. Next: update authentication.service.ts teamLogin.
+---
