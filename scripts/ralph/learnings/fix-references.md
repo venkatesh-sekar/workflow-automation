@@ -84,6 +84,14 @@
 - Removed unused imports: isNil, ApEdition, PlatformWithoutSensitiveData, system
 - Pattern: when a function is guarded by an edition check that short-circuits for COMMUNITY, remove the entire function
 
+## Iteration 28 — ee-authorization stubs created
+- Created helper/ee-authorization-stub.ts with 3 no-op Fastify preHandler hooks
+- Used local `HookHandler` type alias instead of importing `onRequestAsyncHookHandler` from fastify (avoids TS2307 since fastify types aren't installed)
+- Updated 3 files: platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts
+- user-invitation.module.ts also imports assertRoleHasPermission and projectRoleService from ee/ — needs separate stubs
+- Pattern: for shared ee/ stubs used by multiple files, create a helper file rather than inline stubs
+- Errors: 1997→1992 (−5)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

@@ -1,5 +1,5 @@
 {
-  "iteration": 27,
+  "iteration": 28,
   "current_phase": "fix-references",
   "phases": {
     "copy-server-core": {
@@ -80,7 +80,8 @@
         {"iteration": 24, "description": "Removed federatedAuthnService ee/ import from flag.service.ts, replaced THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL value with empty string (no federated auth in community edition). Errors reduced 2003→2002."},
         {"iteration": 25, "description": "Removed platformProjectService and projectMemberRepo ee/ imports from user-service.ts, simplified getUsersForProject to community-only (platform admins only, no RBAC members), removed platformProjectService.deletePersonalProjectForUser from delete(). Errors reduced 2002→1998."},
         {"iteration": 26, "description": "Removed projectMemberService ee/ import from websockets.service.ts, replaced RBAC role check in validateProjectId with community no-op (all authenticated users allowed). Errors reduced 1998→1997."},
-        {"iteration": 27, "description": "Removed customDomainService ee/ import from platform.utils.ts, removed getPlatformIdForHostname (always null in community), simplified isCustomerOnDedicatedDomain to return false (no custom domains in community). Removed unused imports (isNil, ApEdition, PlatformWithoutSensitiveData, system)."}
+        {"iteration": 27, "description": "Removed customDomainService ee/ import from platform.utils.ts, removed getPlatformIdForHostname (always null in community), simplified isCustomerOnDedicatedDomain to return false (no custom domains in community). Removed unused imports (isNil, ApEdition, PlatformWithoutSensitiveData, system)."},
+        {"iteration": 28, "description": "Created ee-authorization-stub.ts with no-op community stubs for platformMustHaveFeatureEnabled, platformMustBeOwnedByCurrentUser, projectMustBeTeamType. Updated 3 files: platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts. Errors reduced 1997→1992."}
       ]
     },
     "auth-replace": {

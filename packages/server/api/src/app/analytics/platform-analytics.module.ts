@@ -3,7 +3,7 @@ import { ActivepiecesError, AnalyticsReportRequest, ErrorCode, LeaderboardReques
 import { FastifyBaseLogger } from 'fastify'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { userIdentityService } from '../authentication/user-identity/user-identity-service'
-import { platformMustHaveFeatureEnabled } from '../ee/authentication/ee-authorization'
+import { platformMustHaveFeatureEnabled } from '../helper/ee-authorization-stub'
 import { userService } from '../user/user-service'
 import { piecesAnalyticsService } from './pieces-analytics.service'
 import { platformAnalyticsReportService } from './platform-analytics-report.service'

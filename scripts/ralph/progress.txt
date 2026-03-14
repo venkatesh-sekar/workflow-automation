@@ -191,3 +191,10 @@
 - **Quality gate:** pass (typecheck: 1997 errors, ee/ import error eliminated but net count unchanged due to other pre-existing errors)
 - **Learnings:** Functions guarded by edition === COMMUNITY returning null are dead code in community-only fork — remove entirely rather than stub
 ---
+
+## Iteration #28 - fix-references
+- **Change:** Created ee-authorization-stub.ts with no-op community stubs for platformMustHaveFeatureEnabled, platformMustBeOwnedByCurrentUser, projectMustBeTeamType. Updated 3 files to import from stub.
+- **Files:** helper/ee-authorization-stub.ts (new), platform-analytics.module.ts, template.controller.ts, user-invitation.module.ts
+- **Quality gate:** pass (typecheck: 1992 errors, down from 1997)
+- **Learnings:** Use local type alias for Fastify hook types to avoid TS2307; user-invitation.module.ts still has 2 more ee/ imports (assertRoleHasPermission, projectRoleService)
+---
