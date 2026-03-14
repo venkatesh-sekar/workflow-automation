@@ -126,6 +126,14 @@
 - 9 source files with ee/ imports remain (down from 10)
 - Errors: 1982→1981 (−1)
 
+## Iteration 34 — app-connection-worker-controller.ts cleaned
+- Removed secretManagersService ee/ import (external secret manager = EE feature)
+- Community edition: no external secret manager, connections store values directly in DB
+- Simplified to return appConnection.value directly (removed scope check + resolveObject call)
+- Also removed unused AppConnectionScope import
+- 8 source files with ee/ imports remain (down from 9)
+- Errors: 1981→1980 (−1)
+
 ## Categories of remaining work
 1. ~~database-connection.ts — remove ee entity imports~~ DONE
 2. ~~postgres-connection.ts — remove ee migration imports~~ DONE

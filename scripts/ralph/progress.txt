@@ -233,3 +233,10 @@
 - **Quality gate:** pass (typecheck: 1981 errors, down from 1982)
 - **Learnings:** Enterprise piece filtering is an EE-only feature; community edition shows all pieces
 ---
+
+## Iteration #34 - fix-references
+- **Change:** Removed secretManagersService ee/ import from app-connection-worker-controller.ts. Community edition returns stored connection value directly (no external secret manager). Also removed unused AppConnectionScope import.
+- **Files:** packages/server/api/src/app/app-connection/app-connection-worker-controller.ts
+- **Quality gate:** pass (1980 errors, down from 1981)
+- **Learnings:** secretManagersService resolves secrets from external vault — not needed in community edition where values are stored directly in DB
+---

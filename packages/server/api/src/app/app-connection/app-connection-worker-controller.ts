@@ -2,7 +2,6 @@ import { securityAccess } from '@activepieces/server-common'
 import {
     ActivepiecesError,
     AppConnection,
-    AppConnectionScope,
     assertNotNullOrUndefined,
     EnginePrincipal,
     ErrorCode,
@@ -10,7 +9,6 @@ import {
     isNil,
 } from '@activepieces/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import { secretManagersService } from '../ee/secret-managers/secret-managers.service'
 import { appConnectionService } from './app-connection-service/app-connection-service'
 
 export const appConnectionWorkerController: FastifyPluginAsyncZod = async (app) => {
@@ -36,7 +34,7 @@ export const appConnectionWorkerController: FastifyPluginAsyncZod = async (app) 
 
         return {
             ...appConnection,
-            value: appConnection.scope === AppConnectionScope.PROJECT ? appConnection.value : await secretManagersService(request.log).resolveObject({ value: appConnection.value, platformId: enginePrincipal.platform.id, throwOnFailure: false }),
+            value: appConnection.value,
         }
     },
     )
