@@ -52,3 +52,10 @@
 - **Files changed:** packages/web/src/app/components/project-layout/index.tsx
 - **Learnings:** Content cards on bg-sidebar have 3 separation signals (color contrast, border, shadow). Shadow is redundant — remove it entirely, don't downgrade to shadow-sm. The spec prohibition is absolute for card-level separation.
 ---
+
+## Iteration #8 - dashboard-layout
+- **Change:** Removed same redundant verbose shadow from builder-layout content card — matches project-layout fix from iteration #7. Changed `'rounded-xl shadow-[...] border'` to `'rounded-xl border'`. Dashboard-layout area now complete, advancing to automations-page.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/builder-layout/index.tsx
+- **Learnings:** Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px) — wrapper padding inconsistency to unify in a future iteration.
+---
