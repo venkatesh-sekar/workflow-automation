@@ -1,5 +1,5 @@
 {
-  "iteration": 94,
+  "iteration": 95,
   "current_phase": "build-audit-logs",
   "phases": {
     "copy-server-core": {
@@ -199,7 +199,8 @@
         {"iteration": 91, "description": "Created audit-event.module.ts with GET /v1/audit-events endpoint (project-scoped, USER principal). Registered auditEventModule in app.ts. All 171 tests pass."},
         {"iteration": 92, "description": "Added audit event hooks to flow controller for FLOW_CREATED, FLOW_UPDATED, FLOW_STATUS_CHANGED (enable/disable), and FLOW_DELETED events. All 171 tests pass."},
         {"iteration": 93, "description": "Added audit event hooks to app-connection controller for CONNECTION_UPSERTED and CONNECTION_DELETED events. Guarded with PrincipalType.USER check. All 171 tests pass."},
-        {"iteration": 94, "description": "Added audit event hooks to user-invitation controller for MEMBER_INVITED (create) and MEMBER_REMOVED (delete) events. Guarded with PrincipalType.USER and InvitationType.PROJECT checks. All 171 tests pass."}
+        {"iteration": 94, "description": "Added audit event hooks to user-invitation controller for MEMBER_INVITED (create) and MEMBER_REMOVED (delete) events. Guarded with PrincipalType.USER and InvitationType.PROJECT checks. All 171 tests pass."},
+        {"iteration": 95, "description": "Added 7 integration tests for audit events: list empty, list with events, project isolation, DESC ordering, limit parameter, FLOW_CREATED hook, FLOW_DELETED hook. All 178 tests pass."}
       ]
     },
     "simplify-alerts": {

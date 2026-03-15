@@ -34,3 +34,9 @@
 - Invitation create with InvitationType.PROJECT = member invited; delete = member removed
 - Guard with both PrincipalType.USER and InvitationType.PROJECT to avoid logging platform-level invitations
 - invitation.email available on both create (from request.body) and delete (from fetched invitation)
+
+## Test Pattern
+- Integration tests use createTestContext(app!) for authenticated project-scoped requests
+- Audit events can be inserted directly via db.save('audit_event', {...}) for list endpoint tests
+- Flow controller hooks verified end-to-end: POST /v1/flows creates FLOW_CREATED event, DELETE creates FLOW_DELETED
+- Test baseline after audit event tests: 22 suites, 178 tests

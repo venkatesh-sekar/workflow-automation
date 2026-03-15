@@ -660,3 +660,10 @@
 - **Quality gate:** pass (0 TS errors, 171/171 tests pass)
 - **Learnings:** User invitations are the member management mechanism; guard with PrincipalType.USER + InvitationType.PROJECT
 ---
+
+## Iteration #95 - build-audit-logs
+- **Change:** Added 7 integration tests for audit events: list empty, list with events, project isolation, DESC ordering, limit parameter, FLOW_CREATED hook, FLOW_DELETED hook
+- **Files:** packages/server/api/test/integration/ce/audit-event/audit-event.test.ts (new)
+- **Quality gate:** pass (0 TS errors, 22 suites / 178 tests pass)
+- **Learnings:** Test baseline now 178 tests across 22 suites
+---
