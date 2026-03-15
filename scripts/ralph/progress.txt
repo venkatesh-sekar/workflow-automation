@@ -576,3 +576,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** Remaining AP_ references in codebase are code variable names (AP_NODE_SIZE, AP_MAXIMUM_PROFILE_PICTURE_SIZE, AP_PAUSED_FLOW_TIMEOUT_DAYS, DB_GLOBAL_KEY) — not env var references, no need to rename
 ---
+
+## Iteration #83 - env-rebrand (phase completion)
+- **Change:** Verified all 5 acceptance criteria met; marked env-rebrand complete; advanced to strip-ai-providers
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
+- **Learnings:** Promoted env var prefix insight to global learnings. Phase took 4 iterations (80-83).
+---

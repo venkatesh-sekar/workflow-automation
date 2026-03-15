@@ -35,6 +35,10 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - API key format: `flow_<64-hex>`, stored as SHA-256 hash in project.apiKeyHash
 - project_member + project_role tables exist via migrations (EE entities removed) — used for membership checks
 
+## Env Vars (complete)
+- All env vars use FLOW_ prefix (was AP_). Prefix applied at read time in system-props.ts and env-migrations.ts
+- Enum values (e.g. ENCRYPTION_KEY) don't have the prefix — prefix added dynamically
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts
