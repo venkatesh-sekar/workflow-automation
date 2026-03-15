@@ -70,7 +70,14 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
             return modelsCache.get(cacheKey)!
         }
 
-        const data = await aiProviders[provider].listModels(auth, config)
+        const providerImpl = aiProviders[provider]
+        if (!providerImpl) {
+            throw new ActivepiecesError({
+                code: ErrorCode.VALIDATION,
+                params: { message: `Unsupported AI provider: ${provider}` },
+            })
+        }
+        const data = await providerImpl.listModels(auth, config)
 
         modelsCache.set(cacheKey, data.map(model => ({
             id: model.id,
@@ -128,12 +135,18 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
     },
     async validateProviderCredentials(provider: AIProviderName, auth: AIProviderAuthConfig, config: AIProviderConfig): Promise<void> {
         const providerStrategy = aiProviders[provider]
+        if (!providerStrategy) {
+            throw new ActivepiecesError({
+                code: ErrorCode.VALIDATION,
+                params: { message: `Unsupported AI provider: ${provider}` },
+            })
+        }
         try {
             await providerStrategy.validateConnection(auth, config, log)
         }
         catch (error: unknown) {
             const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-            const includeHttpErrorInMessage = provider === AIProviderName.CLOUDFLARE_GATEWAY
+            const includeHttpErrorInMessage = false
             log.error({ err: error }, '[aiProviderService#validateProviderCredentials] Failed to validate provider credentials')
             throw new ActivepiecesError({
                 code: ErrorCode.INVALID_AI_PROVIDER_CREDENTIALS,

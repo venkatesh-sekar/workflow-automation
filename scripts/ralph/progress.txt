@@ -583,3 +583,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
 - **Learnings:** Promoted env var prefix insight to global learnings. Phase took 4 iterations (80-83).
 ---
+
+## Iteration #84 - strip-ai-providers
+- **Change:** Stripped server provider registry to OpenAI only. Deleted 6 provider implementation files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. Removed CLOUDFLARE_GATEWAY-specific error handling.
+- **Files:** packages/server/api/src/app/ai/providers/index.ts (rewritten), packages/server/api/src/app/ai/ai-provider-service.ts (updated), 6 provider files deleted
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** Provider registry typed as Partial<Record> since we no longer cover all enum values. Shared types still export all providers — will strip in next iteration.
+---

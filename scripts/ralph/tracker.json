@@ -1,5 +1,5 @@
 {
-  "iteration": 83,
+  "iteration": 84,
   "current_phase": "strip-ai-providers",
   "phases": {
     "copy-server-core": {
@@ -176,7 +176,9 @@
         "Agents system untouched",
         "Tests updated for single-provider setup"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 84, "description": "Stripped provider registry to OpenAI only. Deleted 6 provider files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. All 171 tests pass."}
+      ]
     },
     "build-audit-logs": {
       "status": "pending",
