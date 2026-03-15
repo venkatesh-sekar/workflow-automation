@@ -331,3 +331,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** All three were dead code — defined in enum/validator/defaults but never consumed by system.get() anywhere
 ---
+
+## Iteration #48 - strip-billing-and-licensing
+- **Change:** Removed cloud API base URLs: api.activepieces.com from flow-axios.ts baseURL (dead — all callers use absolute URLs), cloud.activepieces.com from swagger servers in app.ts, cloud.activepieces.com dev mode from web api.ts (isRunningCloudInDevMode removed)
+- **Files:** 3 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Test fixture URLs (cloud.activepieces.com in test files) will be cleaned in strip-external-urls phase
+---

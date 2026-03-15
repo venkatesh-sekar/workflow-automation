@@ -49,4 +49,6 @@
 - Cloudflare/Featurebase/SCIM env vars removed: all were dead (defined in enum+validator+defaults but never consumed by system.get)
 - SCIM shared types (packages/shared/src/lib/ee/scim/) still exist and are exported — only consumed by shared barrel, no server code uses them
 - features-status.tsx still shows 'SCIM' label — just a UI display item, not a service dependency
-- Phase almost complete: remaining criteria to verify are "All tests pass" (baseline 22 failures pre-existing) and whether any criteria were missed
+- Cloud API base URLs existed in 3 places: flow-axios.ts (api.activepieces.com), app.ts swagger servers (cloud.activepieces.com/api), web api.ts (cloud dev mode). All callers of flowAxios use absolute URLs so baseURL was dead.
+- Test files still contain cloud.activepieces.com as fixture/mock URLs — harmless, will be cleaned in strip-external-urls phase
+- Phase complete: all criteria verified against codebase

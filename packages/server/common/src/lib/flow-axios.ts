@@ -4,7 +4,6 @@ import axiosRetry from 'axios-retry'
 
 
 export const flowAxios = axios.create({
-    baseURL: 'https://api.activepieces.com',
     headers: {
         'Content-Type': 'application/json',
     },

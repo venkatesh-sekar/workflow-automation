@@ -60,12 +60,7 @@ export const setupApp = async (app: FastifyInstance): Promise<FastifyInstance> =
     await app.register(swagger as any, {
         hideUntagged: true,
         openapi: {
-            servers: [
-                {
-                    url: 'https://cloud.activepieces.com/api',
-                    description: 'Production Server',
-                },
-            ],
+            servers: [],
             components: {
                 securitySchemes: {
                     apiKey: {
