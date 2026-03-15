@@ -123,7 +123,7 @@ export default function TriggerHealthPage() {
       case STATUS.FAULT:
         return <XCircle size={16} className="text-destructive" />;
       default:
-        return <AlertCircle size={16} className="text-gray-500" />;
+        return <AlertCircle size={16} className="text-muted-foreground" />;
     }
   };
 
@@ -136,7 +136,7 @@ export default function TriggerHealthPage() {
       case STATUS.FAULT:
         return 'text-destructive';
       default:
-        return 'text-gray-600';
+        return 'text-muted-foreground';
     }
   };
 

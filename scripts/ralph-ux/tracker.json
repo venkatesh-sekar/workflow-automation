@@ -1,5 +1,5 @@
 {
-  "iteration": 18,
+  "iteration": 19,
   "current_area": "platform-admin-pages",
   "queue": [
     "login-auth",
@@ -150,6 +150,14 @@
       "change": "Fix health page link color — replaced hardcoded text-blue-600 dark:text-blue-500 with text-primary, added underline-offset-4 and transition-colors duration-150 for design system consistency",
       "files_modified": ["packages/web/src/app/routes/platform/infra/health/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "platform-admin-pages",
+      "iteration": 19,
+      "date": "2026-03-16",
+      "change": "Fix triggers page default status colors — replaced hardcoded text-gray-500 and text-gray-600 with text-muted-foreground in getStatusIcon and getStatusColor default cases, aligning unknown/indeterminate status to 220° cool blue-gray token system",
+      "files_modified": ["packages/web/src/app/routes/platform/infra/triggers/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -175,6 +183,7 @@
     "Any sidebar-like nav panel in dialogs (settings, etc.) must use the same active-state pattern as the main sidebar: bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary. Include hover override on active items to prevent hover:bg-sidebar-accent from overriding the primary tint.",
     "Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx line 128 is the canonical text-lg heading style — all equivalent headings should match it.",
     "CenteredPage is used by 10 platform admin pages — fixing shared layout components propagates design consistency more efficiently than fixing individual pages.",
-    "For inline text links in content areas, use text-primary font-medium hover:underline underline-offset-4 transition-colors duration-150. Always remove dark: prefixed overrides — this is a light-mode-only redesign. Never use hardcoded Tailwind colors (text-blue-600) for links when a design token exists."
+    "For inline text links in content areas, use text-primary font-medium hover:underline underline-offset-4 transition-colors duration-150. Always remove dark: prefixed overrides — this is a light-mode-only redesign. Never use hardcoded Tailwind colors (text-blue-600) for links when a design token exists.",
+    "For status icon/color default cases, use text-muted-foreground — the design system token for secondary/indeterminate content. Don't use two different gray levels (gray-500 vs gray-600) for icon and text of the same semantic state."
   ]
 }
