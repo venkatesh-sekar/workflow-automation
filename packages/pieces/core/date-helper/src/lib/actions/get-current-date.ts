@@ -5,7 +5,7 @@ import {
   timeFormatDescription,
   timeZoneOptions,
   getCorrectedFormat,
-  apDayjs
+  flowDayjs
 } from '../common';
 
 export const getCurrentDate = createAction({
@@ -42,6 +42,6 @@ export const getCurrentDate = createAction({
   async run(context) {    
     const timeFormat = getCorrectedFormat(context.propsValue.timeFormat);
     const timeZone = context.propsValue.timeZone;
-    return { result: apDayjs().tz(timeZone).format(timeFormat) };
+    return { result: flowDayjs().tz(timeZone).format(timeFormat) };
   },
 });

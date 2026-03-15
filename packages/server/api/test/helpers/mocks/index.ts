@@ -1,5 +1,5 @@
 import { LATEST_CONTEXT_VERSION, PieceMetadata } from '@flow/pieces-framework'
-import { apDayjs } from '@flow/server-common'
+import { flowDayjs } from '@flow/server-common'
 import {
     AiCreditsAutoTopUpState,
     AIProvider,
@@ -244,8 +244,8 @@ export const createMockPlatformPlan = (platformPlan?: Partial<PlatformPlan>): Pl
         teamProjectsLimit: platformPlan?.teamProjectsLimit ?? TeamProjectsLimit.NONE,
         projectRolesEnabled: platformPlan?.projectRolesEnabled ?? false,
         customDomainsEnabled: platformPlan?.customDomainsEnabled ?? false,
-        stripeSubscriptionEndDate: apDayjs().endOf('month').unix(),
-        stripeSubscriptionStartDate: apDayjs().startOf('month').unix(),
+        stripeSubscriptionEndDate: flowDayjs().endOf('month').unix(),
+        stripeSubscriptionStartDate: flowDayjs().startOf('month').unix(),
         plan: platformPlan?.plan,
         secretManagersEnabled: platformPlan?.secretManagersEnabled ?? false,
         scimEnabled: platformPlan?.scimEnabled ?? false,

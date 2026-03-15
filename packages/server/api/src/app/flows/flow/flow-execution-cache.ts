@@ -1,4 +1,4 @@
-import { apDayjsDuration } from '@flow/server-common'
+import { flowDayjsDuration } from '@flow/server-common'
 import {  FlowExecutionState, flowExecutionStateKey, FlowId, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { distributedStore } from '../../database/redis-connections'
@@ -16,7 +16,7 @@ export const flowExecutionCache = (log: FastifyBaseLogger) => ({
         const cachedValue = await distributedStore.get<FlowExecutionState>(flowExecutionStateKey(params.flowId))
         if (isNil(cachedValue)) {
             const flowExecutionCache = await getFlowExecutionCache(params, log)
-            await distributedStore.put(flowExecutionStateKey(params.flowId), flowExecutionCache, apDayjsDuration(30, 'day').asSeconds())
+            await distributedStore.put(flowExecutionStateKey(params.flowId), flowExecutionCache, flowDayjsDuration(30, 'day').asSeconds())
             return flowExecutionCache
         }
         return cachedValue

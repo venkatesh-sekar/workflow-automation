@@ -8,7 +8,7 @@ import {
   timeFormatDescription,
   timeZoneOptions,
   getCorrectedFormat,
-  apDayjs,
+  flowDayjs,
 } from '../common';
 import { z } from 'zod';
 import { propsValidation } from '@flow/pieces-common';
@@ -86,7 +86,7 @@ export const nextDayofWeek = createAction({
     const currentTime = context.propsValue.currentTime as boolean;
     let time = context.propsValue.time as string;
 
-    let nextOccurrence = apDayjs().tz(timeZone);
+    let nextOccurrence = flowDayjs().tz(timeZone);
 
     if (currentTime === true) {
       time = `${nextOccurrence.hour()}:${nextOccurrence.minute()}`;
@@ -114,7 +114,7 @@ export const nextDayofWeek = createAction({
     let dayDiff = dayIndex - nextOccurrence.day();
     if (
       dayDiff < 0 ||
-      (dayDiff === 0 && nextOccurrence.isBefore(apDayjs().tz(timeZone)))
+      (dayDiff === 0 && nextOccurrence.isBefore(flowDayjs().tz(timeZone)))
     ) {
       // If it's a past day in the week or today but past time, move to next week
       dayDiff += 7;

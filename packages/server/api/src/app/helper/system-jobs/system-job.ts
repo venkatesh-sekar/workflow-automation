@@ -1,4 +1,4 @@
-import { apDayjs, apDayjsDuration, exceptionHandler } from '@flow/server-common'
+import { flowDayjs, flowDayjsDuration, exceptionHandler } from '@flow/server-common'
 import { assertNotNullOrUndefined, isNil, spreadIfDefined, tryCatch } from '@flow/shared'
 import { Job, JobsOptions, Queue, Worker } from 'bullmq'
 import { FastifyBaseLogger } from 'fastify'
@@ -6,8 +6,8 @@ import { redisConnections } from '../../database/redis-connections'
 import { JobSchedule, SystemJobData, SystemJobName, SystemJobSchedule } from './common'
 import { systemJobHandlers } from './job-handlers'
 
-const FIFTEEN_MINUTES = apDayjsDuration(15, 'minute').asMilliseconds()
-const ONE_MONTH = apDayjsDuration(1, 'month').asSeconds()
+const FIFTEEN_MINUTES = flowDayjsDuration(15, 'minute').asMilliseconds()
+const ONE_MONTH = flowDayjsDuration(1, 'month').asSeconds()
 const SYSTEM_JOB_QUEUE = 'system-job-queue'
 
 export let systemJobsQueue: Queue<SystemJobData, unknown, SystemJobName>
@@ -135,7 +135,7 @@ const configureJobOptions = ({ schedule, jobId, customConfig }: { schedule: JobS
 
     switch (schedule.type) {
         case 'one-time': {
-            const now = apDayjs()
+            const now = flowDayjs()
             config.delay = schedule.date.diff(now, 'milliseconds')
             break
         }

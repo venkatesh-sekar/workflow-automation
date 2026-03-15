@@ -114,3 +114,10 @@
 - **Quality gate:** pass (0 typecheck errors)
 - **Learnings:** none
 ---
+
+## Iteration #17 - rename-ap-core-types
+- **Change:** Renamed apDayjs→flowDayjs and apDayjsDuration→flowDayjsDuration across all source files
+- **Files:** 17 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Renamed longer name (apDayjsDuration) first to avoid partial matches, same pattern as iteration #4
+---

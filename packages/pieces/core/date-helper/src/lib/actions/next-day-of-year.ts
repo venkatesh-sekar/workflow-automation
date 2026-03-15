@@ -8,7 +8,7 @@ import {
   timeFormatDescription,
   timeZoneOptions,
   getCorrectedFormat,
-  apDayjs,
+  flowDayjs,
 } from '../common';
 import { z } from 'zod';
 import { propsValidation } from '@flow/pieces-common';
@@ -99,7 +99,7 @@ export const nextDayofYear = createAction({
     const day = context.propsValue.day as number;
     let time = context.propsValue.time as string;
 
-    let nextOccurrence = apDayjs().tz(timeZone);
+    let nextOccurrence = flowDayjs().tz(timeZone);
 
     if (currentTime === true) {
       time = `${nextOccurrence.hour()}:${nextOccurrence.minute()}`;
@@ -112,7 +112,7 @@ export const nextDayofYear = createAction({
 
     const currentYear = nextOccurrence.year();
 
-    nextOccurrence = apDayjs().tz(timeZone)
+    nextOccurrence = flowDayjs().tz(timeZone)
       .year(currentYear)
       .month(month - 1)
       .date(day)
@@ -121,7 +121,7 @@ export const nextDayofYear = createAction({
       .second(0)
       .millisecond(0);
 
-    if (nextOccurrence.isBefore(apDayjs().tz(timeZone))) {
+    if (nextOccurrence.isBefore(flowDayjs().tz(timeZone))) {
       nextOccurrence = nextOccurrence.add(1, 'year');
     }
 

@@ -1,7 +1,7 @@
 import { Property, createAction } from '@flow/pieces-framework';
 import dayjs from 'dayjs';
 import {
-  apDayjs,
+  flowDayjs,
    getCorrectedFormat,
   optionalTimeFormats,
   parseDate,
@@ -100,7 +100,7 @@ export const addSubtractDateAction = createAction({
       let timeToSet = setTime;
       
       if (useCurrentTime) {
-        const now = apDayjs().tz(timeZone);
+        const now = flowDayjs().tz(timeZone);
         timeToSet = `${now.hour().toString().padStart(2, '0')}:${now.minute().toString().padStart(2, '0')}`;
       }
 
@@ -161,7 +161,7 @@ function addSubtractTime(date: Date, expression: string, timeZone?: string): day
   }
   
   // Create timezone-aware dayjs object if timezone is provided
-  let dayjsDate = timeZone ? apDayjs(date).tz(timeZone) : apDayjs(date);
+  let dayjsDate = timeZone ? flowDayjs(date).tz(timeZone) : flowDayjs(date);
   
   for (let i = 0; i < numbers.length; i++) {
     let val = units[i].toLowerCase();

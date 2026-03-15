@@ -1,4 +1,4 @@
-import { apDayjs } from '@flow/server-common'
+import { flowDayjs } from '@flow/server-common'
 import { MachineInformation, parseToJsonIfPossible } from '@flow/shared'
 import { redisConnections } from '../../database/redis-connections'
 
@@ -50,7 +50,7 @@ export const workerMachineCache = () => ({
         const redisConnection = await redisConnections.useExisting()
 
         const key = `${REDIS_KEY}:${worker.id}`
-        const now = apDayjs().toISOString()
+        const now = flowDayjs().toISOString()
         const existingRaw = await redisConnection.get(key)
         if (existingRaw) {
             const existing: WorkerMachine = parseToJsonIfPossible(existingRaw) as WorkerMachine

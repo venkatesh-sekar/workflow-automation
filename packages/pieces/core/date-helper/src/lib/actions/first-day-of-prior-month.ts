@@ -5,7 +5,7 @@ import {
   timeFormatDescription,
   timeZoneOptions,
   getCorrectedFormat,
-  apDayjs,
+  flowDayjs,
 } from '../common';
 import { z } from 'zod';
 import { propsValidation } from '@flow/pieces-common';
@@ -65,7 +65,7 @@ export const firstDayOfPreviousMonthAction = createAction({
     const useCurrentTime = context.propsValue.currentTime as boolean;
     let providedTime = context.propsValue.time as string;
 
-    const baseDateTime = apDayjs().tz(selectedTimeZone);
+    const baseDateTime = flowDayjs().tz(selectedTimeZone);
 
     if (useCurrentTime === true) {
       providedTime = `${baseDateTime.hour()}:${baseDateTime.minute()}`;

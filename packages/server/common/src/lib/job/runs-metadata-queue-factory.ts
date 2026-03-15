@@ -2,7 +2,7 @@ import { flowId, FlowId, FlowRunStatus, PauseMetadata, RunEnvironment } from '@f
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
 import Redis from 'ioredis'
-import { apDayjsDuration } from '../dayjs-helper'
+import { flowDayjsDuration } from '../dayjs-helper'
 import { DistributedStore } from '../redis/distributed-store-factory'
 import { QueueName } from './index'
 
@@ -23,11 +23,11 @@ export const runsMetadataQueueFactory = ({
                     attempts: 5,
                     backoff: {
                         type: 'exponential',
-                        delay: apDayjsDuration(8, 'minute').asMilliseconds(),
+                        delay: flowDayjsDuration(8, 'minute').asMilliseconds(),
                     },
                     removeOnComplete: true,
                     removeOnFail: {
-                        age: apDayjsDuration(config.redisFailedJobRetentionDays, 'day').asSeconds(),
+                        age: flowDayjsDuration(config.redisFailedJobRetentionDays, 'day').asSeconds(),
                         count: config.redisFailedJobRetentionMaxCount,
                     },
                 },

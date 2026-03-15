@@ -1,17 +1,17 @@
 import { PlatformId, ProjectId, TriggerRunStatus, TriggerStatusReport } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import Redis from 'ioredis'
-import { apDayjs, apDayjsDuration } from './dayjs-helper'
+import { flowDayjs, flowDayjsDuration } from './dayjs-helper'
 import { redisHelper } from './redis'
 
 export const triggerRunStats = (_log: FastifyBaseLogger, redisConnection: Redis) => ({
     async save({ platformId, pieceName, status }: SaveParams): Promise<void> {
-        const day = apDayjs().format('YYYY-MM-DD')
+        const day = flowDayjs().format('YYYY-MM-DD')
         const statusToStore = status === TriggerRunStatus.COMPLETED ? status : TriggerRunStatus.FAILED
         const redisKey = triggerRunRedisKey(platformId, pieceName, day, statusToStore)
 
         await redisConnection.incr(redisKey)
-        await redisConnection.expire(redisKey, apDayjsDuration(14, 'days').asSeconds())
+        await redisConnection.expire(redisKey, flowDayjsDuration(14, 'days').asSeconds())
     },
 
     async getStatusReport(params: GetStatusReportParams): Promise<TriggerStatusReport> {

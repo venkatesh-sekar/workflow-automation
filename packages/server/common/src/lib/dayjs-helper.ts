@@ -7,7 +7,7 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 dayjs.extend(duration)
 
-export function apDayjs(
+export function flowDayjs(
     time: undefined | number | string = undefined,
 ): dayjs.Dayjs {
     if (time === undefined) {
@@ -16,7 +16,7 @@ export function apDayjs(
     return dayjs(time)
 }
 
-export function apDayjsDuration(
+export function flowDayjsDuration(
     value: number,
     unit: DurationUnitType,
 ) {

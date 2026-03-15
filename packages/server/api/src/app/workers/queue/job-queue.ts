@@ -1,4 +1,4 @@
-import { apDayjsDuration, AppSystemProp, memoryLock, QueueName } from '@flow/server-common'
+import { flowDayjsDuration, AppSystemProp, memoryLock, QueueName } from '@flow/server-common'
 import { FlowId, getDefaultJobPriority, isNil, JOB_PRIORITY, WorkerJobType } from '@flow/shared'
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
@@ -7,8 +7,8 @@ import { redisConnections } from '../../database/redis-connections'
 import { system } from '../../helper/system/system'
 import { AddJobParams, JobType } from './queue-manager'
 
-const EIGHT_MINUTES_IN_MILLISECONDS = apDayjsDuration(8, 'minute').asMilliseconds()
-const REDIS_FAILED_JOB_RETENTION_DAYS = apDayjsDuration(system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS), 'day').asSeconds()
+const EIGHT_MINUTES_IN_MILLISECONDS = flowDayjsDuration(8, 'minute').asMilliseconds()
+const REDIS_FAILED_JOB_RETENTION_DAYS = flowDayjsDuration(system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS), 'day').asSeconds()
 const REDIS_FAILED_JOB_RETRY_COUNT = system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT)
 const CHILD_RUNS_KEY = (parentRunId: FlowId) => `child_runs:${parentRunId}`
 
@@ -71,7 +71,7 @@ export const jobQueue = (log: FastifyBaseLogger) => ({
                 }
                 await queue.add(params.id, data, {
                     priority: JOB_PRIORITY[getDefaultJobPriority(data)],
-                    delay: !isNil(dependOnJobId) ? apDayjsDuration(1, 'year').asMilliseconds() : params.delay,
+                    delay: !isNil(dependOnJobId) ? flowDayjsDuration(1, 'year').asMilliseconds() : params.delay,
                     jobId: params.id,
                     removeOnFail: data.jobType === WorkerJobType.EVENT_DESTINATION,
                 })

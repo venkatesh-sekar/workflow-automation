@@ -1,4 +1,4 @@
-import { apDayjs, apDayjsDuration } from '@flow/server-common'
+import { flowDayjs, flowDayjsDuration } from '@flow/server-common'
 import {
     FlowError,
     flowId,
@@ -656,12 +656,12 @@ export const flowService = (log: FastifyBaseLogger) => ({
             },
             schedule: {
                 type: 'one-time',
-                date: apDayjs(),
+                date: flowDayjs(),
             },
             customConfig: {
                 backoff: {
                     type: 'exponential',
-                    delay: apDayjsDuration(5, 'second').asMilliseconds(),
+                    delay: flowDayjsDuration(5, 'second').asMilliseconds(),
                 },
             },
         })
@@ -680,12 +680,12 @@ export const flowService = (log: FastifyBaseLogger) => ({
             },
             schedule: {
                 type: 'one-time',
-                date: apDayjs(),
+                date: flowDayjs(),
             },
             customConfig: {
                 backoff: {
                     type: 'exponential',
-                    delay: apDayjsDuration(5, 'second').asMilliseconds(),
+                    delay: flowDayjsDuration(5, 'second').asMilliseconds(),
                 },
             },
         })
