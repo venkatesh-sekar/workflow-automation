@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { Metadata, Nullable, OptionalArrayFromQuery } from '../../core/common'
-import { FlowVersionTemplate, TemplateStatus, TemplateTag } from './template'
+import { FlowVersionTemplate, TemplateScope, TemplateStatus, TemplateTag } from './template'
 
 export const CreateTemplateRequestBody = z.object({
     name: z.string(),
@@ -12,6 +12,7 @@ export const CreateTemplateRequestBody = z.object({
     author: z.string(),
     categories: z.array(z.string()),
     flows: z.array(FlowVersionTemplate).optional(),
+    scope: z.nativeEnum(TemplateScope).optional().default(TemplateScope.TEAM),
 })
 export type CreateTemplateRequestBody = z.infer<typeof CreateTemplateRequestBody>
 
@@ -36,6 +37,7 @@ export const ListFlowTemplatesRequestQuery = z.object({
     tags: OptionalArrayFromQuery(z.string()),
     search: z.string().optional(),
     category: z.string().optional(),
+    scope: z.nativeEnum(TemplateScope).optional(),
 })
 export type ListFlowTemplatesRequestQuery = z.infer<typeof ListFlowTemplatesRequestQuery>
 

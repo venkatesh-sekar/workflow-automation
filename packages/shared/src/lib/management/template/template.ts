@@ -15,6 +15,11 @@ export enum TemplateType {
     CUSTOM = 'CUSTOM',
 }
 
+export enum TemplateScope {
+    TEAM = 'TEAM',
+    GLOBAL = 'GLOBAL',
+}
+
 export const FlowVersionTemplate = FlowVersion.omit({
     id: true,
     created: true,
@@ -82,6 +87,7 @@ export const Template = z.object({
     author: z.string(),
     categories: z.array(z.string()),
     pieces: z.array(z.string()),
+    scope: z.nativeEnum(TemplateScope),
     platformId: Nullable(z.string()),
     flows: z.array(FlowVersionTemplate).optional(),
     tables: z.array(TableTemplate).optional(),

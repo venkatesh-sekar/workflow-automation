@@ -23,6 +23,7 @@ import {
     SeekPage,
     SharedTemplate,
     TelemetryEventName,
+    TemplateScope,
     TemplateStatus,
     TemplateType,
     TriggerSource,
@@ -586,6 +587,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
             author: userMetadata ? `${userMetadata.firstName} ${userMetadata.lastName}` : '',
             categories: [],
             type: TemplateType.CUSTOM,
+            scope: TemplateScope.TEAM,
             status: TemplateStatus.PUBLISHED,
         }
         return template

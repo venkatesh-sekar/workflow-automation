@@ -18,6 +18,7 @@ import {
     TableTemplate,
     TableWebhook,
     TableWebhookEventType,
+    TemplateScope,
     TemplateStatus,
     TemplateType,
     UncategorizedFolderId,
@@ -208,6 +209,7 @@ export const tableService = {
             author: userMetadata ? `${userMetadata.firstName} ${userMetadata.lastName}` : '',
             categories: [],
             type: TemplateType.CUSTOM,
+            scope: TemplateScope.TEAM,
             status: TemplateStatus.PUBLISHED,
         }
         return template

@@ -34,7 +34,7 @@ export const templateService = (log: FastifyBaseLogger) => ({
         })
 
         const { flows, pieces } = preparedTemplate
-        const { name, summary, description, tags, blogUrl, metadata, author, categories } = params
+        const { name, summary, description, tags, blogUrl, metadata, author, categories, scope } = params
 
         const newTags = tags ?? []
 
@@ -52,6 +52,7 @@ export const templateService = (log: FastifyBaseLogger) => ({
             categories,
             pieces,
             flows,
+            scope,
             status: TemplateStatus.PUBLISHED,
         }
         return templateRepo().save(newTemplate)

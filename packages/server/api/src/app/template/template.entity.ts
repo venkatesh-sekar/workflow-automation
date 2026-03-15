@@ -25,6 +25,11 @@ export const TemplateEntity = new EntitySchema<TemplateSchema>({
         type: {
             type: String,
         },
+        scope: {
+            type: String,
+            nullable: false,
+            default: 'TEAM',
+        },
         platformId: {
             type: String,
             nullable: true,
