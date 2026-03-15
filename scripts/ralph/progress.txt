@@ -618,3 +618,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
 - **Learnings:** Promoted AI provider cleanup insights to global learnings. Phase took 5 iterations (84-88).
 ---
+
+## Iteration #89 - build-audit-logs
+- **Change:** Created AuditEventEntity with columns (id, projectId, userId, event, data, created/updated), relations to project/user with CASCADE delete, index on projectId. Registered entity in database-connection.ts.
+- **Files:** packages/server/api/src/app/audit-event/audit-event.entity.ts (new), packages/server/api/src/app/database/database-connection.ts (modified), scripts/ralph/learnings/build-audit-logs.md (new)
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** TypeORM EntitySchema relations keys must match properties in the schema type — need to include relation properties (project, user) in the type definition
+---

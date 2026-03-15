@@ -5,6 +5,7 @@ import {
     EntitySchema,
 } from 'typeorm'
 import { AIProviderEntity } from '../ai/ai-provider-entity'
+import { AuditEventEntity } from '../audit-event/audit-event.entity'
 import { PlatformAnalyticsReportEntity } from '../analytics/platform-analytics-report.entity'
 import { AppConnectionEntity } from '../app-connection/app-connection.entity'
 import { EventDestinationEntity } from '../event-destinations/event-destinations.entity'
@@ -70,6 +71,7 @@ function getEntities(): EntitySchema<unknown>[] {
         TemplateEntity,
         PlatformAnalyticsReportEntity,
         EventDestinationEntity,
+        AuditEventEntity,
 
     ]
 }

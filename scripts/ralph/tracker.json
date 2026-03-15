@@ -1,5 +1,5 @@
 {
-  "iteration": 88,
+  "iteration": 89,
   "current_phase": "build-audit-logs",
   "phases": {
     "copy-server-core": {
@@ -193,7 +193,9 @@
         "API endpoint to list audit events (project-scoped)",
         "Tests for audit log events"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 89, "description": "Created AuditEventEntity with columns (id, projectId, userId, event, data, created/updated), relations to project/user, index on projectId. Registered in database-connection.ts. All 171 tests pass."}
+      ]
     },
     "simplify-alerts": {
       "status": "pending",
