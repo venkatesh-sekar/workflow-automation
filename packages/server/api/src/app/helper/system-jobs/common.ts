@@ -10,7 +10,7 @@ export enum SystemJobName {
     RUN_TELEMETRY = 'run-telemetry',
     DELETE_FLOW = 'delete-flow',
     UPDATE_FLOW_STATUS = 'update-flow-status',
-    AI_CREDIT_UPDATE_CHECK = 'ai-credit-update-check',
+
     HARD_DELETE_PROJECT = 'hard-delete-project',
     HARD_DELETE_PLATFORM = 'hard-delete-platform',
 }
@@ -27,10 +27,6 @@ type UpdateFlowStatusDurableSystemJobData =  {
     preUpdateDone: boolean
 }
 
-type AiCreditUpdateCheckSystemJobData = {
-    apiKeyHash: string
-    platformId: string
-}
 
 type HardDeleteProjectSystemJobData = {
     projectId: ProjectId
@@ -51,7 +47,7 @@ type SystemJobDataMap = {
     [SystemJobName.TRIAL_TRACKER]: Record<string, never>
     [SystemJobName.DELETE_FLOW]: DeleteFlowDurableSystemJobData
     [SystemJobName.UPDATE_FLOW_STATUS]: UpdateFlowStatusDurableSystemJobData
-    [SystemJobName.AI_CREDIT_UPDATE_CHECK]: AiCreditUpdateCheckSystemJobData
+
     [SystemJobName.HARD_DELETE_PROJECT]: HardDeleteProjectSystemJobData
     [SystemJobName.HARD_DELETE_PLATFORM]: HardDeletePlatformSystemJobData
 }

@@ -597,3 +597,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** ACTIVEPIECES provider was cloud credits proxy with significant service-level code. Migration files need string literals when referencing removed enums. UI file upsert-provider-dialog.tsx still imports removed types — next iteration.
 ---
+
+## Iteration #86 - strip-ai-providers
+- **Change:** Removed dead AI credit/OpenRouter server references: AI_CREDIT_UPDATE_CHECK system job enum+type+map entry, OPENROUTER_PROVISION_KEY from AppSystemProp enum and system-validator, aiCreditsEnabled() hardcoded to false, CAN_BUY_AI_CREDITS flag hardcoded to false
+- **Files:** system-jobs/common.ts, flag.service.ts, system-props.ts, system-validator.ts, server-common/dist/
+- **Quality gate:** pass (0 TS errors, 171 tests pass)
+- **Learnings:** UI files still reference removed provider names — need separate cleanup iteration
+---

@@ -17,4 +17,7 @@
 - Migration files reference removed enum values — use string literals with `as any` for type safety
 - ai-provider-service.ts had significant ACTIVEPIECES-specific code (auto-create, enrichment, credit check scheduling) — all removed
 - UI file upsert-provider-dialog.tsx imports all removed provider types — needs cleanup next
-- Dead references remain: AI_CREDIT_UPDATE_CHECK in system-jobs/common.ts, aiCreditsEnabled in flag.service.ts — cleanup next
+- Dead references cleaned: AI_CREDIT_UPDATE_CHECK, OPENROUTER_PROVISION_KEY, aiCreditsEnabled
+- Remaining references: UI files (agents hooks, ai-providers.ts, upsert-provider-dialog/config-form) still reference removed provider names
+- shared/user-identity.ts and federated-authn still reference GOOGLE — dead code from removed auth, clean up separately
+- server-common/network-utils.ts references AZURE_OPENAI — check if dead

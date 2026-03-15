@@ -106,7 +106,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: ApFlagId.CAN_BUY_AI_CREDITS,
-                value: !isNil(system.get(AppSystemProp.OPENROUTER_PROVISION_KEY)),
+                value: false,
                 created,
                 updated,
             },
@@ -304,7 +304,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
     },
 
     aiCreditsEnabled(): boolean {
-        return !isNil(system.get(AppSystemProp.OPENROUTER_PROVISION_KEY))
+        return false
     },
 })
 
