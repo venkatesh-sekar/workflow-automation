@@ -130,7 +130,6 @@ const systemPropValidators: {
     [FlowSystemProp.SMTP_SENDER_EMAIL]: (value: string) => value.includes('@') ? true : 'Value must be a valid email address',
     [FlowSystemProp.SMTP_SENDER_NAME]: stringValidator,
     [FlowSystemProp.SMTP_USERNAME]: stringValidator,
-    [FlowSystemProp.TELEMETRY_ENABLED]: booleanValidator,
     [FlowSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL]: numberValidator,
     [FlowSystemProp.WEBHOOK_TIMEOUT_SECONDS]: numberValidator,
     [FlowSystemProp.APPSUMO_TOKEN]: stringValidator,

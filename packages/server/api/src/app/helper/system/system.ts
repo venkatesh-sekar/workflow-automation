@@ -48,7 +48,6 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [FlowSystemProp.EVENT_DESTINATION_TIMEOUT_SECONDS]: '10',
     [FlowSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS]: '30',
     [FlowSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT]: '100000',
-    [FlowSystemProp.TELEMETRY_ENABLED]: 'true',
     [FlowSystemProp.REDIS_TYPE]: RedisType.STANDALONE,
     [FlowSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL]: '5',
     [FlowSystemProp.MAX_CONCURRENT_JOBS_PER_PROJECT]: '100',

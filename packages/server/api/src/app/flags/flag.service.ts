@@ -38,7 +38,6 @@ export const flagService = (log: FastifyBaseLogger) => ({
                 FlowFlagId.FLOW_RUN_TIME_SECONDS,
                 FlowFlagId.SHOW_COMMUNITY,
                 FlowFlagId.SUPPORTED_APP_WEBHOOKS,
-                FlowFlagId.TELEMETRY_ENABLED,
                 FlowFlagId.TEMPLATES_PROJECT_ID,
                 FlowFlagId.TERMS_OF_SERVICE_URL,
                 FlowFlagId.THEME,
@@ -200,12 +199,6 @@ export const flagService = (log: FastifyBaseLogger) => ({
                 updated,
             },
             {
-                id: FlowFlagId.TELEMETRY_ENABLED,
-                value: system.getBoolean(FlowSystemProp.TELEMETRY_ENABLED) ?? true,
-                created,
-                updated,
-            },
-            {
                 id: FlowFlagId.PUBLIC_URL,
                 value: await domainHelper.getPublicUrl({
                     path: '',
@@ -314,7 +307,6 @@ function getSupportedAppWebhooks(): string[] {
 
 export type FlagType =
     | BaseFlagStructure<FlowFlagId.PUBLIC_URL, string>
-    | BaseFlagStructure<FlowFlagId.TELEMETRY_ENABLED, boolean>
     | BaseFlagStructure<FlowFlagId.USER_CREATED, boolean>
     | BaseFlagStructure<FlowFlagId.WEBHOOK_URL_PREFIX, string>
     | BaseFlagStructure<FlowFlagId.TEMPLATES_CATEGORIES, string[]>

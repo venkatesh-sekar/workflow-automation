@@ -219,3 +219,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** getLatestRelease still needed by flag.service.ts for LATEST_VERSION flag — return current version to avoid breaking the interface
 ---
+
+## Iteration #32 - strip-telemetry
+- **Change:** Removed TELEMETRY_ENABLED flag from FlowFlagId enum (shared), FlowSystemProp enum (server/common), flag.service.ts (flagList + getFlags + FlagType union), system.ts defaults, system-validator.ts
+- **Files:** 5 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

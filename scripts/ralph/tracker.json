@@ -1,5 +1,5 @@
 {
-  "iteration": 31,
+  "iteration": 32,
   "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
@@ -115,7 +115,8 @@
         {"iteration": 28, "description": "Removed Sentry: gutted exception-handler.ts (removed @sentry/node import, Sentry.init, captureException, initializeSentry method), removed @sentry/node dep from server/common package.json, removed SENTRY_DSN from FlowSystemProp enum + system-validator + machine-service + worker schema + server.ts init call"},
         {"iteration": 29, "description": "Removed template telemetry: gutted template-telemetry.service.ts to no-op (removed cloud.activepieces.com and template-manager.activepieces.com URLs, sendToCloud/sendToInternal functions), removed TEMPLATE_MANAGER_API_KEY from FlowSystemProp enum + system-validator"},
         {"iteration": 30, "description": "Renamed observability service names: HyperDX 'activepieces'→'flow' in hyperdx-pino.ts, OpenTelemetry 'activepieces-api'/'activepieces-worker'→'flow-api'/'flow-worker' in instrumentation.ts"},
-        {"iteration": 31, "description": "Removed GitHub version check: gutted getLatestRelease() to return current version instead of phoning home to raw.githubusercontent.com/activepieces/activepieces/main/package.json, removed axios import and cachedVersion from system-props.ts"}
+        {"iteration": 31, "description": "Removed GitHub version check: gutted getLatestRelease() to return current version instead of phoning home to raw.githubusercontent.com/activepieces/activepieces/main/package.json, removed axios import and cachedVersion from system-props.ts"},
+        {"iteration": 32, "description": "Removed TELEMETRY_ENABLED flag: removed from FlowFlagId enum (shared), FlowSystemProp enum (server/common), flag.service.ts (flagList + getFlags + FlagType union), system.ts defaults, system-validator.ts"}
       ]
     },
     "strip-billing-and-licensing": {
