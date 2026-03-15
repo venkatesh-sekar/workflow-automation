@@ -1,4 +1,4 @@
-import { WorkerSystemProp } from '@flow/server-common'
+import { FlowWorkerSystemProp } from '@flow/server-common'
 import { isNil } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { flowWorker } from 'worker'
@@ -20,7 +20,7 @@ export async function workerPostBoot(app: FastifyInstance): Promise<void> {
 
 
 async function generateWorkerToken(app: FastifyInstance): Promise<string> {
-    const workerToken = system.get(WorkerSystemProp.WORKER_TOKEN)
+    const workerToken = system.get(FlowWorkerSystemProp.WORKER_TOKEN)
     if (!isNil(workerToken)) {
         return workerToken
     }

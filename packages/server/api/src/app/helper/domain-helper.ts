@@ -1,4 +1,4 @@
-import { FlowSystemProp, networkUtils, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, networkUtils, FlowWorkerSystemProp } from '@flow/server-common'
 import { isNil } from '@flow/shared'
 import { system } from './system/system'
 
@@ -8,7 +8,7 @@ import { system } from './system/system'
  */
 export const domainHelper = {
     async getPublicUrl({ path }: { path?: string, platformId?: string | null }): Promise<string> {
-        return networkUtils.combineUrl(system.getOrThrow(WorkerSystemProp.FRONTEND_URL), path ?? '')
+        return networkUtils.combineUrl(system.getOrThrow(FlowWorkerSystemProp.FRONTEND_URL), path ?? '')
     },
     async getPublicApiUrl({ path, platformId }: { path?: string, platformId?: string | null }): Promise<string> {
         return domainHelper.getPublicUrl({ path: `/api/${cleanLeadingSlash(path ?? '')}`, platformId })

@@ -7,7 +7,7 @@ export const systemConstants = {
     ENGINE_EXECUTABLE_PATH: 'dist/packages/engine/main.js',
 }
 
-export type SystemProp = FlowSystemProp | WorkerSystemProp
+export type SystemProp = FlowSystemProp | FlowWorkerSystemProp
 
 let cachedVersion: string | undefined
 
@@ -125,7 +125,7 @@ export enum ContainerType {
     WORKER_AND_APP = 'WORKER_AND_APP',
 }
 
-export enum WorkerSystemProp {
+export enum FlowWorkerSystemProp {
     WORKER_TOKEN = 'WORKER_TOKEN',
     CONTAINER_TYPE = 'CONTAINER_TYPE',
     FRONTEND_URL = 'FRONTEND_URL',
@@ -139,22 +139,22 @@ export enum WorkerSystemProp {
 
 export const environmentVariables = {
     hasAppModules(): boolean {
-        const environment = this.getEnvironment(WorkerSystemProp.CONTAINER_TYPE) ?? ContainerType.WORKER_AND_APP
+        const environment = this.getEnvironment(FlowWorkerSystemProp.CONTAINER_TYPE) ?? ContainerType.WORKER_AND_APP
         return [ContainerType.APP, ContainerType.WORKER_AND_APP].includes(environment as ContainerType)
     },
-    getNumberEnvironment: (prop: WorkerSystemProp | FlowSystemProp): number | undefined => {
+    getNumberEnvironment: (prop: FlowWorkerSystemProp | FlowSystemProp): number | undefined => {
         const value = environmentVariables.getEnvironment(prop)
         return value ? parseInt(value) : undefined
     },
-    getBooleanEnvironment: (prop: WorkerSystemProp | FlowSystemProp): boolean | undefined => {
+    getBooleanEnvironment: (prop: FlowWorkerSystemProp | FlowSystemProp): boolean | undefined => {
         const value = environmentVariables.getEnvironment(prop)
         return value ? value === 'true' : undefined
     },
-    getEnvironment: (prop: WorkerSystemProp | FlowSystemProp): string | undefined => {
+    getEnvironment: (prop: FlowWorkerSystemProp | FlowSystemProp): string | undefined => {
         const environmnetVariables = environmentMigrations.migrate()
         return environmnetVariables['FLOW_' + prop]
     },
-    getEnvironmentOrThrow: (prop: WorkerSystemProp | FlowSystemProp): string => {
+    getEnvironmentOrThrow: (prop: FlowWorkerSystemProp | FlowSystemProp): string => {
         const value = environmentVariables.getEnvironment(prop)
         assertNotNullOrUndefined(value, `Environment variable ${prop} is not set`)
         return value

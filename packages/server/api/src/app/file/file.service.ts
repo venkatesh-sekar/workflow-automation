@@ -1,4 +1,4 @@
-import { FlowSystemProp, exceptionHandler, fileCompressor, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, exceptionHandler, fileCompressor, FlowWorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
     flowId,
@@ -225,7 +225,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
             },
         })
 
-        return `${system.get(WorkerSystemProp.FRONTEND_URL)}/api/v1/platforms/assets/${savedFile.id}`
+        return `${system.get(FlowWorkerSystemProp.FRONTEND_URL)}/api/v1/platforms/assets/${savedFile.id}`
     },
 })
 

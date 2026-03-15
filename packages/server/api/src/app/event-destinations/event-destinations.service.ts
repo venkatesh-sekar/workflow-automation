@@ -1,4 +1,4 @@
-import { WorkerSystemProp } from '@flow/server-common'
+import { FlowWorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
     flowId,
@@ -169,7 +169,7 @@ export const eventDestinationService = (log: FastifyBaseLogger) => ({
 })
 
 const assertUrlIsExternal = (url: string) => {
-    const frontendUrl = system.get(WorkerSystemProp.FRONTEND_URL)
+    const frontendUrl = system.get(FlowWorkerSystemProp.FRONTEND_URL)
     assertNotNullOrUndefined(frontendUrl, 'frontendUrl')
     if (new URL(url).host === new URL(frontendUrl).host) {
         throw new FlowError({

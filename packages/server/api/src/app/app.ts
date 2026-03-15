@@ -1,5 +1,5 @@
 import { PieceMetadata } from '@flow/pieces-framework'
-import { rejectedPromiseHandler, WorkerSystemProp } from '@flow/server-common'
+import { rejectedPromiseHandler, FlowWorkerSystemProp } from '@flow/server-common'
 import { AppConnectionWithoutSensitiveData, ApplicationEventName, AuthenticationEvent, ConnectionEvent, Flow, FlowCreatedEvent, FlowDeletedEvent, FlowRun, FlowRunEvent, FlowUpdatedEvent, Folder, FolderEvent, ProjectWithLimits, spreadIfDefined, Template, UserInvitation, UserWithMetaInformation } from '@flow/shared'
 import swagger from '@fastify/swagger'
 import { createAdapter } from '@socket.io/redis-adapter'
@@ -242,7 +242,7 @@ async function getAdapter() {
 
 export async function appPostBoot(app: FastifyInstance): Promise<void> {
 
-    const frontendUrl = system.get(WorkerSystemProp.FRONTEND_URL) ?? 'http://localhost:4200'
+    const frontendUrl = system.get(FlowWorkerSystemProp.FRONTEND_URL) ?? 'http://localhost:4200'
     app.log.info(`
              _____   _______   _____  __      __  ______   _____    _____   ______    _____   ______    _____
     /\\      / ____| |__   __| |_   _| \\ \\    / / |  ____| |  __ \\  |_   _| |  ____|  / ____| |  ____|  / ____|

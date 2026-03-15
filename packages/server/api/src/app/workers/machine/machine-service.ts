@@ -1,4 +1,4 @@
-import { FlowSystemProp, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, FlowWorkerSystemProp } from '@flow/server-common'
 import {
     ExecutionMode,
     isNil,
@@ -45,7 +45,7 @@ export const machineService = (log: FastifyBaseLogger) => {
                 EXECUTION_MODE: executionMode,
                 TRIGGER_HOOKS_TIMEOUT_SECONDS: system.getNumberOrThrow(FlowSystemProp.TRIGGER_HOOKS_TIMEOUT_SECONDS),
                 FLOW_TIMEOUT_SECONDS: system.getNumberOrThrow(FlowSystemProp.FLOW_TIMEOUT_SECONDS),
-                WORKER_CONCURRENCY: system.getNumberOrThrow(WorkerSystemProp.WORKER_CONCURRENCY),
+                WORKER_CONCURRENCY: system.getNumberOrThrow(FlowWorkerSystemProp.WORKER_CONCURRENCY),
                 LOG_LEVEL: system.getOrThrow(FlowSystemProp.LOG_LEVEL),
                 LOG_PRETTY: system.getOrThrow(FlowSystemProp.LOG_PRETTY),
                 ENVIRONMENT: system.getOrThrow(FlowSystemProp.ENVIRONMENT),

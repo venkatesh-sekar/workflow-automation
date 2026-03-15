@@ -1,5 +1,5 @@
 import { inspect } from 'util'
-import { FlowSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, FlowWorkerSystemProp } from '@flow/server-common'
 import { FlowEdition, FlowEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
@@ -70,11 +70,11 @@ const systemPropValidators: {
 
     [FlowSystemProp.OTEL_ENABLED]: booleanValidator,
     [FlowSystemProp.HYPERDX_TOKEN]: stringValidator,
-    [WorkerSystemProp.FRONTEND_URL]: urlValidator,
-    [WorkerSystemProp.CONTAINER_TYPE]: enumValidator(Object.values(ContainerType)),
-    [WorkerSystemProp.WORKER_TOKEN]: stringValidator,
-    [WorkerSystemProp.PLATFORM_ID_FOR_DEDICATED_WORKER]: stringValidator,
-    [WorkerSystemProp.PRE_WARM_CACHE]: booleanValidator,
+    [FlowWorkerSystemProp.FRONTEND_URL]: urlValidator,
+    [FlowWorkerSystemProp.CONTAINER_TYPE]: enumValidator(Object.values(ContainerType)),
+    [FlowWorkerSystemProp.WORKER_TOKEN]: stringValidator,
+    [FlowWorkerSystemProp.PLATFORM_ID_FOR_DEDICATED_WORKER]: stringValidator,
+    [FlowWorkerSystemProp.PRE_WARM_CACHE]: booleanValidator,
     // FlowSystemProp
     [FlowSystemProp.API_KEY]: stringValidator,
     [FlowSystemProp.TEMPLATES_API_KEY]: stringValidator,
@@ -148,7 +148,7 @@ const systemPropValidators: {
     [FlowSystemProp.SCIM_DEFAULT_PROJECT_ROLE]: enumValidator(Object.values(DefaultProjectRole)),
 
     // FlowSystemProp
-    [WorkerSystemProp.WORKER_CONCURRENCY]: numberValidator,
+    [FlowWorkerSystemProp.WORKER_CONCURRENCY]: numberValidator,
 
     // Cloud
     [FlowSystemProp.GOOGLE_CLIENT_ID]: stringValidator,

@@ -163,3 +163,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** SharedSystemProp does not exist in codebase — criterion is N/A. SystemProp type alias and environmentVariables helper signatures also need updating after WorkerSystemProp rename.
 ---
+
+## Iteration #24 - rename-ap-system-props
+- **Change:** Renamed WorkerSystemProp→FlowWorkerSystemProp (enum + 28 refs across 9 files)
+- **Files:** 9 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

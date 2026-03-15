@@ -1,6 +1,6 @@
 import os from 'os'
 import path from 'path'
-import { FlowSystemProp, ContainerType, DatabaseType, environmentVariables, pinoLogging, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, ContainerType, DatabaseType, environmentVariables, pinoLogging, RedisType, SystemProp, FlowWorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
     FlowEdition,
@@ -26,13 +26,13 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [FlowSystemProp.DB_TYPE]: DatabaseType.POSTGRES,
     [FlowSystemProp.EDITION]: FlowEdition.COMMUNITY,
     [FlowSystemProp.APP_WEBHOOK_SECRETS]: '{}',
-    [WorkerSystemProp.CONTAINER_TYPE]: ContainerType.WORKER_AND_APP,
+    [FlowWorkerSystemProp.CONTAINER_TYPE]: ContainerType.WORKER_AND_APP,
     [FlowSystemProp.EXECUTION_DATA_RETENTION_DAYS]: '30',
     [FlowSystemProp.PAUSED_FLOW_TIMEOUT_DAYS]: '30',
     [FlowSystemProp.PIECES_CACHE_MAX_ENTRIES]: '1000',
     [FlowSystemProp.ENVIRONMENT]: 'prod',
     [FlowSystemProp.EXECUTION_MODE]: ExecutionMode.UNSANDBOXED,
-    [WorkerSystemProp.WORKER_CONCURRENCY]: '5',
+    [FlowWorkerSystemProp.WORKER_CONCURRENCY]: '5',
     [FlowSystemProp.WEBHOOK_TIMEOUT_SECONDS]: '30',
     [FlowSystemProp.LOG_LEVEL]: 'info',
     [FlowSystemProp.LOG_PRETTY]: 'false',
@@ -172,12 +172,12 @@ export const system = {
     },
     isWorker(): boolean {
         return [ContainerType.WORKER, ContainerType.WORKER_AND_APP].includes(
-            this.getOrThrow<ContainerType>(WorkerSystemProp.CONTAINER_TYPE),
+            this.getOrThrow<ContainerType>(FlowWorkerSystemProp.CONTAINER_TYPE),
         )
     },
     isApp(): boolean {
         return [ContainerType.APP, ContainerType.WORKER_AND_APP].includes(
-            this.getOrThrow<ContainerType>(WorkerSystemProp.CONTAINER_TYPE),
+            this.getOrThrow<ContainerType>(FlowWorkerSystemProp.CONTAINER_TYPE),
         )
     },
 }
