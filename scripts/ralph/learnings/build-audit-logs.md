@@ -28,3 +28,9 @@
 - Guard audit calls with `request.principal.type === PrincipalType.USER` to skip SERVICE principals
 - For flow updates, detect CHANGE_STATUS/LOCK_AND_PUBLISH to emit FLOW_STATUS_CHANGED vs FLOW_UPDATED
 - FlowOperationRequest.request is a union type — cast to `{ status?: string }` to access status field safely
+
+## Member Change Hooks
+- User invitations are the member management mechanism (no direct project_member CRUD exposed)
+- Invitation create with InvitationType.PROJECT = member invited; delete = member removed
+- Guard with both PrincipalType.USER and InvitationType.PROJECT to avoid logging platform-level invitations
+- invitation.email available on both create (from request.body) and delete (from fetched invitation)

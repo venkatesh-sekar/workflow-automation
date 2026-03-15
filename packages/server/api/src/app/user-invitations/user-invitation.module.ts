@@ -22,6 +22,7 @@ import { FastifyBaseLogger, FastifyInstance, FastifyReply, FastifyRequest } from
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
+import { auditEventService } from '../audit-event/audit-event.service'
 import { platformMustBeOwnedByCurrentUser, platformMustHaveFeatureEnabled, projectMustBeTeamType } from '../helper/ee-authorization-stub'
 import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
@@ -58,6 +59,14 @@ const invitationController: FastifyPluginAsyncZod = async (app) => {
             invitationExpirySeconds: dayjs.duration(7, 'days').asSeconds(),
             status,
         })
+        if (request.principal.type === PrincipalType.USER && type === InvitationType.PROJECT && request.body.projectId) {
+            await auditEventService.create({
+                projectId: request.body.projectId,
+                userId: request.principal.id,
+                event: 'MEMBER_INVITED',
+                data: { email, invitationId: invitation.id, status },
+            })
+        }
         await reply.status(StatusCodes.CREATED).send(invitation)
     })
 
@@ -105,6 +114,14 @@ const invitationController: FastifyPluginAsyncZod = async (app) => {
             id: request.params.id,
             platformId: request.principal.platform.id,
         })
+        if (request.principal.type === PrincipalType.USER && invitation.type === InvitationType.PROJECT && invitation.projectId) {
+            await auditEventService.create({
+                projectId: invitation.projectId,
+                userId: request.principal.id,
+                event: 'MEMBER_REMOVED',
+                data: { email: invitation.email, invitationId: invitation.id },
+            })
+        }
         await reply.status(StatusCodes.NO_CONTENT).send()
     })
 }

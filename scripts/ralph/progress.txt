@@ -653,3 +653,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** Connection controller already has applicationEvents hooks — audit hooks follow same placement pattern
 ---
+
+## Iteration #94 - build-audit-logs
+- **Change:** Added audit event hooks to user-invitation controller for MEMBER_INVITED and MEMBER_REMOVED events
+- **Files:** packages/server/api/src/app/user-invitations/user-invitation.module.ts
+- **Quality gate:** pass (0 TS errors, 171/171 tests pass)
+- **Learnings:** User invitations are the member management mechanism; guard with PrincipalType.USER + InvitationType.PROJECT
+---
