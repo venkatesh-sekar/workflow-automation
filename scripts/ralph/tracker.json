@@ -1,6 +1,6 @@
 {
-  "iteration": 18,
-  "current_phase": "rename-ap-core-types",
+  "iteration": 19,
+  "current_phase": "rename-ap-ui-components",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -19,7 +19,7 @@
       ]
     },
     "rename-ap-core-types": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "ActivepiecesError renamed to FlowError (class, file, all references)",
@@ -62,7 +62,7 @@
       ]
     },
     "rename-ap-ui-components": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "typecheck",
       "criteria": [
         "All Ap-prefixed React components renamed to Flow prefix (ApForm→FlowForm, ApMarkdown→FlowMarkdown, ApAvatar→FlowAvatar, ApTable*→FlowTable*, ApGraph*→FlowGraph*, ApNode*→FlowNode*, ApEdge*→FlowEdge*, ApStep*→FlowStep*, ApRouter*→FlowRouter*, ApLoop*→FlowLoop*, ApNote*→FlowNote*, ApField*→FlowField*, ApSidebar*→FlowSidebar*, ApProject*→FlowProject*, ApBigAddButton*→FlowBigAddButton*, ApButton*→FlowButton*, ApErrorDialog→FlowErrorDialog, ApMentionNodeAttrs→FlowMentionNodeAttrs, ApSidebarToggle→FlowSidebarToggle)",
@@ -192,7 +192,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages"],
-  "phase_queue": ["rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types"],
+  "phase_queue": ["rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

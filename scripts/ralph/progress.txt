@@ -128,3 +128,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** workers/queue/migration/ is NOT the same as database/migration/ — these are runtime migration scripts, not DB schema migrations, so they are safe to rename
 ---
+
+## Iteration #19 - rename-ap-core-types (PHASE COMPLETE)
+- **Change:** Phase complete — all 19 criteria verified against codebase. 0 old identifiers remain. Typecheck passes (0 errors). Tests at same baseline (22/24 pre-existing failures). Advancing to rename-ap-ui-components.
+- **Files:** 0 (tracker/progress only)
+- **Quality gate:** pass
+- **Learnings:** Promoted key learnings to global.md: rename longer names first, workers/queue/migration/ safe to rename
+---

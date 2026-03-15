@@ -45,5 +45,8 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 - www.activepieces.com: docs, pricing, terms, privacy
 - feedback/community/sales.activepieces.com
 
-## Key Renames
+## Key Renames (DONE)
 - apId()→flowId(), apAxios→flowAxios, apDayjs→flowDayjs
+- All Ap-prefixed core types renamed to Flow prefix (17 types, ~900 refs)
+- workers/queue/migration/ files are runtime scripts, NOT DB migrations — safe to rename
+- Rename longer/more specific names first in sed to avoid partial matches
