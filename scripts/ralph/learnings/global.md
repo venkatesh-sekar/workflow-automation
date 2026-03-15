@@ -39,6 +39,11 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - All env vars use FLOW_ prefix (was AP_). Prefix applied at read time in system-props.ts and env-migrations.ts
 - Enum values (e.g. ENCRYPTION_KEY) don't have the prefix — prefix added dynamically
 
+## AI Providers (complete)
+- Stripped to OpenAI only — 6 provider files deleted, shared types trimmed, UI cleaned
+- Migration files keep removed enum values as string literals with `as any` — don't touch
+- ACTIVEPIECES cloud-credits proxy removed entirely; aiCreditsEnabled hardcoded false
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts

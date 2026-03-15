@@ -611,3 +611,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** CUSTOM provider was also removed (enum stripped to OPENAI only). Config form and model popover became dead code after dialog simplification.
 ---
+
+## Iteration #88 - strip-ai-providers (phase completion)
+- **Change:** Verified all 5 acceptance criteria met; marked strip-ai-providers complete; advanced to build-audit-logs
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
+- **Learnings:** Promoted AI provider cleanup insights to global learnings. Phase took 5 iterations (84-88).
+---
