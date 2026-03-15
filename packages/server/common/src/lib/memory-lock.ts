@@ -3,7 +3,7 @@ import { E_TIMEOUT, Mutex, MutexInterface, withTimeout } from 'async-mutex'
 const memoryLocks = new Map<string, MutexInterface>()
 
 export const memoryLock = {
-    acquire: async (key: string, timeout?: number): Promise<ApLock> => {
+    acquire: async (key: string, timeout?: number): Promise<FlowLock> => {
         let lock = memoryLocks.get(key)
         if (!lock) {
             if (timeout) {
@@ -40,6 +40,6 @@ type RunExclusiveParams<T> = {
     fn: () => Promise<T>
 }
 
-export type ApLock = {
+export type FlowLock = {
     release(): Promise<unknown>
 }

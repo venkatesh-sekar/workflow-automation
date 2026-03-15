@@ -1,5 +1,5 @@
 {
-  "iteration": 10,
+  "iteration": 11,
   "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
@@ -50,7 +50,8 @@
         {"iteration": 7, "description": "Renamed ApFlagId→FlowFlagId (enum, 182 refs across 49 files)"},
         {"iteration": 8, "description": "Renamed ApErrorParams→FlowErrorParams (type, 24 refs across 10 files)"},
         {"iteration": 9, "description": "Renamed ApFile→FlowFile (class, 30 refs across 15 files)"},
-        {"iteration": 10, "description": "Renamed ApMultipartFile→FlowMultipartFile (type+schema, 13 refs across 4 files)"}
+        {"iteration": 10, "description": "Renamed ApMultipartFile→FlowMultipartFile (type+schema, 13 refs across 4 files)"},
+        {"iteration": 11, "description": "Renamed ApLock→FlowLock (type, 2 refs in 1 file)"}
       ]
     },
     "rename-ap-ui-components": {

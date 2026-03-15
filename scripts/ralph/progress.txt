@@ -72,3 +72,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #11 - rename-ap-core-types
+- **Change:** Renamed ApLock→FlowLock (type, 2 occurrences in 1 file)
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---
