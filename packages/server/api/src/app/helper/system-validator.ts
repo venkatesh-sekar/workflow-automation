@@ -1,6 +1,6 @@
 import { inspect } from 'util'
 import { AppSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@activepieces/server-common'
-import { ApEdition, ApEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil, PieceSyncMode } from '@activepieces/shared'
+import { ApEdition, ApEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
 import { s3Helper } from '../file/s3-helper'
@@ -91,7 +91,6 @@ const systemPropValidators: {
     [AppSystemProp.JWT_SECRET]: stringValidator,
     [AppSystemProp.MAX_CONCURRENT_JOBS_PER_PROJECT]: numberValidator,
     [AppSystemProp.PIECES_CACHE_MAX_ENTRIES]: numberValidator,
-    [AppSystemProp.PIECES_SYNC_MODE]: enumValidator(Object.values(PieceSyncMode)),
     [AppSystemProp.POSTGRES_DATABASE]: stringValidator,
     [AppSystemProp.POSTGRES_HOST]: stringValidator,
     [AppSystemProp.POSTGRES_PASSWORD]: stringValidator,

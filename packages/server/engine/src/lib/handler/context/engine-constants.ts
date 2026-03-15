@@ -1,5 +1,3 @@
-import { readdirSync, existsSync } from 'fs'
-import { resolve } from 'path'
 import { ContextVersion } from '@activepieces/pieces-framework'
 import { DEFAULT_MCP_DATA, EngineGenericError, ExecuteFlowOperation, ExecutePropsOptions, ExecuteToolOperation, ExecuteTriggerOperation, ExecutionType, flowStructureUtil, FlowVersionState, PlatformId, ProgressUpdateType, Project, ProjectId, ResumePayload, RunEnvironment, TriggerHookType } from '@activepieces/shared'
 import { createPropsResolver, PropsResolver } from '../../variables/props-resolver'
@@ -47,13 +45,6 @@ export class EngineConstants {
     public static readonly BASE_CODE_DIRECTORY = process.env.FLOW_BASE_CODE_DIRECTORY ?? './codes'
     public static readonly INPUT_FILE = './input.json'
     public static readonly OUTPUT_FILE = './output.json'
-    private static _devPieces: string[] | null = null
-    public static get DEV_PIECES(): string[] {
-        if (EngineConstants._devPieces === null) {
-            EngineConstants._devPieces = discoverAllPieceNames()
-        }
-        return EngineConstants._devPieces
-    }
     public static readonly TEST_MODE = process.env.FLOW_TEST_MODE === 'true'
 
     public readonly platformId: string
@@ -89,10 +80,6 @@ export class EngineConstants {
 
     public get baseCodeDirectory(): string {
         return EngineConstants.BASE_CODE_DIRECTORY
-    }
-
-    public get devPieces(): string[] {
-        return EngineConstants.DEV_PIECES
     }
 
     public constructor(params: EngineConstantsParams) {
@@ -260,20 +247,3 @@ const addTrailingSlashIfMissing = (url: string): string => {
     return url.endsWith('/') ? url : url + '/'
 }
 
-function discoverAllPieceNames(): string[] {
-    const pieceDirs = ['packages/pieces/core', 'packages/pieces/community']
-    const names: string[] = []
-    for (const dir of pieceDirs) {
-        const fullPath = resolve(dir)
-        if (!existsSync(fullPath)) {
-            continue
-        }
-        const entries = readdirSync(fullPath, { withFileTypes: true })
-        for (const entry of entries) {
-            if (entry.isDirectory() && entry.name !== 'node_modules' && entry.name !== '.turbo') {
-                names.push(entry.name)
-            }
-        }
-    }
-    return names
-}

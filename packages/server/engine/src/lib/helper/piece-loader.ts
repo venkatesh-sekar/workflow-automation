@@ -6,15 +6,10 @@ import { utils } from '../utils'
 
 export const pieceLoader = {
     loadPieceOrThrow: async (
-        { pieceName, pieceVersion, devPieces }: LoadPieceParams,
+        { pieceName, pieceVersion }: LoadPieceParams,
     ): Promise<Piece> => {
         const { data: piece, error: pieceError } = await utils.tryCatchAndThrowOnEngineError(async () => {
-            const packageName = pieceLoader.getPackageAlias({
-                pieceName,
-                pieceVersion,
-                devPieces,
-            })
-            const piecePath = await pieceLoader.getPiecePath({ packageName, devPieces })
+            const piecePath = await pieceLoader.getPiecePath({ packageName: pieceName })
             const module = await import(piecePath)
 
             const piece = extractPieceFromModule<Piece>({
@@ -35,8 +30,8 @@ export const pieceLoader = {
     },
 
     getPieceAndTriggerOrThrow: async (params: GetPieceAndTriggerParams): Promise<{ piece: Piece, pieceTrigger: Trigger }> => {
-        const { pieceName, pieceVersion, triggerName, devPieces } = params
-        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion, devPieces })
+        const { pieceName, pieceVersion, triggerName } = params
+        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion })
         const trigger = piece.getTrigger(triggerName)
 
         if (trigger === undefined) {
@@ -50,9 +45,9 @@ export const pieceLoader = {
     },
 
     getPieceAndActionOrThrow: async (params: GetPieceAndActionParams): Promise<{ piece: Piece, pieceAction: Action }> => {
-        const { pieceName, pieceVersion, actionName, devPieces } = params
+        const { pieceName, pieceVersion, actionName } = params
 
-        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion, devPieces })
+        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion })
         const pieceAction = piece.getAction(actionName)
 
         if (isNil(pieceAction)) {
@@ -73,8 +68,8 @@ export const pieceLoader = {
         }
     },
 
-    getPropOrThrow: async ({ pieceName, pieceVersion, actionOrTriggerName, propertyName, devPieces }: GetPropParams) => {
-        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion, devPieces })
+    getPropOrThrow: async ({ pieceName, pieceVersion, actionOrTriggerName, propertyName }: GetPropParams) => {
+        const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion })
 
         const actionOrTrigger = piece.getAction(actionOrTriggerName) ?? piece.getTrigger(actionOrTriggerName)
 
@@ -107,11 +102,11 @@ export const pieceLoader = {
         return { property, piece }
     },
 
-    getPackageAlias: ({ pieceName }: GetPackageAliasParams) => {
+    getPackageAlias: ({ pieceName }: { pieceName: string }) => {
         return pieceName
     },
 
-    getPiecePath: async ({ packageName }: GetPiecePathParams): Promise<string> => {
+    getPiecePath: async ({ packageName }: { packageName: string }): Promise<string> => {
         const sourcePiecesPath = path.resolve('packages/pieces')
         const piecePath = await utils.folderExists(sourcePiecesPath)
             ? await findInSourceFolder(packageName)
@@ -186,29 +181,21 @@ async function traverseAllParentFoldersToFindPiece(packageName: string): Promise
     return null
 }
 
-type GetPiecePathParams = {
-    packageName: string
-    devPieces: string[]
-}
-
 type LoadPieceParams = {
     pieceName: string
     pieceVersion: string
-    devPieces: string[]
 }
 
 type GetPieceAndTriggerParams = {
     pieceName: string
     pieceVersion: string
     triggerName: string
-    devPieces: string[]
 }
 
 type GetPieceAndActionParams = {
     pieceName: string
     pieceVersion: string
     actionName: string
-    devPieces: string[]
 }
 
 type GetPropParams = {
@@ -216,12 +203,4 @@ type GetPropParams = {
     pieceVersion: string
     actionOrTriggerName: string
     propertyName: string
-    devPieces: string[]
 }
-
-type GetPackageAliasParams = {
-    pieceName: string
-    devPieces: string[]
-    pieceVersion: string
-}
-

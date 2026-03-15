@@ -17,7 +17,6 @@ export const agentTools = {
                 pieceName: tool.pieceMetadata.pieceName,
                 pieceVersion: tool.pieceMetadata.pieceVersion,
                 actionName: tool.pieceMetadata.actionName,
-                devPieces: EngineConstants.DEV_PIECES,
             })
             return {
                 name: tool.toolName,
@@ -148,7 +147,6 @@ async function execute(operation: ExecuteToolOperationWithModel): Promise<Execut
             pieceName: operation.pieceName,
             pieceVersion: operation.pieceVersion,
             actionName: operation.actionName,
-            devPieces: EngineConstants.DEV_PIECES,
         })
         const depthToPropertyMap = tsort.sortPropertiesByDependencies(pieceAction.props)
         const resolvedInput = await resolveProperties(depthToPropertyMap, operation.instruction, pieceAction, operation.model, operation)

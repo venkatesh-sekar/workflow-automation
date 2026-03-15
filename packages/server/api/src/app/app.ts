@@ -34,7 +34,6 @@ import { mcpServerModule } from './mcp/mcp-module'
 import { communityPiecesModule } from './pieces/community-piece-module'
 import { pieceModule } from './pieces/metadata/piece-metadata-controller'
 import { pieceMetadataService } from './pieces/metadata/piece-metadata-service'
-import { pieceSyncService } from './pieces/piece-sync-service'
 import { tagsModule } from './pieces/tags/tags-module'
 import { platformModule } from './platform/platform.module'
 import { projectModule } from './project/project-module'
@@ -141,7 +140,6 @@ export const setupApp = async (app: FastifyInstance): Promise<FastifyInstance> =
     await app.register(flagModule)
     await app.register(storeEntryModule)
     await app.register(folderModule)
-    await pieceSyncService(app.log).setup()
     await pieceMetadataService(app.log).setup()
     await app.register(pieceModule)
     await app.register(flowModule)

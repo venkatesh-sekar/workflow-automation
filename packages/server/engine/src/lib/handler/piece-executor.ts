@@ -48,7 +48,6 @@ const executeAction: ActionHandler<PieceAction> = async ({ action, executionStat
             pieceName: action.settings.pieceName,
             pieceVersion: action.settings.pieceVersion,
             actionName: action.settings.actionName,
-            devPieces: constants.devPieces,
         })
 
         const { resolvedInput, censoredInput } = await constants.getPropsResolver(piece.getContextInfo?.().version).resolve<StaticPropsValue<PiecePropertyMap>>({

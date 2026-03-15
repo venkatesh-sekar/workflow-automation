@@ -4,7 +4,6 @@ import {
     ExecuteValidateAuthOperation,
     ExecuteValidateAuthResponse,
 } from '@activepieces/shared'
-import { EngineConstants } from '../handler/context/engine-constants'
 import { pieceHelper } from '../helper/piece-helper'
 
 export const authValidationOperation = {
@@ -12,7 +11,6 @@ export const authValidationOperation = {
         const input = operation as ExecuteValidateAuthOperation
         const output = await pieceHelper.executeValidateAuth({
             params: input,
-            devPieces: EngineConstants.DEV_PIECES,
         })
 
         return {

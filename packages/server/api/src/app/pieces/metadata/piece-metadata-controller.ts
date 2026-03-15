@@ -23,7 +23,6 @@ import { EngineHelperPropResult, OperationResponse } from 'worker'
 import { flowService } from '../../flows/flow/flow.service'
 import { sampleDataService } from '../../flows/step-run/sample-data.service'
 import { userInteractionWatcher } from '../../workers/user-interaction-watcher'
-import { pieceSyncService } from '../piece-sync-service'
 import { getPiecePackageWithoutArchive, pieceMetadataService } from './piece-metadata-service'
 
 export const pieceModule: FastifyPluginAsyncZod = async (app) => {
@@ -119,8 +118,6 @@ const basePiecesController: FastifyPluginAsyncZod = async (app) => {
         return pieces
     })
 
-    app.post('/sync', SyncPiecesRequest, async (req) => pieceSyncService(req.log).sync({ publishCacheRefresh: true }))
-
     app.post(
         '/options',
         OptionsPieceRequest,
@@ -214,8 +211,3 @@ const OptionsPieceRequest = {
     },
 }
 
-const SyncPiecesRequest = {
-    config: {
-        security: securityAccess.publicPlatform([PrincipalType.USER]),
-    },
-}
