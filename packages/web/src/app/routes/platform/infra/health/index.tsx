@@ -52,7 +52,7 @@ export default function SettingsHealthPage() {
                   {t('See the')}{' '}
                   <a
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    href="https://github.com/activepieces/activepieces/releases"
+                    href=""
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -65,7 +65,7 @@ export default function SettingsHealthPage() {
           </div>
         </div>
       ),
-      link: 'https://github.com/activepieces/activepieces/releases',
+      link: '',
     },
     {
       id: 'disk-size',

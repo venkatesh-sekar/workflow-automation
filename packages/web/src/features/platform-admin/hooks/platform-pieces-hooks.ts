@@ -61,7 +61,7 @@ export const platformPiecesMutations = {
       onSuccess: () => {
         toast.success(t('Pieces synced'), {
           description: t(
-            'Pieces have been synced from the activepieces cloud.',
+            'Pieces have been synced successfully.',
           ),
         });
       },

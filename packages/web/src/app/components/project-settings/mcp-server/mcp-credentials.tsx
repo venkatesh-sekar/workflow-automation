@@ -33,7 +33,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
 
   const jsonConfiguration = {
     mcpServers: {
-      activepieces: {
+      flow: {
         url: serverUrl,
         headers: {
           Authorization: `Bearer ${mcpServer?.token ?? ''}`,
@@ -44,7 +44,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
 
   const claudeDesktopConfiguration = {
     mcpServers: {
-      activepieces: {
+      flow: {
         command: 'npx',
         args: [
           '-y',

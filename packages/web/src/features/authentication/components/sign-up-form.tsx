@@ -78,7 +78,7 @@ const SignUpForm = ({
       case FlowEdition.CLOUD: {
         if (
           typeof websiteName === 'string' &&
-          websiteName.toLowerCase() === 'activepieces'
+          websiteName.toLowerCase() === 'flow'
         ) {
           form.setValue('newsLetter', true);
           return true;
@@ -308,7 +308,7 @@ const SignUpForm = ({
                     ></Checkbox>
                   </FormControl>
                   <Label htmlFor="newsLetter">
-                    {t(`Receive updates and newsletters from activepieces`)}
+                    {t(`Receive updates and newsletters from Flow`)}
                   </Label>
                   <FormMessage />
                 </FormItem>

@@ -78,7 +78,6 @@ const AuthFormTemplate = React.memo(
     const { data: isEmailAuthEnabled } = flagsHooks.useFlag<boolean>(
       FlowFlagId.EMAIL_AUTH_ENABLED,
     );
-    const isCloud = window.location.hostname === 'cloud.activepieces.com';
     const data = {
       signin: {
         title: t('Welcome Back!'),
@@ -104,12 +103,7 @@ const AuthFormTemplate = React.memo(
 
     return (
       <>
-        {isCloud && (
-          <Link to="https://activepieces.com" target="_blank" rel="noreferrer">
-            <FullLogo />
-          </Link>
-        )}
-        {!isCloud && <FullLogo />}
+        <FullLogo />
         <Card className="w-md rounded-sm drop-shadow-xl">
           {!showCheckYourEmailNote && (
             <CardHeader className="text-center">

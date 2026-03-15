@@ -387,3 +387,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #56 - clean-strings-and-comments
+- **Change:** Cleaned remaining web source strings, comments, and URLs: flow-form comment Activepieces→Flow, activepiecesLogin→flowLogin query param, emptied help-and-feedback+health page GitHub/docs URLs, MCP credentials key activepieces→flow, removed cloud.activepieces.com hostname check from auth-form-template, cleaned sign-up-form activepieces→Flow strings, cleaned git-dialog placeholders, cleaned pieces-hooks toast, cleaned test data URLs (12 files)
+- **Files:** 12 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** auth-form-template had both isCloud check + conditional Link — removed entire cloud branch (no cloud mode)
+---
