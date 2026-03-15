@@ -821,3 +821,10 @@
 - **Quality gate:** pass (typecheck clean, 189 server tests pass, 3 settings tests pass)
 - **Learnings:** Web tests can skip jsdom environment directive for pure TS logic; local vitest must be invoked from packages/web/ directory
 ---
+
+## Iteration #118 - frontend-settings (phase completion)
+- **Change:** Verified all 3 acceptance criteria met; marked frontend-settings complete; advanced to frontend-branding
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted settings structure notes and dead code inventory to global learnings
+---

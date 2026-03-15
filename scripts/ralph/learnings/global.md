@@ -43,4 +43,5 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - TemplateType.OFFICIAL/SHARED refs remain in UI — fix in frontend phases
 - Sidebar: dashboard/index.tsx has Templates only; Automations/Runs/Connections are header tabs in project-dashboard-layout-header.tsx
 - Platform sidebar (platform/index.tsx) still has Billing entry but unreachable from normal nav
-- Settings: accessible via sidebar-user.tsx dropdown (Account Settings); project settings in routes
+- Settings: project settings dialog has General/Members/Alerts tabs only; account settings in sidebar-user.tsx dropdown
+- Dead code remaining: alerts feature barrel (features/alerts/), git-sync API/hooks, old sign-up forms
