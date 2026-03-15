@@ -1,4 +1,4 @@
-import { ApFile } from '@flow/pieces-framework'
+import { FlowFile } from '@flow/pieces-framework'
 import { isBase64, isNil, isString } from '@flow/shared'
 import axios from 'axios'
 import mime from 'mime-types'
@@ -21,7 +21,7 @@ export const fileProcessor: ProcessorFn = async (_property, urlOrBase64) => {
     }
 }
 
-function handleBase64File(propertyValue: string): ApFile | null {
+function handleBase64File(propertyValue: string): FlowFile | null {
     if (!isBase64(propertyValue, { allowMime: true })) {
         return null
     }
@@ -31,14 +31,14 @@ function handleBase64File(propertyValue: string): ApFile | null {
     }
     const base64 = matches[2]
     const extension = mime.extension(matches[1]) || 'bin'
-    return new ApFile(
+    return new FlowFile(
         `unknown.${extension}`,
         Buffer.from(base64, 'base64'),
         extension,
     )
 }
 
-async function handleUrlFile(path: string): Promise<ApFile | null> {
+async function handleUrlFile(path: string): Promise<FlowFile | null> {
     const fileResponse = await axios.get(path, {
         responseType: 'arraybuffer',
     })
@@ -47,7 +47,7 @@ async function handleUrlFile(path: string): Promise<ApFile | null> {
     const filename = getFileName(path, fileResponse.headers['content-disposition'], fileResponse.headers['content-type']) ?? 'unknown'
     const extension = filename.split('.').length > 1 ? filename.split('.').pop() : undefined
 
-    return new ApFile(
+    return new FlowFile(
         filename,
         Buffer.from(fileResponse.data, 'binary'),
         extension,

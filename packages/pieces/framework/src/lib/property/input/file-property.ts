@@ -2,7 +2,7 @@ import { z } from "zod";
 import { BasePropertySchema, TPropertyValue } from "./common";
 import { PropertyType } from "./property-type";
 
-export class ApFile {
+export class FlowFile {
     constructor(
         public filename: string,
         public data: Buffer,
@@ -20,4 +20,4 @@ export const FileProperty = z.object({
 })
 
 export type FileProperty<R extends boolean> = BasePropertySchema &
-    TPropertyValue<ApFile, PropertyType.FILE, R>;
+    TPropertyValue<FlowFile, PropertyType.FILE, R>;

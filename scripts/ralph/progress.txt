@@ -58,3 +58,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #9 - rename-ap-core-types
+- **Change:** Renamed ApFile→FlowFile (class + all references, 30 occurrences across 15 files)
+- **Files:** 15 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

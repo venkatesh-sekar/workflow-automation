@@ -1,7 +1,7 @@
 import {
   Property,
   createAction,
-  ApFile,
+  FlowFile,
   PieceAuth,
 } from '@flow/pieces-framework';
 import {
@@ -12,7 +12,7 @@ import {
 } from '@zip.js/zip.js';
 
 interface FileObject {
-  file: ApFile;
+  file: FlowFile;
   filePath: string;
 }
 

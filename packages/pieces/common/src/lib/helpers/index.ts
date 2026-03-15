@@ -9,7 +9,7 @@ import {
   FilesService,
   AppConnectionValueForAuthProperty,
   ExtractPieceAuthPropertyTypeForMethods,
-  ApFile,
+  FlowFile,
 } from '@flow/pieces-framework';
 import {
   HttpError,
@@ -338,7 +338,7 @@ i.e ${getBaseUrlForDescription(baseUrl, auth)}/resource or /resource`,
               fieldName: string;
               fieldType: 'text' | 'file';
               textFieldValue?: string;
-              fileFieldValue?: ApFile;
+              fileFieldValue?: FlowFile;
             }>;
 
             const formData = new FormData();

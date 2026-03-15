@@ -7,7 +7,7 @@ import {
   AuthenticationType,
 } from '@flow/pieces-common';
 import {
-  ApFile,
+  FlowFile,
   createAction,
   DynamicPropsValue,
   PieceAuth,
@@ -325,7 +325,7 @@ export const httpSendRequestAction = createAction({
           fieldName: string;
           fieldType: 'text' | 'file';
           textFieldValue?: string;
-          fileFieldValue?: ApFile;
+          fileFieldValue?: FlowFile;
         }>;
 
         const formData = new FormData();

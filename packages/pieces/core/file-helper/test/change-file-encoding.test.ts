@@ -1,11 +1,11 @@
 /// <reference types="vitest/globals" />
 
 import { changeFileEncoding } from '../src/lib/actions/change-file-encoding';
-import { createMockActionContext, ApFile } from '@flow/pieces-framework';
+import { createMockActionContext, FlowFile } from '@flow/pieces-framework';
 
 describe('changeFileEncoding', () => {
   test('changes encoding from utf8 to base64', async () => {
-    const file = new ApFile('input.txt', Buffer.from('Hello, World!', 'utf8'), 'txt');
+    const file = new FlowFile('input.txt', Buffer.from('Hello, World!', 'utf8'), 'txt');
     const ctx = createMockActionContext({
       propsValue: {
         inputFile: file,

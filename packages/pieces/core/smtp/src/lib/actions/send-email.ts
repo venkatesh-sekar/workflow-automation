@@ -1,4 +1,4 @@
-import { ApFile, Property, createAction } from '@flow/pieces-framework';
+import { FlowFile, Property, createAction } from '@flow/pieces-framework';
 import { smtpAuth } from '../auth';
 import { smtpCommon } from '../common';
 import { Attachment, Headers } from 'nodemailer/lib/mailer';
@@ -84,7 +84,7 @@ export const sendEmail = createAction({
   run: async ({ auth, propsValue }) => {
     const transporter = smtpCommon.createSMTPTransport(auth.props);
 
-    const attachments = propsValue['attachments'] as {file: ApFile; name: string | undefined; }[];
+    const attachments = propsValue['attachments'] as {file: FlowFile; name: string | undefined; }[];
 
     const attachment_data: Attachment[] = attachments.map(({file, name}) => {
       const lookupResult = mime.lookup(

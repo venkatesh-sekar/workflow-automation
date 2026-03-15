@@ -1,4 +1,4 @@
-import { ApFile } from '@flow/pieces-framework';
+import { FlowFile } from '@flow/pieces-framework';
 import { Block, KnownBlock, WebClient } from '@slack/web-api';
 
 const SLACK_SECTION_TEXT_MAX_LENGTH = 3000;
@@ -106,7 +106,7 @@ type SlackSendMessageParams = {
   iconEmoji?: string;
   blocks?: unknown[] | Record<string, any>;
   text?: string;
-  file?: ApFile;
+  file?: FlowFile;
   threadTs?: string;
   replyBroadcast?: boolean;
   unfurlLinks?: boolean;

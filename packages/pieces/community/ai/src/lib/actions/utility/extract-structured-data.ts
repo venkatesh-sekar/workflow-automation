@@ -1,4 +1,4 @@
-import { ApFile, createAction, PieceAuth, Property } from '@flow/pieces-framework';
+import { FlowFile, createAction, PieceAuth, Property } from '@flow/pieces-framework';
 import { createAIModel } from '../../common/ai-sdk';
 import { generateText, tool, jsonSchema, ModelMessage, UserModelMessage } from 'ai';
 import mime from 'mime-types';
@@ -128,7 +128,7 @@ export const extractStructuredData = createAction({
 		const provider = context.propsValue.provider;
 		const modelId = context.propsValue.model;
 		const text = context.propsValue.text;
-		const files = (context.propsValue.files as Array<{ file: ApFile }>) ?? [];
+		const files = (context.propsValue.files as Array<{ file: FlowFile }>) ?? [];
 		const prompt = context.propsValue.prompt;
 		const schema = context.propsValue.schema;
 		const maxOutputTokens = context.propsValue.maxOutputTokens;

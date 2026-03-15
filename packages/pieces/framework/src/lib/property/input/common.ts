@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ApFile } from "./file-property";
+import { FlowFile } from "./file-property";
 import { PropertyType } from "./property-type";
 
 
@@ -53,7 +53,7 @@ export type TPropertyValue<
     : U extends PropertyType.DATE_TIME
     ? string
     : U extends PropertyType.FILE
-    ? ApFile
+    ? FlowFile
     : U extends PropertyType.COLOR
     ? string
     : unknown;
