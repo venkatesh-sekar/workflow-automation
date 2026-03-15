@@ -115,3 +115,10 @@
 - **Files changed:** packages/web/src/app/components/project-settings/index.tsx
 - **Learnings:** Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx is the canonical text-lg heading style.
 ---
+
+## Iteration #17 - platform-admin-pages
+- **Change:** Fixed CenteredPage heading typography — replaced `text-xl font-medium` (500 weight) with `text-xl font-semibold tracking-tight` (600 weight) to match design system heading spec and DialogTitle primitive. CenteredPage is used by 10 platform admin pages (project roles, SSO, API keys, signing keys, secret managers, AI setup, branding, health, event destinations, billing), so this single fix propagates everywhere.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/centered-page.tsx
+- **Learnings:** CenteredPage is used by 10 platform admin pages — fixing shared layout components propagates design consistency more efficiently than fixing individual pages.
+---

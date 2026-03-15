@@ -17,7 +17,7 @@ export const CenteredPage = ({
     <div className="w-full max-w-[40rem] mx-auto py-6">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="text-xl font-medium">{title}</h1>
+          <h1 className="text-xl font-semibold tracking-tight">{title}</h1>
           <div className="text-sm text-muted-foreground">{description}</div>
         </div>
         {actions && <div className="shrink-0">{actions}</div>}

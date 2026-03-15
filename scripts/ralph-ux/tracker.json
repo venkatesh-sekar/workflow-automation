@@ -1,5 +1,5 @@
 {
-  "iteration": 16,
+  "iteration": 17,
   "current_area": "platform-admin-pages",
   "queue": [
     "login-auth",
@@ -134,6 +134,14 @@
       "change": "Fix settings tab header typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match DialogTitle primitive and design system heading spec",
       "files_modified": ["packages/web/src/app/components/project-settings/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "platform-admin-pages",
+      "iteration": 17,
+      "date": "2026-03-16",
+      "change": "Fix CenteredPage heading typography — replaced font-medium (500) with font-semibold tracking-tight (600) to match design system heading spec and DialogTitle primitive, affecting 10 platform admin pages",
+      "files_modified": ["packages/web/src/app/components/centered-page.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -157,6 +165,7 @@
     "For inline separators between metadata items, use <div className=\"h-4 w-px bg-border\" /> — the established codebase pattern. Never use bare text pipe characters. The parent gap utility handles spacing automatically.",
     "font-sm is not a valid Tailwind class — always use font-normal (400), font-medium (500), or font-semibold (600). Tailwind font-* classes are for weight, not size (use text-sm for size).",
     "Any sidebar-like nav panel in dialogs (settings, etc.) must use the same active-state pattern as the main sidebar: bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary. Include hover override on active items to prevent hover:bg-sidebar-accent from overriding the primary tint.",
-    "Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx line 128 is the canonical text-lg heading style — all equivalent headings should match it."
+    "Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx line 128 is the canonical text-lg heading style — all equivalent headings should match it.",
+    "CenteredPage is used by 10 platform admin pages — fixing shared layout components propagates design consistency more efficiently than fixing individual pages."
   ]
 }
