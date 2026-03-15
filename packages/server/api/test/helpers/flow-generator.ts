@@ -7,17 +7,17 @@ export const flowGenerator = {
         return flowGenerator.randomizeMetadata(externalId, flowVersionGenerator.simpleActionAndTrigger())
     },
     randomizeMetadata(externalId: string | undefined, version: Omit<FlowVersion, 'flowId'>): PopulatedFlow {
-        const flowId = flowId()
+        const generatedId = flowId()
         const result: PopulatedFlow = {
-            externalId: externalId ?? flowId,
+            externalId: externalId ?? generatedId,
             version: {
                 ...version,
                 trigger: randomizeTriggerMetadata(version.trigger),
-                flowId,
+                flowId: generatedId,
             },
             operationStatus: FlowOperationStatus.NONE,
             status: faker.helpers.enumValue(FlowStatus),
-            id: flowId,
+            id: generatedId,
             projectId: flowId(),
             folderId: flowId(),
             created: faker.date.recent().toISOString(),

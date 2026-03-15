@@ -57,9 +57,9 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
       return null;
     }
 
-    const flowId = flowId();
+    const generatedId = flowId();
     return {
-      id: flowId,
+      id: generatedId,
       projectId: flowId(),
       externalId: flowId(),
       folderId: null,
@@ -72,7 +72,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
       version: {
         ...selectedFlow,
         id: flowId(),
-        flowId: flowId,
+        flowId: generatedId,
         created: template.created,
         updated: template.updated,
         state: FlowVersionState.LOCKED,
