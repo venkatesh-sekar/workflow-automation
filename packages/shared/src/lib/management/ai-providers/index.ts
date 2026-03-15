@@ -3,13 +3,6 @@ import { BaseModelSchema } from '../../core/common/base-model'
 
 export enum AIProviderName {
     OPENAI = 'openai',
-    OPENROUTER = 'openrouter',
-    ANTHROPIC = 'anthropic',
-    AZURE = 'azure',
-    GOOGLE = 'google',
-    ACTIVEPIECES = 'activepieces',
-    CLOUDFLARE_GATEWAY = 'cloudflare-gateway',
-    CUSTOM = 'custom',
 }
 
 
@@ -23,37 +16,11 @@ export const BaseAIProviderAuthConfig = z.object({
 })
 export type BaseAIProviderAuthConfig = z.infer<typeof BaseAIProviderAuthConfig>
 
-export const AnthropicProviderAuthConfig = BaseAIProviderAuthConfig
-export type AnthropicProviderAuthConfig = z.infer<typeof AnthropicProviderAuthConfig>
-
-export const ActivePiecesProviderAuthConfig = BaseAIProviderAuthConfig.extend({
-    apiKeyHash: z.string(),
-})
-export type ActivePiecesProviderAuthConfig = z.infer<typeof ActivePiecesProviderAuthConfig>
-
-export const OpenAICompatibleProviderAuthConfig = BaseAIProviderAuthConfig
-export type OpenAICompatibleProviderAuthConfig = z.infer<typeof OpenAICompatibleProviderAuthConfig>
-
-export const CloudflareGatewayProviderAuthConfig = BaseAIProviderAuthConfig
-export type CloudflareGatewayProviderAuthConfig = z.infer<typeof CloudflareGatewayProviderAuthConfig>
-
-export const AzureProviderAuthConfig = BaseAIProviderAuthConfig
-export type AzureProviderAuthConfig = z.infer<typeof AzureProviderAuthConfig>
-
-export const GoogleProviderAuthConfig = BaseAIProviderAuthConfig
-export type GoogleProviderAuthConfig = z.infer<typeof GoogleProviderAuthConfig>
-
 export const OpenAIProviderAuthConfig = BaseAIProviderAuthConfig
 export type OpenAIProviderAuthConfig = z.infer<typeof OpenAIProviderAuthConfig>
 
-export const OpenRouterProviderAuthConfig = BaseAIProviderAuthConfig
-export type OpenRouterProviderAuthConfig = z.infer<typeof OpenRouterProviderAuthConfig>
-
-export const AnthropicProviderConfig = z.object({})
-export type AnthropicProviderConfig = z.infer<typeof AnthropicProviderConfig>
-
-export const ActivePiecesProviderConfig = z.object({})
-export type ActivePiecesProviderConfig = z.infer<typeof ActivePiecesProviderConfig>
+export const OpenAIProviderConfig = z.object({})
+export type OpenAIProviderConfig = z.infer<typeof OpenAIProviderConfig>
 
 export const ProviderModelConfig = z.object({
     modelId: z.string(),
@@ -62,59 +29,10 @@ export const ProviderModelConfig = z.object({
 })
 export type ProviderModelConfig = z.infer<typeof ProviderModelConfig>
 
-export const OpenAICompatibleProviderConfig = z.object({
-    apiKeyHeader: z.string(),
-    baseUrl: z.string(),
-    models: z.array(ProviderModelConfig),
-})
-export type OpenAICompatibleProviderConfig = z.infer<typeof OpenAICompatibleProviderConfig>
-
-
-export const CloudflareGatewayProviderConfig = z.object({
-    accountId: z.string(),
-    gatewayId: z.string(),
-    models: z.array(ProviderModelConfig),
-    vertexProject: z.string().optional(),
-    vertexRegion: z.string().optional(),
-})
-export type CloudflareGatewayProviderConfig = z.infer<typeof CloudflareGatewayProviderConfig>
-
-export const AzureProviderConfig = z.object({
-    resourceName: z.string(),
-})
-export type AzureProviderConfig = z.infer<typeof AzureProviderConfig>
-
-export const GoogleProviderConfig = z.object({})
-export type GoogleProviderConfig = z.infer<typeof GoogleProviderConfig>
-
-export const OpenAIProviderConfig = z.object({})
-export type OpenAIProviderConfig = z.infer<typeof OpenAIProviderConfig>
-
-export const OpenRouterProviderConfig = z.object({})
-export type OpenRouterProviderConfig = z.infer<typeof OpenRouterProviderConfig>
-
-export const AIProviderAuthConfig = z.union([
-    AnthropicProviderAuthConfig,
-    AzureProviderAuthConfig,
-    GoogleProviderAuthConfig,
-    OpenAIProviderAuthConfig,
-    OpenRouterProviderAuthConfig,
-    CloudflareGatewayProviderAuthConfig,
-    OpenAICompatibleProviderAuthConfig,
-    ActivePiecesProviderAuthConfig,
-])
+export const AIProviderAuthConfig = OpenAIProviderAuthConfig
 export type AIProviderAuthConfig = z.infer<typeof AIProviderAuthConfig>
-// Order matters, put schemas with required fields first, empty ones last. This is to avoid empty objects matching any object.
-export const AIProviderConfig = z.union([
-    OpenAICompatibleProviderConfig,
-    CloudflareGatewayProviderConfig,
-    AzureProviderConfig,
-    AnthropicProviderConfig,
-    GoogleProviderConfig,
-    OpenAIProviderConfig,
-    OpenRouterProviderConfig,
-    ActivePiecesProviderConfig,
-])
+
+export const AIProviderConfig = OpenAIProviderConfig
 export type AIProviderConfig = z.infer<typeof AIProviderConfig>
 
 const ProviderConfigUnion = z.discriminatedUnion('provider', [
@@ -123,48 +41,6 @@ const ProviderConfigUnion = z.discriminatedUnion('provider', [
         provider: z.literal(AIProviderName.OPENAI),
         config: OpenAIProviderConfig,
         auth: OpenAIProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.OPENROUTER),
-        config: OpenRouterProviderConfig,
-        auth: OpenRouterProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.ANTHROPIC),
-        config: AnthropicProviderConfig,
-        auth: AnthropicProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.AZURE),
-        config: AzureProviderConfig,
-        auth: AzureProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.GOOGLE),
-        config: GoogleProviderConfig,
-        auth: GoogleProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.CLOUDFLARE_GATEWAY),
-        config: CloudflareGatewayProviderConfig,
-        auth: CloudflareGatewayProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.CUSTOM),
-        config: OpenAICompatibleProviderConfig,
-        auth: OpenAICompatibleProviderAuthConfig,
-    }),
-    z.object({
-        displayName: z.string().min(1),
-        provider: z.literal(AIProviderName.ACTIVEPIECES),
-        config: ActivePiecesProviderConfig,
-        auth: ActivePiecesProviderAuthConfig,
     }),
 ])
 
@@ -220,56 +96,3 @@ export const AIErrorResponse = z.object({
 })
 
 export type AIErrorResponse = z.infer<typeof AIErrorResponse>
-/**
- * Splits a Cloudflare Gateway model ID into provider and model, i.e. "google-vertex-ai/google/gemini-2.5-pro" -> { provider: "google-vertex-ai", model: "google/gemini-2.5-pro" }.
- * @param modelId - The model ID to split.
- * @returns An object containing the provider and model.
- */
-export function splitCloudflareGatewayModelId(modelId: string): {
-    provider: 'google-vertex-ai'
-    publisher: string
-    model: string
-} | {
-    provider: string
-    model: string
-    publisher: undefined
-} | {
-    provider: undefined
-    model: string
-    publisher: undefined
-} {
-    const slashIndex = modelId.indexOf('/')
-    if (slashIndex === -1) {
-        //console.error(`Invalid model ID "${modelId}": expected format "provider/model"`)
-        return {
-            provider: undefined,
-            model: modelId,
-            publisher: undefined,
-        }
-    }
-    const provider = modelId.substring(0, slashIndex)
-    const rest = modelId.substring(slashIndex + 1)
-
-    if (provider === 'google-vertex-ai') {
-        const secondSlashIndex = rest.indexOf('/')
-        if (secondSlashIndex === -1) {
-            //console.error(`Invalid Google Vertex AI model ID "${modelId}": expected format "google-vertex-ai/publisher/model"`)
-            return {
-                provider: undefined,
-                model: modelId,
-                publisher: undefined,
-            }
-        }
-        return {
-            provider: 'google-vertex-ai',
-            publisher: rest.substring(0, secondSlashIndex),
-            model: rest.substring(secondSlashIndex + 1),
-        }
-    }
-
-    return {
-        provider,
-        model: rest,
-        publisher: undefined,
-    }
-}

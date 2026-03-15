@@ -1,5 +1,4 @@
 import {
-    AIProviderName,
     ApEdition,
     FlowAction,
     FlowActionType,
@@ -175,7 +174,7 @@ function migrateModel(provider: string | undefined, modelId: string): { model: s
         }
     }
     return {
-        provider: AIProviderName.ACTIVEPIECES,
+        provider: 'activepieces' as any,
         model: `${provider.toLocaleLowerCase()}/${modelIdToOpenRouter[modelId] ?? modelId}`,
     }
 }

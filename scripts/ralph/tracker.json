@@ -1,5 +1,5 @@
 {
-  "iteration": 84,
+  "iteration": 85,
   "current_phase": "strip-ai-providers",
   "phases": {
     "copy-server-core": {
@@ -177,7 +177,8 @@
         "Tests updated for single-provider setup"
       ],
       "completed_items": [
-        {"iteration": 84, "description": "Stripped provider registry to OpenAI only. Deleted 6 provider files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. All 171 tests pass."}
+        {"iteration": 84, "description": "Stripped provider registry to OpenAI only. Deleted 6 provider files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. All 171 tests pass."},
+        {"iteration": 85, "description": "Stripped shared AI provider types to OpenAI only. Removed 7 provider enums (ANTHROPIC, AZURE, GOOGLE, OPENROUTER, CLOUDFLARE_GATEWAY, ACTIVEPIECES, CUSTOM), deleted their zod schemas/auth configs, removed splitCloudflareGatewayModelId helper. Cleaned ai-provider-service.ts of all ACTIVEPIECES cloud-credits code. Fixed 2 migration files using string literals instead of removed enum values. All 171 tests pass."}
       ]
     },
     "build-audit-logs": {

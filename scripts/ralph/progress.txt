@@ -590,3 +590,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** Provider registry typed as Partial<Record> since we no longer cover all enum values. Shared types still export all providers — will strip in next iteration.
 ---
+
+## Iteration #85 - strip-ai-providers
+- **Change:** Stripped shared AI provider types to OpenAI only. Removed 7 provider enum values (ANTHROPIC, AZURE, GOOGLE, OPENROUTER, CLOUDFLARE_GATEWAY, ACTIVEPIECES, CUSTOM) and their zod schemas/auth configs. Removed splitCloudflareGatewayModelId helper. Cleaned ai-provider-service.ts of all ACTIVEPIECES cloud-credits code (auto-create, enrichment, credit check scheduling). Fixed 2 migration files to use string literals instead of removed enum values.
+- **Files:** packages/shared/src/lib/management/ai-providers/index.ts, packages/server/api/src/app/ai/ai-provider-service.ts, 2 migration files
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** ACTIVEPIECES provider was cloud credits proxy with significant service-level code. Migration files need string literals when referencing removed enums. UI file upsert-provider-dialog.tsx still imports removed types — next iteration.
+---

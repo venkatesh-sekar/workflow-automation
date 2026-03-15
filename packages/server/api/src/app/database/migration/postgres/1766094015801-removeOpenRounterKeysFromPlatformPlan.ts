@@ -1,4 +1,4 @@
-import { AIProviderName, apId } from '@activepieces/shared'
+import { apId } from '@activepieces/shared'
 import { MigrationInterface, QueryRunner } from 'typeorm'
 import { encryptUtils } from '../../../helper/encryption'
 
@@ -26,7 +26,7 @@ export class RemoveOpenRounterKeysFromPlatformPlan1766094015801 implements Migra
             `, [
                 apId(),
                 plan.platformId,
-                AIProviderName.ACTIVEPIECES,
+                'activepieces',
                 'Activepieces',
                 encryptedConfig,
             ])
