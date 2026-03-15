@@ -1,5 +1,5 @@
 {
-  "iteration": 126,
+  "iteration": 127,
   "current_phase": "deployment",
   "phases": {
     "copy-server-core": {
@@ -307,7 +307,8 @@
         "Container starts and responds to health check"
       ],
       "completed_items": [
-        {"iteration": 126, "description": "Created Dockerfile (multi-stage: build shared packages in order, build server API, build web frontend, run with nginx+node), docker-compose.yml (4 services: flow-api, flow-worker, postgres, redis), .env.production with all FLOW_ vars, nginx.conf, docker-entrypoint.sh."}
+        {"iteration": 126, "description": "Created Dockerfile (multi-stage: build shared packages in order, build server API, build web frontend, run with nginx+node), docker-compose.yml (4 services: flow-api, flow-worker, postgres, redis), .env.production with all FLOW_ vars, nginx.conf, docker-entrypoint.sh."},
+        {"iteration": 127, "description": "Added health checks to docker-compose.yml: flow-api checks /v1/health endpoint, postgres uses pg_isready, redis uses redis-cli ping. flow-api and flow-worker depend on healthy postgres+redis via service_healthy condition."}
       ]
     }
   },

@@ -884,3 +884,10 @@
 - **Quality gate:** pass (typecheck clean, 191/191 server tests pass)
 - **Learnings:** Build order: shared→framework→common→server-common→engine→api→web. Entry point is packages/server/api/dist/src/bootstrap.js. FLOW_CONTAINER_TYPE controls APP vs WORKER mode.
 ---
+
+## Iteration #127 - deployment
+- **Change:** Added health checks to docker-compose.yml for all services. flow-api checks /v1/health, postgres uses pg_isready, redis uses redis-cli ping. App services depend on healthy infrastructure via service_healthy condition.
+- **Files:** docker-compose.yml
+- **Quality gate:** pass (0 TS errors, 191 tests pass)
+- **Learnings:** Server has public GET /v1/health endpoint returning {status: "Healthy"} or 503 — suitable for Docker health checks
+---

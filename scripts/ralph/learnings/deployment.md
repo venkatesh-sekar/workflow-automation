@@ -16,3 +16,8 @@
 ## Nginx
 - Upstream uses nginx.react.conf for SPA routing + API proxy to localhost:3000
 - Static assets at /usr/share/nginx/html/
+
+## Health Checks
+- Server has GET /v1/health (public, no auth) returning {status: "Healthy"} or 503
+- flow-api healthcheck hits localhost:3000/v1/health directly (bypasses nginx)
+- postgres: pg_isready -U flow; redis: redis-cli ping
