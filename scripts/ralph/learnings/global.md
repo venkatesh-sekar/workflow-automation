@@ -50,6 +50,11 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Guard audit hooks with PrincipalType.USER to skip SERVICE principals
 - Test baseline after audit: 22 suites, 178 tests
 
+## Alerts (complete)
+- alertService at packages/server/api/src/app/alerts/ — structured stdout logging via Fastify pino
+- AlertHandler interface kept for future swappability (e.g., email, Slack)
+- Test baseline after alerts: 23 suites, 184 tests
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts
