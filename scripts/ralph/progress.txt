@@ -674,3 +674,10 @@
 - **Quality gate:** pass (0 TS errors, 178 tests pass)
 - **Learnings:** Promoted audit hook patterns and test baseline to global learnings
 ---
+
+## Iteration #97 - simplify-alerts
+- **Change:** Created alert service with AlertHandler interface and structured stdout logging implementation. alertService(log).handleFlowRunFinish(flowRun) checks for failure statuses (FAILED, INTERNAL_ERROR, TIMEOUT, QUOTA_EXCEEDED, MEMORY_LIMIT_EXCEEDED, LOG_SIZE_EXCEEDED) and logs structured JSON via Fastify pino logger.
+- **Files:** packages/server/api/src/app/alerts/alert-service.ts (new), scripts/ralph/learnings/simplify-alerts.md (new)
+- **Quality gate:** pass (0 TS errors, 178 tests pass)
+- **Learnings:** FlowRun has failedStep (name, displayName) but no terminationReason field. Using failedStep.displayName as error context.
+---
