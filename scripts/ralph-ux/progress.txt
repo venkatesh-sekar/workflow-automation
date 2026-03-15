@@ -122,3 +122,10 @@
 - **Files changed:** packages/web/src/app/components/centered-page.tsx
 - **Learnings:** CenteredPage is used by 10 platform admin pages — fixing shared layout components propagates design consistency more efficiently than fixing individual pages.
 ---
+
+## Iteration #18 - platform-admin-pages
+- **Change:** Fixed health page "release changelog" link — replaced hardcoded `text-blue-600 dark:text-blue-500` with `text-primary`, added `underline-offset-4` and `transition-colors duration-150`. Removes dark mode override and aligns link color to design system primary token.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/health/index.tsx
+- **Learnings:** For inline text links, use `text-primary font-medium hover:underline underline-offset-4 transition-colors duration-150`. Always remove `dark:` prefixed overrides. Never use hardcoded Tailwind colors for links when a design token exists.
+---
