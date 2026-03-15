@@ -39,4 +39,6 @@
 - SubscriptionInfo component is dead (no imports) — clean up later or in dead-code phase
 - success.tsx still references ai-credit action types (ai-credit-auto-topup, ai-credit-payment) — harmless but could clean
 - Billing page still fetches platformPlanInfo via billingQueries but doesn't use it in render (only LicenseKey with platform is shown) — dead query, clean later
-- Next targets: cloud services (piece-sync, cloud-oauth, community-templates), dead third-party integrations (AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM)
+- piece-sync-service.ts gutted: removed cloud.activepieces.com URL, listCloudPieces, installNewPieces, deletePiecesIfNotOnCloud — sync() is now a no-op log message when OFFICIAL_AUTO mode
+- Removed unused imports: semver, groupBy, PackageType, PieceType, apVersionUtil, PieceMetadata, PieceMetadataSchema, pieceRepos
+- Next targets: cloud-oauth2-service.ts (secrets.activepieces.com), community-templates.service.ts, AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM

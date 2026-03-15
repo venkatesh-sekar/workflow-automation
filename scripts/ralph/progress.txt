@@ -289,3 +289,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** SubscriptionInfo component and billing page subscription query are now dead — clean up in future iteration
 ---
+
+## Iteration #42 - strip-billing-and-licensing
+- **Change:** Removed cloud piece sync from piece-sync-service.ts: deleted CLOUD_API_URL (cloud.activepieces.com), listCloudPieces(), installNewPieces(), deletePiecesIfNotOnCloud() — sync() now logs 'local only'
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing)
+- **Learnings:** Removed semver, groupBy, PackageType, PieceType, apVersionUtil, PieceMetadata imports that were only needed for cloud sync
+---
