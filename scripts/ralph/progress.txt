@@ -205,3 +205,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Service callers (trigger-source-service.ts, controller) kept working since exported interface preserved as no-op
 ---
+
+## Iteration #30 - strip-telemetry
+- **Change:** Renamed observability service names: HyperDX 'activepieces'→'flow' in hyperdx-pino.ts, OpenTelemetry 'activepieces-api'/'activepieces-worker'→'flow-api'/'flow-worker' in instrumentation.ts
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

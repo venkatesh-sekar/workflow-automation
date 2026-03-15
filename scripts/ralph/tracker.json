@@ -1,5 +1,5 @@
 {
-  "iteration": 29,
+  "iteration": 30,
   "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
@@ -113,7 +113,8 @@
         {"iteration": 26, "description": "Removed Segment backend: gutted telemetry.utils.ts to no-ops (removed Analytics import, hardcoded write key, identify/track functions), removed @segment/analytics-node dep from package.json"},
         {"iteration": 27, "description": "Removed Segment frontend + PostHog: gutted telemetry-provider.tsx to no-op wrapper, removed @segment/analytics-next dep from web + server/api package.json, removed posthog-js dep from web package.json, removed hardcoded keys Znobm6c... and phc_7F92..."},
         {"iteration": 28, "description": "Removed Sentry: gutted exception-handler.ts (removed @sentry/node import, Sentry.init, captureException, initializeSentry method), removed @sentry/node dep from server/common package.json, removed SENTRY_DSN from FlowSystemProp enum + system-validator + machine-service + worker schema + server.ts init call"},
-        {"iteration": 29, "description": "Removed template telemetry: gutted template-telemetry.service.ts to no-op (removed cloud.activepieces.com and template-manager.activepieces.com URLs, sendToCloud/sendToInternal functions), removed TEMPLATE_MANAGER_API_KEY from FlowSystemProp enum + system-validator"}
+        {"iteration": 29, "description": "Removed template telemetry: gutted template-telemetry.service.ts to no-op (removed cloud.activepieces.com and template-manager.activepieces.com URLs, sendToCloud/sendToInternal functions), removed TEMPLATE_MANAGER_API_KEY from FlowSystemProp enum + system-validator"},
+        {"iteration": 30, "description": "Renamed observability service names: HyperDX 'activepieces'→'flow' in hyperdx-pino.ts, OpenTelemetry 'activepieces-api'/'activepieces-worker'→'flow-api'/'flow-worker' in instrumentation.ts"}
       ]
     },
     "strip-billing-and-licensing": {

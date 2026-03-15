@@ -15,7 +15,7 @@ export const createHyperDXTransport = (level: Level, targets: TransportTargetOpt
     }
     HyperDX.init({
         apiKey: token,
-        service: 'activepieces',
+        service: 'flow',
     })
 
     return pino(

@@ -12,7 +12,7 @@ import { system } from './app/helper/system/system'
 
 function getServiceName(): string {
     const isApp = system.isApp()
-    const serviceName = isApp ? 'activepieces-api' : 'activepieces-worker'
+    const serviceName = isApp ? 'flow-api' : 'flow-worker'
 
     return serviceName
 }
