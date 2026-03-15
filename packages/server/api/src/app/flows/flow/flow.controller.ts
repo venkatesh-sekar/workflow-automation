@@ -22,6 +22,7 @@ import dayjs from 'dayjs'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
+import { auditEventService } from '../../audit-event/audit-event.service'
 import { authenticationUtils } from '../../authentication/authentication-utils'
 import { entitiesMustBeOwnedByCurrentProject } from '../../authentication/authorization'
 import { applicationEvents } from '../../helper/application-events'
@@ -48,6 +49,15 @@ export const flowController: FastifyPluginAsyncZod = async (app) => {
                 flow: newFlow,
             },
         })
+
+        if (request.principal.type === PrincipalType.USER) {
+            await auditEventService.create({
+                projectId: request.projectId,
+                userId: request.principal.id,
+                event: 'FLOW_CREATED',
+                data: { flowId: newFlow.id, displayName: newFlow.version.displayName },
+            })
+        }
 
         return reply.status(StatusCodes.CREATED).send(newFlow)
     })
@@ -111,6 +121,22 @@ export const flowController: FastifyPluginAsyncZod = async (app) => {
                 flowVersion: flow.version,
             },
         })
+
+        if (request.principal.type === PrincipalType.USER) {
+            const isStatusChange = request.body.type === FlowOperationType.CHANGE_STATUS || request.body.type === FlowOperationType.LOCK_AND_PUBLISH
+            const event = isStatusChange ? 'FLOW_STATUS_CHANGED' : 'FLOW_UPDATED'
+            const data: Record<string, unknown> = { flowId: request.params.id, operationType: request.body.type }
+            if (isStatusChange) {
+                data.status = (request.body.request as { status?: string }).status
+            }
+            await auditEventService.create({
+                projectId: request.projectId,
+                userId: userId,
+                event,
+                data,
+            })
+        }
+
         return updatedFlow
     })
 
@@ -170,6 +196,16 @@ export const flowController: FastifyPluginAsyncZod = async (app) => {
                 flowVersion: flow.version,
             },
         })
+
+        if (request.principal.type === PrincipalType.USER) {
+            await auditEventService.create({
+                projectId: request.projectId,
+                userId: request.principal.id,
+                event: 'FLOW_DELETED',
+                data: { flowId: flow.id, displayName: flow.version.displayName },
+            })
+        }
+
         return reply.status(StatusCodes.NO_CONTENT).send()
     })
 }

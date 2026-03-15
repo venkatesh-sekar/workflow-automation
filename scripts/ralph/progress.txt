@@ -639,3 +639,10 @@
 - **Quality gate:** pass (0 TS errors, 171 tests pass)
 - **Learnings:** UserPrincipal doesn't have projectId — must use securityAccess.project() with ProjectResourceType.QUERY to get request.projectId from query params
 ---
+
+## Iteration #92 - build-audit-logs
+- **Change:** Added audit event hooks to flow controller for flow create, update, enable/disable, and delete
+- **Files:** packages/server/api/src/app/flows/flow/flow.controller.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/build-audit-logs.md
+- **Quality gate:** pass (0 TS errors, 171 tests pass)
+- **Learnings:** FlowOperationRequest.request is a union — need type cast to access status; guard audit calls with PrincipalType.USER check
+---
