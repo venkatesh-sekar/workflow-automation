@@ -14,7 +14,7 @@ import {
   }
   
 
-  const RESUME_WEBHOOK_HEADER = 'x-activepieces-resume-webhook-url';
+  const RESUME_WEBHOOK_HEADER = 'x-flow-resume-webhook-url';
   export const returnResponseAndWaitForNextWebhook = createAction({
     name: 'return_response_and_wait_for_next_webhook',
     displayName: 'Respond and Wait for Next Webhook',

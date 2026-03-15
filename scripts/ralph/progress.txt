@@ -373,3 +373,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Non-English locales had "Activepieces" in both keys and translated values; x-activepieces-resume-webhook-url is an actual HTTP header name that will need server-side rename too
 ---
+
+## Iteration #54 - clean-strings-and-comments
+- **Change:** Cleaned server+shared source strings and comments: MCP service name/title/description (Activepieces→Flow), activepiecesTools→flowTools, JWT issuer (activepieces→flow), S3 test key prefix, event destinations error msg, config path .activepieces→.flow, SCIM URN, piece utils JSDoc examples, webhook header x-activepieces→x-flow, test helper issuer
+- **Files:** 14 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** JWT issuer change breaks existing tokens — acceptable for full rebrand. migrate-v9 provider left untouched (runtime data migration).
+---

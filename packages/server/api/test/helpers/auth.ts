@@ -6,7 +6,7 @@ const generateToken = ({
     algorithm = 'HS256',
     key = 'secret',
     keyId = '1',
-    issuer = 'activepieces',
+    issuer = 'flow',
 }: GenerateTokenParams): string => {
     const options: SignOptions = {
         algorithm,

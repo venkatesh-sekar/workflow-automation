@@ -6,7 +6,7 @@ import { flowService } from '../../flows/flow/flow.service'
 export const apCreateFlowTool = (mcp: McpServer, log: FastifyBaseLogger): McpToolDefinition => {
     return {
         title: 'ap_create_flow',
-        description: 'Create a new flow in Activepieces',
+        description: 'Create a new flow',
         inputSchema: {
             flowName: z.string().describe('The name of the flow'),
         },

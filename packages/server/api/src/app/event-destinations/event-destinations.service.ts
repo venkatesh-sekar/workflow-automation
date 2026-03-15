@@ -175,7 +175,7 @@ const assertUrlIsExternal = (url: string) => {
         throw new FlowError({
             code: ErrorCode.VALIDATION,
             params: {
-                message: 'Activepieces URL is not allowed to avoid recursive calls',
+                message: 'Flow URL is not allowed to avoid recursive calls',
             },
         })
     }

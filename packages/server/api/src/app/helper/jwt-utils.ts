@@ -24,7 +24,7 @@ export enum JwtSignAlgorithm {
 
 const ONE_WEEK = 7 * 24 * 3600
 const KEY_ID = '1'
-const ISSUER = 'activepieces'
+const ISSUER = 'flow'
 const ALGORITHM = JwtSignAlgorithm.HS256
 
 const redisType = redisConnections.getRedisType()

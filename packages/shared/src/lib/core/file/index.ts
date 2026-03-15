@@ -11,7 +11,7 @@ export enum FileType {
     FLOW_STEP_FILE = 'FLOW_STEP_FILE',
     SAMPLE_DATA = 'SAMPLE_DATA',
     /*
-    @deprecated activepieces no longer stores trigger payload
+    @deprecated no longer stores trigger payload
     */
     TRIGGER_PAYLOAD = 'TRIGGER_PAYLOAD',
     SAMPLE_DATA_INPUT = 'SAMPLE_DATA_INPUT',

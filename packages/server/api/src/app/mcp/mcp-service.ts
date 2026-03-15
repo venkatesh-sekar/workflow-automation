@@ -9,7 +9,7 @@ import { telemetry } from '../helper/telemetry.utils'
 import { WebhookFlowVersionToRun } from '../webhooks/webhook-handler'
 import { webhookService } from '../webhooks/webhook.service'
 import { McpServerEntity } from './mcp-entity'
-import { activepiecesTools, ALL_CONTROLLABLE_TOOL_NAMES, LOCKED_TOOL_NAMES } from './tools'
+import { flowTools, ALL_CONTROLLABLE_TOOL_NAMES, LOCKED_TOOL_NAMES } from './tools'
 
 export const mcpServerRepository = repoFactory(McpServerEntity)
 
@@ -57,11 +57,11 @@ export const mcpServerService = (log: FastifyBaseLogger) => {
         },
         buildServer: async ({ mcp }: BuildServerRequest): Promise<McpServer> => {
             const server = new McpServer({
-                name: 'Activepieces',
-                title: 'Activepieces',
+                name: 'Flow',
+                title: 'Flow',
                 version: '1.0.0',
                 websiteUrl: '',
-                description: 'Automation and workflow MCP server by Activepieces',
+                description: 'Automation and workflow MCP server',
                 icons: [
                     {
                         src: '',
@@ -132,7 +132,7 @@ export const mcpServerService = (log: FastifyBaseLogger) => {
                 })
             }
             
-            const allTools = activepiecesTools(mcp, log)
+            const allTools = flowTools(mcp, log)
             const enabledControllable = new Set(mcp.enabledTools ?? ALL_CONTROLLABLE_TOOL_NAMES)
             const tools = allTools.filter(t => LOCKED_TOOL_NAMES.includes(t.title) || enabledControllable.has(t.title))
             tools.forEach((tool) => {
@@ -199,7 +199,7 @@ function mcpPropertyToZod(property: McpProperty): z.ZodTypeAny {
 function registerEmptyResourcesAndPrompts(server: McpServer): void {
     server.registerResource(
         '_',
-        new ResourceTemplate('activepieces://empty', {
+        new ResourceTemplate('flow://empty', {
             list: async () => ({ resources: [] }),
         }),
         {},

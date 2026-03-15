@@ -21,7 +21,7 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [FlowSystemProp.PM2_ENABLED]: 'false',
     [FlowSystemProp.CLIENT_REAL_IP_HEADER]: 'x-real-ip',
     [FlowSystemProp.CLOUD_AUTH_ENABLED]: 'true',
-    [FlowSystemProp.CONFIG_PATH]: path.join(os.homedir(), '.activepieces'),
+    [FlowSystemProp.CONFIG_PATH]: path.join(os.homedir(), '.flow'),
     [FlowSystemProp.DB_TYPE]: DatabaseType.POSTGRES,
     [FlowSystemProp.EDITION]: FlowEdition.COMMUNITY,
     [FlowSystemProp.APP_WEBHOOK_SECRETS]: '{}',

@@ -40,7 +40,7 @@ export const ALL_CONTROLLABLE_TOOL_NAMES: string[] = [
     'ap_manage_notes',
 ]
 
-export const activepiecesTools = (mcp: McpServer, log: FastifyBaseLogger): McpToolDefinition[] => [
+export const flowTools = (mcp: McpServer, log: FastifyBaseLogger): McpToolDefinition[] => [
     apCreateFlowTool(mcp, log),
     apRenameFlowTool(mcp, log),
     apListFlowsTool(mcp, log),
