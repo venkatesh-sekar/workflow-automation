@@ -226,3 +226,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #33 - strip-telemetry (PHASE COMPLETE)
+- **Change:** Phase complete — all 11 criteria verified against codebase: no analytics deps, no hardcoded API keys, no external telemetry calls, no TELEMETRY_ENABLED flag, tests at same baseline. Advancing to strip-billing-and-licensing.
+- **Files:** 0 (phase completion bookkeeping only)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Promoted key telemetry learnings to global.md
+---

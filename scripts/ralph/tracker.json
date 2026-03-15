@@ -1,6 +1,6 @@
 {
-  "iteration": 32,
-  "current_phase": "strip-telemetry",
+  "iteration": 33,
+  "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -93,7 +93,7 @@
       ]
     },
     "strip-telemetry": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "Segment backend removed: @segment/analytics-node dep removed, telemetry.utils.ts gutted (identify/track become no-ops), hardcoded write key 42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK removed",
@@ -120,7 +120,7 @@
       ]
     },
     "strip-billing-and-licensing": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "Stripe checkout session endpoints removed from billing-plans-api.ts",
@@ -208,7 +208,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props"],
-  "phase_queue": ["strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry"],
+  "phase_queue": ["strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }
