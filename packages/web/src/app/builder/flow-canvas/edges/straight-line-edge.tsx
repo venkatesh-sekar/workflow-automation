@@ -2,18 +2,18 @@ import { StepLocationRelativeToParent } from '@flow/shared';
 import { BaseEdge, EdgeProps } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApStraightLineEdge } from '../utils/types';
+import { FlowStraightLineEdge } from '../utils/types';
 
-import { ApAddButton } from './add-button';
+import { FlowAddButton } from './add-button';
 
-export const ApStraightLineCanvasEdge = ({
+export const FlowStraightLineCanvasEdge = ({
   sourceX,
   sourceY,
   targetY,
   data,
   id,
   source,
-}: EdgeProps & ApStraightLineEdge) => {
+}: EdgeProps & FlowStraightLineEdge) => {
   const lineStartX = sourceX;
   const lineStartY = sourceY;
   const lineLength = targetY - sourceY;
@@ -39,11 +39,11 @@ export const ApStraightLineCanvasEdge = ({
           height={flowCanvasConsts.AP_NODE_SIZE.ADD_BUTTON.height}
           className="overflow-visible cursor-default"
         >
-          <ApAddButton
+          <FlowAddButton
             edgeId={id}
             parentStepName={source}
             stepLocationRelativeToParent={StepLocationRelativeToParent.AFTER}
-          ></ApAddButton>
+          ></FlowAddButton>
         </foreignObject>
       )}
 

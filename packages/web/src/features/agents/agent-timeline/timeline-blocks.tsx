@@ -23,7 +23,7 @@ import { useMemo, useState } from 'react';
 
 import { DataList } from '@/components/custom/data-list';
 import { JsonViewer } from '@/components/custom/json-viewer';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { SimpleJsonViewer } from '@/components/custom/simple-json-viewer';
 import {
   Accordion,
@@ -143,7 +143,7 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
           <AccordionContent>
             <div className="space-y-3 w-full my-2">
               {hasInstructions && (
-                <ApMarkdown
+                <FlowMarkdown
                   variant={MarkdownVariant.BORDERLESS}
                   markdown={block.input?.instruction as string}
                 />
@@ -189,7 +189,7 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
                         maxHeight={300}
                       />
                     ) : !isNil(errorMessage) ? (
-                      <ApMarkdown
+                      <FlowMarkdown
                         variant={MarkdownVariant.BORDERLESS}
                         markdown={errorMessage}
                       />
@@ -222,7 +222,7 @@ export const MarkdownBlock = ({
       icon={<MessageSquareText className="h-4 w-4 text-muted-foreground" />}
     >
       <div className="bg-accent/20 rounded-md p-3 text-sm text-foreground border border-border">
-        <ApMarkdown
+        <FlowMarkdown
           markdown={step.markdown}
           variant={MarkdownVariant.BORDERLESS}
         />
@@ -265,7 +265,7 @@ export const PromptBlock = ({ prompt }: { prompt: string }) => {
   return (
     <TimelineItem icon={<SquareTerminal className="h-4 w-4 text-primary" />}>
       <div className="bg-primary/5 rounded-md p-3 text-sm text-foreground border border-border space-y-2">
-        <ApMarkdown
+        <FlowMarkdown
           markdown={displayedPrompt}
           variant={MarkdownVariant.BORDERLESS}
         />

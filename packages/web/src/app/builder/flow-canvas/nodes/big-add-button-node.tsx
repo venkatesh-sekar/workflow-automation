@@ -11,10 +11,10 @@ import { cn } from '@/lib/utils';
 import { useBuilderStateContext } from '../../builder-hooks';
 import { flowCanvasConsts } from '../utils/consts';
 import { flowCanvasUtils } from '../utils/flow-canvas-utils';
-import { ApBigAddButtonNode } from '../utils/types';
+import { FlowBigAddButtonNode } from '../utils/types';
 
-const ApBigAddButtonCanvasNode = React.memo(
-  ({ data, id }: Omit<ApBigAddButtonNode, 'position'>) => {
+const FlowBigAddButtonCanvasNode = React.memo(
+  ({ data, id }: Omit<FlowBigAddButtonNode, 'position'>) => {
     const [isIsStepInsideDropzone, setIsStepInsideDropzone] = useState(false);
     const [readonly, activeDraggingStep, isPieceSelectorOpened] =
       useBuilderStateContext((state) => [
@@ -169,5 +169,5 @@ const ApBigAddButtonCanvasNode = React.memo(
   },
 );
 
-ApBigAddButtonCanvasNode.displayName = 'ApBigAddButtonCanvasNode';
-export { ApBigAddButtonCanvasNode };
+FlowBigAddButtonCanvasNode.displayName = 'FlowBigAddButtonCanvasNode';
+export { FlowBigAddButtonCanvasNode };

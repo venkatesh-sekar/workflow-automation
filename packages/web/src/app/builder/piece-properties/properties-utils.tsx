@@ -10,7 +10,7 @@ import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 import { SecretInput } from '@/app/connections/secret-input';
 import { ColorPicker } from '@/components/custom/color-picker';
 import { JsonEditor } from '@/components/custom/json-editor';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { MultiSelectPieceProperty } from '@/components/custom/multi-select-piece-property';
 import { SearchableSelect } from '@/components/custom/searchable-select';
 import { FormControl } from '@/components/ui/form';
@@ -109,7 +109,7 @@ export const selectGenericFormComponentForProperty = ({
       );
     case PropertyType.MARKDOWN:
       return (
-        <ApMarkdown
+        <FlowMarkdown
           markdown={property.description}
           variables={markdownVariables}
           variant={property.variant}

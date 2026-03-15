@@ -8,7 +8,7 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { CopyButton } from '@/components/custom/clipboard/copy-button';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -250,7 +250,7 @@ const ImportTableDialog = ({
             onSubmit={form.handleSubmit((data) => importFile(data))}
             className="space-y-4"
           >
-            <ApMarkdown
+            <FlowMarkdown
               className="text-left"
               markdown={(() => {
                 if (fileType === 'csv') {

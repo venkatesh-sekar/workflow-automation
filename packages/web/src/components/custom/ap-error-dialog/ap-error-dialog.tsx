@@ -16,7 +16,7 @@ import {
 
 import { useApErrorDialogStore } from './ap-error-dialog-store';
 
-const ApErrorDialog = () => {
+const FlowErrorDialog = () => {
   const { params, closeDialog } = useApErrorDialogStore();
 
   if (isNil(params)) return null;
@@ -62,5 +62,5 @@ const ApErrorDialog = () => {
   );
 };
 
-ApErrorDialog.displayName = 'ApErrorDialog';
-export { ApErrorDialog };
+FlowErrorDialog.displayName = 'FlowErrorDialog';
+export { FlowErrorDialog };

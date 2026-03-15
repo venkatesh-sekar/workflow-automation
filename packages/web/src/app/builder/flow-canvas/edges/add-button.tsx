@@ -9,9 +9,9 @@ import { cn } from '@/lib/utils';
 import { useBuilderStateContext } from '../../builder-hooks';
 import { flowCanvasConsts } from '../utils/consts';
 import { flowCanvasUtils } from '../utils/flow-canvas-utils';
-import { ApButtonData } from '../utils/types';
+import { FlowButtonData } from '../utils/types';
 
-const ApAddButton = React.memo((props: ApButtonData) => {
+const FlowAddButton = React.memo((props: FlowButtonData) => {
   const [isStepInsideDropZone, setIsStepInsideDropzone] = useState(false);
   const [activeDraggingStep, readonly, isPieceSelectorOpen] =
     useBuilderStateContext((state) => [
@@ -109,5 +109,5 @@ const ApAddButton = React.memo((props: ApButtonData) => {
   );
 });
 
-ApAddButton.displayName = 'ApAddButton';
-export { ApAddButton };
+FlowAddButton.displayName = 'FlowAddButton';
+export { FlowAddButton };

@@ -9,7 +9,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 import { ClientRecordData } from '../stores/store/ap-tables-client-state';
 import { Row } from '../types/types';
 
-import { ApFieldHeader } from './ap-field-header';
+import { FlowFieldHeader } from './ap-field-header';
 import { useTableState } from './ap-table-state-provider';
 import { EditableCell } from './editable-cell';
 import { NewFieldPopup } from './new-field-popup';
@@ -77,7 +77,7 @@ export function useTableColumns(createEmptyRecord: () => void) {
       minHeight: 37,
       resizable: true,
       name: '',
-      renderHeaderCell: () => <ApFieldHeader field={{ ...field, index }} />,
+      renderHeaderCell: () => <FlowFieldHeader field={{ ...field, index }} />,
       renderCell: ({
         row,
         column,

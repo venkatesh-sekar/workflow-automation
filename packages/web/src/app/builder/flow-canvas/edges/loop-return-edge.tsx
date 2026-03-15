@@ -2,18 +2,18 @@ import { StepLocationRelativeToParent } from '@flow/shared';
 import { BaseEdge, EdgeProps } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApLoopReturnEdge } from '../utils/types';
+import { FlowLoopReturnEdge } from '../utils/types';
 
-import { ApAddButton } from './add-button';
+import { FlowAddButton } from './add-button';
 
-export const ApLoopReturnLineCanvasEdge = ({
+export const FlowLoopReturnLineCanvasEdge = ({
   sourceX,
   sourceY,
   targetX,
   targetY,
   data,
   id,
-}: EdgeProps & ApLoopReturnEdge) => {
+}: EdgeProps & FlowLoopReturnEdge) => {
   const horizontalLineLength =
     Math.abs(sourceX - targetX) - 2 * flowCanvasConsts.ARC_LENGTH;
 
@@ -78,11 +78,11 @@ export const ApLoopReturnLineCanvasEdge = ({
           height={flowCanvasConsts.AP_NODE_SIZE.ADD_BUTTON.height}
           className="overflow-visible"
         >
-          <ApAddButton
+          <FlowAddButton
             edgeId={id}
             stepLocationRelativeToParent={StepLocationRelativeToParent.AFTER}
             parentStepName={data.parentStepName}
-          ></ApAddButton>
+          ></FlowAddButton>
         </foreignObject>
       }
 

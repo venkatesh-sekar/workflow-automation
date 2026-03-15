@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { platformApi } from '@/api/platforms-api';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -105,7 +105,7 @@ export const NewOAuth2Dialog = ({
           </DialogTitle>
         </DialogHeader>
         <div className="mb-4">
-          <ApMarkdown
+          <FlowMarkdown
             markdown={t(
               'Read more information about how to configure {provider} SSO [here](https://www.activepieces.com/docs/security/sso).',
               { provider: providerDisplayName },

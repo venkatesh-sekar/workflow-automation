@@ -25,7 +25,7 @@ export type SidebarItemType = {
   onClick?: () => void;
 };
 
-export const ApSidebarItem = (item: SidebarItemType) => {
+export const FlowSidebarItem = (item: SidebarItemType) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state } = useSidebar();

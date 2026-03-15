@@ -9,18 +9,18 @@ import {
   NoteColorVariant,
 } from '@flow/shared';
 
-import { ApLoopReturnLineCanvasEdge as ApLoopReturnCanvasEdge } from '../edges/loop-return-edge';
-import { ApLoopStartLineCanvasEdge as ApLoopStartCanvasEdge } from '../edges/loop-start-edge';
-import { ApRouterEndCanvasEdge } from '../edges/router-end-edge';
-import { ApRouterStartCanvasEdge } from '../edges/router-start-edge';
-import { ApStraightLineCanvasEdge } from '../edges/straight-line-edge';
-import { ApBigAddButtonCanvasNode } from '../nodes/big-add-button-node';
-import ApGraphEndWidgetNode from '../nodes/flow-end-widget-node';
-import ApLoopReturnCanvasNode from '../nodes/loop-return-node';
-import { ApNoteCanvasNode } from '../nodes/note-node';
-import { ApStepCanvasNode } from '../nodes/step-node';
+import { FlowLoopReturnLineCanvasEdge as FlowLoopReturnCanvasEdge } from '../edges/loop-return-edge';
+import { FlowLoopStartLineCanvasEdge as FlowLoopStartCanvasEdge } from '../edges/loop-start-edge';
+import { FlowRouterEndCanvasEdge } from '../edges/router-end-edge';
+import { FlowRouterStartCanvasEdge } from '../edges/router-start-edge';
+import { FlowStraightLineCanvasEdge } from '../edges/straight-line-edge';
+import { FlowBigAddButtonCanvasNode } from '../nodes/big-add-button-node';
+import FlowGraphEndWidgetNode from '../nodes/flow-end-widget-node';
+import FlowLoopReturnCanvasNode from '../nodes/loop-return-node';
+import { FlowNoteCanvasNode } from '../nodes/note-node';
+import { FlowStepCanvasNode } from '../nodes/step-node';
 
-import { ApEdgeType, ApNodeType } from './types';
+import { FlowEdgeType, FlowNodeType } from './types';
 
 const ARC_LENGTH = FLOW_CANVAS_ARC;
 const ARC_LEFT = `a${ARC_LENGTH},${ARC_LENGTH} 0 0,0 -${ARC_LENGTH},${ARC_LENGTH}`;
@@ -45,40 +45,40 @@ const DRAGGED_STEP_TAG = 'dragged-step';
 const DRAGGED_NOTE_TAG = 'dragged-note';
 const HORIZONTAL_SPACE_BETWEEN_NODES = FLOW_CANVAS_HSPACE;
 const AP_NODE_SIZE: Record<
-  Exclude<ApNodeType, ApNodeType.GRAPH_START_WIDGET | ApNodeType.NOTE>,
+  Exclude<FlowNodeType, FlowNodeType.GRAPH_START_WIDGET | FlowNodeType.NOTE>,
   { height: number; width: number }
 > = {
-  [ApNodeType.BIG_ADD_BUTTON]: {
+  [FlowNodeType.BIG_ADD_BUTTON]: {
     height: 50,
     width: 50,
   },
-  [ApNodeType.ADD_BUTTON]: {
+  [FlowNodeType.ADD_BUTTON]: {
     height: 20,
     width: 20,
   },
-  [ApNodeType.STEP]: {
+  [FlowNodeType.STEP]: {
     height: FLOW_CANVAS_STEP_HEIGHT,
     width: FLOW_CANVAS_STEP_WIDTH,
   },
-  [ApNodeType.LOOP_RETURN_NODE]: {
+  [FlowNodeType.LOOP_RETURN_NODE]: {
     height: FLOW_CANVAS_STEP_HEIGHT,
     width: FLOW_CANVAS_STEP_WIDTH,
   },
-  [ApNodeType.GRAPH_END_WIDGET]: {
+  [FlowNodeType.GRAPH_END_WIDGET]: {
     height: 0,
     width: 0,
   },
 };
 
 const doesNodeAffectBoundingBoxWidth: (
-  type: ApNodeType,
+  type: FlowNodeType,
 ) => type is
-  | ApNodeType.BIG_ADD_BUTTON
-  | ApNodeType.STEP
-  | ApNodeType.LOOP_RETURN_NODE = (type) =>
-  type === ApNodeType.BIG_ADD_BUTTON ||
-  type === ApNodeType.STEP ||
-  type === ApNodeType.LOOP_RETURN_NODE;
+  | FlowNodeType.BIG_ADD_BUTTON
+  | FlowNodeType.STEP
+  | FlowNodeType.LOOP_RETURN_NODE = (type) =>
+  type === FlowNodeType.BIG_ADD_BUTTON ||
+  type === FlowNodeType.STEP ||
+  type === FlowNodeType.LOOP_RETURN_NODE;
 export const flowCanvasConsts = {
   ARC_LENGTH,
   ARC_LEFT,
@@ -98,18 +98,18 @@ export const flowCanvasConsts = {
 
   doesNodeAffectBoundingBox: doesNodeAffectBoundingBoxWidth,
   edgeTypes: {
-    [ApEdgeType.STRAIGHT_LINE]: ApStraightLineCanvasEdge,
-    [ApEdgeType.LOOP_START_EDGE]: ApLoopStartCanvasEdge,
-    [ApEdgeType.LOOP_RETURN_EDGE]: ApLoopReturnCanvasEdge,
-    [ApEdgeType.ROUTER_START_EDGE]: ApRouterStartCanvasEdge,
-    [ApEdgeType.ROUTER_END_EDGE]: ApRouterEndCanvasEdge,
+    [FlowEdgeType.STRAIGHT_LINE]: FlowStraightLineCanvasEdge,
+    [FlowEdgeType.LOOP_START_EDGE]: FlowLoopStartCanvasEdge,
+    [FlowEdgeType.LOOP_RETURN_EDGE]: FlowLoopReturnCanvasEdge,
+    [FlowEdgeType.ROUTER_START_EDGE]: FlowRouterStartCanvasEdge,
+    [FlowEdgeType.ROUTER_END_EDGE]: FlowRouterEndCanvasEdge,
   },
   nodeTypes: {
-    [ApNodeType.STEP]: ApStepCanvasNode,
-    [ApNodeType.LOOP_RETURN_NODE]: ApLoopReturnCanvasNode,
-    [ApNodeType.BIG_ADD_BUTTON]: ApBigAddButtonCanvasNode,
-    [ApNodeType.GRAPH_END_WIDGET]: ApGraphEndWidgetNode,
-    [ApNodeType.NOTE]: ApNoteCanvasNode,
+    [FlowNodeType.STEP]: FlowStepCanvasNode,
+    [FlowNodeType.LOOP_RETURN_NODE]: FlowLoopReturnCanvasNode,
+    [FlowNodeType.BIG_ADD_BUTTON]: FlowBigAddButtonCanvasNode,
+    [FlowNodeType.GRAPH_END_WIDGET]: FlowGraphEndWidgetNode,
+    [FlowNodeType.NOTE]: FlowNoteCanvasNode,
   },
   DRAGGED_STEP_TAG,
   DRAGGED_NOTE_TAG,

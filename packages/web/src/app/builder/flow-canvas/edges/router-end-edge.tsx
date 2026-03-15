@@ -2,18 +2,18 @@ import { StepLocationRelativeToParent } from '@flow/shared';
 import { BaseEdge, EdgeProps } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApRouterEndEdge } from '../utils/types';
+import { FlowRouterEndEdge } from '../utils/types';
 
-import { ApAddButton } from './add-button';
+import { FlowAddButton } from './add-button';
 
-export const ApRouterEndCanvasEdge = ({
+export const FlowRouterEndCanvasEdge = ({
   sourceX,
   targetX,
   targetY,
   sourceY,
   data,
   id,
-}: EdgeProps & Omit<ApRouterEndEdge, 'position'>) => {
+}: EdgeProps & Omit<FlowRouterEndEdge, 'position'>) => {
   const verticalLineLength =
     flowCanvasConsts.VERTICAL_SPACE_BETWEEN_STEPS -
     2 * flowCanvasConsts.VERTICAL_SPACE_BETWEEN_STEP_AND_LINE;
@@ -88,7 +88,7 @@ export const ApRouterEndCanvasEdge = ({
           height={flowCanvasConsts.AP_NODE_SIZE.ADD_BUTTON.height}
           className="overflow-visible"
         >
-          <ApAddButton
+          <FlowAddButton
             edgeId={id}
             stepLocationRelativeToParent={StepLocationRelativeToParent.AFTER}
             parentStepName={data.routerOrBranchStepName}

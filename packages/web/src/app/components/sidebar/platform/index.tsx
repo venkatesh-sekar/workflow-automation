@@ -42,7 +42,7 @@ import { platformHooks } from '@/hooks/platform-hooks';
 import { determineDefaultRoute } from '@/lib/route-utils';
 import { cn } from '@/lib/utils';
 
-import { ApSidebarItem } from '../ap-sidebar-item';
+import { FlowSidebarItem } from '../ap-sidebar-item';
 import { SidebarUser } from '../sidebar-user';
 
 export function PlatformSidebar() {
@@ -214,7 +214,7 @@ export function PlatformSidebar() {
               <SidebarGroupContent>
                 <SidebarMenu>
                   {group.items.map((item) => (
-                    <ApSidebarItem
+                    <FlowSidebarItem
                       type="link"
                       key={item.label}
                       to={item.to}

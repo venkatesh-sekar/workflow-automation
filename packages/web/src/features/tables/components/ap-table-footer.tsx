@@ -5,7 +5,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 
 import { useTableState } from './ap-table-state-provider';
 
-const ApTableFooter = ({
+const FlowTableFooter = ({
   fieldsCount,
   recordsCount,
 }: {
@@ -51,6 +51,6 @@ const ApTableFooter = ({
   );
 };
 
-ApTableFooter.displayName = 'ApTableFooter';
+FlowTableFooter.displayName = 'FlowTableFooter';
 
-export { ApTableFooter };
+export { FlowTableFooter };

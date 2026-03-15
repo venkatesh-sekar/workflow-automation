@@ -2,18 +2,18 @@ import { StepLocationRelativeToParent } from '@flow/shared';
 import { BaseEdge, EdgeProps } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApLoopStartEdge } from '../utils/types';
+import { FlowLoopStartEdge } from '../utils/types';
 
-import { ApAddButton } from './add-button';
+import { FlowAddButton } from './add-button';
 
-export const ApLoopStartLineCanvasEdge = ({
+export const FlowLoopStartLineCanvasEdge = ({
   sourceX,
   sourceY,
   targetX,
   data,
   source,
   id,
-}: EdgeProps & ApLoopStartEdge) => {
+}: EdgeProps & FlowLoopStartEdge) => {
   const startY =
     sourceY + flowCanvasConsts.VERTICAL_SPACE_BETWEEN_STEP_AND_LINE;
   const verticalLineLength =
@@ -52,13 +52,13 @@ export const ApLoopStartLineCanvasEdge = ({
           height={flowCanvasConsts.AP_NODE_SIZE.ADD_BUTTON.height}
           className="overflow-visible cursor-default"
         >
-          <ApAddButton
+          <FlowAddButton
             edgeId={id}
             stepLocationRelativeToParent={
               StepLocationRelativeToParent.INSIDE_LOOP
             }
             parentStepName={source}
-          ></ApAddButton>
+          ></FlowAddButton>
         </foreignObject>
       )}
 

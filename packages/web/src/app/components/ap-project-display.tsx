@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
-type ApProjectDisplayProps = {
+type FlowProjectDisplayProps = {
   title: string;
   icon?: ProjectIcon;
   containerClassName?: string;
@@ -26,7 +26,7 @@ type ApProjectDisplayProps = {
   inSidebar?: boolean;
 };
 
-export const ApProjectDisplay = ({
+export const FlowProjectDisplay = ({
   title,
   icon,
   containerClassName = '',
@@ -34,7 +34,7 @@ export const ApProjectDisplay = ({
   maxLengthToNotShowTooltip = 30,
   projectType,
   inSidebar = false,
-}: ApProjectDisplayProps) => {
+}: FlowProjectDisplayProps) => {
   const { state } = useSidebar();
   const projectAvatar = isNil(icon) ? null : projectType ===
     ProjectType.TEAM ? (

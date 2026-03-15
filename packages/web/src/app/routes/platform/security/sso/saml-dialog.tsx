@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { platformApi } from '@/api/platforms-api';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -106,7 +106,7 @@ export const ConfigureSamlDialog = ({
         </DialogHeader>
         {samlAcs && (
           <div className="mb-4">
-            <ApMarkdown
+            <FlowMarkdown
               markdown={t(
                 `
 **Setup Instructions**:

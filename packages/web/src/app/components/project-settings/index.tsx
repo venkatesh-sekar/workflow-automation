@@ -17,7 +17,7 @@ import { projectCollectionUtils } from '@/features/projects';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { cn } from '@/lib/utils';
 
-import { ApProjectDisplay } from '../ap-project-display';
+import { FlowProjectDisplay } from '../ap-project-display';
 import { ProjectAvatar } from '../project-avatar';
 
 import { AlertsSettings } from './alerts';
@@ -160,7 +160,7 @@ export function ProjectSettingsDialog({
         <div className="flex h-[700px]">
           <div className="w-[238px]">
             <nav className="bg-sidebar space-y-1 bg-muted rounded-sm rounded-r-none h-full flex flex-col rounded-l-md">
-              <ApProjectDisplay
+              <FlowProjectDisplay
                 title={form.watch('projectName') ?? project.displayName}
                 icon={form.watch('icon') ?? project.icon}
                 containerClassName="px-3 my-4"

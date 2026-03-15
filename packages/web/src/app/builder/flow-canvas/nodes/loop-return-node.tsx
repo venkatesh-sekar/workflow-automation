@@ -3,7 +3,7 @@ import { Handle, Position } from '@xyflow/react';
 import { flowCanvasConsts } from '../utils/consts';
 
 //used purely to help calculate the loop graph width
-const ApLoopReturnCanvasNode = () => {
+const FlowLoopReturnCanvasNode = () => {
   return (
     <>
       <div
@@ -26,5 +26,5 @@ const ApLoopReturnCanvasNode = () => {
   );
 };
 
-ApLoopReturnCanvasNode.displayName = 'EmptyLoopReturnCanvasNode';
-export default ApLoopReturnCanvasNode;
+FlowLoopReturnCanvasNode.displayName = 'EmptyLoopReturnCanvasNode';
+export default FlowLoopReturnCanvasNode;

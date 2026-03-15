@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { ApProjectDisplay } from '@/app/components/ap-project-display';
+import { FlowProjectDisplay } from '@/app/components/ap-project-display';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -163,7 +163,7 @@ export const UseTemplateDialog = ({
               <SelectContent>
                 {projects?.map((project) => (
                   <SelectItem key={project.id} value={project.id}>
-                    <ApProjectDisplay
+                    <FlowProjectDisplay
                       title={project.displayName}
                       icon={project.icon}
                       projectType={project.type}

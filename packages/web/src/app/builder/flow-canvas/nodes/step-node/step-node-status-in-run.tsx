@@ -6,7 +6,7 @@ import { StepStatusIcon, flowRunUtils } from '@/features/flow-runs';
 import { useBuilderStateContext } from '../../../builder-hooks';
 import { flowCanvasUtils } from '../../utils/flow-canvas-utils';
 
-const ApStepNodeStatusInRun = ({ stepName }: { stepName: string }) => {
+const FlowStepNodeStatusInRun = ({ stepName }: { stepName: string }) => {
   const [run, loopIndexes, flowVersion] = useBuilderStateContext((state) => [
     state.run,
     state.loopsIndexes,
@@ -39,6 +39,6 @@ const ApStepNodeStatusInRun = ({ stepName }: { stepName: string }) => {
     </div>
   );
 };
-ApStepNodeStatusInRun.displayName = 'ApStepNodeStatus';
+FlowStepNodeStatusInRun.displayName = 'FlowStepNodeStatus';
 
-export { ApStepNodeStatusInRun };
+export { FlowStepNodeStatusInRun };

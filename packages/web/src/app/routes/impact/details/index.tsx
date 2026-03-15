@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { useMemo } from 'react';
 
-import { ApAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/ap-avatar';
 import { DataTable, RowDataWithActions } from '@/components/custom/data-table';
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import { Avatar } from '@/components/ui/avatar';
@@ -103,7 +103,7 @@ export function FlowsDetails({
         ),
         cell: ({ row }) => (
           <div className="flex items-center gap-2">
-            <ApAvatar
+            <FlowAvatar
               id={row.original.ownerId ?? ''}
               size="small"
               includeAvatar={true}
@@ -400,7 +400,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
                   key={owner.id}
                   className="flex items-center gap-1 rounded bg-accent px-1.5 py-0.5 text-xs font-medium"
                 >
-                  <ApAvatar id={owner.id} size="xsmall" hideHover={true} />
+                  <FlowAvatar id={owner.id} size="xsmall" hideHover={true} />
                   <OwnerFullName id={owner.id} maxWidth="max-w-[80px]" />
                 </span>
               ))}
@@ -439,7 +439,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
                 checked={filters.ownerFilter.selectedIds.includes(owner.id)}
                 className="pointer-events-none"
               />
-              <ApAvatar id={owner.id} size="small" hideHover={true} />
+              <FlowAvatar id={owner.id} size="small" hideHover={true} />
               <OwnerFullName id={owner.id} />
             </div>
           ))}

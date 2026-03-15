@@ -31,7 +31,7 @@ import { tablesUtils } from '../utils/utils';
 
 import { ImportTableDialog } from './import-table-dialog';
 
-const ApTableActionsMenu = ({
+const FlowTableActionsMenu = ({
   table,
   refetch,
   onDelete,
@@ -194,5 +194,5 @@ const ApTableActionsMenu = ({
   );
 };
 
-ApTableActionsMenu.displayName = 'ApTableActionsMenu';
-export { ApTableActionsMenu };
+FlowTableActionsMenu.displayName = 'FlowTableActionsMenu';
+export { FlowTableActionsMenu };

@@ -1,6 +1,6 @@
 import { isNil } from '@flow/shared';
 
-import { ApAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/ap-avatar';
 import { useEmbedding } from '@/components/providers/embed-provider';
 
 export const NoteFooter = ({ creatorId, isDragging }: NoteFooterProps) => {
@@ -14,7 +14,7 @@ export const NoteFooter = ({ creatorId, isDragging }: NoteFooterProps) => {
     <div className="flex items-center justify-between gap-2 cursor-grabbing overflow-hidden">
       <div className="grow">
         {!isNil(creatorId) && (
-          <ApAvatar
+          <FlowAvatar
             size="xsmall"
             id={creatorId}
             includeName={true}

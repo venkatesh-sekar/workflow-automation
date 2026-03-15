@@ -21,7 +21,7 @@ import {
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-import { ApAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/ap-avatar';
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
 import { FormattedDate } from '@/components/custom/formatted-date';
 import { LoadingSpinner } from '@/components/custom/spinner';
@@ -363,7 +363,7 @@ const RowItemOwner = ({ item }: { item: TreeItem }) => {
     const flow = item.data as PopulatedFlow;
     if (flow.ownerId) {
       return (
-        <ApAvatar
+        <FlowAvatar
           id={flow.ownerId}
           includeAvatar={true}
           includeName={true}

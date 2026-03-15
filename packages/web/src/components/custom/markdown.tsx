@@ -68,7 +68,7 @@ const Container = ({
   );
 };
 
-const ApMarkdown = React.memo(
+const FlowMarkdown = React.memo(
   ({ markdown, variables, variant, className, loading }: MarkdownProps) => {
     const [copiedText, setCopiedText] = useState<string | null>(null);
 
@@ -207,5 +207,5 @@ const ApMarkdown = React.memo(
   },
 );
 
-ApMarkdown.displayName = 'ApMarkdown';
-export { ApMarkdown };
+FlowMarkdown.displayName = 'FlowMarkdown';
+export { FlowMarkdown };

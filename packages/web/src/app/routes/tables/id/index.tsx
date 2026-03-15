@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useTheme } from '@/components/providers/theme-provider';
 import {
-  ApTableFooter,
-  ApTableHeader,
+  FlowTableFooter,
+  FlowTableHeader,
   useTableState,
   useTableColumns,
   mapRecordsToRows,
@@ -23,7 +23,7 @@ import { cn } from '@/lib/utils';
 
 import './react-data-grid.css';
 
-const ApTableEditorPage = () => {
+const FlowTableEditorPage = () => {
   const navigate = useNavigate();
   const projectId = authenticationSession.getProjectId();
   const [
@@ -99,7 +99,7 @@ const ApTableEditorPage = () => {
   return (
     <div className="w-full flex flex-col justify-start items-start h-full">
       <div className="flex items-center justify-between w-full pr-4 border-b">
-        <ApTableHeader onBack={handleBack} />
+        <FlowTableHeader onBack={handleBack} />
       </div>
 
       <div className="flex w-full flex-col flex-1 h-full">
@@ -126,7 +126,7 @@ const ApTableEditorPage = () => {
               }
             />
           </div>
-          <ApTableFooter
+          <FlowTableFooter
             fieldsCount={fields.length}
             recordsCount={records.length}
           />
@@ -136,6 +136,6 @@ const ApTableEditorPage = () => {
   );
 };
 
-ApTableEditorPage.displayName = 'ApTableEditorPage';
+FlowTableEditorPage.displayName = 'FlowTableEditorPage';
 
-export { ApTableEditorPage };
+export { FlowTableEditorPage };

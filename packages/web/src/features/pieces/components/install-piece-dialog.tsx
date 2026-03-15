@@ -15,7 +15,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { AnimatedIconButton } from '@/components/custom/animated-icon-button';
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { PlusIcon } from '@/components/icons/plus';
 import { Button } from '@/components/ui/button';
 import {
@@ -172,7 +172,7 @@ const InstallPieceDialog = ({
         <DialogHeader>
           <DialogTitle>{t('Install a piece')}</DialogTitle>
           <DialogDescription>
-            <ApMarkdown
+            <FlowMarkdown
               markdown={
                 'Use this to install a [custom piece]("https://www.activepieces.com/docs/build-pieces/building-pieces/create-action") that you (or someone else) created. Once the piece is installed, you can use it in the flow builder.\n\nWarning: Make sure you trust the author as the piece will have access to your flow data and it might not be compatible with the current version of Flow.'
               }

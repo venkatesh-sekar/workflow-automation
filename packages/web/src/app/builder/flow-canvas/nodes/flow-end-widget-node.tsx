@@ -1,10 +1,10 @@
 import { Handle, Position } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApGraphEndNode } from '../utils/types';
+import { FlowGraphEndNode } from '../utils/types';
 import FlowEndWidget from '../widgets/flow-end-widget';
 
-const ApGraphEndWidgetNode = ({ data }: Omit<ApGraphEndNode, 'position'>) => {
+const FlowGraphEndWidgetNode = ({ data }: Omit<FlowGraphEndNode, 'position'>) => {
   return (
     <>
       <div className="h-px w-px relative ">
@@ -25,5 +25,5 @@ const ApGraphEndWidgetNode = ({ data }: Omit<ApGraphEndNode, 'position'>) => {
   );
 };
 
-ApGraphEndWidgetNode.displayName = 'ApGraphEndWidgetNode';
-export default ApGraphEndWidgetNode;
+FlowGraphEndWidgetNode.displayName = 'FlowGraphEndWidgetNode';
+export default FlowGraphEndWidgetNode;

@@ -6,7 +6,7 @@ import {
 } from '@flow/shared';
 import { Edge } from '@xyflow/react';
 
-export enum ApNodeType {
+export enum FlowNodeType {
   STEP = 'STEP',
   ADD_BUTTON = 'ADD_BUTTON',
   BIG_ADD_BUTTON = 'BIG_ADD_BUTTON',
@@ -16,16 +16,16 @@ export enum ApNodeType {
   LOOP_RETURN_NODE = 'LOOP_RETURN_NODE',
   NOTE = 'NOTE',
 }
-export type ApBoundingBox = {
+export type FlowBoundingBox = {
   width: number;
   height: number;
   left: number;
   right: number;
 };
 
-export type ApStepNode = {
+export type FlowStepNode = {
   id: string;
-  type: ApNodeType.STEP;
+  type: FlowNodeType.STEP;
   position: {
     x: number;
     y: number;
@@ -38,9 +38,9 @@ export type ApStepNode = {
   draggable?: boolean;
 };
 
-export type ApNoteNode = {
+export type FlowNoteNode = {
   id: string;
-  type: ApNodeType.NOTE;
+  type: FlowNodeType.NOTE;
   position: {
     x: number;
     y: number;
@@ -48,9 +48,9 @@ export type ApNoteNode = {
   data: Pick<Note, 'content' | 'ownerId' | 'color' | 'size'>;
 };
 
-export type ApLoopReturnNode = {
+export type FlowLoopReturnNode = {
   id: string;
-  type: ApNodeType.LOOP_RETURN_NODE;
+  type: FlowNodeType.LOOP_RETURN_NODE;
   position: {
     x: number;
     y: number;
@@ -59,7 +59,7 @@ export type ApLoopReturnNode = {
   selectable?: boolean;
 };
 
-export type ApButtonData = {
+export type FlowButtonData = {
   edgeId: string;
 } & (
   | {
@@ -75,21 +75,21 @@ export type ApButtonData = {
     }
 );
 
-export type ApBigAddButtonNode = {
+export type FlowBigAddButtonNode = {
   id: string;
-  type: ApNodeType.BIG_ADD_BUTTON;
+  type: FlowNodeType.BIG_ADD_BUTTON;
   position: {
     x: number;
     y: number;
   };
-  data: ApButtonData;
+  data: FlowButtonData;
   selectable?: boolean;
   style?: React.CSSProperties;
 };
 
-export type ApGraphEndNode = {
+export type FlowGraphEndNode = {
   id: string;
-  type: ApNodeType.GRAPH_END_WIDGET;
+  type: FlowNodeType.GRAPH_END_WIDGET;
   position: {
     x: number;
     y: number;
@@ -100,24 +100,24 @@ export type ApGraphEndNode = {
   selectable?: boolean;
 };
 
-export type ApNode =
-  | ApStepNode
-  | ApGraphEndNode
-  | ApBigAddButtonNode
-  | ApLoopReturnNode
-  | ApNoteNode;
+export type FlowNode =
+  | FlowStepNode
+  | FlowGraphEndNode
+  | FlowBigAddButtonNode
+  | FlowLoopReturnNode
+  | FlowNoteNode;
 
-export enum ApEdgeType {
-  STRAIGHT_LINE = 'ApStraightLineEdge',
-  LOOP_START_EDGE = 'ApLoopStartEdge',
-  LOOP_CLOSE_EDGE = 'ApLoopCloseEdge',
-  LOOP_RETURN_EDGE = 'ApLoopReturnEdge',
-  ROUTER_START_EDGE = 'ApRouterStartEdge',
-  ROUTER_END_EDGE = 'ApRouterEndEdge',
+export enum FlowEdgeType {
+  STRAIGHT_LINE = 'FlowStraightLineEdge',
+  LOOP_START_EDGE = 'FlowLoopStartEdge',
+  LOOP_CLOSE_EDGE = 'FlowLoopCloseEdge',
+  LOOP_RETURN_EDGE = 'FlowLoopReturnEdge',
+  ROUTER_START_EDGE = 'FlowRouterStartEdge',
+  ROUTER_END_EDGE = 'FlowRouterEndEdge',
 }
 
-export type ApStraightLineEdge = Edge & {
-  type: ApEdgeType.STRAIGHT_LINE;
+export type FlowStraightLineEdge = Edge & {
+  type: FlowEdgeType.STRAIGHT_LINE;
   data: {
     drawArrowHead: boolean;
     hideAddButton?: boolean;
@@ -125,19 +125,19 @@ export type ApStraightLineEdge = Edge & {
   };
 };
 
-export type ApLoopStartEdge = Edge & {
-  type: ApEdgeType.LOOP_START_EDGE;
+export type FlowLoopStartEdge = Edge & {
+  type: FlowEdgeType.LOOP_START_EDGE;
   data: {
     isLoopEmpty: boolean;
   };
 };
 
-export type ApLoopCloseEdge = Edge & {
-  type: ApEdgeType.LOOP_CLOSE_EDGE;
+export type FlowLoopCloseEdge = Edge & {
+  type: FlowEdgeType.LOOP_CLOSE_EDGE;
 };
 
-export type ApLoopReturnEdge = Edge & {
-  type: ApEdgeType.LOOP_RETURN_EDGE;
+export type FlowLoopReturnEdge = Edge & {
+  type: FlowEdgeType.LOOP_RETURN_EDGE;
   data: {
     parentStepName: string;
     isLoopEmpty: boolean;
@@ -146,8 +146,8 @@ export type ApLoopReturnEdge = Edge & {
   };
 };
 
-export type ApRouterStartEdge = Edge & {
-  type: ApEdgeType.ROUTER_START_EDGE;
+export type FlowRouterStartEdge = Edge & {
+  type: FlowEdgeType.ROUTER_START_EDGE;
   data: {
     isBranchEmpty: boolean;
     label: string;
@@ -159,8 +159,8 @@ export type ApRouterStartEdge = Edge & {
   };
 };
 
-export type ApRouterEndEdge = Edge & {
-  type: ApEdgeType.ROUTER_END_EDGE;
+export type FlowRouterEndEdge = Edge & {
+  type: FlowEdgeType.ROUTER_END_EDGE;
   data: {
     drawHorizontalLine: boolean;
     verticalSpaceBetweenLastNodeInBranchAndEndLine: number;
@@ -176,13 +176,13 @@ export type ApRouterEndEdge = Edge & {
   );
 };
 
-export type ApEdge =
-  | ApLoopStartEdge
-  | ApLoopReturnEdge
-  | ApStraightLineEdge
-  | ApRouterStartEdge
-  | ApRouterEndEdge;
-export type ApGraph = {
-  nodes: ApNode[];
-  edges: ApEdge[];
+export type FlowEdge =
+  | FlowLoopStartEdge
+  | FlowLoopReturnEdge
+  | FlowStraightLineEdge
+  | FlowRouterStartEdge
+  | FlowRouterEndEdge;
+export type FlowGraph = {
+  nodes: FlowNode[];
+  edges: FlowEdge[];
 };

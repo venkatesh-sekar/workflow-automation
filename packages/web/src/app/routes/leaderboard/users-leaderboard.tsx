@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { Trophy } from 'lucide-react';
 import { useMemo } from 'react';
 
-import { ApAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/ap-avatar';
 import { DataTable, RowDataWithActions } from '@/components/custom/data-table';
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import {
@@ -88,7 +88,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
     ),
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <ApAvatar
+        <FlowAvatar
           id={row.original.visibleId}
           size="small"
           includeAvatar={true}

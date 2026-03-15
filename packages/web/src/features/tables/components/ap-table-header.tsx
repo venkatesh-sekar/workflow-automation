@@ -47,11 +47,11 @@ import { tablesUtils } from '../utils/utils';
 import { useTableState } from './ap-table-state-provider';
 import { ImportTableDialog } from './import-table-dialog';
 
-interface ApTableHeaderProps {
+interface FlowTableHeaderProps {
   onBack: () => void;
 }
 
-export function ApTableHeader({ onBack }: ApTableHeaderProps) {
+export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
   const [
     selectedRecords,
     setSelectedRecords,

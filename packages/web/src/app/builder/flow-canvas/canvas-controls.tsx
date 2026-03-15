@@ -25,7 +25,7 @@ import { NoteDragOverlayMode } from '../state/notes-state';
 
 import { flowCanvasConsts } from './utils/consts';
 import { flowCanvasUtils } from './utils/flow-canvas-utils';
-import { ApNode } from './utils/types';
+import { FlowNode } from './utils/types';
 const verticalPaddingOnFitView = 100;
 const calculateNodePositionInCanvas = (
   canvasWidth: number,
@@ -102,7 +102,7 @@ const CanvasControls = ({
       const nodes = getNodes();
       if (nodes.length === 0) return;
       const graphHeight = flowCanvasUtils.calculateGraphBoundingBox({
-        nodes: nodes as ApNode[],
+        nodes: nodes as FlowNode[],
         edges: [],
       }).height;
       const zoomRatio = Math.min(

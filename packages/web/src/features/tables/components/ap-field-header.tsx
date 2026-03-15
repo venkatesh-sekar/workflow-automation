@@ -18,15 +18,15 @@ import { cn } from '@/lib/utils';
 import { ClientField } from '../stores/store/ap-tables-client-state';
 import { FieldHeaderContext, tablesUtils } from '../utils/utils';
 
-import ApFieldActionMenuItemRenderer, {
+import FlowFieldActionMenuItemRenderer, {
   FieldActionType,
 } from './field-action-menu-item-renderer';
 
-type ApFieldHeaderProps = {
+type FlowFieldHeaderProps = {
   field: ClientField & { index: number };
 };
 
-export function ApFieldHeader({ field }: ApFieldHeaderProps) {
+export function FlowFieldHeader({ field }: FlowFieldHeaderProps) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [popoverContent, setPopoverContent] = useState<React.ReactNode>(null);
   const userHasTableWritePermission = useAuthorization().checkAccess(
@@ -72,7 +72,7 @@ export function ApFieldHeader({ field }: ApFieldHeaderProps) {
           >
             {actions.map((action, index) => (
               <div key={index}>
-                {<ApFieldActionMenuItemRenderer action={action} />}
+                {<FlowFieldActionMenuItemRenderer action={action} />}
               </div>
             ))}
           </DropdownMenuContent>

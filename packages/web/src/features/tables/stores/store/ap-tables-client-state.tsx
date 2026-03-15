@@ -256,4 +256,4 @@ export const createApTableStore = (
   });
 };
 
-export type ApTableStore = ReturnType<typeof createApTableStore>;
+export type FlowTableStore = ReturnType<typeof createApTableStore>;

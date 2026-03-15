@@ -34,7 +34,7 @@ const keysWithinPath = (path: string) => {
     .map(removeQuotes);
 };
 
-type ApMentionNodeAttrs = {
+type FlowMentionNodeAttrs = {
   logoUrl?: string;
   displayText: string;
   serverValue: string;
@@ -229,7 +229,7 @@ function convertTiptapJsonToText(nodes: JSONContent[]): string {
 
 const generateMentionHtmlElement = (mentionAttrs: MentionNodeAttrs) => {
   const mentionElement = document.createElement('span');
-  const apMentionNodeAttrs: ApMentionNodeAttrs = JSON.parse(
+  const apMentionNodeAttrs: FlowMentionNodeAttrs = JSON.parse(
     mentionAttrs.label || '{}',
   );
   mentionElement.className =

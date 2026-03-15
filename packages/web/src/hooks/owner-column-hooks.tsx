@@ -15,7 +15,7 @@ import {
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import { useEmbedding } from '@/components/providers/embed-provider';
 
-import { ApAvatar } from '../components/custom/ap-avatar';
+import { FlowAvatar } from '../components/custom/ap-avatar';
 
 function useOwnerColumn<T extends HasOwner | HasOwnerId>(
   columns: ColumnDef<RowDataWithActions<T>, unknown>[],
@@ -99,7 +99,7 @@ const OwnerColumn = ({ ownerId }: { ownerId: string | null | undefined }) => {
   return (
     <div className="text-left">
       {ownerId && (
-        <ApAvatar
+        <FlowAvatar
           id={ownerId}
           includeAvatar={true}
           includeName={true}

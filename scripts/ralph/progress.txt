@@ -135,3 +135,10 @@
 - **Quality gate:** pass
 - **Learnings:** Promoted key learnings to global.md: rename longer names first, workers/queue/migration/ safe to rename
 ---
+
+## Iteration #20 - rename-ap-ui-components
+- **Change:** Bulk renamed all ~60 Ap-prefixed UI component identifiers to Flow prefix (ApForm→FlowForm, ApMarkdown→FlowMarkdown, ApAvatar→FlowAvatar, ApTable*→FlowTable*, ApGraph*→FlowGraph*, ApNode*→FlowNode*, ApEdge*→FlowEdge*, ApStep*→FlowStep*, ApRouter*→FlowRouter*, ApLoop*→FlowLoop*, ApNote*→FlowNote*, ApField*→FlowField*, ApSidebar*→FlowSidebar*, ApProject*→FlowProject*, ApBigAddButton*→FlowBigAddButton*, ApButton*→FlowButton*, ApErrorDialog*→FlowErrorDialog*, ApMentionNodeAttrs→FlowMentionNodeAttrs, ApBoundingBox→FlowBoundingBox)
+- **Files:** 66 files changed, 337 replacements
+- **Quality gate:** pass (0 typecheck errors for both server and web)
+- **Learnings:** Bulk sed with \b word boundaries works well for Ap→Flow prefix renames; no partial match issues
+---

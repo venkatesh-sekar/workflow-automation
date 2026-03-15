@@ -15,7 +15,7 @@ export enum FieldActionType {
   RENAME,
 }
 
-const ApFieldActionMenuItemRenderer = ({
+const FlowFieldActionMenuItemRenderer = ({
   action,
 }: {
   action: FieldActionType;
@@ -78,5 +78,5 @@ const ApFieldActionMenuItemRenderer = ({
   }
 };
 
-ApFieldActionMenuItemRenderer.displayName = 'ApFieldActionMenuItemRenderer';
-export default ApFieldActionMenuItemRenderer;
+FlowFieldActionMenuItemRenderer.displayName = 'FlowFieldActionMenuItemRenderer';
+export default FlowFieldActionMenuItemRenderer;

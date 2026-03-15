@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 import { PageTitle } from '@/app/components/page-title';
 import { LoadingScreen } from '@/components/custom/loading-screen';
-import { ApTableStateProvider } from '@/features/tables';
+import { FlowTableStateProvider } from '@/features/tables';
 import { routesThatRequireProjectId } from '@/lib/route-utils';
 
 import { BuilderLayout } from '../components/builder-layout';
@@ -33,8 +33,8 @@ const FlowRunPage = React.lazy(() =>
 const AppConnectionsPage = React.lazy(() =>
   import('./connections').then((m) => ({ default: m.AppConnectionsPage })),
 );
-const ApTableEditorPage = React.lazy(() =>
-  import('./tables/id').then((m) => ({ default: m.ApTableEditorPage })),
+const FlowTableEditorPage = React.lazy(() =>
+  import('./tables/id').then((m) => ({ default: m.FlowTableEditorPage })),
 );
 
 const SettingsRerouter = () => {
@@ -144,11 +144,11 @@ export const projectRoutes = [
       <RoutePermissionGuard requiredPermissions={Permission.READ_TABLE}>
         <PageTitle title="Table">
           <BuilderLayout>
-            <ApTableStateProvider>
+            <FlowTableStateProvider>
               <SuspenseWrapper>
-                <ApTableEditorPage />
+                <FlowTableEditorPage />
               </SuspenseWrapper>
-            </ApTableStateProvider>
+            </FlowTableStateProvider>
           </BuilderLayout>
         </PageTitle>
       </RoutePermissionGuard>

@@ -28,7 +28,7 @@ import { NoteDragOverlayMode } from '../state/notes-state';
 import NoteDragOverlay from './nodes/note-node/note-drag-overlay';
 import StepDragOverlay from './nodes/step-node/step-drag-overlay';
 import { flowCanvasConsts } from './utils/consts';
-import { ApButtonData } from './utils/types';
+import { FlowButtonData } from './utils/types';
 
 const FlowDragLayer = ({ children }: { children: React.ReactNode }) => {
   const reactFlow = useReactFlow();
@@ -173,8 +173,8 @@ function handleStepDragEnd({
     !isNil(e.over?.data?.current) &&
     e.over.data.current.accepts === e.active.data?.current?.type;
   if (isOverSomething) {
-    const droppedAtNodeData: ApButtonData | undefined = e.over?.data
-      .current as unknown as ApButtonData | undefined;
+    const droppedAtNodeData: FlowButtonData | undefined = e.over?.data
+      .current as unknown as FlowButtonData | undefined;
     if (
       droppedAtNodeData?.parentStepName &&
       draggedStep &&

@@ -2,12 +2,12 @@ import { StepLocationRelativeToParent } from '@flow/shared';
 import { BaseEdge, EdgeProps } from '@xyflow/react';
 
 import { flowCanvasConsts } from '../utils/consts';
-import { ApRouterStartEdge } from '../utils/types';
+import { FlowRouterStartEdge } from '../utils/types';
 
-import { ApAddButton } from './add-button';
+import { FlowAddButton } from './add-button';
 import { BranchLabel } from './branch-label';
 
-export const ApRouterStartCanvasEdge = ({
+export const FlowRouterStartCanvasEdge = ({
   sourceX,
   targetX,
   targetY,
@@ -15,7 +15,7 @@ export const ApRouterStartCanvasEdge = ({
   source,
   target,
   id,
-}: EdgeProps & Omit<ApRouterStartEdge, 'position'>) => {
+}: EdgeProps & Omit<FlowRouterStartEdge, 'position'>) => {
   const verticalLineLength =
     flowCanvasConsts.VERTICAL_SPACE_BETWEEN_STEPS -
     flowCanvasConsts.VERTICAL_SPACE_BETWEEN_STEP_AND_LINE +
@@ -109,21 +109,21 @@ export const ApRouterStartCanvasEdge = ({
         >
           {data.stepLocationRelativeToParent !==
             StepLocationRelativeToParent.INSIDE_BRANCH && (
-            <ApAddButton
+            <FlowAddButton
               edgeId={id}
               stepLocationRelativeToParent={data.stepLocationRelativeToParent}
               parentStepName={source}
-            ></ApAddButton>
+            ></FlowAddButton>
           )}
 
           {data.stepLocationRelativeToParent ===
             StepLocationRelativeToParent.INSIDE_BRANCH && (
-            <ApAddButton
+            <FlowAddButton
               edgeId={id}
               stepLocationRelativeToParent={data.stepLocationRelativeToParent}
               parentStepName={source}
               branchIndex={data.branchIndex}
-            ></ApAddButton>
+            ></FlowAddButton>
           )}
         </foreignObject>
       )}

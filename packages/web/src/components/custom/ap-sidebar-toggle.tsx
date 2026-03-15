@@ -10,7 +10,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 
-export const ApSidebarToggle = () => {
+export const FlowSidebarToggle = () => {
   const { open, setOpen } = useSidebar();
   return (
     <Tooltip>

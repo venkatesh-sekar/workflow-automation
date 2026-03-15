@@ -18,7 +18,7 @@ import { t } from 'i18next';
 import { useState } from 'react';
 import { Resolver, useForm } from 'react-hook-form';
 
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -140,12 +140,12 @@ function CreateOrEditConnectionSection({
             viewPortClassName="max-h-[calc(70vh-180px)] px-4 py-2 mb-1"
           >
             {' '}
-            <ApMarkdown
+            <FlowMarkdown
               markdown={selectedAuth.authProperty.description}
               variables={{
                 redirectUrl: redirectUrl ?? '',
               }}
-            ></ApMarkdown>
+            ></FlowMarkdown>
             {selectedAuth.authProperty.description && (
               <Separator className="my-4" />
             )}

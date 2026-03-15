@@ -10,7 +10,7 @@ import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { Form, FormField } from '@/components/ui/form';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -191,7 +191,7 @@ export const PredefinedInputsForm = () => {
 
                 if (isMarkdown) {
                   return (
-                    <ApMarkdown
+                    <FlowMarkdown
                       key={propertyName}
                       markdown={property.description}
                       variables={{}}

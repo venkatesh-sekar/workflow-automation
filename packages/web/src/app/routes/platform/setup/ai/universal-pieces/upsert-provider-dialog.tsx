@@ -37,7 +37,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { SUPPORTED_AI_PROVIDERS } from '@/features/agents';
 import { aiProviderApi } from '@/features/platform-admin';
 
-import { ApMarkdown } from '../../../../../../components/custom/markdown';
+import { FlowMarkdown } from '../../../../../../components/custom/markdown';
 
 type UpsertAIProviderDialogProps = {
   provider: AIProviderName;
@@ -143,9 +143,9 @@ export const UpsertAIProviderDialogContent = ({
             <ScrollArea viewPortClassName="max-h-[calc(70vh)] p-px">
               {currentProviderDef.markdown && (
                 <div className="mb-4 text-sm text-muted-foreground">
-                  <ApMarkdown
+                  <FlowMarkdown
                     markdown={currentProviderDef.markdown}
-                  ></ApMarkdown>
+                  ></FlowMarkdown>
                 </div>
               )}
 

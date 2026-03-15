@@ -17,18 +17,18 @@ import { cn } from '@/lib/utils';
 
 import { flowCanvasConsts } from '../../utils/consts';
 import { flowCanvasUtils } from '../../utils/flow-canvas-utils';
-import { ApStepNode } from '../../utils/types';
+import { FlowStepNode } from '../../utils/types';
 
 import { StepNodeChevron } from './step-node-chevron';
 import { StepNodeDisplayName } from './step-node-display-name';
 import { StepNodeLogo } from './step-node-logo';
 import { StepNodeName } from './step-node-name';
-import { ApStepNodeStatusInDraft } from './step-node-status-in-draft';
-import { ApStepNodeStatusInRun } from './step-node-status-in-run';
+import { FlowStepNodeStatusInDraft } from './step-node-status-in-draft';
+import { FlowStepNodeStatusInRun } from './step-node-status-in-run';
 import { TriggerWidget } from './trigger-widget';
 
-const ApStepCanvasNode = React.memo(
-  ({ data: { step } }: NodeProps & Omit<ApStepNode, 'position'>) => {
+const FlowStepCanvasNode = React.memo(
+  ({ data: { step } }: NodeProps & Omit<FlowStepNode, 'position'>) => {
     const [
       selectStepByName,
       isSelected,
@@ -148,8 +148,8 @@ const ApStepCanvasNode = React.memo(
       >
         {isTrigger && <TriggerWidget isSelected={isSelected} />}
         <LoopIterationInput stepName={step.name} />
-        <ApStepNodeStatusInRun stepName={step.name} />
-        <ApStepNodeStatusInDraft stepName={step.name} />
+        <FlowStepNodeStatusInRun stepName={step.name} />
+        <FlowStepNodeStatusInDraft stepName={step.name} />
         <StepNodeName stepName={step.name} />
         <div className="px-3 h-full w-full overflow-hidden">
           {!isDragging && (
@@ -203,8 +203,8 @@ const ApStepCanvasNode = React.memo(
   },
 );
 
-ApStepCanvasNode.displayName = 'ApStepCanvasNode';
-export { ApStepCanvasNode };
+FlowStepCanvasNode.displayName = 'FlowStepCanvasNode';
+export { FlowStepCanvasNode };
 
 function getPieceSelectorOperationType(step: Step) {
   if (flowStructureUtil.isTrigger(step.type)) {

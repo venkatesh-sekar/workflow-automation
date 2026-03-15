@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/tooltip';
 import { getProjectName, projectCollectionUtils } from '@/features/projects';
 
-import { ApProjectDisplay } from '../ap-project-display';
+import { FlowProjectDisplay } from '../ap-project-display';
 import { ProjectSettingsDialog } from '../project-settings';
 
 export const ProjectDashboardPageHeader = ({
@@ -33,7 +33,7 @@ export const ProjectDashboardPageHeader = ({
 
   const titleContent = (
     <div className="flex items-center gap-1">
-      <ApProjectDisplay
+      <FlowProjectDisplay
         title={getProjectName(project)}
         maxLengthToNotShowTooltip={30}
         titleClassName="text-sm font-medium"

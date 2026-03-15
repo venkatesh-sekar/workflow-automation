@@ -18,7 +18,7 @@ import { api } from '@/lib/api';
 
 import { EmbeddingFontLoader } from './components/embedding-font-loader';
 import { InitialDataGuard } from './components/initial-data-guard';
-import { ApRouter } from './guards';
+import { FlowRouter } from './guards';
 
 const queryClient = new QueryClient({
   mutationCache: new MutationCache({
@@ -45,7 +45,7 @@ export function App() {
                 <TooltipProvider>
                   <React.Fragment key={i18n.language}>
                     <ThemeProvider storageKey="vite-ui-theme">
-                      <ApRouter />
+                      <FlowRouter />
                       <Toaster position="bottom-right" />
                     </ThemeProvider>
                   </React.Fragment>

@@ -40,10 +40,10 @@ const routes = [
 export const memoryRouter = createMemoryRouter(routes);
 const browserRouter = createBrowserRouter(routes);
 
-const ApRouter = () => {
+const FlowRouter = () => {
   const { embedState } = useEmbedding();
   const router = embedState.isEmbedded ? memoryRouter : browserRouter;
   return <RouterProvider router={router}></RouterProvider>;
 };
 
-export { ApRouter };
+export { FlowRouter };

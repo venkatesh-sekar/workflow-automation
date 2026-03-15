@@ -21,7 +21,7 @@ import { authenticationSession } from '@/lib/authentication-session';
 import { cn } from '@/lib/utils';
 
 import { GlobalSearchCommand } from '../../global-search/global-search-command';
-import { ApSidebarItem, SidebarItemType } from '../ap-sidebar-item';
+import { FlowSidebarItem, SidebarItemType } from '../ap-sidebar-item';
 import { AppSidebarHeader } from '../sidebar-header';
 import SidebarUsageLimits from '../sidebar-usage-limits';
 import { SidebarUser } from '../sidebar-user';
@@ -103,7 +103,7 @@ export function ProjectDashboardSidebar({
           <SidebarGroup>
             <SidebarMenu>
               {navItems.map((item) => (
-                <ApSidebarItem key={item.label} {...item} />
+                <FlowSidebarItem key={item.label} {...item} />
               ))}
             </SidebarMenu>
           </SidebarGroup>
@@ -112,7 +112,7 @@ export function ProjectDashboardSidebar({
         <SidebarFooter>
           <SidebarUsageLimits />
           {adminItems.map((item) => (
-            <ApSidebarItem key={item.label} {...item} />
+            <FlowSidebarItem key={item.label} {...item} />
           ))}
           <SidebarUser />
         </SidebarFooter>

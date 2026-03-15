@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { ApMarkdown } from '@/components/custom/markdown';
+import { FlowMarkdown } from '@/components/custom/markdown';
 import { FormField, FormItem, FormLabel } from '@/components/ui/form';
 
 import { TextInputWithMentions } from '../piece-properties/text-input-with-mentions';
@@ -25,7 +25,7 @@ const LoopsSettings = React.memo(({ readonly }: LoopsSettingsProps) => {
       name="settings.items"
       render={({ field }) => (
         <FormItem className="flex flex-col gap-2">
-          <ApMarkdown markdown={markdown} />
+          <FlowMarkdown markdown={markdown} />
           <FormLabel>
             {t('Items')} <span className="text-destructive">*</span>
           </FormLabel>

@@ -10,7 +10,7 @@ import { LoadingScreen } from '@/components/custom/loading-screen';
 import { buttonVariants } from '@/components/ui/button';
 import {
   TableState,
-  ApTableStore,
+  FlowTableStore,
   createApTableStore,
 } from '@/features/tables/stores/store/ap-tables-client-state';
 import { cn } from '@/lib/utils';
@@ -19,7 +19,7 @@ import { fieldsApi } from '../api/fields-api';
 import { recordsApi } from '../api/records-api';
 import { tablesApi } from '../api/tables-api';
 
-const TableContext = createContext<ApTableStore | null>(null);
+const TableContext = createContext<FlowTableStore | null>(null);
 
 export const TableStateProviderWithTable = ({
   children,
@@ -32,7 +32,7 @@ export const TableStateProviderWithTable = ({
   fields: Field[];
   records: PopulatedRecord[];
 }) => {
-  const tableStoreRef = useRef<ApTableStore>(
+  const tableStoreRef = useRef<FlowTableStore>(
     createApTableStore(table, fields, records),
   );
   return (
@@ -42,7 +42,7 @@ export const TableStateProviderWithTable = ({
   );
 };
 
-export function ApTableStateProvider({
+export function FlowTableStateProvider({
   children,
 }: {
   children: React.ReactNode;
