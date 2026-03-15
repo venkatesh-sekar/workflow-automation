@@ -55,6 +55,11 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - AlertHandler interface kept for future swappability (e.g., email, Slack)
 - Test baseline after alerts: 23 suites, 184 tests
 
+## Templates (complete)
+- TemplateType has CUSTOM only; TemplateScope: TEAM/GLOBAL added
+- UI files still reference TemplateType.OFFICIAL/SHARED — fix in frontend phases
+- Test baseline after templates: 24 suites, 189 tests
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts

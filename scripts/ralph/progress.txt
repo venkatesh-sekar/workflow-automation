@@ -730,3 +730,10 @@
 - **Quality gate:** pass (0 TS errors, 189 tests pass across 24 suites)
 - **Learnings:** Template create endpoint accepts scope in body, defaults to TEAM via zod default. List endpoint filters by scope query param.
 ---
+
+## Iteration #105 - modify-templates (phase completion)
+- **Change:** Verified all 4 acceptance criteria met; marked modify-templates complete; advanced to frontend-login
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 24 suites / 189 tests pass)
+- **Learnings:** Promoted template scope and UI cleanup notes to global learnings. Phase took 5 iterations (101-105).
+---
