@@ -41,7 +41,7 @@ describe('piece with error handling', () => {
                 actionName: 'send_request',
                 input: {
                     'method': 'POST',
-                    'url': 'https://cloud.activepieces.com/api/v1/flags',
+                    'url': 'https://example.com/api/v1/flags',
                     'headers': {},
                     'queryParams': {},
                     'body_type': 'none',

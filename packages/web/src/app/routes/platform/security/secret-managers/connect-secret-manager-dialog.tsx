@@ -44,7 +44,7 @@ const ConnectSecretManagerDialog = ({
           </DialogTitle>
           <DialogDescription>
             <a
-              href={`https://activepieces.com/docs/admin-guide/guides/secret-managers/${manager.id}`}
+              href={''}
               target="_blank"
               rel="noreferrer"
               className="text-primary inline-flex items-center gap-1 hover:underline"

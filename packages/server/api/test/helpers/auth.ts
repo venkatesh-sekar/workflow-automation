@@ -25,7 +25,7 @@ export const generateMockToken = async (
 
     return generateToken({
         payload: mockPrincipal,
-        issuer: 'activepieces',
+        issuer: 'flow',
     })
 }
 

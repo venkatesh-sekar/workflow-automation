@@ -394,3 +394,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** auth-form-template had both isCloud check + conditional Link — removed entire cloud branch (no cloud mode)
 ---
+
+## Iteration #57 - clean-strings-and-comments
+- **Change:** Cleaned remaining activepieces strings: emptied SAML SSO docs URL in saml-dialog.tsx, emptied secret-manager docs URL in connect-secret-manager-dialog.tsx, fixed test auth issuer 'activepieces'→'flow', replaced cloud.activepieces.com test URLs with example.com in engine tests
+- **Files:** 5 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** tsconfig.base.json still has @activepieces/* paths (missed in rename-packages) — needs fixing. Embed typings (ActivepiecesClient*/ActivepiecesVendor* in typings.d.ts) still need renaming.
+---
