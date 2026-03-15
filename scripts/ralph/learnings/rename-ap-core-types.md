@@ -11,3 +11,4 @@
 - File rename via `git mv` + import path sed works well for combined file+class rename
 - When renaming related identifiers (ApId/apId/ApIdSchema/secureApId), rename longer names first to avoid partial matches
 - ApId+apId+ApIdSchema+secureApId: ~400 total refs across ~65 files — mechanical sed works perfectly
+- workers/queue/migration/ files are runtime migration scripts, NOT DB schema migrations — safe to rename identifiers in these

@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { apId, ExecutionType, FlowRunStatus, isNil, LATEST_JOB_DATA_SCHEMA_VERSION, PauseType, ProgressUpdateType, UploadLogsBehavior, WorkerJobType } from '@flow/shared'
+import { flowId, ExecutionType, FlowRunStatus, isNil, LATEST_JOB_DATA_SCHEMA_VERSION, PauseType, ProgressUpdateType, UploadLogsBehavior, WorkerJobType } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { MoreThan } from 'typeorm'
@@ -47,7 +47,7 @@ export const refillPausedRuns = (log: FastifyBaseLogger) => ({
                 if (created.isBefore(dayjs().subtract(excutionRententionDays, 'day'))) {
                     return
                 }
-                const logsFileId = pausedRun.logsFileId ?? apId()
+                const logsFileId = pausedRun.logsFileId ?? flowId()
                 const logsUploadUrl = await flowRunLogsService(log).constructUploadUrl({
                     flowRunId: pausedRun.id,
                     logsFileId,

@@ -121,3 +121,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Renamed longer name (apDayjsDuration) first to avoid partial matches, same pattern as iteration #4
 ---
+
+## Iteration #18 - rename-ap-core-types
+- **Change:** Fixed missed apId→flowId reference in workers/queue/migration/refill-paused-jobs.ts (not a DB migration file — safe to rename)
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** workers/queue/migration/ is NOT the same as database/migration/ — these are runtime migration scripts, not DB schema migrations, so they are safe to rename
+---
