@@ -80,3 +80,10 @@
 - **Files changed:** packages/web/src/components/custom/data-table/data-table-column-header.tsx
 - **Learnings:** Fix shared components over individual pages — DataTableColumnHeader serves 16 consumers, so one change propagates the muted header pattern everywhere. The sortable branch still uses text-foreground and needs matching in a future iteration.
 ---
+
+## Iteration #12 - runs-page
+- **Change:** Muted the sortable branch of DataTableColumnHeader — applied `text-xs font-normal text-muted-foreground` to the Button and `text-muted-foreground` to the optional icon, matching the non-sortable branch fixed in #11. Replaced template literals with `cn()` in both branches (coding rule compliance). Kept `-ml-3` negative margin pending table cell padding audit. Runs-page area complete, advancing to connections-page.
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/components/custom/data-table/data-table-column-header.tsx
+- **Learnings:** The sortable header's `-ml-3` compensates for table cell padding — removing it without auditing th/td padding causes misalignment. Also: active sort icons (ArrowUp/ArrowDown) now render at muted contrast, losing visual feedback for active sort state — follow-up needed to apply text-foreground to SortIcon when sortDirection is active.
+---

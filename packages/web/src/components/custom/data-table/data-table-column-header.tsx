@@ -2,6 +2,7 @@ import { Column } from '@tanstack/react-table';
 import { ArrowDown, ArrowUp, ArrowUpDown, LucideIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -40,10 +41,13 @@ export function DataTableColumnHeader<TData, TValue>({
             column.clearSorting();
           }
         }}
-        className={`h-auto text-foreground p-0 hover:bg-transparent -ml-3 ${className}`}
+        className={cn(
+          'h-auto text-xs font-normal text-muted-foreground p-0 hover:bg-transparent -ml-3',
+          className,
+        )}
       >
         {Icon && (
-          <Icon className="h-4 w-4 text-foreground flex-shrink-0 mr-2" />
+          <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0 mr-2" />
         )}
         {title}
         <SortIcon className="ml-2 h-4 w-4" />
@@ -53,7 +57,7 @@ export function DataTableColumnHeader<TData, TValue>({
 
   return (
     <div
-      className={`flex items-center justify-start space-x-2 whitespace-nowrap ${className}`}
+      className={cn('flex items-center justify-start space-x-2 whitespace-nowrap', className)}
     >
       {Icon && <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />}
       <div className="text-xs font-normal text-muted-foreground">{title}</div>

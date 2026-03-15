@@ -1,15 +1,14 @@
 {
-  "iteration": 11,
-  "current_area": "runs-page",
+  "iteration": 12,
+  "current_area": "connections-page",
   "queue": [
-    "connections-page",
     "tables-page",
     "settings-pages",
     "platform-admin-pages",
     "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page"],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page"],
   "completed": [
     {
       "area": "theme-colors",
@@ -98,6 +97,14 @@
       "change": "Mute shared DataTableColumnHeader title — changed text-foreground font-medium to text-muted-foreground font-normal in the non-sortable header, affecting runs-page and 15 other tables site-wide",
       "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
       "heuristic": "Aesthetic and Minimalist Design (#8), Consistency and Standards (#4)"
+    },
+    {
+      "area": "runs-page",
+      "iteration": 12,
+      "date": "2026-03-16",
+      "change": "Mute sortable DataTableColumnHeader branch — applied text-xs font-normal text-muted-foreground to Button and icon, matching non-sortable branch. Replaced template literals with cn() in both branches. Kept -ml-3 pending table padding audit.",
+      "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
+      "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
@@ -114,6 +121,8 @@
     "Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px). Future iteration should unify wrapper padding across sibling layouts.",
     "Table column headers should use text-muted-foreground font-normal to be visually subordinate to data rows. Align all three hierarchy signals (size, weight, color) in the same direction — don't use font-medium to compensate for muted color.",
     "For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons (text-primary for flows, text-emerald-500 for tables) but clearly from the design token system. Never use raw Tailwind grays (gray-400) which have hue 0° instead of the 220° cool blue-gray palette.",
-    "DataTableColumnHeader sortable branch (lines 43, 46) still uses text-foreground on both the Button and icon. When sorting is enabled on any column, these need to match: text-muted-foreground font-normal text-xs. Currently no runs-page columns are sortable so it's not visible."
+    "DataTableColumnHeader -ml-3 on sortable button is a negative margin violation but compensates for table cell padding. Audit th/td padding before removing — otherwise sortable headers will appear indented.",
+    "When sortDirection is active (asc/desc), the SortIcon should get text-foreground to signal active sort state. Currently all states render at muted contrast. Follow-up needed for Heuristic #1 (Visibility of System Status).",
+    "Vite build has pre-existing zod resolution failure — use tsc --noEmit for verification when vite build is broken."
   ]
 }
