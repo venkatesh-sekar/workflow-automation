@@ -548,3 +548,10 @@
 - **Quality gate:** pass (typecheck clean, 21 suites / 171 tests all pass)
 - **Learnings:** project_member/project_role tables not registered as TypeORM entities (EE removal); tests use owner (ADMIN=privileged) to bypass project_member raw SQL in pg-mem
 ---
+
+## Iteration #79 - auth-replace (phase completion)
+- **Change:** Verified all 8 acceptance criteria met; marked auth-replace complete; advanced to env-rebrand
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
+- **Learnings:** Promoted auth system insights to global learnings. Phase took 22 iterations (58-79).
+---

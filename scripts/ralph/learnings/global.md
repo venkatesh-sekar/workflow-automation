@@ -26,13 +26,14 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Integration tests need postgres (pg-mem) + redis (redis-memory-server with MALLOC=libc patch)
 - dayjs plugins must be registered in vitest.setup.ts (Vite SSR isolation prevents side-effect loading)
 - reflect-metadata required at runtime (typeorm)
-- Test baseline: 21 suites, 168 tests, all passing
+- Test baseline: 21 suites, 171 tests, all passing
 
-## Auth System (for auth-replace)
-- Current auth: signup/signin with email+password, OTP verification (removed), user-identity entity
-- RBAC stub allows all access but enforces platform-level project isolation (platformId check)
-- apiKeyService stubbed as no-op (returns null) — needs reimplementation in auth-replace
-- role-seed.ts is no-op — role system deferred to auth-replace
+## Auth System (complete)
+- Team-login only: POST /v1/authentication/team-login with {email, apiKey}
+- user-identity entity fully removed — user entity has email/firstName/lastName/verified/tokenVersion directly
+- CLI scripts in packages/server/api/src/app/cli/: create-team, add-member, rotate-key
+- API key format: `flow_<64-hex>`, stored as SHA-256 hash in project.apiKeyHash
+- project_member + project_role tables exist via migrations (EE entities removed) — used for membership checks
 
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui

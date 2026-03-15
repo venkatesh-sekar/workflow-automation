@@ -1,6 +1,6 @@
 {
-  "iteration": 78,
-  "current_phase": "auth-replace",
+  "iteration": 79,
+  "current_phase": "env-rebrand",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -114,7 +114,7 @@
       ]
     },
     "auth-replace": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "Signup, signin, password reset, OAuth callbacks removed",
@@ -263,9 +263,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace"],
   "phase_queue": [
-    "env-rebrand",
     "strip-ai-providers",
     "build-audit-logs",
     "simplify-alerts",
