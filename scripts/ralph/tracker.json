@@ -1,5 +1,5 @@
 {
-  "iteration": 98,
+  "iteration": 99,
   "current_phase": "simplify-alerts",
   "phases": {
     "copy-server-core": {
@@ -214,7 +214,8 @@
       ],
       "completed_items": [
         {"iteration": 97, "description": "Created alert service with AlertHandler interface and structured stdout logging. alertService(log).handleFlowRunFinish(flowRun) logs { level, event, flowId, flowRunId, projectId, status, error, timestamp } via Fastify logger on failure statuses. All 178 tests pass."},
-        {"iteration": 98, "description": "Hooked alertService into flow-run-hooks.ts onFinish — calls handleFlowRunFinish on every terminal flow run to log structured alerts for failures. All 178 tests pass."}
+        {"iteration": 98, "description": "Hooked alertService into flow-run-hooks.ts onFinish — calls handleFlowRunFinish on every terminal flow run to log structured alerts for failures. All 178 tests pass."},
+        {"iteration": 99, "description": "Added 6 unit tests for alert service: logs structured error on FAILED/INTERNAL_ERROR/TIMEOUT statuses, skips SUCCEEDED/RUNNING statuses, uses 'unknown' when no failedStep. All 184 tests pass."}
       ]
     },
     "modify-templates": {

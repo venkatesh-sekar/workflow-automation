@@ -688,3 +688,10 @@
 - **Quality gate:** pass (typecheck clean, 178 tests pass)
 - **Learnings:** alertService handles failure filtering internally — safe to call on all terminal runs
 ---
+
+## Iteration #99 - simplify-alerts
+- **Change:** Added 6 unit tests for alert service: logs structured error on FAILED/INTERNAL_ERROR/TIMEOUT, skips SUCCEEDED/RUNNING, uses 'unknown' when no failedStep
+- **Files:** packages/server/api/test/unit/app/alerts/alert-service.test.ts (new)
+- **Quality gate:** pass (typecheck clean, 184 tests pass)
+- **Learnings:** Unit tests with mocked logger are sufficient for testing structured log output — no need for integration test infrastructure
+---

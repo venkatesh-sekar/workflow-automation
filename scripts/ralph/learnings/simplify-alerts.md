@@ -10,7 +10,7 @@
 ## Plan
 1. ~~Create alert service with interface + structured stdout logging implementation~~ (done #97)
 2. ~~Hook alert service into flow-run-hooks.ts on failure~~ (done #98)
-3. Write tests for structured log output
+3. ~~Write tests for structured log output~~ (done #99)
 
 ## Implementation Notes
 - alertService called in onFinish before websocket notification
