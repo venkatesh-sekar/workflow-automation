@@ -1,5 +1,5 @@
 {
-  "iteration": 107,
+  "iteration": 108,
   "current_phase": "frontend-login",
   "phases": {
     "copy-server-core": {
@@ -246,7 +246,8 @@
       ],
       "completed_items": [
         {"iteration": 106, "description": "Created /login page with email+team-key fields using team-login API. Replaced /sign-in and /sign-up routes with /login (kept /sign-in as backward-compat redirect). Updated authenticationApi to teamLogin only. Updated all /sign-in redirects across guards, layouts, and components to /login. Cleaned api.ts allowlist."},
-        {"iteration": 107, "description": "Added 7 unit tests for LoginSchema validation: valid input, empty email, invalid email, email without domain, empty team key, any non-empty key format, missing fields. Extracted LoginSchema to separate module for testability. Installed vitest+jsdom in web package."}
+        {"iteration": 107, "description": "Added 7 unit tests for LoginSchema validation: valid input, empty email, invalid email, email without domain, empty team key, any non-empty key format, missing fields. Extracted LoginSchema to separate module for testability. Installed vitest+jsdom in web package."},
+        {"iteration": 108, "description": "Changed default post-login redirect from /flows to /automations in useDefaultRedirectPath hook."}
       ]
     },
     "frontend-sidebar": {

@@ -751,3 +751,10 @@
 - **Quality gate:** pass (typecheck clean, 189 server tests pass, 7 login tests pass)
 - **Learnings:** Web package had no vitest/jsdom — needed as devDependencies. Pre-existing formatDate test has timezone issue (unrelated).
 ---
+
+## Iteration #108 - frontend-login
+- **Change:** Changed default post-login redirect from /flows to /automations in useDefaultRedirectPath hook
+- **Files:** packages/web/src/lib/navigation-utils.tsx
+- **Quality gate:** pass (typecheck clean, 189 tests pass)
+- **Learnings:** /flows already redirects to /automations via project-routes.tsx, but direct redirect is cleaner
+---
