@@ -31,3 +31,10 @@
 - **Files changed:** packages/web/src/app/components/sidebar/flow-sidebar-item.tsx
 - **Learnings:** FlowSidebarItem was not passing isActive to SidebarMenuButton, so CVA data-active styles never fired. Always verify component props are wired through, not just className overrides.
 ---
+
+## Iteration #5 - sidebar-navigation
+- **Change:** Normalized collapsible group trigger height — removed py-5 override (was rendering ~44px) so it matches the standard h-8 (32px) sidebar items, removed redundant mb-1 spacing (SidebarMenu gap-1 already provides 4px gaps), fixed chevron rotation className from template literal to cn() to prevent "false" string in DOM and comply with coding rules
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/sidebar/flow-sidebar-group.tsx
+- **Learnings:** SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding.
+---

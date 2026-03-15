@@ -2,6 +2,8 @@ import { ChevronRightIcon } from 'lucide-react';
 import React, { ComponentType, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { cn } from '@/lib/utils';
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -51,14 +53,14 @@ export function FlowSidebareGroup(item: SidebarGroupType) {
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton
-            className="px-2 mb-1 py-5"
+            className="px-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             {item.icon && renderIcon(item.icon, iconRef)}
             <span>{item.label}</span>
             <ChevronRightIcon
-              className={`${item.open && 'rotate-90'} ml-auto duration-150`}
+              className={cn('ml-auto duration-150', item.open && 'rotate-90')}
             />
           </SidebarMenuButton>
         </CollapsibleTrigger>
