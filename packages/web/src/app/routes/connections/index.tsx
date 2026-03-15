@@ -54,6 +54,7 @@ import {
   appConnectionUtils,
 } from '@/features/connections';
 import { PieceIconWithPieceName, piecesHooks } from '@/features/pieces';
+import { cn } from '@/lib/utils';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { ownerColumnHooks } from '@/hooks/owner-column-hooks';
 import { userHooks } from '@/hooks/user-hooks';
@@ -266,7 +267,9 @@ function AppConnectionsPage() {
         cell: ({ row }) => {
           return (
             <div
-              className="text-left underline cursor-pointer"
+              className={cn(
+                'text-left text-primary cursor-pointer hover:underline transition-colors duration-150',
+              )}
               onClick={() => {
                 navigate(
                   `/flows?connectionExternalId=${row.original.externalId}`,

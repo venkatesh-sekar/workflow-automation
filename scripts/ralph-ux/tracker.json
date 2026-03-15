@@ -1,14 +1,13 @@
 {
-  "iteration": 12,
-  "current_area": "connections-page",
+  "iteration": 13,
+  "current_area": "tables-page",
   "queue": [
-    "tables-page",
     "settings-pages",
     "platform-admin-pages",
     "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page"],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page"],
   "completed": [
     {
       "area": "theme-colors",
@@ -105,6 +104,14 @@
       "change": "Mute sortable DataTableColumnHeader branch — applied text-xs font-normal text-muted-foreground to Button and icon, matching non-sortable branch. Replaced template literals with cn() in both branches. Kept -ml-3 pending table padding audit.",
       "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
       "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "connections-page",
+      "iteration": 13,
+      "date": "2026-03-16",
+      "change": "Style Flows count as primary-colored link — replaced bare underline cursor-pointer with text-primary hover:underline transition-colors duration-150 wrapped in cn(). Signals interactivity via design-system link color.",
+      "files_modified": ["packages/web/src/app/routes/connections/index.tsx"],
+      "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -123,6 +130,7 @@
     "For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons (text-primary for flows, text-emerald-500 for tables) but clearly from the design token system. Never use raw Tailwind grays (gray-400) which have hue 0° instead of the 220° cool blue-gray palette.",
     "DataTableColumnHeader -ml-3 on sortable button is a negative margin violation but compensates for table cell padding. Audit th/td padding before removing — otherwise sortable headers will appear indented.",
     "When sortDirection is active (asc/desc), the SortIcon should get text-foreground to signal active sort state. Currently all states render at muted contrast. Follow-up needed for Heuristic #1 (Visibility of System Status).",
-    "Vite build has pre-existing zod resolution failure — use tsc --noEmit for verification when vite build is broken."
+    "Vite build has pre-existing zod resolution failure — use tsc --noEmit for verification when vite build is broken.",
+    "For table cell links (navigable counts, IDs), use text-primary hover:underline cursor-pointer transition-colors duration-150 wrapped in cn(). Don't use permanent underline — reveal on hover matches Linear/Retool table cell link pattern. Don't use hover:text-primary-300 as it's darker, not lighter."
   ]
 }
