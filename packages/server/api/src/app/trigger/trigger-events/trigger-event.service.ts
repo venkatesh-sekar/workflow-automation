@@ -1,6 +1,6 @@
 import {
     FlowError,
-    flowId,
+    flowId as generateFlowId,
     Cursor,
     ErrorCode,
     FileCompression,
@@ -45,7 +45,7 @@ export const triggerEventService = (log: FastifyBaseLogger) => ({
         const data = Buffer.from(JSON.stringify(payload))
         const file = await fileService(log).save({
             projectId,
-            fileName: `${flowId()}.json`,
+            fileName: `${generateFlowId()}.json`,
             data,
             size: data.length,
             type: FileType.TRIGGER_EVENT_FILE,
@@ -54,7 +54,7 @@ export const triggerEventService = (log: FastifyBaseLogger) => ({
         const sourceName = getSourceName(flow.version.trigger)
 
         const trigger = await triggerEventRepo().save({
-            id: flowId(),
+            id: generateFlowId(),
             fileId: file.id,
             projectId,
             flowId: flow.id,

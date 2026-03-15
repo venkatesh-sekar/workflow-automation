@@ -1,6 +1,6 @@
 import {
     FlowError,
-    flowId,
+    flowId as generateFlowId,
     Cursor,
     ErrorCode,
     FlowActionType,
@@ -298,7 +298,7 @@ export const flowVersionService = (log: FastifyBaseLogger) => ({
         },
     ): Promise<FlowVersion> {
         const flowVersion: NewFlowVersion = {
-            id: flowId(),
+            id: generateFlowId(),
             displayName: request.displayName,
             flowId,
             trigger: {
