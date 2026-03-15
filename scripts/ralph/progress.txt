@@ -779,3 +779,10 @@
 - **Quality gate:** pass (typecheck clean, 189 server tests pass, 19 web tests pass)
 - **Learnings:** Sidebar items (Explore/Impact/Leaderboard) and footer items (Platform Admin/Usage Limits) are all in dashboard/index.tsx. Automations/Runs/Connections are in header tabs, not sidebar.
 ---
+
+## Iteration #112 - frontend-sidebar
+- **Change:** Removed Billing/Plans references from dashboard sidebar: stripped TeamProjectsLimit-based gating, removed 'View Plans' tooltip with activepieces.com/pricing link, removed disabled project button state. New project and search buttons always shown. Removed unused Tooltip and platformHooks imports.
+- **Files:** packages/web/src/app/components/sidebar/dashboard/index.tsx
+- **Quality gate:** pass (typecheck clean, 189 server tests pass)
+- **Learnings:** Platform sidebar (platform/index.tsx) still has Billing entry but platform admin is unreachable from dashboard sidebar so lower priority
+---

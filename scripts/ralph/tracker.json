@@ -1,5 +1,5 @@
 {
-  "iteration": 111,
+  "iteration": 112,
   "current_phase": "frontend-sidebar",
   "phases": {
     "copy-server-core": {
@@ -260,7 +260,8 @@
         "Tests updated for sidebar changes"
       ],
       "completed_items": [
-        {"iteration": 111, "description": "Removed Impact, Leaderboard, Platform Admin link, and Usage Limits from dashboard sidebar. Renamed Explore to Templates. Removed unused imports (PlatformRole, templatesTelemetryApi, userHooks, ChartLineIcon, ShieldIcon, TrophyIcon, SidebarUsageLimits, useIsPlatformAdmin)."}
+        {"iteration": 111, "description": "Removed Impact, Leaderboard, Platform Admin link, and Usage Limits from dashboard sidebar. Renamed Explore to Templates. Removed unused imports (PlatformRole, templatesTelemetryApi, userHooks, ChartLineIcon, ShieldIcon, TrophyIcon, SidebarUsageLimits, useIsPlatformAdmin)."},
+        {"iteration": 112, "description": "Removed Billing/Plans references from dashboard sidebar: stripped TeamProjectsLimit-based gating, removed 'View Plans' tooltip with activepieces.com/pricing link, removed disabled project button state. New project and search buttons always shown. Removed unused Tooltip and platformHooks imports."}
       ]
     },
     "frontend-settings": {

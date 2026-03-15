@@ -1,8 +1,4 @@
-import {
-  isNil,
-  ProjectType,
-  TeamProjectsLimit,
-} from '@activepieces/shared';
+import { isNil } from '@activepieces/shared';
 import { t } from 'i18next';
 import { Search, Plus } from 'lucide-react';
 import { useState, useMemo, useEffect, useCallback } from 'react';
@@ -30,14 +26,8 @@ import {
   SidebarGroupLabel,
   SidebarMenuItem,
 } from '@/components/ui/sidebar-shadcn';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { VirtualizedScrollArea } from '@/components/ui/virtualized-scroll-area';
 import { projectCollectionUtils } from '@/features/projects';
-import { platformHooks } from '@/hooks/platform-hooks';
 import { cn } from '@/lib/utils';
 
 import { GlobalSearchCommand } from '../../global-search/global-search-command';
@@ -58,37 +48,12 @@ export function ProjectDashboardSidebar({
   const [debouncedSearchQuery] = useDebounce(searchQuery, 300);
   const [searchOpen, setSearchOpen] = useState(false);
   const navigate = useNavigate();
-  const { platform } = platformHooks.useCurrentPlatform();
 
   useEffect(() => {
     if (!searchOpen) {
       setSearchQuery('');
     }
   }, [searchOpen]);
-
-  const shouldShowNewProjectButton = useMemo(() => {
-    if (platform.plan.teamProjectsLimit === TeamProjectsLimit.NONE) {
-      return false;
-    }
-    return true;
-  }, [platform.plan.teamProjectsLimit]);
-
-  const shouldShowSearchButton = useMemo(() => {
-    if (platform.plan.teamProjectsLimit === TeamProjectsLimit.NONE) {
-      return false;
-    }
-    return true;
-  }, [platform.plan.teamProjectsLimit]);
-
-  const shouldDisableNewProjectButton = useMemo(() => {
-    if (platform.plan.teamProjectsLimit === TeamProjectsLimit.ONE) {
-      const teamProjects = projects.filter(
-        (project) => project.type === ProjectType.TEAM,
-      );
-      return teamProjects.length >= 1;
-    }
-    return false;
-  }, [platform.plan.teamProjectsLimit, projects]);
 
   const isSearchMode = debouncedSearchQuery.length > 0;
 
@@ -158,85 +123,44 @@ export function ProjectDashboardSidebar({
             <div className="flex items-center justify-between group-data-[collapsible=icon]:hidden">
               <SidebarGroupLabel>{t('Projects')}</SidebarGroupLabel>
               <div className="flex items-center justify-center gap-2">
-                {shouldShowNewProjectButton && (
-                  <>
-                    {!shouldDisableNewProjectButton ? (
-                      <NewProjectDialog
-                        onCreate={(project) => {
-                          navigate(`/projects/${project.id}/flows`);
-                        }}
-                      >
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-6 w-6 hover:bg-accent"
-                        >
-                          <Plus />
-                        </Button>
-                      </NewProjectDialog>
-                    ) : (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              disabled
-                              className="h-6 w-6"
-                            >
-                              <Plus />
-                            </Button>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-[250px]">
-                          <p className="text-xs mb-1">
-                            {t(
-                              'Upgrade your plan to create additional team projects.',
-                            )}{' '}
-                            <button
-                              className="text-xs text-primary underline hover:no-underline"
-                              onClick={() =>
-                                window.open(
-                                  'https://www.activepieces.com/pricing',
-                                  '_blank',
-                                )
-                              }
-                            >
-                              {t('View Plans')}
-                            </button>
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    )}
-                  </>
-                )}
-                {shouldShowSearchButton && (
-                  <Popover open={searchOpen} onOpenChange={setSearchOpen}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6 hover:bg-accent"
-                      >
-                        <Search />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent
-                      className="w-[280px] p-3"
-                      align="start"
-                      side="right"
-                      sideOffset={8}
+                <NewProjectDialog
+                  onCreate={(project) => {
+                    navigate(`/projects/${project.id}/flows`);
+                  }}
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-6 w-6 hover:bg-accent"
+                  >
+                    <Plus />
+                  </Button>
+                </NewProjectDialog>
+                <Popover open={searchOpen} onOpenChange={setSearchOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6 hover:bg-accent"
                     >
-                      <SearchInput
-                        placeholder={t('Search projects...')}
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e)}
-                        className="h-9"
-                        autoFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                )}
+                      <Search />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-[280px] p-3"
+                    align="start"
+                    side="right"
+                    sideOffset={8}
+                  >
+                    <SearchInput
+                      placeholder={t('Search projects...')}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e)}
+                      className="h-9"
+                      autoFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
             <div
