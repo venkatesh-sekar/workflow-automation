@@ -303,3 +303,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Frontend still has secrets.activepieces.com refs in oauth2-connection-settings.tsx and oauth-apps.ts — handle in strip-external-urls phase
 ---
+
+## Iteration #44 - strip-billing-and-licensing
+- **Change:** Gutted community-templates.service.ts: removed cloud.activepieces.com/api/v1/templates URL, getOrThrow throws not-found, getCategories returns [], list returns empty page — no cloud template dependency
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** communityTemplates has zero importers — dead code, but kept as stubs for safety
+---

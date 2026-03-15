@@ -43,4 +43,5 @@
 - Removed unused imports: semver, groupBy, PackageType, PieceType, apVersionUtil, PieceMetadata, PieceMetadataSchema, pieceRepos
 - cloud-oauth2-service.ts gutted to throw errors (no secrets.activepieces.com dependency)
 - Frontend still has secrets.activepieces.com refs in oauth2-connection-settings.tsx and oauth-apps.ts — will be handled in strip-external-urls phase
-- Next targets: community-templates.service.ts, AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM
+- community-templates.service.ts gutted: no imports of communityTemplates found anywhere — dead code, but kept methods as stubs
+- Next targets: Cloud API base URL (flowAxios), AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM

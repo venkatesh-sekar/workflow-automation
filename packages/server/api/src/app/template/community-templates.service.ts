@@ -1,77 +1,26 @@
 import {
     FlowError,
     ErrorCode,
-    isNil,
     ListTemplatesRequestQuery,
     SeekPage,
     Template,
 } from '@flow/shared'
 
-const TEMPLATES_SOURCE_URL = 'https://cloud.activepieces.com/api/v1/templates'
-
 export const communityTemplates = {
     getOrThrow: async (id: string): Promise<Template> => {
-        const url = `${TEMPLATES_SOURCE_URL}/${id}`
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
+        throw new FlowError({
+            code: ErrorCode.ENTITY_NOT_FOUND,
+            params: {
+                entityType: 'template',
+                entityId: id,
+                message: `Template ${id} not found`,
             },
         })
-        if (!response.ok) {
-            throw new FlowError({
-                code: ErrorCode.ENTITY_NOT_FOUND,
-                params: {
-                    entityType: 'template',
-                    entityId: id,
-                    message: `Template ${id} not found`,
-                },
-            })
-        }
-        const template: Template = await response.json() as Template
-        return template
     },
     getCategories: async (): Promise<string[]> => {
-        const url = `${TEMPLATES_SOURCE_URL}/categories`
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        const categories: string[] = await response.json() as string[]
-        return categories
+        return []
     },
-    list: async (request: ListTemplatesRequestQuery): Promise<SeekPage<Template>> => {
-        const queryString = convertToQueryString(request)
-        const url = `${TEMPLATES_SOURCE_URL}?${queryString}`
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        const templates: SeekPage<Template> = await response.json() as SeekPage<Template>
-        return templates
+    list: async (_request: ListTemplatesRequestQuery): Promise<SeekPage<Template>> => {
+        return { data: [], next: null, previous: null }
     },
-}
-
-
-function convertToQueryString(params: ListTemplatesRequestQuery): string {
-    const searchParams = new URLSearchParams()
-
-    Object.entries(params).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
-            value.forEach((val) => {
-                if (!isNil(val)) {
-                    searchParams.append(key, typeof val === 'string' ? val : JSON.stringify(val))
-                }
-            })
-        }
-        else if (!isNil(value)) {
-            searchParams.set(key, value.toString())
-        }
-    })
-
-    return searchParams.toString()
 }

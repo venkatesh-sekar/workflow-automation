@@ -1,5 +1,5 @@
 {
-  "iteration": 43,
+  "iteration": 44,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -152,7 +152,8 @@
         {"iteration": 40, "description": "Deleted active-flows-addon components (index.tsx, purchase-active-flows-dialog.tsx), addon dialog store, removed PurchaseExtraFlowsDialog from 3 layout files, removed useManagePlanDialogStore from app.tsx, removed ActiveFlowAddon and Stripe portal button from billing page, removed SubscriptionInfo usage"},
         {"iteration": 41, "description": "Deleted ai-credits components (ai-credit-usage.tsx, purchase-ai-credits-dialog.tsx, auto-topup-config-dialog.tsx), deleted enable-ai-credits-overage.tsx, removed AICreditUsage from billing page and barrel export, removed dead billingMutations export"},
         {"iteration": 42, "description": "Removed cloud piece sync from piece-sync-service.ts: deleted CLOUD_API_URL (cloud.activepieces.com), listCloudPieces(), installNewPieces(), deletePiecesIfNotOnCloud() functions, removed semver/groupBy/PackageType/PieceType/apVersionUtil imports — sync() now logs 'local only' instead of fetching from cloud"},
-        {"iteration": 43, "description": "Gutted cloud-oauth2-service.ts: removed secrets.activepieces.com URLs (refresh + claim endpoints), removed flowAxios/FlowError/system imports — claim() and refresh() now throw 'not supported in self-hosted mode'"}
+        {"iteration": 43, "description": "Gutted cloud-oauth2-service.ts: removed secrets.activepieces.com URLs (refresh + claim endpoints), removed flowAxios/FlowError/system imports — claim() and refresh() now throw 'not supported in self-hosted mode'"},
+        {"iteration": 44, "description": "Gutted community-templates.service.ts: removed cloud.activepieces.com/api/v1/templates URL, getOrThrow throws not-found, getCategories returns [], list returns empty page — no cloud template dependency"}
       ]
     },
     "strip-external-urls": {
