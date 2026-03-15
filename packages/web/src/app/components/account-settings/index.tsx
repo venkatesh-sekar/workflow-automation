@@ -23,7 +23,6 @@ import { Separator } from '@/components/ui/separator';
 import { userHooks, userMutations } from '@/hooks/user-hooks';
 
 import { DeleteAccount } from './delete-account';
-import LanguageToggle from './language-toggle';
 import ThemeToggle from './theme-toggle';
 
 export interface AccountSettingsDialogProps {
@@ -123,7 +122,6 @@ export function AccountSettingsDialog({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ThemeToggle />
-              <LanguageToggle />
             </div>
             <DeleteAccount />
           </div>

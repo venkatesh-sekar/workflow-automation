@@ -807,3 +807,10 @@
 - **Quality gate:** pass (tsc clean, 189 server tests pass, web tests pass — 1 pre-existing date test failure in utils.test.ts)
 - **Learnings:** alerts feature hooks (features/alerts/) still exist but are dead code now — no longer imported from settings
 ---
+
+## Iteration #116 - frontend-settings
+- **Change:** Removed language toggle (i18n/Appearance) from account settings dialog. Deleted language-toggle.tsx component. ThemeToggle kept.
+- **Files:** packages/web/src/app/components/account-settings/index.tsx, packages/web/src/app/components/account-settings/language-toggle.tsx (deleted)
+- **Quality gate:** pass (typecheck clean, 189 tests pass)
+- **Learnings:** locale-utils.ts now dead code (only consumer was language-toggle) but kept to minimize scope
+---

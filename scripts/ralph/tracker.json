@@ -1,5 +1,5 @@
 {
-  "iteration": 115,
+  "iteration": 116,
   "current_phase": "frontend-settings",
   "phases": {
     "copy-server-core": {
@@ -274,7 +274,8 @@
       ],
       "completed_items": [
         {"iteration": 114, "description": "Removed Pieces, Environment, and MCP Server tabs from project settings dialog. Kept General, Members, Alerts only. Simplified disabled conditions (removed feature flag checks, platform embedding checks). Cleaned unused imports (PlatformRole, platformHooks, userHooks, McpSvg, GitBranch, Puzzle, flagsHooks). Updated page header tab types."},
-        {"iteration": 115, "description": "Simplified Alerts settings tab to placeholder message ('check application logs'). Removed email-based alert subscription UI (add-alert-email-dialog). Flow uses structured stdout logging for alerts."}
+        {"iteration": 115, "description": "Simplified Alerts settings tab to placeholder message ('check application logs'). Removed email-based alert subscription UI (add-alert-email-dialog). Flow uses structured stdout logging for alerts."},
+        {"iteration": 116, "description": "Removed language toggle (i18n/Appearance) from account settings dialog. Deleted language-toggle.tsx component. ThemeToggle kept."}
       ]
     },
     "frontend-branding": {
