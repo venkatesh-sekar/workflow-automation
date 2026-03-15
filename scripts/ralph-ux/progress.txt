@@ -73,3 +73,10 @@
 - **Files changed:** packages/web/src/features/automations/components/automations-table-row.tsx
 - **Learnings:** For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons but clearly from the design token system. Never use raw Tailwind grays (gray-400, hue 0°) when the palette is cool blue-gray (hue 220°).
 ---
+
+## Iteration #11 - runs-page
+- **Change:** Muted shared DataTableColumnHeader non-sortable title — changed `text-xs font-medium text-foreground` to `text-xs font-normal text-muted-foreground`. This applies the iteration #9 header hierarchy pattern to the shared component used by runs-page and 15 other tables site-wide (connections, settings, platform admin, etc.).
+- **Heuristic:** Aesthetic and Minimalist Design (#8), Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/data-table/data-table-column-header.tsx
+- **Learnings:** Fix shared components over individual pages — DataTableColumnHeader serves 16 consumers, so one change propagates the muted header pattern everywhere. The sortable branch still uses text-foreground and needs matching in a future iteration.
+---

@@ -1,5 +1,5 @@
 {
-  "iteration": 10,
+  "iteration": 11,
   "current_area": "runs-page",
   "queue": [
     "connections-page",
@@ -90,6 +90,14 @@
       "change": "Replace hardcoded text-gray-400 fill-gray-400 on folder icon with text-muted-foreground/70 fill-muted-foreground/70 — aligns to 220° cool blue-gray design tokens at subordinate opacity",
       "files_modified": ["packages/web/src/features/automations/components/automations-table-row.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "runs-page",
+      "iteration": 11,
+      "date": "2026-03-16",
+      "change": "Mute shared DataTableColumnHeader title — changed text-foreground font-medium to text-muted-foreground font-normal in the non-sortable header, affecting runs-page and 15 other tables site-wide",
+      "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
+      "heuristic": "Aesthetic and Minimalist Design (#8), Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -105,6 +113,7 @@
     "Content cards that sit on bg-sidebar background already have 3 separation signals: color contrast, border, shadow. The shadow is redundant — remove it and rely on border per design spec. Don't replace with shadow-sm either.",
     "Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px). Future iteration should unify wrapper padding across sibling layouts.",
     "Table column headers should use text-muted-foreground font-normal to be visually subordinate to data rows. Align all three hierarchy signals (size, weight, color) in the same direction — don't use font-medium to compensate for muted color.",
-    "For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons (text-primary for flows, text-emerald-500 for tables) but clearly from the design token system. Never use raw Tailwind grays (gray-400) which have hue 0° instead of the 220° cool blue-gray palette."
+    "For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons (text-primary for flows, text-emerald-500 for tables) but clearly from the design token system. Never use raw Tailwind grays (gray-400) which have hue 0° instead of the 220° cool blue-gray palette.",
+    "DataTableColumnHeader sortable branch (lines 43, 46) still uses text-foreground on both the Button and icon. When sorting is enabled on any column, these need to match: text-muted-foreground font-normal text-xs. Currently no runs-page columns are sortable so it's not visible."
   ]
 }
