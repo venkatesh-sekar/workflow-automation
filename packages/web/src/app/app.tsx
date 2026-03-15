@@ -23,7 +23,7 @@ import { FlowRouter } from './guards';
 const queryClient = new QueryClient({
   mutationCache: new MutationCache({
     onError: (err: Error, _, __, mutation) => {
-      if (api.isApError(err, ErrorCode.QUOTA_EXCEEDED)) {
+      if (api.isFlowError(err, ErrorCode.QUOTA_EXCEEDED)) {
         const { openDialog } = useManagePlanDialogStore.getState();
         openDialog();
       } else if (isNil(mutation.options.onError)) {

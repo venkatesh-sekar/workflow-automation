@@ -49,7 +49,7 @@ function request<TResponse>(
   config: AxiosRequestConfig = {},
 ): Promise<TResponse> {
   const resolvedUrl = !isUrlRelative(url) ? url : `${API_URL}${url}`;
-  const isApWebsite = resolvedUrl.startsWith(API_URL);
+  const isFlowWebsite = resolvedUrl.startsWith(API_URL);
   const unAuthenticated = disallowedRoutes.some((route) =>
     resolvedUrl.replace(API_URL, '').startsWith(route),
   );
@@ -61,7 +61,7 @@ function request<TResponse>(
       ...config.headers,
       Authorization: getToken(
         unAuthenticated,
-        isApWebsite,
+        isFlowWebsite,
         authenticationSession.getToken(),
       ),
     },
@@ -84,10 +84,10 @@ function request<TResponse>(
 
 function getToken(
   unAuthenticated: boolean,
-  isApWebsite: boolean,
+  isFlowWebsite: boolean,
   token: string | null,
 ) {
-  if (unAuthenticated || !isApWebsite) {
+  if (unAuthenticated || !isFlowWebsite) {
     return undefined;
   }
   if (isNil(token)) {
@@ -99,7 +99,7 @@ function getToken(
 export type HttpError = AxiosError<unknown, AxiosResponse<unknown>>;
 
 export const api = {
-  isApError(error: unknown, errorCode: ErrorCode): error is HttpError {
+  isFlowError(error: unknown, errorCode: ErrorCode): error is HttpError {
     if (!isAxiosError(error)) {
       return false;
     }

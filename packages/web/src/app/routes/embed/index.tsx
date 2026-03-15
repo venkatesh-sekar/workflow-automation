@@ -95,7 +95,7 @@ const EmbedPage = React.memo(() => {
       externalAccessToken: string;
       locale: string;
     }) => {
-      const data = await managedAuthApi.generateApToken({
+      const data = await managedAuthApi.generateFlowToken({
         externalAccessToken,
       });
       await i18n.changeLanguage(locale);

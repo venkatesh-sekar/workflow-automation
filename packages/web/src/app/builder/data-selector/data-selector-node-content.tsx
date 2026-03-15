@@ -2,7 +2,7 @@ import { flowStructureUtil } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-import { useApRipple } from '@/components/providers/theme-provider';
+import { useFlowRipple } from '@/components/providers/theme-provider';
 import { Button } from '@/components/ui/button';
 import { PieceIcon, stepsHooks } from '@/features/pieces';
 
@@ -43,7 +43,7 @@ const DataSelectorNodeContent = ({
   const flowVersion = useBuilderStateContext((state) => state.flowVersion);
   const insertMention = useBuilderStateContext((state) => state.insertMention);
 
-  const [ripple, rippleEvent] = useApRipple();
+  const [ripple, rippleEvent] = useFlowRipple();
   const step =
     node.data.type === 'value'
       ? flowStructureUtil.getStep(node.data.propertyPath, flowVersion.trigger)

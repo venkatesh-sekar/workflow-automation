@@ -115,7 +115,7 @@ export const useTheme = () => {
   return context;
 };
 
-export const useApRipple = () => {
+export const useFlowRipple = () => {
   const { theme } = useTheme();
   return RippleHook.default({
     color:

@@ -142,3 +142,10 @@
 - **Quality gate:** pass (0 typecheck errors for both server and web)
 - **Learnings:** Bulk sed with \b word boundaries works well for Ap→Flow prefix renames; no partial match issues
 ---
+
+## Iteration #21 - rename-ap-ui-components
+- **Change:** Renamed 6 missed Ap-prefixed identifiers: useApRipple→useFlowRipple, useApErrorDialogStore→useFlowErrorDialogStore, isApWebsite→isFlowWebsite, isApError→isFlowError, generateApToken→generateFlowToken, createApTableStore→createFlowTableStore
+- **Files:** 12 files changed
+- **Quality gate:** pass (0 typecheck errors)
+- **Learnings:** Some "Ap" identifiers use lowercase patterns (useAp*, isAp*, createAp*) that don't match the simple Ap[A-Z] regex — need to check for these patterns too
+---

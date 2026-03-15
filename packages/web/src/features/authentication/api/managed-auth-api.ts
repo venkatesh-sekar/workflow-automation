@@ -6,7 +6,7 @@ import {
 import { api } from '@/lib/api';
 
 export const managedAuthApi = {
-  generateApToken: async (request: ManagedAuthnRequestBody) => {
+  generateFlowToken: async (request: ManagedAuthnRequestBody) => {
     return api.post<AuthenticationResponse>(
       `/v1/managed-authn/external-token`,
       request,

@@ -1,5 +1,5 @@
 {
-  "iteration": 20,
+  "iteration": 21,
   "current_phase": "rename-ap-ui-components",
   "phases": {
     "rename-packages": {
@@ -71,7 +71,8 @@
         "TypeScript compiles cleanly"
       ],
       "completed_items": [
-        {"iteration": 20, "description": "Bulk renamed all ~60 Ap-prefixed UI component identifiers to Flow prefix (337 replacements across 66 files)"}
+        {"iteration": 20, "description": "Bulk renamed all ~60 Ap-prefixed UI component identifiers to Flow prefix (337 replacements across 66 files)"},
+        {"iteration": 21, "description": "Renamed 6 missed Ap-prefixed identifiers: useApRipple→useFlowRipple, useApErrorDialogStore→useFlowErrorDialogStore, isApWebsite→isFlowWebsite, isApError→isFlowError, generateApToken→generateFlowToken, createApTableStore→createFlowTableStore (12 files)"}
       ]
     },
     "rename-ap-system-props": {

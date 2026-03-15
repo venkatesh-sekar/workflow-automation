@@ -11,7 +11,7 @@ import { buttonVariants } from '@/components/ui/button';
 import {
   TableState,
   FlowTableStore,
-  createApTableStore,
+  createFlowTableStore,
 } from '@/features/tables/stores/store/ap-tables-client-state';
 import { cn } from '@/lib/utils';
 
@@ -33,7 +33,7 @@ export const TableStateProviderWithTable = ({
   records: PopulatedRecord[];
 }) => {
   const tableStoreRef = useRef<FlowTableStore>(
-    createApTableStore(table, fields, records),
+    createFlowTableStore(table, fields, records),
   );
   return (
     <TableContext.Provider value={tableStoreRef.current}>

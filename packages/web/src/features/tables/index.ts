@@ -9,7 +9,7 @@ export {
 export { ImportTableDialog } from './components/import-table-dialog';
 export { mapRecordsToRows, useTableColumns } from './components/table-columns';
 export { tableHooks } from './hooks/table-hooks';
-export { createApTableStore } from './stores/store/ap-tables-client-state';
+export { createFlowTableStore } from './stores/store/ap-tables-client-state';
 export type {
   FlowTableStore,
   TableState,

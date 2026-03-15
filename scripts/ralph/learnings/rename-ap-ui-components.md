@@ -11,4 +11,5 @@
 - Iteration 21: Rename ap-prefixed files → flow-prefixed and update imports
 
 ## Insights
-- (to be filled)
+- Some Ap-prefixed identifiers use camelCase patterns (useAp*, isAp*, createAp*, generateAp*) that don't match `Ap[A-Z]` regex — need broader check for `[a-z]Ap[A-Z]` too
+- Iteration 20 caught component-style names (ApForm, ApTable), iteration 21 caught utility-style names (useApRipple, isApError)

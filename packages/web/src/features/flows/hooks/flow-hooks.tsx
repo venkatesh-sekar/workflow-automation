@@ -24,7 +24,7 @@ import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { useApErrorDialogStore } from '@/components/custom/ap-error-dialog/ap-error-dialog-store';
+import { useFlowErrorDialogStore } from '@/components/custom/ap-error-dialog/ap-error-dialog-store';
 import { useSocket } from '@/components/providers/socket-provider';
 import { internalErrorToast } from '@/components/ui/sonner';
 import { flowRunsApi } from '@/features/flow-runs/api/flow-runs-api';
@@ -71,7 +71,7 @@ export const flowHooks = {
       FlowFlagId.ENABLE_FLOW_ON_PUBLISH,
     );
     const socket = useSocket();
-    const { openDialog } = useApErrorDialogStore();
+    const { openDialog } = useFlowErrorDialogStore();
     return useMutation({
       mutationFn: async () => {
         if (change === 'publish') {

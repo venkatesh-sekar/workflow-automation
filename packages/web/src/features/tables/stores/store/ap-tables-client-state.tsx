@@ -82,7 +82,7 @@ export type TableState = {
   serverRecords: PopulatedRecord[];
 };
 
-export const createApTableStore = (
+export const createFlowTableStore = (
   table: Table,
   fields: Field[],
   records: PopulatedRecord[],
@@ -256,4 +256,4 @@ export const createApTableStore = (
   });
 };
 
-export type FlowTableStore = ReturnType<typeof createApTableStore>;
+export type FlowTableStore = ReturnType<typeof createFlowTableStore>;

@@ -11,7 +11,7 @@ interface FlowErrorDialogStore {
   closeDialog: () => void;
 }
 
-export const useApErrorDialogStore = create<FlowErrorDialogStore>((set) => ({
+export const useFlowErrorDialogStore = create<FlowErrorDialogStore>((set) => ({
   params: null,
   openDialog: (params) => set({ params }),
   closeDialog: () => set({ params: null }),

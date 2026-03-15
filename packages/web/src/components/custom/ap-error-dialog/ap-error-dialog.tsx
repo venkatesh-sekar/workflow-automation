@@ -14,10 +14,10 @@ import {
   DialogFooter,
 } from '../../ui/dialog';
 
-import { useApErrorDialogStore } from './ap-error-dialog-store';
+import { useFlowErrorDialogStore } from './ap-error-dialog-store';
 
 const FlowErrorDialog = () => {
-  const { params, closeDialog } = useApErrorDialogStore();
+  const { params, closeDialog } = useFlowErrorDialogStore();
 
   if (isNil(params)) return null;
 
