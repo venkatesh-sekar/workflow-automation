@@ -646,3 +646,10 @@
 - **Quality gate:** pass (0 TS errors, 171 tests pass)
 - **Learnings:** FlowOperationRequest.request is a union — need type cast to access status; guard audit calls with PrincipalType.USER check
 ---
+
+## Iteration #93 - build-audit-logs
+- **Change:** Added audit event hooks to app-connection controller for CONNECTION_UPSERTED and CONNECTION_DELETED events
+- **Files:** packages/server/api/src/app/app-connection/app-connection.controller.ts
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** Connection controller already has applicationEvents hooks — audit hooks follow same placement pattern
+---

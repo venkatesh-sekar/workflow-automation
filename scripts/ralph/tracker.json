@@ -1,5 +1,5 @@
 {
-  "iteration": 92,
+  "iteration": 93,
   "current_phase": "build-audit-logs",
   "phases": {
     "copy-server-core": {
@@ -197,7 +197,8 @@
         {"iteration": 89, "description": "Created AuditEventEntity with columns (id, projectId, userId, event, data, created/updated), relations to project/user, index on projectId. Registered in database-connection.ts. All 171 tests pass."},
         {"iteration": 90, "description": "Created auditEventService with create() and list() methods. Uses repoFactory pattern, apId() for IDs, project-scoped list with DESC ordering. All 171 tests pass."},
         {"iteration": 91, "description": "Created audit-event.module.ts with GET /v1/audit-events endpoint (project-scoped, USER principal). Registered auditEventModule in app.ts. All 171 tests pass."},
-        {"iteration": 92, "description": "Added audit event hooks to flow controller for FLOW_CREATED, FLOW_UPDATED, FLOW_STATUS_CHANGED (enable/disable), and FLOW_DELETED events. All 171 tests pass."}
+        {"iteration": 92, "description": "Added audit event hooks to flow controller for FLOW_CREATED, FLOW_UPDATED, FLOW_STATUS_CHANGED (enable/disable), and FLOW_DELETED events. All 171 tests pass."},
+        {"iteration": 93, "description": "Added audit event hooks to app-connection controller for CONNECTION_UPSERTED and CONNECTION_DELETED events. Guarded with PrincipalType.USER check. All 171 tests pass."}
       ]
     },
     "simplify-alerts": {

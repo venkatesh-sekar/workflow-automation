@@ -17,6 +17,7 @@ import { ApId,
 import { FastifyPluginCallbackZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
+import { auditEventService } from '../audit-event/audit-event.service'
 import { applicationEvents } from '../helper/application-events'
 import { securityHelper } from '../helper/security-helper'
 import { appConnectionService } from './app-connection-service/app-connection-service'
@@ -43,6 +44,14 @@ export const appConnectionController: FastifyPluginCallbackZod = (app, _opts, do
                 connection: appConnection,
             },
         })
+        if (request.principal.type === PrincipalType.USER) {
+            await auditEventService.create({
+                projectId: request.projectId,
+                userId: request.principal.id,
+                event: 'CONNECTION_UPSERTED',
+                data: { connectionId: appConnection.id, displayName: appConnection.displayName, pieceName: appConnection.pieceName },
+            })
+        }
         await reply
             .status(StatusCodes.CREATED)
             .send(appConnection)
@@ -122,6 +131,14 @@ export const appConnectionController: FastifyPluginCallbackZod = (app, _opts, do
                 connection,
             },
         })
+        if (request.principal.type === PrincipalType.USER) {
+            await auditEventService.create({
+                projectId: request.projectId,
+                userId: request.principal.id,
+                event: 'CONNECTION_DELETED',
+                data: { connectionId: connection.id, displayName: connection.displayName, pieceName: connection.pieceName },
+            })
+        }
         await appConnectionService(request.log).delete({
             id: request.params.id,
             platformId: request.principal.platform.id,
