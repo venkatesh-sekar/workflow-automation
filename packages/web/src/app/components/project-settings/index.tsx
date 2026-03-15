@@ -23,13 +23,12 @@ import { ProjectAvatar } from '../project-avatar';
 import { AlertsSettings } from './alerts';
 import { GeneralSettings, FormValues } from './general';
 import { MembersSettings } from './members';
-
-type TabId = 'general' | 'members' | 'alerts';
+import { SettingsTabId } from './settings-tabs';
 
 interface ProjectSettingsDialogProps {
   open: boolean;
   onClose: () => void;
-  initialTab?: TabId;
+  initialTab?: SettingsTabId;
   initialValues?: {
     projectName?: string;
     externalId?: string;
@@ -42,7 +41,7 @@ export function ProjectSettingsDialog({
   initialTab = 'general',
   initialValues,
 }: ProjectSettingsDialogProps) {
-  const [activeTab, setActiveTab] = useState<TabId>(initialTab);
+  const [activeTab, setActiveTab] = useState<SettingsTabId>(initialTab);
   const { checkAccess } = useAuthorization();
   const { project } = projectCollectionUtils.useCurrentProject();
   const previousOpenRef = useRef(open);
@@ -83,13 +82,13 @@ export function ProjectSettingsDialog({
 
   const tabs = [
     {
-      id: 'general' as TabId,
+      id: 'general' as SettingsTabId,
       label: t('General'),
       icon: <Settings className="w-4 h-4" />,
       disabled: project.type !== ProjectType.TEAM,
     },
     {
-      id: 'members' as TabId,
+      id: 'members' as SettingsTabId,
       label: t('Members'),
       icon: <Users className="w-4 h-4" />,
       disabled:
@@ -97,7 +96,7 @@ export function ProjectSettingsDialog({
         !checkAccess(Permission.READ_PROJECT_MEMBER),
     },
     {
-      id: 'alerts' as TabId,
+      id: 'alerts' as SettingsTabId,
       label: t('Alerts'),
       icon: <Bell className="w-4 h-4" />,
       disabled: project.type !== ProjectType.TEAM,

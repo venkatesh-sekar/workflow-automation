@@ -814,3 +814,10 @@
 - **Quality gate:** pass (typecheck clean, 189 tests pass)
 - **Learnings:** locale-utils.ts now dead code (only consumer was language-toggle) but kept to minimize scope
 ---
+
+## Iteration #117 - frontend-settings
+- **Change:** Added 3 unit tests for settings tab configuration: verifies only general/members/alerts tabs, removed tabs not present, exactly 3 tabs. Extracted SettingsTabId type to settings-tabs.ts module. Updated index.tsx to use shared type.
+- **Files:** packages/web/src/app/components/project-settings/settings-tabs.ts (new), packages/web/src/app/components/project-settings/settings-tabs.test.ts (new), packages/web/src/app/components/project-settings/index.tsx (updated)
+- **Quality gate:** pass (typecheck clean, 189 server tests pass, 3 settings tests pass)
+- **Learnings:** Web tests can skip jsdom environment directive for pure TS logic; local vitest must be invoked from packages/web/ directory
+---

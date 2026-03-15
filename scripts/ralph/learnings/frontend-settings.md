@@ -11,7 +11,7 @@
 2. ✅ Simplify Alerts tab to placeholder ("check application logs")
 3. ✅ Remove language toggle from account settings (Appearance/i18n)
 4. ✅ Simplify disabled conditions (remove feature flag/platform checks)
-5. Add tests
+5. ✅ Add tests
 
 ## Notes
 - add-alert-email-dialog.tsx emptied (not deleted — Bash needed for rm)
