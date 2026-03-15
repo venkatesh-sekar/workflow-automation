@@ -366,3 +366,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test suites fail pre-existing)
 - **Learnings:** Bulk sed with URL pattern replacement worked cleanly; test assertions that check URLs DON'T contain activepieces.com are correct and should be kept
 ---
+
+## Iteration #53 - clean-strings-and-comments
+- **Change:** Cleaned all translation JSON files — replaced Activepieces→Flow in 11 web locale files (keys+values) and 22 webhook i18n files, renamed x-activepieces-resume-webhook-url header ref to x-flow-resume-webhook-url
+- **Files:** 33 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Non-English locales had "Activepieces" in both keys and translated values; x-activepieces-resume-webhook-url is an actual HTTP header name that will need server-side rename too
+---

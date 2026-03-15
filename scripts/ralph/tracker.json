@@ -1,5 +1,5 @@
 {
-  "iteration": 52,
+  "iteration": 53,
   "current_phase": "clean-strings-and-comments",
   "phases": {
     "rename-packages": {
@@ -192,7 +192,9 @@
         "crowdin.yml removed (no external translation service)",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 53, "description": "Cleaned all translation JSON files: replaced Activepieces→Flow in 11 web locale files (keys+values) and 22 webhook i18n files, also renamed x-activepieces-resume-webhook-url header ref to x-flow-resume-webhook-url"}
+      ]
     },
     "clean-dead-code": {
       "status": "pending",
