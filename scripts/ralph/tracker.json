@@ -1,5 +1,5 @@
 {
-  "iteration": 33,
+  "iteration": 34,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -142,7 +142,9 @@
         "SCIM references cleaned if dead code",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 34, "description": "Removed Stripe checkout endpoints from billing-plans-api.ts (createSubscription, createAICreditCheckoutSession, updateActiveFlowsLimits, updateAutoTopUp, getPortalLink) and gutted billing-hooks.ts mutations — kept only read-only getSubscriptionInfo/billingQueries"}
+      ]
     },
     "strip-external-urls": {
       "status": "pending",

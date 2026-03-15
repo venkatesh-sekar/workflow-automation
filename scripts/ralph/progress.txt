@@ -233,3 +233,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Promoted key telemetry learnings to global.md
 ---
+
+## Iteration #34 - strip-billing-and-licensing
+- **Change:** Removed Stripe checkout endpoints from billing-plans-api.ts (createSubscription, createAICreditCheckoutSession, updateActiveFlowsLimits, updateAutoTopUp, getPortalLink) and gutted billing-hooks.ts mutations — kept only read-only getSubscriptionInfo/billingQueries
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** No server-side platform-billing routes exist; billing API is frontend-only calling external cloud. Stripe price IDs hardcoded in shared/ee/billing/index.ts.
+---
