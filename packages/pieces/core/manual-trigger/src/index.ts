@@ -7,7 +7,7 @@ export const manualTriggerPiece = createPiece({
       displayName: "Manual Trigger",
       auth: PieceAuth.None(),
       minimumSupportedRelease: '0.78.0',
-      logoUrl: "https://cdn.activepieces.com/pieces/new-core/manual-trigger.svg",
+      logoUrl: "",
       authors: ['AbdulTheActivePiecer'],
       actions: [],
       triggers: [manualTrigger],

@@ -14,7 +14,7 @@ export const BrandingPage = () => {
       lockDescription={t(
         'Give your users an experience that looks like you by customizing the color, logo and more',
       )}
-      lockVideoUrl="https://cdn.activepieces.com/videos/showcase/appearance.mp4"
+      lockVideoUrl=""
     >
       <CenteredPage
         title={t('Branding')}

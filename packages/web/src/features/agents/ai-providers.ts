@@ -12,7 +12,7 @@ export const SUPPORTED_AI_PROVIDERS: AiProviderInfo[] = [
 
 It is strongly recommended that you add your credit card information to your OpenAI account and upgrade to the paid plan **before** generating the API Key. This will help you prevent 429 errors.
 `),
-    logoUrl: 'https://cdn.activepieces.com/pieces/openai.png',
+    logoUrl: '',
   },
 ];
 

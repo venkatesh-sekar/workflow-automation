@@ -9,7 +9,7 @@ export const dataSummarizer = createPiece({
   displayName: 'Data Summarizer',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.30.0',
-  logoUrl: 'https://cdn.activepieces.com/pieces/data-summarizer.svg',
+  logoUrl: '',
   authors: ['tahboubali'],
   actions: [calculateAverage, calculateSum, countUniques, getMinMax],
   triggers: [],

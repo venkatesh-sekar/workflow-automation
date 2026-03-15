@@ -17,7 +17,7 @@ export const utilityDate = createPiece({
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.36.1',
   categories: [PieceCategory.CORE],
-  logoUrl: 'https://cdn.activepieces.com/pieces/new-core/date-helper.svg',
+  logoUrl: '',
   authors: [
     'joeworkman',
     'kishanprmr',

@@ -304,7 +304,7 @@ export default function ProjectsPage() {
       lockDescription={t(
         'Orchestrate your automation teams with their own flows, connections and usage quotas',
       )}
-      lockVideoUrl="https://cdn.activepieces.com/videos/showcase/projects.mp4"
+      lockVideoUrl=""
     >
       <div className="flex flex-col w-full">
         <DashboardPageHeader

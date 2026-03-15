@@ -1,6 +1,6 @@
 {
-  "iteration": 51,
-  "current_phase": "strip-external-urls",
+  "iteration": 52,
+  "current_phase": "clean-strings-and-comments",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -161,7 +161,7 @@
       ]
     },
     "strip-external-urls": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "All cdn.activepieces.com URLs replaced with local assets or removed",
@@ -176,7 +176,8 @@
       "completed_items": [
         {"iteration": 49, "description": "Emptied feedbackUrl (feedback.activepieces.com) and supportUrl (community.activepieces.com) exports — consumers still import them but get empty strings"},
         {"iteration": 50, "description": "Removed all www.activepieces.com URLs: emptied docs URLs in swagger/system-validator/health/signing-keys/sso-dialog/install-piece-dialog (12 files), emptied privacy/terms URLs in flag.service.ts, removed 4 auth comment URLs in piece files"},
-        {"iteration": 51, "description": "Removed secrets.activepieces.com URLs: gutted listCloudOAuth2Apps to return empty object (no cloud OAuth), removed cloud redirect URL from oauth2-connection-settings.tsx"}
+        {"iteration": 51, "description": "Removed secrets.activepieces.com URLs: gutted listCloudOAuth2Apps to return empty object (no cloud OAuth), removed cloud redirect URL from oauth2-connection-settings.tsx"},
+        {"iteration": 52, "description": "Removed all cdn.activepieces.com URLs: emptied ~60 CDN URLs across 42 files (piece logos, badges, AI icons, agent tools, step utils, showcase videos, mcp-service), also emptied activepieces.com websiteUrl in mcp-service.ts"}
       ]
     },
     "clean-strings-and-comments": {
@@ -228,7 +229,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing"],
-  "phase_queue": ["clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls"],
+  "phase_queue": ["clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

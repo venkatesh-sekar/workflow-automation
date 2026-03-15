@@ -18,10 +18,10 @@ import {
 import { AgentPieceDialog } from './piece-tool-dialog';
 
 const icons = [
-  'https://cdn.activepieces.com/pieces/youtube.png',
-  'https://cdn.activepieces.com/pieces/slack.png',
-  'https://cdn.activepieces.com/pieces/github.png',
-  'https://cdn.activepieces.com/pieces/notion.png',
+  '',
+  '',
+  '',
+  '',
 ];
 
 interface AgentToolsProps {

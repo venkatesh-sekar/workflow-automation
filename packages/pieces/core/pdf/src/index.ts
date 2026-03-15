@@ -13,7 +13,7 @@ export const PDF = createPiece({
   displayName: 'PDF',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.34.2',
-  logoUrl: 'https://cdn.activepieces.com/pieces/pdf.svg',
+  logoUrl: '',
   authors: [
     'nyamkamunhjin',
     'abuaboud',

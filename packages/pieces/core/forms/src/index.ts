@@ -10,7 +10,7 @@ export const forms = createPiece({
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.65.0',
   categories: [PieceCategory.CORE],
-  logoUrl: 'https://cdn.activepieces.com/pieces/new-core/human-input.svg',
+  logoUrl: '',
   authors: ['anasbarg', 'MoShizzle', 'abuaboud'],
   actions: [returnResponse],
   triggers: [onFormSubmission, onChatSubmission],

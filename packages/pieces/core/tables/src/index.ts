@@ -12,7 +12,7 @@ import { updatedRecordTrigger } from "./lib/triggers/updated-record";
 
 export const tables = createPiece({
   displayName: 'Tables',
-  logoUrl: 'https://cdn.activepieces.com/pieces/new-core/tables.svg',
+  logoUrl: '',
   categories: [PieceCategory.CORE],
   minimumSupportedRelease: '0.80.0',
   authors: ['amrdb'],

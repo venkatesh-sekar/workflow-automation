@@ -24,16 +24,11 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 - rename-ap-system-props: AppSystemProp→FlowSystemProp, WorkerSystemProp→FlowWorkerSystemProp
 - strip-telemetry: Segment/PostHog/Sentry/template-telemetry/HyperDX/OTEL/GitHub version check
 - strip-billing-and-licensing: Stripe, license keys, cloud sync/OAuth/templates, AppSumo, Firebase Scrypt, Cloudflare/Featurebase/SCIM env vars, cloud API base URLs
+- strip-external-urls: ~60 CDN URLs emptied, all www/secrets/feedback/community URLs removed
 
-## Key Insights from Billing Phase
+## Key Insights
 - No server-side billing routes — API calls went to external cloud service
 - SCIM shared types still exist in packages/shared/src/lib/ee/scim/ — only barrel export, no server consumer
-- Frontend still has secrets.activepieces.com refs (oauth2-connection-settings.tsx, oauth-apps.ts) — for strip-external-urls
-- Test files have cloud.activepieces.com as fixture URLs — harmless but clean in strip-external-urls
 - auth-form-template.tsx still has `cloud.activepieces.com` hostname check — for clean-dead-code phase
-
-## External URLs (~80 refs remaining)
-- cdn.activepieces.com: logos, badges, videos, AI icons
-- www.activepieces.com: docs, pricing, terms, privacy
-- secrets.activepieces.com: frontend OAuth redirect/claim
-- Test fixture URLs with cloud.activepieces.com
+- Test assertions checking URLs don't contain activepieces.com are fine (flags.test.ts)
+- MCP server in mcp-service.ts has 'Activepieces' name/title/description strings — for clean-strings phase

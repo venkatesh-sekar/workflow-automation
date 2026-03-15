@@ -21,7 +21,7 @@ export const openai = createPiece({
   displayName: 'OpenAI',
   description: 'Use the many tools ChatGPT has to offer.',
   minimumSupportedRelease: '0.63.0',
-  logoUrl: 'https://cdn.activepieces.com/pieces/openai.png',
+  logoUrl: '',
   categories: [PieceCategory.ARTIFICIAL_INTELLIGENCE],
   auth: openaiAuth,
   actions: [

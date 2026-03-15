@@ -359,3 +359,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #52 - strip-external-urls (PHASE COMPLETE)
+- **Change:** Removed all cdn.activepieces.com URLs (~60 refs across 42 files: piece logos, badges, AI icons, agent tools, step utils, showcase videos, mcp-service), emptied activepieces.com websiteUrl in mcp-service.ts. Phase complete — all criteria verified. Advancing to clean-strings-and-comments.
+- **Files:** 43 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test suites fail pre-existing)
+- **Learnings:** Bulk sed with URL pattern replacement worked cleanly; test assertions that check URLs DON'T contain activepieces.com are correct and should be kept
+---

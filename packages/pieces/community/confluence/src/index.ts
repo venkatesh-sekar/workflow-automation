@@ -10,7 +10,7 @@ export const confluence = createPiece({
   displayName: "Confluence",
   auth: confluenceAuth,
   minimumSupportedRelease: '0.30.0',
-  logoUrl: "https://cdn.activepieces.com/pieces/confluence.png",
+  logoUrl: "",
   authors: ["geekyme"],
   actions: [getPageContent,createPageFromTemplateAction,
     createCustomApiCallAction({

@@ -10,7 +10,7 @@ export const webhook = createPiece({
   auth: PieceAuth.None(),
   categories: [PieceCategory.CORE],
   minimumSupportedRelease: '0.52.0',
-  logoUrl: 'https://cdn.activepieces.com/pieces/new-core/webhooks.svg',
+  logoUrl: '',
   authors: ['abuaboud', 'pfernandez98', 'kishanprmr','AbdulTheActivePiecer'],
   actions: [returnResponse,returnResponseAndWaitForNextWebhook],
   triggers: [catchWebhook],
