@@ -133,8 +133,6 @@ const systemPropValidators: {
     [FlowSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL]: numberValidator,
     [FlowSystemProp.WEBHOOK_TIMEOUT_SECONDS]: numberValidator,
     [FlowSystemProp.FILE_STORAGE_LOCATION]: enumValidator(Object.values(FileLocation)),
-    [FlowSystemProp.FIREBASE_ADMIN_CREDENTIALS]: stringValidator,
-    [FlowSystemProp.FIREBASE_HASH_PARAMETERS]: stringValidator,
     [FlowSystemProp.INTERNAL_URL]: stringValidator,
     [FlowSystemProp.PM2_ENABLED]: booleanValidator,
     [FlowSystemProp.EDITION]: enumValidator(Object.values(FlowEdition)),

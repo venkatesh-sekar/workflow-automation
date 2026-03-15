@@ -317,3 +317,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** APPSUMO_PLAN was defined but never imported anywhere — safe dead code removal
 ---
+
+## Iteration #46 - strip-billing-and-licensing
+- **Change:** Removed Firebase Scrypt password hasher: gutted scrypt comparison from password-hasher.ts (bcrypt only), removed firebase-scrypt dep from package.json, removed FIREBASE_ADMIN_CREDENTIALS and FIREBASE_HASH_PARAMETERS from FlowSystemProp enum + system-validator, removed scrypt test block
+- **Files:** 5 files changed
+- **Quality gate:** pass (0 typecheck errors; 2/24 test suites pass, 14 tests pass — same baseline)
+- **Learnings:** password-hasher.test.ts had dedicated scrypt tests that needed removal
+---
