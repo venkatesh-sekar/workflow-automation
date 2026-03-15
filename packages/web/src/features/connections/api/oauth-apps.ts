@@ -10,14 +10,9 @@ import { api } from '@/lib/api';
 
 export const oauthAppsApi = {
   listCloudOAuth2Apps(
-    edition: FlowEdition,
+    _edition: FlowEdition,
   ): Promise<Record<string, { clientId: string }>> {
-    return api.get<Record<string, { clientId: string }>>(
-      'https://secrets.activepieces.com/apps',
-      {
-        edition,
-      },
-    );
+    return Promise.resolve({});
   },
   listPlatformOAuth2Apps(request: ListOAuth2AppRequest) {
     return api.get<SeekPage<OAuthApp>>('/v1/oauth-apps', request);

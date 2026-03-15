@@ -56,10 +56,7 @@ function OAuth2ConnectionSettings({
   const { data: thirdPartyUrl } = flagsHooks.useFlag<string>(
     FlowFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
   );
-  const redirectUrl =
-    oauth2App.oauth2Type === AppConnectionType.CLOUD_OAUTH2
-      ? 'https://secrets.activepieces.com/redirect'
-      : thirdPartyUrl ?? 'no_redirect_url_found';
+  const redirectUrl = thirdPartyUrl ?? 'no_redirect_url_found';
 
   const hasCode = form.getValues().request.value.code;
   const showRedirectUrlInput =

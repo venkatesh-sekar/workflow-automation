@@ -352,3 +352,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #51 - strip-external-urls
+- **Change:** Removed secrets.activepieces.com URLs: gutted listCloudOAuth2Apps to return empty object (no cloud OAuth), removed cloud redirect URL from oauth2-connection-settings.tsx
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

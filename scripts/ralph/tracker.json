@@ -1,5 +1,5 @@
 {
-  "iteration": 50,
+  "iteration": 51,
   "current_phase": "strip-external-urls",
   "phases": {
     "rename-packages": {
@@ -175,7 +175,8 @@
       ],
       "completed_items": [
         {"iteration": 49, "description": "Emptied feedbackUrl (feedback.activepieces.com) and supportUrl (community.activepieces.com) exports — consumers still import them but get empty strings"},
-        {"iteration": 50, "description": "Removed all www.activepieces.com URLs: emptied docs URLs in swagger/system-validator/health/signing-keys/sso-dialog/install-piece-dialog (12 files), emptied privacy/terms URLs in flag.service.ts, removed 4 auth comment URLs in piece files"}
+        {"iteration": 50, "description": "Removed all www.activepieces.com URLs: emptied docs URLs in swagger/system-validator/health/signing-keys/sso-dialog/install-piece-dialog (12 files), emptied privacy/terms URLs in flag.service.ts, removed 4 auth comment URLs in piece files"},
+        {"iteration": 51, "description": "Removed secrets.activepieces.com URLs: gutted listCloudOAuth2Apps to return empty object (no cloud OAuth), removed cloud redirect URL from oauth2-connection-settings.tsx"}
       ]
     },
     "clean-strings-and-comments": {
