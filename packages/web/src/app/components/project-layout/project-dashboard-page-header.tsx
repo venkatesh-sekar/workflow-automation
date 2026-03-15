@@ -2,7 +2,6 @@ import {
   ApFlagId,
   isNil,
   Permission,
-  PlatformRole,
   ProjectType,
   UserStatus,
 } from '@activepieces/shared';
@@ -26,8 +25,6 @@ import { InviteUserDialog, projectMembersHooks } from '@/features/members';
 import { getProjectName, projectCollectionUtils } from '@/features/projects';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { flagsHooks } from '@/hooks/flags-hooks';
-import { platformHooks } from '@/hooks/platform-hooks';
-import { userHooks } from '@/hooks/user-hooks';
 
 import { ApProjectDisplay } from '../ap-project-display';
 import { ProjectSettingsDialog } from '../project-settings';
@@ -40,11 +37,10 @@ export const ProjectDashboardPageHeader = ({
   description?: React.ReactNode;
 }) => {
   const { project } = projectCollectionUtils.useCurrentProject();
-  const { platform } = platformHooks.useCurrentPlatform();
   const [inviteOpen, setInviteOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [settingsInitialTab, setSettingsInitialTab] = useState<
-    'general' | 'members' | 'alerts' | 'pieces' | 'environment'
+    'general' | 'members' | 'alerts'
   >('general');
   const location = useLocation();
   const { projectMembers } = projectMembersHooks.useProjectMembers();
@@ -52,7 +48,6 @@ export const ProjectDashboardPageHeader = ({
     (member) => member.user.status === UserStatus.ACTIVE,
   );
   const { checkAccess } = useAuthorization();
-  const { data: user } = userHooks.useCurrentUser();
   const userHasPermissionToReadProjectMembers = checkAccess(
     Permission.READ_PROJECT_MEMBER,
   );
@@ -76,25 +71,10 @@ export const ProjectDashboardPageHeader = ({
 
   const isProjectPage = location.pathname.includes('/projects/');
 
-  const hasGeneralSettings =
-    project.type === ProjectType.TEAM ||
-    (platform.plan.embeddingEnabled &&
-      user?.platformRole === PlatformRole.ADMIN);
-
-  const getFirstAvailableTab = ():
-    | 'general'
-    | 'members'
-    | 'alerts'
-    | 'pieces'
-    | 'environment' => {
-    if (hasGeneralSettings) return 'general';
-    if (
-      project.type === ProjectType.TEAM &&
-      showProjectMembersFlag &&
-      userHasPermissionToReadProjectMembers
-    )
-      return 'members';
-    return 'pieces';
+  const getFirstAvailableTab = (): 'general' | 'members' | 'alerts' => {
+    if (project.type === ProjectType.TEAM) return 'general';
+    if (userHasPermissionToReadProjectMembers) return 'members';
+    return 'alerts';
   };
 
   const titleContent = (

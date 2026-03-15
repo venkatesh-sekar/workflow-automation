@@ -793,3 +793,10 @@
 - **Quality gate:** pass (189 tests pass, typecheck clean)
 - **Learnings:** Promoted sidebar architecture insights to global learnings (header tabs vs sidebar items, platform sidebar isolation)
 ---
+
+## Iteration #114 - frontend-settings
+- **Change:** Removed Pieces, Environment, and MCP Server tabs from project settings dialog. Kept General, Members, Alerts only. Simplified disabled conditions. Cleaned unused imports from settings and page header.
+- **Files:** packages/web/src/app/components/project-settings/index.tsx, packages/web/src/app/components/project-layout/project-dashboard-page-header.tsx, scripts/ralph/learnings/frontend-settings.md
+- **Quality gate:** pass (tsc clean, 189 server tests pass, 12 web tests pass)
+- **Learnings:** Settings is a dialog (not page). Tabs: general/members/alerts/pieces/environment/mcp — removed last 3. Feature flag checks (SHOW_ALERTS, SHOW_PROJECT_MEMBERS) and platform embedding checks removed for simplicity.
+---

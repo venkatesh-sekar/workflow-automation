@@ -1,5 +1,5 @@
 {
-  "iteration": 113,
+  "iteration": 114,
   "current_phase": "frontend-settings",
   "phases": {
     "copy-server-core": {
@@ -272,7 +272,9 @@
         "Settings tabs kept: General (project name, icon), Team members (list/add/remove emails), Alerts (placeholder)",
         "Tests updated for settings changes"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 114, "description": "Removed Pieces, Environment, and MCP Server tabs from project settings dialog. Kept General, Members, Alerts only. Simplified disabled conditions (removed feature flag checks, platform embedding checks). Cleaned unused imports (PlatformRole, platformHooks, userHooks, McpSvg, GitBranch, Puzzle, flagsHooks). Updated page header tab types."}
+      ]
     },
     "frontend-branding": {
       "status": "pending",
