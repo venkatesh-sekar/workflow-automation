@@ -59,3 +59,10 @@
 - **Files changed:** packages/web/src/app/components/builder-layout/index.tsx
 - **Learnings:** Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px) — wrapper padding inconsistency to unify in a future iteration.
 ---
+
+## Iteration #9 - automations-page
+- **Change:** Muted table header text — changed `text-foreground font-medium` to `text-muted-foreground font-normal` on the column header row so labels (Name, Details, Last modified, Owner, Status) are visually subordinate to data rows. All three hierarchy signals (size via text-xs, weight via font-normal, color via muted-foreground) now point in the same direction.
+- **Heuristic:** Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/features/automations/components/automations-table.tsx
+- **Learnings:** Table headers should align size, weight, and color signals in the same hierarchy direction. Don't use font-medium to compensate for text-xs — it over-corrects when combined with muted color.
+---

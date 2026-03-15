@@ -1,5 +1,5 @@
 {
-  "iteration": 8,
+  "iteration": 9,
   "current_area": "automations-page",
   "queue": [
     "runs-page",
@@ -75,6 +75,14 @@
       "change": "Remove same redundant verbose shadow from builder-layout content card — matches project-layout fix from iteration #7 for cross-layout consistency",
       "files_modified": ["packages/web/src/app/components/builder-layout/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "automations-page",
+      "iteration": 9,
+      "date": "2026-03-16",
+      "change": "Mute table header text — changed text-foreground font-medium to text-muted-foreground font-normal so column labels (Name, Details, Last modified, Owner, Status) are visually subordinate to data rows",
+      "files_modified": ["packages/web/src/features/automations/components/automations-table.tsx"],
+      "heuristic": "Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
@@ -88,6 +96,7 @@
     "SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding.",
     "Unify active-state pattern across all sidebar item types: bg-sidebar-primary/10 text-sidebar-primary. Avoid bg-sidebar-accent for active states — it reads as hover, not selection. Also avoid !important overrides when cn() ordering suffices.",
     "Content cards that sit on bg-sidebar background already have 3 separation signals: color contrast, border, shadow. The shadow is redundant — remove it and rely on border per design spec. Don't replace with shadow-sm either.",
-    "Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px). Future iteration should unify wrapper padding across sibling layouts."
+    "Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px). Future iteration should unify wrapper padding across sibling layouts.",
+    "Table column headers should use text-muted-foreground font-normal to be visually subordinate to data rows. Align all three hierarchy signals (size, weight, color) in the same direction — don't use font-medium to compensate for muted color."
   ]
 }
