@@ -1,6 +1,6 @@
 import { apDayjs, apDayjsDuration } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     CreateFlowRequest,
     Cursor,
@@ -198,7 +198,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
 
         const populatedFlows = await Promise.all(paginationResult.data.map(async (flow) => {
             if (isNil(flow.version)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         entityType: 'FlowVersion',
@@ -339,7 +339,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
                 projectId,
             })
             if (flow.operationStatus === FlowOperationStatus.DELETING) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.FLOW_OPERATION_IN_PROGRESS,
                     params: {
                         message: 'This flow is getting deleted.',
@@ -527,7 +527,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
             projectId,
         })
         if (flow.operationStatus !== FlowOperationStatus.NONE) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.FLOW_OPERATION_IN_PROGRESS,
                 params: {
                     message: `Flow ${id} is already being ${flow.operationStatus}`,
@@ -768,7 +768,7 @@ const assertFlowIsNotNull: <T extends Flow>(
     flow: T | null
 ) => asserts flow is T = <T>(flow: T | null) => {
     if (isNil(flow)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.ENTITY_NOT_FOUND,
             params: {},
         })

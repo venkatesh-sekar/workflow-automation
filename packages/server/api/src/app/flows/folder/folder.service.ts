@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     CreateFolderRequest,
     Cursor,
@@ -37,7 +37,7 @@ export const flowFolderService = (log: FastifyBaseLogger) => ({
             displayName: request.displayName,
         })
         if (folderWithDisplayName && folderWithDisplayName.id !== folderId) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: { message: 'Folder displayName is used' },
             })
@@ -106,7 +106,7 @@ export const flowFolderService = (log: FastifyBaseLogger) => ({
         const { projectId, folderId } = params
         const folder = await folderRepo().findOneBy({ projectId, id: folderId })
         if (!folder) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     message: `Folder ${folderId} is not found`,

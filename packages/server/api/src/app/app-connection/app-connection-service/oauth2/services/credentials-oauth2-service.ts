@@ -1,6 +1,6 @@
 import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
 import { apAxios } from '@flow/server-common'
-import { ActivepiecesError,
+import { FlowError,
     AppConnectionType,
     BaseOAuth2ConnectionValue,
     ErrorCode,
@@ -99,7 +99,7 @@ export const credentialsOauth2Service = (log: FastifyBaseLogger): OAuth2Service<
                 log.error('Unknown Error:')
                 log.error(e)
             }
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_CLAIM,
                 params: {
                     clientId: request.clientId,

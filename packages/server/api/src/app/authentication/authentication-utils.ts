@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { ActivepiecesError, ApEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, UserIdentityProvider, UserStatus } from '@flow/shared'
+import { FlowError, ApEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, UserIdentityProvider, UserStatus } from '@flow/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { system } from '../helper/system/system'
 import { platformService } from '../platform/platform.service'
@@ -20,7 +20,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             
         })
         if (!isInvited) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVITATION_ONLY_SIGN_UP,
                 params: {
                     message: 'User is not invited to the platform',
@@ -40,7 +40,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             ? projects?.[0]
             : projects.find((project) => project.id === params.projectId)
         if (isNil(project)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVITATION_ONLY_SIGN_UP,
                 params: {
                     message: 'You don\'t have access to any team. Contact your administrator.',
@@ -49,7 +49,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
         }
         const identity = await userIdentityService(log).getOneOrFail({ id: user.identityId })
         if (!identity.verified) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.EMAIL_IS_NOT_VERIFIED,
                 params: {
                     email: identity.email,
@@ -57,7 +57,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             })
         }
         if (user.status === UserStatus.INACTIVE) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.USER_IS_INACTIVE,
                 params: {
                     email: identity.email,
@@ -101,7 +101,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             platform.allowedAuthDomains.includes(emailDomain)
 
         if (!isAllowedDomaiin) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.DOMAIN_NOT_ALLOWED,
                 params: {
                     domain: emailDomain,
@@ -126,7 +126,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             return
         }
         if (!platform.emailAuthEnabled) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.EMAIL_AUTH_DISABLED,
                 params: {},
             })

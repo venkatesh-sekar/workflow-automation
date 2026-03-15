@@ -1,6 +1,6 @@
 import { TriggerBase } from '@flow/pieces-framework'
 import {
-    ActivepiecesError,
+    FlowError,
     ErrorCode,
     FlowTriggerType,
     FlowVersion,
@@ -20,7 +20,7 @@ export const triggerUtils = (log: FastifyBaseLogger) => ({
 
         })
         if (isNil(pieceTrigger)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'piece_trigger',

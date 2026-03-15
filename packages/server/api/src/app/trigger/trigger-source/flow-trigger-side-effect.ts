@@ -7,7 +7,7 @@ import {
     AppSystemProp,
 } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ApEnvironment,
     EngineResponseStatus,
     ErrorCode,
@@ -212,7 +212,7 @@ async function handlePollingTrigger({ engineHelperResponse, flowId, flowVersionI
 
 function assertEngineResponseIsOk(engineHelperResponse: OperationResponse<EngineHelperTriggerResult<TriggerHookType.ON_ENABLE | TriggerHookType.ON_DISABLE>>, flowId: FlowId, flowVersionId: FlowVersionId) {
     if (engineHelperResponse.status !== EngineResponseStatus.OK) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.TRIGGER_UPDATE_STATUS,
             params: {
                 flowId,

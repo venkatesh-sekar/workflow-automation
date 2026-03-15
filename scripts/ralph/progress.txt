@@ -16,3 +16,10 @@
 - **Quality gate:** pass (0 typecheck errors for both server and web)
 - **Learnings:** Bulk sed worked cleanly; dist/ dirs have stale copies (ignored)
 ---
+
+## Iteration #3 - rename-ap-core-types
+- **Change:** Renamed ActivepiecesError → FlowError (class, 169 refs, 54 files), renamed activepieces-error.ts → flow-error.ts, updated all import paths
+- **Files:** 56 files changed
+- **Quality gate:** pass (0 typecheck errors; 22 test failures pre-existing from @flow/piece-slack resolution, not caused by this change)
+- **Learnings:** Pre-existing test failures: 22/24 suites fail due to vitest not resolving @flow/piece-slack — from rename-packages phase which only had typecheck gate
+---

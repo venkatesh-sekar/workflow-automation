@@ -1,6 +1,6 @@
 import { getProjectMaxConcurrentJobsKey } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ApId,
     apId,
     assertNotNullOrUndefined,
@@ -109,7 +109,7 @@ export const projectService = (log: FastifyBaseLogger) => ({
         const project = await this.getOne(projectId)
 
         if (isNil(project)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: projectId,
@@ -139,7 +139,7 @@ export const projectService = (log: FastifyBaseLogger) => ({
             isPrivileged: userService(log).isUserPrivileged(user),
         })
         if (isNil(projects) || projects.length === 0) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: userId,
@@ -244,7 +244,7 @@ async function assertExternalIdIsUnique(externalId: string | undefined | null, p
         })
 
         if (externalIdAlreadyExists) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.PROJECT_EXTERNAL_ID_ALREADY_EXISTS,
                 params: {
                     externalId,

@@ -1,5 +1,5 @@
 import { EntitySourceType, ProjectBodyResource, ProjectParamResource, ProjectQueryResource, ProjectTableResource } from '@flow/server-common'
-import { ActivepiecesError, assertNotNullOrUndefined, ErrorCode, isNil, isObject } from '@flow/shared'
+import { FlowError, assertNotNullOrUndefined, ErrorCode, isNil, isObject } from '@flow/shared'
 import { FastifyRequest } from 'fastify'
 import { databaseConnection } from '../../../../database/database-connection'
 
@@ -32,7 +32,7 @@ export const projectIdExtractor = {
             [entityField]: entityValue,
         })
         if (isNil(entity)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: entityValue,

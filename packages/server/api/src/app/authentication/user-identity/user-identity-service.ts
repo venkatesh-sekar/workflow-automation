@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, ErrorCode, isNil, spreadIfDefined, UserIdentity } from '@flow/shared'
+import { FlowError, apId, ErrorCode, isNil, spreadIfDefined, UserIdentity } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { nanoid } from 'nanoid'
 import { repoFactory } from '../../core/db/repo-factory'
@@ -17,7 +17,7 @@ export const userIdentityService = (log: FastifyBaseLogger) => ({
         const hashedPassword = await passwordHasher.hash(params.password)
         const userByEmail = await userIdentityRepository().findOne({ where: { email: cleanedEmail } })
         if (userByEmail) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.EXISTING_USER,
                 params: {
                     email: cleanedEmail,
@@ -46,13 +46,13 @@ export const userIdentityService = (log: FastifyBaseLogger) => ({
     async verifyIdentityPassword(params: VerifyIdentityPasswordParams): Promise<UserIdentity> {
         const userIdentity = await getIdentityByEmail(params.email)
         if (isNil(userIdentity)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_CREDENTIALS,
                 params: null,
             })
         }
         if (!userIdentity.verified) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.EMAIL_IS_NOT_VERIFIED,
                 params: {
                     email: userIdentity.email,
@@ -62,7 +62,7 @@ export const userIdentityService = (log: FastifyBaseLogger) => ({
 
         const passwordMatches = await passwordHasher.compare(params.password, userIdentity.password)
         if (!passwordMatches) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_CREDENTIALS,
                 params: null,
             })
@@ -98,7 +98,7 @@ export const userIdentityService = (log: FastifyBaseLogger) => ({
     async verify(id: string): Promise<UserIdentity> {
         const user = await userIdentityRepository().findOneByOrFail({ id })
         if (user.verified) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHORIZATION,
                 params: {
                     message: 'User is already verified',

@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto'
 import { promisify } from 'util'
 import { AppSystemProp, RedisType } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ErrorCode,
     isNil,
     spreadIfDefined,
@@ -51,7 +51,7 @@ export const jwtUtils = {
 
                 if (isNil(token)) {
                     return reject(
-                        new ActivepiecesError({
+                        new FlowError({
                             code: ErrorCode.INVALID_BEARER_TOKEN,
                             params: {},
                         }),
@@ -70,7 +70,7 @@ export const jwtUtils = {
         if (redisType === RedisType.MEMORY) {
             return getOrGenerateAndStoreSecret()
         }
-        throw new ActivepiecesError(
+        throw new FlowError(
             {
                 code: ErrorCode.SYSTEM_PROP_INVALID,
                 params: {

@@ -1,4 +1,4 @@
-import { ActivepiecesError, ErrorCode, FlowOperationRequest, flowOperations, FlowOperationType, flowPieceUtil, FlowVersion, FlowVersionState, FlowVersionTemplate, PlatformId, sanitizeObjectForPostgresql } from '@flow/shared'
+import { FlowError, ErrorCode, FlowOperationRequest, flowOperations, FlowOperationType, flowPieceUtil, FlowVersion, FlowVersionState, FlowVersionTemplate, PlatformId, sanitizeObjectForPostgresql } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { flowVersionValidationUtil } from '../flows/flow-version/flow-version-validator-util'
 
@@ -26,7 +26,7 @@ type PreparedTemplate = {
 export const templateValidator = {
     async validateAndPrepare({ flows, platformId, log }: ValidateParams): Promise<PreparedTemplate> {
         if (!flows || flows.length === 0) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: 'Flows are required',

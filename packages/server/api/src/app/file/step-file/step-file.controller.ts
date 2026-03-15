@@ -1,6 +1,6 @@
 import { AppSystemProp, securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ErrorCode,
     File,
     FileLocation,
@@ -75,7 +75,7 @@ async function getFileByToken(token: string, log: FastifyBaseLogger): Promise<Om
         })
     }
     catch (e) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.INVALID_BEARER_TOKEN,
             params: {
                 message: 'invalid token or expired for the step file',

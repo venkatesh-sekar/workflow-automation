@@ -1,6 +1,6 @@
 import { WorkerSystemProp } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     ApplicationEvent,
     ApplicationEventName,
@@ -172,7 +172,7 @@ const assertUrlIsExternal = (url: string) => {
     const frontendUrl = system.get(WorkerSystemProp.FRONTEND_URL)
     assertNotNullOrUndefined(frontendUrl, 'frontendUrl')
     if (new URL(url).host === new URL(frontendUrl).host) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.VALIDATION,
             params: {
                 message: 'Activepieces URL is not allowed to avoid recursive calls',

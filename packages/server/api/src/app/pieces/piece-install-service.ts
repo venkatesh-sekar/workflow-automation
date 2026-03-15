@@ -1,6 +1,6 @@
 import { PieceMetadata, PieceMetadataModel } from '@flow/pieces-framework'
 import {
-    ActivepiecesError,
+    FlowError,
     AddPieceRequestBody,
     EngineResponseStatus,
     ErrorCode,
@@ -55,10 +55,10 @@ export const pieceInstallService = (log: FastifyBaseLogger) => ({
         catch (error) {
             log.error({ err: error }, '[pieceInstallService#add] Failed to add piece')
 
-            if ((error as ActivepiecesError).error.code === ErrorCode.VALIDATION) {
+            if ((error as FlowError).error.code === ErrorCode.VALIDATION) {
                 throw error
             }
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENGINE_OPERATION_FAILURE,
                 params: {
                     message: JSON.stringify(error),

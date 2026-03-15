@@ -2,7 +2,7 @@ import os from 'os'
 import path from 'path'
 import { AppSystemProp, ContainerType, DatabaseType, environmentVariables, pinoLogging, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ApEdition,
     DefaultProjectRole,
     ErrorCode,
@@ -89,7 +89,7 @@ export const system = {
         const value = system.getNumber(prop)
 
         if (isNil(value)) {
-            throw new ActivepiecesError(
+            throw new FlowError(
                 {
                     code: ErrorCode.SYSTEM_PROP_NOT_DEFINED,
                     params: {
@@ -130,7 +130,7 @@ export const system = {
     getBooleanOrThrow(prop: SystemProp): boolean {
         const value = this.getBoolean(prop)
         if (isNil(value)) {
-            throw new ActivepiecesError(
+            throw new FlowError(
                 {
                     code: ErrorCode.SYSTEM_PROP_NOT_DEFINED,
                     params: {
@@ -154,7 +154,7 @@ export const system = {
         const value = getEnvVarOrReturnDefaultValue(prop) as T | undefined
 
         if (value === undefined) {
-            throw new ActivepiecesError(
+            throw new FlowError(
                 {
                     code: ErrorCode.SYSTEM_PROP_NOT_DEFINED,
                     params: {

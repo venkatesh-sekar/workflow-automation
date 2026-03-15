@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { Action, Piece, PiecePropertyMap, Trigger } from '@flow/pieces-framework'
-import { ActivepiecesError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@flow/shared'
+import { FlowError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@flow/shared'
 import { utils } from '../utils'
 
 export const pieceLoader = {
@@ -51,7 +51,7 @@ export const pieceLoader = {
         const pieceAction = piece.getAction(actionName)
 
         if (isNil(pieceAction)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'step',
@@ -74,7 +74,7 @@ export const pieceLoader = {
         const actionOrTrigger = piece.getAction(actionOrTriggerName) ?? piece.getTrigger(actionOrTriggerName)
 
         if (isNil(actionOrTrigger)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'step',
@@ -88,7 +88,7 @@ export const pieceLoader = {
         const property = (actionOrTrigger.props as PiecePropertyMap)[propertyName]
 
         if (isNil(property)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'config',

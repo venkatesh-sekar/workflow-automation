@@ -2,7 +2,7 @@ import semverMajor from 'semver/functions/major'
 import semverMinor from 'semver/functions/minor'
 import semverMinVersion from 'semver/ranges/min-version'
 import { assertNotNullOrUndefined } from '../../core/common'
-import { ActivepiecesError, ErrorCode } from '../../core/common/activepieces-error'
+import { FlowError, ErrorCode } from '../../core/common/flow-error'
 
 /**
  * @param {string} pieceName - starts with `@flow/piece-`
@@ -48,7 +48,7 @@ export const extractPieceFromModule = <T>(params: ExtractPieceFromModuleParams):
         constructors.push(e?.constructor?.name)
     }
 
-    throw new ActivepiecesError({
+    throw new FlowError({
         code: ErrorCode.ENTITY_NOT_FOUND,
         params: {
             entityType: 'piece',

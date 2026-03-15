@@ -7,7 +7,7 @@ import type { UserId } from '../user'
 import type { ApId } from './id-generator'
 import type { Permission } from './security'
 
-export class ActivepiecesError extends Error {
+export class FlowError extends Error {
     constructor(public error: ApErrorParams, message?: string) {
         super(error.code + (message ? `: ${message}` : ''))
     }

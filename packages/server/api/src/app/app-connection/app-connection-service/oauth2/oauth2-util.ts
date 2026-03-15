@@ -1,5 +1,5 @@
 import { PropertyType } from '@flow/pieces-framework'
-import { ActivepiecesError,
+import { FlowError,
     AppConnection,
     AppConnectionType,
     assertNotNullOrUndefined,
@@ -80,7 +80,7 @@ export const oauth2Util = (log: FastifyBaseLogger) => ({
             case PropertyType.OAUTH2:
                 return resolveValueFromProps(props, pieceAuth.tokenUrl)
             default:
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.INVALID_APP_CONNECTION,
                     params: {
                         error: 'invalid auth type',

@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, ErrorCode, FlowVersion, isNil, PopulatedTriggerSource, TemplateTelemetryEventType, TriggerSource } from '@flow/shared'
+import { FlowError, apId, ErrorCode, FlowVersion, isNil, PopulatedTriggerSource, TemplateTelemetryEventType, TriggerSource } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../../core/db/repo-factory'
 import { flowVersionService } from '../../flows/flow-version/flow-version.service'
@@ -99,7 +99,7 @@ export const triggerSourceService = (log: FastifyBaseLogger) => {
                 },
             })
             if (isNil(triggerSource)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         entityType: 'trigger',

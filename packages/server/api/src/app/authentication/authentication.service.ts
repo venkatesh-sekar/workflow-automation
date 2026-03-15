@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     AuthenticationResponse,
     ErrorCode,
     isNil,
@@ -17,7 +17,7 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
         const apiKeyHash = crypto.createHash('sha256').update(params.apiKey).digest('hex')
         const project = await projectService(log).findByApiKeyHash(apiKeyHash)
         if (isNil(project)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHENTICATION,
                 params: {
                     message: 'Invalid team key',
@@ -28,7 +28,7 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
         // Look up identity by email, then find user by identity + platform
         const identity = await userIdentityService(log).getIdentityByEmail(params.email)
         if (isNil(identity)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHENTICATION,
                 params: {
                     message: 'Invalid email or team key',
@@ -41,7 +41,7 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
             platformId: project.platformId,
         })
         if (isNil(user)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHENTICATION,
                 params: {
                     message: 'Invalid email or team key',
@@ -57,7 +57,7 @@ export const authenticationService = (log: FastifyBaseLogger) => ({
         })
         const hasAccess = userProjects.some(p => p.id === project.id)
         if (!hasAccess) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHENTICATION,
                 params: {
                     message: 'Invalid email or team key',

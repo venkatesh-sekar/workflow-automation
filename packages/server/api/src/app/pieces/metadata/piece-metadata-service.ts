@@ -1,6 +1,6 @@
 import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation, pieceTranslation } from '@flow/pieces-framework'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     assertNotNullOrUndefined,
     ErrorCode,
@@ -78,7 +78,7 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
         async getOrThrow({ version, name, platformId, locale }: GetOrThrowParams): Promise<PieceMetadataModel> {
             const piece = await this.get({ version, name, platformId })
             if (isNil(piece)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         message: `piece_metadata_not_found pieceName=${name}`,
@@ -134,7 +134,7 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
                 platformId: platformId ?? IsNull(),
             })
             if (!isNil(existingMetadata)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.VALIDATION,
                     params: {
                         message: `piece_metadata_already_exists name=${pieceMetadata.name} version=${pieceMetadata.version}`,

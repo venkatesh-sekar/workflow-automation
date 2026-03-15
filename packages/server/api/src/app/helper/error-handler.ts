@@ -1,5 +1,5 @@
 import { exceptionHandler } from '@flow/server-common'
-import { ActivepiecesError, ErrorCode } from '@flow/shared'
+import { FlowError, ErrorCode } from '@flow/shared'
 import { FastifyError, FastifyReply, FastifyRequest } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 
@@ -9,7 +9,7 @@ export const errorHandler = async (
     request: FastifyRequest,
     reply: FastifyReply,
 ): Promise<void> => {
-    if (error instanceof ActivepiecesError) {
+    if (error instanceof FlowError) {
         const statusCodeMap: Partial<Record<ErrorCode, StatusCodes>> = {
             [ErrorCode.INVALID_API_KEY]: StatusCodes.UNAUTHORIZED,
             [ErrorCode.INVALID_BEARER_TOKEN]: StatusCodes.UNAUTHORIZED,

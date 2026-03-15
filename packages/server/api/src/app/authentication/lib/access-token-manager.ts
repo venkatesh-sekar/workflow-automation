@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, assertNotNullOrUndefined, EnginePrincipal, ErrorCode, PlatformId, Principal, PrincipalType, ProjectId, UserStatus, WorkerPrincipal } from '@flow/shared'
+import { FlowError, apId, assertNotNullOrUndefined, EnginePrincipal, ErrorCode, PlatformId, Principal, PrincipalType, ProjectId, UserStatus, WorkerPrincipal } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { jwtUtils } from '../../helper/jwt-utils'
@@ -63,10 +63,10 @@ export const accessTokenManager = (log: FastifyBaseLogger) => ({
             return decoded
         }
         catch (e) {
-            if (e instanceof ActivepiecesError) {
+            if (e instanceof FlowError) {
                 throw e
             }
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_BEARER_TOKEN,
                 params: {
                     message: 'invalid access token or session expired',
@@ -83,7 +83,7 @@ async function assertUserSession(log: FastifyBaseLogger, decoded: Principal | Pr
     const identity = await userIdentityService(log).getOneOrFail({ id: user.identityId })
     const isExpired = (identity.tokenVersion ?? null) !== (decoded.tokenVersion ?? null)
     if (isExpired || user.status === UserStatus.INACTIVE || !identity.verified) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.SESSION_EXPIRED,
             params: {
                 message: 'The session has expired or the user is not verified.',

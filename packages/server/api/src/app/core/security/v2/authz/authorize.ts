@@ -1,5 +1,5 @@
 import { AuthorizationRouteSecurity, AuthorizationType, ProjectAuthorizationConfig, RouteKind } from '@flow/server-common'
-import { ActivepiecesError, ErrorCode, isNil, PlatformRole, Principal, PrincipalType } from '@flow/shared'
+import { FlowError, ErrorCode, isNil, PlatformRole, Principal, PrincipalType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { projectRepo } from '../../../../project/project-service'
 // Community edition: no RBAC roles — enforce platform-level project isolation only
@@ -10,7 +10,7 @@ const rbacService = (_log: any) => ({
         }
         const project = await projectRepo().findOneBy({ id: projectId })
         if (isNil(project) || project.platformId !== principal.platform.id) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHORIZATION,
                 params: {
                     message: 'not owned by current project',
@@ -51,7 +51,7 @@ async function assertPlatformIsOwnedByCurrentPrincipal(principal: Principal, log
     }
     const user = await userService(log).getOneOrFail({ id: principal.id })
     if (user.platformRole !== PlatformRole.ADMIN) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHORIZATION,
             params: {
                 message: 'User is not an admin/owner of the platform.',
@@ -63,7 +63,7 @@ async function assertPlatformIsOwnedByCurrentPrincipal(principal: Principal, log
 
 async function assertAccessToProject(principal: Principal, projectSecurity: ProjectAuthorizationConfig, log: FastifyBaseLogger): Promise<void> {
     if (isNil(projectSecurity.projectId)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHORIZATION,
             params: {
                 message: 'Project ID is required',
@@ -76,7 +76,7 @@ async function assertAccessToProject(principal: Principal, projectSecurity: Proj
 
 async function assertPrinicpalIsOneOf< T extends readonly PrincipalType[]>(allowedPrincipals: T, currentPrincipal: PrincipalType): Promise<void> {
     if (!allowedPrincipals.includes(currentPrincipal)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHORIZATION,
             params: {
                 message: 'principal is not allowed for this route',

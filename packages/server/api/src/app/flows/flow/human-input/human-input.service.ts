@@ -1,4 +1,4 @@
-import { ActivepiecesError, ChatUIResponse, ErrorCode, FlowId, FormInputType, FormResponse, isNil, PopulatedFlow } from '@flow/shared'
+import { FlowError, ChatUIResponse, ErrorCode, FlowId, FormInputType, FormResponse, isNil, PopulatedFlow } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { pieceMetadataService } from '../../../pieces/metadata/piece-metadata-service'
 import { platformService } from '../../../platform/platform.service'
@@ -37,7 +37,7 @@ export const humanInputService = (log: FastifyBaseLogger) => ({
     getFormByFlowIdOrThrow: async (flowId: string, useDraft: boolean): Promise<FormResponse> => {
         const flow = await getPopulatedFlowById(log, flowId, useDraft)
         if (!isFormTrigger(flow)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'flow_form',
@@ -65,7 +65,7 @@ export const humanInputService = (log: FastifyBaseLogger) => ({
         if (!flow
             || flow.version.trigger.settings.triggerName !== 'chat_submission'
             || flow.version.trigger.settings.pieceName !== FORMS_PIECE_NAME) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'flow_form',

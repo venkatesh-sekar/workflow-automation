@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, assertEqual, assertNotNullOrUndefined, ErrorCode, InvitationStatus, InvitationType, isNil, PlatformRole, SeekPage, spreadIfDefined, User, UserInvitation, UserInvitationWithLink } from '@flow/shared'
+import { FlowError, apId, assertEqual, assertNotNullOrUndefined, ErrorCode, InvitationStatus, InvitationType, isNil, PlatformRole, SeekPage, spreadIfDefined, User, UserInvitation, UserInvitationWithLink } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
@@ -38,7 +38,7 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
             id: decodedToken.id,
         })
         if (isNil(invitation)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: `id=${decodedToken.id}`,
@@ -183,7 +183,7 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
             },
         })
         if (isNil(invitation)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: `id=${id}`,

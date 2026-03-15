@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     Cursor,
     ErrorCode,
@@ -90,7 +90,7 @@ export const triggerEventService = (log: FastifyBaseLogger) => ({
                     flowId: flow.id,
                 })
                 if (!engineResponse.result.success) {
-                    throw new ActivepiecesError({
+                    throw new FlowError({
                         code: ErrorCode.TEST_TRIGGER_FAILED,
                         params: {
                             message: engineResponse.result.message!,

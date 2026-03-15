@@ -1,4 +1,4 @@
-import { ActivepiecesError,
+import { FlowError,
     apId,
     ErrorCode,
     FederatedAuthnProviderConfig,
@@ -106,7 +106,7 @@ export const platformService = (log: FastifyBaseLogger) => ({
         })
 
         if (isNil(platform)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: id,

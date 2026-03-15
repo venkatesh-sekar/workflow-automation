@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { ActivepiecesError, apId, assertNotNullOrUndefined, CreateFieldRequest, ErrorCode, Field, FieldState, FieldType, isNil, UpdateFieldRequest } from '@flow/shared'
+import { FlowError, apId, assertNotNullOrUndefined, CreateFieldRequest, ErrorCode, Field, FieldState, FieldType, isNil, UpdateFieldRequest } from '@flow/shared'
 import { repoFactory } from '../../core/db/repo-factory'
 import { system } from '../../helper/system/system'
 import { FieldEntity } from './field.entity'
@@ -47,7 +47,7 @@ export const fieldService = {
                 })
             }
             default: {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.VALIDATION,
                     params: {
                         message: `Unsupported field type: ${field.type}`,
@@ -72,7 +72,7 @@ export const fieldService = {
         })
 
         if (isNil(field)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'Field',
@@ -109,7 +109,7 @@ export const fieldService = {
     async validateCount(params: CountParams): Promise<void> {
         const countRes = await this.count(params)
         if (countRes + 1 > system.getNumberOrThrow(AppSystemProp.MAX_FIELDS_PER_TABLE)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: { message: `Max fields per table reached: ${system.getNumberOrThrow(AppSystemProp.MAX_FIELDS_PER_TABLE)}`,
                 },

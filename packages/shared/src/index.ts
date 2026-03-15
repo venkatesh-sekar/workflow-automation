@@ -1,6 +1,6 @@
 // core
 export * from './lib/core/common'
-export * from './lib/core/common/activepieces-error'
+export * from './lib/core/common/flow-error'
 export * from './lib/core/common/telemetry'
 export * from './lib/core/common/seek-page'
 export * from './lib/core/common/id-generator'

@@ -1,6 +1,6 @@
 import { securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ApId,
     ErrorCode,
     FileType,
@@ -51,7 +51,7 @@ export const platformController: FastifyPluginAsyncZod = async (app) => {
 
     app.get('/:id', GetPlatformRequest, async (req) => {
         if (req.principal.platform.id !== req.params.id) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHORIZATION,
                 params: {
                     message: 'You are not authorized to access this platform',

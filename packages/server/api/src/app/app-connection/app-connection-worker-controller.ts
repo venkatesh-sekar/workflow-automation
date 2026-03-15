@@ -1,6 +1,6 @@
 import { securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     AppConnection,
     assertNotNullOrUndefined,
     EnginePrincipal,
@@ -23,7 +23,7 @@ export const appConnectionWorkerController: FastifyPluginAsyncZod = async (app) 
         })
 
         if (isNil(appConnection)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: `externalId=${request.params.externalId}`,

@@ -1,6 +1,6 @@
 import { AppSystemProp } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     Cell,
     chunk,
@@ -143,7 +143,7 @@ export const recordService = {
         })
 
         if (isNil(record)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'Record',
@@ -168,7 +168,7 @@ export const recordService = {
             })
 
             if (isNil(record)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         entityType: 'Record',
@@ -217,7 +217,7 @@ export const recordService = {
                 })
 
             if (isNil(updatedRecord)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         entityType: 'Record',
@@ -240,7 +240,7 @@ export const recordService = {
             select: ['tableId'],
         })
         if (isNil(firstRecord)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: { entityType: 'Record', entityId: ids[0] },
             })
@@ -340,7 +340,7 @@ export const recordService = {
     async validateCount(params: CountParams, insertCount: number): Promise<void> {
         const countRes = await this.count(params)
         if (countRes + insertCount > system.getNumberOrThrow(AppSystemProp.MAX_RECORDS_PER_TABLE)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: `Max records per table reached: ${system.getNumberOrThrow(AppSystemProp.MAX_RECORDS_PER_TABLE)}`,

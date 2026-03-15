@@ -1,5 +1,5 @@
 {
-  "iteration": 2,
+  "iteration": 3,
   "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
@@ -42,7 +42,9 @@
         "File activepieces-error.ts renamed to flow-error.ts",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 3, "description": "Renamed ActivepiecesError to FlowError (class + 169 refs across 54 files), renamed activepieces-error.ts to flow-error.ts, updated all import paths"}
+      ]
     },
     "rename-ap-ui-components": {
       "status": "pending",

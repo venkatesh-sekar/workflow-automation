@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     assertNotNullOrUndefined,
     Cursor,
@@ -65,7 +65,7 @@ export const userService = (log: FastifyBaseLogger) => ({
         assertNotNullOrUndefined(user.platformId, 'platformId')
 
         if (user.platformId !== platformId) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'user',
@@ -76,7 +76,7 @@ export const userService = (log: FastifyBaseLogger) => ({
 
         const platform = await platformService(log).getOneOrThrow(user.platformId)
         if (platform.ownerId === user.id && status === UserStatus.INACTIVE) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: 'Admin cannot be deactivated',
@@ -131,7 +131,7 @@ export const userService = (log: FastifyBaseLogger) => ({
     async getOrThrow({ id }: IdParams): Promise<User> {
         const user = await userRepo().findOneBy({ id })
         if (isNil(user)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: { entityType: 'user', entityId: id },
             })
@@ -144,7 +144,7 @@ export const userService = (log: FastifyBaseLogger) => ({
     async getOneByIdAndPlatformIdOrThrow({ id, platformId }: GetOneByIdAndPlatformIdParams): Promise<UserWithBadges> {
         const user = await userRepo().findOne({ where: { id, platformId }, relations: { badges: true } })
         if (isNil(user)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: { entityType: 'user', entityId: id },
             })

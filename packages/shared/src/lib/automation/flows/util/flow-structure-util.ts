@@ -1,5 +1,5 @@
 import { isNil } from '../../../core/common'
-import { ActivepiecesError, ErrorCode } from '../../../core/common/activepieces-error'
+import { FlowError, ErrorCode } from '../../../core/common/flow-error'
 import { BranchCondition, BranchExecutionType, emptyCondition, FlowAction, FlowActionType, LoopOnItemsAction, RouterAction } from '../actions/action'
 import { FlowVersion } from '../flow-version'
 import { FlowTrigger, FlowTriggerType } from '../triggers/trigger'
@@ -23,7 +23,7 @@ function isTrigger(type: FlowActionType | FlowTriggerType | undefined): type is 
 function getActionOrThrow(name: string, flowRoot: Step): FlowAction {
     const step = getStepOrThrow(name, flowRoot)
     if (!isAction(step.type)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.ENTITY_NOT_FOUND,
             params: {
                 entityType: 'step',
@@ -38,7 +38,7 @@ function getActionOrThrow(name: string, flowRoot: Step): FlowAction {
 function getTriggerOrThrow(name: string, flowRoot: Step): FlowTrigger {
     const step = getStepOrThrow(name, flowRoot)
     if (!isTrigger(step.type)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.ENTITY_NOT_FOUND,
             params: {
                 entityType: 'step',
@@ -57,7 +57,7 @@ function getStep(name: string, flowRoot: Step): Step | undefined {
 function getStepOrThrow(name: string, flowRoot: Step): Step {
     const step = getStep(name, flowRoot)
     if (isNil(step)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.ENTITY_NOT_FOUND,
             params: {
                 entityType: 'step',

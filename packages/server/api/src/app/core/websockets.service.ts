@@ -1,5 +1,5 @@
 import { rejectedPromiseHandler } from '@flow/server-common'
-import { ActivepiecesError, ErrorCode, isNil, Principal, PrincipalForType, PrincipalType, WebsocketServerEvent } from '@flow/shared'
+import { FlowError, ErrorCode, isNil, Principal, PrincipalForType, PrincipalType, WebsocketServerEvent } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { Socket } from 'socket.io'
 import { accessTokenManager } from '../authentication/lib/access-token-manager'
@@ -49,7 +49,7 @@ export const websocketService = {
                 break
             }
             default: {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.AUTHENTICATION,
                     params: {
                         message: 'Invalid principal type',
@@ -95,7 +95,7 @@ export const websocketService = {
 
 const validateProjectId = async ({ userId, projectId, log }: ValidateProjectIdArgs): Promise<void> => {
     if (isNil(projectId)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHENTICATION,
             params: {
                 message: 'Project ID is required',

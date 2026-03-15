@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     ErrorCode,
     isNil,
     ListTemplatesRequestQuery,
@@ -19,7 +19,7 @@ export const communityTemplates = {
             },
         })
         if (!response.ok) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'template',

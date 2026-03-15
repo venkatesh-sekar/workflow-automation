@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { ActivepiecesError, ApId, ApplicationEventName,
+import { FlowError, ApId, ApplicationEventName,
     CountFlowsRequest,
     CreateFlowRequest,
     ErrorCode,
@@ -259,7 +259,7 @@ async function assertThatFlowIsNotBeingUsed(
         flow.version.updatedBy !== userId &&
         currentTime.diff(dayjs(flow.version.updated), 'minute') <= 1
     ) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.FLOW_IN_USE,
             params: {
                 flowVersionId: flow.version.id,

@@ -1,6 +1,6 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     assertNotNullOrUndefined,
     ErrorCode,
     InvitationStatus,
@@ -172,7 +172,7 @@ async function assertPrincipalHasPermissionToProject<R extends Principal & { pla
     projectId: string, _permission: Permission): Promise<void> {
     const project = await projectService(request.log).getOneOrThrow(projectId)
     if (isNil(project) || project.platformId !== principal.platform.id) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHORIZATION,
             params: {
                 message: 'user does not have access to the project',

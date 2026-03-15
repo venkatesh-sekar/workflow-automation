@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@flow/shared'
+import { FlowError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ArrayOverlap, Equal } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
@@ -15,7 +15,7 @@ export const templateService = (log: FastifyBaseLogger) => ({
     async getOneOrThrow({ id }: GetParams): Promise<Template> {
         const template = await templateRepo().findOneBy({ id })
         if (isNil(template)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'template',

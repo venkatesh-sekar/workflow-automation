@@ -1,6 +1,6 @@
 import { AppSystemProp } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     assertNotNullOrUndefined,
     Cursor,
@@ -232,7 +232,7 @@ export const flowRunService = (log: FastifyBaseLogger) => ({
         const flowRun = await queryBuilderForFlowRun(flowRunRepo()).where({ id: flowRunId }).getOne()
 
         if (isNil(flowRun)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'flow_run',
@@ -393,7 +393,7 @@ export const flowRunService = (log: FastifyBaseLogger) => ({
         const flowRun = await this.getOne(params)
 
         if (isNil(flowRun)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'flow_run',

@@ -2,7 +2,7 @@
 import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
 import { apAxios } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     AppConnectionType,
     CloudOAuth2ConnectionValue,
     ErrorCode,
@@ -71,7 +71,7 @@ export const cloudOAuth2Service = (log: FastifyBaseLogger): OAuth2Service<CloudO
         }
         catch (e: unknown) {
             log.error(e)
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_CLOUD_CLAIM,
                 params: {
                     pieceName,

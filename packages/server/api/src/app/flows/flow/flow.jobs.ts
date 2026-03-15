@@ -1,4 +1,4 @@
-import { ActivepiecesError, assertNotNullOrUndefined, ErrorCode, FlowOperationStatus, FlowStatusUpdatedResponse, isNil, tryCatch, WebsocketClientEvent } from '@flow/shared'
+import { FlowError, assertNotNullOrUndefined, ErrorCode, FlowOperationStatus, FlowStatusUpdatedResponse, isNil, tryCatch, WebsocketClientEvent } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { websocketService } from '../../core/websockets.service'
 import { SystemJobData, SystemJobName } from '../../helper/system-jobs/common'
@@ -40,7 +40,7 @@ export const flowBackgroundJobs = (log: FastifyBaseLogger) => ({
         const job = await systemJobsSchedule(log).getJob(`update-flow-status-${id}`)
         assertNotNullOrUndefined(job, 'job')
 
-        const { error } = await tryCatch<unknown, ActivepiecesError>(async () => {
+        const { error } = await tryCatch<unknown, FlowError>(async () => {
             const flowToUpdate = await flowService(log).getOneOrThrow({
                 id,
                 projectId,

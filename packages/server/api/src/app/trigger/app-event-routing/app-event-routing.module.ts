@@ -5,7 +5,7 @@ import {
     securityAccess,
 } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     assertNotNullOrUndefined,
     ErrorCode,
@@ -68,7 +68,7 @@ export const appEventRoutingController: FastifyPluginAsyncZod = async (
             }
             const piece = appWebhooks[pieceUrl]
             if (isNil(piece)) {
-                throw new ActivepiecesError({
+                throw new FlowError({
                     code: ErrorCode.ENTITY_NOT_FOUND,
                     params: {
                         entityType: 'piece',

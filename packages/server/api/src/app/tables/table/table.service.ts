@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     CreateTableRequest,
     CreateTableWebhookRequest,
@@ -110,7 +110,7 @@ export const tableService = {
             where: { projectId, id },
         })
         if (isNil(table)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'Table',
@@ -127,7 +127,7 @@ export const tableService = {
     }: GetOneByExternalIdParams): Promise<Table> {
         const table = await tableRepo().findOneBy({ projectId, externalId })
         if (isNil(table)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'Table',

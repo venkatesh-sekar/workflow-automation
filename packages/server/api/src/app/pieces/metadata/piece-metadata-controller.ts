@@ -1,7 +1,7 @@
 import { PieceMetadataModel, PieceMetadataModelSummary } from '@flow/pieces-framework'
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ALL_PRINCIPAL_TYPES,
     ErrorCode,
     GetPieceRequestParams,
@@ -44,7 +44,7 @@ const basePiecesController: FastifyPluginAsyncZod = async (app) => {
 
         const oldSyncCall = !isNil(query.release)
         if (oldSyncCall) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.PIECE_SYNC_NOT_SUPPORTED,
                 params: {
                     message: 'This endpoint is deprecated. Please use it without release parameter.',

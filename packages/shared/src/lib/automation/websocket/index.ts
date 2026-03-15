@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { TriggerUpdateStatusErrorParams } from '../../core/common/activepieces-error'
+import { TriggerUpdateStatusErrorParams } from '../../core/common/flow-error'
 import { PopulatedFlow } from '../flows/flow'
 import { StepRunResponse } from '../flows/sample-data'
 

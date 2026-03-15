@@ -1,6 +1,6 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     ALL_PRINCIPAL_TYPES,
     ApId,
     BulkActionOnRunsRequestBody,
@@ -98,7 +98,7 @@ export const flowRunController: FastifyPluginAsyncZod = async (app) => {
         })
 
         if (isNil(flowRun)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'flow_run',

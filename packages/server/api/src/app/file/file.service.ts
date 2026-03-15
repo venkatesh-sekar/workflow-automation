@@ -1,6 +1,6 @@
 import { AppSystemProp, exceptionHandler, fileCompressor, WorkerSystemProp } from '@flow/server-common'
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     assertNotNullOrUndefined,
     ErrorCode,
@@ -94,7 +94,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
     async getFileOrThrow(params: GetOneParams): Promise<File> {
         const file = await this.getFile(params)
         if (isNil(file)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'file',
@@ -124,7 +124,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
             type,
         })
         if (isNil(file)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityType: 'file',
@@ -186,7 +186,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
         }
         
         if (!isMultipartFile(file)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: 'File must be a multipart file',
@@ -195,7 +195,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
         }
 
         if (!allowedMimeTypes.includes(file.mimetype ?? '')) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: `Invalid file type. Allowed types: ${allowedMimeTypes.join(', ')}`,
@@ -204,7 +204,7 @@ export const fileService = (log: FastifyBaseLogger) => ({
         }
 
         if (!isNil(maxFileSizeInBytes) && file.data.length > maxFileSizeInBytes) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
                     message: `File size exceeds ${Math.round(maxFileSizeInBytes / (1024 * 1024))}MB limit`,

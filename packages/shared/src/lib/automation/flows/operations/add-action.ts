@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import { isNil } from '../../../core/common'
-import { ActivepiecesError, ErrorCode } from '../../../core/common/activepieces-error'
+import { FlowError, ErrorCode } from '../../../core/common/flow-error'
 import { FlowAction, FlowActionType, LoopOnItemsAction, RouterAction, SingleActionSchema } from '../actions/action'
 import { FlowVersion } from '../flow-version'
 import { flowStructureUtil, Step } from '../util/flow-structure-util'
@@ -78,7 +78,7 @@ function handleLoopOnItems(parentStep: LoopOnItemsAction, request: AddActionRequ
         })
     }
     else {
-        throw new ActivepiecesError(
+        throw new FlowError(
             {
                 code: ErrorCode.FLOW_OPERATION_INVALID,
                 params: {
@@ -101,7 +101,7 @@ function handleRouter(parentStep: RouterAction, request: AddActionRequest): Step
         })
     }
     else {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.FLOW_OPERATION_INVALID,
             params: {
                 message: `Router step parent ${request.stepLocationRelativeToParent} not found`,

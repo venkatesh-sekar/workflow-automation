@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     apId,
     Cursor,
     ErrorCode,
@@ -195,7 +195,7 @@ export const flowVersionService = (log: FastifyBaseLogger) => ({
     async getLatestLockedVersionOrThrow(flowId: FlowId): Promise<FlowVersion> {
         const lockedVersion = await this.getLatestVersion(flowId, FlowVersionState.LOCKED)
         if (isNil(lockedVersion)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: flowId,
@@ -209,7 +209,7 @@ export const flowVersionService = (log: FastifyBaseLogger) => ({
         const flowVersion = await flowVersionService(log).getOne(id)
 
         if (isNil(flowVersion)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: id,
@@ -274,7 +274,7 @@ export const flowVersionService = (log: FastifyBaseLogger) => ({
         }, entityManager, projectId)
 
         if (isNil(flowVersion)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: versionId,

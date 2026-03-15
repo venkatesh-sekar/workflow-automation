@@ -1,4 +1,4 @@
-import { ActivepiecesError, ErrorCode, isNil, Principal, PrincipalType } from '@flow/shared'
+import { FlowError, ErrorCode, isNil, Principal, PrincipalType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { nanoid } from 'nanoid'
 import { accessTokenManager } from '../../../../authentication/lib/access-token-manager'
@@ -27,7 +27,7 @@ export const authenticateOrThrow = async (log: FastifyBaseLogger, rawToken: stri
 async function createPrincipalForApiKey(apiKeyValue: string): Promise<Principal> {
     const apiKey = await apiKeyService.getByValue(apiKeyValue)
     if (isNil(apiKey)) {
-        throw new ActivepiecesError({
+        throw new FlowError({
             code: ErrorCode.AUTHENTICATION,
             params: {
                 message: 'invalid api key',

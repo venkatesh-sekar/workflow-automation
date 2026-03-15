@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError, AIProviderAuthConfig, AIProviderConfig, AIProviderModel, AIProviderName, AIProviderWithoutSensitiveData,
+    FlowError, AIProviderAuthConfig, AIProviderConfig, AIProviderModel, AIProviderName, AIProviderWithoutSensitiveData,
     apId,
     CreateAIProviderRequest,
     ErrorCode,
@@ -50,7 +50,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
 
         const providerImpl = aiProviders[provider]
         if (!providerImpl) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: { message: `Unsupported AI provider: ${provider}` },
             })
@@ -83,7 +83,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
             id: providerId,
         })
         if (isNil(aiProvider)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: { entityId: providerId, entityType: 'AIProvider' },
             })
@@ -114,7 +114,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
     async validateProviderCredentials(provider: AIProviderName, auth: AIProviderAuthConfig, config: AIProviderConfig): Promise<void> {
         const providerStrategy = aiProviders[provider]
         if (!providerStrategy) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: { message: `Unsupported AI provider: ${provider}` },
             })
@@ -126,7 +126,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
             const errorMessage = error instanceof Error ? error.message : 'Unknown error'
             const includeHttpErrorInMessage = false
             log.error({ err: error }, '[aiProviderService#validateProviderCredentials] Failed to validate provider credentials')
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.INVALID_AI_PROVIDER_CREDENTIALS,
                 params: {
                     provider,
@@ -144,7 +144,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
             provider,
         })
         if (isNil(aiProvider)) {
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.ENTITY_NOT_FOUND,
                 params: {
                     entityId: provider,

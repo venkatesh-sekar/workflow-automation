@@ -1,5 +1,5 @@
 import {
-    ActivepiecesError,
+    FlowError,
     ErrorCode,
     isNil,
     isObject,
@@ -50,7 +50,7 @@ export const entitiesMustBeOwnedByCurrentProject: preSerializationHookHandler<Pa
                 principalProjectId,
                 route: request.routeOptions.config,
             }, 'Authorization denied: entity not owned by current project')
-            throw new ActivepiecesError({
+            throw new FlowError({
                 code: ErrorCode.AUTHORIZATION,
                 params: {
                     message: 'not owned by current project',
