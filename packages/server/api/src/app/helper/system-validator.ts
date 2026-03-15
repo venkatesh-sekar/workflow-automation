@@ -62,7 +62,6 @@ const systemPropValidators: {
     [FlowSystemProp.MAX_FLOW_RUN_LOG_SIZE_MB]: numberValidator,
     [FlowSystemProp.SANDBOX_MEMORY_LIMIT]: numberValidator,
     [FlowSystemProp.SANDBOX_PROPAGATED_ENV_VARS]: stringValidator,
-    [FlowSystemProp.SENTRY_DSN]: urlValidator,
     [FlowSystemProp.RUNS_METADATA_UPDATE_CONCURRENCY]: numberValidator,
     [FlowSystemProp.LOKI_PASSWORD]: stringValidator,
     [FlowSystemProp.LOKI_URL]: urlValidator,

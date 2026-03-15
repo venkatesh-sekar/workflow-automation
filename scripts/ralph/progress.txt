@@ -191,3 +191,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** @segment/analytics-next was misplaced in server/api — cleaned up alongside frontend removal
 ---
+
+## Iteration #28 - strip-telemetry
+- **Change:** Removed Sentry: gutted exception-handler.ts (removed @sentry/node import, Sentry.init, captureException, initializeSentry method — kept handle() with just log.error), removed @sentry/node dep from server/common package.json, removed SENTRY_DSN from FlowSystemProp enum + system-validator + machine-service worker config + shared workers zod schema + server.ts initializeSentry call
+- **Files:** 6 (exception-handler.ts, server/common/package.json, system-props.ts, system-validator.ts, machine-service.ts, server.ts, shared/workers/index.ts)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** SENTRY_DSN was threaded through 6 files: enum definition, validator, server init, machine-service worker config, shared zod schema
+---

@@ -74,8 +74,6 @@ async function setupBaseApp(): Promise<FastifyInstance> {
             (part as any).value = apFile
         },
     })
-    exceptionHandler.initializeSentry(system.get(FlowSystemProp.SENTRY_DSN))
-
 
     await app.register(fastifyRawBody, {
         field: 'rawBody',

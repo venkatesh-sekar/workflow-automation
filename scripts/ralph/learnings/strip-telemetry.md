@@ -13,5 +13,10 @@
 - @segment/analytics-next was also misplaced in server/api/package.json — removed from both web and server/api
 - posthog-js removed from web/package.json
 
+## Sentry
+- exception-handler.ts: @sentry/node import, Sentry.init with DSN, captureException in handle()
+- SENTRY_DSN referenced in: FlowSystemProp enum (system-props.ts), system-validator.ts, server.ts (initializeSentry call), machine-service.ts (worker config), shared workers/index.ts (zod schema)
+- Gutted to just log.error — kept handle() method signature since callers depend on it
+
 ## Test Baseline
 - 22/24 failures pre-existing (@flow/piece-slack resolution), 2 passed, 16 tests pass — same as prior phases
