@@ -107,3 +107,10 @@
 - **Quality gate:** pass (0 typecheck errors)
 - **Learnings:** none
 ---
+
+## Iteration #16 - rename-ap-core-types
+- **Change:** Renamed apAxios→flowAxios (const, 8 refs across 5 files), renamed ap-axios.ts→flow-axios.ts, updated barrel export in index.ts
+- **Files:** 5 files changed
+- **Quality gate:** pass (0 typecheck errors)
+- **Learnings:** none
+---

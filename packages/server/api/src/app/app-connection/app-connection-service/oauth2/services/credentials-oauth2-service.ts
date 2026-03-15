@@ -1,5 +1,5 @@
 import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
-import { apAxios } from '@flow/server-common'
+import { flowAxios } from '@flow/server-common'
 import { FlowError,
     AppConnectionType,
     BaseOAuth2ConnectionValue,
@@ -70,7 +70,7 @@ export const credentialsOauth2Service = (log: FastifyBaseLogger): OAuth2Service<
             }
             const urlSearchParams = new URLSearchParams(Object.fromEntries(Object.entries(body).map(([key, value]) => [key, String(value)])))
             const response = (
-                await apAxios.post(request.tokenUrl, urlSearchParams, {
+                await flowAxios.post(request.tokenUrl, urlSearchParams, {
                     headers,
                 })
             ).data
@@ -163,7 +163,7 @@ export const credentialsOauth2Service = (log: FastifyBaseLogger): OAuth2Service<
                 throw new Error(`Unknown authorization method: ${authorizationMethod}`)
         }
         const response = (
-            await apAxios.post(appConnection.token_url, new URLSearchParams(body), {
+            await flowAxios.post(appConnection.token_url, new URLSearchParams(body), {
                 headers,
                 timeout: 20000,
             })

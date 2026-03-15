@@ -3,14 +3,14 @@ import axios, { AxiosError } from 'axios'
 import axiosRetry from 'axios-retry'
 
 
-export const apAxios = axios.create({
+export const flowAxios = axios.create({
     baseURL: 'https://api.activepieces.com',
     headers: {
         'Content-Type': 'application/json',
     },
 })
 
-axiosRetry(apAxios, {
+axiosRetry(flowAxios, {
     retryDelay: (_retryCount: number) => {
         return 2000
     },

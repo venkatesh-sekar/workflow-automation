@@ -1,5 +1,5 @@
 {
-  "iteration": 15,
+  "iteration": 16,
   "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
@@ -55,7 +55,8 @@
         {"iteration": 12, "description": "Renamed ApSemaphore→FlowSemaphore (class, 1 ref in 1 file)"},
         {"iteration": 13, "description": "Renamed ApQueueJob→FlowQueueJob (const+type, 2 refs in 1 file)"},
         {"iteration": 14, "description": "Renamed ApSubscriptionStatus→FlowSubscriptionStatus (enum, 5 refs across 3 files)"},
-        {"iteration": 15, "description": "Renamed ApStorage→FlowStorage (class, 16 refs across 2 files), renamed ap-browser-storage.ts→flow-browser-storage.ts"}
+        {"iteration": 15, "description": "Renamed ApStorage→FlowStorage (class, 16 refs across 2 files), renamed ap-browser-storage.ts→flow-browser-storage.ts"},
+        {"iteration": 16, "description": "Renamed apAxios→flowAxios (const, 8 refs across 5 files), renamed ap-axios.ts→flow-axios.ts, updated barrel export"}
       ]
     },
     "rename-ap-ui-components": {
