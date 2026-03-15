@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { isNil, Nullable } from '../../core/common'
+import { Nullable } from '../../core/common'
 import { AiCreditsAutoTopUpState, PlanName, PlatformPlanWithOnlyLimits, PlatformUsageMetric, TeamProjectsLimit } from '../../management/platform'
 import { PiecesFilterType } from '../../management/project'
 
@@ -122,10 +122,3 @@ export const OPEN_SOURCE_PLAN: PlatformPlanWithOnlyLimits = {
     aiCreditsAutoTopUpState: AiCreditsAutoTopUpState.DISABLED,
 }
 
-export const isCloudPlanButNotEnterprise = (plan?: string | null): boolean => {
-    if (isNil(plan)) {
-        return false
-    }
-
-    return plan === PlanName.STANDARD
-}

@@ -422,3 +422,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test suites fail pre-existing baseline)
 - **Learnings:** none
 ---
+
+## Iteration #61 - clean-dead-code
+- **Change:** Removed dead isCloudPlanButNotEnterprise cloud guard from delete-account.tsx (always returned false for self-hosted), removed function from shared billing/index.ts, cleaned unused isNil import — DeleteAccount now renders for all users
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---
