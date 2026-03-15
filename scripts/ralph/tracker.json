@@ -1,5 +1,5 @@
 {
-  "iteration": 22,
+  "iteration": 23,
   "current_phase": "rename-ap-system-props",
   "phases": {
     "rename-packages": {
@@ -86,7 +86,9 @@
         "All system() calls updated",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 23, "description": "Renamed AppSystemProp→FlowSystemProp (enum + 350 refs across 41 files)"}
+      ]
     },
     "strip-telemetry": {
       "status": "pending",

@@ -1,4 +1,4 @@
-import { AppSystemProp, securityAccess } from '@flow/server-common'
+import { FlowSystemProp, securityAccess } from '@flow/server-common'
 import { RateLimitOptions } from '@fastify/rate-limit'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
@@ -23,10 +23,10 @@ export const authenticationController: FastifyPluginAsyncZod = async (
 
 const rateLimitOptions: RateLimitOptions = {
     max: Number.parseInt(
-        system.getOrThrow(AppSystemProp.API_RATE_LIMIT_AUTHN_MAX),
+        system.getOrThrow(FlowSystemProp.API_RATE_LIMIT_AUTHN_MAX),
         10,
     ),
-    timeWindow: system.getOrThrow(AppSystemProp.API_RATE_LIMIT_AUTHN_WINDOW),
+    timeWindow: system.getOrThrow(FlowSystemProp.API_RATE_LIMIT_AUTHN_WINDOW),
 }
 
 const TeamLoginRequestOptions = {

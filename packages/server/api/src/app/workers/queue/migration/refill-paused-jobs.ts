@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { flowId, ExecutionType, FlowRunStatus, isNil, LATEST_JOB_DATA_SCHEMA_VERSION, PauseType, ProgressUpdateType, UploadLogsBehavior, WorkerJobType } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
@@ -12,7 +12,7 @@ import { jobQueue } from '../job-queue'
 import { JobType } from '../queue-manager'
 
 const REFILL_PAUSED_RUNS_KEY = 'refill_paused_runs_v5'
-const excutionRententionDays = system.getNumberOrThrow(AppSystemProp.EXECUTION_DATA_RETENTION_DAYS)
+const excutionRententionDays = system.getNumberOrThrow(FlowSystemProp.EXECUTION_DATA_RETENTION_DAYS)
 
 export const refillPausedRuns = (log: FastifyBaseLogger) => ({
     async run(): Promise<void> {

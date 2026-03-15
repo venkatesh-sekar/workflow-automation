@@ -1,6 +1,6 @@
 import { ExecutionMode } from '@flow/shared'
 import { RedisType } from './redis/types'
-import { AppSystemProp } from './system-props'
+import { FlowSystemProp } from './system-props'
 
 const envPrefix = (prop: string): string => `FLOW_${prop}`
 
@@ -9,8 +9,8 @@ export const environmentMigrations = {
 
         return {
             ...process.env,
-            [envPrefix(AppSystemProp.EXECUTION_MODE)]: migrateExecutionMode(getRawValue(AppSystemProp.EXECUTION_MODE)),
-            [envPrefix(AppSystemProp.REDIS_TYPE)]: migrateRedisType(getRawValue(AppSystemProp.REDIS_TYPE)),
+            [envPrefix(FlowSystemProp.EXECUTION_MODE)]: migrateExecutionMode(getRawValue(FlowSystemProp.EXECUTION_MODE)),
+            [envPrefix(FlowSystemProp.REDIS_TYPE)]: migrateRedisType(getRawValue(FlowSystemProp.REDIS_TYPE)),
         }
     },
 }

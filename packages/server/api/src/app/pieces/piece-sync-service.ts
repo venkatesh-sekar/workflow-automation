@@ -1,5 +1,5 @@
 import { PieceMetadata } from '@flow/pieces-framework'
-import { AppSystemProp, apVersionUtil, rejectedPromiseHandler } from '@flow/server-common'
+import { FlowSystemProp, apVersionUtil, rejectedPromiseHandler } from '@flow/server-common'
 import { groupBy, PackageType, PieceSyncMode, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import semver from 'semver'
@@ -11,7 +11,7 @@ import { PieceMetadataSchema } from './metadata/piece-metadata-entity'
 import { pieceMetadataService, pieceRepos } from './metadata/piece-metadata-service'
 
 const CLOUD_API_URL = 'https://cloud.activepieces.com/api/v1/pieces'
-const syncMode = system.get<PieceSyncMode>(AppSystemProp.PIECES_SYNC_MODE)
+const syncMode = system.get<PieceSyncMode>(FlowSystemProp.PIECES_SYNC_MODE)
 
 export const pieceSyncService = (log: FastifyBaseLogger) => ({
     async setup(): Promise<void> {

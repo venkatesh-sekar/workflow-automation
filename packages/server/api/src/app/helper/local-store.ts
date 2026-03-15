@@ -1,12 +1,12 @@
 import fs from 'fs'
 import path from 'path'
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { system } from './system/system'
 
 export const localFileStore = {
     async save(key: string, value: string): Promise<void> {
         const settingsFilePath = path.join(
-            system.getOrThrow(AppSystemProp.CONFIG_PATH),
+            system.getOrThrow(FlowSystemProp.CONFIG_PATH),
             'settings.json',
         )
         const settings = getSettingsFilePath()
@@ -26,7 +26,7 @@ export const localFileStore = {
 
 const getSettingsFilePath = () => {
     const settingsFilePath = path.join(
-        system.getOrThrow(AppSystemProp.CONFIG_PATH),
+        system.getOrThrow(FlowSystemProp.CONFIG_PATH),
         'settings.json',
     )
     try {

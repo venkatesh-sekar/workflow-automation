@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import {
     FlowError,
     flowId,
@@ -339,11 +339,11 @@ export const recordService = {
     },
     async validateCount(params: CountParams, insertCount: number): Promise<void> {
         const countRes = await this.count(params)
-        if (countRes + insertCount > system.getNumberOrThrow(AppSystemProp.MAX_RECORDS_PER_TABLE)) {
+        if (countRes + insertCount > system.getNumberOrThrow(FlowSystemProp.MAX_RECORDS_PER_TABLE)) {
             throw new FlowError({
                 code: ErrorCode.VALIDATION,
                 params: {
-                    message: `Max records per table reached: ${system.getNumberOrThrow(AppSystemProp.MAX_RECORDS_PER_TABLE)}`,
+                    message: `Max records per table reached: ${system.getNumberOrThrow(FlowSystemProp.MAX_RECORDS_PER_TABLE)}`,
                 },
             })
         }

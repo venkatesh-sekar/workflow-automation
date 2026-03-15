@@ -1,4 +1,4 @@
-import { AppSystemProp, DatabaseType } from '@flow/server-common'
+import { FlowSystemProp, DatabaseType } from '@flow/server-common'
 import { isNil } from '@flow/shared'
 import {
     DataSource,
@@ -39,7 +39,7 @@ import { UserInvitationEntity } from '../user-invitations/user-invitation.entity
 import { createPGliteDataSource } from './pglite-connection'
 import { createPostgresDataSource } from './postgres-connection'
 
-const databaseType = system.get(AppSystemProp.DB_TYPE)
+const databaseType = system.get(FlowSystemProp.DB_TYPE)
 
 function getEntities(): EntitySchema<unknown>[] {
     return [

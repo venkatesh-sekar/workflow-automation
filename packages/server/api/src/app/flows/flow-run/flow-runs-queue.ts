@@ -1,4 +1,4 @@
-import { flowAxios, AppSystemProp, exceptionHandler, QueueName, redisMetadataKey, RunsMetadataJobData, RunsMetadataQueueConfig, runsMetadataQueueFactory, RunsMetadataUpsertData } from '@flow/server-common'
+import { flowAxios, FlowSystemProp, exceptionHandler, QueueName, redisMetadataKey, RunsMetadataJobData, RunsMetadataQueueConfig, runsMetadataQueueFactory, RunsMetadataUpsertData } from '@flow/server-common'
 import { assertNotNullOrUndefined, FlowRun, FlowRunStatus, isNil, PauseMetadata, PauseType, spreadIfDefined } from '@flow/shared'
 import { Queue, Worker } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
@@ -19,12 +19,12 @@ const queue = runsMetadataQueueFactory({ createRedisConnection: redisConnections
 export const runsMetadataQueue = (log: FastifyBaseLogger) => ({
     async init(): Promise<void> {
         const queueName = QueueName.RUNS_METADATA
-        const isOtelEnabled = system.getBoolean(AppSystemProp.OTEL_ENABLED) ?? false
+        const isOtelEnabled = system.getBoolean(FlowSystemProp.OTEL_ENABLED) ?? false
 
         const config: RunsMetadataQueueConfig = {
             isOtelEnabled,
-            redisFailedJobRetentionDays: system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS),
-            redisFailedJobRetentionMaxCount: system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT),
+            redisFailedJobRetentionDays: system.getNumberOrThrow(FlowSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS),
+            redisFailedJobRetentionMaxCount: system.getNumberOrThrow(FlowSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT),
         }
         await queue.init(config)
         runsMetadataWorker = new Worker<RunsMetadataJobData>(
@@ -124,7 +124,7 @@ export const runsMetadataQueue = (log: FastifyBaseLogger) => ({
             {
                 connection: await redisConnections.create(),
                 telemetry: isOtelEnabled ? new BullMQOtel(queueName) : undefined,
-                concurrency: system.getNumberOrThrow(AppSystemProp.RUNS_METADATA_UPDATE_CONCURRENCY),
+                concurrency: system.getNumberOrThrow(FlowSystemProp.RUNS_METADATA_UPDATE_CONCURRENCY),
                 autorun: true,
             },
         )

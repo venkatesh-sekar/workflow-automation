@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto'
 import { promisify } from 'util'
-import { AppSystemProp, RedisType } from '@flow/server-common'
+import { FlowSystemProp, RedisType } from '@flow/server-common'
 import {
     FlowError,
     ErrorCode,
@@ -63,7 +63,7 @@ export const jwtUtils = {
         })
     },
     getJwtSecret: async (): Promise<string> => {
-        const secret = system.get(AppSystemProp.JWT_SECRET) ?? null
+        const secret = system.get(FlowSystemProp.JWT_SECRET) ?? null
         if (!isNil(secret)) {
             return secret
         }
@@ -74,10 +74,10 @@ export const jwtUtils = {
             {
                 code: ErrorCode.SYSTEM_PROP_INVALID,
                 params: {
-                    prop: AppSystemProp.JWT_SECRET,
+                    prop: FlowSystemProp.JWT_SECRET,
                 },
             },
-            `System property FLOW_${AppSystemProp.JWT_SECRET} must be defined`,
+            `System property FLOW_${FlowSystemProp.JWT_SECRET} must be defined`,
         )
     },
     async decodeAndVerify<T>({ jwt, key, algorithm = ALGORITHM, issuer = ISSUER, audience }: VerifyParams): Promise<T> {
@@ -110,14 +110,14 @@ const mutexLock = new Mutex()
 
 const getOrGenerateAndStoreSecret = async (): Promise<string> => {
     return mutexLock.runExclusive(async () => {
-        const currentSecret = await localFileStore.load(AppSystemProp.JWT_SECRET)
+        const currentSecret = await localFileStore.load(FlowSystemProp.JWT_SECRET)
         if (!isNil(currentSecret)) {
             return currentSecret
         }
         const secretLengthInBytes = 32
         const secretBuffer = await promisify(randomBytes)(secretLengthInBytes)
         const secret = secretBuffer.toString('base64')
-        await localFileStore.save(AppSystemProp.JWT_SECRET, secret)
+        await localFileStore.save(FlowSystemProp.JWT_SECRET, secret)
         return secret
     })
 }

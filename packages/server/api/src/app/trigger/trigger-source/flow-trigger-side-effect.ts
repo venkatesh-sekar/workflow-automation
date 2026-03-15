@@ -4,7 +4,7 @@ import {
     WebhookRenewStrategy,
 } from '@flow/pieces-framework'
 import {
-    AppSystemProp,
+    FlowSystemProp,
 } from '@flow/server-common'
 import {
     FlowError,
@@ -33,7 +33,7 @@ import { JobType } from '../../workers/queue/queue-manager'
 import { userInteractionWatcher } from '../../workers/user-interaction-watcher'
 import { appEventRoutingService } from '../app-event-routing/app-event-routing.service'
 
-const environment = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+const environment = system.getOrThrow<FlowEnvironment>(FlowSystemProp.ENVIRONMENT)
 
 export const flowTriggerSideEffect = (log: FastifyBaseLogger) => {
     return {
@@ -182,7 +182,7 @@ async function handleWebhookTrigger({ flowId, flowVersionId, projectId, pieceTri
 }
 
 async function handlePollingTrigger({ engineHelperResponse, flowId, flowVersionId, projectId, log }: ActiveTriggerParams): Promise<ActiveTriggerReturn> {
-    const pollingFrequencyCronExpression = `*/${system.getNumber(AppSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL) ?? 5} * * * *`
+    const pollingFrequencyCronExpression = `*/${system.getNumber(FlowSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL) ?? 5} * * * *`
     if (isNil(engineHelperResponse.result.scheduleOptions)) {
         engineHelperResponse.result.scheduleOptions = {
             cronExpression: pollingFrequencyCronExpression,

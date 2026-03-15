@@ -1,16 +1,16 @@
-import { AppSystemProp, rejectedPromiseHandler } from '@flow/server-common'
+import { FlowSystemProp, rejectedPromiseHandler } from '@flow/server-common'
 import { FlowEdition, isNil, TemplateTelemetryEvent, TemplateTelemetryEventType, tryCatch } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { system } from '../../helper/system/system'
 
 const CLOUD_TELEMETRY_URL = 'https://cloud.activepieces.com/api/v1/templates-telemetry'
 const INTERNAL_TELEMETRY_URL = 'https://template-manager.activepieces.com/api/public/analytics/event'
-const TEMPLATE_TELEMETRY_API_KEY = system.get(AppSystemProp.TEMPLATE_MANAGER_API_KEY)
+const TEMPLATE_TELEMETRY_API_KEY = system.get(FlowSystemProp.TEMPLATE_MANAGER_API_KEY)
 const TEMPLATE_TELEMETRY_API_KEY_HEADER = 'X-API-Key'
 
 export const templateTelemetryService = (log: FastifyBaseLogger) => ({
     sendEvent(event: TemplateTelemetryEvent): void {
-        const telemetryEnabled = system.getBoolean(AppSystemProp.TELEMETRY_ENABLED)
+        const telemetryEnabled = system.getBoolean(FlowSystemProp.TELEMETRY_ENABLED)
         if (!telemetryEnabled) {
             log.debug('Telemetry is disabled, skipping template telemetry event')
             return

@@ -2,7 +2,7 @@ import * as crypto from 'crypto'
 import { randomBytes } from 'node:crypto'
 import { promisify } from 'util'
 
-import { AppSystemProp, RedisType } from '@flow/server-common'
+import { FlowSystemProp, RedisType } from '@flow/server-common'
 import {
     assertNotNullOrUndefined,
     isNil,
@@ -62,7 +62,7 @@ export const encryptUtils = {
         }
     },
     getEncryptionKey: async (): Promise<string | null> => {
-        const secret = system.get(AppSystemProp.ENCRYPTION_KEY) ?? null
+        const secret = system.get(FlowSystemProp.ENCRYPTION_KEY) ?? null
         if (!isNil(secret)) {
             return secret
         }
@@ -76,14 +76,14 @@ export const encryptUtils = {
 
 function generateAndStoreSecret(): Promise<string> {
     return mutexLock.runExclusive(async () => {
-        const storedSecret = await localFileStore.load(AppSystemProp.ENCRYPTION_KEY)
+        const storedSecret = await localFileStore.load(FlowSystemProp.ENCRYPTION_KEY)
         if (!isNil(storedSecret)) {
             return storedSecret
         }
         const secretLengthInBytes = 16
         const secretBuffer = await promisify(randomBytes)(secretLengthInBytes)
         const secret = secretBuffer.toString('hex')
-        await localFileStore.save(AppSystemProp.ENCRYPTION_KEY, secret)
+        await localFileStore.save(FlowSystemProp.ENCRYPTION_KEY, secret)
         return secret
     })
 }

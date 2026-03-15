@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FlowEdition } from '@flow/shared'
 import { EntitySchemaColumnOptions } from 'typeorm'
 import { system } from '../helper/system/system'

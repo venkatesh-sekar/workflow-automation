@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import {
     File,
     FileCompression,
@@ -14,7 +14,7 @@ import { system } from '../../helper/system/system'
 import { fileService } from '../file.service'
 import { s3Helper } from '../s3-helper'
 
-const executionRetentionInDays = system.getNumberOrThrow(AppSystemProp.EXECUTION_DATA_RETENTION_DAYS)
+const executionRetentionInDays = system.getNumberOrThrow(FlowSystemProp.EXECUTION_DATA_RETENTION_DAYS)
 
 export const stepFileService = (log: FastifyBaseLogger) => ({
     async saveAndEnrich(params: SaveParams): Promise<StepFileUpsertResponse> {

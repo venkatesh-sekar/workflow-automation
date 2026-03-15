@@ -1,4 +1,4 @@
-import { flowDayjsDuration, AppSystemProp, memoryLock, QueueName } from '@flow/server-common'
+import { flowDayjsDuration, FlowSystemProp, memoryLock, QueueName } from '@flow/server-common'
 import { FlowId, getDefaultJobPriority, isNil, JOB_PRIORITY, WorkerJobType } from '@flow/shared'
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
@@ -8,8 +8,8 @@ import { system } from '../../helper/system/system'
 import { AddJobParams, JobType } from './queue-manager'
 
 const EIGHT_MINUTES_IN_MILLISECONDS = flowDayjsDuration(8, 'minute').asMilliseconds()
-const REDIS_FAILED_JOB_RETENTION_DAYS = flowDayjsDuration(system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS), 'day').asSeconds()
-const REDIS_FAILED_JOB_RETRY_COUNT = system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT)
+const REDIS_FAILED_JOB_RETENTION_DAYS = flowDayjsDuration(system.getNumberOrThrow(FlowSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS), 'day').asSeconds()
+const REDIS_FAILED_JOB_RETRY_COUNT = system.getNumberOrThrow(FlowSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT)
 const CHILD_RUNS_KEY = (parentRunId: FlowId) => `child_runs:${parentRunId}`
 
 const dedicatedWorkersQueues = new Map<string, Queue>()
@@ -144,7 +144,7 @@ async function ensureQueueExists({ log, queueName }: { log: FastifyBaseLogger, q
                 return existingQueue
             }
 
-            const isOtpEnabled = system.getBoolean(AppSystemProp.OTEL_ENABLED)
+            const isOtpEnabled = system.getBoolean(FlowSystemProp.OTEL_ENABLED)
             const queue = new Queue(queueName, {
                 telemetry: isOtpEnabled ? new BullMQOtel(queueName) : undefined,
                 connection: await redisConnections.create(),

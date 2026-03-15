@@ -1,4 +1,4 @@
-import { AppSystemProp, apVersionUtil } from '@flow/server-common'
+import { FlowSystemProp, apVersionUtil } from '@flow/server-common'
 import { ProjectId, TelemetryEvent, User, UserIdentity, UserId } from '@flow/shared'
 import { Analytics } from '@segment/analytics-node'
 import { FastifyBaseLogger } from 'fastify'
@@ -6,7 +6,7 @@ import { platformService } from '../platform/platform.service'
 import { projectService } from '../project/project-service'
 import { system } from './system/system'
 
-const telemetryEnabled = system.getBoolean(AppSystemProp.TELEMETRY_ENABLED)
+const telemetryEnabled = system.getBoolean(FlowSystemProp.TELEMETRY_ENABLED)
 
 const analytics = new Analytics({ writeKey: '42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK' })
 
@@ -71,7 +71,7 @@ async function getMetadata() {
     const edition = system.getEdition()
     return {
         activepiecesVersion: currentVersion,
-        activepiecesEnvironment: system.get(AppSystemProp.ENVIRONMENT),
+        activepiecesEnvironment: system.get(FlowSystemProp.ENVIRONMENT),
         activepiecesEdition: edition,
     }
 }

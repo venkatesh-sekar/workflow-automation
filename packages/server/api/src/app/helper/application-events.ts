@@ -1,4 +1,4 @@
-import { AppSystemProp, networkUtils, rejectedPromiseHandler } from '@flow/server-common'
+import { FlowSystemProp, networkUtils, rejectedPromiseHandler } from '@flow/server-common'
 import { flowId, ApplicationEvent, isNil, PrincipalType } from '@flow/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { authenticationUtils } from '../authentication/authentication-utils'
@@ -110,7 +110,7 @@ async function extractMetaInformation(requestOrMeta: FastifyRequest | MetaInform
             platformId: principal.platform.id,
             projectId,
             userId: extractedUserId,
-            ip: networkUtils.extractClientRealIp(request, system.get(AppSystemProp.CLIENT_REAL_IP_HEADER)),
+            ip: networkUtils.extractClientRealIp(request, system.get(FlowSystemProp.CLIENT_REAL_IP_HEADER)),
         }
         return meta
     }

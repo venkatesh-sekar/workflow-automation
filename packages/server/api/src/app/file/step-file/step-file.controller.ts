@@ -1,4 +1,4 @@
-import { AppSystemProp, securityAccess } from '@flow/server-common'
+import { FlowSystemProp, securityAccess } from '@flow/server-common'
 import {
     FlowError,
     ErrorCode,
@@ -18,7 +18,7 @@ import { fileService } from '../file.service'
 import { s3Helper } from '../s3-helper'
 import { stepFileService } from './step-file.service'
 
-const useS3SignedUrls = system.getBoolean(AppSystemProp.S3_USE_SIGNED_URLS)
+const useS3SignedUrls = system.getBoolean(FlowSystemProp.S3_USE_SIGNED_URLS)
 
 export const stepFileController: FastifyPluginAsyncZod = async (app) => {
     app.get('/signed', SignedFileRequest, async (request, reply) => {

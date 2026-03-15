@@ -1,4 +1,4 @@
-import { AppSystemProp, exceptionHandler } from '@flow/server-common'
+import { FlowSystemProp, exceptionHandler } from '@flow/server-common'
 import { flowId, FlowMultipartFile } from '@flow/shared'
 import cors from '@fastify/cors'
 import formBody from '@fastify/formbody'
@@ -30,8 +30,8 @@ export const setupServer = async (): Promise<FastifyInstance> => {
 }
 
 async function setupBaseApp(): Promise<FastifyInstance> {
-    const fileSizeLimit = system.getNumberOrThrow(AppSystemProp.MAX_FILE_SIZE_MB)
-    const flowRunLogSizeLimit = system.getNumberOrThrow(AppSystemProp.MAX_FLOW_RUN_LOG_SIZE_MB)
+    const fileSizeLimit = system.getNumberOrThrow(FlowSystemProp.MAX_FILE_SIZE_MB)
+    const flowRunLogSizeLimit = system.getNumberOrThrow(FlowSystemProp.MAX_FLOW_RUN_LOG_SIZE_MB)
     const app = fastify({
         disableRequestLogging: true,
         querystringParser: qs.parse,
@@ -74,7 +74,7 @@ async function setupBaseApp(): Promise<FastifyInstance> {
             (part as any).value = apFile
         },
     })
-    exceptionHandler.initializeSentry(system.get(AppSystemProp.SENTRY_DSN))
+    exceptionHandler.initializeSentry(system.get(FlowSystemProp.SENTRY_DSN))
 
 
     await app.register(fastifyRawBody, {

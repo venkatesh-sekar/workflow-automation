@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FlowEdition, assertNotNullOrUndefined, isNil } from '@flow/shared'
 import { createBullBoard } from '@bull-board/api'
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter'
@@ -14,13 +14,13 @@ const QUEUE_BASE_PATH = '/ui'
 
 export async function setupBullMQBoard(app: FastifyInstance): Promise<void> {
     const edition = system.getEdition()
-    const isQueueEnabled = (edition !== FlowEdition.CLOUD) && (system.getBoolean(AppSystemProp.QUEUE_UI_ENABLED) ?? false)
+    const isQueueEnabled = (edition !== FlowEdition.CLOUD) && (system.getBoolean(FlowSystemProp.QUEUE_UI_ENABLED) ?? false)
     if (!isQueueEnabled) {
         app.log.info('[setupBullMQBoard] Queue UI is disabled')
         return
     }
-    const queueUsername = system.getOrThrow(AppSystemProp.QUEUE_UI_USERNAME)
-    const queuePassword = system.getOrThrow(AppSystemProp.QUEUE_UI_PASSWORD)
+    const queueUsername = system.getOrThrow(FlowSystemProp.QUEUE_UI_USERNAME)
+    const queuePassword = system.getOrThrow(FlowSystemProp.QUEUE_UI_PASSWORD)
     app.log.info(
         '[setupBullMQBoard] Setting up bull board, visit /ui to see the queues',
     )

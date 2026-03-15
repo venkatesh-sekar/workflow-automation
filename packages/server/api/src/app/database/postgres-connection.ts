@@ -1,6 +1,6 @@
 import { TlsOptions } from 'node:tls'
 import 'pg'
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { isNil, spreadIfDefined } from '@flow/shared'
 import { DataSource, MigrationInterface } from 'typeorm'
 import { system } from '../helper/system/system'
@@ -8,10 +8,10 @@ import { commonProperties } from './database-connection'
 import { InitialSchema1773594074709 } from './migration/postgres/1773594074709-InitialSchema'
 
 const getSslConfig = (): boolean | TlsOptions => {
-    const useSsl = system.get(AppSystemProp.POSTGRES_USE_SSL)
+    const useSsl = system.get(FlowSystemProp.POSTGRES_USE_SSL)
     if (useSsl === 'true') {
         return {
-            ca: system.get(AppSystemProp.POSTGRES_SSL_CA)?.replace(/\\n/g, '\n'),
+            ca: system.get(FlowSystemProp.POSTGRES_SSL_CA)?.replace(/\\n/g, '\n'),
         }
     }
     return false
@@ -32,26 +32,26 @@ export const createPostgresDataSource = (): DataSource => {
         synchronize: false,
     }
 
-    const url = system.get(AppSystemProp.POSTGRES_URL)
+    const url = system.get(FlowSystemProp.POSTGRES_URL)
 
     if (!isNil(url)) {
         return new DataSource({
             type: 'postgres',
             url,
             ssl: getSslConfig(),
-            ...spreadIfDefined('poolSize', system.get(AppSystemProp.POSTGRES_POOL_SIZE)),
+            ...spreadIfDefined('poolSize', system.get(FlowSystemProp.POSTGRES_POOL_SIZE)),
             ...migrationConfig,
             ...commonProperties,
         })
     }
 
-    const database = system.getOrThrow(AppSystemProp.POSTGRES_DATABASE)
-    const host = system.getOrThrow(AppSystemProp.POSTGRES_HOST)
-    const password = system.getOrThrow(AppSystemProp.POSTGRES_PASSWORD)
-    const serializedPort = system.getOrThrow(AppSystemProp.POSTGRES_PORT)
+    const database = system.getOrThrow(FlowSystemProp.POSTGRES_DATABASE)
+    const host = system.getOrThrow(FlowSystemProp.POSTGRES_HOST)
+    const password = system.getOrThrow(FlowSystemProp.POSTGRES_PASSWORD)
+    const serializedPort = system.getOrThrow(FlowSystemProp.POSTGRES_PORT)
     const port = Number.parseInt(serializedPort, 10)
-    const idleTimeoutMillis = system.getNumberOrThrow(AppSystemProp.POSTGRES_IDLE_TIMEOUT_MS)
-    const username = system.getOrThrow(AppSystemProp.POSTGRES_USERNAME)
+    const idleTimeoutMillis = system.getNumberOrThrow(FlowSystemProp.POSTGRES_IDLE_TIMEOUT_MS)
+    const username = system.getOrThrow(FlowSystemProp.POSTGRES_USERNAME)
 
     return new DataSource({
         type: 'postgres',
@@ -61,7 +61,7 @@ export const createPostgresDataSource = (): DataSource => {
         password,
         database,
         ssl: getSslConfig(),
-        ...spreadIfDefined('poolSize', system.get(AppSystemProp.POSTGRES_POOL_SIZE)),
+        ...spreadIfDefined('poolSize', system.get(FlowSystemProp.POSTGRES_POOL_SIZE)),
         ...commonProperties,
         ...migrationConfig,
         extra: {

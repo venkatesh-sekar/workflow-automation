@@ -1,4 +1,4 @@
-import { AppSystemProp, exceptionHandler, fileCompressor, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, exceptionHandler, fileCompressor, WorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
     flowId,
@@ -24,7 +24,7 @@ import { s3Helper } from './s3-helper'
 const IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml', 'image/tiff', 'image/bmp', 'image/ico', 'image/avif', 'image/apng']
 
 export const fileRepo = repoFactory<File>(FileEntity)
-const EXECUTION_DATA_RETENTION_DAYS = system.getNumberOrThrow(AppSystemProp.EXECUTION_DATA_RETENTION_DAYS)
+const EXECUTION_DATA_RETENTION_DAYS = system.getNumberOrThrow(FlowSystemProp.EXECUTION_DATA_RETENTION_DAYS)
 
 type BaseFile = Pick<File, 'id' | 'projectId' | 'platformId' | 'type' | 'fileName' | 'compression' | 'size' | 'metadata' | 'created' | 'updated'>
 
@@ -236,7 +236,7 @@ type GetDataResponse = {
 }
 
 function getLocationForFile(type: FileType) {
-    const FILE_LOCATION = system.getOrThrow<FileLocation>(AppSystemProp.FILE_STORAGE_LOCATION)
+    const FILE_LOCATION = system.getOrThrow<FileLocation>(FlowSystemProp.FILE_STORAGE_LOCATION)
     if (isExecutionDataFileThatExpires(type)) {
         return FILE_LOCATION
     }

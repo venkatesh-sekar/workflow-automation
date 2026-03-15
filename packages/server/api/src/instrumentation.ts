@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FastifyOtelInstrumentation } from '@fastify/otel'
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http'
@@ -17,7 +17,7 @@ function getServiceName(): string {
     return serviceName
 }
 
-if (system.get(AppSystemProp.OTEL_ENABLED)) {
+if (system.get(FlowSystemProp.OTEL_ENABLED)) {
     const traceExporter = new OTLPTraceExporter()
 
     const resource = resourceFromAttributes({

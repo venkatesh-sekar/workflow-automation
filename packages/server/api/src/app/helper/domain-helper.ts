@@ -1,4 +1,4 @@
-import { AppSystemProp, networkUtils, WorkerSystemProp } from '@flow/server-common'
+import { FlowSystemProp, networkUtils, WorkerSystemProp } from '@flow/server-common'
 import { isNil } from '@flow/shared'
 import { system } from './system/system'
 
@@ -14,7 +14,7 @@ export const domainHelper = {
         return domainHelper.getPublicUrl({ path: `/api/${cleanLeadingSlash(path ?? '')}`, platformId })
     },
     async getInternalUrl({ path }: { path: string, platformId?: string | null }): Promise<string> {
-        const internalUrl = system.get(AppSystemProp.INTERNAL_URL)
+        const internalUrl = system.get(FlowSystemProp.INTERNAL_URL)
         if (!isNil(internalUrl)) {
             return networkUtils.combineUrl(internalUrl, path ?? '')
         }

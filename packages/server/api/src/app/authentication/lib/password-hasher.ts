@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { assertNotNullOrUndefined } from '@flow/shared'
 import bcrypt from 'bcrypt'
 import { FirebaseScrypt } from 'firebase-scrypt'
@@ -37,7 +37,7 @@ async function compareScrypt(
     hashedPassword: string,
 ): Promise<boolean> {
     const firebaseParameter = JSON.parse(
-        system.getOrThrow(AppSystemProp.FIREBASE_HASH_PARAMETERS),
+        system.getOrThrow(FlowSystemProp.FIREBASE_HASH_PARAMETERS),
     )
     const firebaseScrypt = new FirebaseScrypt(firebaseParameter)
     return firebaseScrypt.verify(password, salt, hashedPassword)

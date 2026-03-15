@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { AppSystemProp, exceptionHandler } from '@flow/server-common'
+import { FlowSystemProp, exceptionHandler } from '@flow/server-common'
 import { flowId, FileType, isNil, ProjectId } from '@flow/shared'
 import { DeleteObjectsCommand, GetObjectCommand, PutObjectCommand, S3, S3ClientConfig } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
@@ -137,17 +137,17 @@ export const s3Helper = (log: FastifyBaseLogger) => ({
 const chunkArray = (array: string[], chunkSize: number) => Array.from({ length: Math.ceil(array.length / chunkSize) }, (_, i) => array.slice(i * chunkSize, (i + 1) * chunkSize))
 
 const getS3Client = () => {
-    const useIRSA = system.getBoolean(AppSystemProp.S3_USE_IRSA)
-    const region = system.get<string>(AppSystemProp.S3_REGION)
-    const endpoint = system.get<string>(AppSystemProp.S3_ENDPOINT)
+    const useIRSA = system.getBoolean(FlowSystemProp.S3_USE_IRSA)
+    const region = system.get<string>(FlowSystemProp.S3_REGION)
+    const endpoint = system.get<string>(FlowSystemProp.S3_ENDPOINT)
     const options: S3ClientConfig = {
         region,
         forcePathStyle: endpoint ? true : undefined,
         endpoint,
     }
     if (!useIRSA) {
-        const accessKeyId = system.getOrThrow<string>(AppSystemProp.S3_ACCESS_KEY_ID)
-        const secretAccessKey = system.getOrThrow<string>(AppSystemProp.S3_SECRET_ACCESS_KEY)
+        const accessKeyId = system.getOrThrow<string>(FlowSystemProp.S3_ACCESS_KEY_ID)
+        const secretAccessKey = system.getOrThrow<string>(FlowSystemProp.S3_SECRET_ACCESS_KEY)
         options.credentials = {
             accessKeyId,
             secretAccessKey,
@@ -157,7 +157,7 @@ const getS3Client = () => {
 }
 
 const getS3BucketName = () => {
-    return system.getOrThrow<string>(AppSystemProp.S3_BUCKET)
+    return system.getOrThrow<string>(FlowSystemProp.S3_BUCKET)
 }
 
 type PutS3SignedUrlParams = {

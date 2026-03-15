@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import {
     FlowError,
     FlowEnvironment,
@@ -479,7 +479,7 @@ const engineValidateAuth = async (
     params: EngineValidateAuthParams,
     log: FastifyBaseLogger,
 ): Promise<void> => {
-    const environment = system.getOrThrow(AppSystemProp.ENVIRONMENT)
+    const environment = system.getOrThrow(FlowSystemProp.ENVIRONMENT)
     if (environment === FlowEnvironment.TESTING) {
         return
     }

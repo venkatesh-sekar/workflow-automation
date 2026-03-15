@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FlowEnvironment, isNil, LocalesEnum, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { lru, LRU } from 'tiny-lru'
@@ -20,7 +20,7 @@ export type PieceMetadataRefreshMessage =
     | { type: PieceMetadataRefreshType.UPDATE_USAGE, piece: { name: string, version: string, platformId?: string, projectUsage: number } }
 
 let cache: LRU<unknown>
-const environment = system.get<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+const environment = system.get<FlowEnvironment>(FlowSystemProp.ENVIRONMENT)
 const isTestingEnvironment = environment === FlowEnvironment.TESTING
 
 const CACHE_KEY = {
@@ -32,7 +32,7 @@ const CACHE_KEY = {
 export const pieceCache = (log: FastifyBaseLogger) => {
     return {
         async setup(): Promise<void> {
-            const cacheMaxSize = system.getNumberOrThrow(AppSystemProp.PIECES_CACHE_MAX_ENTRIES)
+            const cacheMaxSize = system.getNumberOrThrow(FlowSystemProp.PIECES_CACHE_MAX_ENTRIES)
             cache = lru(cacheMaxSize)
             log.info('[pieceCache] Piece cache initialized, loading all pieces from local source')
         },

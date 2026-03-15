@@ -1,4 +1,4 @@
-import { AppSystemProp, apVersionUtil, webhookSecretsUtils } from '@flow/server-common'
+import { FlowSystemProp, apVersionUtil, webhookSecretsUtils } from '@flow/server-common'
 import { FlowEdition, FlowFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
@@ -62,7 +62,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
         flags.push(
             {
                 id: FlowFlagId.ENVIRONMENT,
-                value: system.get(AppSystemProp.ENVIRONMENT),
+                value: system.get(FlowSystemProp.ENVIRONMENT),
                 created,
                 updated,
             },
@@ -129,19 +129,19 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.ENABLE_FLOW_ON_PUBLISH,
-                value: system.getBoolean(AppSystemProp.ENABLE_FLOW_ON_PUBLISH) ?? true,
+                value: system.getBoolean(FlowSystemProp.ENABLE_FLOW_ON_PUBLISH) ?? true,
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.EXECUTION_DATA_RETENTION_DAYS,
-                value: system.getNumber(AppSystemProp.EXECUTION_DATA_RETENTION_DAYS),
+                value: system.getNumber(FlowSystemProp.EXECUTION_DATA_RETENTION_DAYS),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.CLOUD_AUTH_ENABLED,
-                value: system.getBoolean(AppSystemProp.CLOUD_AUTH_ENABLED) ?? true,
+                value: system.getBoolean(FlowSystemProp.CLOUD_AUTH_ENABLED) ?? true,
                 created,
                 updated,
             },
@@ -201,7 +201,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.TELEMETRY_ENABLED,
-                value: system.getBoolean(AppSystemProp.TELEMETRY_ENABLED) ?? true,
+                value: system.getBoolean(FlowSystemProp.TELEMETRY_ENABLED) ?? true,
                 created,
                 updated,
             },
@@ -215,25 +215,25 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.FLOW_RUN_TIME_SECONDS,
-                value: system.getNumberOrThrow(AppSystemProp.FLOW_TIMEOUT_SECONDS),
+                value: system.getNumberOrThrow(FlowSystemProp.FLOW_TIMEOUT_SECONDS),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.FLOW_RUN_MEMORY_LIMIT_KB,
-                value: system.getNumber(AppSystemProp.SANDBOX_MEMORY_LIMIT),
+                value: system.getNumber(FlowSystemProp.SANDBOX_MEMORY_LIMIT),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.PAUSED_FLOW_TIMEOUT_DAYS,
-                value: system.getNumber(AppSystemProp.PAUSED_FLOW_TIMEOUT_DAYS),
+                value: system.getNumber(FlowSystemProp.PAUSED_FLOW_TIMEOUT_DAYS),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.WEBHOOK_TIMEOUT_SECONDS,
-                value: system.getNumber(AppSystemProp.WEBHOOK_TIMEOUT_SECONDS),
+                value: system.getNumber(FlowSystemProp.WEBHOOK_TIMEOUT_SECONDS),
                 created,
                 updated,
             },
@@ -251,25 +251,25 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
-                value: system.get(AppSystemProp.EXECUTION_MODE) !== ExecutionMode.SANDBOX_CODE_ONLY,
+                value: system.get(FlowSystemProp.EXECUTION_MODE) !== ExecutionMode.SANDBOX_CODE_ONLY,
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.MAX_RECORDS_PER_TABLE,
-                value: system.getNumber(AppSystemProp.MAX_RECORDS_PER_TABLE),
+                value: system.getNumber(FlowSystemProp.MAX_RECORDS_PER_TABLE),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.MAX_FIELDS_PER_TABLE,
-                value: system.getNumber(AppSystemProp.MAX_FIELDS_PER_TABLE),
+                value: system.getNumber(FlowSystemProp.MAX_FIELDS_PER_TABLE),
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.MAX_FILE_SIZE_MB,
-                value: system.getNumber(AppSystemProp.MAX_FILE_SIZE_MB),
+                value: system.getNumber(FlowSystemProp.MAX_FILE_SIZE_MB),
                 created,
                 updated,
             },
@@ -304,7 +304,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
 
 
 function getSupportedAppWebhooks(): string[] {
-    const webhookSecrets = system.get(AppSystemProp.APP_WEBHOOK_SECRETS)
+    const webhookSecrets = system.get(FlowSystemProp.APP_WEBHOOK_SECRETS)
     if (isNil(webhookSecrets)) {
         return []
     }

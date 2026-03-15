@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FlowError, flowId, assertNotNullOrUndefined, CreateFieldRequest, ErrorCode, Field, FieldState, FieldType, isNil, UpdateFieldRequest } from '@flow/shared'
 import { repoFactory } from '../../core/db/repo-factory'
 import { system } from '../../helper/system/system'
@@ -108,10 +108,10 @@ export const fieldService = {
     },
     async validateCount(params: CountParams): Promise<void> {
         const countRes = await this.count(params)
-        if (countRes + 1 > system.getNumberOrThrow(AppSystemProp.MAX_FIELDS_PER_TABLE)) {
+        if (countRes + 1 > system.getNumberOrThrow(FlowSystemProp.MAX_FIELDS_PER_TABLE)) {
             throw new FlowError({
                 code: ErrorCode.VALIDATION,
-                params: { message: `Max fields per table reached: ${system.getNumberOrThrow(AppSystemProp.MAX_FIELDS_PER_TABLE)}`,
+                params: { message: `Max fields per table reached: ${system.getNumberOrThrow(FlowSystemProp.MAX_FIELDS_PER_TABLE)}`,
                 },
             })
         }

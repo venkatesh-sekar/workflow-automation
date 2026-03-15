@@ -1,6 +1,6 @@
 import { mkdirSync } from 'node:fs'
 import path from 'node:path'
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import { FlowEdition, FlowEnvironment, spreadIfDefined } from '@flow/shared'
 import { types } from '@electric-sql/pglite'
 import { DataSource } from 'typeorm'
@@ -10,14 +10,14 @@ import { commonProperties } from './database-connection'
 import { getMigrations } from './postgres-connection'
 
 const getPGliteDataPathFromDisk = (): string => {
-    const apConfigDirectoryPath = system.getOrThrow(AppSystemProp.CONFIG_PATH)
+    const apConfigDirectoryPath = system.getOrThrow(FlowSystemProp.CONFIG_PATH)
     const pgliteDataPath = path.resolve(path.join(apConfigDirectoryPath, 'pglite'))
     mkdirSync(pgliteDataPath, { recursive: true })
     return pgliteDataPath
 }
 
 const getPGliteDataPath = (): string | undefined => {
-    const env = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+    const env = system.getOrThrow<FlowEnvironment>(FlowSystemProp.ENVIRONMENT)
 
     if (env === FlowEnvironment.TESTING) {
         return undefined // In-memory mode
@@ -27,7 +27,7 @@ const getPGliteDataPath = (): string | undefined => {
 
 export const createPGliteDataSource = (): DataSource => {
     const edition = system.getEdition()
-    const env = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+    const env = system.getOrThrow<FlowEnvironment>(FlowSystemProp.ENVIRONMENT)
     if (edition !== FlowEdition.COMMUNITY && env !== FlowEnvironment.TESTING) {
         throw new Error(`Edition ${edition} not supported in pglite mode in ${env} environment`)
     }

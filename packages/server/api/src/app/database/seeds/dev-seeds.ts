@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@flow/server-common'
+import { FlowSystemProp } from '@flow/server-common'
 import {
     flowId,
     isNil,
@@ -17,8 +17,8 @@ import { DataSeed } from './data-seed'
 const log = system.globalLogger()
 
 const seedAdminFromEnv = async (): Promise<void> => {
-    const adminEmail = system.get(AppSystemProp.ADMIN_EMAIL)
-    const adminApiKey = system.get(AppSystemProp.ADMIN_API_KEY)
+    const adminEmail = system.get(FlowSystemProp.ADMIN_EMAIL)
+    const adminApiKey = system.get(FlowSystemProp.ADMIN_API_KEY)
 
     if (isNil(adminEmail) || isNil(adminApiKey)) {
         log.info('[bootstrap] FLOW_ADMIN_EMAIL or FLOW_ADMIN_API_KEY not set — skipping bootstrap')

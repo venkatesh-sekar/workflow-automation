@@ -7,11 +7,11 @@ export const systemConstants = {
     ENGINE_EXECUTABLE_PATH: 'dist/packages/engine/main.js',
 }
 
-export type SystemProp = AppSystemProp | WorkerSystemProp
+export type SystemProp = FlowSystemProp | WorkerSystemProp
 
 let cachedVersion: string | undefined
 
-export enum AppSystemProp {
+export enum FlowSystemProp {
     ADMIN_EMAIL = 'ADMIN_EMAIL',
     ADMIN_API_KEY = 'ADMIN_API_KEY',
     API_KEY = 'API_KEY',
@@ -142,19 +142,19 @@ export const environmentVariables = {
         const environment = this.getEnvironment(WorkerSystemProp.CONTAINER_TYPE) ?? ContainerType.WORKER_AND_APP
         return [ContainerType.APP, ContainerType.WORKER_AND_APP].includes(environment as ContainerType)
     },
-    getNumberEnvironment: (prop: WorkerSystemProp | AppSystemProp): number | undefined => {
+    getNumberEnvironment: (prop: WorkerSystemProp | FlowSystemProp): number | undefined => {
         const value = environmentVariables.getEnvironment(prop)
         return value ? parseInt(value) : undefined
     },
-    getBooleanEnvironment: (prop: WorkerSystemProp | AppSystemProp): boolean | undefined => {
+    getBooleanEnvironment: (prop: WorkerSystemProp | FlowSystemProp): boolean | undefined => {
         const value = environmentVariables.getEnvironment(prop)
         return value ? value === 'true' : undefined
     },
-    getEnvironment: (prop: WorkerSystemProp | AppSystemProp): string | undefined => {
+    getEnvironment: (prop: WorkerSystemProp | FlowSystemProp): string | undefined => {
         const environmnetVariables = environmentMigrations.migrate()
         return environmnetVariables['FLOW_' + prop]
     },
-    getEnvironmentOrThrow: (prop: WorkerSystemProp | AppSystemProp): string => {
+    getEnvironmentOrThrow: (prop: WorkerSystemProp | FlowSystemProp): string => {
         const value = environmentVariables.getEnvironment(prop)
         assertNotNullOrUndefined(value, `Environment variable ${prop} is not set`)
         return value
