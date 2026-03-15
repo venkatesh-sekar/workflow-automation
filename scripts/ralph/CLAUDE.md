@@ -1,11 +1,51 @@
-# Ralph Flow Agent Instructions
+# Ralph Debrand Agent Instructions
 
-You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an internal workflow automation tool. Each invocation you make ONE incremental change. You are called repeatedly by a shell loop.
+You are an autonomous agent removing ALL Activepieces branding from the Flow codebase. Each invocation you make ONE incremental change. You are called repeatedly by a shell loop.
+
+## Mission
+Remove every trace of "Activepieces", "activepieces", "@activepieces", and "Ap" prefixed identifiers. This is a fully internal tool — no external links, no attribution, no references to the upstream project needed.
 
 ## Source References
-- Design doc: `docs/plans/2026-03-15-flow-mvp-design.md` (the spec — read relevant sections per phase)
-- Activepieces source: `/primary01/git/activepieces/` (read-only reference for copying)
-- This project: `/home/venkatesh/workflow-automation/` (where you write)
+- This project: `/home/venkatesh/workflow-automation/` (where you read and write)
+- Tracker: `scripts/ralph/tracker.json`
+- Progress: `scripts/ralph/progress.txt`
+- Learnings: `scripts/ralph/learnings/`
+
+## Naming Conventions
+| Old | New |
+|-----|-----|
+| `@activepieces/*` | `@flow/*` |
+| `ActivepiecesError` | `FlowError` |
+| `ApId` | `FlowId` |
+| `ApIdSchema` | `FlowIdSchema` |
+| `ApEnvironment` | `FlowEnvironment` |
+| `ApEdition` | `FlowEdition` |
+| `ApFlagId` | `FlowFlagId` |
+| `ApFile` | `FlowFile` |
+| `ApErrorParams` | `FlowErrorParams` |
+| `ApMultipartFile` | `FlowMultipartFile` |
+| `ApLock` | `FlowLock` |
+| `ApSemaphore` | `FlowSemaphore` |
+| `ApQueueJob` | `FlowQueueJob` |
+| `ApStorage` | `FlowStorage` |
+| `ApSubscriptionStatus` | `FlowSubscriptionStatus` |
+| `AppSystemProp` | `FlowSystemProp` |
+| `WorkerSystemProp` | `FlowWorkerSystemProp` |
+| `SharedSystemProp` | `FlowSharedSystemProp` |
+| `Ap{Component}` (UI) | `Flow{Component}` |
+| `ap-{file}` (filenames) | `flow-{file}` |
+| `activepieces-error.ts` | `flow-error.ts` |
+| `apId` (function) | `flowId` |
+| `apAxios` / `ap-axios.ts` | `flowAxios` / `flow-axios.ts` |
+| `apDayjs` | `flowDayjs` |
+| `"Activepieces"` (strings) | `"Flow"` |
+| `activepieces.com` URLs | Remove entirely |
+| `cdn.activepieces.com` | Local assets or remove |
+| `cloud.activepieces.com` | Remove (no cloud) |
+| `secrets.activepieces.com` | Remove (no cloud OAuth) |
+| `community.activepieces.com` | Remove |
+| `feedback.activepieces.com` | Remove |
+| `sales.activepieces.com` | Remove |
 
 ## Your Loop (one invocation = one change)
 
@@ -14,7 +54,6 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
 2. Read `scripts/ralph/progress.txt` (last 50 lines) — recent history
 3. Read `scripts/ralph/learnings/global.md` — cross-phase insights
 4. Read `scripts/ralph/learnings/{current_phase}.md` if it exists — phase-specific insights
-5. Read the section of the design doc relevant to the current phase
 
 ### Step 2: Assess current phase
 - Check the acceptance criteria for the current phase in tracker.json
@@ -31,19 +70,23 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
 ### Step 3: Pick the next smallest change
 - Look at what's incomplete for this phase
 - Pick the SMALLEST possible incremental step:
-  - Copy one package/directory
-  - Fix one broken import
-  - Remove one dead reference
-  - Add one function/endpoint
-  - Write one test
+  - Rename one package name in all package.json files
+  - Update imports for one package across the codebase
+  - Rename one type/class and all its references
+  - Rename one file and update its imports
+  - Clean one category of string references
 - Never do two unrelated things in one iteration
 - If this is the first iteration of a phase, create `scripts/ralph/learnings/{current_phase}.md`
 
 ### Step 4: Implement
 - Make the change
+- Use find-and-replace patterns aggressively — most changes are mechanical renames
+- For package renames: update package.json `name` field, then update ALL imports across ALL packages
+- For type renames: rename the export, then update ALL references across ALL packages
+- For file renames: `git mv` the file, then update ALL imports
 - Run the quality gate for this phase:
-  - `"typecheck"`: run the TypeScript compiler, allow errors from not-yet-copied packages
-  - `"full"`: run TypeScript compiler + full test suite — both must pass
+  - `"typecheck"`: run `npx tsc -p packages/server/api/tsconfig.json --noEmit 2>&1 | tail -5` (check error count)
+  - `"full"`: run TypeScript compiler + `cd packages/server/api && npx vitest run 2>&1 | tail -10`
 - If quality gate fails:
   - Attempt to fix (up to 2 tries)
   - If still failing, revert with `git checkout -- .` (preserve tracker/progress/learnings)
@@ -60,11 +103,130 @@ You are an autonomous agent forking Activepieces v0.79.2 into "Flow" — an inte
 ```
 ## Iteration #N - {phase}
 - **Change:** {what was done}
-- **Files:** {files changed}
+- **Files:** {files changed count}
 - **Quality gate:** {pass/fail}
 - **Learnings:** {any insights, or "none"}
 ---
 ```
+
+## Bulk Rename Strategy
+
+For large renames (like @activepieces → @flow in imports), use `sed` or `find + sed` for mechanical replacement:
+
+```bash
+# Example: rename all @activepieces/shared imports to @flow/shared
+find packages/ -name '*.ts' -o -name '*.tsx' -o -name '*.mts' | \
+  grep -v node_modules | grep -v dist | \
+  xargs sed -i "s|@activepieces/shared|@flow/shared|g"
+```
+
+Always verify after bulk sed by checking TypeScript compilation.
+
+## Telemetry & Analytics Removal
+
+This is a fully internal tool. ALL external telemetry must be removed:
+
+### Segment (CRITICAL — hardcoded API keys)
+- **Backend**: `packages/server/api/src/app/helper/telemetry.utils.ts`
+  - Dependency: `@segment/analytics-node`
+  - Write key: `42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK`
+  - Functions: `identify()`, `track()` — sends user ID, email, name, projectId
+  - **Action**: Remove dep, gut the file (make identify/track no-ops or delete entirely)
+- **Frontend**: `packages/web/src/components/providers/telemetry-provider.tsx`
+  - Dependency: `@segment/analytics-next`
+  - Write key: `Znobm6clOFLZNdMFpZ1ncf6VDmlCVSmj`
+  - **Action**: Remove dep, strip Segment init/identify/track
+
+### PostHog (CRITICAL — hardcoded API key)
+- **Frontend**: `packages/web/src/components/providers/telemetry-provider.tsx`
+  - Dependency: `posthog-js`
+  - API key: `phc_7F92HoXJPeGnTKmYv0eOw62FurPMRW9Aqr0TPrDzvHh`
+  - **Action**: Remove dep, strip PostHog init/identify
+
+### Template Telemetry
+- `packages/server/api/src/app/template/template-telemetry/template-telemetry.service.ts`
+  - URLs: `cloud.activepieces.com/api/v1/templates-telemetry` and `template-manager.activepieces.com`
+  - Events: VIEW, INSTALL, ACTIVATE, DEACTIVATE
+  - **Action**: Gut the service, remove all event sending
+
+### HyperDX (Optional Logging)
+- `packages/server/common/src/lib/logger/hyperdx-pino.ts`
+  - Service name hardcoded as `'activepieces'` — change to `'flow'`
+  - Keep as opt-in if HYPERDX_API_KEY configured
+
+### Sentry (Error Tracking)
+- `packages/server/common/src/lib/exception-handler.ts`
+  - Dependency: `@sentry/node`
+  - Config: `SENTRY_DSN` env var
+  - **Action**: Remove dep, gut Sentry init, keep error handler but remove external reporting
+
+### GitHub Version Check (Phone Home)
+- `packages/server/common/src/lib/system-props.ts` line 179
+  - URL: `https://raw.githubusercontent.com/activepieces/activepieces/main/package.json`
+  - **Action**: Remove version check entirely — no auto-update needed
+
+### OpenTelemetry
+- `packages/server/api/src/instrumentation.ts`
+  - OTEL trace + metric exporters
+  - **Action**: Keep as opt-in infrastructure but remove any "activepieces" service names
+
+### TELEMETRY_ENABLED Flag
+- After removing all telemetry, remove the flag and all conditional checks
+
+## Billing & Licensing Removal
+
+### Stripe
+- `packages/web/src/features/billing/api/billing-plans-api.ts`
+  - Endpoints: create-checkout-session, update-active-flows-addon, ai-credits checkout
+  - Returns: `stripeCheckoutUrl`
+  - **Action**: Remove billing API, remove Stripe references
+- `packages/server/api/src/app/platform/platform.service.ts`
+  - Fields: `stripeSubscriptionStartDate`, `stripeSubscriptionEndDate`
+  - **Action**: Remove Stripe fields from platform entity
+
+### License Keys
+- `packages/web/src/api/platforms-api.ts` — POST /v1/license-keys/verify and /v1/license-keys
+- `packages/web/src/features/billing/api/request-trial-api.ts` — POST to sales.activepieces.com
+- **Action**: Remove license key verification, trial request API, request-trial component
+
+### Cloud Services
+- `packages/server/api/src/app/pieces/piece-sync-service.ts` — cloud.activepieces.com piece registry
+  - **Action**: Remove OFFICIAL_AUTO cloud sync, pieces are local only
+- `packages/server/api/src/app/app-connection/app-connection-service/oauth2/services/cloud-oauth2-service.ts` — secrets.activepieces.com OAuth
+  - **Action**: Remove cloud OAuth, self-hosted only
+- `packages/server/api/src/app/template/community-templates.service.ts` — cloud template fetch
+  - **Action**: Remove cloud template fetching
+
+### Dead Third-Party Integrations
+- **AppSumo**: `APPSUMO_TOKEN` env var, `APPSUMO_ACTIVEPIECES_TIER1-6` plan names — remove
+- **Firebase Scrypt**: `firebase-scrypt` dep, `FIREBASE_ADMIN_CREDENTIALS`, `FIREBASE_HASH_PARAMETERS` — dead since team-login, remove
+- **Cloudflare API**: `CLOUDFLARE_API_BASE/TOKEN/ZONE_ID` env vars — remove if unused
+- **Featurebase**: `FEATUREBASE_API_KEY` — feedback service, remove
+- **SCIM**: `SCIM_DEFAULT_PROJECT_ROLE` — enterprise feature, remove if dead
+- **Google OAuth**: `GOOGLE_CLIENT_ID/SECRET` — check if used by pieces vs platform auth
+
+## External URL Strategy
+
+This is a fully internal tool. NO external links should remain:
+- **cdn.activepieces.com piece logos**: Replace with local `/pieces/{name}.svg` paths or empty string. Copy SVGs from activepieces source to `packages/web/public/pieces/` if needed.
+- **cloud.activepieces.com**: Remove entirely — no cloud dependency.
+- **secrets.activepieces.com** (OAuth redirect/claim/refresh): Remove cloud OAuth service. Self-hosted only.
+- **sales/feedback/community.activepieces.com**: Remove entirely.
+- **www.activepieces.com/docs**: Remove or replace with empty string (internal tool, no external docs).
+- **www.activepieces.com/pricing, /terms, /privacy**: Remove.
+- **Badge GIF URLs**: Remove badge system entirely or replace with local assets.
+- **Template telemetry URLs**: Remove (no external telemetry).
+- **Piece sync cloud URL**: Remove (pieces are local only).
+
+## Database Considerations
+- DB table names are generic (project, flow, flow_run, etc.) — no renames needed.
+- DB column names don't reference "activepieces" — no migrations needed.
+- Migration files are historical — don't touch them.
+
+## Exclusions
+- **Migration files** (`packages/server/api/src/app/database/migration/`): Do NOT rename identifiers in migration files. These are historical and reference database columns/tables that must not change.
+- **node_modules/**, **dist/**, **package-lock.json**: Skip these — they regenerate.
+- **Translation JSON files** (`locales/*.json`): Clean string values (replace "Activepieces" with "Flow") but don't rename keys.
 
 ## Phase Autonomy
 
@@ -72,12 +234,6 @@ You may reorder, split, or insert phases if you discover dependencies or issues 
 1. Log the reason in `learnings/global.md`
 2. Update `phase_queue` and/or `inserted_phases` in tracker.json
 3. Commit: `ralph(#{iteration}): chore(phases): reorder/insert phase — {reason}`
-
-## Learnings Management
-
-- `learnings/global.md` — read every iteration, max ~50 lines. When it grows beyond, consolidate related entries.
-- `learnings/{phase}.md` — created when a phase starts, read only during that phase. Captures phase-specific discoveries.
-- When completing a phase, promote only insights relevant to future phases into global.md. Phase file stays as archive.
 
 ## Rules
 - ONE change per iteration — never scope-creep
@@ -87,7 +243,7 @@ You may reorder, split, or insert phases if you discover dependencies or issues 
 - If you discover something affecting a future phase, note it in global learnings
 - Never skip the quality gate
 - If stuck after 2 failed attempts, log it and move on — next invocation gets a fresh context
-- **NEVER copy, reference, or import any file from `packages/ee/` or `packages/server/api/src/app/ee/` in the Activepieces source.** These directories contain proprietary Enterprise Edition code. Any functionality we need (audit logs, templates, project members, alerts) must be implemented from scratch as new MIT-licensed code. If you encounter an import pointing to an `ee/` path, remove or replace it — never resolve it by copying the EE source.
+- Migration files are UNTOUCHABLE for renames — they reference DB column names
 
 ## Stop Condition
 You never stop on your own mid-phase. The loop runner controls iterations. End normally after completing one change — another invocation will continue. Only create the DONE file when all phases are complete.

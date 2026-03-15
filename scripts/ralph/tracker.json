@@ -1,359 +1,178 @@
 {
-  "iteration": 132,
-  "current_phase": "integration-and-dockerfile",
+  "iteration": 0,
+  "current_phase": "rename-packages",
   "phases": {
-    "copy-server-core": {
-      "status": "complete",
+    "rename-packages": {
+      "status": "pending",
       "qualityGate": "typecheck",
       "criteria": [
-        "Server API package copied from activepieces (EXCLUDING entire ee/ directory)",
-        "No files from packages/server/api/src/app/ee/ present",
-        "package.json present and dependencies resolvable",
-        "TypeScript compiles (missing module errors from uncopied packages are OK, ee/ import errors are expected and OK)"
+        "All package.json 'name' fields changed from @activepieces/* to @flow/*",
+        "All import/require statements updated from @activepieces/* to @flow/*",
+        "All file: references in package.json dependencies updated",
+        "All tsconfig paths updated from @activepieces/* to @flow/*",
+        "All vitest/vite resolve.alias updated",
+        "TypeScript compiles with same error count as before (0 for server, whatever for web)"
       ],
-      "completed_items": [
-        {"iteration": 1, "description": "Copied packages/server/api/ from activepieces excluding ee/ directory (1053 files, 0 ee/ files)"},
-        {"iteration": 2, "description": "Set up TypeScript workspace infrastructure: root package.json, tsconfig.base.json, packages/server/tsconfig.server.json, installed typescript+@types/node. Typecheck runs — all 2089 errors are TS2307 (missing module) or cascading, as expected."}
-      ]
+      "completed_items": []
     },
-    "copy-shared-packages": {
-      "status": "complete",
+    "rename-ap-core-types": {
+      "status": "pending",
+      "qualityGate": "full",
+      "criteria": [
+        "ActivepiecesError renamed to FlowError (class, file, all references)",
+        "ApId renamed to FlowId (type, all references)",
+        "ApIdSchema renamed to FlowIdSchema",
+        "ApEnvironment renamed to FlowEnvironment (enum, all references)",
+        "ApEdition renamed to FlowEdition (enum, all references)",
+        "ApFlagId renamed to FlowFlagId (enum, all references)",
+        "ApErrorParams renamed to FlowErrorParams",
+        "ApFile renamed to FlowFile",
+        "ApMultipartFile renamed to FlowMultipartFile",
+        "ApLock renamed to FlowLock",
+        "ApSemaphore renamed to FlowSemaphore",
+        "ApQueueJob renamed to FlowQueueJob",
+        "ApSubscriptionStatus renamed to FlowSubscriptionStatus",
+        "ApStorage renamed to FlowStorage",
+        "apId function renamed to flowId",
+        "apAxios renamed to flowAxios, ap-axios.ts renamed to flow-axios.ts",
+        "apDayjs renamed to flowDayjs",
+        "File activepieces-error.ts renamed to flow-error.ts",
+        "All tests pass"
+      ],
+      "completed_items": []
+    },
+    "rename-ap-ui-components": {
+      "status": "pending",
       "qualityGate": "typecheck",
       "criteria": [
-        "All shared/common packages that server and UI depend on are copied (EXCLUDING packages/ee/)",
-        "Workspace references resolve between packages",
-        "TypeScript compiles (missing module errors from uncopied packages are OK)"
+        "All Ap-prefixed React components renamed to Flow prefix (ApForm→FlowForm, ApMarkdown→FlowMarkdown, ApAvatar→FlowAvatar, ApTable*→FlowTable*, ApGraph*→FlowGraph*, ApNode*→FlowNode*, ApEdge*→FlowEdge*, ApStep*→FlowStep*, ApRouter*→FlowRouter*, ApLoop*→FlowLoop*, ApNote*→FlowNote*, ApField*→FlowField*, ApSidebar*→FlowSidebar*, ApProject*→FlowProject*, ApBigAddButton*→FlowBigAddButton*, ApButton*→FlowButton*, ApErrorDialog→FlowErrorDialog, ApMentionNodeAttrs→FlowMentionNodeAttrs, ApSidebarToggle→FlowSidebarToggle)",
+        "All file names containing 'ap-' prefix renamed to 'flow-'",
+        "All imports updated",
+        "TypeScript compiles cleanly"
       ],
-      "completed_items": [
-        {"iteration": 4, "description": "Copied @activepieces/shared package (202 files), added missing dayjs dependency, typecheck passes cleanly"},
-        {"iteration": 5, "description": "Copied @activepieces/pieces-framework package (43 files), linked to local shared via file: reference, built shared dist/ for type resolution, typecheck passes cleanly"},
-        {"iteration": 6, "description": "Copied @activepieces/pieces-common package (20 src files), linked to local shared+framework via file: references, built framework dist/ for type resolution, typecheck passes cleanly"},
-        {"iteration": 7, "description": "Copied @activepieces/server-common package (38 src files), linked to local shared+framework via file: references, typecheck passes cleanly"},
-        {"iteration": 8, "description": "Copied @activepieces/engine package (46 src files), linked to local shared+framework+common via file: references, typecheck passes with 1 pre-existing type error (null vs undefined in externalId)"}
-      ]
+      "completed_items": []
     },
-    "copy-ui-core": {
-      "status": "complete",
-      "qualityGate": "typecheck",
-      "criteria": [
-        "Frontend app package copied from activepieces",
-        "Only UI components for the 24 kept pieces included",
-        "TypeScript compiles (missing module errors from uncopied packages are OK)"
-      ],
-      "completed_items": [
-        {"iteration": 10, "description": "Copied packages/web/ (834 files) from activepieces, replaced workspace:* refs with file: protocol, removed ee-embed-sdk dep and tsconfig paths, installed vite for types, typecheck passes (4 expected TS2307 errors for missing ee-embed-sdk and html-to-image)"}
-      ]
-    },
-    "copy-pieces": {
-      "status": "complete",
-      "qualityGate": "typecheck",
-      "criteria": [
-        "All 24 specified pieces copied: HTTP, Code, Branches/Conditions, Loops, Data Mapper, Math Helper, CSV, File Helper, Image Helper, PDF, Delay, Approval, Forms, Manual Trigger, Schedule, Store, GraphQL, SMTP, SFTP, Data Summarizer, Connections, Text Helper, Slack, Postgres",
-        "No other pieces present",
-        "Piece registry references only the 24 kept pieces"
-      ],
-      "completed_items": [
-        {"iteration": 12, "description": "Copied 21 piece directories (19 core + 2 community, 561 files total), replaced workspace:* with file: refs. Code/Branches/Loops are built-in FlowActionTypes already in shared package."}
-      ]
-    },
-    "fix-references": {
-      "status": "complete",
+    "rename-ap-system-props": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "All imports referencing ee/ paths removed or stubbed with no-op implementations",
-        "All broken imports/references to non-copied modules resolved",
-        "No remaining references to packages/ee/ or app/ee/ anywhere in codebase",
-        "TypeScript compiles cleanly with no errors",
-        "All existing tests pass — test baseline established"
+        "AppSystemProp renamed to FlowSystemProp (enum + all references)",
+        "WorkerSystemProp renamed to FlowWorkerSystemProp or merged",
+        "SharedSystemProp renamed to FlowSharedSystemProp",
+        "All system() calls updated",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 14, "description": "Stripped all 36 ee/ imports from app.ts, removed rbacMiddleware hook, removed edition switch (kept only COMMUNITY path inline), replaced domainHelper with WorkerSystemProp.FRONTEND_URL, removed EE-only module registrations (alertsModule, licenseKeysModule, userModule, platformProjectBackgroundJobs). Errors reduced 2089→2053."},
-        {"iteration": 15, "description": "Removed all 17 ee/ entity imports from database-connection.ts and their references in getEntities() array. Errors reduced 2053→2036."},
-        {"iteration": 16, "description": "Removed all 20 ee/ migration imports from postgres-connection.ts and their references in the migrations array. Errors reduced 2036→2016."},
-        {"iteration": 17, "description": "Stubbed role-seed.ts — removed ProjectRoleEntity ee/ import, replaced seed with no-op. Errors reduced 2016→2013."},
-        {"iteration": 18, "description": "Stubbed apiKeyService ee/ import in authenticate.ts — replaced with inline no-op returning null. Errors reduced 2013→2012."},
-        {"iteration": 19, "description": "Created community-edition domainHelper stub at helper/domain-helper.ts, updated 7 files. Errors reduced 2012→2007."},
-        {"iteration": 20, "description": "Removed alertsService ee/ import from flow-run-hooks.ts, removed dead paidEditions code. Simplified to community-only websocket notification."},
-        {"iteration": 21, "description": "Stubbed rbacService ee/ import in authorize.ts with inline no-op. Errors reduced 2005→2004."},
-        {"iteration": 22, "description": "Stubbed emailService ee/ import in badge-service.ts with inline no-op. Error count steady at 2004."},
-        {"iteration": 23, "description": "Removed otpService ee/ import from authentication.service.ts, simplified to community-only auto-verify. Errors reduced 2004→2003."},
-        {"iteration": 24, "description": "Removed federatedAuthnService ee/ import from flag.service.ts. Errors reduced 2003→2002."},
-        {"iteration": 25, "description": "Removed platformProjectService and projectMemberRepo ee/ imports from user-service.ts. Errors reduced 2002→1998."},
-        {"iteration": 26, "description": "Removed projectMemberService ee/ import from websockets.service.ts. Errors reduced 1998→1997."},
-        {"iteration": 27, "description": "Removed customDomainService ee/ import from platform.utils.ts. Simplified isCustomerOnDedicatedDomain to return false."},
-        {"iteration": 28, "description": "Created ee-authorization-stub.ts with no-op community stubs. Updated 3 files. Errors reduced 1997→1992."},
-        {"iteration": 29, "description": "Removed dedicatedWorkers ee/ import from machine-service.ts and job-queue.ts. Errors reduced 1992→1989."},
-        {"iteration": 30, "description": "Removed platformTemplateService ee/ import from template.service.ts, inlined CUSTOM template CRUD. Errors reduced 1989→1988."},
-        {"iteration": 31, "description": "Removed assertRoleHasPermission and projectRoleService ee/ imports from user-invitation.module.ts. Errors reduced 1988→1986."},
-        {"iteration": 32, "description": "Removed 4 ee/ imports from user-invitation.service.ts. Errors reduced 1986→1982."},
-        {"iteration": 33, "description": "Removed enterpriseFilteringUtils ee/ import from pieces/metadata/utils/index.ts. Errors reduced 1982→1981."},
-        {"iteration": 34, "description": "Removed secretManagersService ee/ import from app-connection-worker-controller.ts. Errors reduced 1981→1980."},
-        {"iteration": 35, "description": "Removed enterpriseFilteringUtils ee/ import from piece-metadata-service.ts. Errors reduced 1980→1979."},
-        {"iteration": 36, "description": "Removed projectMemberService and secretManagersService ee/ imports from app-connection-service.ts. Errors reduced 1979→1976."},
-        {"iteration": 37, "description": "Removed openRouterApi and platformPlanService ee/ imports from ai-provider-service.ts. Errors reduced 1976→1974."},
-        {"iteration": 38, "description": "Removed 3 ee/ imports from flow.controller.ts. Errors reduced 1974→1971."},
-        {"iteration": 39, "description": "Removed platformPlanService ee/ import from platform.service.ts. Errors reduced 1971→1970."},
-        {"iteration": 40, "description": "Removed 4 ee/ imports from platform.controller.ts. Removed entire CLOUD-only DELETE endpoint. Errors reduced 1970→1964."},
-        {"iteration": 41, "description": "Removed gitRepoService ee/ import from table.controller.ts. Errors reduced 1964→1963."},
-        {"iteration": 42, "description": "Removed projectStateService ee/ import from table.service.ts — last ee/ import in server source. Errors reduced 1963→1962."},
-        {"iteration": 43, "description": "Removed entire test/integration/cloud/ directory (31 CLOUD/EE-only test files)."},
-        {"iteration": 44, "description": "Removed ee/ import from test/helpers/auth.ts — removed managed auth helpers."},
-        {"iteration": 45, "description": "Removed 3 ee/ imports from test/helpers/mocks/index.ts. ZERO ee/ imports remain in entire codebase."},
-        {"iteration": 46, "description": "Installed server/api npm dependencies. TypeScript errors reduced 1962→51."},
-        {"iteration": 47, "description": "Cleaned app-event-routing.module.ts piece imports, fixed slack path. Errors reduced 51→47."},
-        {"iteration": 48, "description": "Deduplicated typeorm via peerDependencies. Errors reduced 47→16."},
-        {"iteration": 49, "description": "Created worker-stub.ts with type definitions and no-op exports. Errors reduced 16→8."},
-        {"iteration": 50, "description": "Added type assertions in community-templates.service.ts. Errors reduced 8→5."},
-        {"iteration": 51, "description": "Added type assertions in piece-sync-service.ts. Errors reduced 5→1."},
-        {"iteration": 52, "description": "Fixed isCustomerOnDedicatedDomain stub parameter. TypeScript errors: 0. Tests: 20 suites fail."},
-        {"iteration": 53, "description": "Fix test infrastructure: pino-pretty, vitest worker alias, entity relation fix, redis malloc patch. Tests: 4 pass."},
-        {"iteration": 54, "description": "Removed SERVICE auth type from test helper. Tests: 17 suites pass."},
-        {"iteration": 55, "description": "Fixed dayjs.duration runtime error in vitest setup. Tests: 19 suites pass."},
-        {"iteration": 56, "description": "Fixed RBAC stub for platform-level project isolation. All 168 tests pass."},
-        {"iteration": 57, "description": "Removed ee-embed-sdk alias from vite.config.mts (pointed to packages/ee/embed-sdk/src). Zero packages/ee/ or app/ee/ references remain. Phase complete."}
-      ]
+      "completed_items": []
     },
-    "auth-replace": {
-      "status": "complete",
+    "strip-telemetry": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "Signup, signin, password reset, OAuth callbacks removed",
-        "POST /api/v1/auth/team-login endpoint implemented and working",
-        "api_key column added to project table (encrypted, unique)",
-        "project_member used for email-based membership check",
-        "CLI scripts created: create-team, add-member, rotate-key",
-        "JWT generation reuses existing access-token-manager",
-        "user-identity service/entity removed",
-        "New tests for team-login flow and CLI scripts"
+        "Segment backend removed: @segment/analytics-node dep removed, telemetry.utils.ts gutted (identify/track become no-ops), hardcoded write key 42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK removed",
+        "Segment frontend removed: @segment/analytics-next dep removed, telemetry-provider.tsx Segment init/identify/track removed, hardcoded write key Znobm6clOFLZNdMFpZ1ncf6VDmlCVSmj removed",
+        "PostHog removed: posthog-js dep removed, telemetry-provider.tsx PostHog init/identify removed, hardcoded API key phc_7F92HoXJPeGnTKmYv0eOw62FurPMRW9Aqr0TPrDzvHh removed",
+        "Sentry removed: @sentry/node dep removed, exception-handler.ts Sentry init removed, SENTRY_DSN env var removed",
+        "Template telemetry removed: template-telemetry.service.ts gutted, cloud and template-manager URLs removed, TEMPLATE_TELEMETRY_API_KEY refs removed",
+        "HyperDX service name 'activepieces' changed to 'flow' (keep as opt-in)",
+        "OpenTelemetry instrumentation.ts: keep as opt-in but remove any activepieces references",
+        "GitHub version check removed: raw.githubusercontent.com/activepieces/activepieces/main/package.json URL in system-props.ts",
+        "TELEMETRY_ENABLED flag and all checks cleaned up (no telemetry = no flag needed)",
+        "All identify() and track() calls that send user data externally removed or no-oped",
+        "No hardcoded analytics API keys remain in codebase",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 58, "description": "Added apiKeyHash column (nullable, unique-indexed) to project entity for API key lookup. Server-only field using SHA-256 hash — not added to shared Project type."},
-        {"iteration": 59, "description": "Implemented POST /v1/authentication/team-login endpoint: hashes API key with SHA-256, finds project by hash, verifies email via user-identity lookup, checks project membership, returns JWT. Added findByApiKeyHash to project-service."},
-        {"iteration": 60, "description": "Removed old sign-up, sign-in, switch-platform, and federated-auth endpoints from controller and service. Stripped authentication.service.ts to team-login only. Updated dev-seeds.ts to no-op (CLI scripts handle team creation). Replaced old auth tests with placeholder."},
-        {"iteration": 61, "description": "Created create-team CLI script at packages/server/api/src/app/cli/create-team.ts. Accepts --name and --owner-email args, creates platform/identity/user/project with API key hash, prints API key to stdout."},
-        {"iteration": 62, "description": "Created add-member CLI script at packages/server/api/src/app/cli/add-member.ts. Accepts --project-id and --email, finds/creates user-identity+user, creates default MEMBER project_role, inserts project_member row for team access."},
-        {"iteration": 63, "description": "Created rotate-key CLI script at packages/server/api/src/app/cli/rotate-key.ts. Accepts --project-id, generates new API key, updates apiKeyHash, prints new key to stdout."},
-        {"iteration": 64, "description": "Added email, firstName, lastName columns to user entity and shared User zod type. Updated CreateParams in user-service, test mock helpers to populate these fields. Prepares for user-identity removal."},
-        {"iteration": 65, "description": "Added verified and tokenVersion columns to user entity and shared User zod type. Updated CreateParams and test mocks. Prepares access-token-manager to use user directly instead of user-identity."},
-        {"iteration": 66, "description": "Updated access-token-manager assertUserSession to use user.verified/tokenVersion directly instead of fetching user-identity. Removed userIdentityService import from access-token-manager."},
-        {"iteration": 67, "description": "Updated teamLogin and getProjectAndToken to use user fields directly instead of user-identity. Added getOneByPlatformAndEmail to user-service. Updated AuthenticationResponse to pick fields from User instead of UserIdentity (dropped trackEvents/newsLetter). Removed dead sendTelemetry/saveNewsLetterSubscriber functions."},
-        {"iteration": 68, "description": "Updated create-team and add-member CLI scripts to stop creating user-identity records. Users now created directly with email/firstName/lastName/verified/tokenVersion fields. Removed userIdentityRepository imports from both scripts."},
-        {"iteration": 69, "description": "Updated getMetaInformation in user-service to use user.email/firstName/lastName directly instead of fetching user-identity. Removed userIdentityService import and identity relation queries. imageUrl set to null."},
-        {"iteration": 70, "description": "Removed userIdentityService from user-invitation.service.ts. Updated accept() to use userService.getOneByPlatformAndEmail instead of identity lookup. Updated getOrCreateWithProject to accept email/name params instead of UserIdentity object. Removed UserIdentity import from user-service."},
-        {"iteration": 71, "description": "Removed 4 identity-dependent methods from user-service (getUsersByIdentityId, getOneByIdentityIdOnly, getByIdentityId, getOneByIdentityAndPlatform). Added getOneByEmail. Updated user-invitation.module.ts to use email-based user lookup. Removed dead listPlatformsForIdentityWithAtleastProject from platform.service.ts."},
-        {"iteration": 72, "description": "Removed userIdentityService import from application-events.ts. enrichAuditEventParam now uses user.email directly instead of fetching user-identity record."},
-        {"iteration": 73, "description": "Removed userIdentityRepository from platform-jobs.ts (no longer cleaning up identity on platform delete). Removed userIdentityService from platform-analytics.module.ts (removed embedded-user check — no JWT identity provider in Flow). Removed assertUserIsNotEmbedded function."},
-        {"iteration": 74, "description": "Removed UserIdentity import from telemetry.utils.ts. Updated identify() to use user.email/firstName/lastName directly instead of identity parameter."},
-        {"iteration": 75, "description": "Removed UserIdentity imports from app-connection.entity.ts and app-connection-service.ts. Updated mapToUserWithMetaInformation to use user.email/firstName/lastName directly. Removed identity join from connection list query."},
-        {"iteration": 76, "description": "Removed identityId column, identity relation, and idx_user_platform_id_identity_id index from user entity. Removed UserIdentityEntity from database-connection entities. Removed identityId from User zod type, user-service CreateParams, CLI scripts, system-jobs type. Fixed analytics and app-connection-service identity references. Updated all test mocks/helpers to stop creating user_identity records."},
-        {"iteration": 77, "description": "Deleted user-identity entity and service files (user-identity-entity.ts, user-identity-service.ts) and removed the user-identity/ directory. No remaining imports to these files. Migration files kept as historical."},
-        {"iteration": 78, "description": "Added 7 integration tests for team-login endpoint: valid login returns JWT, owner login, invalid API key rejection, unknown email rejection, empty API key validation, invalid email validation, cross-platform rejection. All 171 tests pass."}
-      ]
+      "completed_items": []
     },
-    "env-rebrand": {
-      "status": "complete",
+    "strip-billing-and-licensing": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "All AP_ prefixes renamed to FLOW_ in AppSystemProp/WorkerSystemProp enums",
-        "system.ts env var reader and defaults updated",
-        "Docker Compose .env and docker-compose.yml updated",
-        "All hardcoded AP_ references replaced",
-        "Existing tests updated to use new env var names"
+        "Stripe checkout session endpoints removed from billing-plans-api.ts",
+        "stripeSubscriptionStartDate/stripeSubscriptionEndDate fields removed or ignored",
+        "stripeCheckoutUrl references removed",
+        "License key verification API calls removed (POST /v1/license-keys/verify and /v1/license-keys)",
+        "request-trial-api.ts removed (sends data to sales.activepieces.com)",
+        "request-trial.tsx component removed",
+        "Billing UI components gutted: license-key.tsx, ai-credit-usage.tsx, active-flows-addon",
+        "Platform billing page simplified (no external payment links)",
+        "Cloud piece sync removed from piece-sync-service.ts (OFFICIAL_AUTO mode → local only)",
+        "Cloud OAuth service removed (secrets.activepieces.com refs in cloud-oauth2-service.ts)",
+        "Community templates cloud fetch removed (community-templates.service.ts cloud URL)",
+        "Cloud API base URL removed from apAxios/server-common",
+        "AppSumo integration removed: APPSUMO_TOKEN env var, APPSUMO_ACTIVEPIECES_TIER1-6 plan names",
+        "Firebase Scrypt password hasher removed (dead code — team-login only): firebase-scrypt dep, FIREBASE_ADMIN_CREDENTIALS, FIREBASE_HASH_PARAMETERS",
+        "Cloudflare API env vars removed if unused: CLOUDFLARE_API_BASE, CLOUDFLARE_API_TOKEN, CLOUDFLARE_ZONE_ID",
+        "Featurebase API key removed: FEATUREBASE_API_KEY",
+        "SCIM references cleaned if dead code",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 80, "description": "Renamed AP_ prefix to FLOW_ in core env var reader (system-props.ts, env-migrations.ts), error messages (system.ts, system-validator.ts, code-sandbox.ts), .env.tests, .env, and one test file. All 171 tests pass."},
-        {"iteration": 81, "description": "Renamed all process.env.AP_* to process.env.FLOW_* in engine package: vitest.config.ts, step-files.service.ts, piece-executor.ts, engine-constants.ts, code-sandbox.ts, logging-utils.ts, and flow-log-size.test.ts. All 171 tests pass."},
-        {"iteration": 82, "description": "Renamed remaining hardcoded AP_ env var references in server/api (jwt-utils.ts, system-validator.ts, app.ts) and shared comment (flow-run.ts) to FLOW_. All 171 tests pass."}
-      ]
+      "completed_items": []
     },
-    "strip-ai-providers": {
-      "status": "complete",
+    "strip-external-urls": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "AI provider list trimmed to OpenAI only",
-        "Anthropic, Google, Azure, OpenRouter, Cloudflare provider code removed",
-        "MCP server implementation untouched",
-        "Agents system untouched",
-        "Tests updated for single-provider setup"
+        "All cdn.activepieces.com URLs replaced with local assets or removed",
+        "All www.activepieces.com/docs URLs removed or replaced with empty string",
+        "All www.activepieces.com/pricing and /terms and /privacy URLs removed",
+        "feedbackUrl and supportUrl exports emptied or removed",
+        "Badge imageUrls from cdn.activepieces.com removed or replaced",
+        "Piece logoUrl cdn.activepieces.com references replaced with local paths or removed",
+        "Showcase video URLs from cdn.activepieces.com removed",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 84, "description": "Stripped provider registry to OpenAI only. Deleted 6 provider files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. All 171 tests pass."},
-        {"iteration": 85, "description": "Stripped shared AI provider types to OpenAI only. Removed 7 provider enums (ANTHROPIC, AZURE, GOOGLE, OPENROUTER, CLOUDFLARE_GATEWAY, ACTIVEPIECES, CUSTOM), deleted their zod schemas/auth configs, removed splitCloudflareGatewayModelId helper. Cleaned ai-provider-service.ts of all ACTIVEPIECES cloud-credits code. Fixed 2 migration files using string literals instead of removed enum values. All 171 tests pass."},
-        {"iteration": 86, "description": "Removed dead AI credit/OpenRouter references: AI_CREDIT_UPDATE_CHECK system job enum+type, OPENROUTER_PROVISION_KEY from AppSystemProp and validator, aiCreditsEnabled() hardcoded to false, CAN_BUY_AI_CREDITS flag hardcoded to false. Rebuilt server-common dist. All 171 tests pass."},
-        {"iteration": 87, "description": "Stripped UI files to OpenAI only. Removed 5 non-OpenAI provider entries from ai-providers.ts, stripped model lists/types from hooks.ts to openai only, simplified upsert-provider-dialog.tsx (removed Cloudflare/Azure/Custom/Anthropic/Google schema branches), emptied dead upsert-provider-config-form.tsx and model-form-popover.tsx. All 171 tests pass."}
-      ]
+      "completed_items": []
     },
-    "build-audit-logs": {
-      "status": "complete",
+    "clean-strings-and-comments": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "New audit log entity, service, and module written from scratch in core (NOT copied from ee/)",
-        "Audit event table: id, projectId, userId, event, data, timestamp",
-        "Logs cover: flow create/update/delete, connection changes, member changes, flow enable/disable",
-        "API endpoint to list audit events (project-scoped)",
-        "Tests for audit log events"
+        "No user-visible string contains 'activepieces' or 'Activepieces'",
+        "All code comments referencing activepieces cleaned",
+        "All translation JSON files cleaned of activepieces references",
+        "SAML SSO entity ID 'Activepieces' changed to 'Flow'",
+        "README, CONTRIBUTING, SECURITY files cleaned or removed",
+        "crowdin.yml removed (no external translation service)",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 89, "description": "Created AuditEventEntity with columns (id, projectId, userId, event, data, created/updated), relations to project/user, index on projectId. Registered in database-connection.ts. All 171 tests pass."},
-        {"iteration": 90, "description": "Created auditEventService with create() and list() methods. Uses repoFactory pattern, apId() for IDs, project-scoped list with DESC ordering. All 171 tests pass."},
-        {"iteration": 91, "description": "Created audit-event.module.ts with GET /v1/audit-events endpoint (project-scoped, USER principal). Registered auditEventModule in app.ts. All 171 tests pass."},
-        {"iteration": 92, "description": "Added audit event hooks to flow controller for FLOW_CREATED, FLOW_UPDATED, FLOW_STATUS_CHANGED (enable/disable), and FLOW_DELETED events. All 171 tests pass."},
-        {"iteration": 93, "description": "Added audit event hooks to app-connection controller for CONNECTION_UPSERTED and CONNECTION_DELETED events. Guarded with PrincipalType.USER check. All 171 tests pass."},
-        {"iteration": 94, "description": "Added audit event hooks to user-invitation controller for MEMBER_INVITED (create) and MEMBER_REMOVED (delete) events. Guarded with PrincipalType.USER and InvitationType.PROJECT checks. All 171 tests pass."},
-        {"iteration": 95, "description": "Added 7 integration tests for audit events: list empty, list with events, project isolation, DESC ordering, limit parameter, FLOW_CREATED hook, FLOW_DELETED hook. All 178 tests pass."}
-      ]
+      "completed_items": []
     },
-    "simplify-alerts": {
-      "status": "complete",
+    "clean-dead-code": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "Alerts module replaced with structured stdout logging",
-        "Log format: { level: error, event: flow_failed, flowId, projectId, error, timestamp }",
-        "Alert service interface kept for future swappability",
-        "Tests for structured log output"
+        "Dead sign-up form files removed (sign-up-form.tsx, auth-form-template.tsx)",
+        "Dead alerts feature barrel removed (features/alerts/)",
+        "Dead git-sync API/hooks removed",
+        "Dead use-partner-stack.ts removed",
+        "Dead TemplateType.OFFICIAL/SHARED refs in UI cleaned",
+        "Dead cloud.activepieces.com hostname checks removed (isCloud checks)",
+        "user-badges.tsx CDN references removed or badge system gutted",
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 97, "description": "Created alert service with AlertHandler interface and structured stdout logging. alertService(log).handleFlowRunFinish(flowRun) logs { level, event, flowId, flowRunId, projectId, status, error, timestamp } via Fastify logger on failure statuses. All 178 tests pass."},
-        {"iteration": 98, "description": "Hooked alertService into flow-run-hooks.ts onFinish — calls handleFlowRunFinish on every terminal flow run to log structured alerts for failures. All 178 tests pass."},
-        {"iteration": 99, "description": "Added 6 unit tests for alert service: logs structured error on FAILED/INTERNAL_ERROR/TIMEOUT statuses, skips SUCCEEDED/RUNNING statuses, uses 'unknown' when no failedStep. All 184 tests pass."}
-      ]
+      "completed_items": []
     },
-    "modify-templates": {
-      "status": "complete",
+    "final-sweep": {
+      "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "OFFICIAL template type stripped",
-        "CUSTOM template type kept",
-        "scope field added to template: TEAM (project-scoped) or GLOBAL (visible to all)",
-        "Tests for template scope behavior"
-      ],
-      "completed_items": [
-        {"iteration": 101, "description": "Stripped OFFICIAL and SHARED from TemplateType enum (kept CUSTOM only). Removed type from CreateTemplateRequestBody and ListTemplatesRequestQuery. Simplified template controller — removed OFFICIAL cloud-fetch logic, community-templates fallback, categories endpoint. Simplified template service — removed OFFICIAL/SHARED switch branches. Updated flow.service.ts and table.service.ts to use CUSTOM. Migration files untouched (use local enums)."},
-        {"iteration": 102, "description": "Added TemplateScope enum (TEAM/GLOBAL) to shared types. Added scope field to Template zod schema, template entity (default TEAM), CreateTemplateRequestBody (optional, default TEAM), and ListTemplatesRequestQuery (optional filter). Updated template.service.ts, flow.service.ts, table.service.ts to populate scope. All 184 tests pass."},
-        {"iteration": 103, "description": "Added scope filtering to template service list() method. When scope query param is provided, filters templates by scope (TEAM or GLOBAL). Cleaned up stale Omit<..., 'type'> in ListParams. All 184 tests pass."},
-        {"iteration": 104, "description": "Added 5 integration tests for template scope: default TEAM on create, GLOBAL on create, list without scope filter returns all, list with TEAM filter, list with GLOBAL filter. Updated createMockTemplate to include scope field. All 189 tests pass."}
-      ]
-    },
-    "frontend-login": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "/sign-in and /sign-up routes replaced with single /login page",
-        "Login page has two fields: email and team key",
-        "Red-branded with Flow logo",
-        "On success: JWT stored in localStorage, redirect to /automations",
-        "Tests for login flow"
-      ],
-      "completed_items": [
-        {"iteration": 106, "description": "Created /login page with email+team-key fields using team-login API. Replaced /sign-in and /sign-up routes with /login (kept /sign-in as backward-compat redirect). Updated authenticationApi to teamLogin only. Updated all /sign-in redirects across guards, layouts, and components to /login. Cleaned api.ts allowlist."},
-        {"iteration": 107, "description": "Added 7 unit tests for LoginSchema validation: valid input, empty email, invalid email, email without domain, empty team key, any non-empty key format, missing fields. Extracted LoginSchema to separate module for testability. Installed vitest+jsdom in web package."},
-        {"iteration": 108, "description": "Changed default post-login redirect from /flows to /automations in useDefaultRedirectPath hook."},
-        {"iteration": 109, "description": "Red-branded login page: replaced FullLogo with red Flow wordmark, styled sign-in button with red-600/700 background."}
-      ]
-    },
-    "frontend-sidebar": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "Sidebar items removed: Tables, Leaderboard/Community, Platform admin, Billing/Plans",
-        "Sidebar items kept: Automations, Connections, Runs, Agents/Chat, Templates, Settings",
-        "Tests updated for sidebar changes"
-      ],
-      "completed_items": [
-        {"iteration": 111, "description": "Removed Impact, Leaderboard, Platform Admin link, and Usage Limits from dashboard sidebar. Renamed Explore to Templates. Removed unused imports (PlatformRole, templatesTelemetryApi, userHooks, ChartLineIcon, ShieldIcon, TrophyIcon, SidebarUsageLimits, useIsPlatformAdmin)."},
-        {"iteration": 112, "description": "Removed Billing/Plans references from dashboard sidebar: stripped TeamProjectsLimit-based gating, removed 'View Plans' tooltip with activepieces.com/pricing link, removed disabled project button state. New project and search buttons always shown. Removed unused Tooltip and platformHooks imports."}
-      ]
-    },
-    "frontend-settings": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "Settings tabs removed: Billing, API keys, Git sync, Custom domains, Appearance (i18n)",
-        "Settings tabs kept: General (project name, icon), Team members (list/add/remove emails), Alerts (placeholder)",
-        "Tests updated for settings changes"
-      ],
-      "completed_items": [
-        {"iteration": 114, "description": "Removed Pieces, Environment, and MCP Server tabs from project settings dialog. Kept General, Members, Alerts only. Simplified disabled conditions (removed feature flag checks, platform embedding checks). Cleaned unused imports (PlatformRole, platformHooks, userHooks, McpSvg, GitBranch, Puzzle, flagsHooks). Updated page header tab types."},
-        {"iteration": 115, "description": "Simplified Alerts settings tab to placeholder message ('check application logs'). Removed email-based alert subscription UI (add-alert-email-dialog). Flow uses structured stdout logging for alerts."},
-        {"iteration": 116, "description": "Removed language toggle (i18n/Appearance) from account settings dialog. Deleted language-toggle.tsx component. ThemeToggle kept."},
-        {"iteration": 117, "description": "Added 3 unit tests for settings tab configuration: verifies only general/members/alerts tabs exist, removed tabs not present, exactly 3 tabs. Extracted SettingsTabId type to settings-tabs.ts module."}
-      ]
-    },
-    "frontend-branding": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "App name Flow in all page titles, sidebar header, meta tags, favicon",
-        "Primary color set to red in Tailwind theme config",
-        "Activepieces logo replaced with Flow wordmark or placeholder",
-        "Tests updated for branding changes"
-      ],
-      "completed_items": [
-        {"iteration": 119, "description": "Updated server-side defaultTheme: websiteName 'Activepieces' -> 'Flow', primaryColor '#6e41e2' (purple) -> '#dc2626' (red), cleared external Activepieces CDN logo/favicon URLs. This propagates to all UI via flags API."},
-        {"iteration": 120, "description": "Updated vite.config.mts dev defaults: AP_TITLE 'Activepieces' -> 'Flow', AP_FAVICON from external activepieces.com URL to local '/favicon.ico'."},
-        {"iteration": 121, "description": "Updated CSS primary color variables from purple/blue to red in both light and dark modes. Changed --primary, --primary-100, --primary-300, --primary-foreground, --sidebar-primary, --sidebar-primary-foreground, --sidebar-progress in styles.css."},
-        {"iteration": 122, "description": "Replaced 'Built with activepieces' branding in show-powered-by.tsx with 'Built with Flow'. Removed Activepieces SVG logo."},
-        {"iteration": 123, "description": "Replaced all user-visible 'Activepieces' text strings with 'Flow' across 13 UI source files: install-piece-dialog, automations-empty-state, ai-model, flow-chat, mcp-server, branding settings, saml-dialog, health page, api-keys, features-status, sidebar-usage-limits."},
-        {"iteration": 124, "description": "Added 2 integration tests for Flow branding: verifies theme returns 'Flow' websiteName and red #dc2626 primary color, verifies no 'Activepieces' branding in theme or logo URLs. All 191 tests pass."}
-      ]
-    },
-    "deployment": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "Docker Compose with 4 services: flow-api, flow-worker, postgres, redis",
-        "All FLOW_ env vars configured in compose and .env",
-        "Dockerfile builds successfully",
-        "Container starts and responds to health check"
-      ],
-      "completed_items": [
-        {"iteration": 126, "description": "Created Dockerfile (multi-stage: build shared packages in order, build server API, build web frontend, run with nginx+node), docker-compose.yml (4 services: flow-api, flow-worker, postgres, redis), .env.production with all FLOW_ vars, nginx.conf, docker-entrypoint.sh."},
-        {"iteration": 127, "description": "Added health checks to docker-compose.yml: flow-api checks /v1/health endpoint, postgres uses pg_isready, redis uses redis-cli ping. flow-api and flow-worker depend on healthy postgres+redis via service_healthy condition."},
-        {"iteration": 128, "description": "Fixed Dockerfile to build and run successfully: Node 22 (isolated-vm requires it), per-package npm install in build stage, worker-module bridge for runtime module resolution, NODE_PATH for piece dep resolution, piece npm install loop, dayjs duration plugin init, valid FLOW_ENCRYPTION_KEY, .dockerignore fixes, missing web deps (@vitejs/plugin-react, vite-plugin-checker, intl-messageformat, @tiptap/suggestion), removed dead EE embed/impact/leaderboard routes, added esbuild to engine devDeps, ioredis type annotation fix. Docker build succeeds, all 4 containers start, health check returns {status: 'Healthy'}."}
-      ]
-    },
-    "copy-confluence": {
-      "status": "complete",
-      "qualityGate": "typecheck",
-      "criteria": [
-        "Directory exists with all source files",
-        "package.json has no workspace:* references",
-        "tsc -p tsconfig.lib.json compiles cleanly",
-        "dist/src/index.js and dist/package.json exist"
-      ],
-      "completed_items": [
-        {"iteration": 130, "description": "Copied confluence piece from activepieces source, replaced workspace:* with file: refs in package.json, installed deps, built successfully. dist/src/index.js and dist/package.json exist."}
-      ]
-    },
-    "copy-jira-cloud": {
-      "status": "complete",
-      "qualityGate": "typecheck",
-      "criteria": [
-        "Directory exists with all source files",
-        "package.json has no workspace:* references",
-        "tsc -p tsconfig.lib.json compiles cleanly",
-        "@atlaskit deps installed without blocking errors"
-      ],
-      "completed_items": [
-        {"iteration": 131, "description": "Copied jira-cloud piece from activepieces source, replaced workspace:* with file: refs in package.json, installed @atlaskit deps with --legacy-peer-deps, built successfully. dist/src/index.js and dist/package.json exist."}
-      ]
-    },
-    "integration-and-dockerfile": {
-      "status": "complete",
-      "qualityGate": "full",
-      "criteria": [
-        "Dockerfile includes piece build step",
-        "Both env files list all 4 community pieces",
-        "All 4 community pieces discoverable via API",
+        "grep -ri 'activepieces' finds ZERO results in source (excluding node_modules, dist, package-lock, migration files)",
+        "grep -ri '@activepieces' finds ZERO results in source",
+        "grep -ri 'cdn.activepieces' finds ZERO results in source",
+        "grep -ri 'segment\\|posthog\\|phc_\\|sentry' finds ZERO analytics/error-tracking keys in source",
+        "grep -ri 'stripe\\|appsumo\\|firebase-scrypt\\|featurebase' finds ZERO payment/service refs in source (excluding migration files)",
+        "grep -ri 'raw.githubusercontent.com/activepieces' finds ZERO version-check refs",
+        "No Ap-prefixed types remain (excluding migration files)",
+        "No ap-prefixed file names remain",
+        "No apId, apAxios, apDayjs function names remain",
+        "No outbound HTTP calls to activepieces.com domains",
         "Docker build succeeds",
-        "Existing 191 tests still pass"
+        "All tests pass"
       ],
-      "completed_items": [
-        {"iteration": 132, "description": "Added piece build loop to Dockerfile after common build step (builds all community and core pieces with build scripts). Updated FLOW_DEV_PIECES in .env (dev) and .env.production to include slack,postgres,jira-cloud,confluence. All 191 tests pass."}
-      ]
+      "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login", "frontend-sidebar", "frontend-settings", "frontend-branding", "deployment", "copy-confluence", "copy-jira-cloud", "integration-and-dockerfile"],
-  "phase_queue": [],
+  "completed_phases": [],
+  "phase_queue": ["rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }
