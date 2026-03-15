@@ -1,6 +1,6 @@
 {
-  "iteration": 112,
-  "current_phase": "frontend-sidebar",
+  "iteration": 113,
+  "current_phase": "frontend-settings",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -252,7 +252,7 @@
       ]
     },
     "frontend-sidebar": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "Sidebar items removed: Tables, Leaderboard/Community, Platform admin, Billing/Plans",
@@ -297,9 +297,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login", "frontend-sidebar"],
   "phase_queue": [
-    "frontend-settings",
     "frontend-branding",
     "deployment"
   ],

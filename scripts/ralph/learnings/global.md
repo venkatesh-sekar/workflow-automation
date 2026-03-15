@@ -41,4 +41,6 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Web tests use `// @vitest-environment jsdom` + `vi.mock('i18next', ...)`
 - Old sign-up-form.tsx and auth-form-template.tsx still exist but are dead code (no route)
 - TemplateType.OFFICIAL/SHARED refs remain in UI — fix in frontend phases
-- Sidebar defined in packages/web/src/app/components/sidebar/
+- Sidebar: dashboard/index.tsx has Templates only; Automations/Runs/Connections are header tabs in project-dashboard-layout-header.tsx
+- Platform sidebar (platform/index.tsx) still has Billing entry but unreachable from normal nav
+- Settings: accessible via sidebar-user.tsx dropdown (Account Settings); project settings in routes
