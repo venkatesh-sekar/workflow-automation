@@ -1,5 +1,5 @@
 {
-  "iteration": 14,
+  "iteration": 15,
   "current_area": "settings-pages",
   "queue": [
     "platform-admin-pages",
@@ -119,6 +119,14 @@
       "change": "Fix table footer typography and separator — replaced invalid font-sm with font-normal, removed mt-1 fighting flex centering, replaced bare | pipe with token-backed w-px bg-border separator, replaced h-[40px] with h-10",
       "files_modified": ["packages/web/src/features/tables/components/flow-table-footer.tsx"],
       "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "settings-pages",
+      "iteration": 15,
+      "date": "2026-03-16",
+      "change": "Fix settings dialog tab active state — replaced bg-sidebar-accent (identical to hover) with bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary, matching sidebar active-item pattern from iterations #4 and #6",
+      "files_modified": ["packages/web/src/app/components/project-settings/index.tsx"],
+      "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -140,6 +148,7 @@
     "Vite build has pre-existing zod resolution failure — use tsc --noEmit for verification when vite build is broken.",
     "For table cell links (navigable counts, IDs), use text-primary hover:underline cursor-pointer transition-colors duration-150 wrapped in cn(). Don't use permanent underline — reveal on hover matches Linear/Retool table cell link pattern. Don't use hover:text-primary-300 as it's darker, not lighter.",
     "For inline separators between metadata items, use <div className=\"h-4 w-px bg-border\" /> — the established codebase pattern. Never use bare text pipe characters. The parent gap utility handles spacing automatically.",
-    "font-sm is not a valid Tailwind class — always use font-normal (400), font-medium (500), or font-semibold (600). Tailwind font-* classes are for weight, not size (use text-sm for size)."
+    "font-sm is not a valid Tailwind class — always use font-normal (400), font-medium (500), or font-semibold (600). Tailwind font-* classes are for weight, not size (use text-sm for size).",
+    "Any sidebar-like nav panel in dialogs (settings, etc.) must use the same active-state pattern as the main sidebar: bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary. Include hover override on active items to prevent hover:bg-sidebar-accent from overriding the primary tint."
   ]
 }

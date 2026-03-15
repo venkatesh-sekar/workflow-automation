@@ -175,7 +175,8 @@ export function ProjectSettingsDialog({
                     className={cn(
                       'flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm font-medium transition-all cursor-pointer hover:bg-sidebar-accent',
                       {
-                        'bg-sidebar-accent': activeTab === tab.id,
+                        'bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary':
+                        activeTab === tab.id,
                       },
                     )}
                     onClick={() => setActiveTab(tab.id)}
