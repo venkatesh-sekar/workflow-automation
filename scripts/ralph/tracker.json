@@ -1,5 +1,5 @@
 {
-  "iteration": 125,
+  "iteration": 126,
   "current_phase": "deployment",
   "phases": {
     "copy-server-core": {
@@ -298,7 +298,7 @@
       ]
     },
     "deployment": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "Docker Compose with 4 services: flow-api, flow-worker, postgres, redis",
@@ -306,7 +306,9 @@
         "Dockerfile builds successfully",
         "Container starts and responds to health check"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 126, "description": "Created Dockerfile (multi-stage: build shared packages in order, build server API, build web frontend, run with nginx+node), docker-compose.yml (4 services: flow-api, flow-worker, postgres, redis), .env.production with all FLOW_ vars, nginx.conf, docker-entrypoint.sh."}
+      ]
     }
   },
   "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login", "frontend-sidebar", "frontend-settings", "frontend-branding"],

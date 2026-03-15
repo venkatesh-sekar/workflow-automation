@@ -877,3 +877,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 24 suites / 191 tests pass)
 - **Learnings:** Promoted branding architecture insights to global learnings. Phase took 7 iterations (119-125).
 ---
+
+## Iteration #126 - deployment
+- **Change:** Created Dockerfile, docker-compose.yml, .env.production, nginx.conf, docker-entrypoint.sh
+- **Files:** Dockerfile (new), docker-compose.yml (new), .env.production (new), nginx.conf (new), docker-entrypoint.sh (new), scripts/ralph/learnings/deployment.md (new)
+- **Quality gate:** pass (typecheck clean, 191/191 server tests pass)
+- **Learnings:** Build order: shared→framework→common→server-common→engine→api→web. Entry point is packages/server/api/dist/src/bootstrap.js. FLOW_CONTAINER_TYPE controls APP vs WORKER mode.
+---

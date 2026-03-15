@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  flow-api:
+    build: .
+    container_name: flow-api
+    env_file: .env.production
+    environment:
+      FLOW_CONTAINER_TYPE: APP
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  flow-worker:
+    build: .
+    container_name: flow-worker
+    env_file: .env.production
+    environment:
+      FLOW_CONTAINER_TYPE: WORKER
+      FLOW_WORKER_CONCURRENCY: 10
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    container_name: flow-postgres
+    environment:
+      POSTGRES_USER: flow
+      POSTGRES_PASSWORD: ${FLOW_POSTGRES_PASSWORD:-flow}
+      POSTGRES_DB: flow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    container_name: flow-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
