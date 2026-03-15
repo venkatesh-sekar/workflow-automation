@@ -1,5 +1,5 @@
 {
-  "iteration": 62,
+  "iteration": 63,
   "current_phase": "final-sweep",
   "phases": {
     "rename-packages": {
@@ -233,7 +233,9 @@
         "Docker build succeeds",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 63, "description": "Fixed 5 @activepieces/* path aliases in tsconfig.base.json → @flow/* (missed in rename-packages phase)"}
+      ]
     }
   },
   "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code"],

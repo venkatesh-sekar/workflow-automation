@@ -436,3 +436,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Promoted clean-dead-code summary to global.md
 ---
+
+## Iteration #63 - final-sweep
+- **Change:** Fixed 5 @activepieces/* path aliases in tsconfig.base.json → @flow/* (missed in rename-packages phase)
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors, 22/24 test failures pre-existing)
+- **Learnings:** tsconfig.base.json was missed by rename-packages phase — only 2 of 7 tsconfig files were caught. Remaining items: embed types (typings.d.ts + embed/ files), flags.test.ts negative assertions (OK), migrate-v9-ai-pieces.ts (untouchable)
+---
