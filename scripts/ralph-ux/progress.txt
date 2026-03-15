@@ -10,3 +10,10 @@
 - **Files changed:** packages/web/src/styles.css
 - **Learnings:** Secondary token inversion (dark→light) will break button.tsx spinner visibility and data-table-select-popover checkbox. These need fixing in upcoming iterations. Always differentiate --accent from --muted by 3+ lightness points for hover visibility.
 ---
+
+## Iteration #2 - theme-colors
+- **Change:** Fixed secondary button loading spinner visibility — removed secondary from stroke-background condition so it uses stroke-foreground (dark) instead of stroke-background (off-white) on the light secondary bg. Simplified to: only default variant gets stroke-background.
+- **Heuristic:** Visibility of System Status (#1)
+- **Files changed:** packages/web/src/components/ui/button.tsx
+- **Learnings:** When changing token semantics (dark→light), audit all stroke-* and bg-* usages that depend on the old contrast. Simplify conditionals where possible.
+---

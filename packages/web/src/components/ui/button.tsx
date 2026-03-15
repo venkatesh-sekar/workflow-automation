@@ -95,8 +95,8 @@ function renderButtonContent(
     return (
       <LoadingSpinner
         className={cn('size-5', {
-          'stroke-background': variant === 'default' || variant === 'secondary',
-          'stroke-foreground': variant !== 'default' && variant !== 'secondary',
+          'stroke-background': variant === 'default',
+          'stroke-foreground': variant !== 'default',
         })}
       />
     );
