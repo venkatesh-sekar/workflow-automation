@@ -1,4 +1,4 @@
-import { FlowError, apId, ErrorCode, FlowVersion, isNil, PopulatedTriggerSource, TemplateTelemetryEventType, TriggerSource } from '@flow/shared'
+import { FlowError, flowId, ErrorCode, FlowVersion, isNil, PopulatedTriggerSource, TemplateTelemetryEventType, TriggerSource } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../../core/db/repo-factory'
 import { flowVersionService } from '../../flows/flow-version/flow-version.service'
@@ -26,7 +26,7 @@ export const triggerSourceService = (log: FastifyBaseLogger) => {
             })
             log.info('[triggerSourceService#enable] Soft deleted trigger source')
             const triggerSourceWithouSchedule: Omit<TriggerSource, 'created' | 'updated' | 'schedule'> = {
-                id: apId(),
+                id: flowId(),
                 type: pieceTrigger.type,
                 projectId,
                 flowId: flowVersion.flowId,

@@ -15,7 +15,7 @@ import {
 } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../database/database-common'
 
@@ -44,7 +44,7 @@ export const ProjectEntity = new EntitySchema<ProjectSchema>({
             deleteDate: true,
             nullable: true,
         },
-        ownerId: ApIdSchema,
+        ownerId: FlowIdSchema,
         displayName: {
             type: String,
         },
@@ -53,7 +53,7 @@ export const ProjectEntity = new EntitySchema<ProjectSchema>({
             nullable: false,
         },
         platformId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
         },
         externalId: {
             type: String,

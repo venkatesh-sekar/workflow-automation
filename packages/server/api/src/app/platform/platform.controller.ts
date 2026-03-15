@@ -1,7 +1,7 @@
 import { securityAccess } from '@flow/server-common'
 import {
     FlowError,
-    ApId,
+    FlowId,
     ErrorCode,
     FileType,
     PlatformWithoutSensitiveData,
@@ -85,7 +85,7 @@ const UpdatePlatformRequest = {
     schema: {
         body: UpdatePlatformRequestBody,
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.OK]: PlatformWithoutSensitiveData,
@@ -103,7 +103,7 @@ const GetPlatformRequest = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Get a platform by id',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.OK]: PlatformWithoutSensitiveData,

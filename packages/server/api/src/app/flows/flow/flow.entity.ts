@@ -12,7 +12,7 @@ import {
 } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../../database/database-common'
 
@@ -32,11 +32,11 @@ export const FlowEntity = new EntitySchema<FlowSchema>({
     columns: {
         ...BaseColumnSchemaPart,
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         folderId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
         },
         status: {
@@ -50,7 +50,7 @@ export const FlowEntity = new EntitySchema<FlowSchema>({
             nullable: false,
         },
         publishedVersionId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
             unique: true,
         },

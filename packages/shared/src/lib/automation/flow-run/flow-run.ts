@@ -1,13 +1,13 @@
 import { z } from 'zod'
 import { BaseModelSchema, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { ExecutionState } from './execution/execution-output'
 import { FlowRunStatus, PauseMetadata } from './execution/flow-execution'
 
 export const PARENT_RUN_ID_HEADER = 'ap-parent-run-id'
 export const FAIL_PARENT_ON_FAILURE_HEADER = 'ap-fail-parent-on-failure'
 
-export type FlowRunId = ApId
+export type FlowRunId = FlowId
 
 export enum RunEnvironment {
     PRODUCTION = 'PRODUCTION',

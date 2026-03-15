@@ -1,4 +1,4 @@
-import { FlowError, apId, assertEqual, assertNotNullOrUndefined, ErrorCode, InvitationStatus, InvitationType, isNil, PlatformRole, SeekPage, spreadIfDefined, User, UserInvitation, UserInvitationWithLink } from '@flow/shared'
+import { FlowError, flowId, assertEqual, assertNotNullOrUndefined, ErrorCode, InvitationStatus, InvitationType, isNil, PlatformRole, SeekPage, spreadIfDefined, User, UserInvitation, UserInvitationWithLink } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
@@ -109,7 +109,7 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
         invitationExpirySeconds,
         status,
     }: CreateParams): Promise<UserInvitationWithLink> {
-        const id = apId()
+        const id = flowId()
         await repo().upsert({
             id,
             status,

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 
 export enum TriggerTestStrategy {
     SIMULATION = 'SIMULATION',
@@ -7,9 +7,9 @@ export enum TriggerTestStrategy {
 }
 
 export const TestTriggerRequestBody = z.object({
-    projectId: ApId,
-    flowId: ApId,
-    flowVersionId: ApId,
+    projectId: FlowId,
+    flowId: FlowId,
+    flowVersionId: FlowId,
     testStrategy: z.nativeEnum(TriggerTestStrategy),
 })
 
@@ -17,8 +17,8 @@ export type TestTriggerRequestBody = z.infer<typeof TestTriggerRequestBody>
 
 
 export const CancelTestTriggerRequestBody = z.object({
-    projectId: ApId,
-    flowId: ApId,
+    projectId: FlowId,
+    flowId: FlowId,
 })
 
 export type CancelTestTriggerRequestBody = z.infer<typeof CancelTestTriggerRequestBody>

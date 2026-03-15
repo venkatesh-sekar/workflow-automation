@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import { createTestContext } from '../../../helpers/test-context'
 import { db } from '../../../helpers/db'
-import { apId } from '@flow/shared'
+import { flowId } from '@flow/shared'
 
 let app: FastifyInstance | null = null
 
@@ -33,7 +33,7 @@ describe('Audit Event API', () => {
             const ctx = await createTestContext(app!)
 
             await db.save('audit_event', {
-                id: apId(),
+                id: flowId(),
                 projectId: ctx.project.id,
                 userId: ctx.user.id,
                 event: 'FLOW_CREATED',
@@ -59,7 +59,7 @@ describe('Audit Event API', () => {
             const ctx2 = await createTestContext(app!)
 
             await db.save('audit_event', {
-                id: apId(),
+                id: flowId(),
                 projectId: ctx1.project.id,
                 userId: ctx1.user.id,
                 event: 'FLOW_DELETED',
@@ -80,14 +80,14 @@ describe('Audit Event API', () => {
             const ctx = await createTestContext(app!)
 
             await db.save('audit_event', {
-                id: apId(),
+                id: flowId(),
                 projectId: ctx.project.id,
                 userId: ctx.user.id,
                 event: 'FLOW_CREATED',
                 data: { order: 'first' },
             })
             await db.save('audit_event', {
-                id: apId(),
+                id: flowId(),
                 projectId: ctx.project.id,
                 userId: ctx.user.id,
                 event: 'FLOW_UPDATED',
@@ -111,7 +111,7 @@ describe('Audit Event API', () => {
 
             for (let i = 0; i < 5; i++) {
                 await db.save('audit_event', {
-                    id: apId(),
+                    id: flowId(),
                     projectId: ctx.project.id,
                     userId: ctx.user.id,
                     event: 'FLOW_UPDATED',

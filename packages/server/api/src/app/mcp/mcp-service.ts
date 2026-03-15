@@ -1,5 +1,5 @@
 import { rejectedPromiseHandler } from '@flow/server-common'
-import { apId, FlowStatus, FlowTriggerType, FlowVersionState, isNil, MCP_TRIGGER_PIECE_NAME, McpProperty, McpPropertyType, McpServer as McpServerSchema, McpServerStatus, mcpToolNameUtils, McpTrigger, PopulatedFlow, PopulatedMcpServer, spreadIfNotUndefined, TelemetryEventName } from '@flow/shared'
+import { flowId, FlowStatus, FlowTriggerType, FlowVersionState, isNil, MCP_TRIGGER_PIECE_NAME, McpProperty, McpPropertyType, McpServer as McpServerSchema, McpServerStatus, mcpToolNameUtils, McpTrigger, PopulatedFlow, PopulatedMcpServer, spreadIfNotUndefined, TelemetryEventName } from '@flow/shared'
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
@@ -27,10 +27,10 @@ export const mcpServerService = (log: FastifyBaseLogger) => {
             const mcpServer = await mcpServerRepository().findOneBy({ projectId })
             if (isNil(mcpServer)) {
                 await mcpServerRepository().upsert({
-                    id: apId(),
+                    id: flowId(),
                     status: McpServerStatus.DISABLED,
                     projectId,
-                    token: apId(72),
+                    token: flowId(72),
                     enabledTools: ALL_CONTROLLABLE_TOOL_NAMES,
                 }, ['projectId'])
                 return mcpServerRepository().findOneByOrFail({ projectId })
@@ -40,7 +40,7 @@ export const mcpServerService = (log: FastifyBaseLogger) => {
         rotateToken: async ({ projectId }: RotateTokenRequest): Promise<PopulatedMcpServer> => {
             const mcp = await mcpServerService(log).getByProjectId(projectId)
             await mcpServerRepository().update(mcp.id, {
-                token: apId(72),
+                token: flowId(72),
             })
             return mcpServerService(log).getPopulatedByProjectId(projectId)
         },

@@ -1,4 +1,4 @@
-import { apId, JobData, UploadLogsBehavior, WorkerJobType } from '@flow/shared'
+import { flowId, JobData, UploadLogsBehavior, WorkerJobType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { flowRunLogsService } from '../../flows/flow-run/logs/flow-run-logs-service'
 import { flowVersionService } from '../../flows/flow-version/flow-version.service'
@@ -9,7 +9,7 @@ function createMigrations(log: FastifyBaseLogger): JobMigration[] {
         migrate: async (job: JobData) => {
             if (job.jobType === WorkerJobType.EXECUTE_FLOW) {
                 const flowVersion = await flowVersionService(log).getOne(job.flowVersionId)
-                const logsFileId = 'logsFileId' in job ? job.logsFileId : apId()
+                const logsFileId = 'logsFileId' in job ? job.logsFileId : flowId()
                 const logsUploadUrl = await flowRunLogsService(log).constructUploadUrl({
                     logsFileId,
                     projectId: job.projectId,

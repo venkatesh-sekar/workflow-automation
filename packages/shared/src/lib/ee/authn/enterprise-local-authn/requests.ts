@@ -1,15 +1,15 @@
 import { z } from 'zod'
 import { SignUpRequest } from '../../../core/authentication/dto/sign-up-request'
-import { ApId } from '../../../core/common/id-generator'
+import { FlowId } from '../../../core/common/id-generator'
 
 export const VerifyEmailRequestBody = z.object({
-    identityId: ApId,
+    identityId: FlowId,
     otp: z.string(),
 })
 export type VerifyEmailRequestBody = z.infer<typeof VerifyEmailRequestBody>
 
 export const ResetPasswordRequestBody = z.object({
-    identityId: ApId,
+    identityId: FlowId,
     otp: z.string(),
     newPassword: z.string(),
 })

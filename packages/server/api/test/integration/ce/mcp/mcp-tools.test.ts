@@ -1,7 +1,7 @@
 import { beforeAll, afterAll, describe, it, expect } from 'vitest'
 import { FastifyBaseLogger, FastifyInstance } from 'fastify'
 import {
-    apId,
+    flowId,
     FlowActionType,
     McpServer,
     McpServerStatus,
@@ -51,12 +51,12 @@ afterAll(async () => {
 
 function makeMcp(projectId: string): McpServer {
     return {
-        id: apId(),
+        id: flowId(),
         created: new Date().toISOString(),
         updated: new Date().toISOString(),
         projectId,
         status: McpServerStatus.ENABLED,
-        token: apId(),
+        token: flowId(),
         enabledTools: null,
     }
 }

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { BaseModelSchema } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { UserWithMetaInformation } from '../../core/user/user'
 import { ProjectMetaData } from '../../management/project/project'
 import { ProjectRole } from '../../management/project-role/project-role'
@@ -9,10 +9,10 @@ export type ProjectMemberId = string
 
 export const ProjectMember = z.object({
     ...BaseModelSchema,
-    platformId: ApId,
-    userId: ApId,
+    platformId: FlowId,
+    userId: FlowId,
     projectId: z.string(),
-    projectRoleId: ApId,
+    projectRoleId: FlowId,
 }).describe('Project member is which user is assigned to a project.')
 
 export type ProjectMember = z.infer<typeof ProjectMember>

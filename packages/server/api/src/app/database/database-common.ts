@@ -5,14 +5,14 @@ import { system } from '../helper/system/system'
 
 export const COLLATION = 'en_natural'
 
-export const ApIdSchema = {
+export const FlowIdSchema = {
     type: String,
     length: 21,
 } as EntitySchemaColumnOptions
 
 export const BaseColumnSchemaPart = {
     id: {
-        ...ApIdSchema,
+        ...FlowIdSchema,
         primary: true,
     } as EntitySchemaColumnOptions,
     created: {

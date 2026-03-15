@@ -1,4 +1,4 @@
-import { AnalyticsFlowReportItem, AnalyticsRunsUsageItem, AnalyticsTimePeriod, apId, FlowStatus, FlowVersionState, isNil, PlatformAnalyticsReport, PlatformId, ProjectLeaderboardItem, RunEnvironment, UserLeaderboardItem, UserWithMetaInformation } from '@flow/shared'
+import { AnalyticsFlowReportItem, AnalyticsRunsUsageItem, AnalyticsTimePeriod, flowId, FlowStatus, FlowVersionState, isNil, PlatformAnalyticsReport, PlatformId, ProjectLeaderboardItem, RunEnvironment, UserLeaderboardItem, UserWithMetaInformation } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
@@ -27,7 +27,7 @@ export const platformAnalyticsReportService = (log: FastifyBaseLogger) => ({
                 const runs = await listRuns(flows.map((flow) => flow.projectId), currentReport?.cachedAt ?? null, cachedAt)
 
                 return platformAnalyticsReportRepo().save({
-                    id: currentReport?.id ?? apId(),
+                    id: currentReport?.id ?? flowId(),
                     platformId,
                     cachedAt,
                     runs: mergeRuns(currentReport?.runs ?? [], runs),

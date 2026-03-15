@@ -1,4 +1,4 @@
-import { apId, ApplicationEvent, BADGES, isNil, WebsocketClientEvent } from '@flow/shared'
+import { flowId, ApplicationEvent, BADGES, isNil, WebsocketClientEvent } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'
@@ -51,7 +51,7 @@ async function processBadgeChecks(
         for (const badgeName of newBadges) {
             await userBadgeRepo().upsert(
                 {
-                    id: apId(),
+                    id: flowId(),
                     userId,
                     name: badgeName,
                     created: new Date().toISOString(),

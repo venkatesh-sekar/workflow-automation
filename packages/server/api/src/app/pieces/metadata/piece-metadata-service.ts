@@ -1,7 +1,7 @@
 import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation, pieceTranslation } from '@flow/pieces-framework'
 import {
     FlowError,
-    apId,
+    flowId,
     assertNotNullOrUndefined,
     ErrorCode,
     EXACT_VERSION_REGEX,
@@ -146,7 +146,7 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
                 platformId,
             })
             const savedPiece = await pieceRepos().save({
-                id: apId(),
+                id: flowId(),
                 packageType,
                 pieceType,
                 archiveId,

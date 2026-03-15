@@ -1,6 +1,6 @@
 import { McpServer, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../database/database-common'
 
 type McpServerWithSchema = McpServer & {  
     project: Project
@@ -10,7 +10,7 @@ export const McpServerEntity = new EntitySchema<McpServerWithSchema>({
     name: 'mcp_server',
     columns: {
         ...BaseColumnSchemaPart,
-        projectId: ApIdSchema,
+        projectId: FlowIdSchema,
         status: {
             type: String,
             nullable: false,

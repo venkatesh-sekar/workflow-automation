@@ -4,7 +4,7 @@ import type { PlatformUsageMetric } from '../../management/platform'
 import type { ProjectId } from '../../management/project'
 import type { ProjectRole } from '../../management/project-role/project-role'
 import type { UserId } from '../user'
-import type { ApId } from './id-generator'
+import type { FlowId } from './id-generator'
 import type { Permission } from './security'
 
 export class FlowError extends Error {
@@ -218,7 +218,7 @@ ErrorCode.TRIGGER_FAILED,
 export type JobRemovalFailureErrorParams = BaseErrorParams<
 ErrorCode.JOB_REMOVAL_FAILURE,
 {
-    flowVersionId: ApId
+    flowVersionId: FlowId
 }
 >
 

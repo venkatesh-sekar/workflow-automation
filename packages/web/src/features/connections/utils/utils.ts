@@ -12,7 +12,7 @@ import {
   UpsertAppConnectionRequestBody,
   assertNotNullOrUndefined,
   isNil,
-  apId,
+  flowId,
   AppConnectionStatus,
   OAuth2GrantType,
 } from '@flow/shared';
@@ -88,7 +88,7 @@ export const newConnectionUtils = {
     }
 
     return {
-      externalId: apId(),
+      externalId: flowId(),
       displayName: piece.displayName,
     };
   },

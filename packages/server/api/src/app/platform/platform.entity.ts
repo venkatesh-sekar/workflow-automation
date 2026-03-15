@@ -1,7 +1,7 @@
 import { FilteredPieceBehavior, Platform, User } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../database/database-common'
 
@@ -14,7 +14,7 @@ export const PlatformEntity = new EntitySchema<PlatformSchema>({
     columns: {
         ...BaseColumnSchemaPart,
         ownerId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         name: {

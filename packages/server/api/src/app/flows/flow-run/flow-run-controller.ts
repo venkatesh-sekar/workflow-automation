@@ -2,7 +2,7 @@ import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
     FlowError,
     ALL_PRINCIPAL_TYPES,
-    ApId,
+    FlowId,
     BulkActionOnRunsRequestBody,
     BulkArchiveActionOnRunsRequestBody,
     BulkCancelFlowRequestBody,
@@ -188,7 +188,7 @@ const GetRequest = {
         description: 'Get Flow Run',
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.OK]: FlowRunFiltered,
@@ -202,7 +202,7 @@ const ResumeFlowRunRequest = {
     },
     schema: {
         params: z.object({
-            id: ApId,
+            id: FlowId,
             requestId: z.string(),
         }),
     },
@@ -219,7 +219,7 @@ const RetryFlowRequest = {
     },
     schema: {
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         body: RetryFlowRequestBody,
     },

@@ -1,7 +1,7 @@
 import { File, FileCompression, FileType, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../database/database-common'
 
@@ -13,8 +13,8 @@ export const FileEntity = new EntitySchema<FileSchema>({
     name: 'file',
     columns: {
         ...BaseColumnSchemaPart,
-        projectId: { ...ApIdSchema, nullable: true },
-        platformId: { ...ApIdSchema, nullable: true },
+        projectId: { ...FlowIdSchema, nullable: true },
+        platformId: { ...FlowIdSchema, nullable: true },
         data: {
             type: 'bytea',
             nullable: true,

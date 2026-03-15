@@ -1,5 +1,5 @@
 import { pinoLogging } from '@flow/server-common'
-import { apId, EngineHttpResponse, EventPayload, FlowRun, FlowStatus, isNil, RunEnvironment, TriggerPayload } from '@flow/shared'
+import { flowId, EngineHttpResponse, EventPayload, FlowRun, FlowStatus, isNil, RunEnvironment, TriggerPayload } from '@flow/shared'
 import { trace } from '@opentelemetry/api'
 import { FastifyBaseLogger } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
@@ -34,7 +34,7 @@ export const webhookService = {
         }, async (span) => {
             try {
                 const webhookHeader = 'x-webhook-id'
-                const webhookRequestId = apId()
+                const webhookRequestId = flowId()
                 span.setAttribute('webhook.requestId', webhookRequestId)
                 const pinoLogger = pinoLogging.createWebhookContextLog({ log: logger, webhookId: webhookRequestId, flowId })
 

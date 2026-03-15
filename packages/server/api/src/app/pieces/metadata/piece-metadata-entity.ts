@@ -1,16 +1,16 @@
 import { PieceMetadataModel } from '@flow/pieces-framework'
 import {
-    ApId,
+    FlowId,
     BaseModel,
 } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
     COLLATION,
 } from '../../database/database-common'
 
-export type PieceMetadataSchema = BaseModel<ApId> & PieceMetadataModel
+export type PieceMetadataSchema = BaseModel<FlowId> & PieceMetadataModel
 
 export const PieceMetadataEntity =
   new EntitySchema<PieceMetadataSchema>({
@@ -88,7 +88,7 @@ export const PieceMetadataEntity =
               nullable: false,
           },
           archiveId: {
-              ...ApIdSchema,
+              ...FlowIdSchema,
               nullable: true,
           },
           i18n: {

@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, FieldType } from '@flow/shared'
+import { flowId, FieldType } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { db } from '../../../helpers/db'
@@ -105,7 +105,7 @@ describe('Field API', () => {
         it('should create a field with custom externalId', async () => {
             const ctx = await setup()
             const table = await createAndSaveTable(ctx)
-            const externalId = apId()
+            const externalId = flowId()
 
             const response = await ctx.post('/v1/fields', {
                 name: 'External Field',
@@ -169,7 +169,7 @@ describe('Field API', () => {
         it('should return 404 for non-existent ID', async () => {
             const ctx = await setup()
 
-            const response = await ctx.get(`/v1/fields/${apId()}`)
+            const response = await ctx.get(`/v1/fields/${flowId()}`)
 
             expect(response?.statusCode).toBe(StatusCodes.NOT_FOUND)
         })

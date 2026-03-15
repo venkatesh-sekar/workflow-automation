@@ -4,7 +4,7 @@ import {
     AiCreditsAutoTopUpState,
     AIProvider,
     AIProviderName,
-    apId,
+    flowId,
     ApiKey,
     AppConnection,
     AppConnectionScope,
@@ -73,7 +73,7 @@ import {
 import { faker } from '@faker-js/faker'
 import dayjs from 'dayjs'
 import { cryptoUtils } from '@flow/server-common'
-import { secureApId } from '@flow/shared'
+import { secureFlowId } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { AIProviderSchema } from '../../../src/app/ai/ai-provider-entity'
 import { databaseConnection } from '../../../src/app/database/database-connection'
@@ -87,7 +87,7 @@ type OAuthAppWithEncryptedSecret = OAuthApp & { clientSecret: EncryptedObject }
 
 const API_KEY_TOKEN_LENGTH = 64
 function generateApiKey() {
-    const secretValue = secureApId(API_KEY_TOKEN_LENGTH - 3)
+    const secretValue = secureFlowId(API_KEY_TOKEN_LENGTH - 3)
     const secretKey = `sk-${secretValue}`
     return {
         secret: secretKey,
@@ -100,7 +100,7 @@ export const CLOUD_PLATFORM_ID = 'cloud-id'
 
 export const createMockUser = (user?: Partial<User>): User => {
     return {
-        id: user?.id ?? apId(),
+        id: user?.id ?? flowId(),
         created: user?.created ?? faker.date.recent().toISOString(),
         updated: user?.updated ?? faker.date.recent().toISOString(),
         email: user?.email ?? faker.internet.email().toLowerCase().trim(),
@@ -119,12 +119,12 @@ export const createMockOAuthApp = async (
     oAuthApp?: Partial<OAuthApp>,
 ): Promise<OAuthAppWithEncryptedSecret> => {
     return {
-        id: oAuthApp?.id ?? apId(),
+        id: oAuthApp?.id ?? flowId(),
         created: oAuthApp?.created ?? faker.date.recent().toISOString(),
         updated: oAuthApp?.updated ?? faker.date.recent().toISOString(),
-        platformId: oAuthApp?.platformId ?? apId(),
+        platformId: oAuthApp?.platformId ?? flowId(),
         pieceName: oAuthApp?.pieceName ?? faker.lorem.word(),
-        clientId: oAuthApp?.clientId ?? apId(),
+        clientId: oAuthApp?.clientId ?? flowId(),
         clientSecret: await encryptUtils.encryptString(faker.lorem.word()),
     }
 }
@@ -133,12 +133,12 @@ export const createMockTemplate = (
     template?: Partial<Template>,
 ): Template => {
     return {
-        id: template?.id ?? apId(),
+        id: template?.id ?? flowId(),
         created: template?.created ?? faker.date.recent().toISOString(),
         updated: template?.updated ?? faker.date.recent().toISOString(),
         pieces: template?.pieces ?? [],
         flows: template?.flows ?? [createMockFlowVersion()],
-        platformId: template?.platformId ?? apId(),
+        platformId: template?.platformId ?? flowId(),
         name: template?.name ?? faker.lorem.word(),
         type: template?.type ?? TemplateType.CUSTOM,
         description: template?.description ?? faker.lorem.sentence(),
@@ -155,10 +155,10 @@ export const createMockTemplate = (
 
 export const createMockPlan = (plan?: Partial<ProjectPlan>): ProjectPlan => {
     return {
-        id: plan?.id ?? apId(),
+        id: plan?.id ?? flowId(),
         created: plan?.created ?? faker.date.recent().toISOString(),
         updated: plan?.updated ?? faker.date.recent().toISOString(),
-        projectId: plan?.projectId ?? apId(),
+        projectId: plan?.projectId ?? flowId(),
         name: plan?.name ?? faker.lorem.word(),
         locked: plan?.locked ?? false,
         pieces: plan?.pieces ?? [],
@@ -168,12 +168,12 @@ export const createMockPlan = (plan?: Partial<ProjectPlan>): ProjectPlan => {
 
 export const createMockUserInvitation = (userInvitation: Partial<UserInvitation>): UserInvitation => {
     return {
-        id: userInvitation.id ?? apId(),
+        id: userInvitation.id ?? flowId(),
         created: userInvitation.created ?? faker.date.recent().toISOString(),
         updated: userInvitation.updated ?? faker.date.recent().toISOString(),
         email: userInvitation.email ?? faker.internet.email(),
         type: userInvitation.type ?? faker.helpers.enumValue(InvitationType),
-        platformId: userInvitation.platformId ?? apId(),
+        platformId: userInvitation.platformId ?? flowId(),
         projectId: userInvitation.projectId,
         projectRole: userInvitation.projectRole,
         platformRole: userInvitation.platformRole,
@@ -186,14 +186,14 @@ export const createMockProject = (project?: Partial<Project>): Project => {
         color: faker.helpers.enumValue(ColorName),
     }
     return {
-        id: project?.id ?? apId(),
+        id: project?.id ?? flowId(),
         created: project?.created ?? faker.date.recent().toISOString(),
         updated: project?.updated ?? faker.date.recent().toISOString(),
         deleted: project?.deleted ?? null,
-        ownerId: project?.ownerId ?? apId(),
+        ownerId: project?.ownerId ?? flowId(),
         displayName: project?.displayName ?? faker.lorem.word(),
-        platformId: project?.platformId ?? apId(),
-        externalId: project?.externalId ?? apId(),
+        platformId: project?.platformId ?? flowId(),
+        externalId: project?.externalId ?? flowId(),
         releasesEnabled: project?.releasesEnabled ?? false,
         metadata: project?.metadata ?? null,
         type: project?.type ?? ProjectType.TEAM,
@@ -203,11 +203,11 @@ export const createMockProject = (project?: Partial<Project>): Project => {
 
 export const createMockGitRepo = (gitRepo?: Partial<GitRepo>): GitRepo => {
     return {
-        id: gitRepo?.id ?? apId(),
+        id: gitRepo?.id ?? flowId(),
         branchType: faker.helpers.enumValue(GitBranchType),
         created: gitRepo?.created ?? faker.date.recent().toISOString(),
         updated: gitRepo?.updated ?? faker.date.recent().toISOString(),
-        projectId: gitRepo?.projectId ?? apId(),
+        projectId: gitRepo?.projectId ?? flowId(),
         remoteUrl: gitRepo?.remoteUrl ?? `git@${faker.internet.url()}`,
         sshPrivateKey: gitRepo?.sshPrivateKey ?? faker.internet.password(),
         branch: gitRepo?.branch ?? faker.lorem.word(),
@@ -217,10 +217,10 @@ export const createMockGitRepo = (gitRepo?: Partial<GitRepo>): GitRepo => {
 
 export const createMockPlatformPlan = (platformPlan?: Partial<PlatformPlan>): PlatformPlan => {
     return {
-        id: platformPlan?.id ?? apId(),
+        id: platformPlan?.id ?? flowId(),
         created: platformPlan?.created ?? faker.date.recent().toISOString(),
         updated: platformPlan?.updated ?? faker.date.recent().toISOString(),
-        platformId: platformPlan?.platformId ?? apId(),
+        platformId: platformPlan?.platformId ?? flowId(),
         tablesEnabled: platformPlan?.tablesEnabled ?? false,
         includedAiCredits: platformPlan?.includedAiCredits ?? 0,
         licenseKey: platformPlan?.licenseKey ?? faker.lorem.word(),
@@ -253,10 +253,10 @@ export const createMockPlatformPlan = (platformPlan?: Partial<PlatformPlan>): Pl
 }
 export const createMockPlatform = (platform?: Partial<Platform>): Platform => {
     return {
-        id: platform?.id ?? apId(),
+        id: platform?.id ?? flowId(),
         created: platform?.created ?? faker.date.recent().toISOString(),
         updated: platform?.updated ?? faker.date.recent().toISOString(),
-        ownerId: platform?.ownerId ?? apId(),
+        ownerId: platform?.ownerId ?? flowId(),
         enforceAllowedAuthDomains: platform?.enforceAllowedAuthDomains ?? false,
         federatedAuthProviders: platform?.federatedAuthProviders ?? {},
         allowedAuthDomains: platform?.allowedAuthDomains ?? [],
@@ -278,8 +278,8 @@ export const createMockPlatform = (platform?: Partial<Platform>): Platform => {
 export const createMockPlatformWithOwner = (
     params?: CreateMockPlatformWithOwnerParams,
 ): CreateMockPlatformWithOwnerReturn => {
-    const mockOwnerId = params?.owner?.id ?? apId()
-    const mockPlatformId = params?.platform?.id ?? apId()
+    const mockOwnerId = params?.owner?.id ?? flowId()
+    const mockPlatformId = params?.platform?.id ?? flowId()
 
     const mockOwner = createMockUser({
         ...params?.owner,
@@ -307,13 +307,13 @@ export const createMockProjectMember = (
 ): ProjectMember => {
     assertNotNullOrUndefined(projectMember?.userId, 'userId')
     return {
-        id: projectMember?.id ?? apId(),
+        id: projectMember?.id ?? flowId(),
         created: projectMember?.created ?? faker.date.recent().toISOString(),
         updated: projectMember?.updated ?? faker.date.recent().toISOString(),
-        platformId: projectMember?.platformId ?? apId(),
+        platformId: projectMember?.platformId ?? flowId(),
         projectRoleId: projectMember.projectRoleId,
         userId: projectMember?.userId,
-        projectId: projectMember?.projectId ?? apId(),
+        projectId: projectMember?.projectId ?? flowId(),
     }
 }
 
@@ -336,11 +336,11 @@ export const createMockApiKey = (
 ): ApiKey & { value: string } => {
     const { secretHashed, secretTruncated, secret } = generateApiKey()
     return {
-        id: apiKey?.id ?? apId(),
+        id: apiKey?.id ?? flowId(),
         created: apiKey?.created ?? faker.date.recent().toISOString(),
         updated: apiKey?.updated ?? faker.date.recent().toISOString(),
         displayName: apiKey?.displayName ?? faker.lorem.word(),
-        platformId: apiKey?.platformId ?? apId(),
+        platformId: apiKey?.platformId ?? flowId(),
         hashedValue: secretHashed,
         value: secret,
         truncatedValue: secretTruncated,
@@ -352,11 +352,11 @@ export const createMockSigningKey = (
     signingKey?: Partial<SigningKey>,
 ): SigningKey => {
     return {
-        id: signingKey?.id ?? apId(),
+        id: signingKey?.id ?? flowId(),
         created: signingKey?.created ?? faker.date.recent().toISOString(),
         updated: signingKey?.updated ?? faker.date.recent().toISOString(),
         displayName: signingKey?.displayName ?? faker.lorem.word(),
-        platformId: signingKey?.platformId ?? apId(),
+        platformId: signingKey?.platformId ?? flowId(),
         publicKey: signingKey?.publicKey ?? MOCK_SIGNING_KEY_PUBLIC_KEY,
         algorithm: signingKey?.algorithm ?? KeyAlgorithm.RSA,
     }
@@ -365,10 +365,10 @@ export const createMockSigningKey = (
 
 export const createMockTag = (tag?: Partial<Omit<TagEntitySchema, 'platform'>>): Omit<TagEntitySchema, 'platform'> => {
     return {
-        id: tag?.id ?? apId(),
+        id: tag?.id ?? flowId(),
         created: tag?.created ?? faker.date.recent().toISOString(),
         updated: tag?.updated ?? faker.date.recent().toISOString(),
-        platformId: tag?.platformId ?? apId(),
+        platformId: tag?.platformId ?? flowId(),
         name: tag?.name ?? faker.lorem.word(),
     }
 }
@@ -376,12 +376,12 @@ export const createMockTag = (tag?: Partial<Omit<TagEntitySchema, 'platform'>>):
 
 export const createMockPieceTag = (request: Partial<Omit<PieceTagSchema, 'platform' | 'tag'>>): Omit<PieceTagSchema, 'platform' | 'tag'> => {
     return {
-        id: request.id ?? apId(),
+        id: request.id ?? flowId(),
         created: request.created ?? faker.date.recent().toISOString(),
         updated: request.updated ?? faker.date.recent().toISOString(),
-        platformId: request.platformId ?? apId(),
+        platformId: request.platformId ?? flowId(),
         pieceName: request.pieceName ?? faker.lorem.word(),
-        tagId: request.tagId ?? apId(),
+        tagId: request.tagId ?? flowId(),
     }
 }
 
@@ -389,7 +389,7 @@ export const createMockPieceMetadata = (
     pieceMetadata?: Partial<Omit<PieceMetadataSchema, 'project'>>,
 ): Omit<PieceMetadataSchema, 'project'> => {
     return {
-        id: pieceMetadata?.id ?? apId(),
+        id: pieceMetadata?.id ?? flowId(),
         projectUsage: 0,
         created: pieceMetadata?.created ?? faker.date.recent().toISOString(),
         updated: pieceMetadata?.updated ?? faker.date.recent().toISOString(),
@@ -417,7 +417,7 @@ export const createMockPieceMetadata = (
 
 export const createAuditEvent = (auditEvent: Partial<ApplicationEvent>) => {
     return {
-        id: auditEvent.id ?? apId(),
+        id: auditEvent.id ?? flowId(),
         created: auditEvent.created ?? faker.date.recent().toISOString(),
         updated: auditEvent.updated ?? faker.date.recent().toISOString(),
         ip: auditEvent.ip ?? faker.internet.ip(),
@@ -433,11 +433,11 @@ export const createMockCustomDomain = (
     customDomain?: Partial<CustomDomain>,
 ): CustomDomain => {
     return {
-        id: customDomain?.id ?? apId(),
+        id: customDomain?.id ?? flowId(),
         created: customDomain?.created ?? faker.date.recent().toISOString(),
         updated: customDomain?.updated ?? faker.date.recent().toISOString(),
         domain: customDomain?.domain ?? faker.internet.domainName(),
-        platformId: customDomain?.platformId ?? apId(),
+        platformId: customDomain?.platformId ?? flowId(),
         status: customDomain?.status ?? faker.helpers.enumValue(CustomDomainStatus),
     }
 }
@@ -447,7 +447,7 @@ export const createMockOtp = (otp?: Partial<OtpModel>): OtpModel => {
     const twentyMinutesAgo = now.subtract(5, 'minutes')
 
     return {
-        id: otp?.id ?? apId(),
+        id: otp?.id ?? flowId(),
         created: otp?.created ?? faker.date.recent().toISOString(),
         updated:
             otp?.updated ??
@@ -455,7 +455,7 @@ export const createMockOtp = (otp?: Partial<OtpModel>): OtpModel => {
                 .between({ from: twentyMinutesAgo.toDate(), to: now.toDate() })
                 .toISOString(),
         type: otp?.type ?? faker.helpers.enumValue(OtpType),
-        identityId: otp?.identityId ?? apId(),
+        identityId: otp?.identityId ?? flowId(),
         value:
             otp?.value ?? faker.number.int({ min: 100000, max: 999999 }).toString(),
         state: otp?.state ?? faker.helpers.enumValue(OtpState),
@@ -464,16 +464,16 @@ export const createMockOtp = (otp?: Partial<OtpModel>): OtpModel => {
 
 export const createMockFlowRun = (flowRun?: Partial<FlowRun>): FlowRun => {
     return {
-        id: flowRun?.id ?? apId(),
+        id: flowRun?.id ?? flowId(),
         created: flowRun?.created ?? faker.date.recent().toISOString(),
         updated: flowRun?.updated ?? faker.date.recent().toISOString(),
-        projectId: flowRun?.projectId ?? apId(),
-        flowId: flowRun?.flowId ?? apId(),
+        projectId: flowRun?.projectId ?? flowId(),
+        flowId: flowRun?.flowId ?? flowId(),
         tags: flowRun?.tags ?? [],
         steps: {},
         failParentOnFailure: flowRun?.failParentOnFailure ?? false,
         parentRunId: flowRun?.parentRunId ?? undefined,
-        flowVersionId: flowRun?.flowVersionId ?? apId(),
+        flowVersionId: flowRun?.flowVersionId ?? flowId(),
         flowVersion: flowRun?.flowVersion,
         logsFileId: flowRun?.logsFileId ?? null,
         status: flowRun?.status ?? faker.helpers.enumValue(FlowRunStatus),
@@ -486,15 +486,15 @@ export const createMockFlowRun = (flowRun?: Partial<FlowRun>): FlowRun => {
 
 export const createMockFlow = (flow?: Partial<Flow>): Flow => {
     return {
-        id: flow?.id ?? apId(),
+        id: flow?.id ?? flowId(),
         created: flow?.created ?? faker.date.recent().toISOString(),
         updated: flow?.updated ?? faker.date.recent().toISOString(),
-        projectId: flow?.projectId ?? apId(),
+        projectId: flow?.projectId ?? flowId(),
         status: flow?.status ?? faker.helpers.enumValue(FlowStatus),
         folderId: flow?.folderId ?? null,
         operationStatus: flow?.operationStatus ?? FlowOperationStatus.NONE,
         publishedVersionId: flow?.publishedVersionId ?? null,
-        externalId: flow?.externalId ?? apId(),
+        externalId: flow?.externalId ?? flowId(),
     }
 }
 
@@ -511,11 +511,11 @@ export const createMockFlowVersion = (
     } as const
 
     return {
-        id: flowVersion?.id ?? apId(),
+        id: flowVersion?.id ?? flowId(),
         created: flowVersion?.created ?? faker.date.recent().toISOString(),
         updated: flowVersion?.updated ?? faker.date.recent().toISOString(),
         displayName: flowVersion?.displayName ?? faker.word.words(),
-        flowId: flowVersion?.flowId ?? apId(),
+        flowId: flowVersion?.flowId ?? flowId(),
         agentIds: flowVersion?.agentIds ?? [],
         trigger: flowVersion?.trigger ?? emptyTrigger,
         connectionIds: flowVersion?.connectionIds ?? [],
@@ -528,10 +528,10 @@ export const createMockFlowVersion = (
 
 export const createMockConnection = (connection: Partial<AppConnection>, ownerId: string): AppConnection<AppConnectionType.SECRET_TEXT> => {
     return {
-        id: connection?.id ?? apId(),
+        id: connection?.id ?? flowId(),
         created: connection?.created ?? faker.date.recent().toISOString(),
         updated: connection?.updated ?? faker.date.recent().toISOString(),
-        platformId: connection?.platformId ?? apId(),
+        platformId: connection?.platformId ?? flowId(),
         projectIds: connection?.projectIds ?? [],
         pieceName: connection?.pieceName ?? faker.lorem.word(),
         displayName: connection?.displayName ?? faker.lorem.word(),
@@ -544,7 +544,7 @@ export const createMockConnection = (connection: Partial<AppConnection>, ownerId
             secret_text: faker.lorem.word(),
         },
         metadata: connection?.metadata ?? {},
-        externalId: connection?.externalId ?? apId(),
+        externalId: connection?.externalId ?? flowId(),
         owner: null,
         pieceVersion: connection?.pieceVersion ?? '0.0.0',
         preSelectForNewProjects: connection?.preSelectForNewProjects ?? false,
@@ -553,18 +553,18 @@ export const createMockConnection = (connection: Partial<AppConnection>, ownerId
 
 export const createMockTable = ({ projectId }: { projectId: string }): Table => {
     return {
-        id: apId(),
+        id: flowId(),
         created: faker.date.recent().toISOString(),
         updated: faker.date.recent().toISOString(),
         projectId,
-        externalId: apId(),
+        externalId: flowId(),
         name: faker.lorem.word(),
     }
 }
 
 export const createMockField = ({ tableId, projectId }: { tableId: string, projectId: string }): Field => {
     return {
-        id: apId(),
+        id: flowId(),
         created: faker.date.recent().toISOString(),
         updated: faker.date.recent().toISOString(),
         tableId,
@@ -572,14 +572,14 @@ export const createMockField = ({ tableId, projectId }: { tableId: string, proje
         data: {
             options: [],
         },
-        externalId: apId(),
+        externalId: flowId(),
         projectId,
         type: FieldType.STATIC_DROPDOWN,
     }
 }
 export const createMockRecord = ({ tableId, projectId }: { tableId: string, projectId: string }): Record => {
     return {
-        id: apId(),
+        id: flowId(),
         created: faker.date.recent().toISOString(),
         updated: faker.date.recent().toISOString(),
         tableId,
@@ -589,7 +589,7 @@ export const createMockRecord = ({ tableId, projectId }: { tableId: string, proj
 
 export const createMockCell = ({ recordId, fieldId, projectId }: { recordId: string, fieldId: string, projectId: string }): Cell => {
     return {
-        id: apId(),
+        id: flowId(),
         created: faker.date.recent().toISOString(),
         updated: faker.date.recent().toISOString(),
         recordId,
@@ -698,11 +698,11 @@ export const mockAndSaveBasicSetupWithApiKey = async (params?: MockBasicSetupPar
 
 export const createMockFile = (file?: Partial<File>): File => {
     return {
-        id: file?.id ?? apId(),
+        id: file?.id ?? flowId(),
         created: file?.created ?? faker.date.recent().toISOString(),
         updated: file?.updated ?? faker.date.recent().toISOString(),
-        platformId: file?.platformId ?? apId(),
-        projectId: file?.projectId ?? apId(),
+        platformId: file?.platformId ?? flowId(),
+        projectId: file?.projectId ?? flowId(),
         location: file?.location ?? FileLocation.DB,
         compression: file?.compression ?? faker.helpers.enumValue(FileCompression),
         data: file?.data ?? Buffer.from(faker.lorem.paragraphs()),
@@ -712,24 +712,24 @@ export const createMockFile = (file?: Partial<File>): File => {
 
 export const createMockProjectRole = (projectRole?: Partial<ProjectRole>): ProjectRole => {
     return {
-        id: projectRole?.id ?? apId(),
+        id: projectRole?.id ?? flowId(),
         name: projectRole?.name ?? faker.lorem.word(),
         created: projectRole?.created ?? faker.date.recent().toISOString(),
         updated: projectRole?.updated ?? faker.date.recent().toISOString(),
         permissions: projectRole?.permissions ?? [],
-        platformId: projectRole?.platformId ?? apId(),
+        platformId: projectRole?.platformId ?? flowId(),
         type: projectRole?.type ?? faker.helpers.enumValue(RoleType),
     }
 }
 
 export const createMockProjectRelease = (projectRelease?: Partial<ProjectRelease>): ProjectRelease => {
     return {
-        id: projectRelease?.id ?? apId(),
+        id: projectRelease?.id ?? flowId(),
         created: projectRelease?.created ?? faker.date.recent().toISOString(),
         updated: projectRelease?.updated ?? faker.date.recent().toISOString(),
-        projectId: projectRelease?.projectId ?? apId(),
-        importedBy: projectRelease?.importedBy ?? apId(),
-        fileId: projectRelease?.fileId ?? apId(),
+        projectId: projectRelease?.projectId ?? flowId(),
+        importedBy: projectRelease?.importedBy ?? flowId(),
+        fileId: projectRelease?.fileId ?? flowId(),
         name: projectRelease?.name ?? faker.lorem.word(),
         description: projectRelease?.description ?? faker.lorem.sentence(),
         type: projectRelease?.type ?? faker.helpers.enumValue(ProjectReleaseType),
@@ -738,10 +738,10 @@ export const createMockProjectRelease = (projectRelease?: Partial<ProjectRelease
 
 export const createMockAIProvider = async (aiProvider?: Partial<AIProvider>): Promise<Omit<AIProviderSchema, 'platform'>> => {
     return {
-        id: aiProvider?.id ?? apId(),
+        id: aiProvider?.id ?? flowId(),
         created: aiProvider?.created ?? faker.date.recent().toISOString(),
         updated: aiProvider?.updated ?? faker.date.recent().toISOString(),
-        platformId: aiProvider?.platformId ?? apId(),
+        platformId: aiProvider?.platformId ?? flowId(),
         provider: aiProvider?.provider ?? faker.helpers.enumValue(AIProviderName),
         displayName: aiProvider?.displayName ?? faker.lorem.word(),
         auth: await encryptUtils.encryptObject({
@@ -771,10 +771,10 @@ export const mockPieceMetadata = async (mockLog: FastifyBaseLogger): Promise<Pie
 
 export const createMockFolder = (folder?: Partial<Folder>): Folder => {
     return {
-        id: folder?.id ?? apId(),
+        id: folder?.id ?? flowId(),
         created: folder?.created ?? faker.date.recent().toISOString(),
         updated: folder?.updated ?? faker.date.recent().toISOString(),
-        projectId: folder?.projectId ?? apId(),
+        projectId: folder?.projectId ?? flowId(),
         displayName: folder?.displayName ?? faker.lorem.word(),
         displayOrder: folder?.displayOrder ?? faker.number.int({ min: 0, max: 100 }),
     }
@@ -798,10 +798,10 @@ export const createMockEventDestination = (eventDestination?: Partial<{
     scope: EventDestinationScope
 } => {
     return {
-        id: eventDestination?.id ?? apId(),
+        id: eventDestination?.id ?? flowId(),
         created: eventDestination?.created ?? faker.date.recent().toISOString(),
         updated: eventDestination?.updated ?? faker.date.recent().toISOString(),
-        platformId: eventDestination?.platformId ?? apId(),
+        platformId: eventDestination?.platformId ?? flowId(),
         events: eventDestination?.events ?? [faker.helpers.enumValue(ApplicationEventName)],
         url: eventDestination?.url ?? faker.internet.url(),
         scope: eventDestination?.scope ?? EventDestinationScope.PLATFORM,

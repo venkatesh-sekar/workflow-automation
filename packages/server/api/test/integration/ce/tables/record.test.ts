@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, FieldType, FilterOperator } from '@flow/shared'
+import { flowId, FieldType, FilterOperator } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { db } from '../../../helpers/db'
@@ -73,7 +73,7 @@ describe('Record API', () => {
                 records: [
                     [
                         { fieldId: field.id, value: 'valid' },
-                        { fieldId: apId(), value: 'invalid' },
+                        { fieldId: flowId(), value: 'invalid' },
                     ],
                 ],
             })
@@ -157,7 +157,7 @@ describe('Record API', () => {
         it('should return 404 for non-existent ID', async () => {
             const ctx = await setup()
 
-            const response = await ctx.get(`/v1/records/${apId()}`)
+            const response = await ctx.get(`/v1/records/${flowId()}`)
 
             expect(response?.statusCode).toBe(StatusCodes.NOT_FOUND)
         })
@@ -210,7 +210,7 @@ describe('Record API', () => {
             const ctx = await setup()
             const { table } = await createTableWithField(ctx)
 
-            const response = await ctx.post(`/v1/records/${apId()}`, {
+            const response = await ctx.post(`/v1/records/${flowId()}`, {
                 tableId: table.id,
                 cells: [],
             })
@@ -375,7 +375,7 @@ describe('Record API', () => {
                 url: '/v1/records',
                 body: {
                     tableId: table.id,
-                    ids: [apId()],
+                    ids: [flowId()],
                 },
             })
 

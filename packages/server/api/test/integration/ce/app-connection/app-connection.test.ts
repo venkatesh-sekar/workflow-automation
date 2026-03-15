@@ -1,6 +1,6 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import {
-    apId,
+    flowId,
     AppConnectionType,
     PackageType,
     PieceType,
@@ -168,7 +168,7 @@ describe('AppConnection CE API', () => {
 
         it('should return 404 for non-existent connection', async () => {
             const ctx = await setup()
-            const nonExistentId = apId()
+            const nonExistentId = flowId()
 
             const response = await ctx.post(`/v1/app-connections/${nonExistentId}`, {
                 displayName: 'Updated Name',
@@ -328,7 +328,7 @@ describe('AppConnection CE API', () => {
 
         it('should return 404 for non-existent connection', async () => {
             const ctx = await setup()
-            const nonExistentId = apId()
+            const nonExistentId = flowId()
 
             const response = await ctx.delete(`/v1/app-connections/${nonExistentId}`)
 

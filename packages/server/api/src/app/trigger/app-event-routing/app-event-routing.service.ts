@@ -1,4 +1,4 @@
-import { apId, FlowId, ProjectId } from '@flow/shared'
+import { flowId, FlowId, ProjectId } from '@flow/shared'
 import { repoFactory } from '../../core/db/repo-factory'
 import {
     AppEventRouting,
@@ -26,7 +26,7 @@ export const appEventRoutingService = {
         events.forEach((event) => {
             const upsert = appEventRoutingRepo().upsert(
                 {
-                    id: apId(),
+                    id: flowId(),
                     appName,
                     event,
                     identifierValue,

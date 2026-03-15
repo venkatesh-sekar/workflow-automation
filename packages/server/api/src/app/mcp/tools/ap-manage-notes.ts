@@ -1,5 +1,5 @@
 import {
-    apId,
+    flowId,
     FlowOperationRequest,
     FlowOperationType,
     isNil,
@@ -70,7 +70,7 @@ export const apManageNotesTool = (mcp: McpServer, log: FastifyBaseLogger): McpTo
                     operation = {
                         type: FlowOperationType.ADD_NOTE,
                         request: {
-                            id: apId(),
+                            id: flowId(),
                             content,
                             color: color ?? NoteColorVariant.YELLOW,
                             position: resolvedPosition,

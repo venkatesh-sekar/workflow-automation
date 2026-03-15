@@ -3,7 +3,7 @@ import {
   FlowOperationType,
   NoteColorVariant,
   Note,
-  apId,
+  flowId,
 } from '@flow/shared';
 import { StoreApi } from 'zustand';
 
@@ -49,7 +49,7 @@ export const createNotesState = (
       set({ noteDragOverlayMode });
     },
     addNote: (request: Omit<AddNoteRequest, 'id'>) => {
-      const id = apId();
+      const id = flowId();
       get().applyOperation({
         type: FlowOperationType.ADD_NOTE,
         request: {

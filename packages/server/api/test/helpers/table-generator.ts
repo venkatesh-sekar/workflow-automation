@@ -1,18 +1,18 @@
-import { apId, Field, FieldState, FieldType, PopulatedTable, TableAutomationStatus } from '@flow/shared'
+import { flowId, Field, FieldState, FieldType, PopulatedTable, TableAutomationStatus } from '@flow/shared'
 import { faker } from '@faker-js/faker'
 
 export const tableGenerator = {
     simpleTable(table: Partial<PopulatedTable>): PopulatedTable {
-        const tableId = apId()
+        const tableId = flowId()
         return {
             id: tableId,
             name: faker.lorem.word(),
-            externalId: table.externalId ?? apId(),
+            externalId: table.externalId ?? flowId(),
             fields: table.fields ?? [
                 tableGenerator.generateRandomField(tableId),
                 tableGenerator.generateRandomField(tableId),
             ],
-            projectId: apId(),
+            projectId: flowId(),
             created: faker.date.recent().toISOString(),
             updated: faker.date.recent().toISOString(),
             status: table.status ?? TableAutomationStatus.ENABLED,
@@ -21,21 +21,21 @@ export const tableGenerator = {
     },
     generateRandomField(tableId: string): Field {
         return {
-            id: apId(),
-            projectId: apId(),
+            id: flowId(),
+            projectId: flowId(),
             created: faker.date.recent().toISOString(),
             updated: faker.date.recent().toISOString(),
             tableId,
             name: faker.lorem.word(),
             type: FieldType.TEXT,
-            externalId: apId(),
+            externalId: flowId(),
         }
     },
     generateRandomDropdownField(): FieldState {
         return {
             name: faker.lorem.word(),
             type: FieldType.STATIC_DROPDOWN,
-            externalId: apId(),
+            externalId: flowId(),
             data: {
                 options: [
                     { value: faker.lorem.word() },

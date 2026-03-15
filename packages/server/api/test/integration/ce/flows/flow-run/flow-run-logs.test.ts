@@ -1,7 +1,7 @@
 import { promisify } from 'node:util'
 import { zstdCompress as zstdCompressCallback, zstdDecompress as zstdDecompressCallback } from 'node:zlib'
 import {
-    apId,
+    flowId,
     ExecutioOutputFile,
     FileCompression,
     FileLocation,
@@ -55,8 +55,8 @@ describe('Flow Run Logs API', () => {
     describe('Upload directly (no S3 signed URLs)', () => {
         it('should upload zstd-compressed logs and read them back via HTTP with correct Content-Encoding', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const token = await generateLogsToken({
                 logsFileId,
@@ -100,8 +100,8 @@ describe('Flow Run Logs API', () => {
 
         it('should upload zstd-compressed logs and read them back via service getLogs (internal decompression)', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const token = await generateLogsToken({
                 logsFileId,
@@ -137,8 +137,8 @@ describe('Flow Run Logs API', () => {
 
         it('should overwrite logs on re-upload and return updated content', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const token = await generateLogsToken({
                 logsFileId,
@@ -185,8 +185,8 @@ describe('Flow Run Logs API', () => {
     describe('Pre-existing DB files (backward compatibility)', () => {
         it('should serve uncompressed logs without Content-Encoding header', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const rawJson = Buffer.from(JSON.stringify(MOCK_EXECUTION_OUTPUT))
             const mockFile = createMockFile({
@@ -222,7 +222,7 @@ describe('Flow Run Logs API', () => {
 
         it('should decompress uncompressed logs via service getLogs', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
+            const logsFileId = flowId()
 
             const rawJson = Buffer.from(JSON.stringify(MOCK_EXECUTION_OUTPUT))
             const mockFile = createMockFile({
@@ -244,8 +244,8 @@ describe('Flow Run Logs API', () => {
 
         it('should serve pre-existing zstd-compressed DB file with Content-Encoding header', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const compressedData = await zstdCompress(
                 Buffer.from(JSON.stringify(MOCK_EXECUTION_OUTPUT)),
@@ -284,8 +284,8 @@ describe('Flow Run Logs API', () => {
 
         it('should detect and decompress zstd data even when compression metadata is NONE', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             // Simulate a mismatch: zstd-compressed data stored with compression: NONE
             const compressedData = await zstdCompress(
@@ -346,8 +346,8 @@ describe('Flow Run Logs API', () => {
 
         it('should redirect PUT to S3 signed URL with zstd content-encoding when behavior is REDIRECT_TO_S3', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const fakeSignedUrl = 'https://s3.example.com/fake-signed-put-url'
             const s3HelperSpy = mockS3Helper({
@@ -392,8 +392,8 @@ describe('Flow Run Logs API', () => {
 
         it('should redirect GET to S3 signed URL when behavior is REDIRECT_TO_S3', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
             const s3Key = `project/${mockProject.id}/${FileType.FLOW_RUN_LOG}/${logsFileId}`
 
             const fakeSignedUrl = 'https://s3.example.com/fake-signed-get-url'
@@ -437,7 +437,7 @@ describe('Flow Run Logs API', () => {
 
         it('should read zstd-compressed logs from S3 via service getLogs', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
+            const logsFileId = flowId()
             const s3Key = `project/${mockProject.id}/${FileType.FLOW_RUN_LOG}/${logsFileId}`
 
             const compressedData = await zstdCompress(
@@ -474,8 +474,8 @@ describe('Flow Run Logs API', () => {
 
         it('should serve zstd-compressed logs from S3 via HTTP GET with Content-Encoding header', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
             const s3Key = `project/${mockProject.id}/${FileType.FLOW_RUN_LOG}/${logsFileId}`
 
             const compressedData = await zstdCompress(
@@ -527,8 +527,8 @@ describe('Flow Run Logs API', () => {
     describe('Error cases', () => {
         it('should return 404 when logs file does not exist', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             const token = await generateLogsToken({
                 logsFileId,
@@ -550,7 +550,7 @@ describe('Flow Run Logs API', () => {
             const { mockProject } = await mockAndSaveBasicSetup()
 
             const logs = await flowRunLogsService(app!.log).getLogs({
-                logsFileId: apId(),
+                logsFileId: flowId(),
                 projectId: mockProject.id,
             })
 
@@ -560,8 +560,8 @@ describe('Flow Run Logs API', () => {
         it('should not return logs for a different project', async () => {
             const { mockProject } = await mockAndSaveBasicSetup()
             const { mockProject: otherProject } = await mockAndSaveBasicSetup()
-            const logsFileId = apId()
-            const flowRunId = apId()
+            const logsFileId = flowId()
+            const flowRunId = flowId()
 
             // Upload logs under mockProject
             const token = await generateLogsToken({

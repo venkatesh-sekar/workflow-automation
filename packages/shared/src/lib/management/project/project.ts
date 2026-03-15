@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { SAFE_STRING_PATTERN } from '../../core/common'
 import { BaseModelSchema, DateOrString, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { Metadata } from '../../core/common/metadata'
 
 export enum ColorName {
@@ -19,7 +19,7 @@ export enum ColorName {
     DEEP_ORANGE = 'DEEP_ORANGE',
 }
 
-export type ProjectId = ApId
+export type ProjectId = FlowId
 
 export enum PiecesFilterType {
     NONE = 'NONE',
@@ -56,7 +56,7 @@ export const Project = z.object({
     deleted: Nullable(DateOrString),
     ownerId: z.string(),
     displayName: z.string(),
-    platformId: ApId,
+    platformId: FlowId,
     maxConcurrentJobs: Nullable(z.number()),
     type: z.nativeEnum(ProjectType),
     icon: ProjectIcon,

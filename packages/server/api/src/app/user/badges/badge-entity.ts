@@ -1,6 +1,6 @@
 import { User, UserBadge } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 export type UserBadgeSchema = UserBadge & {
     user: User
@@ -15,7 +15,7 @@ export const UserBadgeEntity = new EntitySchema<UserBadgeSchema>({
             nullable: false,
         },
         userId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
     },

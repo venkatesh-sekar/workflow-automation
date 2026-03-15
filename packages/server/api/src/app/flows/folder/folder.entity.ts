@@ -1,7 +1,7 @@
 import { Flow, Folder as Folder, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../../database/database-common'
 
@@ -17,7 +17,7 @@ export const FolderEntity = new EntitySchema<FolderSchema>({
         displayName: {
             type: String,
         },
-        projectId: ApIdSchema,
+        projectId: FlowIdSchema,
         displayOrder: {
             type: Number,
             default: 0,

@@ -1,6 +1,6 @@
 import { Readable } from 'stream'
 import { AppSystemProp, exceptionHandler } from '@flow/server-common'
-import { apId, FileType, isNil, ProjectId } from '@flow/shared'
+import { flowId, FileType, isNil, ProjectId } from '@flow/shared'
 import { DeleteObjectsCommand, GetObjectCommand, PutObjectCommand, S3, S3ClientConfig } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import contentDisposition from 'content-disposition'
@@ -112,7 +112,7 @@ export const s3Helper = (log: FastifyBaseLogger) => ({
     async validateS3Configuration(): Promise<void> {
         const client = getS3Client()
         const bucketName = getS3BucketName()
-        const testKey = `activepieces-${apId()}-validation-test-key`
+        const testKey = `activepieces-${flowId()}-validation-test-key`
 
         await client.putObject({
             Bucket: bucketName,

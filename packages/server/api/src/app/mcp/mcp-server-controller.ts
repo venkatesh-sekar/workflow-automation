@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { AgentMcpTool, ApId, buildAuthHeaders, isNil, McpAuthConfig, McpProtocol, Permission, PopulatedMcpServer, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI, UpdateMcpServerRequest } from '@flow/shared'
+import { AgentMcpTool, FlowId, buildAuthHeaders, isNil, McpAuthConfig, McpProtocol, Permission, PopulatedMcpServer, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI, UpdateMcpServerRequest } from '@flow/shared'
 import { experimental_createMCPClient as createMCPClient, MCPClient, MCPTransport } from '@ai-sdk/mcp'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'
@@ -143,7 +143,7 @@ const StreamableHttpRequestRequest = {
     },
     schema: {
         params: z.object({
-            projectId: ApId,
+            projectId: FlowId,
         }),
     },
 }
@@ -163,7 +163,7 @@ export const UpdateMcpRequest = {
         description: 'Update the project MCP server configuration',
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         params: z.object({
-            projectId: ApId,
+            projectId: FlowId,
         }),
         body: UpdateMcpServerRequest,
     },
@@ -183,7 +183,7 @@ export const AddMcpServerToolRequest = {
         tags: ['agent'],
         description: 'Validate agent MCP tool',
         params: z.object({
-            projectId: ApId,
+            projectId: FlowId,
         }),
         body: AgentMcpTool.omit({ auth: true }).merge(
             z.object({
@@ -208,7 +208,7 @@ const GetMcpRequest = {
         description: 'Get an MCP server by ID',
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         params: z.object({
-            projectId: ApId,
+            projectId: FlowId,
         }),
     },
 }
@@ -228,7 +228,7 @@ const RotateTokenRequest = {
         description: 'Rotate the MCP server token',
     },
     params: z.object({
-        projectId: ApId,
+        projectId: FlowId,
     }),
 }
 

@@ -1,7 +1,7 @@
 import { WorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     ApplicationEvent,
     ApplicationEventName,
     assertNotNullOrUndefined,
@@ -53,7 +53,7 @@ export const eventDestinationService = (log: FastifyBaseLogger) => ({
     ): Promise<EventDestination> => {
         assertUrlIsExternal(request.url)
         const entity: EventDestination = {
-            id: apId(),
+            id: flowId(),
             created: new Date().toISOString(),
             updated: new Date().toISOString(),
             platformId,
@@ -117,7 +117,7 @@ export const eventDestinationService = (log: FastifyBaseLogger) => ({
         await Promise.all(destinations.map(destination =>
             jobQueue(log).add({
                 type: JobType.ONE_TIME,
-                id: apId(),
+                id: flowId(),
                 data: {
                     schemaVersion: LATEST_JOB_DATA_SCHEMA_VERSION,
                     platformId,
@@ -133,14 +133,14 @@ export const eventDestinationService = (log: FastifyBaseLogger) => ({
     test: async ({ platformId, projectId, url }: TestParams): Promise<void> => {
         assertUrlIsExternal(url)
         const mockEvent: FlowCreatedEvent = {
-            id: apId(),
+            id: flowId(),
             created: new Date().toISOString(),
             updated: new Date().toISOString(),
             ip: '127.0.0.1',
             platformId,
             data: {
                 flow: {
-                    id: apId(),
+                    id: flowId(),
                     created: new Date().toISOString(),
                     updated: new Date().toISOString(),
                 },
@@ -149,17 +149,17 @@ export const eventDestinationService = (log: FastifyBaseLogger) => ({
                 },
             },
             projectId,
-            userId: apId(),
+            userId: flowId(),
             action: ApplicationEventName.FLOW_CREATED,
         }
         await jobQueue(log).add({
             type: JobType.ONE_TIME,
-            id: apId(),
+            id: flowId(),
             data: {
                 schemaVersion: LATEST_JOB_DATA_SCHEMA_VERSION,
                 platformId,
                 projectId,
-                webhookId: apId(),
+                webhookId: flowId(),
                 webhookUrl: url,
                 payload: mockEvent,
                 jobType: WorkerJobType.EVENT_DESTINATION,

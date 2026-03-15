@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { BaseModelSchema } from '../../core/common'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { PopulatedFlow } from '../flows/flow'
 
-export type McpId = ApId
+export type McpId = FlowId
 
 export const MCP_TRIGGER_PIECE_NAME = '@flow/piece-mcp'
 
@@ -14,9 +14,9 @@ export enum McpServerStatus {
 
 export const McpServer = z.object({
     ...BaseModelSchema,
-    projectId: ApId,
+    projectId: FlowId,
     status: z.nativeEnum(McpServerStatus),
-    token: ApId,
+    token: FlowId,
     enabledTools: z.array(z.string()).nullable(),
 })
 

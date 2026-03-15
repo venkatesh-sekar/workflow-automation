@@ -1,6 +1,6 @@
 import { securityAccess } from '@flow/server-common'
 import {
-    ApId,
+    FlowId,
     OptionalBooleanFromQuery,
     USE_DRAFT_QUERY_PARAM_NAME,
 } from '@flow/shared'
@@ -21,7 +21,7 @@ const GetChatRequest = {
     schema: {
         description: 'Get a chat UI by flow id',
         params: z.object({
-            flowId: ApId,
+            flowId: FlowId,
         }),
         querystring: z.object({
             [USE_DRAFT_QUERY_PARAM_NAME]: OptionalBooleanFromQuery,

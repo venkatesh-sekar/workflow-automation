@@ -1,6 +1,6 @@
 import {
     FlowError,
-    apId,
+    flowId,
     CreateTableRequest,
     CreateTableWebhookRequest,
     ErrorCode,
@@ -49,8 +49,8 @@ export const tableService = {
     }: CreateParams): Promise<Table> {
         const folderId = await getFolderIdFromRequest({ projectId, folderId: request.folderId, folderName: request.folderName, log: system.globalLogger() })
         const table = await tableRepo().save({
-            id: apId(),
-            externalId: request.externalId ?? apId(),
+            id: flowId(),
+            externalId: request.externalId ?? flowId(),
             name: request.name,
             projectId,
             folderId,
@@ -262,7 +262,7 @@ export const tableService = {
         request,
     }: CreateWebhookParams): Promise<TableWebhook> {
         return tableWebhookRepo().save({
-            id: apId(),
+            id: flowId(),
             projectId,
             tableId: id,
             events: request.events,

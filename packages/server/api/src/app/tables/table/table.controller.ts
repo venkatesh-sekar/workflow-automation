@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { ApId, CountTablesRequest, CreateTableRequest, CreateTableWebhookRequest, ExportTableResponse, ListTablesRequest, Permission, PrincipalType, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, SharedTemplate, Table, UpdateTableRequest } from '@flow/shared'
+import { FlowId, CountTablesRequest, CreateTableRequest, CreateTableWebhookRequest, ExportTableResponse, ListTablesRequest, Permission, PrincipalType, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, SharedTemplate, Table, UpdateTableRequest } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
@@ -172,7 +172,7 @@ const DeleteRequest = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Delete a table',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.NO_CONTENT]: z.never(),
@@ -192,7 +192,7 @@ const GetTableByIdRequest = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Get a table by id',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.OK]: Table,
@@ -286,7 +286,7 @@ const ClearTableRequest = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Clear all records from a table',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.NO_CONTENT]: z.never(),
@@ -308,7 +308,7 @@ const GetTableTemplateRequestOptions = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Export table as template',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.OK]: SharedTemplate,

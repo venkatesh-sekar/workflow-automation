@@ -1,6 +1,6 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import {
-    apId,
+    flowId,
     PlatformRole,
     PrincipalType,
     UserStatus,
@@ -145,7 +145,7 @@ describe('User API', () => {
                 },
             })
             // arrange
-            const nonExistentUserId = apId()
+            const nonExistentUserId = flowId()
 
             const testToken = await generateMockToken({
                 type: PrincipalType.USER,

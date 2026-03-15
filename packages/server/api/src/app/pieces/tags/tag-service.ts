@@ -1,4 +1,4 @@
-import { apId, ListTagsRequest, SeekPage, Tag } from '@flow/shared'
+import { flowId, ListTagsRequest, SeekPage, Tag } from '@flow/shared'
 import { In } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'
 import { buildPaginator } from '../../helper/pagination/build-paginator'
@@ -37,7 +37,7 @@ export const tagService = {
         if (existingTag) {
             return existingTag
         }
-        await repo().upsert({ id: apId(), name: clonedName, platformId }, ['name', 'platformId'])
+        await repo().upsert({ id: flowId(), name: clonedName, platformId }, ['name', 'platformId'])
         return repo().findOneByOrFail({ name: clonedName, platformId })
     },
 

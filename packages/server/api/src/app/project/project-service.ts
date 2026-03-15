@@ -1,8 +1,8 @@
 import { getProjectMaxConcurrentJobsKey } from '@flow/server-common'
 import {
     FlowError,
-    ApId,
-    apId,
+    FlowId,
+    flowId,
     assertNotNullOrUndefined,
     ColorName,
     ErrorCode,
@@ -30,7 +30,7 @@ export const projectService = (log: FastifyBaseLogger) => ({
         const { callPostCreateHooks = true, entityManager, ...rest } = params
         const icon = this.createProjectIcon()
         const newProject: NewProject = {
-            id: apId(),
+            id: flowId(),
             ...rest,
             icon,
             releasesEnabled: false,
@@ -300,7 +300,7 @@ type GetByPlatformIdAndExternalIdParams = {
 
 type AddProjectToPlatformParams = {
     projectId: ProjectId
-    platformId: ApId
+    platformId: FlowId
 }
 
 type NewProject = Omit<Project, 'created' | 'updated' | 'deleted'>

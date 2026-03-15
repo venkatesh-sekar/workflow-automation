@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { ApId,
+import { FlowId,
     AppConnectionOwners,
     AppConnectionScope,
     AppConnectionWithoutSensitiveData,
@@ -192,7 +192,7 @@ const UpdateConnectionValueRequest = {
         description: 'Update an app connection value',
         body: UpdateConnectionValueRequestBody,
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
     },
 }
@@ -275,7 +275,7 @@ const DeleteAppConnectionRequest = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Delete an app connection',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.NO_CONTENT]: z.never(),

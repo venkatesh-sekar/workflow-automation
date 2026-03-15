@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, PrincipalType } from '@flow/shared'
+import { flowId, PrincipalType } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { generateMockToken } from '../../../helpers/auth'
@@ -21,7 +21,7 @@ describe('Project Worker API', () => {
 
             const mockToken = await generateMockToken({
                 type: PrincipalType.ENGINE,
-                id: apId(),
+                id: flowId(),
                 platform: {
                     id: mockPlatform.id,
                 },

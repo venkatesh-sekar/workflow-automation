@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { FlowError, apId, assertNotNullOrUndefined, CreateFieldRequest, ErrorCode, Field, FieldState, FieldType, isNil, UpdateFieldRequest } from '@flow/shared'
+import { FlowError, flowId, assertNotNullOrUndefined, CreateFieldRequest, ErrorCode, Field, FieldState, FieldType, isNil, UpdateFieldRequest } from '@flow/shared'
 import { repoFactory } from '../../core/db/repo-factory'
 import { system } from '../../helper/system/system'
 import { FieldEntity } from './field.entity'
@@ -12,8 +12,8 @@ export const fieldService = {
         const field = await fieldRepo().save({
             ...request,
             projectId,
-            id: apId(),
-            externalId: request.externalId ?? apId(),
+            id: flowId(),
+            externalId: request.externalId ?? flowId(),
         })
         return field
     },

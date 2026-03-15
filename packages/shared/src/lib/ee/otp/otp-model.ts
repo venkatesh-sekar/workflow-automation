@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { BaseModelSchema } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { OtpType } from './otp-type'
 
-export type OtpId = ApId
+export type OtpId = FlowId
 
 export enum OtpState {
     PENDING = 'PENDING',
@@ -13,7 +13,7 @@ export enum OtpState {
 export const OtpModel = z.object({
     ...BaseModelSchema,
     type: z.nativeEnum(OtpType),
-    identityId: ApId,
+    identityId: FlowId,
     value: z.string(),
     state: z.nativeEnum(OtpState),
 })

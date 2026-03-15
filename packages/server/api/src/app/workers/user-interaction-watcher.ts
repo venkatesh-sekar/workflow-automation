@@ -1,4 +1,4 @@
-import { apId, LATEST_JOB_DATA_SCHEMA_VERSION, UserInteractionJobDataWithoutWatchingInformation } from '@flow/shared'
+import { flowId, LATEST_JOB_DATA_SCHEMA_VERSION, UserInteractionJobDataWithoutWatchingInformation } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { engineResponseWatcher } from './engine-response-watcher'
 import { jobQueue } from './queue/job-queue'
@@ -6,7 +6,7 @@ import { JobType } from './queue/queue-manager'
 
 export const userInteractionWatcher = (log: FastifyBaseLogger) => ({
     submitAndWaitForResponse: async <T>(request: UserInteractionJobDataWithoutWatchingInformation, requestId?: string): Promise<T> => {
-        const id = requestId ?? apId()
+        const id = requestId ?? flowId()
         await jobQueue(log).add({
             id,
             type: JobType.ONE_TIME,

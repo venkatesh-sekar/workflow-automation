@@ -1,7 +1,7 @@
 import { Flow, FlowVersion, User } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../../database/database-common'
 
@@ -14,7 +14,7 @@ export const FlowVersionEntity = new EntitySchema<FlowVersionSchema>({
     name: 'flow_version',
     columns: {
         ...BaseColumnSchemaPart,
-        flowId: ApIdSchema,
+        flowId: FlowIdSchema,
         displayName: {
             type: String,
         },

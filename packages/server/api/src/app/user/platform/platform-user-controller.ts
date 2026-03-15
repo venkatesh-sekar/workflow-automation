@@ -1,6 +1,6 @@
 import { securityAccess } from '@flow/server-common'
 import {
-    ApId,
+    FlowId,
     assertNotNullOrUndefined,
     ListUsersRequestBody,
     PrincipalType,
@@ -75,7 +75,7 @@ const ListUsersRequest = {
 const UpdateUserRequest = {
     schema: {
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         body: UpdateUserRequestBody,
         response: {
@@ -93,7 +93,7 @@ const UpdateUserRequest = {
 const DeleteUserRequest = {
     schema: {
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         tags: ['users'],
         description: 'Delete user',

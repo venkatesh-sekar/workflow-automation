@@ -1,4 +1,4 @@
-import { FlowError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@flow/shared'
+import { FlowError, flowId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ArrayOverlap, Equal } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
@@ -39,7 +39,7 @@ export const templateService = (log: FastifyBaseLogger) => ({
         const newTags = tags ?? []
 
         const newTemplate: NewTemplate = {
-            id: apId(),
+            id: flowId(),
             name,
             type: TemplateType.CUSTOM,
             summary,

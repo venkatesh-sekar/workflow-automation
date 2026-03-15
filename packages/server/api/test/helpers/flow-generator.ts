@@ -1,4 +1,4 @@
-import { apId, FlowAction, FlowActionType, FlowOperationStatus, FlowStatus, FlowTrigger, FlowTriggerType, FlowVersion, FlowVersionState, PopulatedFlow, PropertyExecutionType } from '@flow/shared'
+import { flowId, FlowAction, FlowActionType, FlowOperationStatus, FlowStatus, FlowTrigger, FlowTriggerType, FlowVersion, FlowVersionState, PopulatedFlow, PropertyExecutionType } from '@flow/shared'
 import { faker } from '@faker-js/faker'
 
 
@@ -7,7 +7,7 @@ export const flowGenerator = {
         return flowGenerator.randomizeMetadata(externalId, flowVersionGenerator.simpleActionAndTrigger())
     },
     randomizeMetadata(externalId: string | undefined, version: Omit<FlowVersion, 'flowId'>): PopulatedFlow {
-        const flowId = apId()
+        const flowId = flowId()
         const result: PopulatedFlow = {
             externalId: externalId ?? flowId,
             version: {
@@ -18,8 +18,8 @@ export const flowGenerator = {
             operationStatus: FlowOperationStatus.NONE,
             status: faker.helpers.enumValue(FlowStatus),
             id: flowId,
-            projectId: apId(),
-            folderId: apId(),
+            projectId: flowId(),
+            folderId: flowId(),
             created: faker.date.recent().toISOString(),
             updated: faker.date.recent().toISOString(),
         }
@@ -30,11 +30,11 @@ export const flowGenerator = {
 const flowVersionGenerator = {
     simpleActionAndTrigger(): Omit<FlowVersion, 'flowId'> {
         return {
-            id: apId(),
+            id: flowId(),
             displayName: faker.animal.dog(),
             created: faker.date.recent().toISOString(),
             updated: faker.date.recent().toISOString(),
-            updatedBy: apId(),
+            updatedBy: flowId(),
             valid: true,
             trigger: {
                 ...randomizeTriggerMetadata(generateTrigger()),
@@ -66,7 +66,7 @@ function generateAction(): FlowAction {
     return {
         type: FlowActionType.PIECE,
         displayName: faker.hacker.noun(),
-        name: apId(),
+        name: flowId(),
         skip: false,
         settings: {
             input: {},
@@ -83,7 +83,7 @@ function generateTrigger(): FlowTrigger {
     return {
         type: FlowTriggerType.PIECE,
         displayName: faker.hacker.noun(),
-        name: apId(),
+        name: flowId(),
         settings: {
             pieceName: faker.helpers.arrayElement(['@flow/piece-schedule', '@flow/piece-webhook']),
             pieceVersion: faker.system.semver(),

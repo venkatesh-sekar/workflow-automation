@@ -1,4 +1,4 @@
-import { apId, SeekPage } from '@flow/shared'
+import { flowId, SeekPage } from '@flow/shared'
 import { repoFactory } from '../core/db/repo-factory'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
 import { AuditEventEntity, AuditEventSchema } from './audit-event.entity'
@@ -13,7 +13,7 @@ export const auditEventService = {
         data: Record<string, unknown>
     }): Promise<AuditEventSchema> {
         const auditEvent = {
-            id: apId(),
+            id: flowId(),
             projectId: params.projectId,
             userId: params.userId,
             event: params.event,

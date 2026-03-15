@@ -1,10 +1,10 @@
 import { z } from 'zod'
 import { BaseModelSchema, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 
 export const ApiKey = z.object({
     ...BaseModelSchema,
-    platformId: ApId,
+    platformId: FlowId,
     displayName: z.string(),
     hashedValue: z.string(),
     truncatedValue: z.string(),

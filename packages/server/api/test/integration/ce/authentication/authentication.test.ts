@@ -8,7 +8,7 @@ import {
     createMockPlatform,
     createMockProject,
 } from '../../../helpers/mocks'
-import { apId, PlatformRole, UserStatus } from '@flow/shared'
+import { flowId, PlatformRole, UserStatus } from '@flow/shared'
 import { faker } from '@faker-js/faker'
 
 let app: FastifyInstance | null = null

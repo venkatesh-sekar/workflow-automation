@@ -1,6 +1,6 @@
 import {
     FlowError, AIProviderAuthConfig, AIProviderConfig, AIProviderModel, AIProviderName, AIProviderWithoutSensitiveData,
-    apId,
+    flowId,
     CreateAIProviderRequest,
     ErrorCode,
     GetProviderConfigResponse,
@@ -69,7 +69,7 @@ export const aiProviderService = (log: FastifyBaseLogger) => ({
     async create(platformId: PlatformId, request: CreateAIProviderRequest): Promise<void> {
         await this.validateProviderCredentials(request.provider, request.auth, request.config)
         await aiProviderRepo().save({
-            id: apId(),
+            id: flowId(),
             auth: await encryptUtils.encryptObject(request.auth),
             config: request.config,
             provider: request.provider,

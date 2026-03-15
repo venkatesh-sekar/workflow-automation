@@ -1,6 +1,6 @@
 import { AppSystemProp } from '@flow/server-common'
 import {
-    apId,
+    flowId,
     isNil,
     PlatformRole,
     ProjectType,

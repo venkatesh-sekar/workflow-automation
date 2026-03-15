@@ -1,7 +1,7 @@
 import { apDayjs, apDayjsDuration } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     CreateFlowRequest,
     Cursor,
     ErrorCode,
@@ -54,13 +54,13 @@ export const flowService = (log: FastifyBaseLogger) => ({
     async create({ projectId, request, externalId, ownerId, templateId }: CreateParams): Promise<PopulatedFlow> {
         const folderId = await getFolderIdFromRequest({ projectId, folderId: request.folderId, folderName: request.folderName, log })
         const newFlow: NewFlow = {
-            id: apId(),
+            id: flowId(),
             projectId,
             folderId,
             status: FlowStatus.DISABLED,
             ownerId,
             publishedVersionId: null,
-            externalId: externalId ?? apId(),
+            externalId: externalId ?? flowId(),
             metadata: request.metadata,
             operationStatus: FlowOperationStatus.NONE,
             templateId,

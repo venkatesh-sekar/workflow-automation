@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { AuthorizationForType, AuthorizationType, FastifyRouteSecurity, ProjectAuthorization, RequestProject, RouteAccessRequest, RouteKind } from '@flow/server-common'
-import { ApId, EndpointScope, MaybeProjectExtra, Permission, Principal, Principal, PrincipalForTypes, PrincipalForTypes, PrincipalType } from '@flow/shared'
+import { FlowId, EndpointScope, MaybeProjectExtra, Permission, Principal, Principal, PrincipalForTypes, PrincipalForTypes, PrincipalType } from '@flow/shared'
 import fastify, {
     RouteShorthandOptions as BaseRouteShorthandOptions,
     FastifyBaseLogger,

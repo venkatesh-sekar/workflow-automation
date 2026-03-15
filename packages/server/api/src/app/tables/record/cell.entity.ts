@@ -1,6 +1,6 @@
 import { Cell, Field, Project, Record } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 type CellSchema = Cell & {
     record: Record
@@ -13,15 +13,15 @@ export const CellEntity = new EntitySchema<CellSchema>({
     columns: {
         ...BaseColumnSchemaPart,
         recordId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         fieldId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         value: {

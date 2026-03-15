@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, PrincipalType } from '@flow/shared'
+import { flowId, PrincipalType } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { generateMockToken } from '../../../helpers/auth'
@@ -22,14 +22,14 @@ describe('Step File API', () => {
 
             const mockToken = await generateMockToken({
                 type: PrincipalType.ENGINE,
-                id: apId(),
+                id: flowId(),
                 platform: { id: mockPlatform.id },
                 projectId: mockProject.id,
             })
 
             const fileContent = Buffer.from('test file content')
             const formData = new FormData()
-            formData.append('flowId', apId())
+            formData.append('flowId', flowId())
             formData.append('stepName', 'step_1')
             formData.append('fileName', 'test.txt')
             formData.append('contentLength', fileContent.length.toString())
@@ -54,13 +54,13 @@ describe('Step File API', () => {
 
             const mockToken = await generateMockToken({
                 type: PrincipalType.ENGINE,
-                id: apId(),
+                id: flowId(),
                 platform: { id: mockPlatform.id },
                 projectId: mockProject.id,
             })
 
             const formData = new FormData()
-            formData.append('flowId', apId())
+            formData.append('flowId', flowId())
             formData.append('stepName', 'step_1')
             formData.append('fileName', 'test.txt')
             formData.append('contentLength', 'not-a-number')

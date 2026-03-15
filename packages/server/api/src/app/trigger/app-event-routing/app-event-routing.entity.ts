@@ -1,6 +1,6 @@
 import { FlowId, ProjectId } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 export type AppEventRoutingId = string
 
@@ -22,8 +22,8 @@ export const AppEventRoutingEntity = new EntitySchema<AppEventRouting>({
         appName: {
             type: String,
         },
-        projectId: ApIdSchema,
-        flowId: ApIdSchema,
+        projectId: FlowIdSchema,
+        flowId: FlowIdSchema,
         identifierValue: {
             type: String,
         },

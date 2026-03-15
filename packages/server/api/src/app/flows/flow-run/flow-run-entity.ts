@@ -8,7 +8,7 @@ import {
 } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../../database/database-common'
 
@@ -24,19 +24,19 @@ export const FlowRunEntity = new EntitySchema<FlowRunSchema>({
     name: 'flow_run',
     columns: {
         ...BaseColumnSchemaPart,
-        projectId: ApIdSchema,
-        flowId: ApIdSchema,
-        flowVersionId: ApIdSchema,
+        projectId: FlowIdSchema,
+        flowId: FlowIdSchema,
+        flowVersionId: FlowIdSchema,
         environment: {
             type: String,
             nullable: true,
         },
         logsFileId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
         },
         parentRunId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
         },
         failParentOnFailure: {

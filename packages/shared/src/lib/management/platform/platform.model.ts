@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { BaseModelSchema, DateOrString, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { FederatedAuthnProviderConfig, FederatedAuthnProviderConfigWithoutSensitiveData } from '../../core/federated-authn'
 
-export type PlatformId = ApId
+export type PlatformId = FlowId
 
 export enum FilteredPieceBehavior {
     ALLOWED = 'ALLOWED',
@@ -103,7 +103,7 @@ export type PlatformPlanWithOnlyLimits = Omit<PlatformPlanLimits, 'stripeSubscri
 
 export const Platform = z.object({
     ...BaseModelSchema,
-    ownerId: ApId,
+    ownerId: FlowId,
     name: z.string(),
     primaryColor: z.string(),
     logoIconUrl: z.string(),
@@ -133,7 +133,7 @@ export const PlatformWithoutSensitiveData = z.object({
     id: z.string(),
     created: DateOrString,
     updated: DateOrString,
-    ownerId: ApId,
+    ownerId: FlowId,
     name: z.string(),
     primaryColor: z.string(),
     logoIconUrl: z.string(),

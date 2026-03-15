@@ -1,7 +1,7 @@
 import { File, Flow, Project, TriggerEvent } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../../database/database-common'
 
@@ -15,8 +15,8 @@ export const TriggerEventEntity = new EntitySchema<TriggerEventSchema>({
     name: 'trigger_event',
     columns: {
         ...BaseColumnSchemaPart,
-        flowId: ApIdSchema,
-        projectId: ApIdSchema,
+        flowId: FlowIdSchema,
+        projectId: FlowIdSchema,
         sourceName: {
             type: String,
         },

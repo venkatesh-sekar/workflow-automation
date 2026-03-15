@@ -1,6 +1,6 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import {
-    apId,
+    flowId,
     FlowStatus,
     FlowTriggerType,
     FlowVersionState,
@@ -99,7 +99,7 @@ describe('Human Input API', () => {
         })
 
         it('should return 404 for non-existent flow', async () => {
-            const nonExistentId = apId()
+            const nonExistentId = flowId()
             const response = await app?.inject({
                 method: 'GET',
                 url: `/v1/human-input/form/${nonExistentId}`,
@@ -192,7 +192,7 @@ describe('Human Input API', () => {
         })
 
         it('should return 404 for non-existent flow', async () => {
-            const nonExistentId = apId()
+            const nonExistentId = flowId()
             const response = await app?.inject({
                 method: 'GET',
                 url: `/v1/human-input/chat/${nonExistentId}`,

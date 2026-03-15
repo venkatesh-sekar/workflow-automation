@@ -1,5 +1,5 @@
 import { AppSystemProp, exceptionHandler } from '@flow/server-common'
-import { apId, ApMultipartFile } from '@flow/shared'
+import { flowId, ApMultipartFile } from '@flow/shared'
 import cors from '@fastify/cors'
 import formBody from '@fastify/formbody'
 import fastifyMultipart, { MultipartFile } from '@fastify/multipart'
@@ -41,7 +41,7 @@ async function setupBaseApp(): Promise<FastifyInstance> {
         // Default 100MB, also set in nginx.conf
         bodyLimit: Math.max(fileSizeLimit + 4, flowRunLogSizeLimit + 4, 25) * 1024 * 1024,
         genReqId: () => {
-            return `req_${apId()}`
+            return `req_${flowId()}`
         },
     })
 

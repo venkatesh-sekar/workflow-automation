@@ -1,6 +1,6 @@
 import {
     FlowError,
-    apId,
+    flowId,
     assertNotNullOrUndefined,
     Cursor,
     ErrorCode,
@@ -34,7 +34,7 @@ export const userService = (log: FastifyBaseLogger) => ({
     async create(params: CreateParams): Promise<User> {
         const isActive = params.isActive ?? true
         const user: NewUser = {
-            id: apId(),
+            id: flowId(),
             identityId: params.identityId,
             platformRole: params.platformRole,
             status: isActive ? UserStatus.ACTIVE : UserStatus.INACTIVE,

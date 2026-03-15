@@ -1,5 +1,5 @@
 import { filePiecesUtils } from '@flow/server-common'
-import { apId, isNil, PackageType, PieceType } from '@flow/shared'
+import { flowId, isNil, PackageType, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import semVer from 'semver'
 import { PieceRegistryEntry } from '../piece-cache'
@@ -35,7 +35,7 @@ export async function loadLocalPieces(log: FastifyBaseLogger): Promise<PieceMeta
     const pieces = await filePiecesUtils(log).loadAllPiecesMetadata()
 
     return pieces.map((p): PieceMetadataSchema => ({
-        id: apId(),
+        id: flowId(),
         ...p,
         projectUsage: 0,
         pieceType: PieceType.OFFICIAL,

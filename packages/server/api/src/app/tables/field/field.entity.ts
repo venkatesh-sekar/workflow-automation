@@ -1,6 +1,6 @@
 import { Cell, Field, FieldType, Project, Table } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 type FieldSchema = Field & {
     table: Table
@@ -21,11 +21,11 @@ export const FieldEntity = new EntitySchema<FieldSchema>({
             enum: FieldType,
         },
         tableId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         externalId: {

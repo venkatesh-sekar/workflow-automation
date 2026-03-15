@@ -2,7 +2,7 @@ import {
   isNil,
   PopulatedFlow,
   FlowVersionState,
-  apId,
+  flowId,
   FlowStatus,
   FlowOperationStatus,
   Template,
@@ -57,11 +57,11 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
       return null;
     }
 
-    const flowId = apId();
+    const flowId = flowId();
     return {
       id: flowId,
-      projectId: apId(),
-      externalId: apId(),
+      projectId: flowId(),
+      externalId: flowId(),
       folderId: null,
       status: FlowStatus.DISABLED,
       publishedVersionId: null,
@@ -71,7 +71,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
       updated: template.updated,
       version: {
         ...selectedFlow,
-        id: apId(),
+        id: flowId(),
         flowId: flowId,
         created: template.created,
         updated: template.updated,

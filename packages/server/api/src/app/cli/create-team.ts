@@ -15,7 +15,7 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, ColorName, PlatformRole, ProjectType, UserStatus } from '@flow/shared'
+import { flowId, ColorName, PlatformRole, ProjectType, UserStatus } from '@flow/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'
@@ -67,7 +67,7 @@ async function getOrCreateDefaultPlatform(ownerId: string): Promise<string> {
         return platforms[0].id
     }
 
-    const platformId = apId()
+    const platformId = flowId()
     await platformRepo().save({
         id: platformId,
         ownerId,
@@ -96,7 +96,7 @@ async function getOrCreateUser(email: string, firstName: string, lastName: strin
         return existing.id
     }
 
-    const userId = apId()
+    const userId = flowId()
     await userRepo().save({
         id: userId,
         email,
@@ -132,7 +132,7 @@ async function main(): Promise<void> {
 
     const { plaintext, hash } = generateApiKey()
 
-    const projectId = apId()
+    const projectId = flowId()
     await projectRepo().save({
         id: projectId,
         ownerId: userId,

@@ -1,11 +1,11 @@
 import { z } from 'zod'
 import { BaseModelSchema, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { Metadata } from '../../core/common/metadata'
 import { TriggerSource, WebhookHandshakeConfiguration } from '../trigger'
 import { FlowVersion } from './flow-version'
 
-export type FlowId = ApId
+export type FlowId = FlowId
 export enum FlowStatus {
     ENABLED = 'ENABLED',
     DISABLED = 'DISABLED',

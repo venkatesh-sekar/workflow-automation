@@ -1,4 +1,4 @@
-import { apId, ApId, FlowRunStatus, PauseMetadata, RunEnvironment } from '@flow/shared'
+import { flowId, FlowId, FlowRunStatus, PauseMetadata, RunEnvironment } from '@flow/shared'
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
 import Redis from 'ioredis'
@@ -6,7 +6,7 @@ import { apDayjsDuration } from '../dayjs-helper'
 import { DistributedStore } from '../redis/distributed-store-factory'
 import { QueueName } from './index'
 
-export const redisMetadataKey = (runId: ApId): string => `runs_metadata:${runId}`
+export const redisMetadataKey = (runId: FlowId): string => `runs_metadata:${runId}`
 
 export const runsMetadataQueueFactory = ({
     createRedisConnection,
@@ -44,7 +44,7 @@ export const runsMetadataQueueFactory = ({
 
             await distributedStore.merge(redisMetadataKey(cleanedParams.id), {
                 ...cleanedParams,
-                requestId: apId(),
+                requestId: flowId(),
             })
 
             await queueInstance.add(

@@ -1,7 +1,7 @@
 import { AppSystemProp, exceptionHandler, fileCompressor, WorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     assertNotNullOrUndefined,
     ErrorCode,
     File,
@@ -39,7 +39,7 @@ const saveFileToDb = async (baseFile: BaseFile, data: SaveParams['data']) => {
 export const fileService = (log: FastifyBaseLogger) => ({
     async save(params: SaveParams): Promise<File> {
         const baseFile: BaseFile = {
-            id: params.fileId ?? apId(),
+            id: params.fileId ?? flowId(),
             projectId: params.projectId,
             platformId: params.platformId,
             type: params.type,

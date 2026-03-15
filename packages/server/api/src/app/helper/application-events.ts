@@ -1,5 +1,5 @@
 import { AppSystemProp, networkUtils, rejectedPromiseHandler } from '@flow/server-common'
-import { apId, ApplicationEvent, isNil, PrincipalType } from '@flow/shared'
+import { flowId, ApplicationEvent, isNil, PrincipalType } from '@flow/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { authenticationUtils } from '../authentication/authentication-utils'
 import { projectService } from '../project/project-service'
@@ -53,7 +53,7 @@ export const applicationEvents = (log: FastifyBaseLogger) => ({
                     ...params,
                     projectId,
                     platformId,
-                    id: apId(),
+                    id: flowId(),
                     created: new Date().toISOString(),
                     updated: new Date().toISOString(),
                 } as ApplicationEvent
@@ -74,7 +74,7 @@ async function enrichAuditEventParam(requestOrMeta: FastifyRequest | MetaInforma
     const user = meta.userId ? await userService(log).getOneOrFail({ id: meta.userId }) : undefined
     const project = meta.projectId ? await projectService(log).getOne(meta.projectId) : undefined
     const eventToSave: unknown = {
-        id: apId(),
+        id: flowId(),
         created: new Date().toISOString(),
         updated: new Date().toISOString(),
         userId: meta.userId,

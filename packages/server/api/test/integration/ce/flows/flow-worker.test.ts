@@ -1,6 +1,6 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import {
-    apId,
+    flowId,
     PrincipalType,
 } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
@@ -46,7 +46,7 @@ describe('Flow API for Worker', () => {
             await db.save('flow_version', [mockFlowVersion])
 
             const mockToken = await generateMockToken({
-                id: apId(),
+                id: flowId(),
                 type: PrincipalType.WORKER,
             })
 

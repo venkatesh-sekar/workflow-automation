@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { FlowError, ApId, ApplicationEventName,
+import { FlowError, FlowId, ApplicationEventName,
     CountFlowsRequest,
     CreateFlowRequest,
     ErrorCode,
@@ -77,7 +77,7 @@ export const flowController: FastifyPluginAsyncZod = async (app) => {
             security: [SERVICE_KEY_SECURITY_OPENAPI],
             body: FlowOperationRequest,
             params: z.object({
-                id: ApId,
+                id: FlowId,
             }),
         },
         preValidation: async (request) => {
@@ -336,7 +336,7 @@ const GetFlowTemplateRequestOptions = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Export flow as template',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         querystring: GetFlowTemplateRequestQuery,
         response: {
@@ -359,7 +359,7 @@ const GetFlowRequestOptions = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Get a flow by id',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         querystring: GetFlowQueryParamsRequest,
         response: {
@@ -382,7 +382,7 @@ const DeleteFlowRequestOptions = {
         security: [SERVICE_KEY_SECURITY_OPENAPI],
         description: 'Delete a flow',
         params: z.object({
-            id: ApId,
+            id: FlowId,
         }),
         response: {
             [StatusCodes.NO_CONTENT]: z.never(),

@@ -1,6 +1,6 @@
 import { Flow, Project, Table, TableWebhook } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 type TableWebhookSchema = TableWebhook & {
     project: Project
@@ -13,11 +13,11 @@ export const TableWebhookEntity = new EntitySchema<TableWebhookSchema>({
     columns: {
         ...BaseColumnSchemaPart,
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         tableId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         events: {
@@ -25,7 +25,7 @@ export const TableWebhookEntity = new EntitySchema<TableWebhookSchema>({
             array: true,
         },
         flowId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
     },

@@ -1,6 +1,6 @@
 import { EventDestination, EventDestinationScope, Platform, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../database/database-common'
 
 export type EventDestinationSchema = EventDestination & {
     platform: Platform
@@ -12,11 +12,11 @@ export const EventDestinationEntity = new EntitySchema<EventDestinationSchema>({
     columns: {
         ...BaseColumnSchemaPart,
         platformId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
         },
         scope: {

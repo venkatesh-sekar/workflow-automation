@@ -1,4 +1,4 @@
-import { ApId, EventDestinationJobData, ExecuteFlowJobData, JobData, PollingJobData, RenewWebhookJobData, ScheduleOptions, UserInteractionJobData, WebhookJobData } from '@flow/shared'
+import { FlowId, EventDestinationJobData, ExecuteFlowJobData, JobData, PollingJobData, RenewWebhookJobData, ScheduleOptions, UserInteractionJobData, WebhookJobData } from '@flow/shared'
 
 
 export enum JobType {
@@ -7,11 +7,11 @@ export enum JobType {
 }
 
 type BaseAddParams<JD extends Omit<JobData, 'engineToken'>, JT extends JobType> = {
-    id: ApId
+    id: FlowId
     data: JD
     type: JT
     delay?: number
-    dependOnJobId?: ApId
+    dependOnJobId?: FlowId
 }
 type RepeatingJobAddParams = BaseAddParams<PollingJobData | RenewWebhookJobData, JobType.REPEATING> & {
     scheduleOptions: ScheduleOptions

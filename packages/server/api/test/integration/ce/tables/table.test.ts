@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, FieldType } from '@flow/shared'
+import { flowId, FieldType } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { db } from '../../../helpers/db'
@@ -43,8 +43,8 @@ describe('Table API', () => {
 
         it('should create a table with initial fields', async () => {
             const ctx = await setup()
-            const nameExtId = apId()
-            const ageExtId = apId()
+            const nameExtId = flowId()
+            const ageExtId = flowId()
 
             const response = await ctx.post('/v1/tables', {
                 projectId: ctx.project.id,
@@ -69,7 +69,7 @@ describe('Table API', () => {
 
         it('should create a table with externalId', async () => {
             const ctx = await setup()
-            const externalId = apId()
+            const externalId = flowId()
 
             const response = await ctx.post('/v1/tables', {
                 projectId: ctx.project.id,
@@ -101,7 +101,7 @@ describe('Table API', () => {
         it('should return 404 for non-existent table', async () => {
             const ctx = await setup()
 
-            const response = await ctx.post(`/v1/tables/${apId()}`, {
+            const response = await ctx.post(`/v1/tables/${flowId()}`, {
                 name: 'Updated Name',
                 folderId: null,
             })
@@ -202,7 +202,7 @@ describe('Table API', () => {
         it('should return 404 for non-existent ID', async () => {
             const ctx = await setup()
 
-            const response = await ctx.get(`/v1/tables/${apId()}`)
+            const response = await ctx.get(`/v1/tables/${flowId()}`)
 
             expect(response?.statusCode).toBe(StatusCodes.NOT_FOUND)
         })

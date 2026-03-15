@@ -1,4 +1,4 @@
-import { apId } from '@flow/shared'
+import { flowId } from '@flow/shared'
 import { In } from 'typeorm'
 import { repoFactory } from '../../../core/db/repo-factory'
 import { tagService } from '../tag-service'
@@ -11,7 +11,7 @@ export const pieceTagService = {
     async set(platformId: string, pieceName: string, tags: string[]): Promise<void> {
         const tagIds = await Promise.all(tags.map(tag => tagService.upsert(platformId, tag).then(tag => tag.id)))
         await pieceTagsRepo().delete({ pieceName, platformId })
-        await pieceTagsRepo().upsert(tagIds.map(tagId => ({ id: apId(), tagId, pieceName, platformId })), ['tagId', 'pieceName'])
+        await pieceTagsRepo().upsert(tagIds.map(tagId => ({ id: flowId(), tagId, pieceName, platformId })), ['tagId', 'pieceName'])
     },
     async findByPlatform(platformId: string):  Promise<Record<string, string[]>> {
         const pieceTags = await pieceTagsRepo().findBy({ platformId })

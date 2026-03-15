@@ -1,6 +1,6 @@
 import {
     FlowError,
-    apId,
+    flowId,
     CreateFolderRequest,
     Cursor,
     ErrorCode,
@@ -60,7 +60,7 @@ export const flowFolderService = (log: FastifyBaseLogger) => ({
                 request,
             })
         }
-        const folderId = apId()
+        const folderId = flowId()
         await folderRepo().upsert({
             id: folderId,
             projectId,

@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { BaseModelSchema, DateOrString, Nullable } from '../common/base-model'
-import { ApId } from '../common/id-generator'
+import { FlowId } from '../common/id-generator'
 import { UserBadge } from './badges'
 
-export type UserId = ApId
+export type UserId = FlowId
 
 export enum PlatformRole {
     /**

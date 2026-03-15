@@ -1,4 +1,4 @@
-import { FlowError, apId, ErrorCode, isNil, spreadIfDefined, UserIdentity } from '@flow/shared'
+import { FlowError, flowId, ErrorCode, isNil, spreadIfDefined, UserIdentity } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { nanoid } from 'nanoid'
 import { repoFactory } from '../../core/db/repo-factory'
@@ -33,7 +33,7 @@ export const userIdentityService = (log: FastifyBaseLogger) => ({
             created: new Date().toISOString(),
             updated: new Date().toISOString(),
             verified: params.verified,
-            id: apId(),
+            id: flowId(),
             password: hashedPassword,
             trackEvents: params.trackEvents,
             newsLetter: params.newsLetter,

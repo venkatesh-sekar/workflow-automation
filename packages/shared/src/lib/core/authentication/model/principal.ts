@@ -1,37 +1,37 @@
 import type { PlatformId } from '../../../management/platform'
 import type { ProjectId } from '../../../management/project'
-import type { ApId } from '../../common/id-generator'
+import type { FlowId } from '../../common/id-generator'
 import { PrincipalType } from './principal-type'
 
 export type WorkerPrincipal = {
-    id: ApId
+    id: FlowId
     type: PrincipalType.WORKER
 }
 
 export type AnnonymousPrincipal = {
-    id: ApId
+    id: FlowId
     type: PrincipalType.UNKNOWN
 }
 
 export type ServicePrincipal = {
-    id: ApId
+    id: FlowId
     type: PrincipalType.SERVICE
     platform: {
-        id: ApId
+        id: FlowId
     }
 }
 
 export type UserPrincipal = {
-    id: ApId
+    id: FlowId
     type: PrincipalType.USER
     platform: {
-        id: ApId
+        id: FlowId
     }
     tokenVersion?: string
 }
 
 export type EnginePrincipal = {
-    id: ApId
+    id: FlowId
     type: PrincipalType.ENGINE
     projectId: ProjectId
     platform: {

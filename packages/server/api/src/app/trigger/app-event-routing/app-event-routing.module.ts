@@ -6,7 +6,7 @@ import {
 } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     assertNotNullOrUndefined,
     ErrorCode,
     FlowStatus,
@@ -114,7 +114,7 @@ export const appEventRoutingController: FastifyPluginAsyncZod = async (
                 identifierValue,
             })
             const eventsQueue = listeners.map(async (listener) => {
-                const requestId = apId()
+                const requestId = flowId()
                 const flow = await flowService(request.log).getOne({ id: listener.flowId, projectId: listener.projectId })
                 if (isNil(flow)) {
                     return

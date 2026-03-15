@@ -1,6 +1,6 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import {
-    apId,
+    flowId,
     PieceType,
     PrincipalType,
     PackageType,
@@ -37,7 +37,7 @@ describe('Piece Metadata CE API', () => {
         it('should return piece categories', async () => {
             const testToken = await generateMockToken({
                 type: PrincipalType.UNKNOWN,
-                id: apId(),
+                id: flowId(),
             })
 
             const response = await app?.inject({
@@ -67,7 +67,7 @@ describe('Piece Metadata CE API', () => {
 
             const testToken = await generateMockToken({
                 type: PrincipalType.UNKNOWN,
-                id: apId(),
+                id: flowId(),
             })
 
             const response = await app?.inject({
@@ -103,7 +103,7 @@ describe('Piece Metadata CE API', () => {
 
             const testToken = await generateMockToken({
                 type: PrincipalType.UNKNOWN,
-                id: apId(),
+                id: flowId(),
             })
 
             const response = await app?.inject({
@@ -134,7 +134,7 @@ describe('Piece Metadata CE API', () => {
 
             const testToken = await generateMockToken({
                 type: PrincipalType.UNKNOWN,
-                id: apId(),
+                id: flowId(),
             })
 
             const response = await app?.inject({
@@ -156,7 +156,7 @@ describe('Piece Metadata CE API', () => {
 
             const testToken = await generateMockToken({
                 type: PrincipalType.UNKNOWN,
-                id: apId(),
+                id: flowId(),
             })
 
             const response = await app?.inject({

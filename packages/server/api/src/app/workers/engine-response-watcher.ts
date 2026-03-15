@@ -1,11 +1,11 @@
-import { apId } from '@flow/shared'
+import { flowId } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { pubsub } from '../helper/pubsub'
 
 type EngineResponseWithId<T> = { requestId: string, response: T }
 
 const listeners = new Map<string, (flowResponse: EngineResponseWithId<unknown>) => void>()
-const SERVER_ID = apId()
+const SERVER_ID = flowId()
 
 export const engineResponseWatcher = (log: FastifyBaseLogger) => ({
     getServerId(): string {

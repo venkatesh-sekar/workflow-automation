@@ -1,5 +1,5 @@
 import {
-    apId,
+    flowId,
     ProjectId,
     PutStoreEntryRequest,
     sanitizeObjectForPostgresql,
@@ -14,7 +14,7 @@ export const storeEntryService = {
     async upsert({ projectId, request }: { projectId: ProjectId, request: PutStoreEntryRequest }): Promise<StoreEntry | null> {
         const value = sanitizeObjectForPostgresql(request.value)
         const insertResult = await storeEntryRepo().upsert({
-            id: apId(),
+            id: flowId(),
             key: request.key,
             value,
             projectId,

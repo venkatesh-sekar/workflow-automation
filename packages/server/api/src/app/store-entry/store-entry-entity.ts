@@ -1,7 +1,7 @@
 import { STORE_KEY_MAX_LENGTH, StoreEntry } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
-    ApIdSchema,
+    FlowIdSchema,
     BaseColumnSchemaPart,
 } from '../database/database-common'
 
@@ -15,7 +15,7 @@ export const StoreEntryEntity = new EntitySchema<StoreEntrySchema>({
             type: String,
             length: STORE_KEY_MAX_LENGTH,
         },
-        projectId: ApIdSchema,
+        projectId: FlowIdSchema,
         value: {
             type: 'jsonb',
             nullable: true,

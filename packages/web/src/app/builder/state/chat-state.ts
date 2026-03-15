@@ -1,4 +1,4 @@
-import { apId } from '@flow/shared';
+import { flowId } from '@flow/shared';
 import { StoreApi } from 'zustand';
 
 import { ChatDrawerSource } from '@/app/builder/types';
@@ -23,7 +23,7 @@ export const createChatState = (
   return {
     chatDrawerOpenSource: null,
     chatSessionMessages: [],
-    chatSessionId: apId(),
+    chatSessionId: flowId(),
     setChatDrawerOpenSource: (source: ChatDrawerSource | null) =>
       set({ chatDrawerOpenSource: source }),
     setChatSessionMessages: (messages: Messages) =>

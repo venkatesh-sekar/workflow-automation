@@ -1,7 +1,7 @@
 import { AppSystemProp } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     Cell,
     chunk,
     CreateRecordsRequest,
@@ -196,7 +196,7 @@ export const recordService = {
                         fieldId: cellData.fieldId,
                         projectId,
                         value: cellData.value,
-                        id: apId(),
+                        id: flowId(),
                     }
                 })
 
@@ -425,7 +425,7 @@ function prepareRecordInsertions(
             tableId,
             projectId,
             created,
-            id: apId(),
+            id: flowId(),
         }
     })
 }
@@ -442,7 +442,7 @@ function prepareCellInsertions(
                 fieldId: cellData.fieldId,
                 projectId,
                 value: cellData.value,
-                id: apId(),
+                id: flowId(),
             }
         }),
     )

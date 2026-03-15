@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { SAFE_STRING_PATTERN } from '../../core/common'
 import { OptionalArrayFromQuery, OptionalBooleanFromQuery } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { ApMultipartFile } from '../../core/common/multipart-file'
 import { FederatedAuthnProviderConfig } from '../../core/federated-authn'
 import { FilteredPieceBehavior } from './platform.model'
@@ -32,7 +32,7 @@ export const UpdatePlatformRequestBody = z.object({
 export type UpdatePlatformRequestBody = z.infer<typeof UpdatePlatformRequestBody>
 
 export const AdminRetryRunsRequestBody = z.object({
-    runIds: z.array(ApId).optional(),
+    runIds: z.array(FlowId).optional(),
     createdAfter: z.string(),
     createdBefore: z.string(),
 })

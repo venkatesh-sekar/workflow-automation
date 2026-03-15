@@ -15,7 +15,7 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, PlatformRole, Permission, RoleType, UserStatus } from '@flow/shared'
+import { flowId, PlatformRole, Permission, RoleType, UserStatus } from '@flow/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'
@@ -66,7 +66,7 @@ async function getOrCreateUser(email: string, firstName: string, lastName: strin
         return existing.id
     }
 
-    const userId = apId()
+    const userId = flowId()
     await userRepo().save({
         id: userId,
         email,
@@ -94,7 +94,7 @@ async function getOrCreateDefaultRole(platformId: string): Promise<string> {
         return existing[0].id
     }
 
-    const roleId = apId()
+    const roleId = flowId()
     const now = new Date().toISOString()
     await ds.query(
         `INSERT INTO project_role (id, created, updated, name, permissions, "platformId", type) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
@@ -114,7 +114,7 @@ async function addProjectMember(projectId: string, platformId: string, userId: s
         return
     }
 
-    const memberId = apId()
+    const memberId = flowId()
     const now = new Date().toISOString()
     await ds.query(
         `INSERT INTO project_member (id, created, updated, "projectId", "platformId", "userId", "projectRoleId") VALUES ($1, $2, $3, $4, $5, $6, $7)`,

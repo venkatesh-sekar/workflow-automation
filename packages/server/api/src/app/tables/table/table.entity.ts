@@ -1,6 +1,6 @@
 import { Field, Folder, Project, Record, Table, TableWebhook } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
-import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 
 type TableSchema = Table & {
     project: Project
@@ -18,7 +18,7 @@ export const TableEntity = new EntitySchema<TableSchema>({
             type: String,
         },
         folderId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: true,
         },
         externalId: {
@@ -33,7 +33,7 @@ export const TableEntity = new EntitySchema<TableSchema>({
             nullable: true,
         },
         projectId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
     },

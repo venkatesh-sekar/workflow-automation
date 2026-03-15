@@ -1,7 +1,7 @@
 import { AIProviderConfig, AIProviderName, BaseModelSchema, Platform } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import { z } from 'zod'
-import { ApIdSchema, BaseColumnSchemaPart } from '../database/database-common'
+import { FlowIdSchema, BaseColumnSchemaPart } from '../database/database-common'
 import { EncryptedObject } from '../helper/encryption'
 
 const AIProviderEncrypted = z.object({
@@ -36,7 +36,7 @@ export const AIProviderEntity = new EntitySchema<AIProviderSchema>({
             nullable: false,
         },
         platformId: {
-            ...ApIdSchema,
+            ...FlowIdSchema,
             nullable: false,
         },
         displayName: {

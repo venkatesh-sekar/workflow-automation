@@ -1,7 +1,7 @@
 import { BaseModel } from '../common/base-model'
-import { ApId } from '../common/id-generator'
+import { FlowId } from '../common/id-generator'
 
-export type FlagId = ApId
+export type FlagId = FlowId
 
 export type Flag = {
     value: unknown

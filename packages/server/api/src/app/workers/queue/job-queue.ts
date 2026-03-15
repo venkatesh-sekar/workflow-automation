@@ -1,5 +1,5 @@
 import { apDayjsDuration, AppSystemProp, memoryLock, QueueName } from '@flow/server-common'
-import { ApId, getDefaultJobPriority, isNil, JOB_PRIORITY, WorkerJobType } from '@flow/shared'
+import { FlowId, getDefaultJobPriority, isNil, JOB_PRIORITY, WorkerJobType } from '@flow/shared'
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
 import { FastifyBaseLogger } from 'fastify'
@@ -10,7 +10,7 @@ import { AddJobParams, JobType } from './queue-manager'
 const EIGHT_MINUTES_IN_MILLISECONDS = apDayjsDuration(8, 'minute').asMilliseconds()
 const REDIS_FAILED_JOB_RETENTION_DAYS = apDayjsDuration(system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_DAYS), 'day').asSeconds()
 const REDIS_FAILED_JOB_RETRY_COUNT = system.getNumberOrThrow(AppSystemProp.REDIS_FAILED_JOB_RETENTION_MAX_COUNT)
-const CHILD_RUNS_KEY = (parentRunId: ApId) => `child_runs:${parentRunId}`
+const CHILD_RUNS_KEY = (parentRunId: FlowId) => `child_runs:${parentRunId}`
 
 const dedicatedWorkersQueues = new Map<string, Queue>()
 
@@ -80,7 +80,7 @@ export const jobQueue = (log: FastifyBaseLogger) => ({
         }
     },
 
-    async removeRepeatingJob({ flowVersionId }: { flowVersionId: ApId }): Promise<void> {
+    async removeRepeatingJob({ flowVersionId }: { flowVersionId: FlowId }): Promise<void> {
         const allQueues = [...dedicatedWorkersQueues.values()].filter(queue => !isNil(queue))
 
         await Promise.allSettled(
@@ -92,7 +92,7 @@ export const jobQueue = (log: FastifyBaseLogger) => ({
         }, '[jobQueue#removeRepeatingJob] removed jobs from all queues')
     },
 
-    async removeOneTimeJob({ jobId, platformId }: { jobId: ApId, platformId: string | null }): Promise<void> {
+    async removeOneTimeJob({ jobId, platformId }: { jobId: FlowId, platformId: string | null }): Promise<void> {
         const queueName = await getQueueName(platformId, log)
         const queue = await ensureQueueExists({ log, queueName })
         const job = await queue.getJob(jobId)
@@ -183,6 +183,6 @@ async function getQueueName(_platformId: string | null, _log: FastifyBaseLogger)
 
 
 type ChildRunData = {
-    jobId: ApId
+    jobId: FlowId
     platformId: string
 }

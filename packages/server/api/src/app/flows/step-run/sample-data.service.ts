@@ -1,5 +1,5 @@
 import {
-    apId,
+    flowId,
     DATA_TYPE_KEY_IN_FILE_METADATA,
     FileCompression,
     FileType,
@@ -120,7 +120,7 @@ export async function saveSampleData({
 async function useExistingOrCreateNewSampleId(projectId: ProjectId, flowVersion: FlowVersion, step: FlowAction | FlowTrigger, fileType: FileType, log: FastifyBaseLogger): Promise<string> {
     const sampleDataId = fileType === FileType.SAMPLE_DATA ? step.settings.sampleData?.sampleDataFileId : step.settings.sampleData?.sampleDataInputFileId
     if (isNil(sampleDataId)) {
-        return apId()
+        return flowId()
     }
     const file = await fileService(log).getFile({
         projectId,
@@ -129,7 +129,7 @@ async function useExistingOrCreateNewSampleId(projectId: ProjectId, flowVersion:
     })
     const isNewVersion = file?.metadata?.flowVersionId !== flowVersion.id
     if (isNewVersion || isNil(file)) {
-        return apId()
+        return flowId()
     }
     return file.id
 }

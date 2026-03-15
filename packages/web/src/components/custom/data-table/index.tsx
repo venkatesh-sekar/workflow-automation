@@ -1,6 +1,6 @@
 'use client';
 
-import { apId, isNil, SeekPage } from '@flow/shared';
+import { flowId, isNil, SeekPage } from '@flow/shared';
 import {
   ColumnDef as TanstackColumnDef,
   flexRender,
@@ -240,7 +240,7 @@ export function DataTable<
     ...((clientPagination || virtualizeRows) && {
       getPaginationRowModel: getPaginationRowModel(),
     }),
-    getRowId: () => apId(),
+    getRowId: () => flowId(),
     initialState: {
       pagination: {
         pageSize: virtualizeRows

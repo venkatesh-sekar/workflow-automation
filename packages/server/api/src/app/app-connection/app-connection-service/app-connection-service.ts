@@ -2,7 +2,7 @@ import { AppSystemProp } from '@flow/server-common'
 import {
     FlowError,
     ApEnvironment,
-    apId,
+    flowId,
     AppConnection,
     AppConnectionId,
     AppConnectionOwners,
@@ -84,7 +84,7 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
             ...(projectIds ? { projectIds: ArrayContains(projectIds) } : {}),
         })
 
-        const newId = existingConnection?.id ?? apId()
+        const newId = existingConnection?.id ?? flowId()
         const connection = {
             displayName,
             ...spreadIfDefined('ownerId', ownerId),

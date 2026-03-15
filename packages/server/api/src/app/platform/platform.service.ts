@@ -1,5 +1,5 @@
 import { FlowError,
-    apId,
+    flowId,
     ErrorCode,
     FederatedAuthnProviderConfig,
     FederatedAuthnProviderConfigWithoutSensitiveData,
@@ -35,7 +35,7 @@ export const platformService = (log: FastifyBaseLogger) => ({
         } = params
 
         const newPlatform: NewPlatform = {
-            id: apId(),
+            id: flowId(),
             ownerId,
             name,
             primaryColor: primaryColor ?? defaultTheme.colors.primary.default,

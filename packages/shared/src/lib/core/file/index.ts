@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import { BaseModelSchema, Nullable } from '../common/base-model'
-import { ApId } from '../common/id-generator'
+import { FlowId } from '../common/id-generator'
 
-export type FileId = ApId
+export type FileId = FlowId
 
 export enum FileType {
     UNKNOWN = 'UNKNOWN',

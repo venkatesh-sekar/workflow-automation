@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { BaseModel, BaseModelSchema, Nullable } from '../../core/common/base-model'
-import { ApId } from '../../core/common/id-generator'
+import { FlowId } from '../../core/common/id-generator'
 import { Metadata } from '../../core/common/metadata'
 import { UserWithMetaInformation } from '../../core/user'
 import { OAuth2GrantType } from './dto/upsert-app-connection-request'
@@ -120,14 +120,14 @@ export const AppConnectionWithoutSensitiveData = z.object({
     displayName: z.string(),
     type: z.nativeEnum(AppConnectionType),
     pieceName: z.string(),
-    projectIds: z.array(ApId),
+    projectIds: z.array(FlowId),
     platformId: Nullable(z.string()),
     scope: z.nativeEnum(AppConnectionScope),
     status: z.nativeEnum(AppConnectionStatus),
     ownerId: Nullable(z.string()),
     owner: Nullable(UserWithMetaInformation),
     metadata: Nullable(Metadata),
-    flowIds: Nullable(z.array(ApId)),
+    flowIds: Nullable(z.array(FlowId)),
     pieceVersion: z.string(),
     preSelectForNewProjects: z.boolean(),
 }).describe('App connection is a connection to an external app.')

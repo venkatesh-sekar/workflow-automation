@@ -1,7 +1,7 @@
 import { AppSystemProp } from '@flow/server-common'
 import {
     FlowError,
-    apId,
+    flowId,
     assertNotNullOrUndefined,
     Cursor,
     EngineHttpResponse,
@@ -584,7 +584,7 @@ function returnHandlerId(pauseMetadata: PauseMetadata | undefined, requestId: st
 
 
 async function addToQueue(params: AddToQueueParams, log: FastifyBaseLogger): Promise<FlowRun> {
-    const logsFileId = params.flowRun.logsFileId ?? apId()
+    const logsFileId = params.flowRun.logsFileId ?? flowId()
     const logsUploadUrl = await flowRunLogsService(log).constructUploadUrl({
         logsFileId,
         projectId: params.flowRun.projectId,
@@ -632,7 +632,7 @@ function queryBuilderForFlowRun(repo: Repository<FlowRun>): SelectQueryBuilder<F
 async function queueOrCreateInstantly(params: CreateParams, log: FastifyBaseLogger): Promise<FlowRun> {
     const now = new Date().toISOString()
     const flowRun: FlowRun = {
-        id: apId(),
+        id: flowId(),
         projectId: params.projectId,
         flowId: params.flowId,
         flowVersionId: params.flowVersionId,

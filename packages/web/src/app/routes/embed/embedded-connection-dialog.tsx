@@ -1,5 +1,5 @@
 import {
-  apId,
+  flowId,
   AppConnectionWithoutSensitiveData,
   isNil,
 } from '@flow/shared';
@@ -28,7 +28,7 @@ const extractIdFromQueryParams = () => {
     memoryRouter.state.location.search,
   ).get(NEW_CONNECTION_QUERY_PARAMS.connectionName);
   return isNil(connectionName) || connectionName.length === 0
-    ? apId()
+    ? flowId()
     : connectionName;
 };
 export const EmbeddedConnectionDialog = () => {
