@@ -3,7 +3,6 @@ import {
   isNil,
   Permission,
   PlatformRole,
-  ProjectType,
   UserInvitationWithLink,
 } from '@activepieces/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -139,7 +138,7 @@ export const InviteUserDialog = ({
       emails: [],
       type: isPlatformPage
         ? InvitationType.PLATFORM
-        : platform.plan.projectRolesEnabled && project.type === ProjectType.TEAM
+        : platform.plan.projectRolesEnabled
         ? InvitationType.PROJECT
         : InvitationType.PLATFORM,
       platformRole: PlatformRole.MEMBER,

@@ -1,12 +1,11 @@
 import {
-  ProjectType,
   ProjectWithLimits,
   TeamProjectsLimit,
 } from '@activepieces/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { CheckIcon, Package, Pencil, Trash } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -30,7 +29,6 @@ import {
 import { globalConnectionsQueries } from '@/features/connections';
 import { EditProjectDialog, projectCollectionUtils } from '@/features/projects';
 import { platformHooks } from '@/hooks/platform-hooks';
-import { formatUtils } from '@/lib/format-utils';
 import { validationUtils } from '@/lib/validation-utils';
 
 import { projectsTableColumns } from './columns';
@@ -39,36 +37,18 @@ import { NewProjectDialog } from './new-project-dialog';
 export default function ProjectsPage() {
   const { platform } = platformHooks.useCurrentPlatform();
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const isEnabled = platform.plan.teamProjectsLimit !== TeamProjectsLimit.NONE;
   const { project: currentProject } =
     projectCollectionUtils.useCurrentProject();
 
-  useEffect(() => {
-    if (!searchParams.has('type')) {
-      setSearchParams(
-        (prev) => {
-          const newParams = new URLSearchParams(prev);
-          newParams.set('type', ProjectType.TEAM);
-          return newParams;
-        },
-        { replace: true },
-      );
-    }
-  }, []);
-
   const displayNameFilter = searchParams.get('displayName') || undefined;
-  const typeFilter = searchParams.getAll('type');
 
   const filters = useMemo(
     () => ({
       displayName: displayNameFilter,
-      type:
-        typeFilter.length > 0
-          ? typeFilter.map((t) => t as ProjectType)
-          : undefined,
     }),
-    [displayNameFilter, typeFilter.join(',')],
+    [displayNameFilter],
   );
 
   const { data: allProjects } =
@@ -114,9 +94,7 @@ export default function ProjectsPage() {
         const selectableRows = table
           .getRowModel()
           .rows.filter(
-            (row) =>
-              row.original.id !== currentProject?.id &&
-              row.original.type !== ProjectType.PERSONAL,
+            (row) => row.original.id !== currentProject?.id,
           );
         const allSelectableSelected =
           selectableRows.length > 0 &&
@@ -159,8 +137,7 @@ export default function ProjectsPage() {
       },
       cell: ({ row }) => {
         const isCurrentProject = row.original.id === currentProject?.id;
-        const isPersonalProject = row.original.type === ProjectType.PERSONAL;
-        const isDisabled = isCurrentProject || isPersonalProject;
+        const isDisabled = isCurrentProject;
         const isChecked = selectedRows.some(
           (selectedRow) => selectedRow.id === row.original.id,
         );
@@ -197,11 +174,9 @@ export default function ProjectsPage() {
             </TooltipTrigger>
             {isDisabled && (
               <TooltipContent side="right">
-                {isCurrentProject
-                  ? t(
-                      'Cannot delete active project, switch to another project first',
-                    )
-                  : t('Personal projects cannot be deleted')}
+                {t(
+                  'Cannot delete active team, switch to another team first',
+                )}
               </TooltipContent>
             )}
           </Tooltip>
@@ -219,24 +194,20 @@ export default function ProjectsPage() {
           resetSelection: () => void,
         ) => {
           const canDeleteAny = selectedRows.some(
-            (row) =>
-              row.id !== currentProject?.id &&
-              row.type !== ProjectType.PERSONAL,
+            (row) => row.id !== currentProject?.id,
           );
           return (
             <div onClick={(e) => e.stopPropagation()}>
               <ConfirmationDeleteDialog
-                title={t('Delete Projects')}
+                title={t('Delete Teams')}
                 message={t(
-                  'The selected projects and all their data will be permanently deleted.',
+                  'The selected teams and all their data will be permanently deleted.',
                 )}
-                entityName={t('Projects')}
+                entityName={t('Teams')}
                 buttonText={t('Delete')}
                 mutationFn={async () => {
                   const deletableProjects = selectedRows.filter(
-                    (row) =>
-                      row.id !== currentProject?.id &&
-                      row.type !== ProjectType.PERSONAL,
+                    (row) => row.id !== currentProject?.id,
                   );
                   projectCollectionUtils.delete(
                     deletableProjects.map((row) => row.id),
@@ -273,9 +244,9 @@ export default function ProjectsPage() {
 
   const toolbarButtons = useMemo(
     () => [
-      <NewProjectDialog key="new-project">
+      <NewProjectDialog key="new-team">
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-          {t('New Project')}
+          {t('New Team')}
         </AnimatedIconButton>
       </NewProjectDialog>,
     ],
@@ -287,10 +258,10 @@ export default function ProjectsPage() {
       console.error(t('Validation error'), error);
       switch (error.response?.data?.params?.message) {
         case 'PROJECT_HAS_ENABLED_FLOWS':
-          return t('Project has enabled flows. Please disable them first.');
+          return t('Team has enabled flows. Please disable them first.');
         case 'ACTIVE_PROJECT':
           return t(
-            'This project is active. Please switch to another project first.',
+            'This team is active. Please switch to another team first.',
           );
       }
       return undefined;
@@ -319,7 +290,7 @@ export default function ProjectsPage() {
                 <Pencil className="size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('Edit project')}</TooltipContent>
+            <TooltipContent side="bottom">{t('Edit team')}</TooltipContent>
           </Tooltip>
         </div>
       );
@@ -330,21 +301,21 @@ export default function ProjectsPage() {
     <LockedFeatureGuard
       featureKey="PROJECTS"
       locked={!isEnabled}
-      lockTitle={t('Unlock Projects')}
+      lockTitle={t('Unlock Teams')}
       lockDescription={t(
-        'Orchestrate your automation teams across projects with their own flows, connections and usage quotas',
+        'Orchestrate your automation teams with their own flows, connections and usage quotas',
       )}
       lockVideoUrl="https://cdn.activepieces.com/videos/showcase/projects.mp4"
     >
       <div className="flex flex-col w-full">
         <DashboardPageHeader
-          title={t('Projects')}
-          description={t('Manage your automation projects')}
+          title={t('Teams')}
+          description={t('Manage your automation teams')}
         />
         <DataTable
-          emptyStateTextTitle={t('No projects found')}
+          emptyStateTextTitle={t('No teams found')}
           emptyStateTextDescription={t(
-            'Start by creating projects to manage your automation teams',
+            'Start by creating teams to manage your automations',
           )}
           emptyStateIcon={<Package className="size-14" />}
           onRowClick={async (project) => {
@@ -356,19 +327,6 @@ export default function ProjectsPage() {
               type: 'input',
               title: t('Name'),
               accessorKey: 'displayName',
-              icon: CheckIcon,
-            },
-            {
-              type: 'select',
-              title: t('Type'),
-              accessorKey: 'type',
-              options: Object.values(ProjectType).map((type) => {
-                return {
-                  label:
-                    formatUtils.convertEnumToHumanReadable(type) + ' Project',
-                  value: type,
-                };
-              }),
               icon: CheckIcon,
             },
           ]}

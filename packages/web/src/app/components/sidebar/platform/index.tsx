@@ -110,8 +110,8 @@ export function PlatformSidebar() {
       label: t('General'),
       items: [
         {
-          to: '/platform/projects',
-          label: t('Projects'),
+          to: '/platform/teams',
+          label: t('Teams'),
           icon: LayoutGridIcon,
           locked: platform.plan.teamProjectsLimit === TeamProjectsLimit.NONE,
         },
@@ -143,7 +143,7 @@ export function PlatformSidebar() {
         },
         {
           to: '/platform/security/project-roles',
-          label: t('Project Roles'),
+          label: t('Team Roles'),
           icon: Settings2Icon,
           locked: !platform.plan.projectRolesEnabled,
         },

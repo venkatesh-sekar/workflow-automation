@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@activepieces/server-common'
-import { ActivepiecesError, ApEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, Project, ProjectType, UserIdentityProvider, UserStatus } from '@activepieces/shared'
+import { ActivepiecesError, ApEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, UserIdentityProvider, UserStatus } from '@activepieces/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { system } from '../helper/system/system'
 import { platformService } from '../platform/platform.service'
@@ -37,13 +37,13 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             isPrivileged: userService(log).isUserPrivileged(user),
         })
         const project = isNil(params.projectId)
-            ? findPersonalProject(projects, params.userId) ?? projects?.[0]
+            ? projects?.[0]
             : projects.find((project) => project.id === params.projectId)
         if (isNil(project)) {
             throw new ActivepiecesError({
                 code: ErrorCode.INVITATION_ONLY_SIGN_UP,
                 params: {
-                    message: 'No project found for user',
+                    message: 'You don\'t have access to any team. Contact your administrator.',
                 },
             })
         }
@@ -144,10 +144,6 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
         return project.ownerId
     },
 })
-
-function findPersonalProject(projects: Project[], userId: string): Project | undefined {
-    return projects.find((project) => project.ownerId === userId && project.type === ProjectType.PERSONAL)
-}
 
 type AssertDomainIsAllowedParams = {
     email: string

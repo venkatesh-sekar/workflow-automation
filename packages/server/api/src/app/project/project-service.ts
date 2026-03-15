@@ -16,7 +16,7 @@ import {
     UserId,
 } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
-import { Brackets, EntityManager, IsNull, Not, ObjectLiteral, SelectQueryBuilder } from 'typeorm'
+import { EntityManager, IsNull, Not, ObjectLiteral, SelectQueryBuilder } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
 import { distributedStore } from '../database/redis-connections'
 import { userService } from '../user/user-service'
@@ -82,19 +82,16 @@ export const projectService = (log: FastifyBaseLogger) => ({
         const externalId = request.externalId?.trim() !== '' ? request.externalId : undefined
         await assertExternalIdIsUnique(externalId, projectId)
 
-        const baseUpdate = {
+        const updateData = {
             ...spreadIfDefined('externalId', externalId),
             ...spreadIfDefined('releasesEnabled', request.releasesEnabled),
             ...spreadIfDefined('metadata', request.metadata),
             ...spreadIfDefined('maxConcurrentJobs', request.maxConcurrentJobs),
-        }
-
-        const teamUpdate = request.type === ProjectType.TEAM ? {
             ...spreadIfDefined('displayName', request.displayName),
             ...spreadIfDefined('icon', request.icon),
-        } : {}
+        }
 
-        await projectRepo(entityManager).update({ id: projectId }, { ...baseUpdate, ...teamUpdate })
+        await projectRepo(entityManager).update({ id: projectId }, updateData)
         return this.getOneOrThrow(projectId)
     },
 
@@ -150,7 +147,7 @@ export const projectService = (log: FastifyBaseLogger) => ({
                 },
             })
         }
-        return projects.find((p) => p.ownerId === userId && p.type === ProjectType.PERSONAL) ?? projects[0]
+        return projects[0]
     },
 
     async getAllForUser(params: GetAllForUserParams): Promise<Project[]> {
@@ -234,15 +231,10 @@ export async function applyProjectsAccessFilters<T extends ObjectLiteral>(
         return
     }
 
-    queryBuilder.andWhere(new Brackets(qb => {
-        qb.where(
-            'project."ownerId" = :userId AND project.type = :personalType',
-            { userId, personalType: ProjectType.PERSONAL },
-        ).orWhere(
-            'project.id IN (SELECT "projectId" FROM project_member WHERE "userId" = :userId AND "platformId" = :platformId)',
-            { userId, platformId },
-        )
-    }))
+    queryBuilder.andWhere(
+        'project.id IN (SELECT "projectId" FROM project_member WHERE "userId" = :userId AND "platformId" = :platformId)',
+        { userId, platformId },
+    )
 }
 async function assertExternalIdIsUnique(externalId: string | undefined | null, projectId: ProjectId): Promise<void> {
     if (!isNil(externalId)) {
@@ -279,8 +271,7 @@ type ExistsParams = {
     isSoftDeleted?: boolean
 }
 
-type UpdateTeamProjectParams = {
-    type: ProjectType.TEAM
+type UpdateParams = {
     displayName?: string
     externalId?: string
     releasesEnabled?: boolean
@@ -288,16 +279,6 @@ type UpdateTeamProjectParams = {
     maxConcurrentJobs?: number
     icon?: ProjectIcon
 }
-
-type UpdatePersonalProjectParams = {
-    type: ProjectType.PERSONAL
-    externalId?: string
-    releasesEnabled?: boolean
-    metadata?: Metadata
-    maxConcurrentJobs?: number
-}
-
-type UpdateParams = UpdateTeamProjectParams | UpdatePersonalProjectParams
 
 type CreateParams = {
     ownerId: UserId

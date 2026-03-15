@@ -1,11 +1,10 @@
 import { isNil } from '@activepieces/shared';
 import { t } from 'i18next';
-import { Search, Plus } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';
 
-import { NewProjectDialog } from '@/app/routes/platform/projects/new-project-dialog';
 import { SearchInput } from '@/components/custom/search-input';
 import { CompassIcon } from '@/components/icons/compass';
 import { useEmbedding } from '@/components/providers/embed-provider';
@@ -121,46 +120,35 @@ export function ProjectDashboardSidebar({
 
           <SidebarGroup className="flex-1 overflow-hidden">
             <div className="flex items-center justify-between group-data-[collapsible=icon]:hidden">
-              <SidebarGroupLabel>{t('Projects')}</SidebarGroupLabel>
+              <SidebarGroupLabel>{t('Teams')}</SidebarGroupLabel>
               <div className="flex items-center justify-center gap-2">
-                <NewProjectDialog
-                  onCreate={(project) => {
-                    navigate(`/projects/${project.id}/flows`);
-                  }}
-                >
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-6 w-6 hover:bg-accent"
-                  >
-                    <Plus />
-                  </Button>
-                </NewProjectDialog>
-                <Popover open={searchOpen} onOpenChange={setSearchOpen}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6 hover:bg-accent"
+                {projects.length > 1 && (
+                  <Popover open={searchOpen} onOpenChange={setSearchOpen}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6 hover:bg-accent"
+                      >
+                        <Search />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className="w-[280px] p-3"
+                      align="start"
+                      side="right"
+                      sideOffset={8}
                     >
-                      <Search />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    className="w-[280px] p-3"
-                    align="start"
-                    side="right"
-                    sideOffset={8}
-                  >
-                    <SearchInput
-                      placeholder={t('Search projects...')}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e)}
-                      className="h-9"
-                      autoFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                      <SearchInput
+                        placeholder={t('Search teams...')}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e)}
+                        className="h-9"
+                        autoFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                )}
               </div>
             </div>
             <div
@@ -198,7 +186,7 @@ export function ProjectDashboardSidebar({
                 ) : (
                   isSearchMode && (
                     <div className="px-2 py-2 text-sm text-muted-foreground">
-                      {state === 'expanded' && t('No projects found.')}
+                      {state === 'expanded' && t('No teams found.')}
                     </div>
                   )
                 )}

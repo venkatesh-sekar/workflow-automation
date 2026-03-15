@@ -65,14 +65,6 @@ const seedAdminFromEnv = async (): Promise<void> => {
         platformId: platform.id,
     })
 
-    // Create personal project for admin
-    await projectService(log).create({
-        displayName: 'Admin\'s Project',
-        ownerId: adminUser.id,
-        platformId: platform.id,
-        type: ProjectType.PERSONAL,
-    })
-
     // Create team project with API key
     const apiKeyHash = crypto.createHash('sha256').update(adminApiKey).digest('hex')
     const teamProject = await projectService(log).create({
@@ -98,6 +90,43 @@ const seedAdminFromEnv = async (): Promise<void> => {
     }, '[bootstrap] Admin bootstrapped successfully. Use FLOW_ADMIN_API_KEY + email to log in.')
 }
 
+const migratePersonalProjectsToTeam = async (): Promise<void> => {
+    const { databaseConnection } = await import('../database-connection')
+    const { projectRepo } = await import('../../project/project-service')
+
+    // Convert all PERSONAL projects to TEAM
+    const result = await projectRepo().createQueryBuilder()
+        .update()
+        .set({ type: ProjectType.TEAM })
+        .where('type = :type', { type: 'PERSONAL' })
+        .execute()
+
+    if (result.affected && result.affected > 0) {
+        log.info({ count: result.affected }, '[migration] Converted PERSONAL projects to TEAM')
+
+        // Ensure owners of converted projects are in project_member table
+        await databaseConnection().query(`
+            INSERT INTO project_member ("id", "userId", "projectId", "platformId", "projectRoleId", "created", "updated")
+            SELECT
+                gen_random_uuid(),
+                p."ownerId",
+                p.id,
+                p."platformId",
+                (SELECT id FROM project_role WHERE name = 'Admin' AND "platformId" = p."platformId" LIMIT 1),
+                NOW(),
+                NOW()
+            FROM project p
+            WHERE p."ownerId" IS NOT NULL
+            AND NOT EXISTS (
+                SELECT 1 FROM project_member pm WHERE pm."userId" = p."ownerId" AND pm."projectId" = p.id
+            )
+        `)
+    }
+}
+
 export const devDataSeed: DataSeed = {
-    run: seedAdminFromEnv,
+    run: async () => {
+        await seedAdminFromEnv()
+        await migratePersonalProjectsToTeam()
+    },
 }

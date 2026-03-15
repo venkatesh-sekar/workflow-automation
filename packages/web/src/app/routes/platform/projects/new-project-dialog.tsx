@@ -54,10 +54,10 @@ export const NewProjectDialog = (props: NewProjectDialogProps) => {
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Create Project')}</DialogTitle>
+          <DialogTitle>{t('Create Team')}</DialogTitle>
           <DialogDescription>
             {t(
-              'Set up a new project to organize your automations and connections.',
+              'Set up a new team to organize your automations and connections.',
             )}
           </DialogDescription>
         </DialogHeader>
@@ -128,11 +128,11 @@ const NewProjectForm = ({
             name="displayName"
             render={({ field }) => (
               <FormItem className="grid space-y-2">
-                <Label htmlFor="displayName">{t('Project Name')}</Label>
+                <Label htmlFor="displayName">{t('Team Name')}</Label>
                 <Input
                   {...field}
                   id="displayName"
-                  placeholder={t('Project Name')}
+                  placeholder={t('Team Name')}
                   className="rounded-sm"
                 />
                 <FormMessage />
@@ -198,7 +198,7 @@ const NewProjectForm = ({
             form.handleSubmit(() => mutate(form.getValues()))(e);
           }}
         >
-          {t('Create Project')}
+          {t('Create Team')}
         </Button>
       </DialogFooter>
     </>

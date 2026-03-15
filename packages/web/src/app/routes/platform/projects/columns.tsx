@@ -2,14 +2,11 @@ import {
   isNil,
   PlatformWithoutSensitiveData,
   ProjectWithLimits,
-  ProjectType,
-  AppConnectionWithoutSensitiveData,
 } from '@activepieces/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import {
   Lock,
-  User,
   Tag,
   Users,
   Workflow,
@@ -42,12 +39,10 @@ export const projectsTableColumns = ({
       ),
       cell: ({ row }) => {
         const locked = row.original.plan.locked;
-        const isPersonal = row.original.type === ProjectType.PERSONAL;
 
         return (
           <div className="text-left flex items-center justify-start ">
             {locked && <Lock className="size-3 mr-1.5" strokeWidth={2.5} />}
-            {isPersonal && <User className="size-4 mr-1.5"></User>}
             <span className="font-medium">{row.original.displayName}</span>
           </div>
         );

@@ -213,7 +213,7 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
                 registered: false,
             }
         }
-        const user = await userService(log).getOrCreateWithProject({
+        const user = await userService(log).getOrCreate({
             identity,
             platformId: invitation.platformId,
         })

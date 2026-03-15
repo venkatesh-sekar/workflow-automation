@@ -74,7 +74,19 @@ export const platformRoutes = [
     element: (
       <PlatformLayout>
         <PageTitle title="Platform">
-          <Navigate to="/platform/projects" />
+          <Navigate to="/platform/teams" />
+        </PageTitle>
+      </PlatformLayout>
+    ),
+  },
+  {
+    path: '/platform/teams',
+    element: (
+      <PlatformLayout>
+        <PageTitle title="Teams">
+          <SuspenseWrapper>
+            <ProjectsPage />
+          </SuspenseWrapper>
         </PageTitle>
       </PlatformLayout>
     ),
@@ -83,10 +95,8 @@ export const platformRoutes = [
     path: '/platform/projects',
     element: (
       <PlatformLayout>
-        <PageTitle title="Projects">
-          <SuspenseWrapper>
-            <ProjectsPage />
-          </SuspenseWrapper>
+        <PageTitle title="Teams">
+          <Navigate to="/platform/teams" replace />
         </PageTitle>
       </PlatformLayout>
     ),
@@ -279,7 +289,7 @@ export const platformRoutes = [
     path: '/platform/security/project-roles',
     element: (
       <PlatformLayout>
-        <PageTitle title="Project Roles">
+        <PageTitle title="Team Roles">
           <SuspenseWrapper>
             <ProjectRolePage />
           </SuspenseWrapper>

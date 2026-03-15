@@ -1,10 +1,8 @@
 import {
   isNil,
   PROJECT_COLOR_PALETTE,
-  ProjectType,
   ProjectWithLimits,
 } from '@activepieces/shared';
-import { User } from 'lucide-react';
 
 import { Avatar } from '@/components/ui/avatar';
 import { SidebarMenuButton, useSidebar } from '@/components/ui/sidebar-shadcn';
@@ -28,8 +26,7 @@ const ProjectSideBarItem = ({
 
   const projectName = getProjectName(project);
 
-  const projectAvatar = isNil(project.icon) ? null : project.type ===
-    ProjectType.TEAM ? (
+  const projectAvatar = isNil(project.icon) ? null : (
     <Avatar
       className="size-4 scale-125 text-sm font-bold flex items-center justify-center rounded-[4px]"
       style={{
@@ -39,8 +36,6 @@ const ProjectSideBarItem = ({
     >
       <span className="scale-75">{projectName.charAt(0).toUpperCase()}</span>
     </Avatar>
-  ) : (
-    <User className="size-4 " />
   );
 
   const shouldShowTooltip = projectName.length > MAX_LENGTH_TO_NOT_SHOW_TOOLTIP;

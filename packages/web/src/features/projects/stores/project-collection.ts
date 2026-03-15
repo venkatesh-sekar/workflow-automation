@@ -149,21 +149,14 @@ export const projectCollectionUtils = {
     };
   },
   useAll: () => {
-    const currentUserId = authenticationSession.getCurrentUserId();
     return useLiveSuspenseQuery(
       (q) =>
         q
           .from({ project: projectCollection })
-          .where(({ project }) =>
-            or(
-              eq(project.type, ProjectType.TEAM),
-              eq(project.ownerId, currentUserId),
-            ),
-          )
-          .orderBy(({ project }) => project.type, 'asc')
+          .orderBy(({ project }) => project.displayName, 'asc')
           .orderBy(({ project }) => project.created, 'asc')
           .select(({ project }) => ({ ...project })),
-      [currentUserId],
+      [],
     );
   },
   useAllPlatformProjects: (filters?: {
@@ -216,9 +209,7 @@ export const projectCollectionUtils = {
 };
 
 export const getProjectName = (project: ProjectWithLimits): string => {
-  return project.type === ProjectType.PERSONAL
-    ? 'Personal Project'
-    : project.displayName;
+  return project.displayName;
 };
 export const projectHooks = {
   useProjectsForPlatforms: () => {
