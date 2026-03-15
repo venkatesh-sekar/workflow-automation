@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { ApEnvironment, isNil, LocalesEnum, PieceType } from '@flow/shared'
+import { FlowEnvironment, isNil, LocalesEnum, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { lru, LRU } from 'tiny-lru'
 import { system } from '../../helper/system/system'
@@ -20,8 +20,8 @@ export type PieceMetadataRefreshMessage =
     | { type: PieceMetadataRefreshType.UPDATE_USAGE, piece: { name: string, version: string, platformId?: string, projectUsage: number } }
 
 let cache: LRU<unknown>
-const environment = system.get<ApEnvironment>(AppSystemProp.ENVIRONMENT)
-const isTestingEnvironment = environment === ApEnvironment.TESTING
+const environment = system.get<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+const isTestingEnvironment = environment === FlowEnvironment.TESTING
 
 const CACHE_KEY = {
     list: (locale: LocalesEnum): string => `list:${locale}`,

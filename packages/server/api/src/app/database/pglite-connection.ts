@@ -1,7 +1,7 @@
 import { mkdirSync } from 'node:fs'
 import path from 'node:path'
 import { AppSystemProp } from '@flow/server-common'
-import { ApEdition, ApEnvironment, spreadIfDefined } from '@flow/shared'
+import { ApEdition, FlowEnvironment, spreadIfDefined } from '@flow/shared'
 import { types } from '@electric-sql/pglite'
 import { DataSource } from 'typeorm'
 import { PGliteDriver } from 'typeorm-pglite'
@@ -17,9 +17,9 @@ const getPGliteDataPathFromDisk = (): string => {
 }
 
 const getPGliteDataPath = (): string | undefined => {
-    const env = system.getOrThrow<ApEnvironment>(AppSystemProp.ENVIRONMENT)
+    const env = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
 
-    if (env === ApEnvironment.TESTING) {
+    if (env === FlowEnvironment.TESTING) {
         return undefined // In-memory mode
     }
     return getPGliteDataPathFromDisk()
@@ -27,8 +27,8 @@ const getPGliteDataPath = (): string | undefined => {
 
 export const createPGliteDataSource = (): DataSource => {
     const edition = system.getEdition()
-    const env = system.getOrThrow<ApEnvironment>(AppSystemProp.ENVIRONMENT)
-    if (edition !== ApEdition.COMMUNITY && env !== ApEnvironment.TESTING) {
+    const env = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
+    if (edition !== ApEdition.COMMUNITY && env !== FlowEnvironment.TESTING) {
         throw new Error(`Edition ${edition} not supported in pglite mode in ${env} environment`)
     }
 
@@ -64,10 +64,10 @@ export const createPGliteDataSource = (): DataSource => {
                 },
             },
         }).driver,
-        migrationsRun: env !== ApEnvironment.TESTING,
+        migrationsRun: env !== FlowEnvironment.TESTING,
         migrationsTransactionMode: 'each',
-        migrations: env !== ApEnvironment.TESTING ? getMigrations() : [],
-        synchronize: env === ApEnvironment.TESTING,
+        migrations: env !== FlowEnvironment.TESTING ? getMigrations() : [],
+        synchronize: env === FlowEnvironment.TESTING,
         ...commonProperties,
     })
 }

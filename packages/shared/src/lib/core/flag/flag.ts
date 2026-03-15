@@ -7,7 +7,7 @@ export type Flag = {
     value: unknown
 } & BaseModel<FlagId>
 
-export enum ApEnvironment {
+export enum FlowEnvironment {
     PRODUCTION = 'prod',
     DEVELOPMENT = 'dev',
     TESTING = 'test',

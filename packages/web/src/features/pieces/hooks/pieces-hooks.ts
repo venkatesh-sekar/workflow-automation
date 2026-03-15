@@ -13,7 +13,7 @@ import {
   PlatformWithoutSensitiveData,
   FlowTriggerType,
   ApFlagId,
-  ApEnvironment,
+  FlowEnvironment,
   TelemetryEventName,
 } from '@flow/shared';
 import { useMutation, useQueries, useQuery } from '@tanstack/react-query';
@@ -176,7 +176,7 @@ export const piecesHooks = {
   } => {
     const { selectedTab } = usePieceSelectorTabs();
     const { capture } = useTelemetry();
-    const { data: environment } = flagsHooks.useFlag<ApEnvironment>(
+    const { data: environment } = flagsHooks.useFlag<FlowEnvironment>(
       ApFlagId.ENVIRONMENT,
     );
     const { metadata, isLoading: isLoadingPieces } =
@@ -402,13 +402,13 @@ const getExploreTabContent = (
   queryResult: StepMetadataWithSuggestions[],
   platform: PlatformWithoutSensitiveData,
   type: 'action' | 'trigger',
-  environment: ApEnvironment | null,
+  environment: FlowEnvironment | null,
 ) => {
   const popularCategory: CategorizedStepMetadataWithSuggestions = {
     title: t('Popular'),
-    metadata: environment === ApEnvironment.DEVELOPMENT ? queryResult : [],
+    metadata: environment === FlowEnvironment.DEVELOPMENT ? queryResult : [],
   };
-  if (environment === ApEnvironment.DEVELOPMENT) {
+  if (environment === FlowEnvironment.DEVELOPMENT) {
     return [popularCategory];
   }
   const pinnedPieces = getPinnedPieces(

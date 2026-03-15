@@ -1,6 +1,6 @@
 import { inspect } from 'util'
 import { AppSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
-import { ApEdition, ApEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
+import { ApEdition, FlowEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
 import { s3Helper } from '../file/s3-helper'
@@ -51,7 +51,7 @@ const systemPropValidators: {
     [AppSystemProp.SKIP_PROJECT_LIMITS_CHECK]: booleanValidator,
     [AppSystemProp.LOG_LEVEL]: enumValidator(['error', 'warn', 'info', 'debug', 'trace']),
     [AppSystemProp.LOG_PRETTY]: booleanValidator,
-    [AppSystemProp.ENVIRONMENT]: enumValidator(Object.values(ApEnvironment)),
+    [AppSystemProp.ENVIRONMENT]: enumValidator(Object.values(FlowEnvironment)),
     [AppSystemProp.TRIGGER_TIMEOUT_SECONDS]: numberValidator,
     [AppSystemProp.TRIGGER_HOOKS_TIMEOUT_SECONDS]: numberValidator,
     [AppSystemProp.FLOW_TIMEOUT_SECONDS]: numberValidator,
@@ -203,7 +203,7 @@ export const validateEnvPropsOnStartup = async (log: FastifyBaseLogger): Promise
     const environment = system.get(AppSystemProp.ENVIRONMENT)
     const fileStorageLocation = process.env.FLOW_FILE_STORAGE_LOCATION
     
-    if (environment !== ApEnvironment.TESTING && fileStorageLocation === FileLocation.S3) {
+    if (environment !== FlowEnvironment.TESTING && fileStorageLocation === FileLocation.S3) {
         try {
             await s3Helper(log).validateS3Configuration()
         }
@@ -258,7 +258,7 @@ export const validateEnvPropsOnStartup = async (log: FastifyBaseLogger): Promise
     }
 
     const edition = system.getEdition()
-    if ([ApEdition.CLOUD, ApEdition.ENTERPRISE].includes(edition) && environment === ApEnvironment.PRODUCTION) {
+    if ([ApEdition.CLOUD, ApEdition.ENTERPRISE].includes(edition) && environment === FlowEnvironment.PRODUCTION) {
         const executionMode = system.getOrThrow<ExecutionMode>(AppSystemProp.EXECUTION_MODE)
         if (![ExecutionMode.SANDBOX_PROCESS, ExecutionMode.SANDBOX_CODE_ONLY, ExecutionMode.SANDBOX_CODE_AND_PROCESS].includes(executionMode)) {
             throw new Error(JSON.stringify({
@@ -268,7 +268,7 @@ export const validateEnvPropsOnStartup = async (log: FastifyBaseLogger): Promise
         }
     }
 
-    if (environment !== ApEnvironment.TESTING) {
+    if (environment !== FlowEnvironment.TESTING) {
         await packageManager(log).validate()
         await registryPieceManager(log).validate()
     }

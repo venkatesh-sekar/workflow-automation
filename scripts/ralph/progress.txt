@@ -30,3 +30,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing, 2 passed, 16 tests passed — same baseline)
 - **Learnings:** Ordering sed replacements matters: do longer/more specific names first (secureApId before apId, ApIdSchema before ApId) to avoid partial matches
 ---
+
+## Iteration #5 - rename-ap-core-types
+- **Change:** Renamed ApEnvironment→FlowEnvironment (enum + all references, 28 occurrences across 7 files)
+- **Files:** 7 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

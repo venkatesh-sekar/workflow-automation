@@ -1,5 +1,5 @@
 {
-  "iteration": 4,
+  "iteration": 5,
   "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
@@ -44,7 +44,8 @@
       ],
       "completed_items": [
         {"iteration": 3, "description": "Renamed ActivepiecesError to FlowError (class + 169 refs across 54 files), renamed activepieces-error.ts to flow-error.ts, updated all import paths"},
-        {"iteration": 4, "description": "Renamed ApId→FlowId (type+const, 56 refs), ApIdSchema→FlowIdSchema (60 refs), apId→flowId (function, 278 refs), secureApId→secureFlowId (3 refs) across ~65 files"}
+        {"iteration": 4, "description": "Renamed ApId→FlowId (type+const, 56 refs), ApIdSchema→FlowIdSchema (60 refs), apId→flowId (function, 278 refs), secureApId→secureFlowId (3 refs) across ~65 files"},
+        {"iteration": 5, "description": "Renamed ApEnvironment→FlowEnvironment (enum, 28 refs across 7 files)"}
       ]
     },
     "rename-ap-ui-components": {

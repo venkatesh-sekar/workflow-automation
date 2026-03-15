@@ -8,7 +8,7 @@ import {
 } from '@flow/server-common'
 import {
     FlowError,
-    ApEnvironment,
+    FlowEnvironment,
     EngineResponseStatus,
     ErrorCode,
     FlowId,
@@ -33,12 +33,12 @@ import { JobType } from '../../workers/queue/queue-manager'
 import { userInteractionWatcher } from '../../workers/user-interaction-watcher'
 import { appEventRoutingService } from '../app-event-routing/app-event-routing.service'
 
-const environment = system.getOrThrow<ApEnvironment>(AppSystemProp.ENVIRONMENT)
+const environment = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
 
 export const flowTriggerSideEffect = (log: FastifyBaseLogger) => {
     return {
         async enable(params: EnableFlowTriggerParams): Promise<ActiveTriggerReturn> {
-            if (environment === ApEnvironment.TESTING) {
+            if (environment === FlowEnvironment.TESTING) {
                 return {
                     scheduleOptions: undefined,
                 }
@@ -88,7 +88,7 @@ export const flowTriggerSideEffect = (log: FastifyBaseLogger) => {
             }
         },
         async disable(params: DisableFlowTriggerParams): Promise<void> {
-            if (environment === ApEnvironment.TESTING) {
+            if (environment === FlowEnvironment.TESTING) {
                 return
             }
             const { flowId, flowVersionId, projectId, simulate, pieceTrigger } = params
