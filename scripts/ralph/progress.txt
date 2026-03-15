@@ -247,3 +247,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** STRIPE_SECRET_KEY/STRIPE_WEBHOOK_SECRET env vars still in FlowSystemProp — need removal in a later iteration
 ---
+
+## Iteration #36 - strip-billing-and-licensing
+- **Change:** Removed STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET from FlowSystemProp enum and system-validator
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

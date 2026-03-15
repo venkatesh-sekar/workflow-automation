@@ -136,8 +136,6 @@ const systemPropValidators: {
     [FlowSystemProp.FILE_STORAGE_LOCATION]: enumValidator(Object.values(FileLocation)),
     [FlowSystemProp.FIREBASE_ADMIN_CREDENTIALS]: stringValidator,
     [FlowSystemProp.FIREBASE_HASH_PARAMETERS]: stringValidator,
-    [FlowSystemProp.STRIPE_SECRET_KEY]: stringValidator,
-    [FlowSystemProp.STRIPE_WEBHOOK_SECRET]: stringValidator,
     [FlowSystemProp.INTERNAL_URL]: stringValidator,
     [FlowSystemProp.PM2_ENABLED]: booleanValidator,
     [FlowSystemProp.EDITION]: enumValidator(Object.values(FlowEdition)),
