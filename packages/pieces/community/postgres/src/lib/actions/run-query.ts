@@ -1,6 +1,6 @@
 import { createAction, Property } from '@activepieces/pieces-framework';
 import pg from 'pg';
-import { postgresAuth } from '../..';
+import { postgresAuth } from '../auth';
 import { pgClient } from '../common';
 
 export const runQuery = createAction({

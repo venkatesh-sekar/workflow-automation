@@ -2,7 +2,7 @@
 import { createTrigger, TriggerStrategy, PiecePropValueSchema, Property, AppConnectionValueForAuthProperty } from '@activepieces/pieces-framework';
 import { DedupeStrategy, Polling, pollingHelper } from '@activepieces/pieces-common';
 import crypto from 'crypto';
-import { postgresAuth } from '../..';
+import { postgresAuth } from '../auth';
 import { pgClient } from '../common';
 import format from 'pg-format';
 import dayjs from 'dayjs';

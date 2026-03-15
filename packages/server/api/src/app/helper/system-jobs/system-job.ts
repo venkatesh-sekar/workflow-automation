@@ -43,6 +43,7 @@ export const systemJobsSchedule = (log: FastifyBaseLogger): SystemJobSchedule =>
             {
                 connection: await redisConnections.create(),
                 concurrency: 1,
+                autorun: false,
             },
         )
 
@@ -54,14 +55,17 @@ export const systemJobsSchedule = (log: FastifyBaseLogger): SystemJobSchedule =>
             }
         })
 
-        await Promise.all([
-            systemJobsQueue.waitUntilReady(),
-            systemJobWorker.waitUntilReady(),
-        ])
+        await systemJobsQueue.waitUntilReady()
         const { error } = await tryCatch(async () => removeDeprecatedJobs())
         if (!isNil(error)) {
             log.error({ err: error }, '[systemJob#init] Error removing deprecated jobs')
         }
+    },
+
+    async startWorker(): Promise<void> {
+        systemJobWorker.run()
+        await systemJobWorker.waitUntilReady()
+        log.info('[systemJob#startWorker] Worker started processing jobs')
     },
 
     async upsertJob({ job, schedule, customConfig }): Promise<void> {

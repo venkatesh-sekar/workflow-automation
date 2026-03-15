@@ -34,9 +34,9 @@ export function ProjectDashboardSidebar({
   const { checkAccess } = useAuthorization();
   const isPlatformAdmin = useIsPlatformAdmin();
 
-  const navItems: SidebarItemType[] = [
+  const navItems = ([
     {
-      type: 'link',
+      type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/automations'),
       label: t('Flows'),
       icon: WorkflowIcon,
@@ -44,7 +44,7 @@ export function ProjectDashboardSidebar({
       show: true,
     },
     {
-      type: 'link',
+      type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/connections'),
       label: t('Connections'),
       icon: ConnectIcon,
@@ -52,7 +52,7 @@ export function ProjectDashboardSidebar({
       show: true,
     },
     {
-      type: 'link',
+      type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/runs'),
       label: t('Runs'),
       icon: HistoryIcon,
@@ -60,19 +60,19 @@ export function ProjectDashboardSidebar({
       show: true,
     },
     {
-      type: 'link',
+      type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/releases'),
       label: t('Releases'),
       icon: BoxIcon,
       hasPermission: checkAccess(Permission.READ_PROJECT_RELEASE),
       show: project.releasesEnabled,
     },
-  ].filter((item) => item.show && item.hasPermission);
+  ] satisfies SidebarItemType[]).filter((item) => item.show && item.hasPermission);
 
   const adminItems: SidebarItemType[] = isPlatformAdmin
     ? [
         {
-          type: 'link',
+          type: 'link' as const,
           to: '/platform',
           label: t('Platform Admin'),
           icon: ShieldIcon,
