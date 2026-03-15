@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-image-helper",
+  "name": "@flow/piece-image-helper",
   "version": "0.1.12",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "exifreader": "4.20.0",
     "jimp": "^0.22.12",
     "mime-types": "2.1.35",

@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-sftp",
+  "name": "@flow/piece-sftp",
   "version": "0.5.0",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "basic-ftp": "5.0.5",
     "dayjs": "1.11.9",
     "ssh2": "1.16.0",

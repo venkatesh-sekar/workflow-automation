@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-openai",
+  "name": "@flow/piece-openai",
   "version": "0.7.5",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "form-data": "4.0.4",
     "mime-types": "2.1.35",
     "openai": "4.67.1",

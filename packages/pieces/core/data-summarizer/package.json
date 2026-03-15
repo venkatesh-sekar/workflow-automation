@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/piece-data-summarizer",
+  "name": "@flow/piece-data-summarizer",
   "version": "0.0.10",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -12,9 +12,9 @@
     "vitest": "3.0.8"
   },
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "tslib": "2.6.2"
   }
 }

@@ -3,3 +3,9 @@
 # Started: 2026-03-15
 ---
 
+## Iteration #1 - rename-packages
+- **Change:** Renamed all package.json name fields and dependency keys from @activepieces/* to @flow/* (35 packages)
+- **Files:** 38 package.json files modified
+- **Quality gate:** pass (0 typecheck errors)
+- **Learnings:** tsconfig paths drive TS resolution, not package.json names — so name renames are safe without updating .ts imports
+---

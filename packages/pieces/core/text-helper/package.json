@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-text-helper",
+  "name": "@flow/piece-text-helper",
   "version": "0.4.14",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "showdown": "2.1.0",
     "slugify": "1.6.6",
     "string-strip-html": "8.5.0",

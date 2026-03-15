@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/shared",
+  "name": "@flow/shared",
   "version": "0.43.0",
   "type": "commonjs",
   "main": "./dist/src/index.js",

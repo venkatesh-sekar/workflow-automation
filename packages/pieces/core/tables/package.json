@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/piece-tables",
+  "name": "@flow/piece-tables",
   "version": "0.2.17",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -8,9 +8,9 @@
     "lint": "eslint 'src/**/*.ts'"
   },
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "qs": "6.14.2",
     "zod": "4.3.6",
     "tslib": "2.6.2"

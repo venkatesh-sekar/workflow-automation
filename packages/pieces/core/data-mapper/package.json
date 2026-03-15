@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/piece-data-mapper",
+  "name": "@flow/piece-data-mapper",
   "version": "0.3.15",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -9,9 +9,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "tslib": "2.6.2"
   },
   "devDependencies": {

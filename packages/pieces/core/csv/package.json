@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-csv",
+  "name": "@flow/piece-csv",
   "version": "0.4.13",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "csv-parse": "5.6.0",
     "csv-stringify": "6.5.2",
     "safe-flat": "2.1.0",

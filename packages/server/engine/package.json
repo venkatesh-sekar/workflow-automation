@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/engine",
+  "name": "@flow/engine",
   "version": "0.7.0",
   "type": "commonjs",
   "scripts": {
@@ -8,10 +8,10 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@activepieces/import-fresh-webpack": "3.3.0",
-    "@activepieces/pieces-common": "file:../../pieces/common",
-    "@activepieces/pieces-framework": "file:../../pieces/framework",
-    "@activepieces/shared": "file:../../shared",
+    "@flow/import-fresh-webpack": "3.3.0",
+    "@flow/pieces-common": "file:../../pieces/common",
+    "@flow/pieces-framework": "file:../../pieces/framework",
+    "@flow/shared": "file:../../shared",
     "ai": "^6.0.0",
     "async-mutex": "0.4.0",
     "axios": "1.13.5",

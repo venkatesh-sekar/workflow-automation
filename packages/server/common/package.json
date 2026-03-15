@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/server-common",
+  "name": "@flow/server-common",
   "version": "0.0.2",
   "type": "commonjs",
   "main": "./dist/src/index.js",
@@ -10,8 +10,8 @@
     "postinstall": "node scripts/patch-redis-memory-server.js"
   },
   "dependencies": {
-    "@activepieces/pieces-framework": "file:../../pieces/framework",
-    "@activepieces/shared": "file:../../shared",
+    "@flow/pieces-framework": "file:../../pieces/framework",
+    "@flow/shared": "file:../../shared",
     "@hyperdx/node-opentelemetry": "0.8.2",
     "@sentry/node": "7.120.0",
     "zod": "4.3.6",

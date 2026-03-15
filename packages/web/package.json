@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@activepieces/pieces-common": "file:../pieces/common",
-    "@activepieces/pieces-framework": "file:../pieces/framework",
-    "@activepieces/shared": "file:../shared",
+    "@flow/pieces-common": "file:../pieces/common",
+    "@flow/pieces-framework": "file:../pieces/framework",
+    "@flow/shared": "file:../shared",
     "@codemirror/lang-javascript": "6.2.2",
     "@codemirror/lang-json": "6.0.1",
     "@dnd-kit/core": "6.1.0",

@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-graphql",
+  "name": "@flow/piece-graphql",
   "version": "0.0.10",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "axios": "1.13.5",
     "https-proxy-agent": "7.0.4",
     "tslib": "2.6.2"

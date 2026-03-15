@@ -1,12 +1,12 @@
 {
-  "name": "@activepieces/piece-pdf",
+  "name": "@flow/piece-pdf",
   "version": "0.4.1",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
-    "@activepieces/pieces-common": "file:../../common",
-    "@activepieces/pieces-framework": "file:../../framework",
-    "@activepieces/shared": "file:../../../shared",
+    "@flow/pieces-common": "file:../../common",
+    "@flow/pieces-framework": "file:../../framework",
+    "@flow/shared": "file:../../../shared",
     "jimp": "^0.22.12",
     "nanoid": "3.3.8",
     "pdf-lib": "1.17.1",

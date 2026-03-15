@@ -1,5 +1,5 @@
 {
-  "name": "@activepieces/pieces-common",
+  "name": "@flow/pieces-common",
   "version": "0.12.0",
   "type": "commonjs",
   "main": "./dist/src/index.js",
@@ -9,8 +9,8 @@
     "lint": "eslint 'src/**/*.ts'"
   },
   "dependencies": {
-    "@activepieces/pieces-framework": "file:../framework",
-    "@activepieces/shared": "file:../../shared",
+    "@flow/pieces-framework": "file:../framework",
+    "@flow/shared": "file:../../shared",
     "axios": "1.13.5",
     "axios-retry": "4.4.1",
     "form-data": "4.0.4",

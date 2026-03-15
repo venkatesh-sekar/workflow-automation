@@ -5,11 +5,11 @@
   "type": "commonjs",
   "dependencies": {
     "@1password/sdk": "0.4.0",
-    "@activepieces/engine": "file:../../engine",
-    "@activepieces/pieces-common": "file:../../pieces/common",
-    "@activepieces/pieces-framework": "file:../../pieces/framework",
-    "@activepieces/server-common": "file:../common",
-    "@activepieces/shared": "file:../../shared",
+    "@flow/engine": "file:../../engine",
+    "@flow/pieces-common": "file:../../pieces/common",
+    "@flow/pieces-framework": "file:../../pieces/framework",
+    "@flow/server-common": "file:../common",
+    "@flow/shared": "file:../../shared",
     "@ai-sdk/anthropic": "^3.0.0",
     "@ai-sdk/azure": "^3.0.0",
     "@ai-sdk/google": "^3.0.0",
@@ -103,7 +103,7 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
-    "@activepieces/piece-slack": "file:../../pieces/community/slack",
+    "@flow/piece-slack": "file:../../pieces/community/slack",
     "@faker-js/faker": "8.2.0",
     "@types/bcrypt": "5.0.0",
     "@types/content-disposition": "0.5.9",
