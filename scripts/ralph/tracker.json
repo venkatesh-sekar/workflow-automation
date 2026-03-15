@@ -1,5 +1,5 @@
 {
-  "iteration": 123,
+  "iteration": 124,
   "current_phase": "frontend-branding",
   "phases": {
     "copy-server-core": {
@@ -293,7 +293,8 @@
         {"iteration": 120, "description": "Updated vite.config.mts dev defaults: AP_TITLE 'Activepieces' -> 'Flow', AP_FAVICON from external activepieces.com URL to local '/favicon.ico'."},
         {"iteration": 121, "description": "Updated CSS primary color variables from purple/blue to red in both light and dark modes. Changed --primary, --primary-100, --primary-300, --primary-foreground, --sidebar-primary, --sidebar-primary-foreground, --sidebar-progress in styles.css."},
         {"iteration": 122, "description": "Replaced 'Built with activepieces' branding in show-powered-by.tsx with 'Built with Flow'. Removed Activepieces SVG logo."},
-        {"iteration": 123, "description": "Replaced all user-visible 'Activepieces' text strings with 'Flow' across 13 UI source files: install-piece-dialog, automations-empty-state, ai-model, flow-chat, mcp-server, branding settings, saml-dialog, health page, api-keys, features-status, sidebar-usage-limits."}
+        {"iteration": 123, "description": "Replaced all user-visible 'Activepieces' text strings with 'Flow' across 13 UI source files: install-piece-dialog, automations-empty-state, ai-model, flow-chat, mcp-server, branding settings, saml-dialog, health page, api-keys, features-status, sidebar-usage-limits."},
+        {"iteration": 124, "description": "Added 2 integration tests for Flow branding: verifies theme returns 'Flow' websiteName and red #dc2626 primary color, verifies no 'Activepieces' branding in theme or logo URLs. All 191 tests pass."}
       ]
     },
     "deployment": {

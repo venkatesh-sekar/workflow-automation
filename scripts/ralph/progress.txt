@@ -863,3 +863,10 @@
 - **Quality gate:** pass (0 TS errors, 189 server tests pass, 60/61 web tests pass — 1 pre-existing formatDate failure)
 - **Learnings:** Remaining 'Activepieces' refs are SDK type names (ee-embed-sdk imports) and 1 code comment — not user-visible, safe to keep.
 ---
+
+## Iteration #124 - frontend-branding
+- **Change:** Added 2 integration tests for Flow branding in flags.test.ts
+- **Files:** packages/server/api/test/integration/ce/flags/flags.test.ts
+- **Quality gate:** pass (0 TS errors, 191 tests pass)
+- **Learnings:** Flags API returns THEME object with websiteName and colors — easy to test branding through flags endpoint
+---
