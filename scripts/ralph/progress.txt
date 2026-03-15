@@ -842,3 +842,10 @@
 - **Quality gate:** pass (typecheck clean, 189 server + 60 web tests pass)
 - **Learnings:** Pre-existing web test failure in utils.test.ts (formatDate 'Today' uses hardcoded 2025 date) — unrelated to branding
 ---
+
+## Iteration #121 - frontend-branding
+- **Change:** Updated CSS primary color variables from purple/blue to red in both light and dark modes. Changed --primary, --primary-100, --primary-300, --primary-foreground, --sidebar-primary, --sidebar-primary-foreground, --sidebar-progress in styles.css.
+- **Files:** packages/web/src/styles.css
+- **Quality gate:** pass (typecheck clean, 189 tests pass)
+- **Learnings:** Light mode primary was purple (hue 257), dark mode was blue (hue 210) — both now red (hue 0). Sidebar-progress hue also updated.
+---

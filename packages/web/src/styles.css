@@ -363,10 +363,10 @@
     --ring: theme('colors.neutral.400');
     --radius: 0.625rem;
 
-    --primary-100: 257 75% 85%;
-    --primary: 257 74% 57%;
-    --primary-300: 257 74% 25%;
-    --primary-foreground: 210 20% 98%;
+    --primary-100: 0 93% 85%;
+    --primary: 0 72% 51%;
+    --primary-300: 0 63% 25%;
+    --primary-foreground: 0 0% 98%;
 
     /* Success — Emerald */
     --success-50: 152 81% 96%;
@@ -421,7 +421,7 @@
 
     --sidebar-background: theme('colors.neutral.50');
     --sidebar-foreground: theme('colors.neutral.950');
-    --sidebar-primary: 257 74% 57%;
+    --sidebar-primary: 0 72% 51%;
     --sidebar-primary-foreground: theme('colors.neutral.50');
     --sidebar-accent: color-mix(in srgb, theme('colors.neutral.200') 60%, transparent);
     --sidebar-accent-foreground: theme('colors.neutral.900');
@@ -445,10 +445,10 @@
   --accent: theme('colors.neutral.700');
   --accent-foreground: theme('colors.neutral.50');
 
-  --primary-100: 210 80% 40%;
-  --primary: 210 90% 50%;
-  --primary-300: 210 100% 85%;
-  --primary-foreground: 210 90% 98%;
+  --primary-100: 0 60% 40%;
+  --primary: 0 80% 55%;
+  --primary-300: 0 90% 85%;
+  --primary-foreground: 0 0% 98%;
 
   --success: var(--success-400);
   --destructive: var(--destructive-400);
@@ -471,13 +471,13 @@
 
   --sidebar-background:theme('colors.neutral.800');
   --sidebar-foreground: theme('colors.neutral.50');
-  --sidebar-primary: 210 85% 65%;
-  --sidebar-primary-foreground: 210 90% 98%;
+  --sidebar-primary: 0 80% 55%;
+  --sidebar-primary-foreground: 0 0% 98%;
   --sidebar-accent: theme('colors.neutral.700');
   --sidebar-accent-foreground: theme('colors.neutral.50');
   --sidebar-border: hsla(0, 0%, 100%, 0.1);
   --sidebar-ring: theme('colors.neutral.600');
-  --sidebar-progress: 210 15% 40%;
+  --sidebar-progress: 0 15% 40%;
   --builder-background: hsla(0, 0%, 9%, 1);
   --builder-background-pattern: hsla(0, 0%, 45%, 1);
 }
