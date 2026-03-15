@@ -772,3 +772,10 @@
 - **Quality gate:** pass (0 TS errors, 189 tests pass)
 - **Learnings:** Promoted UI testing patterns, login routing, and dead code notes to global learnings
 ---
+
+## Iteration #111 - frontend-sidebar
+- **Change:** Removed Impact, Leaderboard, Platform Admin link, and Usage Limits from dashboard sidebar. Renamed Explore to Templates. Cleaned unused imports.
+- **Files:** packages/web/src/app/components/sidebar/dashboard/index.tsx, scripts/ralph/learnings/frontend-sidebar.md (new)
+- **Quality gate:** pass (typecheck clean, 189 server tests pass, 19 web tests pass)
+- **Learnings:** Sidebar items (Explore/Impact/Leaderboard) and footer items (Platform Admin/Usage Limits) are all in dashboard/index.tsx. Automations/Runs/Connections are in header tabs, not sidebar.
+---

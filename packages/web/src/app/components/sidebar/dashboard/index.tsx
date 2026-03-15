@@ -1,9 +1,7 @@
 import {
   isNil,
-  PlatformRole,
   ProjectType,
   TeamProjectsLimit,
-  TemplateTelemetryEventType,
 } from '@activepieces/shared';
 import { t } from 'i18next';
 import { Search, Plus } from 'lucide-react';
@@ -13,10 +11,7 @@ import { useDebounce } from 'use-debounce';
 
 import { NewProjectDialog } from '@/app/routes/platform/projects/new-project-dialog';
 import { SearchInput } from '@/components/custom/search-input';
-import { ChartLineIcon } from '@/components/icons/chart-line';
 import { CompassIcon } from '@/components/icons/compass';
-import { ShieldIcon } from '@/components/icons/shield';
-import { TrophyIcon } from '@/components/icons/trophy';
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { Button } from '@/components/ui/button';
 import {
@@ -42,10 +37,7 @@ import {
 } from '@/components/ui/tooltip';
 import { VirtualizedScrollArea } from '@/components/ui/virtualized-scroll-area';
 import { projectCollectionUtils } from '@/features/projects';
-import { templatesTelemetryApi } from '@/features/templates';
-import { useIsPlatformAdmin } from '@/hooks/authorization-hooks';
 import { platformHooks } from '@/hooks/platform-hooks';
-import { userHooks } from '@/hooks/user-hooks';
 import { cn } from '@/lib/utils';
 
 import { GlobalSearchCommand } from '../../global-search/global-search-command';
@@ -53,7 +45,6 @@ import { SidebarGeneralItemType } from '../ap-sidebar-group';
 import { ApSidebarItem, SidebarItemType } from '../ap-sidebar-item';
 import ProjectSideBarItem from '../project';
 import { AppSidebarHeader } from '../sidebar-header';
-import SidebarUsageLimits from '../sidebar-usage-limits';
 import { SidebarUser } from '../sidebar-user';
 
 export function ProjectDashboardSidebar({
@@ -67,7 +58,6 @@ export function ProjectDashboardSidebar({
   const [debouncedSearchQuery] = useDebounce(searchQuery, 300);
   const [searchOpen, setSearchOpen] = useState(false);
   const navigate = useNavigate();
-  const { data: currentUser } = userHooks.useCurrentUser();
   const { platform } = platformHooks.useCurrentPlatform();
 
   useEffect(() => {
@@ -80,7 +70,7 @@ export function ProjectDashboardSidebar({
     if (platform.plan.teamProjectsLimit === TeamProjectsLimit.NONE) {
       return false;
     }
-    return currentUser?.platformRole === PlatformRole.ADMIN;
+    return true;
   }, [platform.plan.teamProjectsLimit]);
 
   const shouldShowSearchButton = useMemo(() => {
@@ -127,45 +117,17 @@ export function ProjectDashboardSidebar({
     }
     return true;
   };
-  const handleExploreClick = useCallback(() => {
-    templatesTelemetryApi.sendEvent({
-      eventType: TemplateTelemetryEventType.EXPLORE_VIEW,
-      userId: currentUser?.id,
-    });
-  }, []);
-
   const exploreLink: SidebarItemType = {
     type: 'link',
     to: '/templates',
-    label: t('Explore'),
+    label: t('Templates'),
     show: true,
     icon: CompassIcon,
     hasPermission: true,
     isSubItem: false,
-    onClick: handleExploreClick,
   };
 
-  const impactLink: SidebarItemType = {
-    type: 'link',
-    to: '/impact',
-    label: t('Impact'),
-    icon: ChartLineIcon,
-    show: true,
-    hasPermission: true,
-    isSubItem: false,
-  };
-
-  const leaderboardLink: SidebarItemType = {
-    type: 'link',
-    to: '/leaderboard',
-    label: t('Leaderboard'),
-    icon: TrophyIcon,
-    show: true,
-    hasPermission: true,
-    isSubItem: false,
-  };
-
-  const items = [exploreLink, impactLink, leaderboardLink].filter(
+  const items = [exploreLink].filter(
     permissionFilter,
   );
 
@@ -321,50 +283,10 @@ export function ProjectDashboardSidebar({
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-          {state === 'expanded' && <DelayedSidebarUsageLimits />}
-          <SidebarPlatformAdminLink />
           <SidebarUser />
         </SidebarFooter>
       </Sidebar>
     )
-  );
-}
-
-function DelayedSidebarUsageLimits() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 250);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return show ? (
-    <div>
-      <SidebarUsageLimits />
-    </div>
-  ) : null;
-}
-
-function SidebarPlatformAdminLink() {
-  const showPlatformAdmin = useIsPlatformAdmin();
-  const { embedState } = useEmbedding();
-
-  if (embedState.isEmbedded || !showPlatformAdmin) {
-    return null;
-  }
-
-  return (
-    <SidebarMenu>
-      <ApSidebarItem
-        type="link"
-        to="/platform/projects"
-        label={t('Platform Admin')}
-        icon={ShieldIcon}
-        isSubItem={false}
-        show={true}
-        hasPermission={true}
-      />
-    </SidebarMenu>
   );
 }
 

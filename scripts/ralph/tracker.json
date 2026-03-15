@@ -1,5 +1,5 @@
 {
-  "iteration": 110,
+  "iteration": 111,
   "current_phase": "frontend-sidebar",
   "phases": {
     "copy-server-core": {
@@ -259,7 +259,9 @@
         "Sidebar items kept: Automations, Connections, Runs, Agents/Chat, Templates, Settings",
         "Tests updated for sidebar changes"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 111, "description": "Removed Impact, Leaderboard, Platform Admin link, and Usage Limits from dashboard sidebar. Renamed Explore to Templates. Removed unused imports (PlatformRole, templatesTelemetryApi, userHooks, ChartLineIcon, ShieldIcon, TrophyIcon, SidebarUsageLimits, useIsPlatformAdmin)."}
+      ]
     },
     "frontend-settings": {
       "status": "pending",
