@@ -37,7 +37,7 @@ import { recordsApi } from '../api/records-api';
 import { tableHooks } from '../hooks/table-hooks';
 import { FieldsMapping, fileUtils, SupportedFileType } from '../utils/utils';
 
-import { useOptionalTableStore } from './ap-table-state-provider';
+import { useOptionalTableStore } from './flow-table-state-provider';
 import { FieldsMappingControl } from './fields-mapping';
 
 type ImportTableDialogProps = {

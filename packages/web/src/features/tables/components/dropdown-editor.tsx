@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { SearchableSelect } from '@/components/custom/searchable-select';
 import { cn } from '@/lib/utils';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 import { useCellContext } from './cell-context';
 
 const DropdownEditor = () => {

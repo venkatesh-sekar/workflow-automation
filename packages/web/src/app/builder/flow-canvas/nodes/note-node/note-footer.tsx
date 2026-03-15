@@ -1,6 +1,6 @@
 import { isNil } from '@flow/shared';
 
-import { FlowAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/flow-avatar';
 import { useEmbedding } from '@/components/providers/embed-provider';
 
 export const NoteFooter = ({ creatorId, isDragging }: NoteFooterProps) => {

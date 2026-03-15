@@ -12,7 +12,7 @@ import {
   TableState,
   FlowTableStore,
   createFlowTableStore,
-} from '@/features/tables/stores/store/ap-tables-client-state';
+} from '@/features/tables/stores/store/flow-tables-client-state';
 import { cn } from '@/lib/utils';
 
 import { fieldsApi } from '../api/fields-api';

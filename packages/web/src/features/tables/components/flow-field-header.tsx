@@ -15,7 +15,7 @@ import {
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { cn } from '@/lib/utils';
 
-import { ClientField } from '../stores/store/ap-tables-client-state';
+import { ClientField } from '../stores/store/flow-tables-client-state';
 import { FieldHeaderContext, tablesUtils } from '../utils/utils';
 
 import FlowFieldActionMenuItemRenderer, {

@@ -48,5 +48,8 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 ## Key Renames (DONE)
 - apId()→flowId(), apAxios→flowAxios, apDayjs→flowDayjs
 - All Ap-prefixed core types renamed to Flow prefix (17 types, ~900 refs)
+- All Ap-prefixed UI components renamed to Flow prefix (~60 identifiers, ~350 refs)
+- All ap-prefixed filenames renamed to flow- (31 files + 1 dir)
 - workers/queue/migration/ files are runtime scripts, NOT DB migrations — safe to rename
 - Rename longer/more specific names first in sed to avoid partial matches
+- MCP tools in server/api also had ap- prefixed filenames — check server too, not just web

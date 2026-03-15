@@ -3,7 +3,7 @@ import { t } from 'i18next';
 
 import { flagsHooks } from '@/hooks/flags-hooks';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 
 const FlowTableFooter = ({
   fieldsCount,

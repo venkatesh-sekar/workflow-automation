@@ -5,10 +5,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import { cn } from '@/lib/utils';
 
-import { ClientField } from '../stores/store/ap-tables-client-state';
+import { ClientField } from '../stores/store/flow-tables-client-state';
 import { Row } from '../types/types';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 import { CellProvider } from './cell-context';
 import { DateEditor } from './date-editor';
 import { DropdownEditor } from './dropdown-editor';

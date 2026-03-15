@@ -149,3 +149,10 @@
 - **Quality gate:** pass (0 typecheck errors)
 - **Learnings:** Some "Ap" identifiers use lowercase patterns (useAp*, isAp*, createAp*) that don't match the simple Ap[A-Z] regex — need to check for these patterns too
 ---
+
+## Iteration #22 - rename-ap-ui-components (PHASE COMPLETE)
+- **Change:** Renamed 31 ap-prefixed files to flow- prefix (15 MCP tools, 16 web components) + ap-error-dialog directory, updated all imports. Phase complete — all criteria verified. Advancing to rename-ap-system-props.
+- **Files:** 31 files renamed + ~30 files with import updates
+- **Quality gate:** pass (0 typecheck errors)
+- **Learnings:** MCP tools in server/api also had ap- prefixed filenames — not just web components
+---

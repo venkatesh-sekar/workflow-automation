@@ -7,7 +7,7 @@ import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 
 import { FieldHeaderContext } from '../utils/utils';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 import RenameFieldPopoverContent from './rename-field-popovercontent';
 
 export enum FieldActionType {

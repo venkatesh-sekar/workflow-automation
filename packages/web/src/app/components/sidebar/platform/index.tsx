@@ -42,7 +42,7 @@ import { platformHooks } from '@/hooks/platform-hooks';
 import { determineDefaultRoute } from '@/lib/route-utils';
 import { cn } from '@/lib/utils';
 
-import { FlowSidebarItem } from '../ap-sidebar-item';
+import { FlowSidebarItem } from '../flow-sidebar-item';
 import { SidebarUser } from '../sidebar-user';
 
 export function PlatformSidebar() {

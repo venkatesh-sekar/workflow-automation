@@ -14,7 +14,7 @@ import { Input } from '@/components/ui/input';
 
 import { FieldHeaderContext } from '../utils/utils';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 
 const RenameFieldPopoverContent = ({ name }: { name: string }) => {
   const [fields, renameField] = useTableState((state) => [

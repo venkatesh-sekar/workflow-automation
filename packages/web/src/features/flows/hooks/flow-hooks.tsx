@@ -24,7 +24,7 @@ import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { useFlowErrorDialogStore } from '@/components/custom/ap-error-dialog/ap-error-dialog-store';
+import { useFlowErrorDialogStore } from '@/components/custom/flow-error-dialog/flow-error-dialog-store';
 import { useSocket } from '@/components/providers/socket-provider';
 import { internalErrorToast } from '@/components/ui/sonner';
 import { flowRunsApi } from '@/features/flow-runs/api/flow-runs-api';

@@ -1,6 +1,6 @@
 {
-  "iteration": 21,
-  "current_phase": "rename-ap-ui-components",
+  "iteration": 22,
+  "current_phase": "rename-ap-system-props",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -62,7 +62,7 @@
       ]
     },
     "rename-ap-ui-components": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "typecheck",
       "criteria": [
         "All Ap-prefixed React components renamed to Flow prefix (ApForm→FlowForm, ApMarkdown→FlowMarkdown, ApAvatar→FlowAvatar, ApTable*→FlowTable*, ApGraph*→FlowGraph*, ApNode*→FlowNode*, ApEdge*→FlowEdge*, ApStep*→FlowStep*, ApRouter*→FlowRouter*, ApLoop*→FlowLoop*, ApNote*→FlowNote*, ApField*→FlowField*, ApSidebar*→FlowSidebar*, ApProject*→FlowProject*, ApBigAddButton*→FlowBigAddButton*, ApButton*→FlowButton*, ApErrorDialog→FlowErrorDialog, ApMentionNodeAttrs→FlowMentionNodeAttrs, ApSidebarToggle→FlowSidebarToggle)",
@@ -72,11 +72,12 @@
       ],
       "completed_items": [
         {"iteration": 20, "description": "Bulk renamed all ~60 Ap-prefixed UI component identifiers to Flow prefix (337 replacements across 66 files)"},
-        {"iteration": 21, "description": "Renamed 6 missed Ap-prefixed identifiers: useApRipple→useFlowRipple, useApErrorDialogStore→useFlowErrorDialogStore, isApWebsite→isFlowWebsite, isApError→isFlowError, generateApToken→generateFlowToken, createApTableStore→createFlowTableStore (12 files)"}
+        {"iteration": 21, "description": "Renamed 6 missed Ap-prefixed identifiers: useApRipple→useFlowRipple, useApErrorDialogStore→useFlowErrorDialogStore, isApWebsite→isFlowWebsite, isApError→isFlowError, generateApToken→generateFlowToken, createApTableStore→createFlowTableStore (12 files)"},
+        {"iteration": 22, "description": "Renamed 31 ap-prefixed files to flow- prefix (15 MCP tools, 16 web components) and ap-error-dialog directory, updated all imports"}
       ]
     },
     "rename-ap-system-props": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "AppSystemProp renamed to FlowSystemProp (enum + all references)",
@@ -195,7 +196,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types"],
-  "phase_queue": ["rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components"],
+  "phase_queue": ["strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

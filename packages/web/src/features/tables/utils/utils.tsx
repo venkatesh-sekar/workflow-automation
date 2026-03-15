@@ -8,7 +8,7 @@ import { downloadFile } from '@/lib/dom-utils';
 import {
   ClientField,
   ClientRecordData,
-} from '../stores/store/ap-tables-client-state';
+} from '../stores/store/flow-tables-client-state';
 
 function getColumnIcon(type: FieldType): ReactNode {
   switch (type) {

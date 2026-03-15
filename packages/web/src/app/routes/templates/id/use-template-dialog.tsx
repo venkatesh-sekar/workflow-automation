@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { FlowProjectDisplay } from '@/app/components/ap-project-display';
+import { FlowProjectDisplay } from '@/app/components/flow-project-display';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,

@@ -15,7 +15,7 @@ import {
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import { useEmbedding } from '@/components/providers/embed-provider';
 
-import { FlowAvatar } from '../components/custom/ap-avatar';
+import { FlowAvatar } from '../components/custom/flow-avatar';
 
 function useOwnerColumn<T extends HasOwner | HasOwnerId>(
   columns: ColumnDef<RowDataWithActions<T>, unknown>[],

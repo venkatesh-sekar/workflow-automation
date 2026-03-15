@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/tooltip';
 import { getProjectName, projectCollectionUtils } from '@/features/projects';
 
-import { FlowProjectDisplay } from '../ap-project-display';
+import { FlowProjectDisplay } from '../flow-project-display';
 import { ProjectSettingsDialog } from '../project-settings';
 
 export const ProjectDashboardPageHeader = ({

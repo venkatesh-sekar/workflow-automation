@@ -14,7 +14,7 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar-shadcn';
 
-import { FlowSidebarItem, SidebarItemType } from './ap-sidebar-item';
+import { FlowSidebarItem, SidebarItemType } from './flow-sidebar-item';
 
 export type SidebarGeneralItemType = SidebarItemType | SidebarGroupType;
 

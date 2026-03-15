@@ -6,11 +6,11 @@ import { Column, RenderCellProps } from 'react-data-grid';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { flagsHooks } from '@/hooks/flags-hooks';
 
-import { ClientRecordData } from '../stores/store/ap-tables-client-state';
+import { ClientRecordData } from '../stores/store/flow-tables-client-state';
 import { Row } from '../types/types';
 
-import { FlowFieldHeader } from './ap-field-header';
-import { useTableState } from './ap-table-state-provider';
+import { FlowFieldHeader } from './flow-field-header';
+import { useTableState } from './flow-table-state-provider';
 import { EditableCell } from './editable-cell';
 import { NewFieldPopup } from './new-field-popup';
 import { SelectCell, SelectHeaderCell } from './select-column';

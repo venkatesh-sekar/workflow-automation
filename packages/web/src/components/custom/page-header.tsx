@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { FlowSidebarToggle } from '@/components/custom/ap-sidebar-toggle';
+import { FlowSidebarToggle } from '@/components/custom/flow-sidebar-toggle';
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { cn } from '@/lib/utils';
 

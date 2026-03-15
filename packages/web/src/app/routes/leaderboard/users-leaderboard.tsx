@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { Trophy } from 'lucide-react';
 import { useMemo } from 'react';
 
-import { FlowAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/flow-avatar';
 import { DataTable, RowDataWithActions } from '@/components/custom/data-table';
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import {

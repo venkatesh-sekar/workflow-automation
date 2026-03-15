@@ -14,7 +14,7 @@ import {
   DialogFooter,
 } from '../../ui/dialog';
 
-import { useFlowErrorDialogStore } from './ap-error-dialog-store';
+import { useFlowErrorDialogStore } from './flow-error-dialog-store';
 
 const FlowErrorDialog = () => {
   const { params, closeDialog } = useFlowErrorDialogStore();

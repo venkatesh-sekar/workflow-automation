@@ -8,7 +8,7 @@ import {
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
-import { createServerState } from './ap-tables-server-state';
+import { createServerState } from './flow-tables-server-state';
 
 export type ClientCellData = {
   fieldIndex: number;

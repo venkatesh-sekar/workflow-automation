@@ -21,7 +21,7 @@ import {
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-import { FlowAvatar } from '@/components/custom/ap-avatar';
+import { FlowAvatar } from '@/components/custom/flow-avatar';
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
 import { FormattedDate } from '@/components/custom/formatted-date';
 import { LoadingSpinner } from '@/components/custom/spinner';

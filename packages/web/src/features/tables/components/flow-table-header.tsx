@@ -44,7 +44,7 @@ import { downloadFile } from '@/lib/dom-utils';
 import { tablesApi } from '../api/tables-api';
 import { tablesUtils } from '../utils/utils';
 
-import { useTableState } from './ap-table-state-provider';
+import { useTableState } from './flow-table-state-provider';
 import { ImportTableDialog } from './import-table-dialog';
 
 interface FlowTableHeaderProps {

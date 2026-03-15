@@ -17,7 +17,7 @@ import { projectCollectionUtils } from '@/features/projects';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { cn } from '@/lib/utils';
 
-import { FlowProjectDisplay } from '../ap-project-display';
+import { FlowProjectDisplay } from '../flow-project-display';
 import { ProjectAvatar } from '../project-avatar';
 
 import { AlertsSettings } from './alerts';
