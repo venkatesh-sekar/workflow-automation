@@ -415,3 +415,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Several criteria items were incorrect — sign-up-form.tsx, auth-form-template.tsx, and git-sync are all actively used. Reduced criteria to only actual dead code.
 ---
+
+## Iteration #60 - clean-dead-code
+- **Change:** Removed dead use-partner-stack.ts (PartnerStack/Growsumo affiliate hook — cloud-only, dead for self-hosted), removed its import from verify-email.tsx, cleaned onSuccess callback
+- **Files:** 2 files changed, 1 deleted
+- **Quality gate:** pass (0 typecheck errors; 22/24 test suites fail pre-existing baseline)
+- **Learnings:** none
+---

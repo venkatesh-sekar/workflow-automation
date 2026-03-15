@@ -8,7 +8,6 @@ import { FullLogo } from '@/components/custom/full-logo';
 import { LoadingSpinner } from '@/components/custom/spinner';
 import { Card } from '@/components/ui/card';
 import { internalErrorToast } from '@/components/ui/sonner';
-import { usePartnerStack } from '@/hooks/use-partner-stack';
 import { api } from '@/lib/api';
 
 import { authMutations } from '../hooks/auth-hooks';
@@ -20,11 +19,8 @@ const VerifyEmail = () => {
   const otp = searchParams.get('otpcode');
   const identityId = searchParams.get('identityId');
   const hasMutated = useRef(false);
-  const { reportSignup } = usePartnerStack();
-
   const { mutate, isPending } = authMutations.useVerifyEmail({
-    onSuccess: ({ email, firstName }) => {
-      reportSignup(email, firstName);
+    onSuccess: () => {
       setTimeout(() => navigate('/login'), 5000);
     },
     onError: (error) => {

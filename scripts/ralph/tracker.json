@@ -1,5 +1,5 @@
 {
-  "iteration": 59,
+  "iteration": 60,
   "current_phase": "clean-dead-code",
   "phases": {
     "rename-packages": {
@@ -211,7 +211,8 @@
         "All tests pass"
       ],
       "completed_items": [
-        {"iteration": 59, "description": "Removed dead features/alerts/ directory (3 files: alerts-api.ts, alert-hooks.ts, index.ts) — zero imports anywhere in codebase. Updated phase criteria: sign-up-form.tsx/auth-form-template.tsx are actively used (not dead), git-sync is active project-releases feature (not dead), TemplateType.OFFICIAL/SHARED already clean"}
+        {"iteration": 59, "description": "Removed dead features/alerts/ directory (3 files: alerts-api.ts, alert-hooks.ts, index.ts) — zero imports anywhere in codebase. Updated phase criteria: sign-up-form.tsx/auth-form-template.tsx are actively used (not dead), git-sync is active project-releases feature (not dead), TemplateType.OFFICIAL/SHARED already clean"},
+        {"iteration": 60, "description": "Removed dead use-partner-stack.ts (PartnerStack/Growsumo affiliate hook — cloud-only, dead for self-hosted), removed its import from verify-email.tsx, cleaned onSuccess callback"}
       ]
     },
     "final-sweep": {
