@@ -1,9 +1,10 @@
 import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { ApId, PrincipalType, Project, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@activepieces/shared'
+import { ApId, assertNotNullOrUndefined, PrincipalType, Project, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@activepieces/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
+import { userService } from '../user/user-service'
 import { projectService } from './project-service'
 
 export const projectController: FastifyPluginAsyncZod = async (fastify) => {
@@ -20,7 +21,14 @@ export const projectController: FastifyPluginAsyncZod = async (fastify) => {
     })
 
     fastify.get('/', ListProjectsRequest, async (request) => {
-        return paginationHelper.createPage([await projectService(request.log).getUserProjectOrThrow(request.principal.id)], null)
+        const user = await userService(request.log).getOneOrFail({ id: request.principal.id })
+        assertNotNullOrUndefined(user.platformId, 'platformId is undefined')
+        const projects = await projectService(request.log).getAllForUser({
+            platformId: user.platformId,
+            userId: request.principal.id,
+            isPrivileged: userService(request.log).isUserPrivileged(user),
+        })
+        return paginationHelper.createPage(projects, null)
     })
 }
 
