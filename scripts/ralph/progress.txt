@@ -541,3 +541,10 @@
 - **Quality gate:** pass (0 TS errors, 21 suites / 165 tests pass)
 - **Learnings:** Migration files in postgres-connection/sqlite-connection reference identity but are kept as historical DB migrations. UserIdentityProvider in authentication-utils is a shared type, not tied to the deleted entity.
 ---
+
+## Iteration #78 - auth-replace
+- **Change:** Added 7 integration tests for team-login endpoint: valid login returns JWT, owner login works, invalid API key rejected (401), unknown email rejected (401), empty API key rejected (400), invalid email format rejected (400), cross-platform user rejected (401)
+- **Files:** packages/server/api/test/integration/ce/authentication/authentication.test.ts
+- **Quality gate:** pass (typecheck clean, 21 suites / 171 tests all pass)
+- **Learnings:** project_member/project_role tables not registered as TypeORM entities (EE removal); tests use owner (ADMIN=privileged) to bypass project_member raw SQL in pg-mem
+---

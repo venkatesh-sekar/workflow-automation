@@ -1,5 +1,5 @@
 {
-  "iteration": 77,
+  "iteration": 78,
   "current_phase": "auth-replace",
   "phases": {
     "copy-server-core": {
@@ -146,7 +146,8 @@
         {"iteration": 74, "description": "Removed UserIdentity import from telemetry.utils.ts. Updated identify() to use user.email/firstName/lastName directly instead of identity parameter."},
         {"iteration": 75, "description": "Removed UserIdentity imports from app-connection.entity.ts and app-connection-service.ts. Updated mapToUserWithMetaInformation to use user.email/firstName/lastName directly. Removed identity join from connection list query."},
         {"iteration": 76, "description": "Removed identityId column, identity relation, and idx_user_platform_id_identity_id index from user entity. Removed UserIdentityEntity from database-connection entities. Removed identityId from User zod type, user-service CreateParams, CLI scripts, system-jobs type. Fixed analytics and app-connection-service identity references. Updated all test mocks/helpers to stop creating user_identity records."},
-        {"iteration": 77, "description": "Deleted user-identity entity and service files (user-identity-entity.ts, user-identity-service.ts) and removed the user-identity/ directory. No remaining imports to these files. Migration files kept as historical."}
+        {"iteration": 77, "description": "Deleted user-identity entity and service files (user-identity-entity.ts, user-identity-service.ts) and removed the user-identity/ directory. No remaining imports to these files. Migration files kept as historical."},
+        {"iteration": 78, "description": "Added 7 integration tests for team-login endpoint: valid login returns JWT, owner login, invalid API key rejection, unknown email rejection, empty API key validation, invalid email validation, cross-platform rejection. All 171 tests pass."}
       ]
     },
     "env-rebrand": {
