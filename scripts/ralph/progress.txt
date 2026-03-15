@@ -828,3 +828,10 @@
 - **Quality gate:** N/A (phase transition)
 - **Learnings:** Promoted settings structure notes and dead code inventory to global learnings
 ---
+
+## Iteration #119 - frontend-branding
+- **Change:** Updated server-side defaultTheme: websiteName 'Activepieces' -> 'Flow', primaryColor purple (#6e41e2) -> red (#dc2626), cleared Activepieces CDN logo/favicon URLs to empty strings
+- **Files:** packages/server/api/src/app/flags/theme.ts, scripts/ralph/learnings/frontend-branding.md
+- **Quality gate:** pass (typecheck clean, 189 tests pass)
+- **Learnings:** Branding is dynamic — server theme.ts feeds flags API which theme-provider.tsx reads at runtime to set document.title, favicon, and CSS primary color variables. Changing theme.ts propagates everywhere.
+---

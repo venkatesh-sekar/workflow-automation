@@ -1,5 +1,5 @@
 {
-  "iteration": 118,
+  "iteration": 119,
   "current_phase": "frontend-branding",
   "phases": {
     "copy-server-core": {
@@ -288,7 +288,9 @@
         "Activepieces logo replaced with Flow wordmark or placeholder",
         "Tests updated for branding changes"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 119, "description": "Updated server-side defaultTheme: websiteName 'Activepieces' -> 'Flow', primaryColor '#6e41e2' (purple) -> '#dc2626' (red), cleared external Activepieces CDN logo/favicon URLs. This propagates to all UI via flags API."}
+      ]
     },
     "deployment": {
       "status": "pending",
