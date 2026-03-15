@@ -207,7 +207,7 @@ export const tableService = {
             },
             author: userMetadata ? `${userMetadata.firstName} ${userMetadata.lastName}` : '',
             categories: [],
-            type: TemplateType.SHARED,
+            type: TemplateType.CUSTOM,
             status: TemplateStatus.PUBLISHED,
         }
         return template

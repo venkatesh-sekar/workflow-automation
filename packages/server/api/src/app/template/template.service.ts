@@ -1,6 +1,6 @@
 import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
-import { ArrayContains, ArrayOverlap, Equal, IsNull } from 'typeorm'
+import { ArrayContains, ArrayOverlap, Equal } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
 import { templateValidator } from './template-validator'
@@ -34,51 +34,27 @@ export const templateService = (log: FastifyBaseLogger) => ({
         })
 
         const { flows, pieces } = preparedTemplate
-        const { name, summary, description, tags, blogUrl, metadata, author, categories, type } = params
+        const { name, summary, description, tags, blogUrl, metadata, author, categories } = params
 
         const newTags = tags ?? []
 
-        switch (type) {
-            case TemplateType.OFFICIAL:
-            case TemplateType.SHARED: {
-                const newTemplate: NewTemplate = {
-                    id: apId(),
-                    name,
-                    type,
-                    summary,
-                    description,
-                    platformId,
-                    tags: newTags,
-                    blogUrl,
-                    metadata,
-                    author,
-                    categories,
-                    pieces,
-                    flows,
-                    status: TemplateStatus.PUBLISHED,
-                }
-                return templateRepo().save(newTemplate)
-            }
-            case TemplateType.CUSTOM: {
-                const newTemplate: NewTemplate = {
-                    id: apId(),
-                    name,
-                    type: TemplateType.CUSTOM,
-                    summary,
-                    description,
-                    platformId,
-                    tags: newTags,
-                    blogUrl,
-                    metadata,
-                    author,
-                    categories,
-                    pieces,
-                    flows,
-                    status: TemplateStatus.PUBLISHED,
-                }
-                return templateRepo().save(newTemplate)
-            }
+        const newTemplate: NewTemplate = {
+            id: apId(),
+            name,
+            type: TemplateType.CUSTOM,
+            summary,
+            description,
+            platformId,
+            tags: newTags,
+            blogUrl,
+            metadata,
+            author,
+            categories,
+            pieces,
+            flows,
+            status: TemplateStatus.PUBLISHED,
         }
+        return templateRepo().save(newTemplate)
     },
 
     async update({ id, params }: UpdateParams): Promise<Template> {
@@ -99,44 +75,23 @@ export const templateService = (log: FastifyBaseLogger) => ({
             pieces = preparedTemplate.pieces
         }
 
-        switch (template.type) {
-            case TemplateType.OFFICIAL:
-            case TemplateType.SHARED: {
-                await templateRepo().update(id, {
-                    ...spreadIfDefined('name', name),
-                    ...spreadIfDefined('summary', summary),
-                    ...spreadIfDefined('description', description),
-                    ...spreadIfDefined('tags', tags),
-                    ...spreadIfDefined('blogUrl', blogUrl),
-                    ...spreadIfDefined('metadata', metadata),
-                    ...spreadIfDefined('categories', categories),
-                    ...spreadIfDefined('flows', sanatizedFlows),
-                    ...spreadIfDefined('pieces', pieces),
-                    ...spreadIfDefined('tags', newTags),
-                    ...spreadIfDefined('status', status),
-                })
-                return templateRepo().findOneByOrFail({ id })
-            }
-            case TemplateType.CUSTOM: {
-                await templateRepo().update(id, {
-                    ...spreadIfDefined('name', name),
-                    ...spreadIfDefined('summary', summary),
-                    ...spreadIfDefined('description', description),
-                    ...spreadIfDefined('tags', tags),
-                    ...spreadIfDefined('blogUrl', blogUrl),
-                    ...spreadIfDefined('metadata', metadata),
-                    ...spreadIfDefined('categories', categories),
-                    ...spreadIfDefined('flows', sanatizedFlows),
-                    ...spreadIfDefined('pieces', pieces),
-                    ...spreadIfDefined('tags', newTags),
-                    ...spreadIfDefined('status', status),
-                })
-                return templateRepo().findOneByOrFail({ id })
-            }
-        }
+        await templateRepo().update(id, {
+            ...spreadIfDefined('name', name),
+            ...spreadIfDefined('summary', summary),
+            ...spreadIfDefined('description', description),
+            ...spreadIfDefined('tags', tags),
+            ...spreadIfDefined('blogUrl', blogUrl),
+            ...spreadIfDefined('metadata', metadata),
+            ...spreadIfDefined('categories', categories),
+            ...spreadIfDefined('flows', sanatizedFlows),
+            ...spreadIfDefined('pieces', pieces),
+            ...spreadIfDefined('tags', newTags),
+            ...spreadIfDefined('status', status),
+        })
+        return templateRepo().findOneByOrFail({ id })
     },
 
-    async list({ platformId, pieces, tags, search, type, category }: ListParams): Promise<SeekPage<Template>> {
+    async list({ platformId, pieces, tags, search, category }: ListParams): Promise<SeekPage<Template>> {
         const commonFilters: Record<string, unknown> = {}
 
         if (pieces) {
@@ -145,30 +100,9 @@ export const templateService = (log: FastifyBaseLogger) => ({
         if (category) {
             commonFilters.categories = ArrayContains([category])
         }
-        switch (type) {
-            case TemplateType.OFFICIAL:
-                commonFilters.type = Equal(TemplateType.OFFICIAL)
-                commonFilters.platformId = IsNull()
-                break
-            case TemplateType.CUSTOM:
-                commonFilters.type = Equal(TemplateType.CUSTOM)
-                if (isNil(platformId)) {
-                    throw new ActivepiecesError({
-                        code: ErrorCode.VALIDATION,
-                        params: {
-                            message: 'Platform ID is required to list custom templates',
-                        },
-                    })
-                }
-                commonFilters.platformId = Equal(platformId)
-                break
-            case TemplateType.SHARED:
-                throw new ActivepiecesError({
-                    code: ErrorCode.VALIDATION,
-                    params: {
-                        message: 'Shared templates are not supported to being listed',
-                    },
-                })
+        commonFilters.type = Equal(TemplateType.CUSTOM)
+        if (!isNil(platformId)) {
+            commonFilters.platformId = Equal(platformId)
         }
         commonFilters.status = Equal(TemplateStatus.PUBLISHED)
         const queryBuilder = templateRepo()
@@ -210,7 +144,6 @@ type NewTemplate = Omit<Template, 'created' | 'updated'>
 
 type ListParams = Omit<ListTemplatesRequestQuery, 'type'> & {
     platformId: string | null
-    type: TemplateType
 }
 
 type DeleteParams = {

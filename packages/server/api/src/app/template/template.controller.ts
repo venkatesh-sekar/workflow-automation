@@ -1,69 +1,28 @@
 import { securityAccess } from '@activepieces/server-common'
 import {
-    ActivepiecesError,
     ALL_PRINCIPAL_TYPES,
-    ApEdition,
-    ApFlagId,
     CreateTemplateRequestBody,
-    ErrorCode,
-    isNil,
     ListTemplatesRequestQuery,
-    Principal,
     PrincipalType,
     SERVICE_KEY_SECURITY_OPENAPI,
-    Template,
-    TemplateType,
     UpdateTemplateRequestBody,
 } from '@activepieces/shared'
-import { FastifyBaseLogger } from 'fastify'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 import { platformMustBeOwnedByCurrentUser } from '../helper/ee-authorization-stub'
-import { flagService } from '../flags/flag.service'
 import { migrateFlowVersionTemplateList } from '../flows/flow-version/migrations'
-import { system } from '../helper/system/system'
-import { platformService } from '../platform/platform.service'
-import { communityTemplates } from './community-templates.service'
 import { templateService } from './template.service'
-
-const edition = system.getEdition()
 
 export const templateController: FastifyPluginAsyncZod = async (app) => {
     app.get('/:id', GetParams, async (request) => {
-        const template = await templateService(app.log).getOne({ id: request.params.id })
-        if (!isNil(template)) {
-            return template
-        }
-        if (edition !== ApEdition.CLOUD) {
-            return communityTemplates.getOrThrow(request.params.id)
-        }
-        throw new ActivepiecesError({
-            code: ErrorCode.ENTITY_NOT_FOUND,
-            params: {
-                entityType: 'template',
-                entityId: request.params.id,
-                message: `Template ${request.params.id} not found`,
-            },
-        })
-    })
-
-    app.get('/categories', GetCategoriesParams, async (request) => {
-        if (edition === ApEdition.CLOUD) {
-            return flagService(request.log).getOne(ApFlagId.TEMPLATES_CATEGORIES)
-        }
-        return communityTemplates.getCategories()
+        return templateService(app.log).getOneOrThrow({ id: request.params.id })
     })
 
     app.get('/', ListTemplatesParams, async (request) => {
-        const officialTemplates = await loadOfficialTemplatesOrReturnEmpty(app.log, request.query)
-        const customTemplates = await loadCustomTemplatesOrReturnEmpty(app.log, request.query, request.principal)
-
-        return {
-            data: [...officialTemplates, ...customTemplates],
-            next: null,
-            previous: null,
-        }
+        const platformId = request.principal.type === PrincipalType.UNKNOWN || request.principal.type === PrincipalType.WORKER ? null : request.principal.platform.id
+        const templates = await templateService(app.log).list({ platformId, ...request.query })
+        return templates
     })
 
     app.post('/', {
@@ -73,26 +32,8 @@ export const templateController: FastifyPluginAsyncZod = async (app) => {
             request.body.flows = migratedFlows
         },
     }, async (request, reply) => {
-        const { type } = request.body
-        let platformId: string | undefined
-
-        switch (type) {
-            case TemplateType.CUSTOM: {
-                await platformMustBeOwnedByCurrentUser.call(app, request, reply)
-                platformId = request.principal.platform.id
-            }
-                break
-            case TemplateType.SHARED:
-                break
-            case TemplateType.OFFICIAL: {
-                throw new ActivepiecesError({
-                    code: ErrorCode.VALIDATION,
-                    params: {
-                        message: 'Official templates are not supported to being created',
-                    },
-                })
-            }
-        }
+        await platformMustBeOwnedByCurrentUser.call(app, request, reply)
+        const platformId = request.principal.platform.id
         const result = await templateService(app.log).create({ platformId, params: request.body })
         return reply.status(StatusCodes.CREATED).send(result)
     })
@@ -108,12 +49,7 @@ export const templateController: FastifyPluginAsyncZod = async (app) => {
     })
 
     app.delete('/:id', DeleteParams, async (request, reply) => {
-        const template = await templateService(app.log).getOneOrThrow({ id: request.params.id })
-
-        if (template.type === TemplateType.CUSTOM) {
-            await platformMustBeOwnedByCurrentUser.call(app, request, reply)
-        }
-
+        await platformMustBeOwnedByCurrentUser.call(app, request, reply)
         await templateService(app.log).delete({
             id: request.params.id,
         })
@@ -126,17 +62,6 @@ const GetIdParams = z.object({
     id: z.string(),
 })
 type GetIdParams = z.infer<typeof GetIdParams>
-
-const GetCategoriesParams = {
-    config: {
-        security: securityAccess.public(),
-    },
-    schema: {
-        tags: ['templates'],
-        description: 'Get categories of templates.',
-        security: [SERVICE_KEY_SECURITY_OPENAPI],
-    },
-}
 
 const GetParams = {
     config: {
@@ -199,41 +124,3 @@ const UpdateParams = {
     },
 }
 
-async function loadOfficialTemplatesOrReturnEmpty(
-    log: FastifyBaseLogger,
-    query: ListTemplatesRequestQuery,
-): Promise<Template[]> {
-    if (!isNil(query.type) && query.type !== TemplateType.OFFICIAL) {
-        return []
-    }
-    if (edition === ApEdition.CLOUD) {
-        const officialTemplatesFromCloud = await templateService(log).list({
-            platformId: null,
-            type: TemplateType.OFFICIAL,
-            ...query,
-        })
-        return officialTemplatesFromCloud.data
-    }
-    const loadTemplatesFromCloud = await communityTemplates.list({ ...query, type: TemplateType.OFFICIAL })
-    return loadTemplatesFromCloud.data
-}
-
-async function loadCustomTemplatesOrReturnEmpty(
-    log: FastifyBaseLogger,
-    query: ListTemplatesRequestQuery,
-    principal: Principal,
-): Promise<Template[]> {
-    if ((!isNil(query.type) && query.type !== TemplateType.CUSTOM)) {
-        return []
-    }
-    const platformId = principal.type === PrincipalType.UNKNOWN || principal.type === PrincipalType.WORKER ? null : principal.platform.id
-    if (isNil(platformId)) {
-        return []
-    }
-    const platform = await platformService(log).getOneWithPlanOrThrow(platformId)
-    if (!platform.plan.manageTemplatesEnabled) {
-        return []
-    }
-    const customTemplates = await templateService(log).list({ platformId, type: TemplateType.CUSTOM, ...query })
-    return customTemplates.data
-}

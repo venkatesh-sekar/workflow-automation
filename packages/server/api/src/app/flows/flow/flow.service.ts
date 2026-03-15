@@ -585,7 +585,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
             },
             author: userMetadata ? `${userMetadata.firstName} ${userMetadata.lastName}` : '',
             categories: [],
-            type: TemplateType.SHARED,
+            type: TemplateType.CUSTOM,
             status: TemplateStatus.PUBLISHED,
         }
         return template

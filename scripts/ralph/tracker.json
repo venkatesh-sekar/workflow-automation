@@ -1,5 +1,5 @@
 {
-  "iteration": 100,
+  "iteration": 101,
   "current_phase": "modify-templates",
   "phases": {
     "copy-server-core": {
@@ -227,7 +227,9 @@
         "scope field added to template: TEAM (project-scoped) or GLOBAL (visible to all)",
         "Tests for template scope behavior"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 101, "description": "Stripped OFFICIAL and SHARED from TemplateType enum (kept CUSTOM only). Removed type from CreateTemplateRequestBody and ListTemplatesRequestQuery. Simplified template controller — removed OFFICIAL cloud-fetch logic, community-templates fallback, categories endpoint. Simplified template service — removed OFFICIAL/SHARED switch branches. Updated flow.service.ts and table.service.ts to use CUSTOM. Migration files untouched (use local enums)."}
+      ]
     },
     "frontend-login": {
       "status": "pending",

@@ -702,3 +702,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 23 suites / 184 tests pass)
 - **Learnings:** Promoted alert service interface and test baseline to global learnings. Phase took 4 iterations (97-100).
 ---
+
+## Iteration #101 - modify-templates
+- **Change:** Stripped OFFICIAL and SHARED from TemplateType enum, kept CUSTOM only. Removed type from CreateTemplateRequestBody and ListTemplatesRequestQuery. Simplified template controller (removed cloud-fetch, community-templates, categories endpoint) and service (removed switch branches). Updated flow.service.ts and table.service.ts to use CUSTOM.
+- **Files:** packages/shared/src/lib/management/template/template.ts, template.requests.ts, packages/server/api/src/app/template/template.service.ts, template.controller.ts, packages/server/api/src/app/flows/flow/flow.service.ts, packages/server/api/src/app/tables/table/table.service.ts, scripts/ralph/learnings/modify-templates.md
+- **Quality gate:** pass (0 TS errors, 184 tests pass)
+- **Learnings:** Migration files have local TemplateType enums — safe to leave untouched. community-templates.service.ts is now dead code (no importers). UI files still reference OFFICIAL/SHARED — will be addressed in frontend phases.
+---

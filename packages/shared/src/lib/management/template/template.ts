@@ -12,8 +12,6 @@ export type TemplateTag = z.infer<typeof TemplateTag>
 
 
 export enum TemplateType {
-    OFFICIAL = 'OFFICIAL',
-    SHARED = 'SHARED',
     CUSTOM = 'CUSTOM',
 }
 
