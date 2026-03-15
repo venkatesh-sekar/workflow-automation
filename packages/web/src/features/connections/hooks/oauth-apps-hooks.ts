@@ -1,6 +1,6 @@
 import {
   UpsertOAuth2AppRequest,
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   AppConnectionType,
 } from '@flow/shared';
@@ -71,13 +71,13 @@ export const oauthAppsQueries = {
   },
   usePiecesOAuth2AppsMap() {
     const { platform } = platformHooks.useCurrentPlatform();
-    const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+    const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
 
     return useQuery<PiecesOAuth2AppsMap, Error>({
       queryKey: ['oauth-apps'],
       queryFn: async () => {
         const apps =
-          edition === ApEdition.COMMUNITY
+          edition === FlowEdition.COMMUNITY
             ? {
                 data: [],
               }

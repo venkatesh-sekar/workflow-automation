@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId, isNil, PlatformRole } from '@flow/shared';
+import { FlowEdition, ApFlagId, isNil, PlatformRole } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronRight, Info, Play, Sparkles, Workflow } from 'lucide-react';
 import React, { ReactNode } from 'react';
@@ -21,9 +21,9 @@ const SidebarUsageLimits = React.memo(() => {
   const { platform } = platformHooks.useCurrentPlatform();
   const currentUser = userHooks.useCurrentUser();
   const isPlatformAdmin = currentUser.data?.platformRole === PlatformRole.ADMIN;
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
 
-  if (edition !== ApEdition.CLOUD) {
+  if (edition !== FlowEdition.CLOUD) {
     return null;
   }
 

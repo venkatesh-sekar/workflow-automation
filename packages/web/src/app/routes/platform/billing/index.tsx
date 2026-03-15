@@ -1,7 +1,7 @@
 import {
   ApSubscriptionStatus,
   AiCreditsAutoTopUpState,
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   isNil,
 } from '@flow/shared';
@@ -23,12 +23,12 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 import { platformHooks } from '@/hooks/platform-hooks';
 
 export default function Billing() {
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
 
   return (
     <LockedFeatureGuard
       featureKey="BILLING"
-      locked={edition === ApEdition.COMMUNITY}
+      locked={edition === FlowEdition.COMMUNITY}
       lockTitle={t('Unlock Billing Page')}
       lockDescription={t(
         'Switch to the Enterprise edition to access billing and usage management.',
@@ -49,8 +49,8 @@ function BillingPageDetails() {
     isLoading: isPlatformSubscriptionLoading,
     isError,
   } = billingQueries.usePlatformSubscription(platform.id);
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
-  const isCommunity = edition === ApEdition.COMMUNITY;
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const isCommunity = edition === FlowEdition.COMMUNITY;
   const { mutate: redirectToPortalSession } = billingMutations.usePortalLink();
   const status = platformPlanInfo?.plan?.stripeSubscriptionStatus;
   const isSubscriptionActive =

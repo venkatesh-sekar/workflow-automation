@@ -1,6 +1,6 @@
 import {
   AiCreditsAutoTopUpState,
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   PlatformBillingInformation,
 } from '@flow/shared';
@@ -44,7 +44,7 @@ export function AICreditUsage({ platformSubscription }: AiCreditUsageProps) {
   const autoTopUpState =
     plan.aiCreditsAutoTopUpState ?? AiCreditsAutoTopUpState.DISABLED;
 
-  const canBuyCredits = flagsHooks.useFlag<ApEdition>(
+  const canBuyCredits = flagsHooks.useFlag<FlowEdition>(
     ApFlagId.CAN_BUY_AI_CREDITS,
   );
   const isAutoTopUpEnabled = autoTopUpState === AiCreditsAutoTopUpState.ENABLED;

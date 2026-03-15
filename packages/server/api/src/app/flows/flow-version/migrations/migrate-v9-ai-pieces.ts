@@ -1,5 +1,5 @@
 import {
-    ApEdition,
+    FlowEdition,
     FlowAction,
     FlowActionType,
     flowStructureUtil,
@@ -167,7 +167,7 @@ function migrateModel(provider: string | undefined, modelId: string): { model: s
         }
     }
     const edition = system.getEdition()
-    if (edition !== ApEdition.CLOUD) {
+    if (edition !== FlowEdition.CLOUD) {
         return {
             provider,
             model: modelId,

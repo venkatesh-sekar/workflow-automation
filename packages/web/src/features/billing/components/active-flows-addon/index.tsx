@@ -1,6 +1,6 @@
 import {
   PRICE_PER_EXTRA_ACTIVE_FLOWS,
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   isNil,
   PlanName,
@@ -40,9 +40,9 @@ export function ActiveFlowAddon({
   const { plan, usage } = platformSubscription;
   const currentActiveFlows = usage.activeFlows || 0;
 
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
   const canManageActiveFlowsLimit =
-    edition !== ApEdition.COMMUNITY && plan.plan === PlanName.STANDARD;
+    edition !== FlowEdition.COMMUNITY && plan.plan === PlanName.STANDARD;
 
   const activeFlowsLimit = plan.activeFlowsLimit;
   const approachingLimit =

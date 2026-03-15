@@ -1,5 +1,5 @@
 import { AppSystemProp, rejectedPromiseHandler } from '@flow/server-common'
-import { ApEdition, isNil, TemplateTelemetryEvent, TemplateTelemetryEventType, tryCatch } from '@flow/shared'
+import { FlowEdition, isNil, TemplateTelemetryEvent, TemplateTelemetryEventType, tryCatch } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { system } from '../../helper/system/system'
 
@@ -17,7 +17,7 @@ export const templateTelemetryService = (log: FastifyBaseLogger) => ({
         }
 
         const edition = system.getEdition()
-        if (edition !== ApEdition.CLOUD) {
+        if (edition !== FlowEdition.CLOUD) {
             rejectedPromiseHandler(sendToCloud(event), log)
             return
         }

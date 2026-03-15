@@ -1,5 +1,5 @@
 import { AppSystemProp, apVersionUtil, webhookSecretsUtils } from '@flow/server-common'
-import { ApEdition, ApFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
+import { FlowEdition, ApFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
@@ -75,13 +75,13 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: ApFlagId.SHOW_ALERTS,
-                value: system.getEdition() !== ApEdition.COMMUNITY,
+                value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },
             {
                 id: ApFlagId.SHOW_PROJECT_MEMBERS,
-                value: system.getEdition() !== ApEdition.COMMUNITY,
+                value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },
@@ -99,7 +99,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: ApFlagId.CAN_BUY_ACTIVE_FLOWS,
-                value: system.getEdition() === ApEdition.CLOUD,
+                value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
@@ -111,13 +111,13 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: ApFlagId.SHOW_BILLING_LIMITS_ON_SIDEBAR,
-                value: system.getEdition() === ApEdition.CLOUD,
+                value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
             {
                 id: ApFlagId.SHOW_BILLING_PAGE,
-                value: system.getEdition() === ApEdition.CLOUD,
+                value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
@@ -177,13 +177,13 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: ApFlagId.SHOW_COMMUNITY,
-                value: system.getEdition() !== ApEdition.ENTERPRISE,
+                value: system.getEdition() !== FlowEdition.ENTERPRISE,
                 created,
                 updated,
             },
             {
                 id: ApFlagId.PRIVATE_PIECES_ENABLED,
-                value: system.getEdition() !== ApEdition.COMMUNITY,
+                value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },

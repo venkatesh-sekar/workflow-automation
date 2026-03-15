@@ -1,5 +1,5 @@
 import {
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   isNil,
   Permission,
@@ -31,11 +31,11 @@ export const useAuthorization = () => {
     },
     retry: false,
     enabled:
-      !isNil(edition) && edition !== ApEdition.COMMUNITY && !isNil(platformId),
+      !isNil(edition) && edition !== FlowEdition.COMMUNITY && !isNil(platformId),
   });
 
   const checkAccess = (permission: Permission) => {
-    if (isLoading || edition === ApEdition.COMMUNITY) {
+    if (isLoading || edition === FlowEdition.COMMUNITY) {
       return true;
     }
     return projectRole?.permissions?.includes(permission) ?? true;

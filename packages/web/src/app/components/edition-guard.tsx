@@ -1,14 +1,14 @@
-import { ApEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, ApFlagId } from '@flow/shared';
 
 import { flagsHooks } from '@/hooks/flags-hooks';
 
 type EditionGuardProps = {
   children: React.ReactNode;
-  allowedEditions: ApEdition[];
+  allowedEditions: FlowEdition[];
 };
 
 const EditionGuard = ({ children, allowedEditions }: EditionGuardProps) => {
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
 
   if (!edition || !allowedEditions.includes(edition)) {
     return null;

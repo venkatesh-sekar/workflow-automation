@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { ApEdition } from '@flow/shared'
+import { FlowEdition } from '@flow/shared'
 import { EntitySchemaColumnOptions } from 'typeorm'
 import { system } from '../helper/system/system'
 
@@ -27,6 +27,6 @@ export const BaseColumnSchemaPart = {
     } as EntitySchemaColumnOptions,
 }
 
-export function isNotOneOfTheseEditions(editions: ApEdition[]): boolean {
+export function isNotOneOfTheseEditions(editions: FlowEdition[]): boolean {
     return !editions.includes(system.getEdition())
 }

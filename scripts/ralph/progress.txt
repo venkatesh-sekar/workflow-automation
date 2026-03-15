@@ -37,3 +37,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #6 - rename-ap-core-types
+- **Change:** Renamed ApEdition→FlowEdition (enum + all references, 83 occurrences across 27 files)
+- **Files:** 27 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

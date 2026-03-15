@@ -1,6 +1,6 @@
 import { inspect } from 'util'
 import { AppSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
-import { ApEdition, FlowEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
+import { FlowEdition, FlowEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
 import { s3Helper } from '../file/s3-helper'
@@ -143,7 +143,7 @@ const systemPropValidators: {
     [AppSystemProp.STRIPE_WEBHOOK_SECRET]: stringValidator,
     [AppSystemProp.INTERNAL_URL]: stringValidator,
     [AppSystemProp.PM2_ENABLED]: booleanValidator,
-    [AppSystemProp.EDITION]: enumValidator(Object.values(ApEdition)),
+    [AppSystemProp.EDITION]: enumValidator(Object.values(FlowEdition)),
     [AppSystemProp.FEATUREBASE_API_KEY]: stringValidator,
     [AppSystemProp.SCIM_DEFAULT_PROJECT_ROLE]: enumValidator(Object.values(DefaultProjectRole)),
 
@@ -258,7 +258,7 @@ export const validateEnvPropsOnStartup = async (log: FastifyBaseLogger): Promise
     }
 
     const edition = system.getEdition()
-    if ([ApEdition.CLOUD, ApEdition.ENTERPRISE].includes(edition) && environment === FlowEnvironment.PRODUCTION) {
+    if ([FlowEdition.CLOUD, FlowEdition.ENTERPRISE].includes(edition) && environment === FlowEnvironment.PRODUCTION) {
         const executionMode = system.getOrThrow<ExecutionMode>(AppSystemProp.EXECUTION_MODE)
         if (![ExecutionMode.SANDBOX_PROCESS, ExecutionMode.SANDBOX_CODE_ONLY, ExecutionMode.SANDBOX_CODE_AND_PROCESS].includes(executionMode)) {
             throw new Error(JSON.stringify({

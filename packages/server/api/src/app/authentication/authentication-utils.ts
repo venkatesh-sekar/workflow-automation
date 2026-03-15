@@ -1,5 +1,5 @@
 import { AppSystemProp } from '@flow/server-common'
-import { FlowError, ApEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, UserIdentityProvider, UserStatus } from '@flow/shared'
+import { FlowError, FlowEdition, assertNotNullOrUndefined, AuthenticationResponse, EndpointScope, ErrorCode, isNil, PrincipalType, UserIdentityProvider, UserStatus } from '@flow/shared'
 import { FastifyBaseLogger, FastifyRequest } from 'fastify'
 import { system } from '../helper/system/system'
 import { platformService } from '../platform/platform.service'
@@ -88,7 +88,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
         platformId,
     }: AssertDomainIsAllowedParams): Promise<void> {
         const edition = system.getEdition()
-        if (edition === ApEdition.COMMUNITY) {
+        if (edition === FlowEdition.COMMUNITY) {
             return
         }
         const platform = await platformService(log).getOneWithPlanOrThrow(platformId)
@@ -115,7 +115,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
         provider,
     }: AssertEmailAuthIsEnabledParams): Promise<void> {
         const edition = system.getEdition()
-        if (edition === ApEdition.COMMUNITY) {
+        if (edition === FlowEdition.COMMUNITY) {
             return
         }
         const platform = await platformService(log).getOneWithPlanOrThrow(platformId)

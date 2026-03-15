@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, ApFlagId } from '@flow/shared';
 
 import { flagsHooks } from './flags-hooks';
 
@@ -18,12 +18,12 @@ declare global {
 }
 
 export const usePartnerStack = () => {
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
   const reportSignup = (email: string, firstName: string) => {
     const hasPartnerCookie = document.cookie
       .split('; ')
       .some((c) => c.startsWith('_ps'));
-    if (edition !== ApEdition.CLOUD || !hasPartnerCookie) return;
+    if (edition !== FlowEdition.CLOUD || !hasPartnerCookie) return;
     window.growsumo.data.email = email;
     window.growsumo.data.name = firstName;
     window.growsumo.data.customer_key = `ps_cus_key_${email}`;

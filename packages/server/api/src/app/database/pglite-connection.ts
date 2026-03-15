@@ -1,7 +1,7 @@
 import { mkdirSync } from 'node:fs'
 import path from 'node:path'
 import { AppSystemProp } from '@flow/server-common'
-import { ApEdition, FlowEnvironment, spreadIfDefined } from '@flow/shared'
+import { FlowEdition, FlowEnvironment, spreadIfDefined } from '@flow/shared'
 import { types } from '@electric-sql/pglite'
 import { DataSource } from 'typeorm'
 import { PGliteDriver } from 'typeorm-pglite'
@@ -28,7 +28,7 @@ const getPGliteDataPath = (): string | undefined => {
 export const createPGliteDataSource = (): DataSource => {
     const edition = system.getEdition()
     const env = system.getOrThrow<FlowEnvironment>(AppSystemProp.ENVIRONMENT)
-    if (edition !== ApEdition.COMMUNITY && env !== FlowEnvironment.TESTING) {
+    if (edition !== FlowEdition.COMMUNITY && env !== FlowEnvironment.TESTING) {
         throw new Error(`Edition ${edition} not supported in pglite mode in ${env} environment`)
     }
 

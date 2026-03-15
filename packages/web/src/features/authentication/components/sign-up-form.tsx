@@ -1,6 +1,6 @@
 import {
   OtpType,
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   ErrorCode,
   isNil,
@@ -69,13 +69,13 @@ const SignUpForm = ({
     },
   });
   const websiteName = flagsHooks.useWebsiteBranding()?.websiteName;
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
   const showNewsLetterCheckbox = useMemo(() => {
     if (!edition || !websiteName) {
       return false;
     }
     switch (edition) {
-      case ApEdition.CLOUD: {
+      case FlowEdition.CLOUD: {
         if (
           typeof websiteName === 'string' &&
           websiteName.toLowerCase() === 'activepieces'
@@ -85,9 +85,9 @@ const SignUpForm = ({
         }
         return false;
       }
-      case ApEdition.ENTERPRISE:
+      case FlowEdition.ENTERPRISE:
         return false;
-      case ApEdition.COMMUNITY: {
+      case FlowEdition.COMMUNITY: {
         form.setValue('newsLetter', true);
         return true;
       }
@@ -331,7 +331,7 @@ const SignUpForm = ({
         </form>
       </Form>
 
-      {edition === ApEdition.CLOUD && (
+      {edition === FlowEdition.CLOUD && (
         <div
           className={cn('text-center text-sm', {
             'mt-4': termsOfServiceUrl || privacyPolicyUrl,

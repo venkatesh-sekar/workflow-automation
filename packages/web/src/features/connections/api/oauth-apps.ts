@@ -2,7 +2,7 @@ import {
   ListOAuth2AppRequest,
   OAuthApp,
   UpsertOAuth2AppRequest,
-  ApEdition,
+  FlowEdition,
   SeekPage,
 } from '@flow/shared';
 
@@ -10,7 +10,7 @@ import { api } from '@/lib/api';
 
 export const oauthAppsApi = {
   listCloudOAuth2Apps(
-    edition: ApEdition,
+    edition: FlowEdition,
   ): Promise<Record<string, { clientId: string }>> {
     return api.get<Record<string, { clientId: string }>>(
       'https://secrets.activepieces.com/apps',

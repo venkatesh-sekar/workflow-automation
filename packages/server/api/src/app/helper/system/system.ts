@@ -3,7 +3,7 @@ import path from 'path'
 import { AppSystemProp, ContainerType, DatabaseType, environmentVariables, pinoLogging, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
 import {
     FlowError,
-    ApEdition,
+    FlowEdition,
     DefaultProjectRole,
     ErrorCode,
     ExecutionMode,
@@ -24,7 +24,7 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [AppSystemProp.CLOUD_AUTH_ENABLED]: 'true',
     [AppSystemProp.CONFIG_PATH]: path.join(os.homedir(), '.activepieces'),
     [AppSystemProp.DB_TYPE]: DatabaseType.POSTGRES,
-    [AppSystemProp.EDITION]: ApEdition.COMMUNITY,
+    [AppSystemProp.EDITION]: FlowEdition.COMMUNITY,
     [AppSystemProp.APP_WEBHOOK_SECRETS]: '{}',
     [WorkerSystemProp.CONTAINER_TYPE]: ContainerType.WORKER_AND_APP,
     [AppSystemProp.EXECUTION_DATA_RETENTION_DAYS]: '30',
@@ -167,8 +167,8 @@ export const system = {
 
         return value
     },
-    getEdition(): ApEdition {
-        return this.getOrThrow<ApEdition>(AppSystemProp.EDITION)
+    getEdition(): FlowEdition {
+        return this.getOrThrow<FlowEdition>(AppSystemProp.EDITION)
     },
     isWorker(): boolean {
         return [ContainerType.WORKER, ContainerType.WORKER_AND_APP].includes(

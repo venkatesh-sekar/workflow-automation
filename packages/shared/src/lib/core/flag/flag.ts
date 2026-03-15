@@ -13,7 +13,7 @@ export enum FlowEnvironment {
     TESTING = 'test',
 }
 
-export enum ApEdition {
+export enum FlowEdition {
     COMMUNITY = 'ce',
     ENTERPRISE = 'ee',
     CLOUD = 'cloud',

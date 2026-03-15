@@ -1,5 +1,5 @@
 import {
-  ApEdition,
+  FlowEdition,
   ApFlagId,
   WorkerMachineStatus,
   WorkerMachineWithStatus,
@@ -87,8 +87,8 @@ const DEMO_WORKERS_DATA: WorkerMachineWithStatus[] = [
 ];
 
 export default function WorkersPage() {
-  const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
-  const showDemoData = edition === ApEdition.CLOUD;
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const showDemoData = edition === FlowEdition.CLOUD;
   const { data: workersData, isLoading } = workersQueries.useWorkerMachines(
     showDemoData,
     DEMO_WORKERS_DATA,
