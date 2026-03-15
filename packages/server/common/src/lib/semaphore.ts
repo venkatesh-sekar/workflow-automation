@@ -1,4 +1,4 @@
-export class ApSemaphore {
+export class FlowSemaphore {
     private maxConcurrent: number
     private queue: (() => void)[]
     private currentConcurrent: number
