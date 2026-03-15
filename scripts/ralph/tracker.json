@@ -1,6 +1,6 @@
 {
-  "iteration": 61,
-  "current_phase": "clean-dead-code",
+  "iteration": 62,
+  "current_phase": "final-sweep",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -201,7 +201,7 @@
       ]
     },
     "clean-dead-code": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "Dead alerts feature barrel removed (features/alerts/)",
@@ -236,7 +236,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments"],
-  "phase_queue": ["final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code"],
+  "phase_queue": [],
   "inserted_phases": []
 }

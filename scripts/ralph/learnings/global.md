@@ -26,6 +26,7 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 - strip-billing-and-licensing: Stripe, license keys, cloud sync/OAuth/templates, AppSumo, Firebase Scrypt, Cloudflare/Featurebase/SCIM env vars, cloud API base URLs
 - strip-external-urls: ~60 CDN URLs emptied, all www/secrets/feedback/community URLs removed
 - clean-strings-and-comments: translation files, README.md build commands, JWT issuer, MCP strings, test URLs
+- clean-dead-code: features/alerts/ dir, use-partner-stack.ts, isCloudPlanButNotEnterprise guard, badge CDN URLs already emptied
 
 ## Key Insights
 - No server-side billing routes — API calls went to external cloud service

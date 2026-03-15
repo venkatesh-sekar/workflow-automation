@@ -429,3 +429,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #62 - clean-dead-code (PHASE COMPLETE)
+- **Change:** All criteria verified — alerts dir removed (#59), use-partner-stack removed (#60), isCloudPlanButNotEnterprise removed (#61), badge CDN URLs already emptied in strip-external-urls (#52), tests at same baseline. Advancing to final-sweep.
+- **Files:** 0 (phase completion bookkeeping only)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Promoted clean-dead-code summary to global.md
+---
