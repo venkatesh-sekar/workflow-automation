@@ -401,3 +401,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** tsconfig.base.json still has @activepieces/* paths (missed in rename-packages) — needs fixing. Embed typings (ActivepiecesClient*/ActivepiecesVendor* in typings.d.ts) still need renaming.
 ---
+
+## Iteration #58 - clean-strings-and-comments (PHASE COMPLETE)
+- **Change:** All criteria verified against codebase — no user-visible activepieces strings remain (embed types are code identifiers for final-sweep), no comments, translation files clean, SAML clean, no README/CONTRIBUTING/SECURITY/crowdin.yml files. Advancing to clean-dead-code.
+- **Files:** 0 (verification only)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Embed types (ActivepiecesClient*/ActivepiecesVendor*) in typings.d.ts need renaming in final-sweep
+---

@@ -1,6 +1,6 @@
 {
-  "iteration": 57,
-  "current_phase": "clean-strings-and-comments",
+  "iteration": 58,
+  "current_phase": "clean-dead-code",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -181,7 +181,7 @@
       ]
     },
     "clean-strings-and-comments": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "No user-visible string contains 'activepieces' or 'Activepieces'",
@@ -235,7 +235,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls"],
-  "phase_queue": ["clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments"],
+  "phase_queue": ["final-sweep"],
   "inserted_phases": []
 }

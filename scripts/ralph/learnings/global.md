@@ -25,10 +25,12 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 - strip-telemetry: Segment/PostHog/Sentry/template-telemetry/HyperDX/OTEL/GitHub version check
 - strip-billing-and-licensing: Stripe, license keys, cloud sync/OAuth/templates, AppSumo, Firebase Scrypt, Cloudflare/Featurebase/SCIM env vars, cloud API base URLs
 - strip-external-urls: ~60 CDN URLs emptied, all www/secrets/feedback/community URLs removed
+- clean-strings-and-comments: translation files, README.md build commands, JWT issuer, MCP strings, test URLs
 
 ## Key Insights
 - No server-side billing routes — API calls went to external cloud service
 - SCIM shared types still exist in packages/shared/src/lib/ee/scim/ — only barrel export, no server consumer
-- auth-form-template.tsx still has `cloud.activepieces.com` hostname check — for clean-dead-code phase
 - Test assertions checking URLs don't contain activepieces.com are fine (flags.test.ts)
-- MCP server in mcp-service.ts has 'Activepieces' name/title/description strings — for clean-strings phase
+- Embed types (ActivepiecesClient*, ActivepiecesVendor* in typings.d.ts + embed/) still need renaming — for final-sweep
+- migrate-v9-ai-pieces.ts has `provider: 'activepieces'` — left untouched (runtime flow data, changing breaks existing flows)
+- AP_FRONTEND_URL env var name preserved (not renamed — separate concern)
