@@ -667,3 +667,10 @@
 - **Quality gate:** pass (0 TS errors, 22 suites / 178 tests pass)
 - **Learnings:** Test baseline now 178 tests across 22 suites
 ---
+
+## Iteration #96 - build-audit-logs (phase completion)
+- **Change:** Verified all 5 acceptance criteria met; marked build-audit-logs complete; advanced to simplify-alerts
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (0 TS errors, 178 tests pass)
+- **Learnings:** Promoted audit hook patterns and test baseline to global learnings
+---

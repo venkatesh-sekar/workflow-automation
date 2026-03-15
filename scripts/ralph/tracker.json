@@ -1,6 +1,6 @@
 {
-  "iteration": 95,
-  "current_phase": "build-audit-logs",
+  "iteration": 96,
+  "current_phase": "simplify-alerts",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -184,7 +184,7 @@
       ]
     },
     "build-audit-logs": {
-      "status": "pending",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "New audit log entity, service, and module written from scratch in core (NOT copied from ee/)",
@@ -280,9 +280,8 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs"],
   "phase_queue": [
-    "simplify-alerts",
     "modify-templates",
     "frontend-login",
     "frontend-sidebar",

@@ -44,6 +44,12 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Migration files keep removed enum values as string literals with `as any` — don't touch
 - ACTIVEPIECES cloud-credits proxy removed entirely; aiCreditsEnabled hardcoded false
 
+## Audit Logs (complete)
+- Custom audit_event entity/service/module at packages/server/api/src/app/audit-event/
+- Hooks placed in controllers (not services) — controller has request context with principal type
+- Guard audit hooks with PrincipalType.USER to skip SERVICE principals
+- Test baseline after audit: 22 suites, 178 tests
+
 ## UI Notes
 - Frontend is React 19 + Vite + Tailwind 4 + shadcn/radix-ui
 - npm install needs --legacy-peer-deps for React 19 peer dep conflicts
