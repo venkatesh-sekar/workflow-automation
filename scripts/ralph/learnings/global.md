@@ -16,7 +16,7 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 ## Test Infrastructure
 - vitest + pg-mem + redis-memory-server (MALLOC=libc patch)
 - dayjs plugins in vitest.setup.ts; reflect-metadata required at runtime
-- Current baseline: 24 suites, 189 tests
+- Current baseline: 24 suites, 191 tests
 
 ## Auth System (complete)
 - Team-login only: POST /v1/authentication/team-login with {email, apiKey}
@@ -45,3 +45,8 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Platform sidebar (platform/index.tsx) still has Billing entry but unreachable from normal nav
 - Settings: project settings dialog has General/Members/Alerts tabs only; account settings in sidebar-user.tsx dropdown
 - Dead code remaining: alerts feature barrel (features/alerts/), git-sync API/hooks, old sign-up forms
+
+## Branding (complete)
+- Dynamic branding: server defaultTheme → flags API → theme-provider.tsx sets title/favicon/CSS vars
+- websiteName='Flow', primaryColor='#dc2626' (red), local favicon.ico
+- Remaining 'Activepieces' refs are code-level (SDK types, imports, comments) — not user-visible

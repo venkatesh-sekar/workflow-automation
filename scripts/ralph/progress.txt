@@ -870,3 +870,10 @@
 - **Quality gate:** pass (0 TS errors, 191 tests pass)
 - **Learnings:** Flags API returns THEME object with websiteName and colors — easy to test branding through flags endpoint
 ---
+
+## Iteration #125 - frontend-branding (phase completion)
+- **Change:** Verified all 4 acceptance criteria met (Flow name in titles/meta/favicon, red primary color, logo replaced, tests added). Marked frontend-branding complete, advanced to deployment.
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/progress.txt
+- **Quality gate:** pass (TypeScript: 0 errors, Tests: 24 suites / 191 tests pass)
+- **Learnings:** Promoted branding architecture insights to global learnings. Phase took 7 iterations (119-125).
+---
