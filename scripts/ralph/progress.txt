@@ -849,3 +849,10 @@
 - **Quality gate:** pass (typecheck clean, 189 tests pass)
 - **Learnings:** Light mode primary was purple (hue 257), dark mode was blue (hue 210) — both now red (hue 0). Sidebar-progress hue also updated.
 ---
+
+## Iteration #122 - frontend-branding
+- **Change:** Replaced 'Built with activepieces' branding in show-powered-by.tsx with 'Built with Flow'. Removed Activepieces SVG logo.
+- **Files:** packages/web/src/components/custom/show-powered-by.tsx
+- **Quality gate:** pass (0 TS errors, 189 tests pass)
+- **Learnings:** none
+---
