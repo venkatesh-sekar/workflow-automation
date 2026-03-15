@@ -25,5 +25,10 @@
 - Kept controller + shared types intact, just gutted service to no-op — callers still work harmlessly
 - Removed TEMPLATE_MANAGER_API_KEY from system-props.ts enum and system-validator.ts
 
+## GitHub Version Check
+- getLatestRelease() in system-props.ts fetched from raw.githubusercontent.com/activepieces — removed phone-home
+- Kept method signature since flag.service.ts uses it for LATEST_VERSION flag — now returns current version
+- axios import was only used for this; removed it along with cachedVersion and PackageJson type
+
 ## Test Baseline
 - 22/24 failures pre-existing (@flow/piece-slack resolution), 2 passed, 16 tests pass — same as prior phases

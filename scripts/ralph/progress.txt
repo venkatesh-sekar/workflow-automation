@@ -212,3 +212,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #31 - strip-telemetry
+- **Change:** Removed GitHub version check: gutted getLatestRelease() to return current version instead of phoning home to raw.githubusercontent.com/activepieces/activepieces/main/package.json, removed axios import and cachedVersion from system-props.ts
+- **Files:** 1 file changed (system-props.ts)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** getLatestRelease still needed by flag.service.ts for LATEST_VERSION flag — return current version to avoid breaking the interface
+---

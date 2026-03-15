@@ -1,5 +1,5 @@
 {
-  "iteration": 30,
+  "iteration": 31,
   "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
@@ -114,7 +114,8 @@
         {"iteration": 27, "description": "Removed Segment frontend + PostHog: gutted telemetry-provider.tsx to no-op wrapper, removed @segment/analytics-next dep from web + server/api package.json, removed posthog-js dep from web package.json, removed hardcoded keys Znobm6c... and phc_7F92..."},
         {"iteration": 28, "description": "Removed Sentry: gutted exception-handler.ts (removed @sentry/node import, Sentry.init, captureException, initializeSentry method), removed @sentry/node dep from server/common package.json, removed SENTRY_DSN from FlowSystemProp enum + system-validator + machine-service + worker schema + server.ts init call"},
         {"iteration": 29, "description": "Removed template telemetry: gutted template-telemetry.service.ts to no-op (removed cloud.activepieces.com and template-manager.activepieces.com URLs, sendToCloud/sendToInternal functions), removed TEMPLATE_MANAGER_API_KEY from FlowSystemProp enum + system-validator"},
-        {"iteration": 30, "description": "Renamed observability service names: HyperDX 'activepieces'→'flow' in hyperdx-pino.ts, OpenTelemetry 'activepieces-api'/'activepieces-worker'→'flow-api'/'flow-worker' in instrumentation.ts"}
+        {"iteration": 30, "description": "Renamed observability service names: HyperDX 'activepieces'→'flow' in hyperdx-pino.ts, OpenTelemetry 'activepieces-api'/'activepieces-worker'→'flow-api'/'flow-worker' in instrumentation.ts"},
+        {"iteration": 31, "description": "Removed GitHub version check: gutted getLatestRelease() to return current version instead of phoning home to raw.githubusercontent.com/activepieces/activepieces/main/package.json, removed axios import and cachedVersion from system-props.ts"}
       ]
     },
     "strip-billing-and-licensing": {

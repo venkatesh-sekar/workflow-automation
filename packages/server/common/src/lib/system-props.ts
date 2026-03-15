@@ -1,6 +1,5 @@
 import path from 'path'
 import { assertNotNullOrUndefined } from '@flow/shared'
-import axios from 'axios'
 import { environmentMigrations } from './env-migrations'
 
 export const systemConstants = {
@@ -8,8 +7,6 @@ export const systemConstants = {
 }
 
 export type SystemProp = FlowSystemProp | FlowWorkerSystemProp
-
-let cachedVersion: string | undefined
 
 export enum FlowSystemProp {
     ADMIN_EMAIL = 'ADMIN_EMAIL',
@@ -166,25 +163,6 @@ export const apVersionUtil = {
         return packageJson.version
     },
     async getLatestRelease(): Promise<string> {
-        try {
-            if (cachedVersion) {
-                return cachedVersion
-            }
-            const response = await axios.get<PackageJson>(
-                'https://raw.githubusercontent.com/activepieces/activepieces/main/package.json',
-                {
-                    timeout: 5000,
-                },
-            )
-            cachedVersion = response.data.version
-            return response.data.version
-        }
-        catch (ex) {
-            return '0.0.0'
-        }
+        return apVersionUtil.getCurrentRelease()
     },
-}
-
-type PackageJson = {
-    version: string
 }
