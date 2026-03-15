@@ -1,5 +1,5 @@
 {
-  "iteration": 54,
+  "iteration": 55,
   "current_phase": "clean-strings-and-comments",
   "phases": {
     "rename-packages": {
@@ -194,7 +194,8 @@
       ],
       "completed_items": [
         {"iteration": 53, "description": "Cleaned all translation JSON files: replaced Activepieces→Flow in 11 web locale files (keys+values) and 22 webhook i18n files, also renamed x-activepieces-resume-webhook-url header ref to x-flow-resume-webhook-url"},
-        {"iteration": 54, "description": "Cleaned server+shared source strings and comments: MCP service name/title/description, activepiecesTools→flowTools, JWT issuer, S3 test key prefix, event destinations error msg, config path .activepieces→.flow, SCIM URN, piece utils JSDoc examples, webhook header x-activepieces→x-flow (14 files)"}
+        {"iteration": 54, "description": "Cleaned server+shared source strings and comments: MCP service name/title/description, activepiecesTools→flowTools, JWT issuer, S3 test key prefix, event destinations error msg, config path .activepieces→.flow, SCIM URN, piece utils JSDoc examples, webhook header x-activepieces→x-flow (14 files)"},
+        {"iteration": 55, "description": "Cleaned all 28 package README.md files: replaced @activepieces/* with @flow/* in turbo build filter commands"}
       ]
     },
     "clean-dead-code": {

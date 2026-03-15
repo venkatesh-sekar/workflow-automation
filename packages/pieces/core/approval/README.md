@@ -2,4 +2,4 @@
 
 ## Building
 
-Run `turbo run build --filter=@activepieces/piece-approval` to build the library.
+Run `turbo run build --filter=@flow/piece-approval` to build the library.

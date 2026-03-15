@@ -380,3 +380,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** JWT issuer change breaks existing tokens — acceptable for full rebrand. migrate-v9 provider left untouched (runtime data migration).
 ---
+
+## Iteration #55 - clean-strings-and-comments
+- **Change:** Cleaned all 28 package README.md files: replaced @activepieces/* with @flow/* in turbo build filter commands
+- **Files:** 28 README.md files modified
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

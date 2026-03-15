@@ -2,4 +2,4 @@
 
 ## Building
 
-Run `turbo run build --filter=@activepieces/piece-image-helper` to build the library.
+Run `turbo run build --filter=@flow/piece-image-helper` to build the library.
