@@ -29,7 +29,7 @@ const TemplateDetailsWrapper = () => {
   if (isNotAuthenticated && useProjectLayout) {
     return (
       <Navigate
-        to={`/sign-in?${FROM_QUERY_PARAM}=${location.pathname}${location.search}`}
+        to={`/login?${FROM_QUERY_PARAM}=${location.pathname}${location.search}`}
         replace
       />
     );

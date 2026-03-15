@@ -737,3 +737,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 24 suites / 189 tests pass)
 - **Learnings:** Promoted template scope and UI cleanup notes to global learnings. Phase took 5 iterations (101-105).
 ---
+
+## Iteration #106 - frontend-login
+- **Change:** Created /login page with email+team-key fields calling POST /v1/authentication/team-login. Replaced /sign-in and /sign-up routes with /login (kept /sign-in as backward-compat redirect). Updated authenticationApi to teamLogin only. Updated all /sign-in redirects across guards, layouts, and components to /login. Cleaned api.ts allowlist.
+- **Files:** packages/web/src/app/routes/login/index.tsx (new), packages/web/src/api/authentication-api.ts, packages/web/src/app/routes/auth-routes.tsx, packages/web/src/lib/authentication-session.ts, packages/web/src/lib/api.ts, +12 files with /sign-in→/login redirect updates
+- **Quality gate:** pass (typecheck clean, 189 tests pass)
+- **Learnings:** FullLogo component uses flags-based branding — works for now, will need Flow logo in frontend-branding phase. Old auth components (sign-in-form, sign-up-form, auth-form-template) still exist but are unused by /login route.
+---

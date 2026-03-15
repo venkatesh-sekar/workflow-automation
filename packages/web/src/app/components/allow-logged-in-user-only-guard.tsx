@@ -23,7 +23,7 @@ export const AllowOnlyLoggedInUserOnlyGuard = ({
     reset();
     const searchParams = new URLSearchParams();
     searchParams.set('from', location.pathname + location.search);
-    return <Navigate to={`/sign-in?${searchParams.toString()}`} replace />;
+    return <Navigate to={`/login?${searchParams.toString()}`} replace />;
   }
   platformHooks.useCurrentPlatform();
   flagsHooks.useFlags();

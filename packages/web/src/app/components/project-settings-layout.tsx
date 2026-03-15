@@ -11,7 +11,7 @@ export default function ProjectSettingsLayout({
   const currentProjectId = authenticationSession.getProjectId();
 
   if (isNil(currentProjectId)) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return <div className="w-full">{children}</div>;

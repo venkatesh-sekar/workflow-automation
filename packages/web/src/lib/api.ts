@@ -17,19 +17,12 @@ export const API_BASE_URL = isRunningCloudInDevMode
 export const API_URL = `${API_BASE_URL}/api`;
 
 const disallowedRoutes = [
-  '/v1/managed-authn/external-token',
-  '/v1/authentication/sign-in',
-  '/v1/authentication/sign-up',
-  '/v1/authn/local/verify-email',
-  '/v1/authn/federated/login',
-  '/v1/authn/federated/claim',
-  '/v1/otp',
+  '/v1/authentication/team-login',
   '/v1/human-input',
-  '/v1/authn/local/reset-password',
   '/v1/user-invitations/accept',
   '/v1/webhooks',
 ];
-//This is important to avoid redirecting to sign-in page when the user is deleted for embedding scenarios
+//This is important to avoid redirecting to login page when the user is deleted
 const ignroedGlobalErrorHandlerRoutes = ['/v1/users/me'];
 function isUrlRelative(url: string) {
   return !url.startsWith('http') && !url.startsWith('https');
@@ -46,7 +39,7 @@ function globalErrorHandler(error: AxiosError) {
     ) {
       authenticationSession.logOut();
       console.log(errorCode);
-      window.location.href = '/sign-in';
+      window.location.href = '/login';
     }
   }
 }

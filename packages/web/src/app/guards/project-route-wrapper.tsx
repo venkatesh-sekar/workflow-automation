@@ -21,7 +21,7 @@ export const TokenCheckerWrapper: React.FC<{ children: React.ReactNode }> = ({
   }>();
 
   if (isNil(projectIdFromParams)) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/login" replace />;
   }
   const hasAccessToProject =
     projectCollectionUtils.useHasAccessToProject(projectIdFromParams);
@@ -56,7 +56,7 @@ const RedirectToCurrentProjectRoute: React.FC<
   if (isNil(currentProjectId)) {
     return (
       <Navigate
-        to={`/sign-in?${new URLSearchParams({ from }).toString()}`}
+        to={`/login?${new URLSearchParams({ from }).toString()}`}
         replace
       />
     );

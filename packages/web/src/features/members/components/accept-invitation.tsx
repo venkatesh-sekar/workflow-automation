@@ -19,10 +19,10 @@ const AcceptInvitation = () => {
       if (!registered) {
         setTimeout(() => {
           const email = searchParams.get('email');
-          navigate(`/sign-up?email=${email}`);
+          navigate(`/login`);
         }, 3000);
       } else {
-        navigate('/sign-in');
+        navigate('/login');
       }
     },
     onError: (error) => {

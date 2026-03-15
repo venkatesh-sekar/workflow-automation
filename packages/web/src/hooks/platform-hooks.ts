@@ -22,7 +22,7 @@ export const platformHooks = {
       },
       onSuccess: () => {
         toast.success(t('Account deleted successfully'));
-        navigate('/sign-in');
+        navigate('/login');
       },
       onError: () => {
         toast.error(t('Failed to delete account. Please try again.'));

@@ -119,7 +119,7 @@ const SignInForm: React.FC = () => {
   };
 
   if (!userCreated) {
-    return <Navigate to="/sign-up" />;
+    return <Navigate to="/login" />;
   }
 
   return (

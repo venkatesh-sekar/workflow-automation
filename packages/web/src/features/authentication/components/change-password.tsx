@@ -49,7 +49,7 @@ const ChangePasswordForm = () => {
       toast.success(t('Your password was changed successfully'), {
         duration: 3000,
       });
-      navigate('/sign-in');
+      navigate('/login');
     },
     onError: (error) => {
       setServerError(

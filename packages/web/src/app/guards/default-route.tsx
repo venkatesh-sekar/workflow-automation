@@ -13,7 +13,7 @@ export const DefaultRoute = () => {
     searchParams.set('from', location.pathname + location.search);
     return (
       <Navigate
-        to={`/sign-in?${searchParams.toString()}`}
+        to={`/login?${searchParams.toString()}`}
         replace={true}
       ></Navigate>
     );

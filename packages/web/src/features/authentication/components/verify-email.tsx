@@ -25,7 +25,7 @@ const VerifyEmail = () => {
   const { mutate, isPending } = authMutations.useVerifyEmail({
     onSuccess: ({ email, firstName }) => {
       reportSignup(email, firstName);
-      setTimeout(() => navigate('/sign-in'), 5000);
+      setTimeout(() => navigate('/login'), 5000);
     },
     onError: (error) => {
       if (
@@ -33,11 +33,11 @@ const VerifyEmail = () => {
         error.response?.status === HttpStatusCode.Gone
       ) {
         setIsExpired(true);
-        setTimeout(() => navigate('/sign-in'), 5000);
+        setTimeout(() => navigate('/login'), 5000);
       } else {
         console.error(error);
         internalErrorToast();
-        setTimeout(() => navigate('/sign-in'), 5000);
+        setTimeout(() => navigate('/login'), 5000);
       }
     },
   });
@@ -50,7 +50,7 @@ const VerifyEmail = () => {
   }, [otp, identityId, mutate]);
 
   if (!otp || !identityId) {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/login" replace />;
   }
   return (
     <div className="mx-auto h-screen w-screen flex flex-col items-center justify-center gap-2">

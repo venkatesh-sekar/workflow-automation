@@ -102,7 +102,7 @@ const ResetPasswordForm = () => {
           </Form>
         )}
         <div className="mt-4 text-center text-sm">
-          <Link to="/sign-in" className="text-muted-foreground">
+          <Link to="/login" className="text-muted-foreground">
             {t('Back to sign in')}
           </Link>
         </div>

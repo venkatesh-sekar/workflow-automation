@@ -1,50 +1,22 @@
 import { PageTitle } from '@/app/components/page-title';
-import { VerifyEmail } from '@/features/authentication';
 import { AcceptInvitation } from '@/features/members';
 
-import { ChangePasswordPage } from './change-password';
-import { ResetPasswordPage } from './forget-password';
-import { SignInPage } from './sign-in';
-import { SignUpPage } from './sign-up';
+import { LoginPage } from './login';
 
 export const authRoutes = [
   {
-    path: '/forget-password',
+    path: '/login',
     element: (
-      <PageTitle title="Forget Password">
-        <ResetPasswordPage />
-      </PageTitle>
-    ),
-  },
-  {
-    path: '/reset-password',
-    element: (
-      <PageTitle title="Reset Password">
-        <ChangePasswordPage />
+      <PageTitle title="Login">
+        <LoginPage />
       </PageTitle>
     ),
   },
   {
     path: '/sign-in',
     element: (
-      <PageTitle title="Sign In">
-        <SignInPage />
-      </PageTitle>
-    ),
-  },
-  {
-    path: '/verify-email',
-    element: (
-      <PageTitle title="Verify Email">
-        <VerifyEmail />
-      </PageTitle>
-    ),
-  },
-  {
-    path: '/sign-up',
-    element: (
-      <PageTitle title="Sign Up">
-        <SignUpPage />
+      <PageTitle title="Login">
+        <LoginPage />
       </PageTitle>
     ),
   },

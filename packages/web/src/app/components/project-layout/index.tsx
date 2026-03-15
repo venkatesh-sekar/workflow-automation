@@ -54,7 +54,7 @@ export function ProjectDashboardLayout({
   const isPlatformPage = location.pathname.includes('/platform/');
   const isEmbedded = useEmbedding().embedState.isEmbedded;
   if (isNil(currentProjectId) || currentProjectId === '') {
-    return <Navigate to="/sign-in" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   const itemsWithoutHeader: ProjectDashboardLayoutHeaderTab[] = [

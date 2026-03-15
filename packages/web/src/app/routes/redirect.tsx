@@ -56,7 +56,7 @@ const RedirectPage: React.FC = React.memo(() => {
           }
           console.error(e);
 
-          navigate('/sign-in');
+          navigate('/login');
         }
       };
       handleThirdPartyLogin();

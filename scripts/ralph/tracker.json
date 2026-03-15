@@ -1,5 +1,5 @@
 {
-  "iteration": 105,
+  "iteration": 106,
   "current_phase": "frontend-login",
   "phases": {
     "copy-server-core": {
@@ -244,7 +244,9 @@
         "On success: JWT stored in localStorage, redirect to /automations",
         "Tests for login flow"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 106, "description": "Created /login page with email+team-key fields using team-login API. Replaced /sign-in and /sign-up routes with /login (kept /sign-in as backward-compat redirect). Updated authenticationApi to teamLogin only. Updated all /sign-in redirects across guards, layouts, and components to /login. Cleaned api.ts allowlist."}
+      ]
     },
     "frontend-sidebar": {
       "status": "pending",

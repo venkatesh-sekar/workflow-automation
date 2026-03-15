@@ -103,7 +103,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
   const handleUseTemplate = () => {
     if (isNil(token)) {
       navigate(
-        `/sign-in?${FROM_QUERY_PARAM}=${location.pathname}${location.search}`,
+        `/login?${FROM_QUERY_PARAM}=${location.pathname}${location.search}`,
       );
       return;
     }

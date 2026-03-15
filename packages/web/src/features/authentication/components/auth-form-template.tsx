@@ -20,7 +20,7 @@ import { useRedirectAfterLogin } from '@/lib/navigation-utils';
 import { HorizontalSeparatorWithText } from '../../../components/ui/separator';
 import { flagsHooks } from '../../../hooks/flags-hooks';
 
-import { SignInForm } from './sign-in-form';
+import { SignInForm } from './login-form';
 import { SignUpForm } from './sign-up-form';
 import { ThirdPartyLogin } from './third-party-logins';
 
@@ -32,7 +32,7 @@ const BottomNote = ({ isSignup }: { isSignup: boolean }) => {
     <div className="mb-4 text-center text-sm">
       {t('Already have an account?')}
       <Link
-        to={`/sign-in?${searchQuery}`}
+        to={`/login?${searchQuery}`}
         className="pl-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
       >
         {t('Sign in')}
@@ -42,7 +42,7 @@ const BottomNote = ({ isSignup }: { isSignup: boolean }) => {
     <div className="mb-4 text-center text-sm">
       {t("Don't have an account?")}
       <Link
-        to={`/sign-up?${searchQuery}`}
+        to={`/login?${searchQuery}`}
         className="pl-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
       >
         {t('Sign up')}
