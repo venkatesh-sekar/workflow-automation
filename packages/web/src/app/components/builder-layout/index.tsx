@@ -35,7 +35,7 @@ function BuilderLayoutInner({ children }: { children: React.ReactNode }) {
               'flex flex-col h-full bg-background overflow-hidden',
               embedState.isEmbedded
                 ? 'border-l'
-                : 'rounded-xl shadow-[2px_0px_4px_-2px_rgba(0,0,0,0.05),0px_2px_4px_-2px_rgba(0,0,0,0.05)] border',
+                : 'rounded-xl border',
             )}
           >
             {children}

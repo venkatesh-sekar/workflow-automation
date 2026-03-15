@@ -1,8 +1,7 @@
 {
-  "iteration": 7,
-  "current_area": "dashboard-layout",
+  "iteration": 8,
+  "current_area": "automations-page",
   "queue": [
-    "automations-page",
     "runs-page",
     "connections-page",
     "tables-page",
@@ -11,7 +10,7 @@
     "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": ["theme-colors", "sidebar-navigation"],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout"],
   "completed": [
     {
       "area": "theme-colors",
@@ -68,6 +67,14 @@
       "change": "Remove custom verbose shadow from main content card — border alone provides sufficient separation against bg-sidebar background, per design spec 'prefer single-pixel borders over shadows for separation'",
       "files_modified": ["packages/web/src/app/components/project-layout/index.tsx"],
       "heuristic": "Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "dashboard-layout",
+      "iteration": 8,
+      "date": "2026-03-16",
+      "change": "Remove same redundant verbose shadow from builder-layout content card — matches project-layout fix from iteration #7 for cross-layout consistency",
+      "files_modified": ["packages/web/src/app/components/builder-layout/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -80,6 +87,7 @@
     "FlowSidebarItem was not passing isActive to SidebarMenuButton, so CVA data-active styles (font-medium) never fired. Always check that component props are wired through, not just className overrides.",
     "SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding.",
     "Unify active-state pattern across all sidebar item types: bg-sidebar-primary/10 text-sidebar-primary. Avoid bg-sidebar-accent for active states — it reads as hover, not selection. Also avoid !important overrides when cn() ordering suffices.",
-    "Content cards that sit on bg-sidebar background already have 3 separation signals: color contrast, border, shadow. The shadow is redundant — remove it and rely on border per design spec. Don't replace with shadow-sm either."
+    "Content cards that sit on bg-sidebar background already have 3 separation signals: color contrast, border, shadow. The shadow is redundant — remove it and rely on border per design spec. Don't replace with shadow-sm either.",
+    "Builder-layout uses p-1.5 (6px) while project-layout uses p-2 pt-3 pb-3 (8px/12px). Future iteration should unify wrapper padding across sibling layouts."
   ]
 }
