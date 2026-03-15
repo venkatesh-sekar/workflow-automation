@@ -5,7 +5,6 @@ import { t } from 'i18next';
 import { Package, Trash, Puzzle, Tag, Hash, GitBranch } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
-import { RequestTrial } from '@/app/components/request-trial';
 import { DataTable, RowDataWithActions } from '@/components/custom/data-table';
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
 import { DataTableInputPopover } from '@/components/custom/data-table/data-table-input-popover';
@@ -138,12 +137,6 @@ const PiecesSettings = () => {
           description={t(
             "Show the pieces that matter most to your users and hide the ones you don't like.",
           )}
-          button={
-            <RequestTrial
-              featureKey="ENTERPRISE_PIECES"
-              buttonVariant="basic"
-            />
-          }
         />
       )}
       <DataTable

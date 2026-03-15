@@ -299,7 +299,6 @@ export default function ProjectsPage() {
 
   return (
     <LockedFeatureGuard
-      featureKey="PROJECTS"
       locked={!isEnabled}
       lockTitle={t('Unlock Teams')}
       lockDescription={t(

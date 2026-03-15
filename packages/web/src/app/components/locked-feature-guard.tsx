@@ -1,6 +1,31 @@
 import React from 'react';
 
-import { FeatureKey, RequestTrial } from './request-trial';
+export type FeatureKey =
+  | 'PROJECTS'
+  | 'BRANDING'
+  | 'PIECES'
+  | 'TEMPLATES'
+  | 'TEAM'
+  | 'GLOBAL_CONNECTIONS'
+  | 'USERS'
+  | 'EVENT_DESTINATIONS'
+  | 'API'
+  | 'SSO'
+  | 'AUDIT_LOGS'
+  | 'ENVIRONMENT'
+  | 'ISSUES'
+  | 'ANALYTICS'
+  | 'ALERTS'
+  | 'ENTERPRISE_PIECES'
+  | 'UNIVERSAL_AI'
+  | 'SIGNING_KEYS'
+  | 'CUSTOM_ROLES'
+  | 'AGENTS'
+  | 'TABLES'
+  | 'TODOS'
+  | 'BILLING'
+  | 'MCPS'
+  | 'SECRET_MANAGERS';
 
 type LockedFeatureGuardProps = {
   children: React.ReactNode;
@@ -9,8 +34,6 @@ type LockedFeatureGuardProps = {
   lockDescription: string;
   lockVideoUrl?: string;
   lockDocumentationUrl?: string;
-  featureKey: FeatureKey;
-  showContactSales?: boolean;
 };
 
 export const LockedFeatureGuard = ({
@@ -20,8 +43,6 @@ export const LockedFeatureGuard = ({
   lockDescription,
   lockVideoUrl,
   lockDocumentationUrl,
-  featureKey,
-  showContactSales = true,
 }: LockedFeatureGuardProps) => {
   if (!locked) {
     return children;
@@ -49,11 +70,6 @@ export const LockedFeatureGuard = ({
             )}
           </p>
 
-          {showContactSales && (
-            <div className="my-4">
-              <RequestTrial featureKey={featureKey} />
-            </div>
-          )}
         </div>
 
         {lockVideoUrl && (

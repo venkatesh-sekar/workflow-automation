@@ -15,7 +15,6 @@ const SecretManagersPage = () => {
 
   return (
     <LockedFeatureGuard
-      featureKey="SECRET_MANAGERS"
       locked={!platform.plan.secretManagersEnabled}
       lockTitle={t('Enable Secret Managers')}
       lockDescription={t('Manage your secrets from a single and secure place')}

@@ -261,3 +261,10 @@
 - **Quality gate:** pass (0 server typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** activate-license-dialog.tsx and license-key.tsx still reference removed hook — need UI cleanup next
 ---
+
+## Iteration #38 - strip-billing-and-licensing
+- **Change:** Deleted request-trial.tsx component (activepieces.com/sales link), moved FeatureKey type to locked-feature-guard.tsx, removed featureKey/showContactSales props from LockedFeatureGuard and all 15 consumers, made LockedAlert.button optional
+- **Files:** 19 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** FeatureKey type was only used via request-trial.tsx import — moved to locked-feature-guard.tsx which was its sole type consumer
+---

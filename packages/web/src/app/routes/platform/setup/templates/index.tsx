@@ -205,7 +205,6 @@ const PlatformTemplatesPage = () => {
   const isEnabled = platform.plan.manageTemplatesEnabled;
   return (
     <LockedFeatureGuard
-      featureKey="TEMPLATES"
       locked={!isEnabled}
       lockTitle={t('Unlock Templates')}
       lockDescription={t(

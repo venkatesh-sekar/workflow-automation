@@ -27,7 +27,6 @@ export default function AIProvidersPage() {
 
   return (
     <LockedFeatureGuard
-      featureKey="UNIVERSAL_AI"
       locked={currentUser?.platformRole !== PlatformRole.ADMIN}
       lockTitle={t('Unlock AI')}
       lockDescription={t(

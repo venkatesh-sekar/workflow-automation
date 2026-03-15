@@ -34,7 +34,6 @@ const EventDestinationsPage = () => {
 
   return (
     <LockedFeatureGuard
-      featureKey="EVENT_DESTINATIONS"
       locked={!isEnabled}
       lockTitle={t('Unlock Event Streaming')}
       lockDescription={t(

@@ -47,7 +47,6 @@ const ProjectRolePage = () => {
 
   return (
     <LockedFeatureGuard
-      featureKey="TEAM"
       locked={!platform.plan.projectRolesEnabled}
       lockTitle={t('Project Role Management')}
       lockDescription={t(

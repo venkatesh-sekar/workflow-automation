@@ -5,7 +5,7 @@ import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 interface LockedAlertProps {
   title: string;
   description: string;
-  button: React.ReactNode;
+  button?: React.ReactNode;
 }
 
 export const LockedAlert = ({
@@ -24,7 +24,7 @@ export const LockedAlert = ({
           </AlertDescription>
         </div>
       </div>
-      <div className="ml-auto">{button}</div>
+      {button && <div className="ml-auto">{button}</div>}
     </Alert>
   );
 };

@@ -27,14 +27,12 @@ export default function Billing() {
 
   return (
     <LockedFeatureGuard
-      featureKey="BILLING"
       locked={edition === FlowEdition.COMMUNITY}
       lockTitle={t('Unlock Billing Page')}
       lockDescription={t(
         'Switch to the Enterprise edition to access billing and usage management.',
       )}
       lockDocumentationUrl="https://www.activepieces.com/docs/install/configuration/overview#enterprise-edition-optional"
-      showContactSales={false}
     >
       <BillingPageDetails />
     </LockedFeatureGuard>

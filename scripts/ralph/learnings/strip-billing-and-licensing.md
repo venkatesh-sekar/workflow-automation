@@ -23,3 +23,10 @@
 - activate-license-dialog.tsx and license-key.tsx still reference useUpdateLisenceKey — need to remove those UI components next
 - PlatformPlan still has licenseKey and licenseExpiresAt fields — need cleanup
 - flagsHooks import was unused in platform-hooks.ts after removing useUpdateLisenceKey — cleaned up
+
+## Request Trial / Contact Sales Removal
+- request-trial.tsx sent users to activepieces.com/sales with query params — deleted
+- FeatureKey type moved to locked-feature-guard.tsx (only consumer of the type)
+- 15 LockedFeatureGuard consumers passed featureKey prop — all cleaned via sed
+- LockedAlert.button made optional since no "Contact Sales" button exists anymore
+- activate-license-dialog.tsx and license-key.tsx still exist — need to be gutted next
