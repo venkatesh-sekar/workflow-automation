@@ -1,4 +1,11 @@
-.PHONY: dev dev-db dev-db-stop dev-stop dev-backend dev-frontend dev-install dev-build-deps
+.PHONY: dev dev-db dev-db-stop dev-stop dev-backend dev-frontend dev-install dev-build-deps \
+       db-upgrade db-downgrade db-generate db-current db-history db-check db-reset db-create-collation
+
+API_DIR = packages/server/api
+TYPEORM = cd $(API_DIR) && node_modules/.bin/ts-node --transpile-only -r tsconfig-paths/register -P tsconfig.app.json node_modules/typeorm/cli.js
+DB_ENV = set -a && . ./.env.production && set +a && \
+	export FLOW_POSTGRES_HOST=localhost FLOW_POSTGRES_PORT=5434 \
+	FLOW_ENVIRONMENT=dev FLOW_EDITION=ce FLOW_DEV_PIECES='' &&
 
 ## Start everything: databases + backend + frontend
 ## Ctrl+C kills all child processes cleanly
@@ -79,3 +86,45 @@ dev-build-deps:
 	cd packages/server/common && npm run build
 	cd packages/server/engine && npm run build
 	@echo "All dependencies built."
+
+# ─── Database Migration Commands (alembic-style) ───────────────────────
+
+## Run all pending migrations (like alembic upgrade head)
+db-upgrade:
+	@$(DB_ENV) $(TYPEORM) migration:run -d src/app/database/migration-data-source.ts
+
+## Revert the last migration (like alembic downgrade -1)
+db-downgrade:
+	@$(DB_ENV) $(TYPEORM) migration:revert -d src/app/database/migration-data-source.ts
+
+## Auto-generate a migration from entity changes (like alembic revision --autogenerate)
+## Usage: make db-generate name=AddUserAvatar
+db-generate:
+	@if [ -z "$(name)" ]; then echo "Usage: make db-generate name=MigrationName"; exit 1; fi
+	@$(DB_ENV) $(TYPEORM) migration:generate -p -d src/app/database/migration-data-source.ts src/app/database/migration/postgres/$(name)
+	@echo ""
+	@echo "Migration generated. Don't forget to import it in postgres-connection.ts getMigrations()"
+
+## Show which migrations have been applied (like alembic current)
+db-current:
+	@$(DB_ENV) $(TYPEORM) migration:show -d src/app/database/migration-data-source.ts
+
+## Check for schema drift — fails if entities don't match DB (like alembic check)
+db-check:
+	@$(DB_ENV) $(TYPEORM) migration:generate -p -d src/app/database/migration-data-source.ts src/app/database/migration/postgres/Check --dryrun --check \
+		&& echo "No schema drift detected." \
+		|| (echo "Schema drift detected! Run: make db-generate name=FixDrift" && exit 1)
+
+## Drop and recreate the database, then run all migrations
+db-reset:
+	@echo "Dropping and recreating database..."
+	@PGPASSWORD=flow psql -h localhost -p 5434 -U flow -d postgres -c "DROP DATABASE IF EXISTS flow;"
+	@PGPASSWORD=flow psql -h localhost -p 5434 -U flow -d postgres -c "CREATE DATABASE flow;"
+	@$(MAKE) db-create-collation
+	@$(MAKE) db-upgrade
+	@echo "Database reset complete."
+
+## Create the en_natural collation (required before first migration)
+db-create-collation:
+	@PGPASSWORD=flow psql -h localhost -p 5434 -U flow -d flow -c \
+		"CREATE COLLATION IF NOT EXISTS en_natural (provider = icu, locale = 'en-u-kn-true');" 2>/dev/null
