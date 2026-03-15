@@ -1,6 +1,6 @@
 {
-  "iteration": 129,
-  "current_phase": "deployment",
+  "iteration": 132,
+  "current_phase": "integration-and-dockerfile",
   "phases": {
     "copy-server-core": {
       "status": "complete",
@@ -311,9 +311,49 @@
         {"iteration": 127, "description": "Added health checks to docker-compose.yml: flow-api checks /v1/health endpoint, postgres uses pg_isready, redis uses redis-cli ping. flow-api and flow-worker depend on healthy postgres+redis via service_healthy condition."},
         {"iteration": 128, "description": "Fixed Dockerfile to build and run successfully: Node 22 (isolated-vm requires it), per-package npm install in build stage, worker-module bridge for runtime module resolution, NODE_PATH for piece dep resolution, piece npm install loop, dayjs duration plugin init, valid FLOW_ENCRYPTION_KEY, .dockerignore fixes, missing web deps (@vitejs/plugin-react, vite-plugin-checker, intl-messageformat, @tiptap/suggestion), removed dead EE embed/impact/leaderboard routes, added esbuild to engine devDeps, ioredis type annotation fix. Docker build succeeds, all 4 containers start, health check returns {status: 'Healthy'}."}
       ]
+    },
+    "copy-confluence": {
+      "status": "complete",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "Directory exists with all source files",
+        "package.json has no workspace:* references",
+        "tsc -p tsconfig.lib.json compiles cleanly",
+        "dist/src/index.js and dist/package.json exist"
+      ],
+      "completed_items": [
+        {"iteration": 130, "description": "Copied confluence piece from activepieces source, replaced workspace:* with file: refs in package.json, installed deps, built successfully. dist/src/index.js and dist/package.json exist."}
+      ]
+    },
+    "copy-jira-cloud": {
+      "status": "complete",
+      "qualityGate": "typecheck",
+      "criteria": [
+        "Directory exists with all source files",
+        "package.json has no workspace:* references",
+        "tsc -p tsconfig.lib.json compiles cleanly",
+        "@atlaskit deps installed without blocking errors"
+      ],
+      "completed_items": [
+        {"iteration": 131, "description": "Copied jira-cloud piece from activepieces source, replaced workspace:* with file: refs in package.json, installed @atlaskit deps with --legacy-peer-deps, built successfully. dist/src/index.js and dist/package.json exist."}
+      ]
+    },
+    "integration-and-dockerfile": {
+      "status": "complete",
+      "qualityGate": "full",
+      "criteria": [
+        "Dockerfile includes piece build step",
+        "Both env files list all 4 community pieces",
+        "All 4 community pieces discoverable via API",
+        "Docker build succeeds",
+        "Existing 191 tests still pass"
+      ],
+      "completed_items": [
+        {"iteration": 132, "description": "Added piece build loop to Dockerfile after common build step (builds all community and core pieces with build scripts). Updated FLOW_DEV_PIECES in .env (dev) and .env.production to include slack,postgres,jira-cloud,confluence. All 191 tests pass."}
+      ]
     }
   },
-  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login", "frontend-sidebar", "frontend-settings", "frontend-branding", "deployment"],
+  "completed_phases": ["copy-server-core", "copy-shared-packages", "copy-ui-core", "copy-pieces", "fix-references", "auth-replace", "env-rebrand", "strip-ai-providers", "build-audit-logs", "simplify-alerts", "modify-templates", "frontend-login", "frontend-sidebar", "frontend-settings", "frontend-branding", "deployment", "copy-confluence", "copy-jira-cloud", "integration-and-dockerfile"],
   "phase_queue": [],
   "inserted_phases": []
 }

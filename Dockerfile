@@ -72,6 +72,14 @@ RUN --mount=type=cache,target=/root/.npm \
 RUN cd packages/shared && npm run build
 RUN cd packages/pieces/framework && npm run build
 RUN cd packages/pieces/common && npm run build
+
+# Build all piece packages
+RUN for dir in packages/pieces/community/*/ packages/pieces/core/*/; do \
+        if [ -f "$dir/package.json" ] && grep -q '"build"' "$dir/package.json"; then \
+            (cd "$dir" && npm run build 2>&1 | tail -1) || true; \
+        fi; \
+    done
+
 RUN cd packages/server/common && npm run build
 
 # Build engine (esbuild bundle)
