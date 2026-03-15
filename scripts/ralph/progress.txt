@@ -625,3 +625,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** TypeORM EntitySchema relations keys must match properties in the schema type — need to include relation properties (project, user) in the type definition
 ---
+
+## Iteration #90 - build-audit-logs
+- **Change:** Created auditEventService with create() and list() methods
+- **Files:** packages/server/api/src/app/audit-event/audit-event.service.ts (new)
+- **Quality gate:** pass (0 TS errors, 171 tests pass)
+- **Learnings:** Service follows repoFactory pattern; list uses simple .find() with createPage(data, null)
+---

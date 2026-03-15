@@ -11,3 +11,8 @@
 - data column: jsonb for flexible event payloads
 - Relations to project and user with CASCADE delete
 - Index on projectId for project-scoped queries
+
+## Service Pattern
+- Service uses repoFactory<AuditEventSchema>(AuditEventEntity) — same as template.service.ts
+- list() uses simple .find() with createPage(data, null) — no cursor pagination needed for audit logs
+- create() generates ID with apId() and lets TypeORM handle created/updated timestamps
