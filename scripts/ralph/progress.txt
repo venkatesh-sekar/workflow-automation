@@ -562,3 +562,10 @@
 - **Quality gate:** pass (0 TS errors, 171/171 tests pass)
 - **Learnings:** AP_ prefix centralized in 2 files (system-props.ts and env-migrations.ts); enum values don't contain prefix — prefix added at read time; .env.tests is the main test env source loaded via dotenv
 ---
+
+## Iteration #81 - env-rebrand
+- **Change:** Renamed all process.env.AP_* to process.env.FLOW_* in engine package (7 files)
+- **Files:** packages/server/engine/vitest.config.ts, packages/server/engine/src/lib/services/step-files.service.ts, packages/server/engine/src/lib/handler/piece-executor.ts, packages/server/engine/src/lib/handler/context/engine-constants.ts, packages/server/engine/src/lib/core/code/code-sandbox.ts, packages/server/engine/src/lib/helper/logging-utils.ts, packages/server/engine/test/handler/flow-log-size.test.ts
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** none
+---

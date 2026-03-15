@@ -2,9 +2,9 @@ import { FilesService } from '@activepieces/pieces-framework'
 import { FileLocation, FileSizeError, FileStoreError, isNil, StepFileUpsertResponse } from '@activepieces/shared'
 import fetchRetry from 'fetch-retry'
 
-const MAX_FILE_SIZE_MB = Number(process.env.AP_MAX_FILE_SIZE_MB)
-const FILE_STORAGE_LOCATION = process.env.AP_FILE_STORAGE_LOCATION as FileLocation
-const USE_SIGNED_URL = (process.env.AP_S3_USE_SIGNED_URLS === 'true') && FILE_STORAGE_LOCATION === FileLocation.S3
+const MAX_FILE_SIZE_MB = Number(process.env.FLOW_MAX_FILE_SIZE_MB)
+const FILE_STORAGE_LOCATION = process.env.FLOW_FILE_STORAGE_LOCATION as FileLocation
+const USE_SIGNED_URL = (process.env.FLOW_S3_USE_SIGNED_URLS === 'true') && FILE_STORAGE_LOCATION === FileLocation.S3
 
 export type DefaultFileSystem = 'db' | 'local'
 

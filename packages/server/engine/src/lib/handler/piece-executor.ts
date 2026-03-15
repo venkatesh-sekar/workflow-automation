@@ -15,7 +15,7 @@ import { propsProcessor } from '../variables/props-processor'
 import { workerSocket } from '../worker-socket'
 import { ActionHandler, BaseExecutor } from './base-executor'
 
-const AP_PAUSED_FLOW_TIMEOUT_DAYS = Number(process.env.AP_PAUSED_FLOW_TIMEOUT_DAYS)
+const AP_PAUSED_FLOW_TIMEOUT_DAYS = Number(process.env.FLOW_PAUSED_FLOW_TIMEOUT_DAYS)
 
 export const pieceExecutor: BaseExecutor<PieceAction> = {
     async handle({

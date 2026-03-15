@@ -5,10 +5,10 @@ import { defineConfig } from 'vitest/config'
 const repoRoot = path.resolve(__dirname, '../../..')
 process.chdir(repoRoot)
 
-process.env.AP_EXECUTION_MODE = 'UNSANDBOXED'
-process.env.AP_BASE_CODE_DIRECTORY = 'packages/server/engine/test/resources/codes'
-process.env.AP_TEST_MODE = 'true'
-process.env.AP_DEV_PIECES = 'http,data-mapper,approval,webhook'
+process.env.FLOW_EXECUTION_MODE = 'UNSANDBOXED'
+process.env.FLOW_BASE_CODE_DIRECTORY = 'packages/server/engine/test/resources/codes'
+process.env.FLOW_TEST_MODE = 'true'
+process.env.FLOW_DEV_PIECES = 'http,data-mapper,approval,webhook'
 
 export default defineConfig({
   test: {

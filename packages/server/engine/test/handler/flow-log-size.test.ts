@@ -27,7 +27,7 @@ describe('flow executor log size exceeded', () => {
         let progressService: { sendUpdate: ReturnType<typeof vi.fn>, backup: ReturnType<typeof vi.fn> }
 
         beforeAll(async () => {
-            process.env.AP_MAX_FLOW_RUN_LOG_SIZE_MB = '0.0001'
+            process.env.FLOW_MAX_FLOW_RUN_LOG_SIZE_MB = '0.0001'
             vi.resetModules()
             const executorModule = await import('../../src/lib/handler/flow-executor')
             const contextModule = await import('../../src/lib/handler/context/flow-execution-context')
