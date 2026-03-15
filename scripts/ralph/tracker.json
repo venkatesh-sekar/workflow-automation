@@ -1,5 +1,5 @@
 {
-  "iteration": 26,
+  "iteration": 27,
   "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
@@ -110,7 +110,8 @@
         "All tests pass"
       ],
       "completed_items": [
-        {"iteration": 26, "description": "Removed Segment backend: gutted telemetry.utils.ts to no-ops (removed Analytics import, hardcoded write key, identify/track functions), removed @segment/analytics-node dep from package.json"}
+        {"iteration": 26, "description": "Removed Segment backend: gutted telemetry.utils.ts to no-ops (removed Analytics import, hardcoded write key, identify/track functions), removed @segment/analytics-node dep from package.json"},
+        {"iteration": 27, "description": "Removed Segment frontend + PostHog: gutted telemetry-provider.tsx to no-op wrapper, removed @segment/analytics-next dep from web + server/api package.json, removed posthog-js dep from web package.json, removed hardcoded keys Znobm6c... and phc_7F92..."}
       ]
     },
     "strip-billing-and-licensing": {

@@ -184,3 +184,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** @segment/analytics-next (frontend) is also in api/package.json — likely misplaced, handle with frontend Segment removal
 ---
+
+## Iteration #27 - strip-telemetry
+- **Change:** Removed Segment frontend + PostHog: gutted telemetry-provider.tsx to no-op wrapper (removed AnalyticsBrowser, posthog imports, hardcoded keys, init/identify/track/reset logic), removed @segment/analytics-next from web + server/api package.json, removed posthog-js from web package.json
+- **Files:** 3 (telemetry-provider.tsx, web/package.json, server/api/package.json)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** @segment/analytics-next was misplaced in server/api — cleaned up alongside frontend removal
+---
