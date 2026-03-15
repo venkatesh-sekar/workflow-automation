@@ -6,7 +6,6 @@ import { Block,KnownBlock, WebClient } from '@slack/web-api';
 import { getBotToken, SlackAuthValue } from '../common/auth-helpers';
 
 export const updateMessage = createAction({
-  // auth: check https://www.activepieces.com/docs/developers/piece-reference/authentication,
   name: 'updateMessage',
   displayName: 'Update message',
   description: 'Update an existing message',

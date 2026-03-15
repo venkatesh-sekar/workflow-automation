@@ -5,7 +5,6 @@ import { singleSelectChannelInfo, slackChannel } from '../common/props';
 import { getBotToken, SlackAuthValue } from '../common/auth-helpers';
 
 export const getChannelHistory = createAction({
-  // auth: check https://www.activepieces.com/docs/developers/piece-reference/authentication,
   name: 'getChannelHistory',
   auth: slackAuth,
   displayName: 'Get channel history',

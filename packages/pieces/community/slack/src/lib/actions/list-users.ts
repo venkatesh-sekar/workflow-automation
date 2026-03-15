@@ -5,7 +5,6 @@ import { Member } from '@slack/web-api/dist/types/response/UsersListResponse';
 import { getBotToken, SlackAuthValue } from '../common/auth-helpers';
 
 export const listUsers = createAction({
-  // auth: check https://www.activepieces.com/docs/developers/piece-reference/authentication,
   name: 'listUsers',
   displayName: 'List users',
   description: 'List all users of the workspace',

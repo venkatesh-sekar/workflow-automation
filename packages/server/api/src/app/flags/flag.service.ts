@@ -188,13 +188,13 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.PRIVACY_POLICY_URL,
-                value: 'https://www.activepieces.com/privacy',
+                value: '',
                 created,
                 updated,
             },
             {
                 id: FlowFlagId.TERMS_OF_SERVICE_URL,
-                value: 'https://www.activepieces.com/terms',
+                value: '',
                 created,
                 updated,
             },

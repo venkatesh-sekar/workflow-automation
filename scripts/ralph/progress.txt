@@ -345,3 +345,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Must run vitest from packages/server/api (not root) — root picks up global vitest 4.1.0 which finds 71 suites instead of 24
 ---
+
+## Iteration #50 - strip-external-urls
+- **Change:** Removed all www.activepieces.com URLs: emptied docs URLs in swagger, system-validator, health page, signing-keys, sso-dialog, install-piece-dialog; emptied privacy/terms URLs in flag.service.ts; removed 4 auth comment URLs in piece files (text-helper, file-helper, slack×3)
+- **Files:** 12 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

@@ -60,7 +60,7 @@ const SigningKeysPage = () => {
               asChild
             >
               <a
-                href="https://www.activepieces.com/docs/embedding/overview"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
               >

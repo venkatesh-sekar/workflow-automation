@@ -1,5 +1,5 @@
 {
-  "iteration": 49,
+  "iteration": 50,
   "current_phase": "strip-external-urls",
   "phases": {
     "rename-packages": {
@@ -174,7 +174,8 @@
         "All tests pass"
       ],
       "completed_items": [
-        {"iteration": 49, "description": "Emptied feedbackUrl (feedback.activepieces.com) and supportUrl (community.activepieces.com) exports — consumers still import them but get empty strings"}
+        {"iteration": 49, "description": "Emptied feedbackUrl (feedback.activepieces.com) and supportUrl (community.activepieces.com) exports — consumers still import them but get empty strings"},
+        {"iteration": 50, "description": "Removed all www.activepieces.com URLs: emptied docs URLs in swagger/system-validator/health/signing-keys/sso-dialog/install-piece-dialog (12 files), emptied privacy/terms URLs in flag.service.ts, removed 4 auth comment URLs in piece files"}
       ]
     },
     "clean-strings-and-comments": {
