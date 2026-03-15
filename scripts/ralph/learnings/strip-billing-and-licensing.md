@@ -16,6 +16,10 @@
 - 7 components reference billingMutations.use* — these will break at runtime but not at compile time (billingMutations is now empty {})
 - Next: need to gut those components or remove the dead mutation references
 
-## Stripe Env Vars Still Present
-- STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET still in FlowSystemProp enum and system-validator
-- Need removal in a later iteration (along with any server-side Stripe billing routes if they exist)
+## License Key / Trial Removal
+- verifyLicenseKey was in platforms-api.ts, useUpdateLisenceKey hook in platform-hooks.ts
+- request-trial-api.ts sent to sales.activepieces.com — deleted
+- Shared license-keys types (VerifyLicenseKeyRequestBody, CreateTrialLicenseKeyRequestBody, LicenseKeyEntity) deleted
+- activate-license-dialog.tsx and license-key.tsx still reference useUpdateLisenceKey — need to remove those UI components next
+- PlatformPlan still has licenseKey and licenseExpiresAt fields — need cleanup
+- flagsHooks import was unused in platform-hooks.ts after removing useUpdateLisenceKey — cleaned up

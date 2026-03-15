@@ -254,3 +254,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #37 - strip-billing-and-licensing
+- **Change:** Removed license key verification API (verifyLicenseKey from platforms-api.ts, useUpdateLisenceKey hook from platform-hooks.ts), deleted request-trial-api.ts (sales.activepieces.com endpoint), deleted shared license-keys types (VerifyLicenseKeyRequestBody, CreateTrialLicenseKeyRequestBody, LicenseKeyEntity) and export
+- **Files:** 5 files changed (2 edited, 2 deleted, 1 shared index cleaned)
+- **Quality gate:** pass (0 server typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** activate-license-dialog.tsx and license-key.tsx still reference removed hook — need UI cleanup next
+---

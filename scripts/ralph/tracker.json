@@ -1,5 +1,5 @@
 {
-  "iteration": 36,
+  "iteration": 37,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -145,7 +145,8 @@
       "completed_items": [
         {"iteration": 34, "description": "Removed Stripe checkout endpoints from billing-plans-api.ts (createSubscription, createAICreditCheckoutSession, updateActiveFlowsLimits, updateAutoTopUp, getPortalLink) and gutted billing-hooks.ts mutations — kept only read-only getSubscriptionInfo/billingQueries"},
         {"iteration": 35, "description": "Removed all stripe* fields from PlatformPlan schema (6 fields: stripeCustomerId, stripeSubscriptionId, stripeSubscriptionStatus, stripeSubscriptionStartDate, stripeSubscriptionEndDate, stripeSubscriptionCancelDate), simplified PlatformPlanWithOnlyLimits type, cleaned OPEN_SOURCE_PLAN, platform.service.ts getPlan(), and test mocks"},
-        {"iteration": 36, "description": "Removed STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET from FlowSystemProp enum and system-validator"}
+        {"iteration": 36, "description": "Removed STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET from FlowSystemProp enum and system-validator"},
+        {"iteration": 37, "description": "Removed license key verification API (verifyLicenseKey from platforms-api.ts, useUpdateLisenceKey hook from platform-hooks.ts), deleted request-trial-api.ts (sales.activepieces.com), deleted shared license-keys types and export"}
       ]
     },
     "strip-external-urls": {

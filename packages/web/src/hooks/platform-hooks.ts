@@ -11,8 +11,6 @@ import { toast } from 'sonner';
 import { platformApi } from '@/api/platforms-api';
 import { authenticationSession } from '@/lib/authentication-session';
 
-import { flagsHooks } from './flags-hooks';
-
 export const platformHooks = {
   useDeleteAccount: () => {
     const navigate = useNavigate();
@@ -48,27 +46,5 @@ export const platformHooks = {
         queryClient.setQueryData(['platform', currentPlatformId], platform);
       },
     };
-  },
-  useUpdateLisenceKey: (queryClient: QueryClient) => {
-    const currentPlatformId = authenticationSession.getPlatformId();
-
-    return useMutation({
-      mutationFn: async (tempLicenseKey: string) => {
-        if (tempLicenseKey.trim() === '') return;
-        await platformApi.verifyLicenseKey(tempLicenseKey.trim());
-      },
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ['platform', currentPlatformId],
-        });
-        queryClient.invalidateQueries({
-          queryKey: flagsHooks.queryKey,
-        });
-        toast.success(t('License activated successfully!'));
-      },
-      onError: () => {
-        toast.error(t('Activation failed, invalid license key'));
-      },
-    });
   },
 };
