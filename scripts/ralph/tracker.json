@@ -1,5 +1,5 @@
 {
-  "iteration": 58,
+  "iteration": 59,
   "current_phase": "clean-dead-code",
   "phases": {
     "rename-packages": {
@@ -204,16 +204,15 @@
       "status": "pending",
       "qualityGate": "full",
       "criteria": [
-        "Dead sign-up form files removed (sign-up-form.tsx, auth-form-template.tsx)",
         "Dead alerts feature barrel removed (features/alerts/)",
-        "Dead git-sync API/hooks removed",
-        "Dead use-partner-stack.ts removed",
-        "Dead TemplateType.OFFICIAL/SHARED refs in UI cleaned",
-        "Dead cloud.activepieces.com hostname checks removed (isCloud checks)",
+        "Dead use-partner-stack.ts removed or verified alive",
+        "Dead isCloudPlanButNotEnterprise checks removed from UI",
         "user-badges.tsx CDN references removed or badge system gutted",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 59, "description": "Removed dead features/alerts/ directory (3 files: alerts-api.ts, alert-hooks.ts, index.ts) — zero imports anywhere in codebase. Updated phase criteria: sign-up-form.tsx/auth-form-template.tsx are actively used (not dead), git-sync is active project-releases feature (not dead), TemplateType.OFFICIAL/SHARED already clean"}
+      ]
     },
     "final-sweep": {
       "status": "pending",

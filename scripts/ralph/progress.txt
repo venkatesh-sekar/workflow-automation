@@ -408,3 +408,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Embed types (ActivepiecesClient*/ActivepiecesVendor*) in typings.d.ts need renaming in final-sweep
 ---
+
+## Iteration #59 - clean-dead-code
+- **Change:** Removed dead features/alerts/ directory (3 files: alerts-api.ts, alert-hooks.ts, index.ts) — zero imports anywhere. Updated phase criteria: sign-up-form/auth-form-template are actively used (not dead), git-sync is active feature (not dead), TemplateType refs already clean.
+- **Files:** 3 files removed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Several criteria items were incorrect — sign-up-form.tsx, auth-form-template.tsx, and git-sync are all actively used. Reduced criteria to only actual dead code.
+---
