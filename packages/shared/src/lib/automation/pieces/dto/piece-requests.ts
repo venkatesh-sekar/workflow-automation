@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { ApMultipartFile } from '../../../core/common'
+import { FlowMultipartFile } from '../../../core/common'
 import { OptionalArrayFromQuery, OptionalBooleanFromQuery } from '../../../core/common/base-model'
 import { FlowEdition } from '../../../core/flag/flag'
 import { PackageType, PieceCategory } from '../piece'
@@ -99,7 +99,7 @@ export const AddPieceRequestBody = z.union([
         scope: z.literal(PieceScope.PLATFORM),
         pieceName: z.string().min(1),
         pieceVersion: ExactVersionType,
-        pieceArchive: ApMultipartFile,
+        pieceArchive: FlowMultipartFile,
     }).describe('Private Piece'),
     z.object({
         packageType: z.literal(PackageType.REGISTRY),

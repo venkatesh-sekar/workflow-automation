@@ -1,10 +1,10 @@
 import { z } from 'zod'
-import { ApMultipartFile } from '../../../core/common'
+import { FlowMultipartFile } from '../../../core/common'
 
 export const StepFileUpsertRequest = z.object({
     flowId: z.string(),
     stepName: z.string(),
-    file: ApMultipartFile.pick({ data: true }).optional(),
+    file: FlowMultipartFile.pick({ data: true }).optional(),
     contentLength: z.coerce.number().int().nonnegative(),
     fileName: z.string(),
 })

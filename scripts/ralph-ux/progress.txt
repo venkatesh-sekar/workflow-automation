@@ -1,0 +1,5 @@
+# Ralph UX Progress — Frontend Redesign
+# Design direction: Clean & Modern Enterprise (Linear/Retool style)
+# Theme: Muted warm red, light mode only
+# Started: 2026-03-16
+---

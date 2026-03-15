@@ -65,3 +65,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #10 - rename-ap-core-types
+- **Change:** Renamed ApMultipartFile→FlowMultipartFile (type+schema + all references, 13 occurrences across 4 files)
+- **Files:** 4 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

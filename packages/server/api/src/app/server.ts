@@ -1,5 +1,5 @@
 import { AppSystemProp, exceptionHandler } from '@flow/server-common'
-import { flowId, ApMultipartFile } from '@flow/shared'
+import { flowId, FlowMultipartFile } from '@flow/shared'
 import cors from '@fastify/cors'
 import formBody from '@fastify/formbody'
 import fastifyMultipart, { MultipartFile } from '@fastify/multipart'
@@ -64,7 +64,7 @@ async function setupBaseApp(): Promise<FastifyInstance> {
     await app.register(fastifyMultipart, {
         attachFieldsToBody: 'keyValues',
         async onFile(part: MultipartFile) {
-            const apFile: ApMultipartFile = {
+            const apFile: FlowMultipartFile = {
                 filename: part.filename,
                 data: await part.toBuffer(),
                 type: 'file',

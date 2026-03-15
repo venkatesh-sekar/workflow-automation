@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { SAFE_STRING_PATTERN } from '../../core/common'
 import { OptionalArrayFromQuery, OptionalBooleanFromQuery } from '../../core/common/base-model'
 import { FlowId } from '../../core/common/id-generator'
-import { ApMultipartFile } from '../../core/common/multipart-file'
+import { FlowMultipartFile } from '../../core/common/multipart-file'
 import { FederatedAuthnProviderConfig } from '../../core/federated-authn'
 import { FilteredPieceBehavior } from './platform.model'
 
@@ -16,9 +16,9 @@ export type Base64EncodedFile = z.infer<typeof Base64EncodedFile>
 export const UpdatePlatformRequestBody = z.object({
     name: z.string().regex(new RegExp(SAFE_STRING_PATTERN)).optional(),
     primaryColor: z.string().optional(),
-    logoIcon: ApMultipartFile.optional(),
-    fullLogo: ApMultipartFile.optional(),
-    favIcon: ApMultipartFile.optional(),
+    logoIcon: FlowMultipartFile.optional(),
+    fullLogo: FlowMultipartFile.optional(),
+    favIcon: FlowMultipartFile.optional(),
     filteredPieceNames: OptionalArrayFromQuery(z.string()),
     filteredPieceBehavior: z.nativeEnum(FilteredPieceBehavior).optional(),
     federatedAuthProviders: FederatedAuthnProviderConfig.optional(),

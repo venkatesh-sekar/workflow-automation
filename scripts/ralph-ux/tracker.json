@@ -1,0 +1,19 @@
+{
+  "iteration": 0,
+  "current_area": "theme-colors",
+  "queue": [
+    "sidebar-navigation",
+    "dashboard-layout",
+    "automations-page",
+    "runs-page",
+    "connections-page",
+    "tables-page",
+    "settings-pages",
+    "platform-admin-pages",
+    "login-auth",
+    "cross-area-polish"
+  ],
+  "completed_areas": [],
+  "completed": [],
+  "learnings": []
+}

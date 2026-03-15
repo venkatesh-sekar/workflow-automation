@@ -1,17 +1,17 @@
 import { z } from 'zod'
 
 
-export const ApMultipartFile = z.object({
+export const FlowMultipartFile = z.object({
     filename: z.string(),
     data: z.unknown(),
     type: z.literal('file'),
     mimetype: z.string().optional(),
 })
 
-export type ApMultipartFile = z.infer<typeof ApMultipartFile> & {
+export type FlowMultipartFile = z.infer<typeof FlowMultipartFile> & {
     data: Buffer
 }
 
-export const isMultipartFile = (value: unknown): value is ApMultipartFile => {
+export const isMultipartFile = (value: unknown): value is FlowMultipartFile => {
     return typeof value === 'object' && value !== null && 'type' in value && value.type === 'file' && 'filename' in value && 'data' in value && value.data instanceof Buffer
 }
