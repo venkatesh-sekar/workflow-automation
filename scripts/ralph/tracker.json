@@ -1,6 +1,6 @@
 {
-  "iteration": 24,
-  "current_phase": "rename-ap-system-props",
+  "iteration": 25,
+  "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -77,7 +77,7 @@
       ]
     },
     "rename-ap-system-props": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "AppSystemProp renamed to FlowSystemProp (enum + all references)",
@@ -88,11 +88,12 @@
       ],
       "completed_items": [
         {"iteration": 23, "description": "Renamed AppSystemProp→FlowSystemProp (enum + 350 refs across 41 files)"},
-        {"iteration": 24, "description": "Renamed WorkerSystemProp→FlowWorkerSystemProp (enum + 28 refs across 9 files)"}
+        {"iteration": 24, "description": "Renamed WorkerSystemProp→FlowWorkerSystemProp (enum + 28 refs across 9 files)"},
+        {"iteration": 25, "description": "Phase complete — SharedSystemProp N/A (doesn't exist), all system() calls verified using new names, tests at same baseline"}
       ]
     },
     "strip-telemetry": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "Segment backend removed: @segment/analytics-node dep removed, telemetry.utils.ts gutted (identify/track become no-ops), hardcoded write key 42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK removed",
@@ -199,7 +200,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components"],
-  "phase_queue": ["strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props"],
+  "phase_queue": ["strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

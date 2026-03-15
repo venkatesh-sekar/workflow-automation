@@ -170,3 +170,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #25 - rename-ap-system-props (PHASE COMPLETE)
+- **Change:** Phase complete — all criteria verified. SharedSystemProp N/A (doesn't exist). All system() calls use new names. Typecheck 0 errors. Tests at same baseline. Advancing to strip-telemetry.
+- **Files:** 0 (tracker/progress only)
+- **Quality gate:** pass
+- **Learnings:** none
+---
