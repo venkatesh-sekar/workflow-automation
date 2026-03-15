@@ -1,5 +1,5 @@
 {
-  "iteration": 44,
+  "iteration": 45,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -153,7 +153,8 @@
         {"iteration": 41, "description": "Deleted ai-credits components (ai-credit-usage.tsx, purchase-ai-credits-dialog.tsx, auto-topup-config-dialog.tsx), deleted enable-ai-credits-overage.tsx, removed AICreditUsage from billing page and barrel export, removed dead billingMutations export"},
         {"iteration": 42, "description": "Removed cloud piece sync from piece-sync-service.ts: deleted CLOUD_API_URL (cloud.activepieces.com), listCloudPieces(), installNewPieces(), deletePiecesIfNotOnCloud() functions, removed semver/groupBy/PackageType/PieceType/apVersionUtil imports — sync() now logs 'local only' instead of fetching from cloud"},
         {"iteration": 43, "description": "Gutted cloud-oauth2-service.ts: removed secrets.activepieces.com URLs (refresh + claim endpoints), removed flowAxios/FlowError/system imports — claim() and refresh() now throw 'not supported in self-hosted mode'"},
-        {"iteration": 44, "description": "Gutted community-templates.service.ts: removed cloud.activepieces.com/api/v1/templates URL, getOrThrow throws not-found, getCategories returns [], list returns empty page — no cloud template dependency"}
+        {"iteration": 44, "description": "Gutted community-templates.service.ts: removed cloud.activepieces.com/api/v1/templates URL, getOrThrow throws not-found, getCategories returns [], list returns empty page — no cloud template dependency"},
+        {"iteration": 45, "description": "Removed AppSumo integration: deleted APPSUMO_ACTIVEPIECES_TIER1-6 from PlanName enum, deleted APPSUMO_PLAN function from billing/index.ts, removed APPSUMO_TOKEN from FlowSystemProp enum + system-validator, removed FLOW_APPSUMO_TOKEN from .env.tests"}
       ]
     },
     "strip-external-urls": {

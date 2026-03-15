@@ -132,7 +132,6 @@ const systemPropValidators: {
     [FlowSystemProp.SMTP_USERNAME]: stringValidator,
     [FlowSystemProp.TRIGGER_DEFAULT_POLL_INTERVAL]: numberValidator,
     [FlowSystemProp.WEBHOOK_TIMEOUT_SECONDS]: numberValidator,
-    [FlowSystemProp.APPSUMO_TOKEN]: stringValidator,
     [FlowSystemProp.FILE_STORAGE_LOCATION]: enumValidator(Object.values(FileLocation)),
     [FlowSystemProp.FIREBASE_ADMIN_CREDENTIALS]: stringValidator,
     [FlowSystemProp.FIREBASE_HASH_PARAMETERS]: stringValidator,

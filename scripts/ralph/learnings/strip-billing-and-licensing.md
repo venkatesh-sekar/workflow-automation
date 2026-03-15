@@ -44,4 +44,5 @@
 - cloud-oauth2-service.ts gutted to throw errors (no secrets.activepieces.com dependency)
 - Frontend still has secrets.activepieces.com refs in oauth2-connection-settings.tsx and oauth-apps.ts — will be handled in strip-external-urls phase
 - community-templates.service.ts gutted: no imports of communityTemplates found anywhere — dead code, but kept methods as stubs
-- Next targets: Cloud API base URL (flowAxios), AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM
+- AppSumo removed: APPSUMO_PLAN was dead code (never imported), PlanName tiers only in platform.model.ts, APPSUMO_TOKEN only in system-props + validator + .env.tests
+- Next targets: Cloud API base URL (flowAxios), Firebase Scrypt, Cloudflare, Featurebase, SCIM

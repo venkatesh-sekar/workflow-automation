@@ -310,3 +310,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** communityTemplates has zero importers — dead code, but kept as stubs for safety
 ---
+
+## Iteration #45 - strip-billing-and-licensing
+- **Change:** Removed AppSumo integration: deleted APPSUMO_ACTIVEPIECES_TIER1-6 from PlanName enum, deleted APPSUMO_PLAN function from billing/index.ts, removed APPSUMO_TOKEN from FlowSystemProp enum + system-validator, removed FLOW_APPSUMO_TOKEN from .env.tests
+- **Files:** 5 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** APPSUMO_PLAN was defined but never imported anywhere — safe dead code removal
+---

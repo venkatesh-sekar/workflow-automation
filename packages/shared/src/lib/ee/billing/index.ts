@@ -122,13 +122,6 @@ export const OPEN_SOURCE_PLAN: PlatformPlanWithOnlyLimits = {
     aiCreditsAutoTopUpState: AiCreditsAutoTopUpState.DISABLED,
 }
 
-export const APPSUMO_PLAN = (planName: PlanName): PlatformPlanWithOnlyLimits => ({
-    ...STANDARD_CLOUD_PLAN,
-    plan: planName,
-    eventStreamingEnabled: false,
-    activeFlowsLimit: undefined,
-})
-
 export const isCloudPlanButNotEnterprise = (plan?: string | null): boolean => {
     if (isNil(plan)) {
         return false
