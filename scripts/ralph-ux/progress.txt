@@ -45,3 +45,10 @@
 - **Files changed:** packages/web/src/app/components/sidebar/project/index.tsx
 - **Learnings:** Unify active-state pattern across all sidebar item types: bg-sidebar-primary/10 text-sidebar-primary. Avoid bg-sidebar-accent for active states — it reads as hover, not selection. Avoid !important overrides when cn() ordering suffices.
 ---
+
+## Iteration #7 - dashboard-layout
+- **Change:** Removed custom verbose shadow from main content card — the card already has border + background contrast (bg-background on bg-sidebar), making the shadow redundant. Design spec says "prefer single-pixel borders over shadows for separation" and "Cards: shadow-sm or no shadow (use border instead)."
+- **Heuristic:** Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/app/components/project-layout/index.tsx
+- **Learnings:** Content cards on bg-sidebar have 3 separation signals (color contrast, border, shadow). Shadow is redundant — remove it entirely, don't downgrade to shadow-sm. The spec prohibition is absolute for card-level separation.
+---
