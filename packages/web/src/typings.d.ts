@@ -78,46 +78,46 @@ declare module 'html-to-image' {
 }
 
 declare module 'ee-embed-sdk' {
-  export interface ActivepiecesClientInit {
-    type: ActivepiecesClientEventName.CLIENT_INIT;
+  export interface FlowClientInit {
+    type: FlowClientEventName.CLIENT_INIT;
     data: Record<string, never>;
   }
-  export interface ActivepiecesClientAuthenticationSuccess {
-    type: ActivepiecesClientEventName.CLIENT_AUTHENTICATION_SUCCESS;
+  export interface FlowClientAuthenticationSuccess {
+    type: FlowClientEventName.CLIENT_AUTHENTICATION_SUCCESS;
     data: Record<string, never>;
   }
-  export interface ActivepiecesClientAuthenticationFailed {
-    type: ActivepiecesClientEventName.CLIENT_AUTHENTICATION_FAILED;
+  export interface FlowClientAuthenticationFailed {
+    type: FlowClientEventName.CLIENT_AUTHENTICATION_FAILED;
     data: unknown;
   }
-  export interface ActivepiecesClientConfigurationFinished {
-    type: ActivepiecesClientEventName.CLIENT_CONFIGURATION_FINISHED;
+  export interface FlowClientConfigurationFinished {
+    type: FlowClientEventName.CLIENT_CONFIGURATION_FINISHED;
     data: Record<string, never>;
   }
-  export interface ActivepiecesClientShowConnectionIframe {
-    type: ActivepiecesClientEventName.CLIENT_SHOW_CONNECTION_IFRAME;
+  export interface FlowClientShowConnectionIframe {
+    type: FlowClientEventName.CLIENT_SHOW_CONNECTION_IFRAME;
     data: Record<string, unknown>;
   }
-  export interface ActivepiecesNewConnectionDialogClosed {
-    type: ActivepiecesClientEventName.CLIENT_NEW_CONNECTION_DIALOG_CLOSED;
+  export interface FlowNewConnectionDialogClosed {
+    type: FlowClientEventName.CLIENT_NEW_CONNECTION_DIALOG_CLOSED;
     data: {
       connection?: { id: string; name: string };
     };
   }
-  export interface ActivepiecesClientConnectionNameIsInvalid {
-    type: ActivepiecesClientEventName.CLIENT_CONNECTION_NAME_IS_INVALID;
+  export interface FlowClientConnectionNameIsInvalid {
+    type: FlowClientEventName.CLIENT_CONNECTION_NAME_IS_INVALID;
     data: {
       error: string;
     };
   }
-  export interface ActivepiecesClientConnectionPieceNotFound {
-    type: ActivepiecesClientEventName.CLIENT_CONNECTION_PIECE_NOT_FOUND;
+  export interface FlowClientConnectionPieceNotFound {
+    type: FlowClientEventName.CLIENT_CONNECTION_PIECE_NOT_FOUND;
     data: {
       error: string;
     };
   }
-  export interface ActivepiecesVendorInit {
-    type: ActivepiecesVendorEventName.VENDOR_INIT;
+  export interface FlowVendorInit {
+    type: FlowVendorEventName.VENDOR_INIT;
     data: {
       jwtToken?: string;
       mode?: string;
@@ -138,13 +138,13 @@ declare module 'ee-embed-sdk' {
       hidePageHeader?: boolean;
     };
   }
-  export interface ActivepiecesVendorRouteChanged {
-    type: ActivepiecesVendorEventName.VENDOR_ROUTE_CHANGED;
+  export interface FlowVendorRouteChanged {
+    type: FlowVendorEventName.VENDOR_ROUTE_CHANGED;
     data: {
       vendorRoute: string;
     };
   }
-  export enum ActivepiecesClientEventName {
+  export enum FlowClientEventName {
     CLIENT_INIT = 'CLIENT_INIT',
     CLIENT_AUTHENTICATION_SUCCESS = 'CLIENT_AUTHENTICATION_SUCCESS',
     CLIENT_AUTHENTICATION_FAILED = 'CLIENT_AUTHENTICATION_FAILED',
@@ -155,7 +155,7 @@ declare module 'ee-embed-sdk' {
     CLIENT_CONNECTION_NAME_IS_INVALID = 'CLIENT_CONNECTION_NAME_IS_INVALID',
     CLIENT_CONNECTION_PIECE_NOT_FOUND = 'CLIENT_CONNECTION_PIECE_NOT_FOUND',
   }
-  export enum ActivepiecesVendorEventName {
+  export enum FlowVendorEventName {
     VENDOR_INIT = 'VENDOR_INIT',
     VENDOR_ROUTE_CHANGED = 'VENDOR_ROUTE_CHANGED',
   }

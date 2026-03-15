@@ -1,5 +1,5 @@
 {
-  "iteration": 63,
+  "iteration": 64,
   "current_phase": "final-sweep",
   "phases": {
     "rename-packages": {
@@ -234,7 +234,8 @@
         "All tests pass"
       ],
       "completed_items": [
-        {"iteration": 63, "description": "Fixed 5 @activepieces/* path aliases in tsconfig.base.json → @flow/* (missed in rename-packages phase)"}
+        {"iteration": 63, "description": "Fixed 5 @activepieces/* path aliases in tsconfig.base.json → @flow/* (missed in rename-packages phase)"},
+        {"iteration": 64, "description": "Renamed 12 Activepieces-prefixed embed SDK types to Flow prefix (FlowClientEventName, FlowVendorEventName, FlowClientInit, etc.) in typings.d.ts and 2 embed route files"}
       ]
     }
   },

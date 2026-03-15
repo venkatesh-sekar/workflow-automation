@@ -4,11 +4,11 @@ import {
   isNil,
 } from '@flow/shared';
 import {
-  ActivepiecesClientConnectionNameIsInvalid,
-  ActivepiecesClientConnectionPieceNotFound,
-  ActivepiecesClientEventName,
-  ActivepiecesClientShowConnectionIframe,
-  ActivepiecesNewConnectionDialogClosed,
+  FlowClientConnectionNameIsInvalid,
+  FlowClientConnectionPieceNotFound,
+  FlowClientEventName,
+  FlowClientShowConnectionIframe,
+  FlowNewConnectionDialogClosed,
   NEW_CONNECTION_QUERY_PARAMS,
 } from 'ee-embed-sdk';
 import { useEffect, useRef, useState } from 'react';
@@ -71,7 +71,7 @@ const EmbeddedConnectionDialogContent = ({
     connection?: Pick<AppConnectionWithoutSensitiveData, 'id' | 'externalId'>,
   ) => {
     postMessageToParent({
-      type: ActivepiecesClientEventName.CLIENT_NEW_CONNECTION_DIALOG_CLOSED,
+      type: FlowClientEventName.CLIENT_NEW_CONNECTION_DIALOG_CLOSED,
       data: {
         connection: connection
           ? {
@@ -85,15 +85,15 @@ const EmbeddedConnectionDialogContent = ({
 
   const postMessageToParent = (
     event:
-      | ActivepiecesNewConnectionDialogClosed
-      | ActivepiecesClientConnectionNameIsInvalid
-      | ActivepiecesClientConnectionPieceNotFound,
+      | FlowNewConnectionDialogClosed
+      | FlowClientConnectionNameIsInvalid
+      | FlowClientConnectionPieceNotFound,
   ) => {
     parentWindow.postMessage(event, '*');
   };
   useEffect(() => {
-    const showConnectionIframeEvent: ActivepiecesClientShowConnectionIframe = {
-      type: ActivepiecesClientEventName.CLIENT_SHOW_CONNECTION_IFRAME,
+    const showConnectionIframeEvent: FlowClientShowConnectionIframe = {
+      type: FlowClientEventName.CLIENT_SHOW_CONNECTION_IFRAME,
       data: {},
     };
     parentWindow.postMessage(showConnectionIframeEvent, '*');
@@ -103,7 +103,7 @@ const EmbeddedConnectionDialogContent = ({
   useEffect(() => {
     if (!isSuccess && !isLoadingPiece && !hasErrorRef.current) {
       postMessageToParent({
-        type: ActivepiecesClientEventName.CLIENT_CONNECTION_PIECE_NOT_FOUND,
+        type: FlowClientEventName.CLIENT_CONNECTION_PIECE_NOT_FOUND,
         data: {
           error: JSON.stringify({
             isValid: 'false',

@@ -443,3 +443,10 @@
 - **Quality gate:** pass (0 typecheck errors, 22/24 test failures pre-existing)
 - **Learnings:** tsconfig.base.json was missed by rename-packages phase — only 2 of 7 tsconfig files were caught. Remaining items: embed types (typings.d.ts + embed/ files), flags.test.ts negative assertions (OK), migrate-v9-ai-pieces.ts (untouchable)
 ---
+
+## Iteration #64 - final-sweep
+- **Change:** Renamed 12 Activepieces-prefixed embed SDK types to Flow prefix in typings.d.ts (ee-embed-sdk module declaration) and 2 embed route files — ActivepiecesClientEventName→FlowClientEventName, ActivepiecesVendorEventName→FlowVendorEventName, ActivepiecesClientInit→FlowClientInit, etc.
+- **Files:** 3 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** These types are from the ee-embed-sdk module declaration in typings.d.ts — they define the postMessage protocol between the embedded iframe and the vendor SDK
+---
