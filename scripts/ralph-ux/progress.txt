@@ -17,3 +17,10 @@
 - **Files changed:** packages/web/src/components/ui/button.tsx
 - **Learnings:** When changing token semantics (dark→light), audit all stroke-* and bg-* usages that depend on the old contrast. Simplify conditionals where possible.
 ---
+
+## Iteration #3 - theme-colors
+- **Change:** Fixed data-table filter checkbox visibility — replaced bg-secondary/text-secondary-foreground with bg-primary/text-primary-foreground for selected state, and unified border to border-primary in both states so the checkbox boundary is always visible against white popover background
+- **Heuristic:** Visibility of System Status (#1)
+- **Files changed:** packages/web/src/components/custom/data-table/data-table-select-popover.tsx
+- **Learnings:** For inline checkboxes in popovers, use border-primary in both states with opacity-50 for unselected — ensures control is always visible against white backgrounds. Theme-colors area now complete, advancing to sidebar-navigation.
+---

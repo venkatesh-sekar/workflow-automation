@@ -1,8 +1,7 @@
 {
-  "iteration": 2,
-  "current_area": "theme-colors",
+  "iteration": 3,
+  "current_area": "sidebar-navigation",
   "queue": [
-    "sidebar-navigation",
     "dashboard-layout",
     "automations-page",
     "runs-page",
@@ -13,7 +12,7 @@
     "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": [],
+  "completed_areas": ["theme-colors"],
   "completed": [
     {
       "area": "theme-colors",
@@ -30,6 +29,14 @@
       "change": "Fix secondary button loading spinner visibility — stroke-background was invisible on light secondary bg, now uses stroke-foreground for all non-default variants",
       "files_modified": ["packages/web/src/components/ui/button.tsx"],
       "heuristic": "Visibility of System Status (#1)"
+    },
+    {
+      "area": "theme-colors",
+      "iteration": 3,
+      "date": "2026-03-16",
+      "change": "Fix data-table filter checkbox visibility — replaced bg-secondary with bg-primary for selected state and unified border to border-primary in both states for clear interactivity signaling",
+      "files_modified": ["packages/web/src/components/custom/data-table/data-table-select-popover.tsx"],
+      "heuristic": "Visibility of System Status (#1)"
     }
   ],
   "learnings": [
@@ -37,6 +44,7 @@
     "data-table-select-popover.tsx uses bg-secondary for checkbox selected state — will be invisible with light secondary. Needs bg-primary text-primary-foreground instead.",
     "Differentiate --accent (93%) from --muted (96%) by 3 lightness points to preserve hover visibility on muted surfaces.",
     "builder-background-pattern shifted to hsl(220 8% 72%) to align with blue-gray palette instead of pure gray #b2b2b2.",
-    "When changing token semantics (dark→light), audit all stroke-* and bg-* usages that depend on the old contrast relationship. Simplify conditionals where possible."
+    "When changing token semantics (dark→light), audit all stroke-* and bg-* usages that depend on the old contrast relationship. Simplify conditionals where possible.",
+    "For inline checkboxes in popovers, use border-primary in both selected and unselected states so the control boundary is always visible against white backgrounds. Use opacity-50 for the unselected state to keep it subtle."
   ]
 }
