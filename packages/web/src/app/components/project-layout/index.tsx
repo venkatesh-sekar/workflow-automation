@@ -1,18 +1,13 @@
 import { ApEdition, ApFlagId, isNil } from '@activepieces/shared';
-import React, { ComponentType } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { ChartLineIcon } from '@/components/icons/chart-line';
-import { CompassIcon } from '@/components/icons/compass';
-import { TrophyIcon } from '@/components/icons/trophy';
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar-shadcn';
 import { PurchaseExtraFlowsDialog } from '@/features/billing';
 import { projectHooks } from '@/features/projects';
 import { flagsHooks } from '@/hooks/flags-hooks';
-import { cn } from '@/lib/utils';
 
 import { authenticationSession } from '../../../lib/authentication-session';
 import {
@@ -22,14 +17,6 @@ import {
 import { ProjectDashboardSidebar } from '../sidebar/dashboard';
 
 import { ProjectDashboardLayoutHeader } from './project-dashboard-layout-header';
-
-export type ProjectDashboardLayoutHeaderTab = {
-  to: string;
-  label: string;
-  icon: ComponentType<{ className?: string; size?: number }>;
-  hasPermission: boolean;
-  show: boolean;
-};
 
 const ProjectChangedRedirector = ({
   currentProjectId,
@@ -49,7 +36,6 @@ export function ProjectDashboardLayout({
 }) {
   const { data: edition } = flagsHooks.useFlag<ApEdition>(ApFlagId.EDITION);
   const currentProjectId = authenticationSession.getProjectId();
-  const { t } = useTranslation();
   const location = useLocation();
   const isPlatformPage = location.pathname.includes('/platform/');
   const isEmbedded = useEmbedding().embedState.isEmbedded;
@@ -57,33 +43,7 @@ export function ProjectDashboardLayout({
     return <Navigate to="/login" replace />;
   }
 
-  const itemsWithoutHeader: ProjectDashboardLayoutHeaderTab[] = [
-    {
-      to: '/templates',
-      label: t('Explore'),
-      show: !isEmbedded,
-      icon: CompassIcon,
-      hasPermission: true,
-    },
-    {
-      to: '/impact',
-      label: t('Impact'),
-      show: !isEmbedded,
-      icon: ChartLineIcon,
-      hasPermission: true,
-    },
-    {
-      to: '/leaderboard',
-      label: t('Leaderboard'),
-      show: !isEmbedded,
-      icon: TrophyIcon,
-      hasPermission: true,
-    },
-  ];
-
-  const hideHeader =
-    itemsWithoutHeader.some((item) => location.pathname.includes(item.to)) ||
-    isPlatformPage;
+  const hideHeader = isPlatformPage;
 
   return (
     <ProjectChangedRedirector currentProjectId={currentProjectId}>
