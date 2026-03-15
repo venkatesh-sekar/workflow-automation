@@ -1,13 +1,11 @@
-import { FlowEdition, FlowFlagId, isNil } from '@flow/shared';
+import { isNil } from '@flow/shared';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar-shadcn';
-import { PurchaseExtraFlowsDialog } from '@/features/billing';
 import { projectHooks } from '@/features/projects';
-import { flagsHooks } from '@/hooks/flags-hooks';
 
 import { authenticationSession } from '../../../lib/authentication-session';
 import {
@@ -34,7 +32,6 @@ export function ProjectDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const currentProjectId = authenticationSession.getProjectId();
   const location = useLocation();
   const isPlatformPage = location.pathname.includes('/platform/');
@@ -55,7 +52,6 @@ export function ProjectDashboardLayout({
         >
           {children}
         </ProjectDashboardLayoutInner>
-        {edition === FlowEdition.CLOUD && <PurchaseExtraFlowsDialog />}
       </GlobalSearchProvider>
     </ProjectChangedRedirector>
   );

@@ -1,4 +1,4 @@
-import { ErrorCode, isNil } from '@flow/shared';
+import { isNil } from '@flow/shared';
 import {
   MutationCache,
   QueryClient,
@@ -12,9 +12,7 @@ import TelemetryProvider from '@/components/providers/telemetry-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { internalErrorToast, Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { useManagePlanDialogStore } from '@/features/billing';
 import { RefreshAnalyticsProvider } from '@/features/platform-admin';
-import { api } from '@/lib/api';
 
 import { EmbeddingFontLoader } from './components/embedding-font-loader';
 import { InitialDataGuard } from './components/initial-data-guard';
@@ -23,10 +21,7 @@ import { FlowRouter } from './guards';
 const queryClient = new QueryClient({
   mutationCache: new MutationCache({
     onError: (err: Error, _, __, mutation) => {
-      if (api.isFlowError(err, ErrorCode.QUOTA_EXCEEDED)) {
-        const { openDialog } = useManagePlanDialogStore.getState();
-        openDialog();
-      } else if (isNil(mutation.options.onError)) {
+      if (isNil(mutation.options.onError)) {
         internalErrorToast();
       }
     },

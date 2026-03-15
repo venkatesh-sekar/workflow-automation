@@ -30,4 +30,10 @@
 - 15 LockedFeatureGuard consumers passed featureKey prop — all cleaned via sed
 - LockedAlert.button made optional since no "Contact Sales" button exists anymore
 - activate-license-dialog.tsx deleted, license-key.tsx simplified to FeatureStatus-only display
-- Next billing UI targets: active-flows-addon (purchase dialog + component), ai-credit-usage, billing page cleanup (remove stripe portal link, subscription info, simplify)
+- active-flows-addon deleted (3 files: component, purchase dialog, store)
+- PurchaseExtraFlowsDialog removed from 3 layouts (all were gated by FlowEdition.CLOUD)
+- useManagePlanDialogStore removed from app.tsx (QUOTA_EXCEEDED → openDialog logic removed)
+- Billing page simplified: removed ActiveFlowAddon, SubscriptionInfo, Stripe portal button, support@activepieces.com
+- SubscriptionInfo component + PRICE_PER_EXTRA_ACTIVE_FLOWS now dead exports — clean up later
+- billingMutations still referenced by ai-credits components (4 files) — those are next
+- Next targets: ai-credit Stripe components, cloud services (piece-sync, cloud-oauth, community-templates), dead third-party integrations

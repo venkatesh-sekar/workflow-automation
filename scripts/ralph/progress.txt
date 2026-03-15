@@ -275,3 +275,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Next targets: active-flows-addon, ai-credit-usage, billing page simplification
 ---
+
+## Iteration #40 - strip-billing-and-licensing
+- **Change:** Deleted active-flows-addon components (index.tsx, purchase-active-flows-dialog.tsx, store), removed PurchaseExtraFlowsDialog from 3 layout files, removed useManagePlanDialogStore from app.tsx, simplified billing page (removed ActiveFlowAddon, SubscriptionInfo, Stripe portal button)
+- **Files:** 10 files changed (3 deleted, 7 modified)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** SubscriptionInfo + PRICE_PER_EXTRA_ACTIVE_FLOWS now dead; billingMutations still used by ai-credits components
+---
