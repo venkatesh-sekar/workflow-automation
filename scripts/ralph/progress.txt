@@ -324,3 +324,10 @@
 - **Quality gate:** pass (0 typecheck errors; 2/24 test suites pass, 14 tests pass — same baseline)
 - **Learnings:** password-hasher.test.ts had dedicated scrypt tests that needed removal
 ---
+
+## Iteration #47 - strip-billing-and-licensing
+- **Change:** Removed dead third-party env vars: CLOUDFLARE_API_BASE/TOKEN/ZONE_ID, FEATUREBASE_API_KEY, SCIM_DEFAULT_PROJECT_ROLE from FlowSystemProp enum + system-validator + system defaults, cleaned unused DefaultProjectRole imports
+- **Files:** 3 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** All three were dead code — defined in enum/validator/defaults but never consumed by system.get() anywhere
+---

@@ -1,6 +1,6 @@
 import { inspect } from 'util'
 import { FlowSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, FlowWorkerSystemProp } from '@flow/server-common'
-import { FlowEdition, FlowEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
+import { FlowEdition, FlowEnvironment, ExecutionMode, FileLocation, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
 import { s3Helper } from '../file/s3-helper'
@@ -136,20 +136,12 @@ const systemPropValidators: {
     [FlowSystemProp.INTERNAL_URL]: stringValidator,
     [FlowSystemProp.PM2_ENABLED]: booleanValidator,
     [FlowSystemProp.EDITION]: enumValidator(Object.values(FlowEdition)),
-    [FlowSystemProp.FEATUREBASE_API_KEY]: stringValidator,
-    [FlowSystemProp.SCIM_DEFAULT_PROJECT_ROLE]: enumValidator(Object.values(DefaultProjectRole)),
-
     // FlowSystemProp
     [FlowWorkerSystemProp.WORKER_CONCURRENCY]: numberValidator,
 
     // Cloud
     [FlowSystemProp.GOOGLE_CLIENT_ID]: stringValidator,
     [FlowSystemProp.GOOGLE_CLIENT_SECRET]: stringValidator,
-
-    // Cloudflare
-    [FlowSystemProp.CLOUDFLARE_API_TOKEN]: stringValidator,
-    [FlowSystemProp.CLOUDFLARE_API_BASE]: stringValidator,
-    [FlowSystemProp.CLOUDFLARE_ZONE_ID]: stringValidator,
 
     // Secret Manager
     [FlowSystemProp.SECRET_MANAGER_API_KEY]: stringValidator,

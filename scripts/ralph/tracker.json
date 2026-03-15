@@ -1,5 +1,5 @@
 {
-  "iteration": 46,
+  "iteration": 47,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -155,7 +155,8 @@
         {"iteration": 43, "description": "Gutted cloud-oauth2-service.ts: removed secrets.activepieces.com URLs (refresh + claim endpoints), removed flowAxios/FlowError/system imports — claim() and refresh() now throw 'not supported in self-hosted mode'"},
         {"iteration": 44, "description": "Gutted community-templates.service.ts: removed cloud.activepieces.com/api/v1/templates URL, getOrThrow throws not-found, getCategories returns [], list returns empty page — no cloud template dependency"},
         {"iteration": 45, "description": "Removed AppSumo integration: deleted APPSUMO_ACTIVEPIECES_TIER1-6 from PlanName enum, deleted APPSUMO_PLAN function from billing/index.ts, removed APPSUMO_TOKEN from FlowSystemProp enum + system-validator, removed FLOW_APPSUMO_TOKEN from .env.tests"},
-        {"iteration": 46, "description": "Removed Firebase Scrypt password hasher: gutted scrypt comparison from password-hasher.ts (bcrypt only), removed firebase-scrypt dep, removed FIREBASE_ADMIN_CREDENTIALS and FIREBASE_HASH_PARAMETERS from FlowSystemProp enum + system-validator, removed scrypt tests"}
+        {"iteration": 46, "description": "Removed Firebase Scrypt password hasher: gutted scrypt comparison from password-hasher.ts (bcrypt only), removed firebase-scrypt dep, removed FIREBASE_ADMIN_CREDENTIALS and FIREBASE_HASH_PARAMETERS from FlowSystemProp enum + system-validator, removed scrypt tests"},
+        {"iteration": 47, "description": "Removed dead third-party env vars: CLOUDFLARE_API_BASE/TOKEN/ZONE_ID, FEATUREBASE_API_KEY, SCIM_DEFAULT_PROJECT_ROLE from FlowSystemProp enum + system-validator + system defaults, cleaned unused DefaultProjectRole imports"}
       ]
     },
     "strip-external-urls": {

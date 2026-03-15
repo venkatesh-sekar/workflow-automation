@@ -4,7 +4,6 @@ import { FlowSystemProp, ContainerType, DatabaseType, environmentVariables, pino
 import {
     FlowError,
     FlowEdition,
-    DefaultProjectRole,
     ErrorCode,
     ExecutionMode,
     FileLocation,
@@ -57,7 +56,6 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [FlowSystemProp.ENABLE_FLOW_ON_PUBLISH]: 'true',
     [FlowSystemProp.ISSUE_ARCHIVE_DAYS]: '7',
     [FlowSystemProp.POSTGRES_IDLE_TIMEOUT_MS]: '300000',
-    [FlowSystemProp.SCIM_DEFAULT_PROJECT_ROLE]: DefaultProjectRole.EDITOR,
 }
 
 let globalLogger: FastifyBaseLogger

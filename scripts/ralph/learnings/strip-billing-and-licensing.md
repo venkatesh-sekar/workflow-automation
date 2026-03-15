@@ -46,4 +46,7 @@
 - community-templates.service.ts gutted: no imports of communityTemplates found anywhere — dead code, but kept methods as stubs
 - AppSumo removed: APPSUMO_PLAN was dead code (never imported), PlanName tiers only in platform.model.ts, APPSUMO_TOKEN only in system-props + validator + .env.tests
 - Firebase Scrypt removed: password-hasher.ts simplified to bcrypt-only, scrypt test describe block removed
-- Next targets: Cloudflare, Featurebase, SCIM
+- Cloudflare/Featurebase/SCIM env vars removed: all were dead (defined in enum+validator+defaults but never consumed by system.get)
+- SCIM shared types (packages/shared/src/lib/ee/scim/) still exist and are exported — only consumed by shared barrel, no server code uses them
+- features-status.tsx still shows 'SCIM' label — just a UI display item, not a service dependency
+- Phase almost complete: remaining criteria to verify are "All tests pass" (baseline 22 failures pre-existing) and whether any criteria were missed
