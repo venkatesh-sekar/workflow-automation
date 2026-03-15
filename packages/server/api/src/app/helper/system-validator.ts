@@ -77,7 +77,6 @@ const systemPropValidators: {
     // FlowSystemProp
     [FlowSystemProp.API_KEY]: stringValidator,
     [FlowSystemProp.TEMPLATES_API_KEY]: stringValidator,
-    [FlowSystemProp.TEMPLATE_MANAGER_API_KEY]: stringValidator,
     [FlowSystemProp.API_RATE_LIMIT_AUTHN_ENABLED]: booleanValidator,
     [FlowSystemProp.API_RATE_LIMIT_AUTHN_MAX]: numberValidator,
     [FlowSystemProp.API_RATE_LIMIT_AUTHN_WINDOW]: stringValidator,

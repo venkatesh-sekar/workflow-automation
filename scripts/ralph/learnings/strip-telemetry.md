@@ -18,5 +18,12 @@
 - SENTRY_DSN referenced in: FlowSystemProp enum (system-props.ts), system-validator.ts, server.ts (initializeSentry call), machine-service.ts (worker config), shared workers/index.ts (zod schema)
 - Gutted to just log.error — kept handle() method signature since callers depend on it
 
+## Template Telemetry
+- template-telemetry.service.ts had two external URLs: cloud.activepieces.com and template-manager.activepieces.com
+- Used TEMPLATE_MANAGER_API_KEY system prop for internal URL auth
+- Called from trigger-source-service.ts (ACTIVATE/DEACTIVATE events) and template-telemetry.controller.ts (HTTP endpoint)
+- Kept controller + shared types intact, just gutted service to no-op — callers still work harmlessly
+- Removed TEMPLATE_MANAGER_API_KEY from system-props.ts enum and system-validator.ts
+
 ## Test Baseline
 - 22/24 failures pre-existing (@flow/piece-slack resolution), 2 passed, 16 tests pass — same as prior phases

@@ -198,3 +198,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** SENTRY_DSN was threaded through 6 files: enum definition, validator, server init, machine-service worker config, shared zod schema
 ---
+
+## Iteration #29 - strip-telemetry
+- **Change:** Removed template telemetry: gutted template-telemetry.service.ts to no-op (removed cloud.activepieces.com and template-manager.activepieces.com URLs, sendToCloud/sendToInternal/getEventConfig functions, TELEMETRY_ENABLED check), removed TEMPLATE_MANAGER_API_KEY from FlowSystemProp enum + system-validator
+- **Files:** 3 (template-telemetry.service.ts, system-props.ts, system-validator.ts)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Service callers (trigger-source-service.ts, controller) kept working since exported interface preserved as no-op
+---
