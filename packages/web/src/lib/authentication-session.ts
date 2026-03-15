@@ -6,19 +6,19 @@ import {
 import dayjs from 'dayjs';
 import { jwtDecode } from 'jwt-decode';
 
-import { ApStorage } from './ap-browser-storage';
+import { FlowStorage } from './flow-browser-storage';
 const tokenKey = 'token';
 const projectIdKey = 'projectId';
 export const authenticationSession = {
   setProjectId(projectId: string) {
-    ApStorage.getInstance().setItem(projectIdKey, projectId);
+    FlowStorage.getInstance().setItem(projectIdKey, projectId);
   },
   saveResponse(response: AuthenticationResponse, isEmbedding: boolean) {
     if (isEmbedding) {
-      ApStorage.setInstanceToSessionStorage();
+      FlowStorage.setInstanceToSessionStorage();
     }
-    ApStorage.getInstance().setItem(tokenKey, response.token);
-    ApStorage.getInstance().setItem(projectIdKey, response.projectId);
+    FlowStorage.getInstance().setItem(tokenKey, response.token);
+    FlowStorage.getInstance().setItem(projectIdKey, response.projectId);
     window.dispatchEvent(new Event('storage'));
   },
   isJwtExpired(token: string): boolean {
@@ -36,7 +36,7 @@ export const authenticationSession = {
     }
   },
   getToken(): string | null {
-    return ApStorage.getInstance().getItem(tokenKey) ?? null;
+    return FlowStorage.getInstance().getItem(tokenKey) ?? null;
   },
 
   getProjectId(): string | null {
@@ -44,7 +44,7 @@ export const authenticationSession = {
     if (isNil(token)) {
       return null;
     }
-    const projectId = ApStorage.getInstance().getItem(projectIdKey);
+    const projectId = FlowStorage.getInstance().getItem(projectIdKey);
     if (!isNil(projectId)) {
       return projectId;
     }
@@ -86,7 +86,7 @@ export const authenticationSession = {
     if (authenticationSession.getProjectId() === projectId) {
       return;
     }
-    ApStorage.getInstance().setItem(projectIdKey, projectId);
+    FlowStorage.getInstance().setItem(projectIdKey, projectId);
     window.dispatchEvent(new Event('storage'));
   },
   isLoggedIn(): boolean {
@@ -97,8 +97,8 @@ export const authenticationSession = {
     return !this.isJwtExpired(token);
   },
   clearSession() {
-    ApStorage.getInstance().removeItem(projectIdKey);
-    ApStorage.getInstance().removeItem(tokenKey);
+    FlowStorage.getInstance().removeItem(projectIdKey);
+    FlowStorage.getInstance().removeItem(tokenKey);
   },
   logOut() {
     this.clearSession();
