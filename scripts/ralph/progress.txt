@@ -282,3 +282,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** SubscriptionInfo + PRICE_PER_EXTRA_ACTIVE_FLOWS now dead; billingMutations still used by ai-credits components
 ---
+
+## Iteration #41 - strip-billing-and-licensing
+- **Change:** Deleted ai-credits components (ai-credit-usage.tsx, purchase-ai-credits-dialog.tsx, auto-topup-config-dialog.tsx), deleted enable-ai-credits-overage.tsx, removed AICreditUsage from billing page and barrel export, removed dead billingMutations export
+- **Files:** 7 files changed (4 deleted, 3 edited)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** SubscriptionInfo component and billing page subscription query are now dead — clean up in future iteration
+---

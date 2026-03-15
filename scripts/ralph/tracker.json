@@ -1,5 +1,5 @@
 {
-  "iteration": 40,
+  "iteration": 41,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -149,7 +149,8 @@
         {"iteration": 37, "description": "Removed license key verification API (verifyLicenseKey from platforms-api.ts, useUpdateLisenceKey hook from platform-hooks.ts), deleted request-trial-api.ts (sales.activepieces.com), deleted shared license-keys types and export"},
         {"iteration": 38, "description": "Deleted request-trial.tsx component (activepieces.com/sales link), moved FeatureKey type to locked-feature-guard.tsx, removed featureKey/showContactSales props from LockedFeatureGuard and all 15 consumers, made LockedAlert.button optional"},
         {"iteration": 39, "description": "Deleted activate-license-dialog.tsx (dead — useUpdateLisenceKey hook removed in #37), simplified license-key.tsx to remove license activation UI and activepieces.com/pricing link, kept only FeatureStatus display"},
-        {"iteration": 40, "description": "Deleted active-flows-addon components (index.tsx, purchase-active-flows-dialog.tsx), addon dialog store, removed PurchaseExtraFlowsDialog from 3 layout files, removed useManagePlanDialogStore from app.tsx, removed ActiveFlowAddon and Stripe portal button from billing page, removed SubscriptionInfo usage"}
+        {"iteration": 40, "description": "Deleted active-flows-addon components (index.tsx, purchase-active-flows-dialog.tsx), addon dialog store, removed PurchaseExtraFlowsDialog from 3 layout files, removed useManagePlanDialogStore from app.tsx, removed ActiveFlowAddon and Stripe portal button from billing page, removed SubscriptionInfo usage"},
+        {"iteration": 41, "description": "Deleted ai-credits components (ai-credit-usage.tsx, purchase-ai-credits-dialog.tsx, auto-topup-config-dialog.tsx), deleted enable-ai-credits-overage.tsx, removed AICreditUsage from billing page and barrel export, removed dead billingMutations export"}
       ]
     },
     "strip-external-urls": {

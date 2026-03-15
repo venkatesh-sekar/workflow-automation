@@ -9,7 +9,6 @@ import { CenteredPage } from '@/app/components/centered-page';
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { LoadingSpinner } from '@/components/custom/spinner';
 import {
-  AICreditUsage,
   LicenseKey,
   billingQueries,
 } from '@/features/billing';
@@ -63,7 +62,6 @@ function BillingPageDetails() {
       description={t('Manage your usage and plan details.')}
     >
       <div className="flex flex-col gap-6">
-        <AICreditUsage platformSubscription={platformPlanInfo} />
         <LicenseKey platform={platform} />
       </div>
     </CenteredPage>

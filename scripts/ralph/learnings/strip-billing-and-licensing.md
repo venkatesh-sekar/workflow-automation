@@ -35,5 +35,8 @@
 - useManagePlanDialogStore removed from app.tsx (QUOTA_EXCEEDED → openDialog logic removed)
 - Billing page simplified: removed ActiveFlowAddon, SubscriptionInfo, Stripe portal button, support@activepieces.com
 - SubscriptionInfo component + PRICE_PER_EXTRA_ACTIVE_FLOWS now dead exports — clean up later
-- billingMutations still referenced by ai-credits components (4 files) — those are next
-- Next targets: ai-credit Stripe components, cloud services (piece-sync, cloud-oauth, community-templates), dead third-party integrations
+- ai-credits components deleted (3 files + enable-ai-credits-overage.tsx), billingMutations removed entirely
+- SubscriptionInfo component is dead (no imports) — clean up later or in dead-code phase
+- success.tsx still references ai-credit action types (ai-credit-auto-topup, ai-credit-payment) — harmless but could clean
+- Billing page still fetches platformPlanInfo via billingQueries but doesn't use it in render (only LicenseKey with platform is shown) — dead query, clean later
+- Next targets: cloud services (piece-sync, cloud-oauth, community-templates), dead third-party integrations (AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM)

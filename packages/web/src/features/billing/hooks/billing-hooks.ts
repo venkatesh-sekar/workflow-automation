@@ -7,8 +7,6 @@ export const billingKeys = {
     ['platform-billing-subscription', platformId] as const,
 };
 
-export const billingMutations = {};
-
 export const billingQueries = {
   usePlatformSubscription: (platformId: string) => {
     return useQuery({
