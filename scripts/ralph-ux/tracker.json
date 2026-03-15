@@ -1,12 +1,11 @@
 {
-  "iteration": 15,
-  "current_area": "settings-pages",
+  "iteration": 16,
+  "current_area": "platform-admin-pages",
   "queue": [
-    "platform-admin-pages",
     "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page"],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages"],
   "completed": [
     {
       "area": "theme-colors",
@@ -127,6 +126,14 @@
       "change": "Fix settings dialog tab active state — replaced bg-sidebar-accent (identical to hover) with bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary, matching sidebar active-item pattern from iterations #4 and #6",
       "files_modified": ["packages/web/src/app/components/project-settings/index.tsx"],
       "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
+    },
+    {
+      "area": "settings-pages",
+      "iteration": 16,
+      "date": "2026-03-16",
+      "change": "Fix settings tab header typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match DialogTitle primitive and design system heading spec",
+      "files_modified": ["packages/web/src/app/components/project-settings/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -149,6 +156,7 @@
     "For table cell links (navigable counts, IDs), use text-primary hover:underline cursor-pointer transition-colors duration-150 wrapped in cn(). Don't use permanent underline — reveal on hover matches Linear/Retool table cell link pattern. Don't use hover:text-primary-300 as it's darker, not lighter.",
     "For inline separators between metadata items, use <div className=\"h-4 w-px bg-border\" /> — the established codebase pattern. Never use bare text pipe characters. The parent gap utility handles spacing automatically.",
     "font-sm is not a valid Tailwind class — always use font-normal (400), font-medium (500), or font-semibold (600). Tailwind font-* classes are for weight, not size (use text-sm for size).",
-    "Any sidebar-like nav panel in dialogs (settings, etc.) must use the same active-state pattern as the main sidebar: bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary. Include hover override on active items to prevent hover:bg-sidebar-accent from overriding the primary tint."
+    "Any sidebar-like nav panel in dialogs (settings, etc.) must use the same active-state pattern as the main sidebar: bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary. Include hover override on active items to prevent hover:bg-sidebar-accent from overriding the primary tint.",
+    "Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx line 128 is the canonical text-lg heading style — all equivalent headings should match it."
   ]
 }

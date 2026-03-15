@@ -108,3 +108,10 @@
 - **Files changed:** packages/web/src/app/components/project-settings/index.tsx
 - **Learnings:** Dialog sidebar-like nav panels must use the same active-state tokens as the main sidebar. Always override hover on active items when the base class has a different hover color — otherwise Tailwind specificity causes visual flicker.
 ---
+
+## Iteration #16 - settings-pages
+- **Change:** Fixed settings tab header typography — replaced `font-bold` (700 weight) with `font-semibold tracking-tight` (600 weight) to match the `DialogTitle` primitive defined in `dialog.tsx` and the design system heading spec. Settings-pages area complete, advancing to platform-admin-pages.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/project-settings/index.tsx
+- **Learnings:** Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx is the canonical text-lg heading style.
+---
