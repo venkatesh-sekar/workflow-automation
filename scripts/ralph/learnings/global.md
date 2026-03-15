@@ -32,6 +32,9 @@ Cross-phase insights. Max ~50 lines — consolidate when growing beyond.
 - No server-side billing routes — API calls went to external cloud service
 - SCIM shared types still exist in packages/shared/src/lib/ee/scim/ — only barrel export, no server consumer
 - Test assertions checking URLs don't contain activepieces.com are fine (flags.test.ts)
-- Embed types (ActivepiecesClient*, ActivepiecesVendor* in typings.d.ts + embed/) still need renaming — for final-sweep
+- Embed types renamed in final-sweep (#64): ActivepiecesClient*→FlowClient*, ActivepiecesVendor*→FlowVendor*
 - migrate-v9-ai-pieces.ts has `provider: 'activepieces'` — left untouched (runtime flow data, changing breaks existing flows)
 - AP_FRONTEND_URL env var name preserved (not renamed — separate concern)
+
+## COMPLETE
+- All 10 phases done. 65 iterations total. Zero activepieces refs in source code.
