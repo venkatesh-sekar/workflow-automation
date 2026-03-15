@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   FlowActionType,
   TelemetryEventName,
 } from '@flow/shared';
@@ -49,7 +49,7 @@ export const AIPieceActionsList: React.FC<AIPieceActionsListProps> = ({
     state.handleAddingOrUpdatingStep,
   ]);
   const { data: isAgentsConfigured } = flagsHooks.useFlag<boolean>(
-    ApFlagId.AGENTS_CONFIGURED,
+    FlowFlagId.AGENTS_CONFIGURED,
   );
   const navigate = useNavigate();
 

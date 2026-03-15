@@ -19,7 +19,7 @@ export enum FlowEdition {
     CLOUD = 'cloud',
 }
 
-export enum ApFlagId {
+export enum FlowFlagId {
     SHOW_BADGES = 'SHOW_BADGES',
     SHOW_POWERED_BY_IN_FORM = 'SHOW_POWERED_BY_IN_FORM',
     CLOUD_AUTH_ENABLED = 'CLOUD_AUTH_ENABLED',

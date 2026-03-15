@@ -6,7 +6,7 @@ import {
   FlowRun,
   FlowRunStatus,
   isNil,
-  ApFlagId,
+  FlowFlagId,
 } from '@flow/shared';
 import { t } from 'i18next';
 import { Info, Timer } from 'lucide-react';
@@ -64,7 +64,7 @@ export const FlowStepInputOutput = () => {
     ignoreInternalError: true,
   });
   const { data: rententionDays } = flagsHooks.useFlag<number>(
-    ApFlagId.EXECUTION_DATA_RETENTION_DAYS,
+    FlowFlagId.EXECUTION_DATA_RETENTION_DAYS,
   );
 
   if (

@@ -1,7 +1,7 @@
 import {
   BadgeAwarded,
   BADGES,
-  ApFlagId,
+  FlowFlagId,
   WebsocketClientEvent,
 } from '@flow/shared';
 import confetti from 'canvas-confetti';
@@ -20,7 +20,7 @@ export const BadgeCelebrate = () => {
   const { refetch } = userHooks.useCurrentUser();
   const cleanupRef = useRef<() => void>(undefined);
   const { data: showBadges } = flagsHooks.useFlag<boolean>(
-    ApFlagId.SHOW_BADGES,
+    FlowFlagId.SHOW_BADGES,
   );
   const isCelebrating = useRef(false);
   const celebrationTimeout = useRef<number | null>(null);

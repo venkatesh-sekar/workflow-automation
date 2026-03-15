@@ -1,4 +1,4 @@
-import { ApFlagId, feedbackUrl } from '@flow/shared';
+import { FlowFlagId, feedbackUrl } from '@flow/shared';
 import { t } from 'i18next';
 import { SearchX } from 'lucide-react';
 
@@ -8,7 +8,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 
 const NoResultsFound = () => {
   const { data: showCommunityLinks } = flagsHooks.useFlag<boolean>(
-    ApFlagId.SHOW_COMMUNITY,
+    FlowFlagId.SHOW_COMMUNITY,
   );
   const isEmbedding = useEmbedding().embedState.isEmbedded;
   const showRequestPieceButton = showCommunityLinks && !isEmbedding;

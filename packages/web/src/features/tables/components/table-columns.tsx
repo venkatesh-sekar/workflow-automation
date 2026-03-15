@@ -1,4 +1,4 @@
-import { ApFlagId, isNil, Permission } from '@flow/shared';
+import { FlowFlagId, isNil, Permission } from '@flow/shared';
 import { Plus } from 'lucide-react';
 import { ReactNode } from 'react';
 import { Column, RenderCellProps } from 'react-data-grid';
@@ -22,7 +22,7 @@ export function useTableColumns(createEmptyRecord: () => void) {
   ]);
 
   const { data: maxFields } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_FIELDS_PER_TABLE,
+    FlowFlagId.MAX_FIELDS_PER_TABLE,
   );
 
   const userHasTableWritePermission = useAuthorization().checkAccess(

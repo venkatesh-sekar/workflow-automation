@@ -1,4 +1,4 @@
-import { ApFlagId, SourceCode, deepMergeAndCast } from '@flow/shared';
+import { FlowFlagId, SourceCode, deepMergeAndCast } from '@flow/shared';
 import { javascript } from '@codemirror/lang-javascript';
 import { json } from '@codemirror/lang-json';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
@@ -46,7 +46,7 @@ const CodeEditor = ({
   const codeEditorTheme = theme === 'dark' ? githubDark : githubLight;
 
   const { data: allowNpmPackagesInCodeStep } = flagsHooks.useFlag<boolean>(
-    ApFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
+    FlowFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
   );
 
   const extensions = [

@@ -1,6 +1,6 @@
 import {
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   isNil,
   Permission,
   PlatformRole,
@@ -14,7 +14,7 @@ import { userHooks } from '@/hooks/user-hooks';
 import { authenticationSession } from '@/lib/authentication-session';
 
 export const useAuthorization = () => {
-  const { data: edition } = flagsHooks.useFlag(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag(FlowFlagId.EDITION);
 
   const platformId = authenticationSession.getPlatformId();
   const { data: projectRole, isLoading } = useQuery({

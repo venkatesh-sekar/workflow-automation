@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId, isNil } from '@flow/shared';
+import { FlowEdition, FlowFlagId, isNil } from '@flow/shared';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -34,7 +34,7 @@ export function ProjectDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const currentProjectId = authenticationSession.getProjectId();
   const location = useLocation();
   const isPlatformPage = location.pathname.includes('/platform/');

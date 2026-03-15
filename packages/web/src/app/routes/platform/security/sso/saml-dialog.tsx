@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   PlatformWithoutSensitiveData,
   UpdatePlatformRequestBody,
 } from '@flow/shared';
@@ -51,7 +51,7 @@ export const ConfigureSamlDialog = ({
   });
 
   const { data: samlAcs } = flagsHooks.useFlag<string>(
-    ApFlagId.SAML_AUTH_ACS_URL,
+    FlowFlagId.SAML_AUTH_ACS_URL,
   );
   const { mutate, isPending } = useMutation({
     mutationFn: async (request: UpdatePlatformRequestBody) => {

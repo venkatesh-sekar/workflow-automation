@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId, TeamProjectsLimit } from '@flow/shared';
+import { FlowEdition, FlowFlagId, TeamProjectsLimit } from '@flow/shared';
 import { t } from 'i18next';
 import { ComponentType, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -47,7 +47,7 @@ import { SidebarUser } from '../sidebar-user';
 
 export function PlatformSidebar() {
   const { platform } = platformHooks.useCurrentPlatform();
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const { checkAccess } = useAuthorization();
   const defaultRoute = determineDefaultRoute(checkAccess);
   const chevronRef = useRef<ChevronLeftIconHandle>(null);

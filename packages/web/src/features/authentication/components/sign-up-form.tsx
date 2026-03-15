@@ -1,7 +1,7 @@
 import {
   OtpType,
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   ErrorCode,
   isNil,
 } from '@flow/shared';
@@ -55,10 +55,10 @@ const SignUpForm = ({
 }) => {
   const [searchParams] = useSearchParams();
   const { data: termsOfServiceUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.TERMS_OF_SERVICE_URL,
+    FlowFlagId.TERMS_OF_SERVICE_URL,
   );
   const { data: privacyPolicyUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.PRIVACY_POLICY_URL,
+    FlowFlagId.PRIVACY_POLICY_URL,
   );
 
   const form = useForm<SignUpSchema>({
@@ -69,7 +69,7 @@ const SignUpForm = ({
     },
   });
   const websiteName = flagsHooks.useWebsiteBranding()?.websiteName;
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const showNewsLetterCheckbox = useMemo(() => {
     if (!edition || !websiteName) {
       return false;

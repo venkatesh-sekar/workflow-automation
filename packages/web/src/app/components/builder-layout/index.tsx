@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, FlowFlagId } from '@flow/shared';
 
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar-shadcn';
@@ -21,7 +21,7 @@ export function BuilderLayout({ children }: { children: React.ReactNode }) {
 }
 
 function BuilderLayoutInner({ children }: { children: React.ReactNode }) {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const { embedState } = useEmbedding();
   const { open: searchOpen } = useGlobalSearch();
 

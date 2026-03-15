@@ -1,6 +1,6 @@
 import {
   ProjectMemberWithUser,
-  ApFlagId,
+  FlowFlagId,
   assertNotNullOrUndefined,
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -12,7 +12,7 @@ import { projectMembersApi } from '../api/project-members-api';
 
 export const projectMembersHooks = {
   useProjectMembers: () => {
-    const { data } = flagsHooks.useFlag<boolean>(ApFlagId.SHOW_PROJECT_MEMBERS);
+    const { data } = flagsHooks.useFlag<boolean>(FlowFlagId.SHOW_PROJECT_MEMBERS);
     const query = useQuery<ProjectMemberWithUser[]>({
       queryKey: ['project-members', authenticationSession.getProjectId()],
       queryFn: async () => {

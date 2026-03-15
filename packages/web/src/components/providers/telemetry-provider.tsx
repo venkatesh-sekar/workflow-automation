@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   isNil,
   TelemetryEvent,
   UserWithMetaInformation,
@@ -25,13 +25,13 @@ const TelemetryProvider = ({ children }: TelemetryProviderProps) => {
     currentUser ?? null,
   );
   const { data: telemetryEnabled } = flagsHooks.useFlag<boolean>(
-    ApFlagId.TELEMETRY_ENABLED,
+    FlowFlagId.TELEMETRY_ENABLED,
   );
   const { data: flagCurrentVersion } = flagsHooks.useFlag<string>(
-    ApFlagId.CURRENT_VERSION,
+    FlowFlagId.CURRENT_VERSION,
   );
   const { data: flagEnvironment } = flagsHooks.useFlag<string>(
-    ApFlagId.ENVIRONMENT,
+    FlowFlagId.ENVIRONMENT,
   );
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, FlowFlagId } from '@flow/shared';
 
 import { flagsHooks } from './flags-hooks';
 
@@ -18,7 +18,7 @@ declare global {
 }
 
 export const usePartnerStack = () => {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const reportSignup = (email: string, firstName: string) => {
     const hasPartnerCookie = document.cookie
       .split('; ')

@@ -1,4 +1,4 @@
-import { ApFlagId } from '@flow/shared';
+import { FlowFlagId } from '@flow/shared';
 import { t } from 'i18next';
 
 import { flagsHooks } from '@/hooks/flags-hooks';
@@ -13,10 +13,10 @@ const ApTableFooter = ({
   recordsCount: number;
 }) => {
   const { data: maxRecords } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_RECORDS_PER_TABLE,
+    FlowFlagId.MAX_RECORDS_PER_TABLE,
   );
   const { data: maxFields } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_FIELDS_PER_TABLE,
+    FlowFlagId.MAX_FIELDS_PER_TABLE,
   );
   const recordsPercentage = maxRecords ? (recordsCount / maxRecords) * 100 : 0;
   const fieldsPercentage = maxFields ? (fieldsCount / maxFields) * 100 : 0;

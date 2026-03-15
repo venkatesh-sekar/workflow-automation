@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, FlowFlagId } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronsUpDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -59,7 +59,7 @@ function SidebarLogoFull({ linkTo }: { linkTo?: string }) {
 
 export const AppSidebarHeader = () => {
   const { embedState } = useEmbedding();
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const showSwitcher = edition === FlowEdition.CLOUD && !embedState.isEmbedded;
   const { state } = useSidebar();
   const { platform: currentPlatform } = platformHooks.useCurrentPlatform();

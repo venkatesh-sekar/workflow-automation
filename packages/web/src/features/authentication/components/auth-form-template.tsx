@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   ThirdPartyAuthnProvidersToShowMap,
 } from '@flow/shared';
 import { t } from 'i18next';
@@ -58,7 +58,7 @@ const AuthSeparator = ({
 }) => {
   const { data: thirdPartyAuthProviders } =
     flagsHooks.useFlag<ThirdPartyAuthnProvidersToShowMap>(
-      ApFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
+      FlowFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
     );
 
   return (thirdPartyAuthProviders?.google || thirdPartyAuthProviders?.saml) &&
@@ -76,7 +76,7 @@ const AuthFormTemplate = React.memo(
     const redirectAfterLogin = useRedirectAfterLogin();
     const [showCheckYourEmailNote, setShowCheckYourEmailNote] = useState(false);
     const { data: isEmailAuthEnabled } = flagsHooks.useFlag<boolean>(
-      ApFlagId.EMAIL_AUTH_ENABLED,
+      FlowFlagId.EMAIL_AUTH_ENABLED,
     );
     const isCloud = window.location.hostname === 'cloud.activepieces.com';
     const data = {

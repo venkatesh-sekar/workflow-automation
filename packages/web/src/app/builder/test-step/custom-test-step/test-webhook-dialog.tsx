@@ -1,5 +1,5 @@
 import { HttpMethod } from '@flow/pieces-common';
-import { FlowAction, ApFlagId, FlowTrigger } from '@flow/shared';
+import { FlowAction, FlowFlagId, FlowTrigger } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useState } from 'react';
@@ -85,7 +85,7 @@ const TestTriggerWebhookDialog = ({
   onOpenChange,
 }: TestTriggerWebhookDialogProps) => {
   const { data: webhookPrefixUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.WEBHOOK_URL_PREFIX,
+    FlowFlagId.WEBHOOK_URL_PREFIX,
   );
   const flowId = useBuilderStateContext((state) => state.flow.id);
   const [isLoading, setIsLoading] = useState(false);

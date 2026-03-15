@@ -1,7 +1,7 @@
 import {
   UpsertOAuth2AppRequest,
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   AppConnectionType,
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -71,7 +71,7 @@ export const oauthAppsQueries = {
   },
   usePiecesOAuth2AppsMap() {
     const { platform } = platformHooks.useCurrentPlatform();
-    const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+    const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
 
     return useQuery<PiecesOAuth2AppsMap, Error>({
       queryKey: ['oauth-apps'],

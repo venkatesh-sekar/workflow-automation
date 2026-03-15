@@ -2,7 +2,7 @@ import {
   ApSubscriptionStatus,
   AiCreditsAutoTopUpState,
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   isNil,
 } from '@flow/shared';
 import { t } from 'i18next';
@@ -23,7 +23,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 import { platformHooks } from '@/hooks/platform-hooks';
 
 export default function Billing() {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
 
   return (
     <LockedFeatureGuard
@@ -49,7 +49,7 @@ function BillingPageDetails() {
     isLoading: isPlatformSubscriptionLoading,
     isError,
   } = billingQueries.usePlatformSubscription(platform.id);
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const isCommunity = edition === FlowEdition.COMMUNITY;
   const { mutate: redirectToPortalSession } = billingMutations.usePortalLink();
   const status = platformPlanInfo?.plan?.stripeSubscriptionStatus;

@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   FlowOperationType,
   FlowVersionState,
   Permission,
@@ -52,7 +52,7 @@ export const BuilderHeader = () => {
   const queryClient = useQueryClient();
   const openNewWindow = useNewWindow();
   const { data: showSupport } = flagsHooks.useFlag<boolean>(
-    ApFlagId.SHOW_COMMUNITY,
+    FlowFlagId.SHOW_COMMUNITY,
   );
 
   const hasPermissionToReadRuns = useAuthorization().checkAccess(

@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   FlowRunStatus,
   isFlowRunStateTerminal,
 } from '@flow/shared';
@@ -66,10 +66,10 @@ const RunInfoWidget = () => {
     ? flowRunUtils.getStatusIcon(run.status)
     : { variant: 'default' as const, Icon: CircleHelp };
   const { data: timeoutSeconds } = flagsHooks.useFlag<number>(
-    ApFlagId.FLOW_RUN_TIME_SECONDS,
+    FlowFlagId.FLOW_RUN_TIME_SECONDS,
   );
   const { data: memoryLimit } = flagsHooks.useFlag<number>(
-    ApFlagId.FLOW_RUN_MEMORY_LIMIT_KB,
+    FlowFlagId.FLOW_RUN_MEMORY_LIMIT_KB,
   );
   if (!run) {
     return null;

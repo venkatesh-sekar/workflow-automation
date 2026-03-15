@@ -6,7 +6,7 @@ import {
   PropertyType,
 } from '@flow/pieces-framework';
 import {
-  ApFlagId,
+  FlowFlagId,
   AppConnectionType,
   AppConnectionWithoutSensitiveData,
   BOTH_CLIENT_CREDENTIALS_AND_AUTHORIZATION_CODE,
@@ -78,7 +78,7 @@ function CreateOrEditConnectionSection({
     externalIdComingFromSdk,
   );
   const { data: redirectUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
+    FlowFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
   );
   const form = useForm<ConnectionFormValues>({
     defaultValues: {

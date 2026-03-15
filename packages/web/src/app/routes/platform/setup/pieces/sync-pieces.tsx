@@ -1,4 +1,4 @@
-import { ApFlagId, PieceSyncMode } from '@flow/shared';
+import { FlowFlagId, PieceSyncMode } from '@flow/shared';
 import { RefreshCcw } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,7 @@ import { flagsHooks } from '@/hooks/flags-hooks';
 
 const SyncPiecesButton = () => {
   const { data: piecesSyncMode } = flagsHooks.useFlag<string>(
-    ApFlagId.PIECES_SYNC_MODE,
+    FlowFlagId.PIECES_SYNC_MODE,
   );
   const { mutate: syncPieces, isPending } =
     platformPiecesMutations.useSyncPieces();

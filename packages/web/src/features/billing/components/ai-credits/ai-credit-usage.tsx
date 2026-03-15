@@ -1,7 +1,7 @@
 import {
   AiCreditsAutoTopUpState,
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   PlatformBillingInformation,
 } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
@@ -45,7 +45,7 @@ export function AICreditUsage({ platformSubscription }: AiCreditUsageProps) {
     plan.aiCreditsAutoTopUpState ?? AiCreditsAutoTopUpState.DISABLED;
 
   const canBuyCredits = flagsHooks.useFlag<FlowEdition>(
-    ApFlagId.CAN_BUY_AI_CREDITS,
+    FlowFlagId.CAN_BUY_AI_CREDITS,
   );
   const isAutoTopUpEnabled = autoTopUpState === AiCreditsAutoTopUpState.ENABLED;
 

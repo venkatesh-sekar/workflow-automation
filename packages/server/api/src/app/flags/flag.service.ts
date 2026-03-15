@@ -1,5 +1,5 @@
 import { AppSystemProp, apVersionUtil, webhookSecretsUtils } from '@flow/server-common'
-import { FlowEdition, ApFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
+import { FlowEdition, FlowFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
@@ -18,40 +18,40 @@ export const flagService = (log: FastifyBaseLogger) => ({
             value: flag.value,
         })
     },
-    async getOne(flagId: ApFlagId): Promise<Flag | null> {
+    async getOne(flagId: FlowFlagId): Promise<Flag | null> {
         return flagRepo().findOneBy({ id: flagId })
     },
     async getAll(): Promise<Flag[]> {
         const flags = await flagRepo().findBy({
             id: In([
-                ApFlagId.SHOW_POWERED_BY_IN_FORM,
-                ApFlagId.CLOUD_AUTH_ENABLED,
-                ApFlagId.CURRENT_VERSION,
-                ApFlagId.EDITION,
-                ApFlagId.EMAIL_AUTH_ENABLED,
-                ApFlagId.EXECUTION_DATA_RETENTION_DAYS,
-                ApFlagId.ENVIRONMENT,
-                ApFlagId.PUBLIC_URL,
-                ApFlagId.LATEST_VERSION,
-                ApFlagId.PRIVACY_POLICY_URL,
-                ApFlagId.PRIVATE_PIECES_ENABLED,
-                ApFlagId.FLOW_RUN_TIME_SECONDS,
-                ApFlagId.SHOW_COMMUNITY,
-                ApFlagId.SUPPORTED_APP_WEBHOOKS,
-                ApFlagId.TELEMETRY_ENABLED,
-                ApFlagId.TEMPLATES_PROJECT_ID,
-                ApFlagId.TERMS_OF_SERVICE_URL,
-                ApFlagId.THEME,
-                ApFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
-                ApFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
-                ApFlagId.SAML_AUTH_ACS_URL,
-                ApFlagId.USER_CREATED,
-                ApFlagId.WEBHOOK_URL_PREFIX,
-                ApFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
-                ApFlagId.MAX_FIELDS_PER_TABLE,
-                ApFlagId.MAX_RECORDS_PER_TABLE,
-                ApFlagId.MAX_FILE_SIZE_MB,
-                ApFlagId.TEMPLATES_CATEGORIES,
+                FlowFlagId.SHOW_POWERED_BY_IN_FORM,
+                FlowFlagId.CLOUD_AUTH_ENABLED,
+                FlowFlagId.CURRENT_VERSION,
+                FlowFlagId.EDITION,
+                FlowFlagId.EMAIL_AUTH_ENABLED,
+                FlowFlagId.EXECUTION_DATA_RETENTION_DAYS,
+                FlowFlagId.ENVIRONMENT,
+                FlowFlagId.PUBLIC_URL,
+                FlowFlagId.LATEST_VERSION,
+                FlowFlagId.PRIVACY_POLICY_URL,
+                FlowFlagId.PRIVATE_PIECES_ENABLED,
+                FlowFlagId.FLOW_RUN_TIME_SECONDS,
+                FlowFlagId.SHOW_COMMUNITY,
+                FlowFlagId.SUPPORTED_APP_WEBHOOKS,
+                FlowFlagId.TELEMETRY_ENABLED,
+                FlowFlagId.TEMPLATES_PROJECT_ID,
+                FlowFlagId.TERMS_OF_SERVICE_URL,
+                FlowFlagId.THEME,
+                FlowFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
+                FlowFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
+                FlowFlagId.SAML_AUTH_ACS_URL,
+                FlowFlagId.USER_CREATED,
+                FlowFlagId.WEBHOOK_URL_PREFIX,
+                FlowFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
+                FlowFlagId.MAX_FIELDS_PER_TABLE,
+                FlowFlagId.MAX_RECORDS_PER_TABLE,
+                FlowFlagId.MAX_FILE_SIZE_MB,
+                FlowFlagId.TEMPLATES_CATEGORIES,
             ]),
         })
         const now = dayjs().toISOString()
@@ -61,152 +61,152 @@ export const flagService = (log: FastifyBaseLogger) => ({
         const latestVersion = await apVersionUtil.getLatestRelease()
         flags.push(
             {
-                id: ApFlagId.ENVIRONMENT,
+                id: FlowFlagId.ENVIRONMENT,
                 value: system.get(AppSystemProp.ENVIRONMENT),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.AGENTS_CONFIGURED,
+                id: FlowFlagId.AGENTS_CONFIGURED,
                 // TODO (@abuaboud): add new check
                 value: true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_ALERTS,
+                id: FlowFlagId.SHOW_ALERTS,
                 value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_PROJECT_MEMBERS,
+                id: FlowFlagId.SHOW_PROJECT_MEMBERS,
                 value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.CAN_CONFIGURE_AI_PROVIDER,
+                id: FlowFlagId.CAN_CONFIGURE_AI_PROVIDER,
                 value: true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_BADGES,
+                id: FlowFlagId.SHOW_BADGES,
                 value: true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.CAN_BUY_ACTIVE_FLOWS,
+                id: FlowFlagId.CAN_BUY_ACTIVE_FLOWS,
                 value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.CAN_BUY_AI_CREDITS,
+                id: FlowFlagId.CAN_BUY_AI_CREDITS,
                 value: false,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_BILLING_LIMITS_ON_SIDEBAR,
+                id: FlowFlagId.SHOW_BILLING_LIMITS_ON_SIDEBAR,
                 value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_BILLING_PAGE,
+                id: FlowFlagId.SHOW_BILLING_PAGE,
                 value: system.getEdition() === FlowEdition.CLOUD,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_POWERED_BY_IN_FORM,
+                id: FlowFlagId.SHOW_POWERED_BY_IN_FORM,
                 value: true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.ENABLE_FLOW_ON_PUBLISH,
+                id: FlowFlagId.ENABLE_FLOW_ON_PUBLISH,
                 value: system.getBoolean(AppSystemProp.ENABLE_FLOW_ON_PUBLISH) ?? true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.EXECUTION_DATA_RETENTION_DAYS,
+                id: FlowFlagId.EXECUTION_DATA_RETENTION_DAYS,
                 value: system.getNumber(AppSystemProp.EXECUTION_DATA_RETENTION_DAYS),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.CLOUD_AUTH_ENABLED,
+                id: FlowFlagId.CLOUD_AUTH_ENABLED,
                 value: system.getBoolean(AppSystemProp.CLOUD_AUTH_ENABLED) ?? true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.EDITION,
+                id: FlowFlagId.EDITION,
                 value: system.getEdition(),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
+                id: FlowFlagId.THIRD_PARTY_AUTH_PROVIDERS_TO_SHOW_MAP,
                 value: {},
                 created,
                 updated,
             },
             {
-                id: ApFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
+                id: FlowFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
                 value: '',
                 created,
                 updated,
             },
             {
-                id: ApFlagId.EMAIL_AUTH_ENABLED,
+                id: FlowFlagId.EMAIL_AUTH_ENABLED,
                 value: true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.THEME,
+                id: FlowFlagId.THEME,
                 value: defaultTheme,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.SHOW_COMMUNITY,
+                id: FlowFlagId.SHOW_COMMUNITY,
                 value: system.getEdition() !== FlowEdition.ENTERPRISE,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.PRIVATE_PIECES_ENABLED,
+                id: FlowFlagId.PRIVATE_PIECES_ENABLED,
                 value: system.getEdition() !== FlowEdition.COMMUNITY,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.PRIVACY_POLICY_URL,
+                id: FlowFlagId.PRIVACY_POLICY_URL,
                 value: 'https://www.activepieces.com/privacy',
                 created,
                 updated,
             },
             {
-                id: ApFlagId.TERMS_OF_SERVICE_URL,
+                id: FlowFlagId.TERMS_OF_SERVICE_URL,
                 value: 'https://www.activepieces.com/terms',
                 created,
                 updated,
             },
             {
-                id: ApFlagId.TELEMETRY_ENABLED,
+                id: FlowFlagId.TELEMETRY_ENABLED,
                 value: system.getBoolean(AppSystemProp.TELEMETRY_ENABLED) ?? true,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.PUBLIC_URL,
+                id: FlowFlagId.PUBLIC_URL,
                 value: await domainHelper.getPublicUrl({
                     path: '',
                 }),
@@ -214,61 +214,61 @@ export const flagService = (log: FastifyBaseLogger) => ({
                 updated,
             },
             {
-                id: ApFlagId.FLOW_RUN_TIME_SECONDS,
+                id: FlowFlagId.FLOW_RUN_TIME_SECONDS,
                 value: system.getNumberOrThrow(AppSystemProp.FLOW_TIMEOUT_SECONDS),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.FLOW_RUN_MEMORY_LIMIT_KB,
+                id: FlowFlagId.FLOW_RUN_MEMORY_LIMIT_KB,
                 value: system.getNumber(AppSystemProp.SANDBOX_MEMORY_LIMIT),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.PAUSED_FLOW_TIMEOUT_DAYS,
+                id: FlowFlagId.PAUSED_FLOW_TIMEOUT_DAYS,
                 value: system.getNumber(AppSystemProp.PAUSED_FLOW_TIMEOUT_DAYS),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.WEBHOOK_TIMEOUT_SECONDS,
+                id: FlowFlagId.WEBHOOK_TIMEOUT_SECONDS,
                 value: system.getNumber(AppSystemProp.WEBHOOK_TIMEOUT_SECONDS),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.CURRENT_VERSION,
+                id: FlowFlagId.CURRENT_VERSION,
                 value: currentVersion,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.LATEST_VERSION,
+                id: FlowFlagId.LATEST_VERSION,
                 value: latestVersion,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
+                id: FlowFlagId.ALLOW_NPM_PACKAGES_IN_CODE_STEP,
                 value: system.get(AppSystemProp.EXECUTION_MODE) !== ExecutionMode.SANDBOX_CODE_ONLY,
                 created,
                 updated,
             },
             {
-                id: ApFlagId.MAX_RECORDS_PER_TABLE,
+                id: FlowFlagId.MAX_RECORDS_PER_TABLE,
                 value: system.getNumber(AppSystemProp.MAX_RECORDS_PER_TABLE),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.MAX_FIELDS_PER_TABLE,
+                id: FlowFlagId.MAX_FIELDS_PER_TABLE,
                 value: system.getNumber(AppSystemProp.MAX_FIELDS_PER_TABLE),
                 created,
                 updated,
             },
             {
-                id: ApFlagId.MAX_FILE_SIZE_MB,
+                id: FlowFlagId.MAX_FILE_SIZE_MB,
                 value: system.getNumber(AppSystemProp.MAX_FILE_SIZE_MB),
                 created,
                 updated,
@@ -278,7 +278,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
         if (system.isApp()) {
             flags.push(
                 {
-                    id: ApFlagId.WEBHOOK_URL_PREFIX,
+                    id: FlowFlagId.WEBHOOK_URL_PREFIX,
                     value: await domainHelper.getPublicApiUrl({
                         path: 'v1/webhooks',
                     }),
@@ -286,7 +286,7 @@ export const flagService = (log: FastifyBaseLogger) => ({
                     updated,
                 },
                 {
-                    id: ApFlagId.SUPPORTED_APP_WEBHOOKS,
+                    id: FlowFlagId.SUPPORTED_APP_WEBHOOKS,
                     value: getSupportedAppWebhooks(),
                     created,
                     updated,
@@ -313,13 +313,13 @@ function getSupportedAppWebhooks(): string[] {
 }
 
 export type FlagType =
-    | BaseFlagStructure<ApFlagId.PUBLIC_URL, string>
-    | BaseFlagStructure<ApFlagId.TELEMETRY_ENABLED, boolean>
-    | BaseFlagStructure<ApFlagId.USER_CREATED, boolean>
-    | BaseFlagStructure<ApFlagId.WEBHOOK_URL_PREFIX, string>
-    | BaseFlagStructure<ApFlagId.TEMPLATES_CATEGORIES, string[]>
+    | BaseFlagStructure<FlowFlagId.PUBLIC_URL, string>
+    | BaseFlagStructure<FlowFlagId.TELEMETRY_ENABLED, boolean>
+    | BaseFlagStructure<FlowFlagId.USER_CREATED, boolean>
+    | BaseFlagStructure<FlowFlagId.WEBHOOK_URL_PREFIX, string>
+    | BaseFlagStructure<FlowFlagId.TEMPLATES_CATEGORIES, string[]>
 
-type BaseFlagStructure<K extends ApFlagId, V> = {
+type BaseFlagStructure<K extends FlowFlagId, V> = {
     id: K
     value: V
 }

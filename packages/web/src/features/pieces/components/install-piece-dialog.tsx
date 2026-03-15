@@ -1,6 +1,6 @@
 import {
   AddPieceRequestBody,
-  ApFlagId,
+  FlowFlagId,
   PackageType,
   PieceScope,
 } from '@flow/shared';
@@ -68,7 +68,7 @@ const InstallPieceDialog = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: privatePiecesEnabled } = flagsHooks.useFlag<boolean>(
-    ApFlagId.PRIVATE_PIECES_ENABLED,
+    FlowFlagId.PRIVATE_PIECES_ENABLED,
   );
 
   const form = useForm<z.infer<typeof FormSchema>>({

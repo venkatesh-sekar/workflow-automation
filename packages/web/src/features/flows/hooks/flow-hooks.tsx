@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   FlowOperationType,
   FlowStatus,
   FlowVersion,
@@ -68,7 +68,7 @@ export const flowHooks = {
     setIsPublishing,
   }: UseChangeFlowStatusParams) => {
     const { data: enableFlowOnPublish } = flagsHooks.useFlag<boolean>(
-      ApFlagId.ENABLE_FLOW_ON_PUBLISH,
+      FlowFlagId.ENABLE_FLOW_ON_PUBLISH,
     );
     const socket = useSocket();
     const { openDialog } = useApErrorDialogStore();

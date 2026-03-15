@@ -1,6 +1,6 @@
 import {
   FlowEdition,
-  ApFlagId,
+  FlowFlagId,
   WorkerMachineStatus,
   WorkerMachineWithStatus,
 } from '@flow/shared';
@@ -87,7 +87,7 @@ const DEMO_WORKERS_DATA: WorkerMachineWithStatus[] = [
 ];
 
 export default function WorkersPage() {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const showDemoData = edition === FlowEdition.CLOUD;
   const { data: workersData, isLoading } = workersQueries.useWorkerMachines(
     showDemoData,

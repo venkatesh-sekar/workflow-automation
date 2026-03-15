@@ -1,4 +1,4 @@
-import { PlatformRole, ApFlagId } from '@flow/shared';
+import { PlatformRole, FlowFlagId } from '@flow/shared';
 import { t } from 'i18next';
 
 import { CenteredPage } from '@/app/components/centered-page';
@@ -18,7 +18,7 @@ export default function AIProvidersPage() {
   const { data: providers, refetch } = aiProviderQueries.useAiProviders();
   const { data: currentUser } = userHooks.useCurrentUser();
   const { data: flags } = flagsHooks.useFlags();
-  const allowWrite = flags?.[ApFlagId.CAN_CONFIGURE_AI_PROVIDER] === true;
+  const allowWrite = flags?.[FlowFlagId.CAN_CONFIGURE_AI_PROVIDER] === true;
 
   const { mutate: deleteProvider, isPending: isDeleting } =
     aiProviderMutations.useDeleteAiProvider({

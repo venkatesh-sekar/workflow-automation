@@ -44,3 +44,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #7 - rename-ap-core-types
+- **Change:** Renamed ApFlagId→FlowFlagId (enum + all references, 182 occurrences across 49 files)
+- **Files:** 49 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

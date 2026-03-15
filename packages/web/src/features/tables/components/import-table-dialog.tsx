@@ -1,4 +1,4 @@
-import { ApFlagId, SharedTemplate, TableTemplate, TemplateScope } from '@flow/shared';
+import { FlowFlagId, SharedTemplate, TableTemplate, TemplateScope } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { Import } from 'lucide-react';
@@ -64,10 +64,10 @@ const ImportTableDialog = ({
   const [csvRecords, setCsvRecords] = useState<string[][]>([]);
   const [fileType, setFileType] = useState<SupportedFileType | null>(null);
   const { data: maxFileSize } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_FILE_SIZE_MB,
+    FlowFlagId.MAX_FILE_SIZE_MB,
   );
   const { data: maxRecords } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_RECORDS_PER_TABLE,
+    FlowFlagId.MAX_RECORDS_PER_TABLE,
   );
 
   const tableStore = useOptionalTableStore();

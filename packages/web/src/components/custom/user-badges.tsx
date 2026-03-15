@@ -1,4 +1,4 @@
-import { ApFlagId, BADGES, UserWithBadges } from '@flow/shared';
+import { FlowFlagId, BADGES, UserWithBadges } from '@flow/shared';
 import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 
@@ -21,7 +21,7 @@ export const UserBadges = ({
   showBorder = false,
 }: UserBadgesProps) => {
   const { data: showBadges } = flagsHooks.useFlag<boolean>(
-    ApFlagId.SHOW_BADGES,
+    FlowFlagId.SHOW_BADGES,
   );
 
   if (!showBadges) {

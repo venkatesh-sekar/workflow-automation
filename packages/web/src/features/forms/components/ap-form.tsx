@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   FileResponseInterface,
   FormInput,
   FormInputType,
@@ -141,7 +141,7 @@ const ApForm = ({ form, useDraft }: ApFormProps) => {
 
   const [markdownResponse, setMarkdownResponse] = useState<string | null>(null);
   const { data: showPoweredBy } = flagsHooks.useFlag<boolean>(
-    ApFlagId.SHOW_POWERED_BY_IN_FORM,
+    FlowFlagId.SHOW_POWERED_BY_IN_FORM,
   );
   const reactForm = useForm({
     defaultValues,

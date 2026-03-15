@@ -12,7 +12,7 @@ import {
   PieceOptionRequest,
   PlatformWithoutSensitiveData,
   FlowTriggerType,
-  ApFlagId,
+  FlowFlagId,
   FlowEnvironment,
   TelemetryEventName,
 } from '@flow/shared';
@@ -177,7 +177,7 @@ export const piecesHooks = {
     const { selectedTab } = usePieceSelectorTabs();
     const { capture } = useTelemetry();
     const { data: environment } = flagsHooks.useFlag<FlowEnvironment>(
-      ApFlagId.ENVIRONMENT,
+      FlowFlagId.ENVIRONMENT,
     );
     const { metadata, isLoading: isLoadingPieces } =
       stepsHooks.useAllStepsMetadata(props);

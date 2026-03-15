@@ -1,4 +1,4 @@
-import { FlowEdition, ApFlagId } from '@flow/shared';
+import { FlowEdition, FlowFlagId } from '@flow/shared';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import { GlobalSearchProvider } from './global-search/global-search-context';
 import { PlatformSidebar } from './sidebar/platform';
 
 export function PlatformLayout({ children }: { children: React.ReactNode }) {
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(ApFlagId.EDITION);
+  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const showPlatformAdminDashboard = useIsPlatformAdmin();
 
   return (

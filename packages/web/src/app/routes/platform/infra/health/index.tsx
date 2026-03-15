@@ -1,4 +1,4 @@
-import { ApFlagId } from '@flow/shared';
+import { FlowFlagId } from '@flow/shared';
 import { t } from 'i18next';
 import { Cpu, HardDrive, MemoryStick, Package } from 'lucide-react';
 import React from 'react';
@@ -12,10 +12,10 @@ import { CheckItem } from './check-item';
 
 export default function SettingsHealthPage() {
   const { data: currentVersion } = flagsHooks.useFlag<string>(
-    ApFlagId.CURRENT_VERSION,
+    FlowFlagId.CURRENT_VERSION,
   );
   const { data: latestVersion } = flagsHooks.useFlag<string>(
-    ApFlagId.LATEST_VERSION,
+    FlowFlagId.LATEST_VERSION,
   );
   const { data: systemHealth, isPending } = healthQueries.useSystemHealth();
 

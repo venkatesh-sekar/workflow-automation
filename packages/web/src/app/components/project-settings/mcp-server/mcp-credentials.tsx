@@ -1,4 +1,4 @@
-import { ApFlagId, Permission, PopulatedMcpServer } from '@flow/shared';
+import { FlowFlagId, Permission, PopulatedMcpServer } from '@flow/shared';
 import { t } from 'i18next';
 import { Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
   const { mutate: rotateToken, isPending: isRotating } =
     mcpHooks.useRotateMcpToken(currentProjectId!);
 
-  const { data: publicUrl } = flagsHooks.useFlag<string>(ApFlagId.PUBLIC_URL);
+  const { data: publicUrl } = flagsHooks.useFlag<string>(FlowFlagId.PUBLIC_URL);
   const baseUrl = publicUrl?.replace(/\/$/, '') ?? '';
   const serverUrl = `${baseUrl}/api/v1/projects/${currentProjectId}/mcp-server/http`;
 

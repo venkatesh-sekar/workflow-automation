@@ -1,4 +1,4 @@
-import { ApFlagId, Permission } from '@flow/shared';
+import { FlowFlagId, Permission } from '@flow/shared';
 import { nanoid } from 'nanoid';
 import { useRef, useEffect } from 'react';
 import DataGrid, { DataGridHandle } from 'react-data-grid';
@@ -47,7 +47,7 @@ const ApTableEditorPage = () => {
   const gridRef = useRef<DataGridHandle>(null);
   const { theme } = useTheme();
   const { data: maxRecords } = flagsHooks.useFlag<number>(
-    ApFlagId.MAX_RECORDS_PER_TABLE,
+    FlowFlagId.MAX_RECORDS_PER_TABLE,
   );
   const userHasTableWritePermission = useAuthorization().checkAccess(
     Permission.WRITE_TABLE,

@@ -6,7 +6,7 @@ import {
 } from '@flow/pieces-framework';
 import {
   resolveValueFromProps,
-  ApFlagId,
+  FlowFlagId,
   AppConnectionType,
   OAuth2GrantType,
   UpsertCloudOAuth2Request,
@@ -54,7 +54,7 @@ function OAuth2ConnectionSettings({
   const isConnectButtonEnabled =
     isClientIdValid && isClientSecretValid && isPropsValid;
   const { data: thirdPartyUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
+    FlowFlagId.THIRD_PARTY_AUTH_PROVIDER_REDIRECT_URL,
   );
   const redirectUrl =
     oauth2App.oauth2Type === AppConnectionType.CLOUD_OAUTH2

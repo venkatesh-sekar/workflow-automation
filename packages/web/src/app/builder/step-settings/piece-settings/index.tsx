@@ -1,5 +1,5 @@
 import {
-  ApFlagId,
+  FlowFlagId,
   isNil,
   PieceAction,
   PieceActionSettings,
@@ -54,18 +54,18 @@ const PieceSettings = React.memo((props: PieceSettingsProps) => {
   );
 
   const { data: webhookPrefixUrl } = flagsHooks.useFlag<string>(
-    ApFlagId.WEBHOOK_URL_PREFIX,
+    FlowFlagId.WEBHOOK_URL_PREFIX,
   );
 
   const { data: pausedFlowTimeoutDays } = flagsHooks.useFlag<number>(
-    ApFlagId.PAUSED_FLOW_TIMEOUT_DAYS,
+    FlowFlagId.PAUSED_FLOW_TIMEOUT_DAYS,
   );
 
   const { data: webhookTimeoutSeconds } = flagsHooks.useFlag<number>(
-    ApFlagId.WEBHOOK_TIMEOUT_SECONDS,
+    FlowFlagId.WEBHOOK_TIMEOUT_SECONDS,
   );
 
-  const { data: frontendUrl } = flagsHooks.useFlag<string>(ApFlagId.PUBLIC_URL);
+  const { data: frontendUrl } = flagsHooks.useFlag<string>(FlowFlagId.PUBLIC_URL);
   const markdownVariables = {
     webhookUrl: `${webhookPrefixUrl}/${props.flowId}`,
     formUrl: `${frontendUrl}forms/${props.flowId}`,

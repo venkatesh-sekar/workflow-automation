@@ -1,4 +1,4 @@
-import { ApFlagId } from '@flow/shared';
+import { FlowFlagId } from '@flow/shared';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { flagsApi, FlagsMap } from '../api/flags-api';
@@ -29,10 +29,10 @@ export const flagsHooks = {
     });
   },
   useWebsiteBranding: () => {
-    const { data: theme } = flagsHooks.useFlag<WebsiteBrand>(ApFlagId.THEME);
+    const { data: theme } = flagsHooks.useFlag<WebsiteBrand>(FlowFlagId.THEME);
     return theme!;
   },
-  useFlag: <T>(flagId: ApFlagId) => {
+  useFlag: <T>(flagId: FlowFlagId) => {
     const data = useSuspenseQuery<FlagsMap, Error>({
       queryKey: ['flags'],
       queryFn: flagsApi.getAll,
