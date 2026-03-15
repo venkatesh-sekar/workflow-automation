@@ -25,6 +25,7 @@ import { z } from 'zod'
 import { auditEventService } from '../audit-event/audit-event.service'
 import { platformMustBeOwnedByCurrentUser, platformMustHaveFeatureEnabled, projectMustBeTeamType } from '../helper/ee-authorization-stub'
 import { projectService } from '../project/project-service'
+import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { userService } from '../user/user-service'
 import { userInvitationsService } from './user-invitation.service'
 
@@ -161,8 +162,8 @@ async function shouldAutoAcceptInvitation(principal: Principal, request: SendUse
         return false
     }
     
-    const user = await userService(log).getOneByEmail({ email: request.email })
-    return !isNil(user)
+    const identity = await userIdentityService(log).getIdentityByEmail(request.email)
+    return !isNil(identity)
 }
 
 async function assertPrincipalHasPermissionToProject<R extends Principal & { platform: { id: string } }>(

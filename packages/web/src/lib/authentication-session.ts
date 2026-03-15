@@ -6,8 +6,6 @@ import {
 import dayjs from 'dayjs';
 import { jwtDecode } from 'jwt-decode';
 
-import { authenticationApi } from '@/api/authentication-api';
-
 import { ApStorage } from './ap-browser-storage';
 const tokenKey = 'token';
 const projectIdKey = 'projectId';
@@ -80,16 +78,9 @@ export const authenticationSession = {
     const decodedJwt = getDecodedJwt(token);
     return decodedJwt.platform.id;
   },
-  async switchToPlatform(platformId: string) {
-    if (authenticationSession.getPlatformId() === platformId) {
-      return;
-    }
-    const result = await authenticationApi.switchPlatform({
-      platformId,
-    });
-    ApStorage.getInstance().setItem(tokenKey, result.token);
-    ApStorage.getInstance().setItem(projectIdKey, result.projectId);
-    window.location.href = '/';
+  async switchToPlatform(_platformId: string) {
+    // switchPlatform API is not available in team-auth mode.
+    // No-op to prevent runtime errors.
   },
   switchToProject(projectId: string) {
     if (authenticationSession.getProjectId() === projectId) {

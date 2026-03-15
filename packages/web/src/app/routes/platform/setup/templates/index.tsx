@@ -1,4 +1,4 @@
-import { Template, TemplateType } from '@activepieces/shared';
+import { Template } from '@activepieces/shared';
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
@@ -41,9 +41,7 @@ const PlatformTemplatesPage = () => {
     queryKey: ['templates', searchParams.toString()],
     staleTime: 0,
     queryFn: () => {
-      return templatesApi.list({
-        type: TemplateType.CUSTOM,
-      });
+      return templatesApi.list({});
     },
   });
 

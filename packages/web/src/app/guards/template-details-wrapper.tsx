@@ -1,11 +1,11 @@
-import { TemplateType, isNil } from '@activepieces/shared';
+import { isNil } from '@activepieces/shared';
 import { Navigate, useParams, useLocation } from 'react-router-dom';
 
 import { PageTitle } from '@/app/components/page-title';
 import { ProjectDashboardLayout } from '@/app/components/project-layout';
 import { TemplateDetailsPage } from '@/app/routes/templates/id';
 import { LoadingScreen } from '@/components/custom/loading-screen';
-import { ShareTemplate, templatesHooks } from '@/features/templates';
+import { templatesHooks } from '@/features/templates';
 import { authenticationSession } from '@/lib/authentication-session';
 import { FROM_QUERY_PARAM } from '@/lib/navigation-utils';
 
@@ -24,9 +24,8 @@ const TemplateDetailsWrapper = () => {
 
   const token = authenticationSession.getToken();
   const isNotAuthenticated = isNil(token);
-  const useProjectLayout = template.type !== TemplateType.SHARED;
 
-  if (isNotAuthenticated && useProjectLayout) {
+  if (isNotAuthenticated) {
     return (
       <Navigate
         to={`/login?${FROM_QUERY_PARAM}=${location.pathname}${location.search}`}
@@ -41,11 +40,7 @@ const TemplateDetailsWrapper = () => {
     </PageTitle>
   );
 
-  if (useProjectLayout) {
-    return <ProjectDashboardLayout>{content}</ProjectDashboardLayout>;
-  }
-
-  return <ShareTemplate template={template} />;
+  return <ProjectDashboardLayout>{content}</ProjectDashboardLayout>;
 };
 
 export { TemplateDetailsWrapper };

@@ -20,7 +20,7 @@ import { useRedirectAfterLogin } from '@/lib/navigation-utils';
 import { HorizontalSeparatorWithText } from '../../../components/ui/separator';
 import { flagsHooks } from '../../../hooks/flags-hooks';
 
-import { SignInForm } from './login-form';
+import { SignInForm } from './sign-in-form';
 import { SignUpForm } from './sign-up-form';
 import { ThirdPartyLogin } from './third-party-logins';
 

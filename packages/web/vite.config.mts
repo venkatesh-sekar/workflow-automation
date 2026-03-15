@@ -32,6 +32,10 @@ export default defineConfig(({ command, mode }) => {
             Host: '127.0.0.1:4200',
           },
           ws: true,
+          configure: (proxy) => {
+            // Silence ECONNRESET errors when backend restarts during dev
+            proxy.on('error', () => {});
+          },
         },
       },
       port: 4200,

@@ -22,6 +22,7 @@ import { buildPaginator } from '../helper/pagination/build-paginator'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
 import { platformService } from '../platform/platform.service'
 import { projectService } from '../project/project-service'
+import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { userService } from '../user/user-service'
 import { UserInvitationEntity } from './user-invitation.entity'
 
@@ -197,9 +198,15 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
         await repo().update(invitation.id, {
             status: InvitationStatus.ACCEPTED,
         })
-        const existingUser = await userService(log).getOneByPlatformAndEmail({
+        const identity = await userIdentityService(log).getIdentityByEmail(invitation.email)
+        if (isNil(identity)) {
+            return {
+                registered: false,
+            }
+        }
+        const existingUser = await userService(log).getOneByIdentityAndPlatform({
+            identityId: identity.id,
             platformId: invitation.platformId,
-            email: invitation.email,
         })
         if (isNil(existingUser)) {
             return {
@@ -207,9 +214,7 @@ export const userInvitationsService = (log: FastifyBaseLogger) => ({
             }
         }
         const user = await userService(log).getOrCreateWithProject({
-            email: invitation.email,
-            firstName: existingUser.firstName,
-            lastName: existingUser.lastName,
+            identity,
             platformId: invitation.platformId,
         })
         await this.provisionUserInvitation({

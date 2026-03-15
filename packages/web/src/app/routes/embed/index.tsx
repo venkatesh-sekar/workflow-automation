@@ -112,7 +112,7 @@ const EmbedPage = React.memo(() => {
     ) {
       if (event.data.data.jwtToken) {
         if (event.data.data.mode) {
-          setTheme(event.data.data.mode);
+          setTheme(event.data.data.mode as 'dark' | 'light' | 'system');
         }
         mutateAsync(
           {
@@ -130,7 +130,7 @@ const EmbedPage = React.memo(() => {
               //must use it to ensure that the correct router in RouterProvider is used before navigation
               flushSync(() => {
                 setEmbedState({
-                  hideSideNav: event.data.data.hideSidebar,
+                  hideSideNav: event.data.data.hideSidebar ?? false,
                   isEmbedded: true,
                   hideFlowNameInBuilder:
                     event.data.data.hideFlowNameInBuilder ?? false,
@@ -148,10 +148,10 @@ const EmbedPage = React.memo(() => {
                     event.data.data.disableNavigationInBuilder ===
                     'keep_home_button_only'
                       ? false
-                      : event.data.data.disableNavigationInBuilder,
+                      : (event.data.data.disableNavigationInBuilder ?? false),
                   emitHomeButtonClickedEvent:
                     event.data.data.emitHomeButtonClickedEvent ?? false,
-                  homeButtonIcon: event.data.data.homeButtonIcon ?? 'logo',
+                  homeButtonIcon: (event.data.data.homeButtonIcon ?? 'logo') as 'logo' | 'back',
                   hideDuplicateFlow: event.data.data.hideDuplicateFlow ?? false,
                   hideFlowsPageNavbar:
                     event.data.data.hideFlowsPageNavbar ?? false,

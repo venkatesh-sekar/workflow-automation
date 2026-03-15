@@ -2,6 +2,7 @@ import { AnalyticsFlowReportItem, AnalyticsRunsUsageItem, AnalyticsTimePeriod, a
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
+import { userIdentityRepository } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { distributedLock } from '../database/redis-connections'
 import { flowService } from '../flows/flow/flow.service'
@@ -161,19 +162,24 @@ async function listUsers(platformId: PlatformId): Promise<UserWithMetaInformatio
             platformId,
         },
     })
-    return users.map((user) => {
+    const usersWithMeta = await Promise.all(users.map(async (user) => {
+        const identity = await userIdentityRepository().findOneByOrFail({ id: user.identityId })
         return {
             id: user.id,
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            email: identity.email,
+            firstName: identity.firstName,
+            lastName: identity.lastName,
             status: user.status,
             lastActiveDate: user.lastActiveDate,
             platformRole: user.platformRole,
             created: user.created,
             updated: user.updated,
+            externalId: user.externalId,
+            platformId: user.platformId,
+            imageUrl: identity.imageUrl,
         }
-    })
+    }))
+    return usersWithMeta
 }
 
 async function listProjects(platformId: PlatformId): Promise<{ id: string, displayName: string }[]> {

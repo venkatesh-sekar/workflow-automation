@@ -15,6 +15,7 @@ import {
   ErrorCode,
   SeekPage,
   Template,
+  TemplateScope,
   UncategorizedFolderId,
   UpdateRunProgressRequest,
 } from '@activepieces/shared';
@@ -318,7 +319,7 @@ export const flowHooks = {
           metadata: template.metadata,
           author,
           categories: template.categories,
-          type: template.type,
+          scope: TemplateScope.TEAM,
           flows: template.flows,
         });
         return flowTemplate;

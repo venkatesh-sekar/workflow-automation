@@ -1,7 +1,6 @@
 import {
   Permission,
   Template,
-  TemplateType,
   UncategorizedFolderId,
 } from '@activepieces/shared';
 import { t } from 'i18next';
@@ -28,7 +27,6 @@ import { tableHooks } from '@/features/tables/hooks/table-hooks';
 import { templatesHooks } from '@/features/templates/hooks/templates-hook';
 import { useGradientFromPieces } from '@/features/templates/hooks/use-gradient-from-pieces';
 import { useAuthorization } from '@/hooks/authorization-hooks';
-import { platformHooks } from '@/hooks/platform-hooks';
 
 type ActionRowProps = {
   icon: React.ReactNode;
@@ -204,13 +202,8 @@ export const AutomationsEmptyState = ({
   const userHasPermissionToWriteFlow = checkAccess(Permission.WRITE_FLOW);
   const userHasPermissionToWriteTable = checkAccess(Permission.WRITE_TABLE);
 
-  const { platform } = platformHooks.useCurrentPlatform();
-  const isShowingOfficialTemplates = !platform.plan.manageTemplatesEnabled;
-
   const { templates, isLoading: isLoadingTemplates } =
-    templatesHooks.useTemplates(
-      isShowingOfficialTemplates ? TemplateType.OFFICIAL : TemplateType.CUSTOM,
-    );
+    templatesHooks.useTemplates();
 
   const { mutate: createFlow, isPending: isCreateFlowPending } =
     flowHooks.useStartFromScratch(UncategorizedFolderId);

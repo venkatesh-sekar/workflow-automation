@@ -5,7 +5,6 @@ import {
   apId,
   FlowStatus,
   FlowOperationStatus,
-  TemplateType,
   Template,
 } from '@activepieces/shared';
 import { ReactFlowProvider } from '@xyflow/react';
@@ -133,27 +132,25 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
 
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden absolute inset-0">
-      {template.type !== TemplateType.SHARED && (
-        <div className="border-b py-4 px-6 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2 min-w-0">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate('/templates')}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-medium whitespace-nowrap">
-                {t('All Templates')}
-              </span>
-            </Button>
-          </div>
-          <Button variant="outline" size="sm" onClick={handleShare}>
-            <Link className="w-4 h-4" />
-            {t('Share')}
+      <div className="border-b py-4 px-6 flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-2 min-w-0">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate('/templates')}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-sm font-medium whitespace-nowrap">
+              {t('All Templates')}
+            </span>
           </Button>
         </div>
-      )}
+        <Button variant="outline" size="sm" onClick={handleShare}>
+          <Link className="w-4 h-4" />
+          {t('Share')}
+        </Button>
+      </div>
       <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] h-full w-full overflow-hidden">
           <ScrollArea className="h-full w-full">
@@ -185,17 +182,15 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                     {t('Use Template')}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                  {template.type !== TemplateType.SHARED && (
-                    <Button
-                      variant="outline"
-                      onClick={handleUseWithGuide}
-                      size="xl"
-                      className="flex-1"
-                    >
-                      {t('Setup guide')}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
-                  )}
+                  <Button
+                    variant="outline"
+                    onClick={handleUseWithGuide}
+                    size="xl"
+                    className="flex-1"
+                  >
+                    {t('Setup guide')}
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
 
                 <div className="flex flex-col gap-2">

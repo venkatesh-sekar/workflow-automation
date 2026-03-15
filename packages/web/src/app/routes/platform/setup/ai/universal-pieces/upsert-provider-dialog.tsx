@@ -82,7 +82,8 @@ export const UpsertAIProviderDialogContent = ({
   );
 
   const form = useForm<CreateAIProviderRequest>({
-    resolver: zodResolver(createFormSchema(!isNil(providerId))),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(createFormSchema(!isNil(providerId))) as any,
     defaultValues: {
       provider,
       displayName: defaultDisplayName,

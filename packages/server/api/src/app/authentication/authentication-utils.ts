@@ -7,6 +7,7 @@ import { projectService } from '../project/project-service'
 import { userService } from '../user/user-service'
 import { userInvitationsService } from '../user-invitations/user-invitation.service'
 import { accessTokenManager } from './lib/access-token-manager'
+import { userIdentityService } from './user-identity/user-identity-service'
 
 export const authenticationUtils = (log: FastifyBaseLogger) => ({
     async assertUserIsInvitedToPlatformOrProject({
@@ -46,11 +47,12 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
                 },
             })
         }
-        if (!user.verified) {
+        const identity = await userIdentityService(log).getOneOrFail({ id: user.identityId })
+        if (!identity.verified) {
             throw new ActivepiecesError({
                 code: ErrorCode.EMAIL_IS_NOT_VERIFIED,
                 params: {
-                    email: user.email,
+                    email: identity.email,
                 },
             })
         }
@@ -58,7 +60,7 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             throw new ActivepiecesError({
                 code: ErrorCode.USER_IS_INACTIVE,
                 params: {
-                    email: user.email,
+                    email: identity.email,
                 },
             })
         }
@@ -68,10 +70,14 @@ export const authenticationUtils = (log: FastifyBaseLogger) => ({
             platform: {
                 id: params.platformId,
             },
-            tokenVersion: user.tokenVersion ?? undefined,
+            tokenVersion: identity.tokenVersion,
         })
         return {
             ...user,
+            firstName: identity.firstName,
+            lastName: identity.lastName,
+            email: identity.email,
+            verified: identity.verified,
             token,
             projectId: project.id,
         }

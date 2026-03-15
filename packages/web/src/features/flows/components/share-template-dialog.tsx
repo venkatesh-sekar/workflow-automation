@@ -1,4 +1,4 @@
-import { Template } from '@activepieces/shared';
+import { Template, TemplateScope } from '@activepieces/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
@@ -65,7 +65,7 @@ const ShareTemplateDialog: React.FC<{
         metadata: template.metadata,
         author,
         categories: template.categories,
-        type: template.type,
+        scope: TemplateScope.TEAM,
         flows: template.flows,
       });
 

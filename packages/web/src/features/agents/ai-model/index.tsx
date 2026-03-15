@@ -28,14 +28,7 @@ type AIModelSelectorProps = {
   onChange: (value: { provider?: string; model?: string }) => void;
 };
 
-const ACTIVEPIECES_PROVIDER_CONFIG = {
-  provider: AIProviderName.ACTIVEPIECES,
-  name: 'Flow',
-  markdown: '',
-  logoUrl: 'https://cdn.activepieces.com/pieces/activepieces.png',
-};
-
-const ALL_PROVIDERS = [...SUPPORTED_AI_PROVIDERS, ACTIVEPIECES_PROVIDER_CONFIG];
+const ALL_PROVIDERS = [...SUPPORTED_AI_PROVIDERS];
 
 export function AIModelSelector({
   defaultProvider,
@@ -70,28 +63,18 @@ export function AIModelSelector({
     [providers],
   );
 
-  const activepiecesProvider = React.useMemo(
-    () => providers.find((p) => p.provider === AIProviderName.ACTIVEPIECES),
-    [providers],
-  );
-
   const sortedProviders = React.useMemo(() => {
-    return [...providers].sort((a, b) => {
-      if (a.provider === AIProviderName.ACTIVEPIECES) return -1;
-      if (b.provider === AIProviderName.ACTIVEPIECES) return 1;
-      return 0;
-    });
+    return [...providers];
   }, [providers]);
 
   React.useEffect(() => {
     if (!selectedProvider && !providersLoading && providers.length > 0) {
-      const preferred =
-        activepiecesProvider?.provider || providers[0]?.provider;
+      const preferred = providers[0]?.provider;
       if (preferred) {
         setSelectedProvider(preferred as AIProviderName);
       }
     }
-  }, [providers, providersLoading, selectedProvider, activepiecesProvider]);
+  }, [providers, providersLoading, selectedProvider]);
 
   React.useEffect(() => {
     if (

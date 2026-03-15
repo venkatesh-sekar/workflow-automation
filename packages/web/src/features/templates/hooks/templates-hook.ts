@@ -1,4 +1,4 @@
-import { Template, TemplateType } from '@activepieces/shared';
+import { Template } from '@activepieces/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useSearchParams } from 'react-router-dom';
@@ -30,16 +30,14 @@ export const templatesHooks = {
     return useQuery<Template[], Error>({
       queryKey: ['templates', 'all'],
       queryFn: async () => {
-        const result = await templatesApi.list({
-          type: TemplateType.OFFICIAL,
-        });
+        const result = await templatesApi.list({});
         return result.data;
       },
       staleTime: 5 * 60 * 1000,
     });
   },
 
-  useTemplates: (type?: TemplateType) => {
+  useTemplates: () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const search = searchParams.get('search') ?? '';
@@ -51,7 +49,6 @@ export const templatesHooks = {
       queryKey: ['templates', debouncedSearch, category],
       queryFn: async () => {
         const templates = await templatesApi.list({
-          type,
           search: debouncedSearch || undefined,
           category,
         });

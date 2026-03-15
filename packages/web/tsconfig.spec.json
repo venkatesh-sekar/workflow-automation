@@ -6,7 +6,14 @@
     "types": [
       "vitest/globals",
       "node"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@activepieces/shared": ["../../packages/shared/src"],
+      "@activepieces/pieces-framework": ["../../packages/pieces/framework/src"],
+      "@activepieces/pieces-common": ["../../packages/pieces/common/src"]
+    }
   },
   "include": [
     "vitest.config.ts",

@@ -1,7 +1,7 @@
 import {
   TemplateTag as TemplateTagType,
   FlowVersionTemplate,
-  TemplateType,
+  TemplateScope,
 } from '@activepieces/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
@@ -78,7 +78,6 @@ export const CreateTemplateDialog = ({
 
       return templatesApi.create({
         flows: [flowTemplate],
-        type: TemplateType.CUSTOM,
         name: formValue.displayName,
         summary: formValue.summary,
         description: formValue.description,
@@ -86,6 +85,7 @@ export const CreateTemplateDialog = ({
         blogUrl: formValue.blogUrl,
         metadata: null,
         author,
+        scope: TemplateScope.TEAM,
         categories: formValue.categories || [],
       });
     },

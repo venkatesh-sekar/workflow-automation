@@ -2,7 +2,6 @@ import {
   PopulatedFlow,
   Template,
   TemplateTelemetryEventType,
-  TemplateType,
   UncategorizedFolderId,
   isNil,
 } from '@activepieces/shared';
@@ -123,7 +122,7 @@ export const UseTemplateDialog = ({
 
     const userId = authenticationSession.getCurrentUserId();
 
-    if (template.type === TemplateType.OFFICIAL && userId) {
+    if (userId) {
       templatesTelemetryApi.sendEvent({
         eventType: TemplateTelemetryEventType.INSTALL,
         templateId: template.id,

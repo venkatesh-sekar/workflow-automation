@@ -5,6 +5,7 @@ export { CheckEmailNote } from './components/check-email-note';
 export { PasswordValidator } from './components/password-validator';
 export { ResetPasswordForm } from './components/reset-password-form';
 export { VerifyEmail } from './components/verify-email';
+export { AuthFormTemplate } from './components/auth-form-template';
 export {
   passwordRules,
   passwordValidation,

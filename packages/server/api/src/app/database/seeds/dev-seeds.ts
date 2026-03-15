@@ -4,8 +4,10 @@ import {
     isNil,
     PlatformRole,
     ProjectType,
+    UserIdentityProvider,
 } from '@activepieces/shared'
 import crypto from 'crypto'
+import { userIdentityService } from '../../authentication/user-identity/user-identity-service'
 import { platformService } from '../../platform/platform.service'
 import { projectService } from '../../project/project-service'
 import { userService } from '../../user/user-service'
@@ -32,11 +34,21 @@ const seedAdminFromEnv = async (): Promise<void> => {
 
     log.info({ email: adminEmail }, '[bootstrap] Creating admin platform, user, and team project')
 
-    // Create admin user
-    const adminUser = await userService(log).create({
+    // Create user identity first
+    const identity = await userIdentityService(log).create({
         email: adminEmail,
+        password: crypto.randomBytes(32).toString('hex'),
         firstName: 'Admin',
         lastName: 'User',
+        trackEvents: false,
+        newsLetter: false,
+        provider: UserIdentityProvider.EMAIL,
+        verified: true,
+    })
+
+    // Create admin user linked to identity
+    const adminUser = await userService(log).create({
+        identityId: identity.id,
         platformId: null,
         platformRole: PlatformRole.ADMIN,
     })

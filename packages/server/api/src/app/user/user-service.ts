@@ -13,6 +13,7 @@ import {
     spreadIfDefined,
     User,
     UserId,
+    UserIdentity,
     UserStatus,
     UserWithBadges,
     UserWithMetaInformation,
@@ -20,6 +21,7 @@ import {
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'
+import { userIdentityService } from '../authentication/user-identity/user-identity-service'
 import { repoFactory } from '../core/db/repo-factory'
 import { buildPaginator } from '../helper/pagination/build-paginator'
 import { paginationHelper } from '../helper/pagination/pagination-utils'
@@ -35,11 +37,7 @@ export const userService = (log: FastifyBaseLogger) => ({
         const isActive = params.isActive ?? true
         const user: NewUser = {
             id: apId(),
-            email: params.email,
-            firstName: params.firstName,
-            lastName: params.lastName,
-            verified: params.verified ?? true,
-            tokenVersion: params.tokenVersion ?? null,
+            identityId: params.identityId,
             platformRole: params.platformRole,
             status: isActive ? UserStatus.ACTIVE : UserStatus.INACTIVE,
             externalId: params.externalId,
@@ -47,22 +45,20 @@ export const userService = (log: FastifyBaseLogger) => ({
         }
         return userRepo().save(user)
     },
-    async getOrCreateWithProject({ email, firstName, lastName, platformId }: GetOrCreateWithProjectParams): Promise<User> {
-        const user = await this.getOneByPlatformAndEmail({
+    async getOrCreateWithProject({ identity, platformId }: GetOrCreateWithProjectParams): Promise<User> {
+        const user = await this.getOneByIdentityAndPlatform({
+            identityId: identity.id,
             platformId,
-            email,
         })
         if (isNil(user)) {
             const newUser = await this.create({
-                email,
-                firstName,
-                lastName,
+                identityId: identity.id,
                 platformId,
                 platformRole: PlatformRole.MEMBER,
             })
 
             await projectService(log).create({
-                displayName: firstName + '\'s Project',
+                displayName: identity.firstName + '\'s Project',
                 ownerId: newUser.id,
                 platformId,
                 type: ProjectType.PERSONAL,
@@ -109,6 +105,9 @@ export const userService = (log: FastifyBaseLogger) => ({
 
         return this.getMetaInformation({ id })
     },
+    async getUsersByIdentityId({ identityId }: GetUsersByIdentityIdParams): Promise<Pick<User, 'id' | 'platformId'>[]> {
+        return userRepo().find({ where: { identityId } }).then((users) => users.map((user) => ({ id: user.id, platformId: user.platformId })))
+    },
     async list({ platformId, externalId, cursorRequest, limit }: ListParams): Promise<SeekPage<UserWithMetaInformation>> {
         const decodedCursor = paginationHelper.decodeCursor(cursorRequest)
         const paginator = buildPaginator({
@@ -127,11 +126,14 @@ export const userService = (log: FastifyBaseLogger) => ({
         const usersWithMetaInformation = await Promise.all(data.map(this.getMetaInformation))
         return paginationHelper.createPage<UserWithMetaInformation>(usersWithMetaInformation, cursor)
     },
-    async getOneByEmail({ email }: { email: string }): Promise<User | null> {
-        return userRepo().findOneBy({ email })
+    async getOneByIdentityIdOnly({ identityId }: GetOneByIdentityIdOnlyParams): Promise<User | null> {
+        return userRepo().findOneBy({ identityId })
     },
-    async getOneByPlatformAndEmail({ platformId, email }: GetOneByPlatformAndEmailParams): Promise<User | null> {
-        return userRepo().findOneBy({ platformId, email })
+    async getByIdentityId({ identityId }: GetByIdentityId): Promise<UserSchema[]> {
+        return userRepo().find({ where: { identityId } })
+    },
+    async getOneByIdentityAndPlatform({ identityId, platformId }: GetOneByIdentityIdParams): Promise<User | null> {
+        return userRepo().findOneBy({ identityId, platformId })
     },
     async get({ id }: IdParams): Promise<User | null> {
         return userRepo().findOneBy({ id })
@@ -167,7 +169,6 @@ export const userService = (log: FastifyBaseLogger) => ({
         }
     },
     async delete({ id, platformId }: DeleteParams): Promise<void> {
-        // Community edition: just delete the user (project cleanup deferred to auth-replace phase)
         await userRepo().delete({
             id,
             platformId,
@@ -175,11 +176,11 @@ export const userService = (log: FastifyBaseLogger) => ({
     },
 
     async getByPlatformRole(id: PlatformId, role: PlatformRole): Promise<UserSchema[]> {
-        return userRepo().find({ where: { platformId: id, platformRole: role } })
+        return userRepo().find({ where: { platformId: id, platformRole: role }, relations: { identity: true } })
     },
     async listProjectUsers({ platformId, projectId }: ListUsersForProjectParams): Promise<UserWithMetaInformation[]> {
         const users = await getUsersForProject(platformId, projectId)
-        const usersWithMetaInformation = await userRepo().find({ where: { platformId, id: In(users) } }).then((users) => users.map(this.getMetaInformation))
+        const usersWithMetaInformation = await userRepo().find({ where: { platformId, id: In(users) }, relations: { identity: true } }).then((users) => users.map(this.getMetaInformation))
         return Promise.all(usersWithMetaInformation)
     },
     async getByPlatformAndExternalId({
@@ -193,11 +194,12 @@ export const userService = (log: FastifyBaseLogger) => ({
     },
     async getMetaInformation({ id }: IdParams): Promise<UserWithMetaInformation> {
         const user = await userRepo().findOneByOrFail({ id })
+        const identity = await userIdentityService(log).getBasicInformation(user.identityId)
         return {
             id: user.id,
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            email: identity.email,
+            firstName: identity.firstName,
+            lastName: identity.lastName,
             platformId: user.platformId,
             platformRole: user.platformRole,
             status: user.status,
@@ -205,7 +207,7 @@ export const userService = (log: FastifyBaseLogger) => ({
             created: user.created,
             updated: user.updated,
             lastActiveDate: user.lastActiveDate,
-            imageUrl: null,
+            imageUrl: identity.imageUrl,
         }
     },
 
@@ -227,7 +229,6 @@ export const userService = (log: FastifyBaseLogger) => ({
 
 
 async function getUsersForProject(platformId: PlatformId, _projectId: string): Promise<UserId[]> {
-    // Community edition: project users are just platform admins (no RBAC project members)
     const platformAdmins = await userRepo().find({ where: { platformId, platformRole: PlatformRole.ADMIN } }).then((users) => users.map((user) => user.id))
     return platformAdmins
 }
@@ -258,6 +259,19 @@ type ListParams = {
     limit?: number
 }
 
+type GetOneByIdentityIdOnlyParams = {
+    identityId: string
+}
+
+type GetByIdentityId = {
+    identityId: string
+}
+
+
+type GetOneByIdentityIdParams = {
+    identityId: string
+    platformId: PlatformId
+}
 
 type UpdateParams = {
     id: UserId
@@ -268,22 +282,17 @@ type UpdateParams = {
 }
 
 type CreateParams = {
-    email: string
-    firstName: string
-    lastName: string
-    verified?: boolean
-    tokenVersion?: string | null
+    identityId: string
     platformId: string | null
     externalId?: string
     platformRole: PlatformRole
     isActive?: boolean
 }
-type NewUser = Omit<User, 'created' | 'updated'>
-
-type GetOneByPlatformAndEmailParams = {
-    platformId: string
-    email: string
+type GetUsersByIdentityIdParams = {
+    identityId: string
 }
+
+type NewUser = Omit<User, 'created' | 'updated'>
 
 type GetByPlatformAndExternalIdParams = {
     platformId: string
@@ -300,8 +309,6 @@ type UpdatePlatformIdParams = {
 }
 
 type GetOrCreateWithProjectParams = {
-    email: string
-    firstName: string
-    lastName: string
+    identity: UserIdentity
     platformId: string
 }
