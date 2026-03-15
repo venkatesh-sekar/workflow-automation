@@ -94,3 +94,10 @@
 - **Files changed:** packages/web/src/app/routes/connections/index.tsx
 - **Learnings:** For table cell links, use `text-primary hover:underline cursor-pointer transition-colors duration-150` — permanent underline is too heavy for data tables, hover:underline matches Linear/Retool convention. Don't use hover:text-primary-300 (it's darker, not lighter).
 ---
+
+## Iteration #14 - tables-page
+- **Change:** Fixed table footer typography and separator — replaced invalid `font-sm` (does nothing) with `font-normal` (400 weight), removed `mt-1` that was fighting `flex items-center` vertical centering, replaced bare `|` pipe character with token-backed `<div className="h-4 w-px bg-border" />` separator (matches codebase pattern), replaced `h-[40px]` arbitrary value with `h-10` Tailwind class. Tables-page area complete, advancing to settings-pages.
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/features/tables/components/flow-table-footer.tsx
+- **Learnings:** Use `h-4 w-px bg-border` div for inline separators (established codebase pattern), never bare pipe characters. `font-sm` is not a valid Tailwind class — font-* is for weight, text-* is for size.
+---
