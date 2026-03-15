@@ -758,3 +758,10 @@
 - **Quality gate:** pass (typecheck clean, 189 tests pass)
 - **Learnings:** /flows already redirects to /automations via project-routes.tsx, but direct redirect is cleaner
 ---
+
+## Iteration #109 - frontend-login
+- **Change:** Red-branded login page: replaced FullLogo with red "Flow" wordmark, styled sign-in button with red-600/700 background
+- **Files:** packages/web/src/app/routes/login/index.tsx
+- **Quality gate:** pass (typecheck clean, 189 server tests pass, 7 login tests pass)
+- **Learnings:** FullLogo component depends on flags API for branding — replaced with static red wordmark for reliable red branding
+---

@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { authenticationApi } from '@/api/authentication-api';
-import { FullLogo } from '@/components/custom/full-logo';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -100,7 +99,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center gap-2">
-      <FullLogo />
+      <span className="text-4xl font-bold text-red-600">Flow</span>
       <Card className="w-md rounded-sm drop-shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">{t('Welcome to Flow')}</CardTitle>
@@ -159,6 +158,7 @@ const LoginPage: React.FC = () => {
               <Button
                 loading={isPending}
                 onClick={(e) => form.handleSubmit(onSubmit)(e)}
+                className="bg-red-600 hover:bg-red-700"
                 tabIndex={3}
                 data-testid="login-button"
               >
