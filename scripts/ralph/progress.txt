@@ -86,3 +86,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #13 - rename-ap-core-types
+- **Change:** Renamed ApQueueJob→FlowQueueJob (const+type, 2 refs in 1 file)
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors)
+- **Learnings:** none
+---

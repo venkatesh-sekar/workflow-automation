@@ -22,14 +22,14 @@ export const getPlatformQueueName = (platformId: string): string => {
     return `platform-${platformId}-jobs`
 }
 
-export const ApQueueJob = z.object({
+export const FlowQueueJob = z.object({
     id: z.string(),
     data: z.custom<JobData>(),
     engineToken: z.string(),
     attempsStarted: z.number(),
 })
 
-export type ApQueueJob = z.infer<typeof ApQueueJob>
+export type FlowQueueJob = z.infer<typeof FlowQueueJob>
 export const SendEngineUpdateRequest = z.object({
     workerServerId: z.string(),
     requestId: z.string(),
