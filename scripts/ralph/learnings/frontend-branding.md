@@ -14,3 +14,4 @@
 - `show-powered-by.tsx` — "Built with activepieces" text
 - `sidebar-header.tsx` — uses branding from flags (should work automatically after theme.ts change)
 - Login page already has red Flow wordmark from frontend-login phase
+- Pre-existing web test failure: utils.test.ts formatDate('Today') uses hardcoded 2025 date — unrelated to branding

@@ -835,3 +835,10 @@
 - **Quality gate:** pass (typecheck clean, 189 tests pass)
 - **Learnings:** Branding is dynamic — server theme.ts feeds flags API which theme-provider.tsx reads at runtime to set document.title, favicon, and CSS primary color variables. Changing theme.ts propagates everywhere.
 ---
+
+## Iteration #120 - frontend-branding
+- **Change:** Updated vite.config.mts dev defaults: AP_TITLE 'Activepieces' -> 'Flow', AP_FAVICON from external activepieces.com URL to local '/favicon.ico'
+- **Files:** packages/web/vite.config.mts
+- **Quality gate:** pass (typecheck clean, 189 server + 60 web tests pass)
+- **Learnings:** Pre-existing web test failure in utils.test.ts (formatDate 'Today' uses hardcoded 2025 date) — unrelated to branding
+---

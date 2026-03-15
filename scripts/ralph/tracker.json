@@ -1,5 +1,5 @@
 {
-  "iteration": 119,
+  "iteration": 120,
   "current_phase": "frontend-branding",
   "phases": {
     "copy-server-core": {
@@ -289,7 +289,8 @@
         "Tests updated for branding changes"
       ],
       "completed_items": [
-        {"iteration": 119, "description": "Updated server-side defaultTheme: websiteName 'Activepieces' -> 'Flow', primaryColor '#6e41e2' (purple) -> '#dc2626' (red), cleared external Activepieces CDN logo/favicon URLs. This propagates to all UI via flags API."}
+        {"iteration": 119, "description": "Updated server-side defaultTheme: websiteName 'Activepieces' -> 'Flow', primaryColor '#6e41e2' (purple) -> '#dc2626' (red), cleared external Activepieces CDN logo/favicon URLs. This propagates to all UI via flags API."},
+        {"iteration": 120, "description": "Updated vite.config.mts dev defaults: AP_TITLE 'Activepieces' -> 'Flow', AP_FAVICON from external activepieces.com URL to local '/favicon.ico'."}
       ]
     },
     "deployment": {
