@@ -632,3 +632,10 @@
 - **Quality gate:** pass (0 TS errors, 171 tests pass)
 - **Learnings:** Service follows repoFactory pattern; list uses simple .find() with createPage(data, null)
 ---
+
+## Iteration #91 - build-audit-logs
+- **Change:** Created audit-event.module.ts with GET /v1/audit-events endpoint (project-scoped via ProjectResourceType.QUERY). Registered auditEventModule in app.ts.
+- **Files:** packages/server/api/src/app/audit-event/audit-event.module.ts (new), packages/server/api/src/app/app.ts (updated)
+- **Quality gate:** pass (0 TS errors, 171 tests pass)
+- **Learnings:** UserPrincipal doesn't have projectId — must use securityAccess.project() with ProjectResourceType.QUERY to get request.projectId from query params
+---

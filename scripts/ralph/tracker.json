@@ -1,5 +1,5 @@
 {
-  "iteration": 90,
+  "iteration": 91,
   "current_phase": "build-audit-logs",
   "phases": {
     "copy-server-core": {
@@ -195,7 +195,8 @@
       ],
       "completed_items": [
         {"iteration": 89, "description": "Created AuditEventEntity with columns (id, projectId, userId, event, data, created/updated), relations to project/user, index on projectId. Registered in database-connection.ts. All 171 tests pass."},
-        {"iteration": 90, "description": "Created auditEventService with create() and list() methods. Uses repoFactory pattern, apId() for IDs, project-scoped list with DESC ordering. All 171 tests pass."}
+        {"iteration": 90, "description": "Created auditEventService with create() and list() methods. Uses repoFactory pattern, apId() for IDs, project-scoped list with DESC ordering. All 171 tests pass."},
+        {"iteration": 91, "description": "Created audit-event.module.ts with GET /v1/audit-events endpoint (project-scoped, USER principal). Registered auditEventModule in app.ts. All 171 tests pass."}
       ]
     },
     "simplify-alerts": {
