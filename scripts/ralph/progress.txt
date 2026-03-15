@@ -681,3 +681,10 @@
 - **Quality gate:** pass (0 TS errors, 178 tests pass)
 - **Learnings:** FlowRun has failedStep (name, displayName) but no terminationReason field. Using failedStep.displayName as error context.
 ---
+
+## Iteration #98 - simplify-alerts
+- **Change:** Hooked alertService into flow-run-hooks.ts onFinish — calls handleFlowRunFinish on every terminal flow run to log structured alerts for failures
+- **Files:** packages/server/api/src/app/flows/flow-run/flow-run-hooks.ts, scripts/ralph/tracker.json, scripts/ralph/learnings/simplify-alerts.md
+- **Quality gate:** pass (typecheck clean, 178 tests pass)
+- **Learnings:** alertService handles failure filtering internally — safe to call on all terminal runs
+---

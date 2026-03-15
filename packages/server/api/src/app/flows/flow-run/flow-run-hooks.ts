@@ -1,5 +1,6 @@
 import { FlowRun, FlowTriggerType, isFlowRunStateTerminal, isManualPieceTrigger, isNil, RunEnvironment, UpdateRunProgressRequest, WebsocketClientEvent } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
+import { alertService } from '../../alerts/alert-service'
 import { websocketService } from '../../core/websockets.service'
 import { flowVersionService } from '../flow-version/flow-version.service'
 
@@ -11,6 +12,7 @@ export const flowRunHooks = (log: FastifyBaseLogger) => ({
         })) {
             return
         }
+        alertService(log).handleFlowRunFinish(flowRun)
         const flowVersion = await flowVersionService(log).getOne(flowRun.flowVersionId)
         const isPieceTrigger = !isNil(flowVersion) && flowVersion.trigger.type === FlowTriggerType.PIECE && !isNil(flowVersion.trigger.settings.triggerName)
         const isManualTrigger = isPieceTrigger && isManualPieceTrigger({ pieceName: flowVersion.trigger.settings.pieceName, triggerName: flowVersion.trigger.settings.triggerName })
