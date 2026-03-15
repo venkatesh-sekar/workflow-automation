@@ -4,8 +4,6 @@ import { FlowId } from '../../core/common/id-generator'
 import { Metadata } from '../../core/common/metadata'
 import { TriggerSource, WebhookHandshakeConfiguration } from '../trigger'
 import { FlowVersion } from './flow-version'
-
-export type FlowId = FlowId
 export enum FlowStatus {
     ENABLED = 'ENABLED',
     DISABLED = 'DISABLED',

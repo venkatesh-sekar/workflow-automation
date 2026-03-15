@@ -1,5 +1,5 @@
 import path from 'path'
-import importFresh from '@flow/import-fresh-webpack'
+import importFresh from '@activepieces/import-fresh-webpack'
 import { LATEST_CONTEXT_VERSION } from '@flow/pieces-framework'
 import { CodeAction, EngineGenericError, FlowActionType, FlowRunStatus, GenericStepOutput, isNil, StepOutputStatus } from '@flow/shared'
 import { initCodeSandbox } from '../core/code/code-sandbox'

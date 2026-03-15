@@ -8,7 +8,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@flow/import-fresh-webpack": "3.3.0",
+    "@activepieces/import-fresh-webpack": "3.3.0",
     "@flow/pieces-common": "file:../../pieces/common",
     "@flow/pieces-framework": "file:../../pieces/framework",
     "@flow/shared": "file:../../shared",
