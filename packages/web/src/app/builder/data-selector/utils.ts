@@ -5,7 +5,7 @@ import {
   FlowActionType,
   FlowTrigger,
   FlowTriggerType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { pieceSelectorUtils } from '@/features/pieces';
 

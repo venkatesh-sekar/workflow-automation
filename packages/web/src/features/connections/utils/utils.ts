@@ -5,7 +5,7 @@ import {
   PieceMetadataModel,
   PieceMetadataModelSummary,
   PropertyType,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   AppConnectionType,
   AppConnectionWithoutSensitiveData,
@@ -15,7 +15,7 @@ import {
   apId,
   AppConnectionStatus,
   OAuth2GrantType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { CheckIcon, UnplugIcon, XIcon } from 'lucide-react';
 

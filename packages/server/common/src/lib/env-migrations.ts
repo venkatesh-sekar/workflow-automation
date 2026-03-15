@@ -1,4 +1,4 @@
-import { ExecutionMode } from '@activepieces/shared'
+import { ExecutionMode } from '@flow/shared'
 import { RedisType } from './redis/types'
 import { AppSystemProp } from './system-props'
 

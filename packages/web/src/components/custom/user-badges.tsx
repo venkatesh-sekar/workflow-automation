@@ -1,4 +1,4 @@
-import { ApFlagId, BADGES, UserWithBadges } from '@activepieces/shared';
+import { ApFlagId, BADGES, UserWithBadges } from '@flow/shared';
 import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 

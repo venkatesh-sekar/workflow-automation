@@ -1,6 +1,6 @@
-import { createTrigger, PieceAuth, TriggerStrategy } from '@activepieces/pieces-framework';
+import { createTrigger, PieceAuth, TriggerStrategy } from '@flow/pieces-framework';
 import { tablesCommon } from '../common';
-import { PopulatedRecord, TableWebhookEventType } from '@activepieces/shared';
+import { PopulatedRecord, TableWebhookEventType } from '@flow/shared';
 
 export const deletedRecordTrigger = createTrigger({
     name: 'deletedRecord',

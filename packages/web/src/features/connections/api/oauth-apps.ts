@@ -4,7 +4,7 @@ import {
   UpsertOAuth2AppRequest,
   ApEdition,
   SeekPage,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

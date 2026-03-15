@@ -9,7 +9,7 @@ import {
     EngineStderr,
     EngineStdout,
     ERROR_MESSAGES_TO_REDACT,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { io, type Socket } from 'socket.io-client'
 import { execute } from './operations'
 import { progressService } from './services/progress.service'

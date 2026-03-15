@@ -1,4 +1,4 @@
-import { apId, Field, FieldState, FieldType, PopulatedTable, TableAutomationStatus } from '@activepieces/shared'
+import { apId, Field, FieldState, FieldType, PopulatedTable, TableAutomationStatus } from '@flow/shared'
 import { faker } from '@faker-js/faker'
 
 export const tableGenerator = {

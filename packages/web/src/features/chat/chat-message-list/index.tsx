@@ -3,7 +3,7 @@ import {
   ChatUIResponse,
   FileResponseInterface,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { BotIcon } from 'lucide-react';
 import React from 'react';
 import { z } from 'zod';

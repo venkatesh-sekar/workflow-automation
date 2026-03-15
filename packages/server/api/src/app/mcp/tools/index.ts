@@ -1,4 +1,4 @@
-import { McpServer, McpToolDefinition } from '@activepieces/shared'
+import { McpServer, McpToolDefinition } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { apAddBranchTool } from './ap-add-branch'
 import { apAddStepTool } from './ap-add-step'

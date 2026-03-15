@@ -1,6 +1,6 @@
-import { AIProviderName } from '@activepieces/shared';
+import { AIProviderName } from '@flow/shared';
 import { createAIModel } from '../../common/ai-sdk';
-import { createAction, Property } from '@activepieces/pieces-framework';
+import { createAction, Property } from '@flow/pieces-framework';
 import { generateText } from 'ai';
 import { aiProps } from '../../common/props';
 

@@ -4,7 +4,7 @@ import {
   NoteColorVariant,
   Note,
   apId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { StoreApi } from 'zustand';
 
 import { authenticationSession } from '@/lib/authentication-session';

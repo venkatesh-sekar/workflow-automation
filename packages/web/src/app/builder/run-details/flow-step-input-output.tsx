@@ -7,7 +7,7 @@ import {
   FlowRunStatus,
   isNil,
   ApFlagId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Info, Timer } from 'lucide-react';
 import { useMemo } from 'react';

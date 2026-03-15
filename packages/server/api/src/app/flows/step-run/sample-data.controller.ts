@@ -1,5 +1,5 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { CreateStepRunRequestBody, GetSampleDataRequest, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI } from '@activepieces/shared'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
+import { CreateStepRunRequestBody, GetSampleDataRequest, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { flowService } from '../flow/flow.service'
 import { flowRunService } from '../flow-run/flow-run-service'

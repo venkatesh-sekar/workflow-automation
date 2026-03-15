@@ -1,4 +1,4 @@
-import { AppConnectionScope, PopulatedFlow } from '@activepieces/shared';
+import { AppConnectionScope, PopulatedFlow } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { GlobeIcon, WorkflowIcon } from 'lucide-react';
@@ -143,8 +143,8 @@ const ReplaceConnectionsDialog = ({
     pieces
       ?.filter(
         (piece) =>
-          piece.name !== '@activepieces/piece-mcp' &&
-          piece.name !== '@activepieces/piece-webhook' &&
+          piece.name !== '@flow/piece-mcp' &&
+          piece.name !== '@flow/piece-webhook' &&
           connectionPieceNames.has(piece.name),
       )
       .map((piece) => ({

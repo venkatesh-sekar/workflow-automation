@@ -1,4 +1,4 @@
-import { FlowTrigger, flowStructureUtil, isNil } from '@activepieces/shared';
+import { FlowTrigger, flowStructureUtil, isNil } from '@flow/shared';
 import { t } from 'i18next';
 import React, { useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';

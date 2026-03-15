@@ -1,6 +1,6 @@
 
-import { createTrigger, Property, TriggerStrategy  } from '@activepieces/pieces-framework';
-import { MarkdownVariant } from '@activepieces/shared';
+import { createTrigger, Property, TriggerStrategy  } from '@flow/pieces-framework';
+import { MarkdownVariant } from '@flow/shared';
 
 export const manualTrigger = createTrigger({
 name: 'manual_trigger',

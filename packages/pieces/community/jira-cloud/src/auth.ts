@@ -4,12 +4,12 @@ import {
   Property,
   ShortTextProperty,
   StaticPropsValue,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { getUsers, sendJiraRequest } from './lib/common';
-import { HttpError, HttpMethod } from '@activepieces/pieces-common';
+import { HttpError, HttpMethod } from '@flow/pieces-common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
-import { AppConnectionType } from '@activepieces/shared';
+import { propsValidation } from '@flow/pieces-common';
+import { AppConnectionType } from '@flow/shared';
 
 export const jiraCloudAuth = PieceAuth.CustomAuth({
   description: `

@@ -1,4 +1,4 @@
-import { FlowRun, FlowTriggerType, isFlowRunStateTerminal, isManualPieceTrigger, isNil, RunEnvironment, UpdateRunProgressRequest, WebsocketClientEvent } from '@activepieces/shared'
+import { FlowRun, FlowTriggerType, isFlowRunStateTerminal, isManualPieceTrigger, isNil, RunEnvironment, UpdateRunProgressRequest, WebsocketClientEvent } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { alertService } from '../../alerts/alert-service'
 import { websocketService } from '../../core/websockets.service'

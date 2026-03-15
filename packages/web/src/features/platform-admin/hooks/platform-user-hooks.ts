@@ -5,7 +5,7 @@ import {
   User,
   UserStatus,
   UserWithMetaInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { toast } from 'sonner';

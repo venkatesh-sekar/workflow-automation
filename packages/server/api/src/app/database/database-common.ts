@@ -1,5 +1,5 @@
-import { AppSystemProp } from '@activepieces/server-common'
-import { ApEdition } from '@activepieces/shared'
+import { AppSystemProp } from '@flow/server-common'
+import { ApEdition } from '@flow/shared'
 import { EntitySchemaColumnOptions } from 'typeorm'
 import { system } from '../helper/system/system'
 

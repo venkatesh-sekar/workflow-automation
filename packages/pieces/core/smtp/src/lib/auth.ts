@@ -1,7 +1,7 @@
 import {
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { smtpCommon } from './common';
 
 const SMTPPorts = [25, 465, 587, 2525];

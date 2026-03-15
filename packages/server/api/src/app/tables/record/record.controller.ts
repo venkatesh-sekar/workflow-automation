@@ -1,4 +1,4 @@
-import { EntitySourceType, ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { EntitySourceType, ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
     CreateRecordsRequest,
     DeleteRecordsRequest,
@@ -9,7 +9,7 @@ import {
     SeekPage,
     SERVICE_KEY_SECURITY_OPENAPI,
     UpdateRecordRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'

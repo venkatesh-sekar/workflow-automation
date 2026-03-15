@@ -5,15 +5,15 @@ import {
   HttpRequest,
   QueryParams,
   AuthenticationType,
-} from '@activepieces/pieces-common';
+} from '@flow/pieces-common';
 import {
   ApFile,
   createAction,
   DynamicPropsValue,
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
-import { assertNotNullOrUndefined, isEmpty } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { assertNotNullOrUndefined, isEmpty } from '@flow/shared';
 import FormData from 'form-data';
 import { httpMethodDropdown } from '../common/props';
 import { HttpsProxyAgent } from 'https-proxy-agent';

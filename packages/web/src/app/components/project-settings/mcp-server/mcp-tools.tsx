@@ -1,4 +1,4 @@
-import { PopulatedMcpServer } from '@activepieces/shared';
+import { PopulatedMcpServer } from '@flow/shared';
 import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 import { useEffect, useState } from 'react';

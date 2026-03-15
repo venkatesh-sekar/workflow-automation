@@ -4,7 +4,7 @@ import {
   StepOutputStatus,
   flowStructureUtil,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { RouteOff, TriangleAlert } from 'lucide-react';
 import React, { useMemo } from 'react';

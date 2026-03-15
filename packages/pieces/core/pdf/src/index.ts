@@ -1,5 +1,5 @@
-import { createPiece, PieceAuth } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { createPiece, PieceAuth } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { extractText } from './lib/actions/extract-text';
 import { convertToImage } from './lib/actions/convert-to-image';
 import { textToPdf } from './lib/actions/text-to-pdf';

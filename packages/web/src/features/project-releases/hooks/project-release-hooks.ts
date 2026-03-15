@@ -1,4 +1,4 @@
-import { DiffReleaseRequest, ProjectSyncPlan } from '@activepieces/shared';
+import { DiffReleaseRequest, ProjectSyncPlan } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { internalErrorToast } from '@/components/ui/sonner';

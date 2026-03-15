@@ -1,5 +1,5 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { AgentMcpTool, ApId, buildAuthHeaders, isNil, McpAuthConfig, McpProtocol, Permission, PopulatedMcpServer, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI, UpdateMcpServerRequest } from '@activepieces/shared'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
+import { AgentMcpTool, ApId, buildAuthHeaders, isNil, McpAuthConfig, McpProtocol, Permission, PopulatedMcpServer, PrincipalType, SERVICE_KEY_SECURITY_OPENAPI, UpdateMcpServerRequest } from '@flow/shared'
 import { experimental_createMCPClient as createMCPClient, MCPClient, MCPTransport } from '@ai-sdk/mcp'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'

@@ -5,11 +5,11 @@ import {
   Property,
   ShortTextProperty,
   StaticDropdownProperty,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { common, getScopeAndKey, PieceStoreScope } from './common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
-import { isNil } from '@activepieces/shared';
+import { propsValidation } from '@flow/pieces-common';
+import { isNil } from '@flow/shared';
 
 async function executeStorageAppend(context: ActionContext<PieceAuthProperty | undefined, {
   key: ShortTextProperty<true>;

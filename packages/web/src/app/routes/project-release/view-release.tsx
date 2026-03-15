@@ -1,4 +1,4 @@
-import { isNil, ProjectReleaseType } from '@activepieces/shared';
+import { isNil, ProjectReleaseType } from '@flow/shared';
 import { formatDistance } from 'date-fns';
 import { t } from 'i18next';
 import {

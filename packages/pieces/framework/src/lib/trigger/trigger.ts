@@ -3,7 +3,7 @@ import { OnStartContext, TestOrRunHookContext, TriggerHookContext } from '../con
 import { TriggerBase } from '../piece-metadata';
 import { InputPropertyMap } from '../property';
 import { ExtractPieceAuthPropertyTypeForMethods, PieceAuthProperty } from '../property/authentication';
-import { isNil, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration, WebhookHandshakeStrategy } from '@activepieces/shared';
+import { isNil, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration, WebhookHandshakeStrategy } from '@flow/shared';
 export { TriggerStrategy }
 
 export const DEDUPE_KEY_PROPERTY = '_dedupe_key'

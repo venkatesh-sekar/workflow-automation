@@ -1,6 +1,6 @@
-import { AppConnectionType } from '@activepieces/shared';
-import { AppConnectionValueForAuthProperty } from '@activepieces/pieces-framework';
-import { httpClient, HttpMethod } from '@activepieces/pieces-common';
+import { AppConnectionType } from '@flow/shared';
+import { AppConnectionValueForAuthProperty } from '@flow/pieces-framework';
+import { httpClient, HttpMethod } from '@flow/pieces-common';
 import type { slackAuth } from '../auth';
 
 export type SlackAuthValue = AppConnectionValueForAuthProperty<

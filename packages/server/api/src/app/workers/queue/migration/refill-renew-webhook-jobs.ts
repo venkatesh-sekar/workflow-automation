@@ -1,5 +1,5 @@
-import { WebhookRenewStrategy } from '@activepieces/pieces-framework'
-import { isNil, LATEST_JOB_DATA_SCHEMA_VERSION, TriggerSourceScheduleType, TriggerStrategy, WorkerJobType } from '@activepieces/shared'
+import { WebhookRenewStrategy } from '@flow/pieces-framework'
+import { isNil, LATEST_JOB_DATA_SCHEMA_VERSION, TriggerSourceScheduleType, TriggerStrategy, WorkerJobType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
 import { pieceMetadataService } from '../../../pieces/metadata/piece-metadata-service'

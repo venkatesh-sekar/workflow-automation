@@ -1,4 +1,4 @@
-import { SecretManagerProviderMetaData } from '@activepieces/shared';
+import { SecretManagerProviderMetaData } from '@flow/shared';
 import { t } from 'i18next';
 import { CircleAlert, Pencil, RefreshCcw, Trash } from 'lucide-react';
 

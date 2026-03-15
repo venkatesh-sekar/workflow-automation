@@ -4,7 +4,7 @@ import {
   TestPlatformEventDestinationRequestBody,
   UpdatePlatformEventDestinationRequestBody,
   SeekPage,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { queryCollectionOptions } from '@tanstack/query-db-collection';
 import { createCollection, useLiveQuery } from '@tanstack/react-db';
 import { QueryClient, useMutation } from '@tanstack/react-query';

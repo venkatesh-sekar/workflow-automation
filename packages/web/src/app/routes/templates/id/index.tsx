@@ -6,7 +6,7 @@ import {
   FlowStatus,
   FlowOperationStatus,
   Template,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { ReactFlowProvider } from '@xyflow/react';
 import { t } from 'i18next';
 import { ArrowLeft, ArrowRight, Link, ExternalLink } from 'lucide-react';

@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import { createTestContext } from '../../../helpers/test-context'
 import { db } from '../../../helpers/db'
-import { apId } from '@activepieces/shared'
+import { apId } from '@flow/shared'
 
 let app: FastifyInstance | null = null
 

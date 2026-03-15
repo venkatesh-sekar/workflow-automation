@@ -1,4 +1,4 @@
-import { Permission } from '@activepieces/shared';
+import { Permission } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRef } from 'react';
 

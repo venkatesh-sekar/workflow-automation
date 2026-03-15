@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId, isNil } from '@activepieces/shared';
+import { ApEdition, ApFlagId, isNil } from '@flow/shared';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 

@@ -13,7 +13,7 @@ import {
   ToolCallContentBlock,
   ToolCallStatus,
   ToolCallType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 export type ToolKeyToAgentTool = Record<string, AgentTool>;
 

@@ -1,5 +1,5 @@
-import { createPiece, PieceAuth } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { createPiece, PieceAuth } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { readFileAction } from './lib/actions/read-file';
 import { createFile } from './lib/actions/create-file';
 import { changeFileEncoding } from './lib/actions/change-file-encoding';

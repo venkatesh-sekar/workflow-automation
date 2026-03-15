@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@activepieces/server-common'
+import { AppSystemProp } from '@flow/server-common'
 import { FastifyOtelInstrumentation } from '@fastify/otel'
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http'

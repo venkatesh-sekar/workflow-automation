@@ -5,7 +5,7 @@ import {
   WebsocketClientEvent,
   RunEnvironment,
   isFlowRunStateTerminal,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useReactFlow } from '@xyflow/react';
 import { t } from 'i18next';

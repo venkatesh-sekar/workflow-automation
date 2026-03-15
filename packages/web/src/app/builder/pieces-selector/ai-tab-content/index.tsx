@@ -1,4 +1,4 @@
-import { FlowOperationType, isNil } from '@activepieces/shared';
+import { FlowOperationType, isNil } from '@flow/shared';
 
 import { CardListItemSkeleton } from '@/components/custom/card-list';
 import {
@@ -14,7 +14,7 @@ import { AIPieceActionsList } from './ai-actions-list';
 const AITabContent = ({ operation }: { operation: PieceSelectorOperation }) => {
   const { selectedTab } = usePieceSelectorTabs();
   const { pieceModel, isLoading } = piecesHooks.usePiece({
-    name: '@activepieces/piece-ai',
+    name: '@flow/piece-ai',
   });
 
   if (

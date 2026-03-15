@@ -1,4 +1,4 @@
-import { User, UserBadge } from '@activepieces/shared'
+import { User, UserBadge } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 

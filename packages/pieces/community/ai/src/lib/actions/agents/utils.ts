@@ -12,9 +12,9 @@ import {
   McpPropertyType,
   AgentFlowTool,
   mcpToolNameUtils,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { z, ZodObject } from 'zod';
-import { AuthenticationType, httpClient, HttpMethod } from '@activepieces/pieces-common';
+import { AuthenticationType, httpClient, HttpMethod } from '@flow/pieces-common';
 import { Tool } from 'ai';
 
 export const agentUtils = {

@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId } from '@activepieces/shared';
+import { ApEdition, ApFlagId } from '@flow/shared';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 

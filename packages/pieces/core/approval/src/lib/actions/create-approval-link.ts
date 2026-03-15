@@ -1,5 +1,5 @@
-import { createAction, PieceAuth, Property } from '@activepieces/pieces-framework';
-import { MarkdownVariant } from '@activepieces/shared';
+import { createAction, PieceAuth, Property } from '@flow/pieces-framework';
+import { MarkdownVariant } from '@flow/shared';
 
 export const createApprovalLink = createAction({
   auth: PieceAuth.None(),

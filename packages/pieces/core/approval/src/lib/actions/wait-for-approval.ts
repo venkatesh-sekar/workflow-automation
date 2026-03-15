@@ -1,5 +1,5 @@
-import { createAction, PieceAuth, Property } from '@activepieces/pieces-framework';
-import { ExecutionType, MarkdownVariant, PauseType } from '@activepieces/shared';
+import { createAction, PieceAuth, Property } from '@flow/pieces-framework';
+import { ExecutionType, MarkdownVariant, PauseType } from '@flow/shared';
 
 export const waitForApprovalLink = createAction({
   auth: PieceAuth.None(),

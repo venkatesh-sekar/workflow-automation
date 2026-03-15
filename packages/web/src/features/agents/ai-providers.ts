@@ -1,4 +1,4 @@
-import { AIProviderName } from '@activepieces/shared';
+import { AIProviderName } from '@flow/shared';
 import { t } from 'i18next';
 
 export const SUPPORTED_AI_PROVIDERS: AiProviderInfo[] = [

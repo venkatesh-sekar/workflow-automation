@@ -1,12 +1,12 @@
 
-import { OAuth2AuthorizationMethod } from '@activepieces/pieces-framework'
-import { apAxios } from '@activepieces/server-common'
+import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
+import { apAxios } from '@flow/server-common'
 import {
     ActivepiecesError,
     AppConnectionType,
     CloudOAuth2ConnectionValue,
     ErrorCode,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { system } from '../../../../helper/system/system'
 import {

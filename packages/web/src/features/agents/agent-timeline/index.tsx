@@ -3,7 +3,7 @@ import {
   AgentTaskStatus,
   ContentBlockType,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import { ScrollArea } from '@/components/ui/scroll-area';

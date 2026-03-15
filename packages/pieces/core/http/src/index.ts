@@ -1,5 +1,5 @@
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { httpSendRequestAction } from './lib/actions/send-http-request-action';
 
 export const http = createPiece({

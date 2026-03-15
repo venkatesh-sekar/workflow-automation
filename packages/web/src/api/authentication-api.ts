@@ -2,7 +2,7 @@ import {
   GetCurrentProjectMemberRoleQuery,
   AuthenticationResponse,
   ProjectRole,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

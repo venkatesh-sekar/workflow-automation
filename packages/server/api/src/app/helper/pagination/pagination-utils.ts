@@ -1,4 +1,4 @@
-import { isNil, SeekPage } from '@activepieces/shared'
+import { isNil, SeekPage } from '@flow/shared'
 import dayjs from 'dayjs'
 import { CursorResult } from './paginator'
 

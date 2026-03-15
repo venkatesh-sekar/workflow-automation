@@ -5,7 +5,7 @@ import {
   ProjectRole,
   SeekPage,
   ListProjectMembersForProjectRoleRequestQuery,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

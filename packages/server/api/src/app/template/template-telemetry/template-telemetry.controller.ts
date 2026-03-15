@@ -1,5 +1,5 @@
-import { securityAccess } from '@activepieces/server-common'
-import { TemplateTelemetryEvent } from '@activepieces/shared'
+import { securityAccess } from '@flow/server-common'
+import { TemplateTelemetryEvent } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { templateTelemetryService } from './template-telemetry.service'

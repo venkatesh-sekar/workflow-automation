@@ -1,5 +1,5 @@
-import { FlowsContext, ListFlowsContextParams } from '@activepieces/pieces-framework'
-import { PopulatedFlow, SeekPage } from '@activepieces/shared'
+import { FlowsContext, ListFlowsContextParams } from '@flow/pieces-framework'
+import { PopulatedFlow, SeekPage } from '@flow/shared'
 
 
 type CreateFlowsServiceParams = {

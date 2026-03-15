@@ -5,7 +5,7 @@ import {
   PieceActionSettings,
   PieceTrigger,
   PieceTriggerSettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import React from 'react';
 
 import { Skeleton } from '@/components/ui/skeleton';

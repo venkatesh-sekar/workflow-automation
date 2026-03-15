@@ -1,4 +1,4 @@
-import { PlatformWithoutSensitiveData } from '@activepieces/shared';
+import { PlatformWithoutSensitiveData } from '@flow/shared';
 import {
   QueryClient,
   useMutation,

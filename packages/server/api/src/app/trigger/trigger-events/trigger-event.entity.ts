@@ -1,4 +1,4 @@
-import { File, Flow, Project, TriggerEvent } from '@activepieces/shared'
+import { File, Flow, Project, TriggerEvent } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
     ApIdSchema,

@@ -1,5 +1,5 @@
-import { apDayjs } from '@activepieces/server-common'
-import { MachineInformation, parseToJsonIfPossible } from '@activepieces/shared'
+import { apDayjs } from '@flow/server-common'
+import { MachineInformation, parseToJsonIfPossible } from '@flow/shared'
 import { redisConnections } from '../../database/redis-connections'
 
 export type WorkerMachine = {

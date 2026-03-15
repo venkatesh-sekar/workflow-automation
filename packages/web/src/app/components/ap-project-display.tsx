@@ -3,7 +3,7 @@ import {
   PROJECT_COLOR_PALETTE,
   ProjectIcon,
   ProjectType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { User } from 'lucide-react';
 
 import { Avatar } from '@/components/ui/avatar';

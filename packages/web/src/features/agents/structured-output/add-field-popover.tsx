@@ -1,4 +1,4 @@
-import { AgentOutputFieldType } from '@activepieces/shared';
+import { AgentOutputFieldType } from '@flow/shared';
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';

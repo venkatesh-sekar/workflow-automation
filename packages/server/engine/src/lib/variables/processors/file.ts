@@ -1,5 +1,5 @@
-import { ApFile } from '@activepieces/pieces-framework'
-import { isBase64, isNil, isString } from '@activepieces/shared'
+import { ApFile } from '@flow/pieces-framework'
+import { isBase64, isNil, isString } from '@flow/shared'
 import axios from 'axios'
 import mime from 'mime-types'
 import { ProcessorFn } from './types'

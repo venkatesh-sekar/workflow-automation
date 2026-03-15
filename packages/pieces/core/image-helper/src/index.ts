@@ -1,5 +1,5 @@
-import { createPiece, PieceAuth } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { createPiece, PieceAuth } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { imageToBase64 } from './lib/actions/image-to-base64.action';
 import { getMetaData } from './lib/actions/get-metadata.action';
 import { cropImage } from './lib/actions/crop-image.action';

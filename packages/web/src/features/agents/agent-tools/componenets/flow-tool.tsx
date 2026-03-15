@@ -1,4 +1,4 @@
-import { AgentFlowTool } from '@activepieces/shared';
+import { AgentFlowTool } from '@flow/shared';
 import { t } from 'i18next';
 import { Plus, Workflow, X } from 'lucide-react';
 

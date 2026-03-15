@@ -1,9 +1,9 @@
-import { PiecePropertyMap, PropertyType } from '@activepieces/pieces-framework';
+import { PiecePropertyMap, PropertyType } from '@flow/pieces-framework';
 import {
   AUTHENTICATION_PROPERTY_NAME,
   isNil,
   PropertySettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import deepEqual from 'deep-equal';
 import React, { useState, useRef, useContext } from 'react';
 import { useFormContext, UseFormReturn, useWatch } from 'react-hook-form';

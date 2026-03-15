@@ -3,7 +3,7 @@ import {
   FlowTrigger,
   assertNotNullOrUndefined,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { MentionNodeAttrs } from '@tiptap/extension-mention';
 import { JSONContent } from '@tiptap/react';
 

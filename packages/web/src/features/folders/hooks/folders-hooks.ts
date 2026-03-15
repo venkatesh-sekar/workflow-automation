@@ -1,4 +1,4 @@
-import { FolderDto, UncategorizedFolderId } from '@activepieces/shared';
+import { FolderDto, UncategorizedFolderId } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { authenticationSession } from '@/lib/authentication-session';

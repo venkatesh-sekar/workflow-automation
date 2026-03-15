@@ -18,11 +18,11 @@ export default defineConfig({
   resolve: {
     alias: {
       'isolated-vm': path.resolve(__dirname, '__mocks__/isolated-vm.js'),
-      '@activepieces/shared': path.resolve(__dirname, '../../../packages/shared/src/index.ts'),
-      '@activepieces/pieces-framework': path.resolve(__dirname, '../../../packages/pieces/framework/src/index.ts'),
-      '@activepieces/pieces-common': path.resolve(__dirname, '../../../packages/pieces/common/src/index.ts'),
-      '@activepieces/server-common': path.resolve(__dirname, '../../../packages/server/common/src/index.ts'),
-      '@activepieces/sandbox': path.resolve(__dirname, '../../../packages/server/sandbox/src/index.ts'),
+      '@flow/shared': path.resolve(__dirname, '../../../packages/shared/src/index.ts'),
+      '@flow/pieces-framework': path.resolve(__dirname, '../../../packages/pieces/framework/src/index.ts'),
+      '@flow/pieces-common': path.resolve(__dirname, '../../../packages/pieces/common/src/index.ts'),
+      '@flow/server-common': path.resolve(__dirname, '../../../packages/server/common/src/index.ts'),
+      '@flow/sandbox': path.resolve(__dirname, '../../../packages/server/sandbox/src/index.ts'),
       'worker': path.resolve(__dirname, 'src/app/helper/worker-stub.ts'),
     },
   },

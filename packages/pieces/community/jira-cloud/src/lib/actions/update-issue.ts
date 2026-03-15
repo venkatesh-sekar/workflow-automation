@@ -1,4 +1,4 @@
-import { DynamicPropsValue, Property, createAction } from '@activepieces/pieces-framework';
+import { DynamicPropsValue, Property, createAction } from '@flow/pieces-framework';
 import { JiraAuth, jiraCloudAuth } from '../../auth';
 import {
 	createPropertyDefinition,
@@ -10,8 +10,8 @@ import {
 } from '../common/props';
 import { jiraApiCall } from '../common';
 import { IssueFieldMetaData, VALID_CUSTOM_FIELD_TYPES } from '../common/types';
-import { HttpMethod } from '@activepieces/pieces-common';
-import { isNil } from '@activepieces/shared';
+import { HttpMethod } from '@flow/pieces-common';
+import { isNil } from '@flow/shared';
 
 async function getFields(auth: JiraAuth, issueId: string): Promise<IssueFieldMetaData[]> {
 	const response = await jiraApiCall<{ fields: { [x: string]: IssueFieldMetaData } }>({

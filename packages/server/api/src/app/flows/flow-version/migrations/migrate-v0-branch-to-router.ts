@@ -1,4 +1,4 @@
-import { BranchExecutionType, FlowAction, FlowActionType, flowStructureUtil, FlowVersion, RouterAction, RouterExecutionType } from '@activepieces/shared'
+import { BranchExecutionType, FlowAction, FlowActionType, flowStructureUtil, FlowVersion, RouterAction, RouterExecutionType } from '@flow/shared'
 import { Migration } from '.'
 
 export const migrateBranchToRouter: Migration = {

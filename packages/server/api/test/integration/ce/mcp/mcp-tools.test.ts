@@ -8,7 +8,7 @@ import {
     PackageType,
     PieceType,
     StepLocationRelativeToParent,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
 import { createTestContext } from '../../../helpers/test-context'
 import { db } from '../../../helpers/db'
@@ -35,7 +35,7 @@ beforeAll(async () => {
     // Save a shared piece needed by PIECE-step tests. No platformId = OFFICIAL (visible to all platforms).
     // In test environment the piece cache is bypassed, so DB records are read directly.
     const gmailPiece = createMockPieceMetadata({
-        name: '@activepieces/piece-gmail',
+        name: '@flow/piece-gmail',
         displayName: 'Gmail',
         version: '0.1.0',
         pieceType: PieceType.OFFICIAL,
@@ -136,7 +136,7 @@ describe('MCP Tools integration', () => {
             stepLocationRelativeToParent: StepLocationRelativeToParent.AFTER,
             stepType: FlowActionType.PIECE,
             displayName: 'Send Email',
-            pieceName: '@activepieces/piece-gmail',
+            pieceName: '@flow/piece-gmail',
             pieceVersion: '~0.1.0',
         })
 
@@ -159,7 +159,7 @@ describe('MCP Tools integration', () => {
             stepLocationRelativeToParent: StepLocationRelativeToParent.AFTER,
             stepType: FlowActionType.PIECE,
             displayName: 'Send Email',
-            pieceName: '@activepieces/piece-gmail',
+            pieceName: '@flow/piece-gmail',
             pieceVersion: '~0.1.0',
         })
 

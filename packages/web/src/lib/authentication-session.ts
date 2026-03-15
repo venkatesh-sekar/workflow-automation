@@ -2,7 +2,7 @@ import {
   AuthenticationResponse,
   isNil,
   UserPrincipal,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import dayjs from 'dayjs';
 import { jwtDecode } from 'jwt-decode';
 

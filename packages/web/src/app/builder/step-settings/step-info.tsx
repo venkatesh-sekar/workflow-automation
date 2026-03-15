@@ -5,7 +5,7 @@ import {
   FlowTrigger,
   FlowTriggerType,
   flowStructureUtil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronLeftIcon, ChevronRightIcon, Info } from 'lucide-react';
 import React from 'react';

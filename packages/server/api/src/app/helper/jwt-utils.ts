@@ -1,12 +1,12 @@
 import { randomBytes } from 'crypto'
 import { promisify } from 'util'
-import { AppSystemProp, RedisType } from '@activepieces/server-common'
+import { AppSystemProp, RedisType } from '@flow/server-common'
 import {
     ActivepiecesError,
     ErrorCode,
     isNil,
     spreadIfDefined,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { Mutex } from 'async-mutex'
 import jwtLibrary, {
     DecodeOptions,

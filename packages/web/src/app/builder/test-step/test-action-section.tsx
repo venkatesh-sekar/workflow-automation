@@ -4,7 +4,7 @@ import {
   Step,
   flowStructureUtil,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import React, { useContext, useState } from 'react';
 
@@ -32,7 +32,7 @@ enum DialogType {
 const isReturnResponseAndWaitForWebhook = (step: FlowAction) => {
   return (
     step.type === FlowActionType.PIECE &&
-    step.settings.pieceName === '@activepieces/piece-webhook' &&
+    step.settings.pieceName === '@flow/piece-webhook' &&
     step.settings.actionName === 'return_response_and_wait_for_next_webhook'
   );
 };

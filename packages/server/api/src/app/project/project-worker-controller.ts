@@ -1,4 +1,4 @@
-import { securityAccess } from '@activepieces/server-common'
+import { securityAccess } from '@flow/server-common'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { projectService } from './project-service'
 

@@ -4,7 +4,7 @@ import {
   CreateAICreditCheckoutSessionParamsSchema,
   UpdateAICreditsAutoTopUpParamsSchema,
   PlatformBillingInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

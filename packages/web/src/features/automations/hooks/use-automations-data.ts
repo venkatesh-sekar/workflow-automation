@@ -5,7 +5,7 @@ import {
   SeekPage,
   Table,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';

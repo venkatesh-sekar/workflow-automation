@@ -4,7 +4,7 @@ import {
   TemplateTelemetryEventType,
   UncategorizedFolderId,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useState, useEffect } from 'react';

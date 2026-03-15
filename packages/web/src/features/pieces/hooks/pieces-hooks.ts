@@ -3,7 +3,7 @@ import {
   PieceMetadataModelSummary,
   PropertyType,
   ExecutePropsResult,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   AddPieceRequestBody,
   FlowActionType,
@@ -15,7 +15,7 @@ import {
   ApFlagId,
   ApEnvironment,
   TelemetryEventName,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQueries, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';

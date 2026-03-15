@@ -3,7 +3,7 @@ import {
   StepLocationRelativeToParent,
   flowStructureUtil,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import {
   DndContext,
   DragEndEvent,

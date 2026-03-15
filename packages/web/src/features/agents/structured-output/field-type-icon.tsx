@@ -1,4 +1,4 @@
-import { AgentOutputFieldType } from '@activepieces/shared';
+import { AgentOutputFieldType } from '@flow/shared';
 import {
   Type as TextIcon,
   Hash as NumberIcon,

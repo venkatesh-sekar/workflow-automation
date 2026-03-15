@@ -1,5 +1,5 @@
 
-import { FlowRunStatus } from '@activepieces/shared'
+import { FlowRunStatus } from '@flow/shared'
 import { codeExecutor } from '../../src/lib/handler/code-executor'
 import { FlowExecutorContext } from '../../src/lib/handler/context/flow-execution-context'
 import { pieceExecutor } from '../../src/lib/handler/piece-executor'
@@ -37,7 +37,7 @@ describe('piece with error handling', () => {
         const result = await pieceExecutor.handle({
             action: buildPieceAction({
                 name: 'send_http',
-                pieceName: '@activepieces/piece-http',
+                pieceName: '@flow/piece-http',
                 actionName: 'send_request',
                 input: {
                     'method': 'POST',

@@ -15,13 +15,13 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, ColorName, PlatformRole, ProjectType, UserStatus } from '@activepieces/shared'
+import { apId, ColorName, PlatformRole, ProjectType, UserStatus } from '@flow/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'
 import { platformRepo } from '../platform/platform.service'
 import { defaultTheme } from '../flags/theme'
-import { FilteredPieceBehavior } from '@activepieces/shared'
+import { FilteredPieceBehavior } from '@flow/shared'
 
 const log = pino({ level: 'warn' })
 

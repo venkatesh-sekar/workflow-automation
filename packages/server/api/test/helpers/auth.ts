@@ -1,4 +1,4 @@
-import { Principal } from '@activepieces/shared'
+import { Principal } from '@flow/shared'
 import jwt, { Algorithm, JwtPayload, SignOptions } from 'jsonwebtoken'
 
 const generateToken = ({

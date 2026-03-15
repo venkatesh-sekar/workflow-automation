@@ -1,5 +1,5 @@
-import { createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { postgresAuth } from './lib/auth';
 import { runQuery } from './lib/actions/run-query';
 import { newRow } from './lib/triggers/new-row';

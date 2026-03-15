@@ -1,4 +1,4 @@
-import { isNil, QueueMetricsResponse, WorkerJobStats } from '@activepieces/shared'
+import { isNil, QueueMetricsResponse, WorkerJobStats } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { jobQueue } from '../job-queue'
 

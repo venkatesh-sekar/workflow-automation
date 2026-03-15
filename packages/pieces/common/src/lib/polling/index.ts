@@ -1,5 +1,5 @@
-import { AppConnectionValueForAuthProperty, FilesService, Store } from '@activepieces/pieces-framework';
-import { isNil } from '@activepieces/shared';
+import { AppConnectionValueForAuthProperty, FilesService, Store } from '@flow/pieces-framework';
+import { isNil } from '@flow/shared';
 
 
 interface TimebasedPolling<AuthValue, PropsValue> {

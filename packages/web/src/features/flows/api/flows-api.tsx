@@ -12,7 +12,7 @@ import {
   SharedTemplate,
   SeekPage,
   CountFlowsRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { toast } from 'sonner';
 

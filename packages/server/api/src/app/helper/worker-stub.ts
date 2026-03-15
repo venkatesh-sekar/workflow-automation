@@ -10,8 +10,8 @@ import {
     ExecuteTriggerResponse,
     ExecuteValidateAuthResponse,
     TriggerHookType,
-} from '@activepieces/shared'
-import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@activepieces/pieces-framework'
+} from '@flow/shared'
+import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@flow/pieces-framework'
 import { FastifyBaseLogger } from 'fastify'
 
 // Types re-exported from worker

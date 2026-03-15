@@ -16,7 +16,7 @@ import {
     UserStatus,
     UserWithBadges,
     UserWithMetaInformation,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'

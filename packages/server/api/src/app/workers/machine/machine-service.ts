@@ -1,4 +1,4 @@
-import { AppSystemProp, WorkerSystemProp } from '@activepieces/server-common'
+import { AppSystemProp, WorkerSystemProp } from '@flow/server-common'
 import {
     ExecutionMode,
     isNil,
@@ -8,7 +8,7 @@ import {
     WorkerMachineStatus,
     WorkerMachineWithStatus,
     WorkerSettingsResponse,
-} from '@activepieces/shared'
+} from '@flow/shared'
 
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'

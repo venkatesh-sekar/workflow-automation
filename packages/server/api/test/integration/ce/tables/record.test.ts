@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { apId, FieldType, FilterOperator } from '@activepieces/shared'
+import { apId, FieldType, FilterOperator } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { db } from '../../../helpers/db'

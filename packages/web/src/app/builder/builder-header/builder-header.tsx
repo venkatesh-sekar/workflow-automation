@@ -5,7 +5,7 @@ import {
   Permission,
   supportUrl,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { ChevronDown, CircleHelp, HistoryIcon } from 'lucide-react';

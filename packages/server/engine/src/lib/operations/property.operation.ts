@@ -1,9 +1,9 @@
-import { ExecutePropsResult, PropertyType } from '@activepieces/pieces-framework'
+import { ExecutePropsResult, PropertyType } from '@flow/pieces-framework'
 import {
     EngineResponse,
     EngineResponseStatus,
     ExecutePropsOptions,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { pieceHelper } from '../helper/piece-helper'
 
 

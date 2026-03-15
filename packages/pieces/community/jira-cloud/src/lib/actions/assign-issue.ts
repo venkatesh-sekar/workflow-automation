@@ -1,6 +1,6 @@
-import { createAction } from '@activepieces/pieces-framework';
+import { createAction } from '@flow/pieces-framework';
 import { jiraCloudAuth } from '../../auth';
-import { HttpMethod } from '@activepieces/pieces-common';
+import { HttpMethod } from '@flow/pieces-common';
 import { sendJiraRequest } from '../common';
 import { getIssueIdDropdown, getProjectIdDropdown, getUsersDropdown } from '../common/props';
 

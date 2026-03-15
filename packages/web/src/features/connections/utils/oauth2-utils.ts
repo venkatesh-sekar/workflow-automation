@@ -1,11 +1,11 @@
-import { OAuth2Property, OAuth2Props } from '@activepieces/pieces-framework';
+import { OAuth2Property, OAuth2Props } from '@flow/pieces-framework';
 import {
   AppConnectionType,
   BOTH_CLIENT_CREDENTIALS_AND_AUTHORIZATION_CODE,
   isNil,
   OAuth2GrantType,
   ThirdPartyAuthnProviderEnum,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { nanoid } from 'nanoid';
 import { useSearchParams } from 'react-router-dom';
 

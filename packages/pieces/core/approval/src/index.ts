@@ -1,5 +1,5 @@
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { createApprovalLink } from './lib/actions/create-approval-link';
 import { waitForApprovalLink } from './lib/actions/wait-for-approval';
 

@@ -1,4 +1,4 @@
-import { FlowTriggerType, isNil } from '@activepieces/shared';
+import { FlowTriggerType, isNil } from '@flow/shared';
 import { StoreApi } from 'zustand';
 
 import { RightSideBarType } from '@/app/builder/types';

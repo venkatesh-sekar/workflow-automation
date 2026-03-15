@@ -3,7 +3,7 @@ import {
   BADGES,
   ApFlagId,
   WebsocketClientEvent,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import confetti from 'canvas-confetti';
 import { Trophy } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';

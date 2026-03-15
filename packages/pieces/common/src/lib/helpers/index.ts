@@ -10,7 +10,7 @@ import {
   AppConnectionValueForAuthProperty,
   ExtractPieceAuthPropertyTypeForMethods,
   ApFile,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   HttpError,
   HttpHeaders,
@@ -19,7 +19,7 @@ import {
   QueryParams,
   httpClient,
 } from '../http';
-import { assertNotNullOrUndefined, isEmpty, isNil } from '@activepieces/shared';
+import { assertNotNullOrUndefined, isEmpty, isNil } from '@flow/shared';
 import fs from 'fs';
 import mime from 'mime-types';
 import FormData from 'form-data';

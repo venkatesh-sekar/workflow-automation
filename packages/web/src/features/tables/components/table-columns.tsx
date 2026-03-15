@@ -1,4 +1,4 @@
-import { ApFlagId, isNil, Permission } from '@activepieces/shared';
+import { ApFlagId, isNil, Permission } from '@flow/shared';
 import { Plus } from 'lucide-react';
 import { ReactNode } from 'react';
 import { Column, RenderCellProps } from 'react-data-grid';

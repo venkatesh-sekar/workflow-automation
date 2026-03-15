@@ -1,4 +1,4 @@
-import { ApFlagId, feedbackUrl } from '@activepieces/shared';
+import { ApFlagId, feedbackUrl } from '@flow/shared';
 import { t } from 'i18next';
 import { SearchX } from 'lucide-react';
 

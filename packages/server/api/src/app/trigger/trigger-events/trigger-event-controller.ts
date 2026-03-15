@@ -1,10 +1,10 @@
 
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
     ListTriggerEventsRequest,
     PrincipalType,
     SaveTriggerEventRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { flowService } from '../../flows/flow/flow.service'
 import { triggerEventService } from './trigger-event.service'

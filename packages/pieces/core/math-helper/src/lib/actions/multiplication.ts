@@ -2,7 +2,7 @@ import {
   PieceAuth,
   Property,
   createAction,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 
 export const multiplication = createAction({
   name: 'multiplication_math',

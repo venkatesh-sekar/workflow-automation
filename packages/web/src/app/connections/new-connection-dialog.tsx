@@ -1,5 +1,5 @@
-import { PieceMetadataModelSummary } from '@activepieces/pieces-framework';
-import { AppConnectionWithoutSensitiveData, isNil } from '@activepieces/shared';
+import { PieceMetadataModelSummary } from '@flow/pieces-framework';
+import { AppConnectionWithoutSensitiveData, isNil } from '@flow/shared';
 import { t } from 'i18next';
 import React, { useState } from 'react';
 

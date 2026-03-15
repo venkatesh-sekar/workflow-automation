@@ -21,7 +21,7 @@ import {
     sanitizeObjectForPostgresql,
     SeekPage,
     UserId,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { EntityManager, FindOneOptions } from 'typeorm'

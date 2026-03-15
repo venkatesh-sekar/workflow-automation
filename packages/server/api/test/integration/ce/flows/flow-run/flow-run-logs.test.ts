@@ -7,7 +7,7 @@ import {
     FileLocation,
     FileType,
     UploadLogsBehavior,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import * as s3HelperModule from '../../../../../src/app/file/s3-helper'

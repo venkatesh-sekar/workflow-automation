@@ -1,4 +1,4 @@
-import { Permission } from '@activepieces/shared';
+import { Permission } from '@flow/shared';
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 

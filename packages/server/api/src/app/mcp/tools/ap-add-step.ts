@@ -10,7 +10,7 @@ import {
     RouterExecutionType,
     StepLocationRelativeToParent,
     UpdateActionRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
 import { flowService } from '../../flows/flow/flow.service'
@@ -39,7 +39,7 @@ export const apAddStepTool = (mcp: McpServer, log: FastifyBaseLogger): McpToolDe
             branchIndex: z.number().optional().describe('Branch index (required when stepLocationRelativeToParent is INSIDE_BRANCH)'),
             stepType: z.enum([FlowActionType.CODE, FlowActionType.PIECE, FlowActionType.LOOP_ON_ITEMS, FlowActionType.ROUTER]).describe('The type of step to add'),
             displayName: z.string().describe('Display name for the step'),
-            pieceName: z.string().optional().describe('For PIECE steps: the piece name (e.g. "@activepieces/piece-gmail"). Use ap_list_pieces to get valid values.'),
+            pieceName: z.string().optional().describe('For PIECE steps: the piece name (e.g. "@flow/piece-gmail"). Use ap_list_pieces to get valid values.'),
             pieceVersion: z.string().optional().describe('For PIECE steps: the piece version (e.g. "~0.1.0"). Use ap_list_pieces to get valid values.'),
             actionName: z.string().optional().describe('For PIECE steps: the action name within the piece. Use ap_list_pieces with includeActions=true to get valid values.'),
         },

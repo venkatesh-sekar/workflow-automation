@@ -3,7 +3,7 @@ import {
   ApFlagId,
   PackageType,
   PieceScope,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { HttpStatusCode } from 'axios';
@@ -246,7 +246,7 @@ const InstallPieceDialog = ({
                         value={field.value || ''}
                         id="pieceName"
                         type="text"
-                        placeholder="@activepieces/piece-name"
+                        placeholder="@flow/piece-name"
                         className="rounded-sm"
                       />
                       <FormMessage />

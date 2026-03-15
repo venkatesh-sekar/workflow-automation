@@ -10,9 +10,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@activepieces/shared': path.resolve(repoRoot, 'packages/shared/src/index.ts'),
-      '@activepieces/pieces-framework': path.resolve(repoRoot, 'packages/pieces/framework/src/index.ts'),
-      '@activepieces/pieces-common': path.resolve(repoRoot, 'packages/pieces/common/src/index.ts'),
+      '@flow/shared': path.resolve(repoRoot, 'packages/shared/src/index.ts'),
+      '@flow/pieces-framework': path.resolve(repoRoot, 'packages/pieces/framework/src/index.ts'),
+      '@flow/pieces-common': path.resolve(repoRoot, 'packages/pieces/common/src/index.ts'),
     },
   },
 })

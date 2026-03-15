@@ -4,7 +4,7 @@ import {
     isNil,
     ProjectId,
     TriggerTestStrategy,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { distributedLock } from '../../database/redis-connections'
 import { flowService } from '../../flows/flow/flow.service'

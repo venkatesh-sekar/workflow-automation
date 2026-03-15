@@ -1,4 +1,4 @@
-import { Flow, Folder as Folder, Project } from '@activepieces/shared'
+import { Flow, Folder as Folder, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
     ApIdSchema,

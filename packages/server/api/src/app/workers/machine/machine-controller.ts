@@ -1,5 +1,5 @@
-import { securityAccess } from '@activepieces/server-common'
-import { PrincipalType, WebsocketServerEvent, WorkerMachineHealthcheckRequest } from '@activepieces/shared'
+import { securityAccess } from '@flow/server-common'
+import { PrincipalType, WebsocketServerEvent, WorkerMachineHealthcheckRequest } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { websocketService } from '../../core/websockets.service'
 import { machineService } from './machine-service'

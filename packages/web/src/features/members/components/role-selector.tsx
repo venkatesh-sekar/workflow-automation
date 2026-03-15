@@ -1,4 +1,4 @@
-import { PlatformRole } from '@activepieces/shared';
+import { PlatformRole } from '@flow/shared';
 import { t } from 'i18next';
 
 import {

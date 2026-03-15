@@ -1,6 +1,6 @@
-import { createAction, PieceAuth } from '@activepieces/pieces-framework';
+import { createAction, PieceAuth } from '@flow/pieces-framework';
 import { tablesCommon } from '../common';
-import { AuthenticationType, httpClient, HttpMethod } from '@activepieces/pieces-common';
+import { AuthenticationType, httpClient, HttpMethod } from '@flow/pieces-common';
 
 export const clearTable = createAction({
   name: 'tables-clear-table',

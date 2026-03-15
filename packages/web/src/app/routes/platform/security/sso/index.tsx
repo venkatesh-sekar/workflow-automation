@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { t } from 'i18next';
 import { LockIcon, MailIcon, Earth } from 'lucide-react';
 import { toast } from 'sonner';

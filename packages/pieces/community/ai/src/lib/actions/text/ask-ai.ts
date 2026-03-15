@@ -3,9 +3,9 @@ import {
   InputPropertyMap,
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { ModelMessage, ToolSet, generateText, stepCountIs } from 'ai';
-import { spreadIfDefined, AIProviderName } from '@activepieces/shared';
+import { spreadIfDefined, AIProviderName } from '@flow/shared';
 import { aiProps } from '../../common/props';
 import { openaiSearchTool, createAIModel } from '../../common/ai-sdk';
 

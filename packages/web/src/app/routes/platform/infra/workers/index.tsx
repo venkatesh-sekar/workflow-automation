@@ -3,7 +3,7 @@ import {
   ApFlagId,
   WorkerMachineStatus,
   WorkerMachineWithStatus,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import dayjs from 'dayjs';
 import { t } from 'i18next';
 import {

@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@activepieces/shared'
+import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ArrayOverlap, Equal } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'

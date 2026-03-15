@@ -4,7 +4,7 @@ import {
   Table,
   isNil,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useCallback } from 'react';

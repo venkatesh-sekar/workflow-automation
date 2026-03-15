@@ -1,5 +1,5 @@
-import { Property } from "@activepieces/pieces-framework"
-import { isNil } from "@activepieces/shared"
+import { Property } from "@flow/pieces-framework"
+import { isNil } from "@flow/shared"
 
 type ErrorInfo = {
     value: unknown | null,

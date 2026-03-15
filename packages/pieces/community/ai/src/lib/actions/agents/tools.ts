@@ -2,9 +2,9 @@ import { dynamicTool, LanguageModel, Tool } from "ai";
 import z from "zod";
 import { agentUtils } from "./utils";
 import { agentOutputBuilder } from "./agent-output-builder";
-import { AgentMcpTool, AgentOutputField, AgentTaskStatus, AgentTool, AgentToolType, buildAuthHeaders, isNil, isString, McpProtocol, mcpToolNameUtils, TASK_COMPLETION_TOOL_NAME } from "@activepieces/shared";
+import { AgentMcpTool, AgentOutputField, AgentTaskStatus, AgentTool, AgentToolType, buildAuthHeaders, isNil, isString, McpProtocol, mcpToolNameUtils, TASK_COMPLETION_TOOL_NAME } from "@flow/shared";
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
-import { ActionContext } from "@activepieces/pieces-framework";
+import { ActionContext } from "@flow/pieces-framework";
 import { experimental_createMCPClient as createMCPClient, MCPClient, MCPTransport } from '@ai-sdk/mcp';
 
 function createTransportConfig(

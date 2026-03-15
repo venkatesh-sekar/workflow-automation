@@ -1,4 +1,4 @@
-import { AIProviderConfig, AIProviderName, BaseModelSchema, Platform } from '@activepieces/shared'
+import { AIProviderConfig, AIProviderName, BaseModelSchema, Platform } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import { z } from 'zod'
 import { ApIdSchema, BaseColumnSchemaPart } from '../database/database-common'

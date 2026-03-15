@@ -1,4 +1,4 @@
-import { PlatformId, ProjectId, TriggerRunStatus, TriggerStatusReport } from '@activepieces/shared'
+import { PlatformId, ProjectId, TriggerRunStatus, TriggerStatusReport } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import Redis from 'ioredis'
 import { apDayjs, apDayjsDuration } from './dayjs-helper'

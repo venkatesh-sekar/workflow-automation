@@ -1,4 +1,4 @@
-import { Property, createAction } from '@activepieces/pieces-framework';
+import { Property, createAction } from '@flow/pieces-framework';
 import * as ExifReader from 'exifreader';
 
 export const getMetaData = createAction({

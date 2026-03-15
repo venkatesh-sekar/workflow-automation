@@ -3,7 +3,7 @@ import {
   PopulatedFlow,
   SeekPage,
   Table,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 export type TreeItemType = 'folder' | 'flow' | 'table' | 'load-more-folder';
 

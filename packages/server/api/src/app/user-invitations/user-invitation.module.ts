@@ -1,4 +1,4 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
     ActivepiecesError,
     assertNotNullOrUndefined,
@@ -16,7 +16,7 @@ import {
     SERVICE_KEY_SECURITY_OPENAPI,
     UserInvitation,
     UserInvitationWithLink,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger, FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'

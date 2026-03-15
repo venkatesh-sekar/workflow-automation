@@ -3,7 +3,7 @@ import {
     GenericStepOutput,
     LoopStepOutput,
     StepOutputStatus,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { loggingUtils } from '../../src/lib/helper/logging-utils'
 
 describe('Logging Utils', () => {

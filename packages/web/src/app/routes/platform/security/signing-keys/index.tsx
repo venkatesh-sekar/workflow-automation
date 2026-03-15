@@ -1,4 +1,4 @@
-import { SigningKey } from '@activepieces/shared';
+import { SigningKey } from '@flow/shared';
 import { t } from 'i18next';
 import { ExternalLink, Key, MoreHorizontal, Trash } from 'lucide-react';
 

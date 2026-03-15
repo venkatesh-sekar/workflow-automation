@@ -1,11 +1,11 @@
-import { ActionBase } from '@activepieces/pieces-framework';
+import { ActionBase } from '@flow/pieces-framework';
 import {
   AgentPieceTool,
   AgentToolType,
   isNil,
   PredefinedInputsStructure,
   mcpToolNameUtils,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { create } from 'zustand';
 
 import { PieceStepMetadataWithSuggestions } from '@/features/pieces/types';

@@ -1,4 +1,4 @@
-import { PiecesFilterType } from '@activepieces/shared';
+import { PiecesFilterType } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';

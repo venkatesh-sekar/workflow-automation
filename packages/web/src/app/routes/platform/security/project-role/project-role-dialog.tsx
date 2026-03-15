@@ -1,4 +1,4 @@
-import { Permission, ProjectRole, RoleType } from '@activepieces/shared';
+import { Permission, ProjectRole, RoleType } from '@flow/shared';
 import { t } from 'i18next';
 import { useState, ReactNode } from 'react';
 

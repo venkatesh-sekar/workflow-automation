@@ -8,7 +8,7 @@ import {
     PlatformId,
     spreadIfDefined,
     UpdateAIProviderRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import cron from 'node-cron'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../core/db/repo-factory'

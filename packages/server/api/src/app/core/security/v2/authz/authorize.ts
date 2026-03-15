@@ -1,5 +1,5 @@
-import { AuthorizationRouteSecurity, AuthorizationType, ProjectAuthorizationConfig, RouteKind } from '@activepieces/server-common'
-import { ActivepiecesError, ErrorCode, isNil, PlatformRole, Principal, PrincipalType } from '@activepieces/shared'
+import { AuthorizationRouteSecurity, AuthorizationType, ProjectAuthorizationConfig, RouteKind } from '@flow/server-common'
+import { ActivepiecesError, ErrorCode, isNil, PlatformRole, Principal, PrincipalType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { projectRepo } from '../../../../project/project-service'
 // Community edition: no RBAC roles — enforce platform-level project isolation only

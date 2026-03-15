@@ -1,7 +1,7 @@
 import {
   Property,
   createAction,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   optionalTimeFormats,
   timeFormat,
@@ -11,7 +11,7 @@ import {
   apDayjs,
 } from '../common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 
 export const nextDayofYear = createAction({
   name: 'next_day_of_year',

@@ -1,4 +1,4 @@
-import { ApFlagId } from '@activepieces/shared';
+import { ApFlagId } from '@flow/shared';
 import { t } from 'i18next';
 import { Cpu, HardDrive, MemoryStick, Package } from 'lucide-react';
 import React from 'react';

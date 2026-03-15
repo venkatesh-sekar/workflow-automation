@@ -1,4 +1,4 @@
-import { flowStructureUtil, isNil, Step } from '@activepieces/shared';
+import { flowStructureUtil, isNil, Step } from '@flow/shared';
 import { MiniMap, MiniMapNodeProps } from '@xyflow/react';
 
 import { useTheme } from '@/components/providers/theme-provider';

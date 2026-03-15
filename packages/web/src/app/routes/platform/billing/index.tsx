@@ -4,7 +4,7 @@ import {
   ApEdition,
   ApFlagId,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import { CenteredPage } from '@/app/components/centered-page';

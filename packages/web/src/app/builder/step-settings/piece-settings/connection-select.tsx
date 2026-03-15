@@ -1,7 +1,7 @@
 import {
   PieceMetadataModel,
   PieceMetadataModelSummary,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   AppConnectionScope,
   AppConnectionWithoutSensitiveData,
@@ -10,7 +10,7 @@ import {
   PieceTrigger,
   PropertyExecutionType,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Plus, Globe } from 'lucide-react';
 import { useState } from 'react';

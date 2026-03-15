@@ -14,7 +14,7 @@ import {
   FlowTrigger,
   Step,
   FlowActionType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { QueryClient } from '@tanstack/react-query';
 import { StoreApi } from 'zustand';
 

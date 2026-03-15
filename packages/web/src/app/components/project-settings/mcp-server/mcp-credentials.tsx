@@ -1,4 +1,4 @@
-import { ApFlagId, Permission, PopulatedMcpServer } from '@activepieces/shared';
+import { ApFlagId, Permission, PopulatedMcpServer } from '@flow/shared';
 import { t } from 'i18next';
 import { Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { useState } from 'react';

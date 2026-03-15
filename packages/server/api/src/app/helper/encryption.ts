@@ -2,11 +2,11 @@ import * as crypto from 'crypto'
 import { randomBytes } from 'node:crypto'
 import { promisify } from 'util'
 
-import { AppSystemProp, RedisType } from '@activepieces/server-common'
+import { AppSystemProp, RedisType } from '@flow/server-common'
 import {
     assertNotNullOrUndefined,
     isNil,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { Mutex } from 'async-mutex'
 import { z } from 'zod'
 import { redisConnections } from '../database/redis-connections'

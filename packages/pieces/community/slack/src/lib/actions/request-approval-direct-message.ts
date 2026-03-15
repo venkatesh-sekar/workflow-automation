@@ -1,11 +1,11 @@
-import { createAction } from '@activepieces/pieces-framework';
+import { createAction } from '@flow/pieces-framework';
 import { buildFlowOriginContextBlock, slackSendMessage, textToSectionBlocks } from '../common/utils';
 import { slackAuth } from '../auth';
 import {
   assertNotNullOrUndefined,
   ExecutionType,
   PauseType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { profilePicture, text, userId, username, mentionOriginFlow } from '../common/props';
 import { ChatPostMessageResponse, WebClient } from '@slack/web-api';
 import { getBotToken, SlackAuthValue } from '../common/auth-helpers';

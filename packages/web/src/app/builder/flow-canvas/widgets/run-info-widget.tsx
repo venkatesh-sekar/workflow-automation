@@ -2,7 +2,7 @@ import {
   ApFlagId,
   FlowRunStatus,
   isFlowRunStateTerminal,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { CircleHelp } from 'lucide-react';
 

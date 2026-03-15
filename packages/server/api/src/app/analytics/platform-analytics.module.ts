@@ -1,5 +1,5 @@
-import { securityAccess } from '@activepieces/server-common'
-import { AnalyticsReportRequest, LeaderboardRequest, PrincipalType } from '@activepieces/shared'
+import { securityAccess } from '@flow/server-common'
+import { AnalyticsReportRequest, LeaderboardRequest, PrincipalType } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { platformMustHaveFeatureEnabled } from '../helper/ee-authorization-stub'
 import { piecesAnalyticsService } from './pieces-analytics.service'

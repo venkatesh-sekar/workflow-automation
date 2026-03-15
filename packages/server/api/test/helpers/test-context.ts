@@ -7,7 +7,7 @@ import {
     Project,
     ProjectRole,
     User,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyInstance, InjectOptions } from 'fastify'
 import { generateMockToken } from './auth'
 import { db } from './db'

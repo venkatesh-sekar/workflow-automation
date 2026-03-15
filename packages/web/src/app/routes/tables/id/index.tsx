@@ -1,4 +1,4 @@
-import { ApFlagId, Permission } from '@activepieces/shared';
+import { ApFlagId, Permission } from '@flow/shared';
 import { nanoid } from 'nanoid';
 import { useRef, useEffect } from 'react';
 import DataGrid, { DataGridHandle } from 'react-data-grid';

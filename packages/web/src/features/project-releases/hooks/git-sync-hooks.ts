@@ -5,7 +5,7 @@ import {
   isNil,
   Permission,
   PushGitRepoRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { useAuthorization } from '@/hooks/authorization-hooks';

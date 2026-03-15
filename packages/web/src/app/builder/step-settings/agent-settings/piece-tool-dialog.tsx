@@ -1,4 +1,4 @@
-import { AgentTool, isNil, mcpToolNameUtils } from '@activepieces/shared';
+import { AgentTool, isNil, mcpToolNameUtils } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronLeft } from 'lucide-react';
 import { useMemo, useEffect } from 'react';
@@ -37,12 +37,12 @@ type AgentToolsDialogProps = {
 };
 
 const excludedPieces = [
-  '@activepieces/piece-ai',
-  '@activepieces/piece-mcp',
-  '@activepieces/piece-openai',
-  '@activepieces/piece-claude',
-  '@activepieces/piece-google-gemini',
-  '@activepieces/piece-grok-xai',
+  '@flow/piece-ai',
+  '@flow/piece-mcp',
+  '@flow/piece-openai',
+  '@flow/piece-claude',
+  '@flow/piece-google-gemini',
+  '@flow/piece-grok-xai',
 ];
 
 export function AgentPieceDialog({

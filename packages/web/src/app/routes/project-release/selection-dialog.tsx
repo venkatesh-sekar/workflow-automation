@@ -1,4 +1,4 @@
-import { ProjectReleaseType } from '@activepieces/shared';
+import { ProjectReleaseType } from '@flow/shared';
 import { ReactNode, useState } from 'react';
 
 import { Button, ButtonProps } from '@/components/ui/button';

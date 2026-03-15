@@ -1,4 +1,4 @@
-import { PieceMetadata, PieceMetadataModel } from '@activepieces/pieces-framework'
+import { PieceMetadata, PieceMetadataModel } from '@flow/pieces-framework'
 import {
     ActivepiecesError,
     AddPieceRequestBody,
@@ -15,7 +15,7 @@ import {
     PlatformId,
     ProjectId,
     WorkerJobType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { OperationResponse } from 'worker'
 import { fileService } from '../file/file.service'

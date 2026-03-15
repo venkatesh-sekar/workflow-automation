@@ -5,7 +5,7 @@ import { PopulatedFlow } from '../flows/flow'
 
 export type McpId = ApId
 
-export const MCP_TRIGGER_PIECE_NAME = '@activepieces/piece-mcp'
+export const MCP_TRIGGER_PIECE_NAME = '@flow/piece-mcp'
 
 export enum McpServerStatus {
     ENABLED = 'ENABLED',

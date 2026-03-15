@@ -1,4 +1,4 @@
-import { isNil, UserWithBadges } from '@activepieces/shared';
+import { isNil, UserWithBadges } from '@flow/shared';
 import {
   QueryClient,
   useMutation,

@@ -1,5 +1,5 @@
-import { TriggerStrategy } from '@activepieces/pieces-framework';
-import { createTrigger, Property } from '@activepieces/pieces-framework';
+import { TriggerStrategy } from '@flow/pieces-framework';
+import { createTrigger, Property } from '@flow/pieces-framework';
 import {
   DAY_HOURS,
   validateWeekDays,

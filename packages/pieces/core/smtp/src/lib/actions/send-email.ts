@@ -1,4 +1,4 @@
-import { ApFile, Property, createAction } from '@activepieces/pieces-framework';
+import { ApFile, Property, createAction } from '@flow/pieces-framework';
 import { smtpAuth } from '../auth';
 import { smtpCommon } from '../common';
 import { Attachment, Headers } from 'nodemailer/lib/mailer';

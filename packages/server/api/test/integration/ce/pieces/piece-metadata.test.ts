@@ -4,7 +4,7 @@ import {
     PieceType,
     PrincipalType,
     PackageType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger, FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { databaseConnection } from '../../../../src/app/database/database-connection'
@@ -176,7 +176,7 @@ describe('Piece Metadata CE API', () => {
             const ctx = await createTestContext(app!)
 
             const mockPiece = createMockPieceMetadata({
-                name: '@activepieces/ce-scoped-piece',
+                name: '@flow/ce-scoped-piece',
                 pieceType: PieceType.OFFICIAL,
                 displayName: 'CE Scoped Test',
                 packageType: PackageType.REGISTRY,
@@ -184,11 +184,11 @@ describe('Piece Metadata CE API', () => {
             await db.save('piece_metadata', mockPiece)
             await pieceCache(mockLog).setup()
 
-            const response = await ctx.get(`/v1/pieces/@activepieces/ce-scoped-piece?projectId=${ctx.project.id}`)
+            const response = await ctx.get(`/v1/pieces/@flow/ce-scoped-piece?projectId=${ctx.project.id}`)
 
             expect(response?.statusCode).toBe(StatusCodes.OK)
             const body = response?.json()
-            expect(body.name).toBe('@activepieces/ce-scoped-piece')
+            expect(body.name).toBe('@flow/ce-scoped-piece')
         })
     })
 

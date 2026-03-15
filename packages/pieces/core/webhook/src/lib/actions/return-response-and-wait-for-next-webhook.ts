@@ -3,8 +3,8 @@ import {
     PieceAuth,
     Property,
     createAction,
-  } from '@activepieces/pieces-framework';
-  import { ExecutionType, PauseType, StopResponse } from '@activepieces/shared';
+  } from '@flow/pieces-framework';
+  import { ExecutionType, PauseType, StopResponse } from '@flow/shared';
   import { StatusCodes } from 'http-status-codes';
   
   enum ResponseType {

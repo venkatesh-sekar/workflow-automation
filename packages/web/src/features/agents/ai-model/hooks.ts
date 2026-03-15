@@ -1,4 +1,4 @@
-import { AIProviderModel, AIProviderName, isNil } from '@activepieces/shared';
+import { AIProviderModel, AIProviderName, isNil } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 
 import { aiProviderApi } from '@/features/platform-admin/api/ai-provider-api';

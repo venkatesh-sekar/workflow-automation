@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { t } from 'i18next';
 import React from 'react';
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';

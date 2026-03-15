@@ -5,9 +5,9 @@ import {
   Property,
   ShortTextProperty,
   StaticDropdownProperty,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 import deepEqual from 'deep-equal';
 import { common, getScopeAndKey, PieceStoreScope } from './common';
 

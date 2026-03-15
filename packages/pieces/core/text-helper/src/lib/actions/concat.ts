@@ -1,4 +1,4 @@
-import { Property, createAction } from '@activepieces/pieces-framework';
+import { Property, createAction } from '@flow/pieces-framework';
 
 export const concat = createAction({
   description: 'Concatenate two or more texts',

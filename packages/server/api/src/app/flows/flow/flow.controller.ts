@@ -1,4 +1,4 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import { ActivepiecesError, ApId, ApplicationEventName,
     CountFlowsRequest,
     CreateFlowRequest,
@@ -17,7 +17,7 @@ import { ActivepiecesError, ApId, ApplicationEventName,
     SeekPage,
     SERVICE_KEY_SECURITY_OPENAPI,
     SharedTemplate,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'

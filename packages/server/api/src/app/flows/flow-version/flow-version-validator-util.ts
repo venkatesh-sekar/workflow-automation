@@ -2,7 +2,7 @@ import {
     PieceAuthProperty,
     piecePropertiesUtils,
     PiecePropertyMap,
-} from '@activepieces/pieces-framework'
+} from '@flow/pieces-framework'
 import {
     FlowActionType,
     FlowOperationRequest,
@@ -15,7 +15,7 @@ import {
     PlatformId,
     RouterActionSettingsWithValidation,
     UserId,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
 import { pieceMetadataService } from '../../pieces/metadata/piece-metadata-service'

@@ -3,7 +3,7 @@ import {
   isNil,
   FlowTriggerType,
   TelemetryEventName,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { MoveLeft } from 'lucide-react';
 import React from 'react';

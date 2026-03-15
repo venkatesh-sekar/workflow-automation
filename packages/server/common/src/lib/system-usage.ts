@@ -2,7 +2,7 @@ import { exec } from 'child_process'
 import fs from 'fs'
 import os from 'os'
 import { promisify } from 'util'
-import { MachineInformation } from '@activepieces/shared'
+import { MachineInformation } from '@flow/shared'
 import { fileSystemUtils } from './file-system-utils'
 
 const execAsync = promisify(exec)

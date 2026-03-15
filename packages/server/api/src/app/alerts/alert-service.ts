@@ -1,4 +1,4 @@
-import { FlowRun, FlowRunStatus } from '@activepieces/shared'
+import { FlowRun, FlowRunStatus } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 
 const FAILURE_STATUSES: ReadonlySet<FlowRunStatus> = new Set([

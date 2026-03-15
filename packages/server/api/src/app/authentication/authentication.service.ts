@@ -4,7 +4,7 @@ import {
     ErrorCode,
     isNil,
     PrincipalType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import crypto from 'crypto'
 import { FastifyBaseLogger } from 'fastify'
 import { projectService } from '../project/project-service'

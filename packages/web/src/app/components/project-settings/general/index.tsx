@@ -4,7 +4,7 @@ import {
   PROJECT_COLOR_PALETTE,
   ProjectIcon,
   ProjectType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';

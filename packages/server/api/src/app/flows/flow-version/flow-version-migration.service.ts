@@ -4,7 +4,7 @@ import {
     LATEST_FLOW_SCHEMA_VERSION,
     ProjectId,
     spreadIfDefined,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { flowVersionBackupService } from './flow-version-backup.service'
 import { flowVersionRepo } from './flow-version.service'

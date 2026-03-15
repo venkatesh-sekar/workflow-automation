@@ -1,7 +1,7 @@
 import {
   ApFlagId,
   ThirdPartyAuthnProvidersToShowMap,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';

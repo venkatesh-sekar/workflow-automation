@@ -1,5 +1,5 @@
-import { HttpMethod } from '@activepieces/pieces-common';
-import { FlowAction, ApFlagId, FlowTrigger } from '@activepieces/shared';
+import { HttpMethod } from '@flow/pieces-common';
+import { FlowAction, ApFlagId, FlowTrigger } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useState } from 'react';

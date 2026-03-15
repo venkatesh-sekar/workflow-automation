@@ -1,4 +1,4 @@
-import { Template } from '@activepieces/shared';
+import { Template } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useSearchParams } from 'react-router-dom';

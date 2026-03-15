@@ -1,4 +1,4 @@
-import { PropertyType } from '@activepieces/pieces-framework'
+import { PropertyType } from '@flow/pieces-framework'
 import { ActivepiecesError,
     AppConnection,
     AppConnectionType,
@@ -9,7 +9,7 @@ import { ActivepiecesError,
     OAuth2GrantType,
     PlatformId,
     resolveValueFromProps,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { isAxiosError } from 'axios'
 import { FastifyBaseLogger } from 'fastify'
 import { pieceMetadataService } from '../../../pieces/metadata/piece-metadata-service'

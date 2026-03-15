@@ -1,4 +1,4 @@
-import { AgentMcpTool } from '@activepieces/shared';
+import { AgentMcpTool } from '@flow/shared';
 import { create } from 'zustand';
 
 interface McpToolDialogState {

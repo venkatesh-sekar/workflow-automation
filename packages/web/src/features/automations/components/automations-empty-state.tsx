@@ -2,7 +2,7 @@ import {
   Permission,
   Template,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import {
   ChevronRight,

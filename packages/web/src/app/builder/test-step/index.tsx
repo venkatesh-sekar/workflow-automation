@@ -1,4 +1,4 @@
-import { FlowActionType, FlowTriggerType } from '@activepieces/shared';
+import { FlowActionType, FlowTriggerType } from '@flow/shared';
 import { t } from 'i18next';
 import React from 'react';
 

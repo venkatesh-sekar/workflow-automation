@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { Navigate, useParams, useLocation } from 'react-router-dom';
 
 import { PageTitle } from '@/app/components/page-title';

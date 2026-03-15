@@ -2,12 +2,12 @@ import {
   OAuth2Props,
   PiecePropertyMap,
   ArraySubProps,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   isNil,
   PropertyExecutionType,
   PropertySettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 

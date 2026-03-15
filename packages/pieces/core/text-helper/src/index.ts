@@ -1,5 +1,5 @@
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { concat } from './lib/actions/concat';
 import { find } from './lib/actions/find';
 import { htmlToMarkdown } from './lib/actions/html-to-markdown';

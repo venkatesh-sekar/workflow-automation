@@ -7,7 +7,7 @@ import {
   ExecutionToolStatus,
   normalizeToolOutputToExecuteResponse,
   type ToolCallContentBlock,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import {
   CircleX,

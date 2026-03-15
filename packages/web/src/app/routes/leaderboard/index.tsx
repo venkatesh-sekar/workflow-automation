@@ -2,7 +2,7 @@ import {
   AnalyticsTimePeriod,
   ColorName,
   UserWithBadges,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQueries } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { t } from 'i18next';

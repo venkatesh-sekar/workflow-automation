@@ -1,4 +1,4 @@
-import { securityAccess } from '@activepieces/server-common'
+import { securityAccess } from '@flow/server-common'
 import { FastifyInstance } from 'fastify'
 
 export const openapiController = async (fastify: FastifyInstance) => {

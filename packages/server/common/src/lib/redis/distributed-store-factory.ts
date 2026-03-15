@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared'
+import { isNil } from '@flow/shared'
 import Redis from 'ioredis'
 
 export const distributedStoreFactory = (getRedisClient: () => Promise<Redis>) => ({

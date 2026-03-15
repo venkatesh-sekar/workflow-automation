@@ -2,7 +2,7 @@ import {
   ApFlagId,
   FlowActionType,
   TelemetryEventName,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

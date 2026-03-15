@@ -2,8 +2,8 @@ import {
   PropertyType,
   PiecePropertyMap,
   PieceProperty,
-} from '@activepieces/pieces-framework';
-import { FlowTrigger, McpPropertyType } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { FlowTrigger, McpPropertyType } from '@flow/shared';
 import { t } from 'i18next';
 import { useForm, useFormContext } from 'react-hook-form';
 

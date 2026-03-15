@@ -1,4 +1,4 @@
-import { Field, Folder, Project, Record, Table, TableWebhook } from '@activepieces/shared'
+import { Field, Folder, Project, Record, Table, TableWebhook } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import { ApIdSchema, BaseColumnSchemaPart } from '../../database/database-common'
 

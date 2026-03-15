@@ -1,4 +1,4 @@
-import { PlatformId, PrincipalType } from '@activepieces/shared'
+import { PlatformId, PrincipalType } from '@flow/shared'
 import { FastifyRequest } from 'fastify'
 import { platformService } from './platform.service'
 

@@ -1,7 +1,7 @@
-import { createPiece } from '@activepieces/pieces-framework';
+import { createPiece } from '@flow/pieces-framework';
 
-import { createCustomApiCallAction } from '@activepieces/pieces-common';
-import { PieceCategory } from '@activepieces/shared';
+import { createCustomApiCallAction } from '@flow/pieces-common';
+import { PieceCategory } from '@flow/shared';
 import { JiraAuth, jiraCloudAuth } from './auth';
 import { createIssueAction } from './lib/actions/create-issue';
 import { searchIssues } from './lib/actions/search-issues';

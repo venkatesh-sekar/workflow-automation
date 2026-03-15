@@ -1,4 +1,4 @@
-import { SeekPage, UserWithMetaInformation } from '@activepieces/shared';
+import { SeekPage, UserWithMetaInformation } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 
 import { platformUserApi } from '@/api/platform-user-api';

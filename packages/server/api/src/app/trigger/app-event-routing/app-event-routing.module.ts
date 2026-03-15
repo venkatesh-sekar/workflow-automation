@@ -1,9 +1,9 @@
-import { slack } from '@activepieces/piece-slack'
-import { Piece, PieceAuthProperty } from '@activepieces/pieces-framework'
+import { slack } from '@flow/piece-slack'
+import { Piece, PieceAuthProperty } from '@flow/pieces-framework'
 import {
     rejectedPromiseHandler,
     securityAccess,
-} from '@activepieces/server-common'
+} from '@flow/server-common'
 import {
     ActivepiecesError,
     apId,
@@ -14,7 +14,7 @@ import {
     LATEST_JOB_DATA_SCHEMA_VERSION,
     RunEnvironment,
     WorkerJobType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyRequest } from 'fastify'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
@@ -31,7 +31,7 @@ const appWebhooks: Record<string, Piece<PieceAuthProperty | PieceAuthProperty[] 
     slack,
 }
 const pieceNames: Record<string, string> = {
-    slack: '@activepieces/piece-slack',
+    slack: '@flow/piece-slack',
 }
 
 export const appEventRoutingModule: FastifyPluginAsyncZod = async (app) => {

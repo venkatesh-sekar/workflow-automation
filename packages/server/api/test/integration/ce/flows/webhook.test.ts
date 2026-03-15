@@ -1,5 +1,5 @@
 import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/test-setup'
-import { FlowStatus, PrincipalType } from '@activepieces/shared'
+import { FlowStatus, PrincipalType } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { generateMockToken } from '../../../helpers/auth'

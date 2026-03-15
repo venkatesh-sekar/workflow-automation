@@ -7,7 +7,7 @@ import {
   FlowTrigger,
   TriggerEventWithPayload,
   TriggerTestStrategy,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import deepEqual from 'deep-equal';
 import { t } from 'i18next';

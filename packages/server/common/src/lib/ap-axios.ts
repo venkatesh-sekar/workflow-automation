@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared'
+import { isNil } from '@flow/shared'
 import axios, { AxiosError } from 'axios'
 import axiosRetry from 'axios-retry'
 

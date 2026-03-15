@@ -5,9 +5,9 @@ import { assertNotNullOrUndefined } from '../../core/common'
 import { ActivepiecesError, ErrorCode } from '../../core/common/activepieces-error'
 
 /**
- * @param {string} pieceName - starts with `@activepieces/piece-`
+ * @param {string} pieceName - starts with `@flow/piece-`
  * @param {string} pieceVersion - the version of the piece
- * @returns {string} the package alias for the piece, e.g. `@activepieces/piece-activepieces-0.0.1`
+ * @returns {string} the package alias for the piece, e.g. `@flow/piece-activepieces-0.0.1`
  */
 export const getPackageAliasForPiece = (params: GetPackageAliasForPieceParams): string => {
     const { pieceName, pieceVersion } = params
@@ -28,8 +28,8 @@ export const getPieceNameFromAlias = (alias: string): string => {
 }
 
 /**
- * @param {string} alias - e.g. `@activepieces/piece-activepieces-0.0.1`
- * @returns {string} the piece name, e.g. `@activepieces/piece-activepieces`
+ * @param {string} alias - e.g. `@flow/piece-activepieces-0.0.1`
+ * @returns {string} the piece name, e.g. `@flow/piece-activepieces`
  */
 export const trimVersionFromAlias = (alias: string): string => {
     return alias.split('-').slice(0, -1).join('-')

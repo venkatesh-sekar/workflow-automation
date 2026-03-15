@@ -1,7 +1,7 @@
 import { createOpenAI, openai } from '@ai-sdk/openai'
 import { ImageModel, LanguageModel } from 'ai'
-import { httpClient, HttpMethod } from '@activepieces/pieces-common'
-import { AIProviderName, GetProviderConfigResponse } from '@activepieces/shared'
+import { httpClient, HttpMethod } from '@flow/pieces-common'
+import { AIProviderName, GetProviderConfigResponse } from '@flow/shared'
 
 type CreateAIModelParams<IsImage extends boolean = false> = {
     provider: AIProviderName;

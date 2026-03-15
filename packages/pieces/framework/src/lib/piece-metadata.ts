@@ -3,7 +3,7 @@ import { WebhookRenewConfiguration } from "./trigger/trigger";
 import { ErrorHandlingOptionsParam } from "./action/action";
 import { PieceAuthProperty } from "./property/authentication";
 import { z } from "zod";
-import { LocalesEnum, PackageType, PieceCategory, PieceType, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration } from "@activepieces/shared";
+import { LocalesEnum, PackageType, PieceCategory, PieceType, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration } from "@flow/shared";
 import { ContextVersion } from "./context/versioning";
 
 const I18nForPiece = z.record(z.string(), z.record(z.string(), z.string())).optional();

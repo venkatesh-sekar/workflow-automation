@@ -9,7 +9,7 @@ import {
     PiecePropertyMap,
     pieceTranslation,
     PropertyType,
-    StaticPropsValue } from '@activepieces/pieces-framework'
+    StaticPropsValue } from '@flow/pieces-framework'
 import {
     AppConnectionType,
     AppConnectionValue,
@@ -19,7 +19,7 @@ import {
     ExecuteValidateAuthOperation,
     ExecuteValidateAuthResponse,
     isNil,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { EngineConstants } from '../handler/context/engine-constants'
 import { testExecutionContext } from '../handler/context/test-execution-context'
 import { createFlowsContext } from '../services/flows.service'

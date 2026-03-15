@@ -4,7 +4,7 @@ import {
   TelemetryEventName,
   UncategorizedFolderId,
   Template,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { HttpStatusCode } from 'axios';
 import { t } from 'i18next';

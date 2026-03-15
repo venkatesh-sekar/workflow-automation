@@ -3,11 +3,11 @@ import {
 	TriggerStrategy,
 	PiecePropValueSchema,
 	AppConnectionValueForAuthProperty,
-} from '@activepieces/pieces-framework';
-import { DedupeStrategy, Polling, pollingHelper, HttpMethod } from '@activepieces/pieces-common';
+} from '@flow/pieces-framework';
+import { DedupeStrategy, Polling, pollingHelper, HttpMethod } from '@flow/pieces-common';
 import { confluenceAuth } from '../auth';
 import { confluenceApiCall, confluencePaginatedApiCall, PaginatedResponse } from '../common';
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { spaceIdProp } from '../common/props';
 
 interface ConfluencePage {

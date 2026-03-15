@@ -2,7 +2,7 @@ import {
   AppConnectionOwners,
   UserWithMetaInformation,
   validateIndexBound,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { User } from 'lucide-react';

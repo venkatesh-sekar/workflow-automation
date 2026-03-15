@@ -6,7 +6,7 @@ import {
   isNil,
   Note,
   Step,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import {
   ReactFlow,
   Background,

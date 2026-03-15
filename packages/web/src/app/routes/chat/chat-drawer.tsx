@@ -2,7 +2,7 @@ import {
   FlowRun,
   RunEnvironment,
   WebsocketClientEvent,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 

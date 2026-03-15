@@ -1,4 +1,4 @@
-import { securityAccess } from '@activepieces/server-common'
+import { securityAccess } from '@flow/server-common'
 import {
     ActivepiecesError,
     AppConnection,
@@ -7,7 +7,7 @@ import {
     ErrorCode,
     GetAppConnectionForWorkerRequestQuery,
     isNil,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { appConnectionService } from './app-connection-service/app-connection-service'
 

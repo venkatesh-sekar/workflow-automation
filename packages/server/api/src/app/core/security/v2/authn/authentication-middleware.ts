@@ -1,5 +1,5 @@
-import { RouteKind } from '@activepieces/server-common'
-import { isNil } from '@activepieces/shared'
+import { RouteKind } from '@flow/server-common'
+import { isNil } from '@flow/shared'
 import { FastifyRequest } from 'fastify'
 import { authenticateOrThrow } from './authenticate'
 

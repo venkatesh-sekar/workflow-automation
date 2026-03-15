@@ -1,6 +1,6 @@
-import { ActionContext, ArrayProperty, CheckboxProperty, createAction, PieceAuthProperty, Property, ShortTextProperty, StaticDropdownProperty } from '@activepieces/pieces-framework';
+import { ActionContext, ArrayProperty, CheckboxProperty, createAction, PieceAuthProperty, Property, ShortTextProperty, StaticDropdownProperty } from '@flow/pieces-framework';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 import deepEqual from 'deep-equal';
 import { common, getScopeAndKey, PieceStoreScope } from './common';
 

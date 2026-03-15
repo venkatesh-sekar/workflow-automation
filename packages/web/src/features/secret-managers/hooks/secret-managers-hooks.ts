@@ -2,7 +2,7 @@ import {
   ConnectSecretManagerRequest,
   DisconnectSecretManagerRequest,
   SecretManagerProviderMetaData,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { toast } from 'sonner';

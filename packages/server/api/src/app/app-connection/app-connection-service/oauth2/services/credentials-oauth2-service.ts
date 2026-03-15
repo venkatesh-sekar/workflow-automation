@@ -1,5 +1,5 @@
-import { OAuth2AuthorizationMethod } from '@activepieces/pieces-framework'
-import { apAxios } from '@activepieces/server-common'
+import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
+import { apAxios } from '@flow/server-common'
 import { ActivepiecesError,
     AppConnectionType,
     BaseOAuth2ConnectionValue,
@@ -8,7 +8,7 @@ import { ActivepiecesError,
     OAuth2ConnectionValueWithApp,
     OAuth2GrantType,
     resolveValueFromProps,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { AxiosError } from 'axios'
 import { FastifyBaseLogger } from 'fastify'
 import {

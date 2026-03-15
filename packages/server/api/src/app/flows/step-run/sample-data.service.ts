@@ -16,7 +16,7 @@ import {
     SampleDataSettings,
     SaveSampleDataResponse,
     Step,
-    stringifyNullOrUndefined } from '@activepieces/shared'
+    stringifyNullOrUndefined } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { fileRepo, fileService } from '../../file/file.service'

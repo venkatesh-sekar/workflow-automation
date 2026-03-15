@@ -3,7 +3,7 @@ import {
   UserInvitation,
   UserStatus,
   UserWithMetaInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { User } from 'lucide-react';
 import { useMemo, useState } from 'react';

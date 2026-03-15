@@ -11,7 +11,7 @@ import {
   BulkArchiveActionOnRunsRequestBody,
   BulkCancelFlowRequestBody,
   UpdateRunProgressRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { Socket } from 'socket.io-client';
 
 import { api } from '@/lib/api';

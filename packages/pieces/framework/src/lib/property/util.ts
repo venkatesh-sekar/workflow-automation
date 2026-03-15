@@ -2,7 +2,7 @@ import { PiecePropertyMap } from ".";
 import { PieceAuthProperty } from "./authentication";
 import { PropertyType } from "./input/property-type";
 import { z } from "zod";
-import { AUTHENTICATION_PROPERTY_NAME, isEmpty, isNil } from "@activepieces/shared";
+import { AUTHENTICATION_PROPERTY_NAME, isEmpty, isNil } from "@flow/shared";
 
 function buildSchema(props: PiecePropertyMap, auth: PieceAuthProperty | PieceAuthProperty[] | undefined, requireAuth: boolean | undefined = true) {
     const entries = Object.entries(props);

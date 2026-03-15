@@ -1,5 +1,5 @@
-import { PieceMetadataModel, PieceMetadataModelSummary } from '@activepieces/pieces-framework'
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { PieceMetadataModel, PieceMetadataModelSummary } from '@flow/pieces-framework'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import {
     ActivepiecesError,
     ALL_PRINCIPAL_TYPES,
@@ -17,7 +17,7 @@ import {
     RegistryPiecesRequestQuery,
     SampleDataFileType,
     WorkerJobType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { EngineHelperPropResult, OperationResponse } from 'worker'
 import { flowService } from '../../flows/flow/flow.service'

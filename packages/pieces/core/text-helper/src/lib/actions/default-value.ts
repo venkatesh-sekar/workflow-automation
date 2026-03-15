@@ -1,5 +1,5 @@
-import { createAction, Property } from '@activepieces/pieces-framework';
-import { isEmpty } from '@activepieces/shared';
+import { createAction, Property } from '@flow/pieces-framework';
+import { isEmpty } from '@flow/shared';
 
 export const defaultValue = createAction({
   // auth: check https://www.activepieces.com/docs/developers/piece-reference/authentication,

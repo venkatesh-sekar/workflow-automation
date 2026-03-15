@@ -4,7 +4,7 @@ import {
     ExecuteTriggerOperation,
     ExecuteTriggerResponse,
     TriggerHookType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { EngineConstants } from '../handler/context/engine-constants'
 import { triggerHelper } from '../helper/trigger-helper'
 

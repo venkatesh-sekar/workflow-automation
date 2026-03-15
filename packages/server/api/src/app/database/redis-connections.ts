@@ -4,7 +4,7 @@ import {
     distributedStoreFactory,
     redisConnectionFactory,
     RedisType,
-} from '@activepieces/server-common'
+} from '@flow/server-common'
 import { system } from '../helper/system/system'
 
 export const redisConnections: ReturnType<typeof redisConnectionFactory> = redisConnectionFactory(() => {

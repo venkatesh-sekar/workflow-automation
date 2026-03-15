@@ -24,7 +24,7 @@ import {
     UncategorizedFolderId,
     UpdateTableRequest,
     UserWithMetaInformation,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ILike, In, IsNull } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'
@@ -40,7 +40,7 @@ import { TableEntity } from './table.entity'
 export const tableRepo = repoFactory(TableEntity)
 export const recordRepo = repoFactory(RecordEntity)
 const tableWebhookRepo = repoFactory(TableWebhookEntity)
-const tablePieceName = '@activepieces/piece-tables'
+const tablePieceName = '@flow/piece-tables'
 
 export const tableService = {
     async create({

@@ -1,4 +1,4 @@
-import { FlowOperationType, FlowTriggerType } from '@activepieces/shared';
+import { FlowOperationType, FlowTriggerType } from '@flow/shared';
 import { t } from 'i18next';
 import {
   CheckCircle2Icon,

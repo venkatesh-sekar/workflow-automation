@@ -1,4 +1,4 @@
-import { Flow, FlowId, FlowStatus, PlatformId, ProjectId, UserId } from '@activepieces/shared'
+import { Flow, FlowId, FlowStatus, PlatformId, ProjectId, UserId } from '@flow/shared'
 import { Job, JobsOptions } from 'bullmq'
 import { Dayjs } from 'dayjs'
 

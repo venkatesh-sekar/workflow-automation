@@ -11,7 +11,7 @@ import {
   SeekPage,
   TriggerPayload,
   TriggerStrategy,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { LanguageModel, Tool } from 'ai'
 
 import {
@@ -23,7 +23,7 @@ import {
   StaticPropsValue,
 } from '../property';
 import { PieceAuthProperty } from '../property/authentication';
-import { DelayPauseMetadata, PauseMetadata, WebhookPauseMetadata } from '@activepieces/shared';
+import { DelayPauseMetadata, PauseMetadata, WebhookPauseMetadata } from '@flow/shared';
 
 export type BaseContext<
   PieceAuth extends PieceAuthProperty | PieceAuthProperty[] | undefined,

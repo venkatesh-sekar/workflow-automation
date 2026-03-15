@@ -1,4 +1,4 @@
-import { FlowRun, FlowRunStatus, isNil, SeekPage } from '@activepieces/shared';
+import { FlowRun, FlowRunStatus, isNil, SeekPage } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import {

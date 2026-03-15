@@ -1,11 +1,11 @@
 import {
   createAction,
   Property,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import OpenAI from 'openai';
 import { openaiAuth } from '../auth';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 
 export const visionPrompt = createAction({
   auth: openaiAuth,

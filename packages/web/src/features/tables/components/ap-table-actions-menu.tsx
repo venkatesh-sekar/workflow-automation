@@ -1,4 +1,4 @@
-import { Permission, Table } from '@activepieces/shared';
+import { Permission, Table } from '@flow/shared';
 import { t } from 'i18next';
 import {
   Download,

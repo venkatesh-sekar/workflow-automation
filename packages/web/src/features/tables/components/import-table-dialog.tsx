@@ -1,4 +1,4 @@
-import { ApFlagId, SharedTemplate, TableTemplate, TemplateScope } from '@activepieces/shared';
+import { ApFlagId, SharedTemplate, TableTemplate, TemplateScope } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { Import } from 'lucide-react';

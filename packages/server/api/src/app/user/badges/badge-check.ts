@@ -1,4 +1,4 @@
-import { ApplicationEvent, BADGES } from '@activepieces/shared'
+import { ApplicationEvent, BADGES } from '@flow/shared'
 
 export type BadgeCheckResult = {
     userId: string | null

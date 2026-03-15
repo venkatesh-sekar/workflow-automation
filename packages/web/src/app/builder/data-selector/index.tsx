@@ -1,4 +1,4 @@
-import { flowStructureUtil, isNil } from '@activepieces/shared';
+import { flowStructureUtil, isNil } from '@flow/shared';
 import { t } from 'i18next';
 import { SearchXIcon } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';

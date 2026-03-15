@@ -5,7 +5,7 @@ import {
   isNil,
   PlanName,
   PlatformBillingInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { CircleHelp, Zap } from 'lucide-react';
 

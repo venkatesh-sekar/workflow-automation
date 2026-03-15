@@ -2,7 +2,7 @@ import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/
 import {
     apId,
     PrincipalType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { generateMockToken } from '../../../helpers/auth'

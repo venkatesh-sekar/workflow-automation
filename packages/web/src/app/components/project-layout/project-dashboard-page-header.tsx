@@ -1,4 +1,4 @@
-import { ProjectType } from '@activepieces/shared';
+import { ProjectType } from '@flow/shared';
 import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 import { useState } from 'react';

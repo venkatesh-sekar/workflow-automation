@@ -12,13 +12,13 @@
       "@/*": [
         "./src/*"
       ],
-      "@activepieces/shared": [
+      "@flow/shared": [
         "../../packages/shared/src"
       ],
-      "@activepieces/pieces-framework": [
+      "@flow/pieces-framework": [
         "../../packages/pieces/framework/src"
       ],
-      "@activepieces/pieces-common": [
+      "@flow/pieces-common": [
         "../../packages/pieces/common/src"
       ],
     }

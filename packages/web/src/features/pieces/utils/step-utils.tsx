@@ -2,7 +2,7 @@ import {
   ErrorHandlingOptionsParam,
   PieceMetadataModel,
   PieceMetadataModelSummary,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   FlowAction,
   FlowActionType,
@@ -14,7 +14,7 @@ import {
   FlowTrigger,
   StepOutput,
   StepRunResponse,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import { piecesApi } from '../api/pieces-api';

@@ -4,7 +4,7 @@ import {
   isNil,
   PieceAction,
   PieceActionSettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useFormContext } from 'react-hook-form';
 
 import { AgentTools } from '@/app/builder/step-settings/agent-settings/agent-tools';

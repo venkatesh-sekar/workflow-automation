@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared'
+import { isNil } from '@flow/shared'
 import { Mutex } from 'async-mutex'
 import { FastifyBaseLogger } from 'fastify'
 import Redis from 'ioredis'

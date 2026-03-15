@@ -3,7 +3,7 @@ import {
   Property,
   PieceAuth,
   ArraySubProps,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 
 import {
   AgentOutputField,
@@ -16,7 +16,7 @@ import {
   AgentProviderModel,
   ExecutionToolStatus,
   normalizeToolOutputToExecuteResponse,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { hasToolCall, stepCountIs, streamText } from 'ai';
 import { agentOutputBuilder } from './agent-output-builder';
 import { createAIModel } from '../../common/ai-sdk';

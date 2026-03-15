@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { assertNotNullOrUndefined, isNil } from '@activepieces/shared'
+import { assertNotNullOrUndefined, isNil } from '@flow/shared'
 import Redis, { RedisOptions } from 'ioredis'
 import { RedisConnectionSettings } from './types'
 

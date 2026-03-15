@@ -1,6 +1,6 @@
-import { createAction, Property } from '@activepieces/pieces-framework';
+import { createAction, Property } from '@flow/pieces-framework';
 import { PDFDocument } from 'pdf-lib';
-import { MarkdownVariant } from '@activepieces/shared';
+import { MarkdownVariant } from '@flow/shared';
 
 export function pageRangeToIndexes(
   startPage: number,

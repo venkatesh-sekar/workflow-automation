@@ -4,7 +4,7 @@ import {
     PlatformRole,
     PrincipalType,
     UserStatus,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { generateMockToken } from '../../../helpers/auth'

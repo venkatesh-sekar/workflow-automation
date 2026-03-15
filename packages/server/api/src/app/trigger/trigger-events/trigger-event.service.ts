@@ -16,7 +16,7 @@ import {
     TriggerEventWithPayload,
     TriggerHookType,
     WorkerJobType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { EngineHelperTriggerResult, OperationResponse } from 'worker'
 import { repoFactory } from '../../core/db/repo-factory'

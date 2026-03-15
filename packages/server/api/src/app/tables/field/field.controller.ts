@@ -1,5 +1,5 @@
-import { EntitySourceType, ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { CreateFieldRequest, Field, ListFieldsRequestQuery, PrincipalType, UpdateFieldRequest } from '@activepieces/shared'
+import { EntitySourceType, ProjectResourceType, securityAccess } from '@flow/server-common'
+import { CreateFieldRequest, Field, ListFieldsRequestQuery, PrincipalType, UpdateFieldRequest } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'

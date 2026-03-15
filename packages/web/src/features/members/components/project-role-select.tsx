@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useEffect } from 'react';

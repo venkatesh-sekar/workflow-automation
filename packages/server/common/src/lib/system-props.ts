@@ -1,5 +1,5 @@
 import path from 'path'
-import { assertNotNullOrUndefined } from '@activepieces/shared'
+import { assertNotNullOrUndefined } from '@flow/shared'
 import axios from 'axios'
 import { environmentMigrations } from './env-migrations'
 

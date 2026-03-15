@@ -6,10 +6,10 @@ import {
   ShortTextProperty,
   StaticDropdownProperty,
   StoreScope,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { getScopeAndKey, PieceStoreScope } from './common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 
 async function executeStorageGet(context: ActionContext<PieceAuthProperty | undefined, {
   key: ShortTextProperty<true>;

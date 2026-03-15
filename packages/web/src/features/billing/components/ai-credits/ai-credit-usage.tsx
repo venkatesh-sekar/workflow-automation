@@ -3,7 +3,7 @@ import {
   ApEdition,
   ApFlagId,
   PlatformBillingInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { Sparkles, Settings } from 'lucide-react';

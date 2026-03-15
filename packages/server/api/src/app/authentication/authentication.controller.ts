@@ -1,4 +1,4 @@
-import { AppSystemProp, securityAccess } from '@activepieces/server-common'
+import { AppSystemProp, securityAccess } from '@flow/server-common'
 import { RateLimitOptions } from '@fastify/rate-limit'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'

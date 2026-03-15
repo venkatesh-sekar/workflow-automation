@@ -1,4 +1,4 @@
-import { McpServerStatus } from '@activepieces/shared';
+import { McpServerStatus } from '@flow/shared';
 import { t } from 'i18next';
 
 import {

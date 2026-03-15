@@ -1,6 +1,6 @@
-import { createAction, PieceAuth, Property } from '@activepieces/pieces-framework';
+import { createAction, PieceAuth, Property } from '@flow/pieces-framework';
 import { tablesCommon } from '../common';
-import { AuthenticationType, httpClient, HttpMethod } from '@activepieces/pieces-common';
+import { AuthenticationType, httpClient, HttpMethod } from '@flow/pieces-common';
 
 export const deleteRecord = createAction({
   name: 'tables-delete-record',

@@ -1,7 +1,7 @@
 import {
   ManagedAuthnRequestBody,
   AuthenticationResponse,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

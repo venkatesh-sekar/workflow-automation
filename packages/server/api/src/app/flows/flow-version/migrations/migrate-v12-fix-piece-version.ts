@@ -6,7 +6,7 @@ import {
     FlowVersionState,
     isNil,
     tryCatch,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { system } from '../../../helper/system/system'
 import { pieceMetadataService } from '../../../pieces/metadata/piece-metadata-service'
 import { projectService } from '../../../project/project-service'

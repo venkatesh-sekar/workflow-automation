@@ -2,7 +2,7 @@ import {
   DiffReleaseRequest,
   isNil,
   ProjectReleaseType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useState, ReactNode } from 'react';
 
 import { Button, ButtonProps } from '@/components/ui/button';

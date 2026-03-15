@@ -1,5 +1,5 @@
-import { filePiecesUtils } from '@activepieces/server-common'
-import { apId, isNil, PackageType, PieceType } from '@activepieces/shared'
+import { filePiecesUtils } from '@flow/server-common'
+import { apId, isNil, PackageType, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import semVer from 'semver'
 import { PieceRegistryEntry } from '../piece-cache'

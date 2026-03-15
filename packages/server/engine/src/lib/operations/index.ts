@@ -10,7 +10,7 @@ import {
     ExecutionError,
     ExecutionErrorType,
     TriggerHookType, 
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { authValidationOperation } from './auth-validation.operation'
 import { flowOperation } from './flow.operation'
 import { pieceMetadataOperation } from './piece-metadata.operation'

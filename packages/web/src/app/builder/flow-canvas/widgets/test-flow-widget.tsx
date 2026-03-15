@@ -3,7 +3,7 @@ import {
   FlowTriggerType,
   UpdateRunProgressRequest,
   assertNotNullOrUndefined,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { useRef } from 'react';
 

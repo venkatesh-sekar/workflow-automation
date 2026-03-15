@@ -7,7 +7,7 @@ import {
   PieceProperty,
   PiecePropertyMap,
   PropertyType,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   CodeActionSchema,
   LoopOnItemsActionSchema,
@@ -33,7 +33,7 @@ import {
   PropertyExecutionType,
   PropertySettings,
   PieceTriggerSettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { z, ZodType } from 'zod';
 

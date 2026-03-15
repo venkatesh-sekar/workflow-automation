@@ -1,4 +1,4 @@
-import { FlowActionType, flowStructureUtil, isNil } from '@activepieces/shared';
+import { FlowActionType, flowStructureUtil, isNil } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';

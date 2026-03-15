@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { t } from 'i18next';
 import { Copy, Download, Eye, EyeOff } from 'lucide-react';
 import React, { useLayoutEffect, useMemo } from 'react';

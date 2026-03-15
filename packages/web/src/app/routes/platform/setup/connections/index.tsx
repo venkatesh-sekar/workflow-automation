@@ -2,7 +2,7 @@ import {
   AppConnectionStatus,
   AppConnectionWithoutSensitiveData,
   Permission,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import {

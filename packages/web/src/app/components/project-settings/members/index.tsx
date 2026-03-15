@@ -3,7 +3,7 @@ import {
   Permission,
   PlatformRole,
   UserStatus,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Users } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';

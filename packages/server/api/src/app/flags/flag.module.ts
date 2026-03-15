@@ -1,5 +1,5 @@
-import { securityAccess } from '@activepieces/server-common'
-import { ALL_PRINCIPAL_TYPES } from '@activepieces/shared'
+import { securityAccess } from '@flow/server-common'
+import { ALL_PRINCIPAL_TYPES } from '@flow/shared'
 import { FastifyRequest } from 'fastify'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { flagService } from './flag.service'

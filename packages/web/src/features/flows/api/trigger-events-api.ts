@@ -4,7 +4,7 @@ import {
   SeekPage,
   TestTriggerRequestBody,
   TriggerEventWithPayload,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

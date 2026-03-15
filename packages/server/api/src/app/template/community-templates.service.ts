@@ -5,7 +5,7 @@ import {
     ListTemplatesRequestQuery,
     SeekPage,
     Template,
-} from '@activepieces/shared'
+} from '@flow/shared'
 
 const TEMPLATES_SOURCE_URL = 'https://cloud.activepieces.com/api/v1/templates'
 

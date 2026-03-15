@@ -1,4 +1,4 @@
-import { ColorName, PROJECT_COLOR_PALETTE } from '@activepieces/shared';
+import { ColorName, PROJECT_COLOR_PALETTE } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { Rocket } from 'lucide-react';

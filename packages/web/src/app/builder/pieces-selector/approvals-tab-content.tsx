@@ -1,4 +1,4 @@
-import { FlowActionType, FlowOperationType, isNil } from '@activepieces/shared';
+import { FlowActionType, FlowOperationType, isNil } from '@flow/shared';
 
 import { CardList, CardListItemSkeleton } from '@/components/custom/card-list';
 import {
@@ -15,33 +15,33 @@ import GenericActionOrTriggerItem from './generic-piece-selector-item';
 
 const APPROVAL_PIECES_CONFIG = [
   {
-    pieceName: '@activepieces/piece-slack',
+    pieceName: '@flow/piece-slack',
     approvalActionNames: [
       'request_approval_message',
       'request_approval_direct_message',
     ],
   },
   {
-    pieceName: '@activepieces/piece-discord',
+    pieceName: '@flow/piece-discord',
     approvalActionNames: ['request_approval_message'],
   },
   {
-    pieceName: '@activepieces/piece-microsoft-teams',
+    pieceName: '@flow/piece-microsoft-teams',
     approvalActionNames: [
       'request_approval_direct_message',
       'request_approval_in_channel',
     ],
   },
   {
-    pieceName: '@activepieces/piece-microsoft-outlook',
+    pieceName: '@flow/piece-microsoft-outlook',
     approvalActionNames: ['request_approval_in_mail'],
   },
   {
-    pieceName: '@activepieces/piece-gmail',
+    pieceName: '@flow/piece-gmail',
     approvalActionNames: ['request_approval_in_mail'],
   },
   {
-    pieceName: '@activepieces/piece-telegram-bot',
+    pieceName: '@flow/piece-telegram-bot',
     approvalActionNames: ['request_approval_message'],
   },
 ];

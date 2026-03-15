@@ -1,4 +1,4 @@
-import { flowStructureUtil, isNil } from '@activepieces/shared';
+import { flowStructureUtil, isNil } from '@flow/shared';
 import { Extensions } from '@tiptap/core';
 import { Document } from '@tiptap/extension-document';
 import { HardBreak } from '@tiptap/extension-hard-break';

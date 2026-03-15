@@ -49,11 +49,11 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@activepieces/shared': path.resolve(
+        '@flow/shared': path.resolve(
           __dirname,
           '../../packages/shared/src',
         ),
-'@activepieces/pieces-framework': path.resolve(
+'@flow/pieces-framework': path.resolve(
           __dirname,
           '../../packages/pieces/framework/src',
         ),

@@ -1,4 +1,4 @@
-import { Tag } from '@activepieces/shared';
+import { Tag } from '@flow/shared';
 import { t } from 'i18next';
 import { useState } from 'react';
 

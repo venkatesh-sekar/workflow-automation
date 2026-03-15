@@ -5,7 +5,7 @@ import {
   isFailedState,
   isFlowRunStateTerminal,
   Permission,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Eye, Repeat, Timer } from 'lucide-react';
 import React, { useState } from 'react';

@@ -1,7 +1,7 @@
 import {
   SecretManagerProviderId,
   SecretManagerFieldsSeparator,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { KeyRound } from 'lucide-react';
 import * as React from 'react';

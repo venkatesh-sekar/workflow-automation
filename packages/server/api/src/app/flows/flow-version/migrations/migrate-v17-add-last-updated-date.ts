@@ -3,7 +3,7 @@ import {
     FlowVersion,
     isNil,
     Step,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { Migration } from '.'
 
 export const migrateV17AddLastUpdatedDate: Migration = {

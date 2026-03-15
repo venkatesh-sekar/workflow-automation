@@ -12,7 +12,7 @@ import {
   FlowTrigger,
   FlowTriggerType,
   Note,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import { flowRunUtils } from '@/features/flow-runs';

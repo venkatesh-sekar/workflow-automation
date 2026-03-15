@@ -5,7 +5,7 @@ import {
   FlowTriggerType,
   FlowVersionState,
   flowStructureUtil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useEffect, useRef, useState } from 'react';
 
 import { useBuilderStateContext } from '@/app/builder/builder-hooks';

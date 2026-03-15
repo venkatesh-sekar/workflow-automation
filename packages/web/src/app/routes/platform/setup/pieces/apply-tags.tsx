@@ -1,4 +1,4 @@
-import { PieceMetadataModelSummary } from '@activepieces/pieces-framework';
+import { PieceMetadataModelSummary } from '@flow/pieces-framework';
 import { t } from 'i18next';
 import { Trash2 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';

@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId, isNil, PlatformRole } from '@activepieces/shared';
+import { ApEdition, ApFlagId, isNil, PlatformRole } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronRight, Info, Play, Sparkles, Workflow } from 'lucide-react';
 import React, { ReactNode } from 'react';

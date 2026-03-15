@@ -1,5 +1,5 @@
-import { ArraySubProps } from '@activepieces/pieces-framework';
-import { isNil } from '@activepieces/shared';
+import { ArraySubProps } from '@flow/pieces-framework';
+import { isNil } from '@flow/shared';
 import React, { useEffect, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
 

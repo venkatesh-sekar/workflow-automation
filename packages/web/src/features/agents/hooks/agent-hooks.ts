@@ -2,7 +2,7 @@ import {
   AgentMcpTool,
   FlowTriggerType,
   ValidateAgentMcpToolResponse,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { flowsApi } from '@/features/flows/api/flows-api';

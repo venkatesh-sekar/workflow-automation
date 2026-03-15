@@ -1,4 +1,4 @@
-import { FolderDto, PopulatedFlow, Table } from '@activepieces/shared';
+import { FolderDto, PopulatedFlow, Table } from '@flow/shared';
 import { t } from 'i18next';
 import {
   ArrowDown,

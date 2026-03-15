@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@activepieces/server-common'
+import { AppSystemProp } from '@flow/server-common'
 import {
     ActivepiecesError,
     apId,
@@ -15,7 +15,7 @@ import {
     SeekPage,
     TableWebhookEventType,
     UpdateRecordRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { EntityManager, In } from 'typeorm'
 import { repoFactory } from '../../core/db/repo-factory'

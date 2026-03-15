@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId } from '@activepieces/shared';
+import { ApEdition, ApFlagId } from '@flow/shared';
 
 import { useEmbedding } from '@/components/providers/embed-provider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar-shadcn';

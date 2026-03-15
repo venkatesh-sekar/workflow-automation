@@ -1,8 +1,8 @@
-import { OAuth2AuthorizationMethod } from '@activepieces/pieces-framework'
+import { OAuth2AuthorizationMethod } from '@flow/pieces-framework'
 import {
     BaseOAuth2ConnectionValue,
     OAuth2GrantType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 
 export type OAuth2Service<CONNECTION_VALUE extends BaseOAuth2ConnectionValue> =
   {

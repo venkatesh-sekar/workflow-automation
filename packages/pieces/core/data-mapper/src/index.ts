@@ -1,5 +1,5 @@
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { advancedMapping } from './lib/actions/advanced-mapping';
 
 export const dataMapper = createPiece({

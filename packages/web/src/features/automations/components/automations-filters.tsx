@@ -1,9 +1,9 @@
-import { PieceMetadataModelSummary } from '@activepieces/pieces-framework';
+import { PieceMetadataModelSummary } from '@flow/pieces-framework';
 import {
   AppConnectionWithoutSensitiveData,
   FlowStatus,
   FolderDto,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import {
   Filter,

@@ -1,4 +1,4 @@
-import { AppSystemProp } from '@activepieces/server-common'
+import { AppSystemProp } from '@flow/server-common'
 import {
     ActivepiecesError,
     apId,
@@ -25,7 +25,7 @@ import {
     SeekPage,
     UploadLogsBehavior,
     WorkerJobType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { context, propagation, trace } from '@opentelemetry/api'
 import { FastifyBaseLogger } from 'fastify'
 import { StatusCodes } from 'http-status-codes'

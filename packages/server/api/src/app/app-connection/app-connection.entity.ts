@@ -2,7 +2,7 @@ import {
     AppConnection,
     AppConnectionStatus,
     User,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import {
     BaseColumnSchemaPart,

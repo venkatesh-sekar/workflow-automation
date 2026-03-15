@@ -1,9 +1,9 @@
 {
-  "iteration": 1,
-  "current_phase": "rename-packages",
+  "iteration": 2,
+  "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "typecheck",
       "criteria": [
         "All package.json 'name' fields changed from @activepieces/* to @flow/*",
@@ -14,11 +14,12 @@
         "TypeScript compiles with same error count as before (0 for server, whatever for web)"
       ],
       "completed_items": [
-        {"iteration": 1, "description": "Renamed all package.json name fields and dependency keys from @activepieces/* to @flow/* (35 packages)"}
+        {"iteration": 1, "description": "Renamed all package.json name fields and dependency keys from @activepieces/* to @flow/* (35 packages)"},
+        {"iteration": 2, "description": "Updated all 1070 .ts/.tsx/.mts import paths, 2 tsconfig path mappings, and 12 vitest/vite configs from @activepieces/* to @flow/*"}
       ]
     },
     "rename-ap-core-types": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "ActivepiecesError renamed to FlowError (class, file, all references)",
@@ -174,7 +175,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": [],
-  "phase_queue": ["rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages"],
+  "phase_queue": ["rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing", "strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

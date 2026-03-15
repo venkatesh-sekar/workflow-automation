@@ -6,7 +6,7 @@ import {
   OpenAIProviderAuthConfig,
   OpenAIProviderConfig,
   UpdateAIProviderRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';

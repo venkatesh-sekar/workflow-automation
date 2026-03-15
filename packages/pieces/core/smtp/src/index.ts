@@ -1,7 +1,7 @@
 import {
   createPiece,
-} from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { sendEmail } from './lib/actions/send-email';
 import { smtpAuth } from './lib/auth';
 

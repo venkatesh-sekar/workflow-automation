@@ -3,7 +3,7 @@ import {
     FileType,
     FlowVersion,
     spreadIfDefined,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { fileService } from '../../file/file.service'
 

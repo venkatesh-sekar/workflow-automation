@@ -1,4 +1,4 @@
-import { Permission } from '@activepieces/shared';
+import { Permission } from '@flow/shared';
 import React, { Suspense } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 

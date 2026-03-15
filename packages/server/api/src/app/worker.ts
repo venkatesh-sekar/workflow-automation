@@ -1,5 +1,5 @@
-import { WorkerSystemProp } from '@activepieces/server-common'
-import { isNil } from '@activepieces/shared'
+import { WorkerSystemProp } from '@flow/server-common'
+import { isNil } from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { flowWorker } from 'worker'
 import { accessTokenManager } from './authentication/lib/access-token-manager'

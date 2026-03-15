@@ -2,7 +2,7 @@ import {
   ApplicationEventName,
   EventDestination,
   CreatePlatformEventDestinationRequestBody,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

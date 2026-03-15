@@ -3,7 +3,7 @@ import {
   textConditions,
   singleValueConditions,
   RouterAction,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 import { useFormContext } from 'react-hook-form';

@@ -1,4 +1,4 @@
-import { FolderDto, UncategorizedFolderId } from '@activepieces/shared';
+import { FolderDto, UncategorizedFolderId } from '@flow/shared';
 import { t } from 'i18next';
 import { FolderIcon } from 'lucide-react';
 

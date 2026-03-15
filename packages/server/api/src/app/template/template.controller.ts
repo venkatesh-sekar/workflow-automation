@@ -1,4 +1,4 @@
-import { securityAccess } from '@activepieces/server-common'
+import { securityAccess } from '@flow/server-common'
 import {
     ALL_PRINCIPAL_TYPES,
     CreateTemplateRequestBody,
@@ -6,7 +6,7 @@ import {
     PrincipalType,
     SERVICE_KEY_SECURITY_OPENAPI,
     UpdateTemplateRequestBody,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'

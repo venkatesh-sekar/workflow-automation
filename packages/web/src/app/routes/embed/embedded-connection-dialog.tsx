@@ -2,7 +2,7 @@ import {
   apId,
   AppConnectionWithoutSensitiveData,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import {
   ActivepiecesClientConnectionNameIsInvalid,
   ActivepiecesClientConnectionPieceNotFound,

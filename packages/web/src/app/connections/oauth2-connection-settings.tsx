@@ -3,7 +3,7 @@ import {
   OAuth2Props,
   PieceMetadataModel,
   PieceMetadataModelSummary,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   resolveValueFromProps,
   ApFlagId,
@@ -13,7 +13,7 @@ import {
   UpsertOAuth2Request,
   UpsertPlatformOAuth2Request,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
 

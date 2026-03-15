@@ -2,7 +2,7 @@ import {
   Property,
   TriggerStrategy,
   createTrigger,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { getChannels, multiSelectChannelInfo, userId } from '../common/props';
 import { slackAuth } from '../auth';
 import { getBotToken, getTeamId, SlackAuthValue } from '../common/auth-helpers';

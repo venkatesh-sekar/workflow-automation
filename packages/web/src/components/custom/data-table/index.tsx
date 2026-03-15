@@ -1,6 +1,6 @@
 'use client';
 
-import { apId, isNil, SeekPage } from '@activepieces/shared';
+import { apId, isNil, SeekPage } from '@flow/shared';
 import {
   ColumnDef as TanstackColumnDef,
   flexRender,

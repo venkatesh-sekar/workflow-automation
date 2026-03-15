@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { createContext, useContext, useState } from 'react';
 
 import { useBuilderStateContext } from '../builder-hooks';

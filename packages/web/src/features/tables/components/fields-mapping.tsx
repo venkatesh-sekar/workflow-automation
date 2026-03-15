@@ -1,4 +1,4 @@
-import { Field } from '@activepieces/shared';
+import { Field } from '@flow/shared';
 import { t } from 'i18next';
 import { ArrowLeftIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';

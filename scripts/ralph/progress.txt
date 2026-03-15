@@ -9,3 +9,10 @@
 - **Quality gate:** pass (0 typecheck errors)
 - **Learnings:** tsconfig paths drive TS resolution, not package.json names — so name renames are safe without updating .ts imports
 ---
+
+## Iteration #2 - rename-packages (PHASE COMPLETE)
+- **Change:** Updated all 1070 .ts/.tsx/.mts import paths, 2 tsconfig path mappings, and 12 vitest/vite configs from @activepieces/* to @flow/*. Phase complete — all criteria verified. Advancing to rename-ap-core-types.
+- **Files:** ~1084 files modified
+- **Quality gate:** pass (0 typecheck errors for both server and web)
+- **Learnings:** Bulk sed worked cleanly; dist/ dirs have stale copies (ignored)
+---

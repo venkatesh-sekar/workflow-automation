@@ -10,9 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@activepieces/shared": ["../../packages/shared/src"],
-      "@activepieces/pieces-framework": ["../../packages/pieces/framework/src"],
-      "@activepieces/pieces-common": ["../../packages/pieces/common/src"]
+      "@flow/shared": ["../../packages/shared/src"],
+      "@flow/pieces-framework": ["../../packages/pieces/framework/src"],
+      "@flow/pieces-common": ["../../packages/pieces/common/src"]
     }
   },
   "include": [

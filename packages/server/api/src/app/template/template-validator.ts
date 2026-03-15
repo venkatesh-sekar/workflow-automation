@@ -1,4 +1,4 @@
-import { ActivepiecesError, ErrorCode, FlowOperationRequest, flowOperations, FlowOperationType, flowPieceUtil, FlowVersion, FlowVersionState, FlowVersionTemplate, PlatformId, sanitizeObjectForPostgresql } from '@activepieces/shared'
+import { ActivepiecesError, ErrorCode, FlowOperationRequest, flowOperations, FlowOperationType, flowPieceUtil, FlowVersion, FlowVersionState, FlowVersionTemplate, PlatformId, sanitizeObjectForPostgresql } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { flowVersionValidationUtil } from '../flows/flow-version/flow-version-validator-util'
 

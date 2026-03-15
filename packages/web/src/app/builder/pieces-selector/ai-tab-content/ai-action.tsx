@@ -1,4 +1,4 @@
-import { FlowActionType, FlowTriggerType } from '@activepieces/shared';
+import { FlowActionType, FlowTriggerType } from '@flow/shared';
 
 import { CardListItem } from '@/components/custom/card-list';
 import {

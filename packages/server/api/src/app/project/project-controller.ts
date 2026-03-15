@@ -1,5 +1,5 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
-import { ApId, assertNotNullOrUndefined, PrincipalType, Project, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@activepieces/shared'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
+import { ApId, assertNotNullOrUndefined, PrincipalType, Project, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'

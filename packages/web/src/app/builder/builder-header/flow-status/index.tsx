@@ -1,4 +1,4 @@
-import { FlowVersionState, isNil } from '@activepieces/shared';
+import { FlowVersionState, isNil } from '@flow/shared';
 import React from 'react';
 
 import { useBuilderStateContext } from '@/app/builder/builder-hooks';

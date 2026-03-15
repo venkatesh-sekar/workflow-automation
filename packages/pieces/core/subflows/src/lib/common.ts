@@ -1,5 +1,5 @@
-import { FlowStatus, FlowTriggerType, isNil, PopulatedFlow } from "@activepieces/shared";
-import { FlowsContext, ListFlowsContextParams } from "@activepieces/pieces-framework";
+import { FlowStatus, FlowTriggerType, isNil, PopulatedFlow } from "@flow/shared";
+import { FlowsContext, ListFlowsContextParams } from "@flow/pieces-framework";
 
 
 export const callableFlowKey = (runId: string) => `callableFlow_${runId}`;
@@ -25,7 +25,7 @@ export async function listEnabledFlowsWithSubflowTrigger({
             flow.status === FlowStatus.ENABLED &&
             flow.version.trigger.type === FlowTriggerType.PIECE &&
             flow.version.trigger.settings.pieceName ==
-            '@activepieces/piece-subflows'
+            '@flow/piece-subflows'
     );
     return flows;
 }

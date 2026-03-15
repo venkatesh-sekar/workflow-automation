@@ -4,8 +4,8 @@ import {
   PieceAuth,
   Property,
   TriggerStrategy,
-} from '@activepieces/pieces-framework';
-import { assertNotNullOrUndefined, MarkdownVariant } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { assertNotNullOrUndefined, MarkdownVariant } from '@flow/shared';
 
 const liveMarkdown = `**Live URL:**
 \`\`\`text

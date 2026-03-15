@@ -1,6 +1,6 @@
-import { createAction } from '@activepieces/pieces-framework';
+import { createAction } from '@flow/pieces-framework';
 import { slackAuth } from '../auth';
-import { assertNotNullOrUndefined } from '@activepieces/shared';
+import { assertNotNullOrUndefined } from '@flow/shared';
 import {
   profilePicture,
   text,

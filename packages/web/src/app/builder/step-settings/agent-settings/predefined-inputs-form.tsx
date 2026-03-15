@@ -1,9 +1,9 @@
-import { PieceProperty, PropertyType } from '@activepieces/pieces-framework';
+import { PieceProperty, PropertyType } from '@flow/pieces-framework';
 import {
   FieldControlMode,
   isNil,
   PredefinedInputField,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { t } from 'i18next';
 import { useEffect, useMemo } from 'react';

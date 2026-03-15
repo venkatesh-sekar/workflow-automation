@@ -1,5 +1,5 @@
-import { FilesService } from '@activepieces/pieces-framework'
-import { FileLocation, FileSizeError, FileStoreError, isNil, StepFileUpsertResponse } from '@activepieces/shared'
+import { FilesService } from '@flow/pieces-framework'
+import { FileLocation, FileSizeError, FileStoreError, isNil, StepFileUpsertResponse } from '@flow/shared'
 import fetchRetry from 'fetch-retry'
 
 const MAX_FILE_SIZE_MB = Number(process.env.FLOW_MAX_FILE_SIZE_MB)

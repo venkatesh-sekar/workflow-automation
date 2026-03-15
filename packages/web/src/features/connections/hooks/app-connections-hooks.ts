@@ -1,7 +1,7 @@
 import {
   getAuthPropertyForValue,
   PieceAuthProperty,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   ApErrorParams,
   AppConnectionScope,
@@ -11,7 +11,7 @@ import {
   ListAppConnectionsRequestQuery,
   ReplaceAppConnectionsRequestBody,
   UpsertAppConnectionRequestBody,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { UseFormReturn } from 'react-hook-form';

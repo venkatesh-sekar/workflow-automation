@@ -4,7 +4,7 @@ import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/
 import { createTestContext } from '../../../helpers/test-context'
 import { db } from '../../../helpers/db'
 import { createMockTemplate } from '../../../helpers/mocks'
-import { TemplateScope } from '@activepieces/shared'
+import { TemplateScope } from '@flow/shared'
 
 let app: FastifyInstance | null = null
 

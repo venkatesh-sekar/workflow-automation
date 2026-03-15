@@ -5,7 +5,7 @@ import {
   FlowActionType,
   isNil,
   Step,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import { JsonViewer } from '@/components/custom/json-viewer';

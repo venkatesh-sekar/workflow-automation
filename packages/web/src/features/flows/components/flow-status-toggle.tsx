@@ -4,7 +4,7 @@ import {
   Permission,
   PopulatedFlow,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 

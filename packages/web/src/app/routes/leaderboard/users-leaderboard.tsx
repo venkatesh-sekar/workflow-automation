@@ -1,4 +1,4 @@
-import { BADGES, UserWithBadges } from '@activepieces/shared';
+import { BADGES, UserWithBadges } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { Trophy } from 'lucide-react';

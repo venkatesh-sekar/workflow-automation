@@ -2,7 +2,7 @@ import {
   FlowVersionMetadata,
   FlowVersionState,
   Permission,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { EllipsisVertical, Eye, EyeIcon, Pencil } from 'lucide-react';
 import React, { useState } from 'react';

@@ -1,7 +1,7 @@
 
-    import { createPiece, PieceAuth } from "@activepieces/pieces-framework";
+    import { createPiece, PieceAuth } from "@flow/pieces-framework";
 import { manualTrigger } from "./lib/triggers/manual-trigger";
-import { PieceCategory } from "@activepieces/shared";
+import { PieceCategory } from "@flow/shared";
 
 export const manualTriggerPiece = createPiece({
       displayName: "Manual Trigger",

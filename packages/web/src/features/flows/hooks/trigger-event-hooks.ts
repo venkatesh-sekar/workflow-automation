@@ -1,4 +1,4 @@
-import { SeekPage, TriggerEventWithPayload } from '@activepieces/shared';
+import { SeekPage, TriggerEventWithPayload } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 
 import { authenticationSession } from '@/lib/authentication-session';

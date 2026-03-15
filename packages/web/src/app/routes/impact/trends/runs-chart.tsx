@@ -1,4 +1,4 @@
-import { PlatformAnalyticsReport } from '@activepieces/shared';
+import { PlatformAnalyticsReport } from '@flow/shared';
 import { t } from 'i18next';
 import { TrendingUp } from 'lucide-react';
 

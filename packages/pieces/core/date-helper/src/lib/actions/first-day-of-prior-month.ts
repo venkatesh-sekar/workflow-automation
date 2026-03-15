@@ -1,4 +1,4 @@
-import { Property, createAction } from '@activepieces/pieces-framework';
+import { Property, createAction } from '@flow/pieces-framework';
 import {
   optionalTimeFormats,
   timeFormat,
@@ -8,7 +8,7 @@ import {
   apDayjs,
 } from '../common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 
 export const firstDayOfPreviousMonthAction = createAction({
   name: 'first_day_of_previous_month',

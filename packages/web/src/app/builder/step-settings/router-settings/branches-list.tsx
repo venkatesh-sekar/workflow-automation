@@ -3,7 +3,7 @@ import {
   BranchExecutionType,
   isNil,
   RouterActionSettings,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { GripVertical, Trash, CopyPlus, Pencil } from 'lucide-react';
 import React, { useState } from 'react';

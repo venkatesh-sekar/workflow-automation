@@ -7,7 +7,7 @@ import {
   isNil,
   StepOutput,
   StepOutputStatus,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import {
   CircleAlert,

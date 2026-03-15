@@ -1,4 +1,4 @@
-import { PlatformId, ProjectId } from '@activepieces/shared'
+import { PlatformId, ProjectId } from '@flow/shared'
 
 export const getProjectMaxConcurrentJobsKey = (projectId: ProjectId): string => `project:max-concurrent-jobs:${projectId}`
 export const getPlatformPlanNameKey = (platformId: PlatformId): string => `platform_plan:plan:${platformId}`

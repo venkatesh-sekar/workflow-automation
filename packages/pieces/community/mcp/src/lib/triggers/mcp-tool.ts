@@ -2,8 +2,8 @@ import {
     createTrigger,
     Property,
     TriggerStrategy,
-  } from '@activepieces/pieces-framework';
-import { McpPropertyType } from '@activepieces/shared';
+  } from '@flow/pieces-framework';
+import { McpPropertyType } from '@flow/shared';
 
 
 export const mcpTool = createTrigger({

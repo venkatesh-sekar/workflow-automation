@@ -1,4 +1,4 @@
-import { UpdateMeResponse, UserWithBadges } from '@activepieces/shared';
+import { UpdateMeResponse, UserWithBadges } from '@flow/shared';
 
 import { api } from '@/lib/api';
 

@@ -3,7 +3,7 @@ import {
     EngineResponseStatus,
     ExecuteValidateAuthOperation,
     ExecuteValidateAuthResponse,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { pieceHelper } from '../helper/piece-helper'
 
 export const authValidationOperation = {

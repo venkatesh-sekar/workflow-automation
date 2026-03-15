@@ -3,9 +3,9 @@ import {
   HttpMethod,
   createCustomApiCallAction,
   httpClient,
-} from '@activepieces/pieces-common';
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory,  } from '@activepieces/shared';
+} from '@flow/pieces-common';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory,  } from '@flow/shared';
 import { askAssistant } from './lib/actions/ask-assistant';
 import { generateImage } from './lib/actions/generate-image';
 import { askOpenAI } from './lib/actions/send-prompt';

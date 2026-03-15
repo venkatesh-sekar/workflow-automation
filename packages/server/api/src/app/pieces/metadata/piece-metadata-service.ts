@@ -1,4 +1,4 @@
-import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation, pieceTranslation } from '@activepieces/pieces-framework'
+import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation, pieceTranslation } from '@flow/pieces-framework'
 import {
     ActivepiecesError,
     apId,
@@ -17,7 +17,7 @@ import {
     PrivatePiecePackage,
     PublicPiecePackage,
     SuggestionType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import semVer from 'semver'

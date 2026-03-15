@@ -1,4 +1,4 @@
-import { FieldType, isNil } from '@activepieces/shared';
+import { FieldType, isNil } from '@flow/shared';
 import { t } from 'i18next';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';

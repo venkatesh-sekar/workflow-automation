@@ -1,5 +1,5 @@
-import { Property, createAction } from '@activepieces/pieces-framework';
-import { isNil } from '@activepieces/shared';
+import { Property, createAction } from '@flow/pieces-framework';
+import { isNil } from '@flow/shared';
 
 const markdown = `
 **Advanced Piece**

@@ -1,5 +1,5 @@
-import { AppSystemProp, rejectedPromiseHandler } from '@activepieces/server-common'
-import { ApEdition, isNil, TemplateTelemetryEvent, TemplateTelemetryEventType, tryCatch } from '@activepieces/shared'
+import { AppSystemProp, rejectedPromiseHandler } from '@flow/server-common'
+import { ApEdition, isNil, TemplateTelemetryEvent, TemplateTelemetryEventType, tryCatch } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { system } from '../../helper/system/system'
 

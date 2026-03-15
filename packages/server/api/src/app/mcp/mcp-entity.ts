@@ -1,4 +1,4 @@
-import { McpServer, Project } from '@activepieces/shared'
+import { McpServer, Project } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 import { ApIdSchema, BaseColumnSchemaPart } from '../database/database-common'
 

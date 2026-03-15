@@ -1,4 +1,4 @@
-import { FlowVersionTemplate, Template } from '@activepieces/shared';
+import { FlowVersionTemplate, Template } from '@flow/shared';
 
 export const templateUtils = {
   parseTemplate: (jsonString: string): Template | null => {

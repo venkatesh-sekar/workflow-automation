@@ -1,6 +1,6 @@
 import { inspect } from 'util'
-import { AppSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@activepieces/server-common'
-import { ApEdition, ApEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@activepieces/shared'
+import { AppSystemProp, ContainerType, DatabaseType, RedisType, SystemProp, WorkerSystemProp } from '@flow/server-common'
+import { ApEdition, ApEnvironment, DefaultProjectRole, ExecutionMode, FileLocation, isNil } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { packageManager, registryPieceManager } from 'worker'
 import { s3Helper } from '../file/s3-helper'

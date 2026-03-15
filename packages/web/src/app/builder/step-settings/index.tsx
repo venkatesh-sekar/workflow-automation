@@ -5,7 +5,7 @@ import {
   FlowTrigger,
   FlowTriggerType,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import deepEqual from 'deep-equal';
 import { useEffect, useRef, useState } from 'react';
@@ -148,7 +148,7 @@ const StepSettingsContainer = () => {
     ) && !isNil(stepMetadata);
 
   const runAgentStep =
-    modifiedStep.settings.pieceName === '@activepieces/piece-ai' &&
+    modifiedStep.settings.pieceName === '@flow/piece-ai' &&
     modifiedStep.settings.actionName === 'run_agent';
 
   useEffect(() => {

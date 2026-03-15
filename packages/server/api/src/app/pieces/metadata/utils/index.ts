@@ -1,4 +1,4 @@
-import { PieceCategory, PieceOrderBy, PieceSortBy, PlatformId, SuggestionType } from '@activepieces/shared'
+import { PieceCategory, PieceOrderBy, PieceSortBy, PlatformId, SuggestionType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { PieceMetadataSchema } from '../piece-metadata-entity'
 import { pieceSearching } from './piece-searching'

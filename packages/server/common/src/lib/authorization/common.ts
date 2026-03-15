@@ -1,4 +1,4 @@
-import { Permission, PrincipalType } from '@activepieces/shared'
+import { Permission, PrincipalType } from '@flow/shared'
 import { EntitySchema } from 'typeorm'
 
 export enum AuthorizationType {

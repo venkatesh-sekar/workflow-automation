@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import { t } from 'i18next'; // Import t directly from i18next
 import { Pencil } from 'lucide-react';
 import React from 'react';

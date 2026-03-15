@@ -1,4 +1,4 @@
-import { EmitTestStepProgressRequest, PrincipalType, TestFlowRunRequestBody, UpdateRunProgressRequest, WebsocketClientEvent, WebsocketServerEvent } from '@activepieces/shared'
+import { EmitTestStepProgressRequest, PrincipalType, TestFlowRunRequestBody, UpdateRunProgressRequest, WebsocketClientEvent, WebsocketServerEvent } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { websocketService } from '../core/websockets.service'
 import { flowWorkerController } from '../workers/worker-controller'

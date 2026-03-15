@@ -1,7 +1,7 @@
 import {
   PlatformWithoutSensitiveData,
   UpdatePlatformRequestBody,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 import { authenticationSession } from '@/lib/authentication-session';

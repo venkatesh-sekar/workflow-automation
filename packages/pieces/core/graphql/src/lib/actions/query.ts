@@ -4,14 +4,14 @@ import {
   HttpHeaders,
   HttpRequest,
   QueryParams,
-} from '@activepieces/pieces-common';
+} from '@flow/pieces-common';
 import {
   createAction,
   DynamicPropsValue,
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
-import { assertNotNullOrUndefined } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { assertNotNullOrUndefined } from '@flow/shared';
 import { httpMethodDropdown } from '../common/props';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import axios from 'axios';

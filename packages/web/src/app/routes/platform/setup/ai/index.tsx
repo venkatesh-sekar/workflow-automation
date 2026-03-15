@@ -1,4 +1,4 @@
-import { PlatformRole, ApFlagId } from '@activepieces/shared';
+import { PlatformRole, ApFlagId } from '@flow/shared';
 import { t } from 'i18next';
 
 import { CenteredPage } from '@/app/components/centered-page';

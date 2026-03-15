@@ -1,11 +1,11 @@
-import { AppSystemProp } from '@activepieces/server-common'
+import { AppSystemProp } from '@flow/server-common'
 import {
     apId,
     isNil,
     PlatformRole,
     ProjectType,
     UserIdentityProvider,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import crypto from 'crypto'
 import { userIdentityService } from '../../authentication/user-identity/user-identity-service'
 import { platformService } from '../../platform/platform.service'

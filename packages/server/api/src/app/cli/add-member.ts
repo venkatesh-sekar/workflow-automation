@@ -15,7 +15,7 @@
 
 import crypto from 'crypto'
 import pino from 'pino'
-import { apId, PlatformRole, Permission, RoleType, UserStatus } from '@activepieces/shared'
+import { apId, PlatformRole, Permission, RoleType, UserStatus } from '@flow/shared'
 import { databaseConnection } from '../database/database-connection'
 import { projectRepo } from '../project/project-service'
 import { userRepo } from '../user/user-service'

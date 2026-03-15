@@ -1,7 +1,7 @@
 import {
   CreateAIProviderRequest,
   UpdateAIProviderRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 

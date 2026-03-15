@@ -2,12 +2,12 @@ import {
   createAction,
   Property,
   StoreScope,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import OpenAI from 'openai';
 import { openaiAuth } from '../auth';
 import { sleep } from '../common/common';
 import { z } from 'zod';
-import { propsValidation } from '@activepieces/pieces-common';
+import { propsValidation } from '@flow/pieces-common';
 
 export const askAssistant = createAction({
   auth: openaiAuth,

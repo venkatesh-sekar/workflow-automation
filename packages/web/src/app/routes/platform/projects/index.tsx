@@ -1,7 +1,7 @@
 import {
   ProjectWithLimits,
   TeamProjectsLimit,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { CheckIcon, Package, Pencil, Trash } from 'lucide-react';

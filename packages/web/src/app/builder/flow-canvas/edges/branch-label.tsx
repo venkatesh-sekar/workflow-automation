@@ -5,7 +5,7 @@ import {
   flowStructureUtil,
   isNil,
   StepLocationRelativeToParent,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useReactFlow } from '@xyflow/react';
 import { t } from 'i18next';
 import { CopyPlus, EllipsisVertical, Trash2 } from 'lucide-react';

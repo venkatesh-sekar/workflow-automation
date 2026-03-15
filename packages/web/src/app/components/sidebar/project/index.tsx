@@ -2,7 +2,7 @@ import {
   isNil,
   PROJECT_COLOR_PALETTE,
   ProjectWithLimits,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { Avatar } from '@/components/ui/avatar';
 import { SidebarMenuButton, useSidebar } from '@/components/ui/sidebar-shadcn';

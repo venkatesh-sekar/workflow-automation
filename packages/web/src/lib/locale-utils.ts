@@ -1,4 +1,4 @@
-import { LocalesEnum } from '@activepieces/shared';
+import { LocalesEnum } from '@flow/shared';
 
 export const localesMap = {
   [LocalesEnum.CHINESE_SIMPLIFIED]: '简体中文',

@@ -1,4 +1,4 @@
-import { GetSampleDataRequest } from '@activepieces/shared';
+import { GetSampleDataRequest } from '@flow/shared';
 
 import { api } from '@/lib/api';
 

@@ -1,4 +1,4 @@
-import { PiecePropertyMap } from '@activepieces/pieces-framework'
+import { PiecePropertyMap } from '@flow/pieces-framework'
 
 export const tsort = {
     sortPropertiesByDependencies(properties: PiecePropertyMap): Record<number, string[]> {

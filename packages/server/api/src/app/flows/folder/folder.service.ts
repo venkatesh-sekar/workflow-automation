@@ -10,7 +10,7 @@ import {
     isNil, ProjectId,
     SeekPage,
     UpdateFolderRequest,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../../core/db/repo-factory'
 import { buildPaginator } from '../../helper/pagination/build-paginator'

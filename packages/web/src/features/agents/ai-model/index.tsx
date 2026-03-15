@@ -1,4 +1,4 @@
-import { AIProviderName } from '@activepieces/shared';
+import { AIProviderName } from '@flow/shared';
 import { t } from 'i18next';
 import { Check, ChevronsUpDown, Loader2 } from 'lucide-react';
 import * as React from 'react';

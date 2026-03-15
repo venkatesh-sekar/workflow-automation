@@ -1,5 +1,5 @@
-import { PieceAuth } from '@activepieces/pieces-framework';
-import { httpClient, HttpMethod } from '@activepieces/pieces-common';
+import { PieceAuth } from '@flow/pieces-framework';
+import { httpClient, HttpMethod } from '@flow/pieces-common';
 
 export const slackOAuth2Auth = PieceAuth.OAuth2({
   description:

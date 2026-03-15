@@ -1,4 +1,4 @@
-import { createAction, Property } from '@activepieces/pieces-framework';
+import { createAction, Property } from '@flow/pieces-framework';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 
 export const textToPdf = createAction({

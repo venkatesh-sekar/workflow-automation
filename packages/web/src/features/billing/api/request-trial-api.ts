@@ -1,4 +1,4 @@
-import { CreateTrialLicenseKeyRequestBody } from '@activepieces/shared';
+import { CreateTrialLicenseKeyRequestBody } from '@flow/shared';
 
 import { flagsApi } from '@/api/flags-api';
 import { api } from '@/lib/api';

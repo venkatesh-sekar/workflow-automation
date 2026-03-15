@@ -2,7 +2,7 @@ import {
   AP_MAXIMUM_PROFILE_PICTURE_SIZE,
   PROFILE_PICTURE_ALLOWED_TYPES,
   UserWithBadges,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { Camera, Mail } from 'lucide-react';

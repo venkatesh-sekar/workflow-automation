@@ -1,7 +1,7 @@
 
-import { createPiece, PieceAuth } from "@activepieces/pieces-framework";
+import { createPiece, PieceAuth } from "@flow/pieces-framework";
 import { query } from "./lib/actions/query";
-import { PieceCategory } from "@activepieces/shared";
+import { PieceCategory } from "@flow/shared";
     
     export const graphql = createPiece({
       displayName: "GraphQL",

@@ -2,13 +2,13 @@ import {
   PieceMetadataModel,
   PiecePropertyMap,
   piecePropertiesUtils,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   FlowAction,
   setAtPath,
   FlowTrigger,
   PropertyExecutionType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import {
   createContext,
   ReactNode,

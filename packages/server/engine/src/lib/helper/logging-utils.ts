@@ -1,4 +1,4 @@
-import { FlowActionType, StepOutput } from '@activepieces/shared'
+import { FlowActionType, StepOutput } from '@flow/shared'
 import PriorityQueue from 'priority-queue-typescript'
 import { utils } from '../utils'
 

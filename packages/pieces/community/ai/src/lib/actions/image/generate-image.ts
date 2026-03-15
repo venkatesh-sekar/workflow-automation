@@ -4,10 +4,10 @@ import {
   InputPropertyMap,
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import { GeneratedFile } from 'ai';
 import { experimental_generateImage as generateImage } from 'ai';
-import { AIProviderName } from '@activepieces/shared';
+import { AIProviderName } from '@flow/shared';
 import { createAIModel } from '../../common/ai-sdk';
 import { aiProps } from '../../common/props';
 

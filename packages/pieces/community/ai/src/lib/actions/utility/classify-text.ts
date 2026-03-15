@@ -1,8 +1,8 @@
-import { createAction, Property } from '@activepieces/pieces-framework';
+import { createAction, Property } from '@flow/pieces-framework';
 import { generateText } from 'ai';
 import { createAIModel } from '../../common/ai-sdk';
 import { aiProps } from '../../common/props';
-import { AIProviderName } from '@activepieces/shared';
+import { AIProviderName } from '@flow/shared';
 
 export const classifyText = createAction({
   name: 'classifyText',

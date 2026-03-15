@@ -1,4 +1,4 @@
-import { ProjectId } from '@activepieces/shared'
+import { ProjectId } from '@flow/shared'
 import { NoneAuthorization, PlatformAuthorization, ProjectAuthorization, PublicRoute, RouteKind, UnscopedAuthorization } from './common'
 
 export type ProjectAuthorizationConfig = Omit<ProjectAuthorization, 'projectResource'> & {

@@ -1,5 +1,5 @@
-import { PieceMetadataModelSummary } from '@activepieces/pieces-framework';
-import { PieceType } from '@activepieces/shared';
+import { PieceMetadataModelSummary } from '@flow/pieces-framework';
+import { PieceType } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { Package, Trash, Puzzle, Tag, Hash, GitBranch } from 'lucide-react';

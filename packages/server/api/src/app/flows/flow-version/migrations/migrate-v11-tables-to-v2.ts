@@ -5,7 +5,7 @@ import {
     FlowVersion,
     isNil,
     Step,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { In } from 'typeorm'
 import { repoFactory } from '../../../core/db/repo-factory'
 import { FieldEntity } from '../../../tables/field/field.entity'
@@ -13,7 +13,7 @@ import { Migration } from '.'
 
 const fieldRepo = repoFactory<Field>(FieldEntity)
 
-const TABLES_PIECE_NAME = '@activepieces/piece-tables'
+const TABLES_PIECE_NAME = '@flow/piece-tables'
 const TARGET_ACTIONS = ['tables-create-records', 'tables-update-record']
 
 function collectFieldIdsFromFlow(flowVersion: FlowVersion) {

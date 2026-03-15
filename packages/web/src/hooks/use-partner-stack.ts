@@ -1,4 +1,4 @@
-import { ApEdition, ApFlagId } from '@activepieces/shared';
+import { ApEdition, ApFlagId } from '@flow/shared';
 
 import { flagsHooks } from './flags-hooks';
 

@@ -1,4 +1,4 @@
-import { ApiKeyResponseWithValue } from '@activepieces/shared';
+import { ApiKeyResponseWithValue } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { apiKeyApi } from '../api/api-key-api';

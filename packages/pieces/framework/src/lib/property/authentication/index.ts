@@ -5,7 +5,7 @@ import { CustomAuthProperty, CustomAuthProps } from "./custom-auth-prop";
 import { SecretTextProperty } from "./secret-text-property";
 import { PropertyType } from "../input/property-type";
 import { OAuth2Property, OAuth2Props } from "./oauth2-prop";
-import { AppConnectionType, isNil } from "@activepieces/shared";
+import { AppConnectionType, isNil } from "@flow/shared";
 
 export const PieceAuthProperty = z.union([
   BasicAuthProperty,

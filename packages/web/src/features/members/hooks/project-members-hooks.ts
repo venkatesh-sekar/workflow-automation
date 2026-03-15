@@ -2,7 +2,7 @@ import {
   ProjectMemberWithUser,
   ApFlagId,
   assertNotNullOrUndefined,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { flagsHooks } from '@/hooks/flags-hooks';

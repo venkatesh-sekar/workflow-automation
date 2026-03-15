@@ -1,4 +1,4 @@
-import { ActivepiecesError, ChatUIResponse, ErrorCode, FlowId, FormInputType, FormResponse, isNil, PopulatedFlow } from '@activepieces/shared'
+import { ActivepiecesError, ChatUIResponse, ErrorCode, FlowId, FormInputType, FormResponse, isNil, PopulatedFlow } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { pieceMetadataService } from '../../../pieces/metadata/piece-metadata-service'
 import { platformService } from '../../../platform/platform.service'
@@ -6,7 +6,7 @@ import { projectService } from '../../../project/project-service'
 import { flowVersionService } from '../../flow-version/flow-version.service'
 import { flowRepo } from '../flow.repo'
 
-const FORMS_PIECE_NAME = '@activepieces/piece-forms'
+const FORMS_PIECE_NAME = '@flow/piece-forms'
 const FORM_TRIIGGER = 'form_submission'
 const FILE_TRIGGER = 'file_submission'
 const SIMPLE_FILE_PROPS = {

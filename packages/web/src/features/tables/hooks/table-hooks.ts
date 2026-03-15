@@ -4,7 +4,7 @@ import {
   TableTemplate,
   Table,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 

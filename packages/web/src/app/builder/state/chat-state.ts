@@ -1,4 +1,4 @@
-import { apId } from '@activepieces/shared';
+import { apId } from '@flow/shared';
 import { StoreApi } from 'zustand';
 
 import { ChatDrawerSource } from '@/app/builder/types';

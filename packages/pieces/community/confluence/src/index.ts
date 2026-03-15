@@ -1,8 +1,8 @@
-import { createPiece, PieceAuth, Property ,PiecePropValueSchema, Piece} from "@activepieces/pieces-framework";
+import { createPiece, PieceAuth, Property ,PiecePropValueSchema, Piece} from "@flow/pieces-framework";
 import { getPageContent } from "./lib/actions/get-page-content";
 import { newPageTrigger } from "./lib/triggers/new-page";
-import { PieceCategory } from "@activepieces/shared";
-import { createCustomApiCallAction } from "@activepieces/pieces-common";
+import { PieceCategory } from "@flow/shared";
+import { createCustomApiCallAction } from "@flow/pieces-common";
 import { createPageFromTemplateAction } from "./lib/actions/create-page-from-template";
 import { confluenceAuth } from './lib/auth';
 

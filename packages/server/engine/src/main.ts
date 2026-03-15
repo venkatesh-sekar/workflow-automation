@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared'
+import { isNil } from '@flow/shared'
 import { progressService } from './lib/services/progress.service'
 import { workerSocket } from './lib/worker-socket'
 

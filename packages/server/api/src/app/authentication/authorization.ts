@@ -4,7 +4,7 @@ import {
     isNil,
     isObject,
     PrincipalType,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { preSerializationHookHandler } from 'fastify'
 
 export function extractResourceName(url: string): string | undefined {

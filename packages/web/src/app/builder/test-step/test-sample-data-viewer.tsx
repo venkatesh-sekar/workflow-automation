@@ -4,7 +4,7 @@ import {
   FlowAction,
   isNil,
   StepOutputStatus,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import React, { useContext } from 'react';
 

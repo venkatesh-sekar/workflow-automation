@@ -3,7 +3,7 @@ import {
     AppConnectionStatus,
     McpServer,
     McpToolDefinition,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
 import { appConnectionService } from '../../app-connection/app-connection-service/app-connection-service'

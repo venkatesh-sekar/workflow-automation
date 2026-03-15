@@ -13,7 +13,7 @@ import {
   StepRunResponse,
   stringifyNullOrUndefined,
   WebsocketClientEvent,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import dayjs from 'dayjs';
 import { Socket } from 'socket.io-client';
 import { StoreApi } from 'zustand';

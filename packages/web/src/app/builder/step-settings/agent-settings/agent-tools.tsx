@@ -1,5 +1,5 @@
-import { AgentToolType } from '@activepieces/shared';
-import type { AgentPieceTool, AgentTool } from '@activepieces/shared';
+import { AgentToolType } from '@flow/shared';
+import type { AgentPieceTool, AgentTool } from '@flow/shared';
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import { ControllerRenderProps } from 'react-hook-form';

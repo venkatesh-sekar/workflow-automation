@@ -7,7 +7,7 @@ import {
   ProjectWithLimits,
   ProjectWithLimitsWithPlatform,
   SeekPage,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { queryCollectionOptions } from '@tanstack/query-db-collection';
 import {
   createCollection,

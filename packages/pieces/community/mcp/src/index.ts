@@ -1,7 +1,7 @@
-import { createPiece, PieceAuth } from "@activepieces/pieces-framework";
+import { createPiece, PieceAuth } from "@flow/pieces-framework";
 import { replyToMcpClient } from "./lib/actions/reply-to-mcp-client";
 import { mcpTool } from "./lib/triggers/mcp-tool";
-import { PieceCategory } from "@activepieces/shared";
+import { PieceCategory } from "@flow/shared";
 
 export const mcp = createPiece({
   displayName: "MCP",

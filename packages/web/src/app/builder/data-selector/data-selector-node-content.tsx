@@ -1,4 +1,4 @@
-import { flowStructureUtil } from '@activepieces/shared';
+import { flowStructureUtil } from '@flow/shared';
 import { t } from 'i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 

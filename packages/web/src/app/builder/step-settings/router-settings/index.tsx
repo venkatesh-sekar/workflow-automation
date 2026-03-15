@@ -7,7 +7,7 @@ import {
   isNil,
   RouterAction,
   RouterExecutionType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useReactFlow } from '@xyflow/react';
 import { t } from 'i18next';
 import { Split } from 'lucide-react';

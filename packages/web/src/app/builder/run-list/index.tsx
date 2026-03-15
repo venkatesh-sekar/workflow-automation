@@ -2,7 +2,7 @@ import {
   FlowRun,
   isFlowRunStateTerminal,
   SeekPage,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import React, { useMemo } from 'react';

@@ -1,4 +1,4 @@
-import { AIProviderWithoutSensitiveData } from '@activepieces/shared';
+import { AIProviderWithoutSensitiveData } from '@flow/shared';
 import { t } from 'i18next';
 import { Pencil, Trash } from 'lucide-react';
 

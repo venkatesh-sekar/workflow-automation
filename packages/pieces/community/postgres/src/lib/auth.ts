@@ -1,8 +1,8 @@
 import {
   PieceAuth,
   Property,
-} from '@activepieces/pieces-framework';
-import { AppConnectionType } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { AppConnectionType } from '@flow/shared';
 import { pgClient } from './common';
 
 export const postgresAuth = PieceAuth.CustomAuth({

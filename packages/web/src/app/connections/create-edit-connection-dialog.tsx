@@ -4,7 +4,7 @@ import {
   PieceMetadataModel,
   PieceMetadataModelSummary,
   PropertyType,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   ApFlagId,
   AppConnectionType,
@@ -12,7 +12,7 @@ import {
   BOTH_CLIENT_CREDENTIALS_AND_AUTHORIZATION_CODE,
   isNil,
   UpsertAppConnectionRequestBody,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { t } from 'i18next';
 import { useState } from 'react';

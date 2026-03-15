@@ -1,4 +1,4 @@
-import { AIProviderAuthConfig, AIProviderConfig, AIProviderName } from '@activepieces/shared'
+import { AIProviderAuthConfig, AIProviderConfig, AIProviderName } from '@flow/shared'
 import { AIProviderStrategy } from './ai-provider'
 import { openaiProvider } from './openai-provider'
 

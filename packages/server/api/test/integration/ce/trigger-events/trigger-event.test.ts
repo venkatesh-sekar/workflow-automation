@@ -2,7 +2,7 @@ import { setupTestEnvironment, teardownTestEnvironment } from '../../../helpers/
 import {
     FlowStatus,
     PopulatedFlow,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyInstance } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { createTestContext } from '../../../helpers/test-context'

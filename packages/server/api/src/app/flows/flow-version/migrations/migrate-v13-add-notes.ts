@@ -1,7 +1,7 @@
 import {
     FlowVersion,
     isNil,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { Migration } from '.'
 
 export const migrateV13AddNotes: Migration = {

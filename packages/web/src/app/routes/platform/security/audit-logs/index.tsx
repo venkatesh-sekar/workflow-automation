@@ -3,7 +3,7 @@ import {
   ApplicationEventName,
   summarizeApplicationEvent,
   isNil,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import {
   CheckIcon,

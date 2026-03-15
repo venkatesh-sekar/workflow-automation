@@ -1,4 +1,4 @@
-import { Template } from '@activepieces/shared';
+import { Template } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';

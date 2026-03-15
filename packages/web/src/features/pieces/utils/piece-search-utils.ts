@@ -3,7 +3,7 @@ import {
   FlowTriggerType,
   FlowActionType,
   AI_PIECE_NAME,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 
 import {
@@ -97,15 +97,15 @@ const getPinnedPieces = (
 };
 
 const POPULAR_PIECES_NAMES = [
-  '@activepieces/piece-google-sheets',
-  '@activepieces/piece-slack',
-  '@activepieces/piece-notion',
-  '@activepieces/piece-gmail',
-  '@activepieces/piece-hubspot',
-  '@activepieces/piece-openai',
-  '@activepieces/piece-google-forms',
-  '@activepieces/piece-google-drive',
-  '@activepieces/piece-google-docs',
+  '@flow/piece-google-sheets',
+  '@flow/piece-slack',
+  '@flow/piece-notion',
+  '@flow/piece-gmail',
+  '@flow/piece-hubspot',
+  '@flow/piece-openai',
+  '@flow/piece-google-forms',
+  '@flow/piece-google-drive',
+  '@flow/piece-google-docs',
 ];
 const getPopularPieces = (
   queryResult: StepMetadataWithSuggestions[],
@@ -159,21 +159,21 @@ const sortByPieceNameOrder = (
   });
 };
 const HIGHLIGHTED_PIECES_NAMES_FOR_TRIGGERS = [
-  '@activepieces/piece-webhook',
-  '@activepieces/piece-schedule',
-  '@activepieces/piece-manual-trigger',
-  '@activepieces/piece-forms',
-  '@activepieces/piece-tables',
+  '@flow/piece-webhook',
+  '@flow/piece-schedule',
+  '@flow/piece-manual-trigger',
+  '@flow/piece-forms',
+  '@flow/piece-tables',
 ];
 
 const HIGHLIGHTED_PIECES_NAMES_FOR_ACTIONS = [
   AI_PIECE_NAME,
-  '@activepieces/piece-http',
-  '@activepieces/piece-tables',
-  '@activepieces/piece-forms',
-  '@activepieces/piece-webhook',
-  '@activepieces/piece-text-helper',
-  '@activepieces/piece-date-helper',
+  '@flow/piece-http',
+  '@flow/piece-tables',
+  '@flow/piece-forms',
+  '@flow/piece-webhook',
+  '@flow/piece-text-helper',
+  '@flow/piece-date-helper',
 ];
 
 export const pieceSearchUtils = {

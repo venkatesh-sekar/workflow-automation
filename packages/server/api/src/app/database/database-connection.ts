@@ -1,5 +1,5 @@
-import { AppSystemProp, DatabaseType } from '@activepieces/server-common'
-import { isNil } from '@activepieces/shared'
+import { AppSystemProp, DatabaseType } from '@flow/server-common'
+import { isNil } from '@flow/shared'
 import {
     DataSource,
     EntitySchema,

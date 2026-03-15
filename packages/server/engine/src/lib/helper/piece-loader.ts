@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { Action, Piece, PiecePropertyMap, Trigger } from '@activepieces/pieces-framework'
-import { ActivepiecesError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@activepieces/shared'
+import { Action, Piece, PiecePropertyMap, Trigger } from '@flow/pieces-framework'
+import { ActivepiecesError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@flow/shared'
 import { utils } from '../utils'
 
 export const pieceLoader = {

@@ -1,4 +1,4 @@
-import { FlowOperationType } from '@activepieces/shared';
+import { FlowOperationType } from '@flow/shared';
 
 import {
   PieceSelectorOperation,

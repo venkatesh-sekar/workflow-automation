@@ -6,7 +6,7 @@ import {
     McpServer,
     McpToolDefinition,
     PieceTrigger,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
 import { flowService } from '../../flows/flow/flow.service'
@@ -28,7 +28,7 @@ export const apUpdateTriggerTool = (mcp: McpServer, log: FastifyBaseLogger): Mcp
         description: 'Set or update the trigger for a flow. Use ap_list_pieces to get valid pieceName, pieceVersion, and triggerName. Use ap_list_connections to get the connection externalId for auth.',
         inputSchema: {
             flowId: z.string().describe('The id of the flow'),
-            pieceName: z.string().describe('The piece name for the trigger (e.g. "@activepieces/piece-gmail"). Use ap_list_pieces to get valid values.'),
+            pieceName: z.string().describe('The piece name for the trigger (e.g. "@flow/piece-gmail"). Use ap_list_pieces to get valid values.'),
             pieceVersion: z.string().describe('The piece version (e.g. "~0.1.0"). Use ap_list_pieces to get valid values.'),
             triggerName: z.string().describe('The trigger name within the piece (e.g. "new_email"). Use ap_list_pieces with includeTriggers=true to get valid values.'),
             input: z.record(z.string(), z.unknown()).optional().describe('Input settings for the trigger (key-value pairs). Use `{{stepName.output.field}}` to reference data from previous steps (e.g. `{{trigger.output.body.email}}`, `{{step_1.output.id}}`).'),

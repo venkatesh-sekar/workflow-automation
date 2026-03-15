@@ -1,4 +1,4 @@
-import { apId, ApId, FlowRunStatus, PauseMetadata, RunEnvironment } from '@activepieces/shared'
+import { apId, ApId, FlowRunStatus, PauseMetadata, RunEnvironment } from '@flow/shared'
 import { Queue } from 'bullmq'
 import { BullMQOtel } from 'bullmq-otel'
 import Redis from 'ioredis'

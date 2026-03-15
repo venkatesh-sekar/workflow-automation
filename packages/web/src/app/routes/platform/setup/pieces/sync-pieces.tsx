@@ -1,4 +1,4 @@
-import { ApFlagId, PieceSyncMode } from '@activepieces/shared';
+import { ApFlagId, PieceSyncMode } from '@flow/shared';
 import { RefreshCcw } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';

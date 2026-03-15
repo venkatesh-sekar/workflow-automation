@@ -3,7 +3,7 @@ import {
   SecretManagerProviderMetaData,
   ApErrorParams,
   ErrorCode,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';

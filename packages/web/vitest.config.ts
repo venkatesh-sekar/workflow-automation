@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@activepieces/shared': path.resolve(
+      '@flow/shared': path.resolve(
         __dirname,
         '../../packages/shared/src',
       ),

@@ -1,5 +1,5 @@
-import { securityAccess } from '@activepieces/server-common'
-import { GetSystemHealthChecksResponse, PrincipalType } from '@activepieces/shared'
+import { securityAccess } from '@flow/server-common'
+import { GetSystemHealthChecksResponse, PrincipalType } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { healthStatusService } from './health.service'

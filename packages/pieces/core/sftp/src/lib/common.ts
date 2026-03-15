@@ -1,4 +1,4 @@
-import { isNil } from '@activepieces/shared';
+import { isNil } from '@flow/shared';
 import Client from 'ssh2-sftp-client';
 import { ServerHostKeyAlgorithm } from 'ssh2';
 import { Client as FTPClient } from 'basic-ftp';

@@ -1,9 +1,9 @@
-import { PieceMetadata } from '@activepieces/pieces-framework'
+import { PieceMetadata } from '@flow/pieces-framework'
 import {
     EngineResponse,
     EngineResponseStatus,
     ExecuteExtractPieceMetadataOperation,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { pieceHelper } from '../helper/piece-helper'
 
 

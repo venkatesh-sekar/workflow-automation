@@ -3,7 +3,7 @@ import {
   PlatformAnalyticsReport,
   ProjectLeaderboardItem,
   UserLeaderboardItem,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

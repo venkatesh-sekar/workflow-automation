@@ -13,7 +13,7 @@ import { ActivepiecesError,
     spreadIfDefined,
     UpdatePlatformRequestBody,
     UserId,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { repoFactory } from '../core/db/repo-factory'
 import { defaultTheme } from '../flags/theme'

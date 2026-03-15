@@ -1,8 +1,8 @@
 import {
   PieceMetadataModelSummary,
   PropertyType,
-} from '@activepieces/pieces-framework';
-import { isNil, OAuth2GrantType, PieceScope } from '@activepieces/shared';
+} from '@flow/pieces-framework';
+import { isNil, OAuth2GrantType, PieceScope } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
 import { CheckIcon, Package, Hash, GitBranch, Puzzle } from 'lucide-react';

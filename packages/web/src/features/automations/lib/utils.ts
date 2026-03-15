@@ -1,4 +1,4 @@
-import { FolderDto, PopulatedFlow, Table } from '@activepieces/shared';
+import { FolderDto, PopulatedFlow, Table } from '@flow/shared';
 
 import { AutomationsFilters, FolderContent, TreeItem } from './types';
 

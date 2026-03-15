@@ -1,4 +1,4 @@
-import { UserWithMetaInformation } from '@activepieces/shared';
+import { UserWithMetaInformation } from '@flow/shared';
 
 export type EmailStatusType =
   | {

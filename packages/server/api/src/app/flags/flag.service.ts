@@ -1,5 +1,5 @@
-import { AppSystemProp, apVersionUtil, webhookSecretsUtils } from '@activepieces/server-common'
-import { ApEdition, ApFlagId, ExecutionMode, Flag, isNil } from '@activepieces/shared'
+import { AppSystemProp, apVersionUtil, webhookSecretsUtils } from '@flow/server-common'
+import { ApEdition, ApFlagId, ExecutionMode, Flag, isNil } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { In } from 'typeorm'

@@ -2,7 +2,7 @@ import {
   isNil,
   Permission,
   ProjectType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Bell, Settings, Users } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';

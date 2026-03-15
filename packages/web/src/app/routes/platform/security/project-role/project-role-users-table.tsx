@@ -1,4 +1,4 @@
-import { ProjectMemberWithUser, ProjectRole } from '@activepieces/shared';
+import { ProjectMemberWithUser, ProjectRole } from '@flow/shared';
 import { t } from 'i18next';
 import { Loader2, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';

@@ -4,12 +4,12 @@ import {
   PropertyType,
   DEFAULT_CONNECTION_DISPLAY_NAME,
   OAuth2Props,
-} from '@activepieces/pieces-framework';
+} from '@flow/pieces-framework';
 import {
   AppConnectionType,
   BOTH_CLIENT_CREDENTIALS_AND_AUTHORIZATION_CODE,
   OAuth2GrantType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import deepEqual from 'deep-equal';
 import { t } from 'i18next';
 

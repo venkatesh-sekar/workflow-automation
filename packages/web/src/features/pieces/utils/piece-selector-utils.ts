@@ -1,4 +1,4 @@
-import { piecePropertiesUtils } from '@activepieces/pieces-framework';
+import { piecePropertiesUtils } from '@flow/pieces-framework';
 import {
   FlowAction,
   FlowActionType,
@@ -20,7 +20,7 @@ import {
   FlowVersion,
   FlowOperationType,
   isManualPieceTrigger,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useRef } from 'react';
 
 import {
@@ -323,12 +323,12 @@ export const PIECE_SELECTOR_ELEMENTS_HEIGHTS = {
 };
 
 const isMcpToolTrigger = (pieceName: string, triggerName: string) => {
-  return pieceName === '@activepieces/piece-mcp' && triggerName === 'mcp_tool';
+  return pieceName === '@flow/piece-mcp' && triggerName === 'mcp_tool';
 };
 
 const isChatTrigger = (pieceName: string, triggerName: string) => {
   return (
-    pieceName === '@activepieces/piece-forms' &&
+    pieceName === '@flow/piece-forms' &&
     triggerName === 'chat_submission'
   );
 };

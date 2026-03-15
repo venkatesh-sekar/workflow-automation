@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { FlowRunStatus, FlowRun, RunEnvironment } from '@activepieces/shared'
+import { FlowRunStatus, FlowRun, RunEnvironment } from '@flow/shared'
 import { alertService } from '../../../../src/app/alerts/alert-service'
 import { FastifyBaseLogger } from 'fastify'
 

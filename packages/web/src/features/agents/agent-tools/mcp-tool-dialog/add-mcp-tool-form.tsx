@@ -6,7 +6,7 @@ import {
   McpAuthType,
   McpProtocol,
   ValidateAgentMcpToolResponse,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { X } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';

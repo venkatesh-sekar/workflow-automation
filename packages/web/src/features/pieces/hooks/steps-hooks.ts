@@ -5,7 +5,7 @@ import {
   LocalesEnum,
   SuggestionType,
   FlowTrigger,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { useQueries, useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 

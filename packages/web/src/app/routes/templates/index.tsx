@@ -2,7 +2,7 @@ import {
   Template,
   TemplateTelemetryEventType,
   UncategorizedFolderId,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import { useCallback, useMemo } from 'react';

@@ -2,8 +2,8 @@ import {
   HttpRequest,
   HttpMethod,
   httpClient,
-} from '@activepieces/pieces-common';
-import { Property, createAction } from '@activepieces/pieces-framework';
+} from '@flow/pieces-common';
+import { Property, createAction } from '@flow/pieces-framework';
 import { openaiAuth } from '../auth';
 import FormData from 'form-data';
 import mime from 'mime-types';

@@ -1,4 +1,4 @@
-import { ProjectResourceType, securityAccess } from '@activepieces/server-common'
+import { ProjectResourceType, securityAccess } from '@flow/server-common'
 import { ApId,
     AppConnectionOwners,
     AppConnectionScope,
@@ -13,7 +13,7 @@ import { ApId,
     SERVICE_KEY_SECURITY_OPENAPI,
     UpdateConnectionValueRequestBody,
     UpsertAppConnectionRequestBody,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyPluginCallbackZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'

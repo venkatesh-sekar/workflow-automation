@@ -1,4 +1,4 @@
-import { PopulatedMcpServer, FlowStatus } from '@activepieces/shared';
+import { PopulatedMcpServer, FlowStatus } from '@flow/shared';
 import { t } from 'i18next';
 
 import { Badge } from '@/components/ui/badge';

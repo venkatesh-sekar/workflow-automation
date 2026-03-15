@@ -1,7 +1,7 @@
 import {
   PopulatedMcpServer,
   UpdateMcpServerRequest,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { api } from '@/lib/api';
 

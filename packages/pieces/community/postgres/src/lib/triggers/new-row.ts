@@ -1,6 +1,6 @@
 
-import { createTrigger, TriggerStrategy, PiecePropValueSchema, Property, AppConnectionValueForAuthProperty } from '@activepieces/pieces-framework';
-import { DedupeStrategy, Polling, pollingHelper } from '@activepieces/pieces-common';
+import { createTrigger, TriggerStrategy, PiecePropValueSchema, Property, AppConnectionValueForAuthProperty } from '@flow/pieces-framework';
+import { DedupeStrategy, Polling, pollingHelper } from '@flow/pieces-common';
 import crypto from 'crypto';
 import { postgresAuth } from '../auth';
 import { pgClient } from '../common';

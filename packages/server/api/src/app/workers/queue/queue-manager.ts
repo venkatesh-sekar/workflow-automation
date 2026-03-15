@@ -1,4 +1,4 @@
-import { ApId, EventDestinationJobData, ExecuteFlowJobData, JobData, PollingJobData, RenewWebhookJobData, ScheduleOptions, UserInteractionJobData, WebhookJobData } from '@activepieces/shared'
+import { ApId, EventDestinationJobData, ExecuteFlowJobData, JobData, PollingJobData, RenewWebhookJobData, ScheduleOptions, UserInteractionJobData, WebhookJobData } from '@flow/shared'
 
 
 export enum JobType {

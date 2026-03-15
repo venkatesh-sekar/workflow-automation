@@ -1,7 +1,7 @@
 import { ApplicationEventName,
     FlowRun,
     isFlowRunStateTerminal,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { applicationEvents } from '../../helper/application-events'
 import { flowRunHooks } from './flow-run-hooks'

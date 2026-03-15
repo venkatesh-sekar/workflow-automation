@@ -3,7 +3,7 @@ import {
   isNil,
   TelemetryEvent,
   UserWithMetaInformation,
-} from '@activepieces/shared';
+} from '@flow/shared';
 import { AnalyticsBrowser } from '@segment/analytics-next';
 import posthog from 'posthog-js';
 import React, { useEffect, useState, useRef } from 'react';

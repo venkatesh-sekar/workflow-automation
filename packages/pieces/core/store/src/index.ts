@@ -1,5 +1,5 @@
-import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
-import { PieceCategory } from '@activepieces/shared';
+import { PieceAuth, createPiece } from '@flow/pieces-framework';
+import { PieceCategory } from '@flow/shared';
 import { storageAddtoList } from './lib/actions/store-add-to-list';
 import { storageAppendAction } from './lib/actions/store-append-action';
 import { storageGetAction } from './lib/actions/store-get-action';

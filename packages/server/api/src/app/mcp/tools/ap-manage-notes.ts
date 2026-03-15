@@ -6,7 +6,7 @@ import {
     McpServer,
     McpToolDefinition,
     NoteColorVariant,
-} from '@activepieces/shared'
+} from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { z } from 'zod'
 import { flowService } from '../../flows/flow/flow.service'

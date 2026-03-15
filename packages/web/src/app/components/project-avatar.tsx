@@ -2,7 +2,7 @@ import {
   ColorName,
   PROJECT_COLOR_PALETTE,
   ProjectType,
-} from '@activepieces/shared';
+} from '@flow/shared';
 
 import { Avatar } from '@/components/ui/avatar';
 
