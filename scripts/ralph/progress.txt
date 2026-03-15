@@ -709,3 +709,17 @@
 - **Quality gate:** pass (0 TS errors, 184 tests pass)
 - **Learnings:** Migration files have local TemplateType enums — safe to leave untouched. community-templates.service.ts is now dead code (no importers). UI files still reference OFFICIAL/SHARED — will be addressed in frontend phases.
 ---
+
+## Iteration #102 - modify-templates
+- **Change:** Added TemplateScope enum (TEAM/GLOBAL) to shared types, template entity (default TEAM), create/list request schemas, and all template creation sites (template.service.ts, flow.service.ts, table.service.ts)
+- **Files:** template.ts, template.requests.ts, template.entity.ts, template.service.ts, flow.service.ts, table.service.ts
+- **Quality gate:** pass (0 TS errors, 184 tests pass)
+- **Learnings:** Scope field flows through zod schema defaults — CreateTemplateRequestBody defaults to TEAM, list query allows optional filter
+---
+
+## Iteration #103 - modify-templates
+- **Change:** Added scope filtering to template service list() method — filters by TEAM or GLOBAL when scope query param provided
+- **Files:** packages/server/api/src/app/template/template.service.ts
+- **Quality gate:** pass (typecheck clean, 184 tests pass)
+- **Learnings:** ListParams had stale Omit<..., 'type'> since type was removed from query in #101 — cleaned up
+---

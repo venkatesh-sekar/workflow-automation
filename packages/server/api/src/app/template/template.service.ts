@@ -1,4 +1,4 @@
-import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@activepieces/shared'
+import { ActivepiecesError, apId, CreateTemplateRequestBody, ErrorCode, FlowVersionTemplate, isNil, ListTemplatesRequestQuery, SeekPage, spreadIfDefined, Template, TemplateScope, TemplateStatus, TemplateType, UpdateTemplateRequestBody } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { ArrayContains, ArrayOverlap, Equal } from 'typeorm'
 import { repoFactory } from '../core/db/repo-factory'
@@ -92,7 +92,7 @@ export const templateService = (log: FastifyBaseLogger) => ({
         return templateRepo().findOneByOrFail({ id })
     },
 
-    async list({ platformId, pieces, tags, search, category }: ListParams): Promise<SeekPage<Template>> {
+    async list({ platformId, pieces, tags, search, category, scope }: ListParams): Promise<SeekPage<Template>> {
         const commonFilters: Record<string, unknown> = {}
 
         if (pieces) {
@@ -104,6 +104,9 @@ export const templateService = (log: FastifyBaseLogger) => ({
         commonFilters.type = Equal(TemplateType.CUSTOM)
         if (!isNil(platformId)) {
             commonFilters.platformId = Equal(platformId)
+        }
+        if (!isNil(scope)) {
+            commonFilters.scope = Equal(scope)
         }
         commonFilters.status = Equal(TemplateStatus.PUBLISHED)
         const queryBuilder = templateRepo()
@@ -143,7 +146,7 @@ type CreateParams = {
 
 type NewTemplate = Omit<Template, 'created' | 'updated'>
 
-type ListParams = Omit<ListTemplatesRequestQuery, 'type'> & {
+type ListParams = ListTemplatesRequestQuery & {
     platformId: string | null
 }
 
