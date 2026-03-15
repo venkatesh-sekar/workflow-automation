@@ -66,3 +66,10 @@
 - **Files changed:** packages/web/src/features/automations/components/automations-table.tsx
 - **Learnings:** Table headers should align size, weight, and color signals in the same hierarchy direction. Don't use font-medium to compensate for text-xs — it over-corrects when combined with muted color.
 ---
+
+## Iteration #10 - automations-page
+- **Change:** Replaced hardcoded `text-gray-400 fill-gray-400` on folder icon with `text-muted-foreground/70 fill-muted-foreground/70` — aligns to 220° cool blue-gray design tokens at subordinate opacity, positioning folder as structural chrome below semantic icons (primary for flows, emerald for tables). Automations-page area now complete, advancing to runs-page.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/automations/components/automations-table-row.tsx
+- **Learnings:** For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons but clearly from the design token system. Never use raw Tailwind grays (gray-400, hue 0°) when the palette is cool blue-gray (hue 220°).
+---
