@@ -81,13 +81,6 @@ export const PlatformPlan = z.object({
     scimEnabled: z.boolean(),
     licenseKey: Nullable(z.string()),
     licenseExpiresAt: Nullable(DateOrString),
-    stripeCustomerId: Nullable(z.string()),
-    stripeSubscriptionId: Nullable(z.string()),
-    stripeSubscriptionStatus: Nullable(z.string()),
-    stripeSubscriptionStartDate: Nullable(z.number()),
-    stripeSubscriptionEndDate: Nullable(z.number()),
-    stripeSubscriptionCancelDate: Nullable(z.number()),
-
     projectsLimit: Nullable(z.number()),
     activeFlowsLimit: Nullable(z.number()),
 
@@ -99,7 +92,7 @@ export type PlatformPlan = z.infer<typeof PlatformPlan>
 
 export const PlatformPlanLimits = PlatformPlan.omit({ id: true, platformId: true, created: true, updated: true })
 export type PlatformPlanLimits = z.infer<typeof PlatformPlanLimits>
-export type PlatformPlanWithOnlyLimits = Omit<PlatformPlanLimits, 'stripeSubscriptionStartDate' | 'stripeSubscriptionEndDate' | 'stripeBillingCycle'>
+export type PlatformPlanWithOnlyLimits = PlatformPlanLimits
 
 export const Platform = z.object({
     ...BaseModelSchema,

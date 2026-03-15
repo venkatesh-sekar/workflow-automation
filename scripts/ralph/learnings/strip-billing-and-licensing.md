@@ -15,3 +15,7 @@
 ## Component Dependencies on Billing Mutations
 - 7 components reference billingMutations.use* — these will break at runtime but not at compile time (billingMutations is now empty {})
 - Next: need to gut those components or remove the dead mutation references
+
+## Stripe Env Vars Still Present
+- STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET still in FlowSystemProp enum and system-validator
+- Need removal in a later iteration (along with any server-side Stripe billing routes if they exist)

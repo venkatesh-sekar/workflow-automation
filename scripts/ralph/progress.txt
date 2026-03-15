@@ -240,3 +240,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** No server-side platform-billing routes exist; billing API is frontend-only calling external cloud. Stripe price IDs hardcoded in shared/ee/billing/index.ts.
 ---
+
+## Iteration #35 - strip-billing-and-licensing
+- **Change:** Removed all stripe* fields from PlatformPlan schema (6 fields), simplified PlatformPlanWithOnlyLimits type, cleaned OPEN_SOURCE_PLAN, platform.service.ts getPlan(), and test mocks
+- **Files:** 4 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** STRIPE_SECRET_KEY/STRIPE_WEBHOOK_SECRET env vars still in FlowSystemProp — need removal in a later iteration
+---

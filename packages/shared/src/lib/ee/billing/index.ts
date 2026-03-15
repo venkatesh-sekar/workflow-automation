@@ -119,9 +119,6 @@ export const OPEN_SOURCE_PLAN: PlatformPlanWithOnlyLimits = {
     ssoEnabled: false,
     secretManagersEnabled: false,
     scimEnabled: false,
-    stripeCustomerId: undefined,
-    stripeSubscriptionId: undefined,
-    stripeSubscriptionStatus: undefined,
     aiCreditsAutoTopUpState: AiCreditsAutoTopUpState.DISABLED,
 }
 

@@ -161,8 +161,6 @@ async function getUsage(_log: FastifyBaseLogger, _platform: Platform): Promise<u
 async function getPlan(_log: FastifyBaseLogger, _platform: Platform): Promise<PlatformPlanLimits> {
     return {
         ...OPEN_SOURCE_PLAN,
-        stripeSubscriptionStartDate: 0,
-        stripeSubscriptionEndDate: 0,
     }
 }
 

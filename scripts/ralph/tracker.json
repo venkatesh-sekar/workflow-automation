@@ -1,5 +1,5 @@
 {
-  "iteration": 34,
+  "iteration": 35,
   "current_phase": "strip-billing-and-licensing",
   "phases": {
     "rename-packages": {
@@ -143,7 +143,8 @@
         "All tests pass"
       ],
       "completed_items": [
-        {"iteration": 34, "description": "Removed Stripe checkout endpoints from billing-plans-api.ts (createSubscription, createAICreditCheckoutSession, updateActiveFlowsLimits, updateAutoTopUp, getPortalLink) and gutted billing-hooks.ts mutations — kept only read-only getSubscriptionInfo/billingQueries"}
+        {"iteration": 34, "description": "Removed Stripe checkout endpoints from billing-plans-api.ts (createSubscription, createAICreditCheckoutSession, updateActiveFlowsLimits, updateAutoTopUp, getPortalLink) and gutted billing-hooks.ts mutations — kept only read-only getSubscriptionInfo/billingQueries"},
+        {"iteration": 35, "description": "Removed all stripe* fields from PlatformPlan schema (6 fields: stripeCustomerId, stripeSubscriptionId, stripeSubscriptionStatus, stripeSubscriptionStartDate, stripeSubscriptionEndDate, stripeSubscriptionCancelDate), simplified PlatformPlanWithOnlyLimits type, cleaned OPEN_SOURCE_PLAN, platform.service.ts getPlan(), and test mocks"}
       ]
     },
     "strip-external-urls": {
