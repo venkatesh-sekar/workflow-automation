@@ -46,8 +46,8 @@ const ProjectSideBarItem = ({
   return (
     <SidebarMenuButton
       onClick={() => handleProjectSelect(project.id)}
-      className={cn('', {
-        'bg-sidebar-accent! ': isCurrentProject,
+      className={cn({
+        'bg-sidebar-primary/10 text-sidebar-primary': isCurrentProject,
       })}
     >
       {projectAvatar}

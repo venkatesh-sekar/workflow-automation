@@ -38,3 +38,10 @@
 - **Files changed:** packages/web/src/app/components/sidebar/flow-sidebar-group.tsx
 - **Learnings:** SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding.
 ---
+
+## Iteration #6 - sidebar-navigation
+- **Change:** Unified ProjectSideBarItem active state to match FlowSidebarItem — replaced bg-sidebar-accent! (gray) with bg-sidebar-primary/10 text-sidebar-primary (primary tint), removed dead empty string from cn() and trailing space typo
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/sidebar/project/index.tsx
+- **Learnings:** Unify active-state pattern across all sidebar item types: bg-sidebar-primary/10 text-sidebar-primary. Avoid bg-sidebar-accent for active states — it reads as hover, not selection. Avoid !important overrides when cn() ordering suffices.
+---

@@ -1,5 +1,5 @@
 {
-  "iteration": 5,
+  "iteration": 6,
   "current_area": "sidebar-navigation",
   "queue": [
     "dashboard-layout",
@@ -53,6 +53,14 @@
       "change": "Normalize collapsible group trigger height — removed py-5 override (was ~44px) so it matches standard h-8 (32px) sidebar items, removed redundant mb-1 (SidebarMenu already has gap-1), fixed chevron className from template literal to cn()",
       "files_modified": ["packages/web/src/app/components/sidebar/flow-sidebar-group.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "sidebar-navigation",
+      "iteration": 6,
+      "date": "2026-03-16",
+      "change": "Unified ProjectSideBarItem active state to match FlowSidebarItem — replaced bg-sidebar-accent! (gray) with bg-sidebar-primary/10 text-sidebar-primary (primary tint), removed dead empty string from cn() and trailing space typo",
+      "files_modified": ["packages/web/src/app/components/sidebar/project/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -63,6 +71,7 @@
     "When changing token semantics (dark→light), audit all stroke-* and bg-* usages that depend on the old contrast relationship. Simplify conditionals where possible.",
     "For inline checkboxes in popovers, use border-primary in both selected and unselected states so the control boundary is always visible against white backgrounds. Use opacity-50 for the unselected state to keep it subtle.",
     "FlowSidebarItem was not passing isActive to SidebarMenuButton, so CVA data-active styles (font-medium) never fired. Always check that component props are wired through, not just className overrides.",
-    "SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding."
+    "SidebarMenuButton CVA default size is h-8. Any py-* override expands beyond 32px, breaking vertical rhythm. Use CVA size variants instead of manual padding.",
+    "Unify active-state pattern across all sidebar item types: bg-sidebar-primary/10 text-sidebar-primary. Avoid bg-sidebar-accent for active states — it reads as hover, not selection. Also avoid !important overrides when cn() ordering suffices."
   ]
 }
