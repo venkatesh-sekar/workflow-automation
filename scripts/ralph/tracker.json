@@ -1,5 +1,5 @@
 {
-  "iteration": 81,
+  "iteration": 82,
   "current_phase": "env-rebrand",
   "phases": {
     "copy-server-core": {
@@ -162,7 +162,8 @@
       ],
       "completed_items": [
         {"iteration": 80, "description": "Renamed AP_ prefix to FLOW_ in core env var reader (system-props.ts, env-migrations.ts), error messages (system.ts, system-validator.ts, code-sandbox.ts), .env.tests, .env, and one test file. All 171 tests pass."},
-        {"iteration": 81, "description": "Renamed all process.env.AP_* to process.env.FLOW_* in engine package: vitest.config.ts, step-files.service.ts, piece-executor.ts, engine-constants.ts, code-sandbox.ts, logging-utils.ts, and flow-log-size.test.ts. All 171 tests pass."}
+        {"iteration": 81, "description": "Renamed all process.env.AP_* to process.env.FLOW_* in engine package: vitest.config.ts, step-files.service.ts, piece-executor.ts, engine-constants.ts, code-sandbox.ts, logging-utils.ts, and flow-log-size.test.ts. All 171 tests pass."},
+        {"iteration": 82, "description": "Renamed remaining hardcoded AP_ env var references in server/api (jwt-utils.ts, system-validator.ts, app.ts) and shared comment (flow-run.ts) to FLOW_. All 171 tests pass."}
       ]
     },
     "strip-ai-providers": {

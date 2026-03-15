@@ -203,7 +203,7 @@ const validateSystemPropTypes = () => {
 export const validateEnvPropsOnStartup = async (log: FastifyBaseLogger): Promise<void> => {
 
     const environment = system.get(AppSystemProp.ENVIRONMENT)
-    const fileStorageLocation = process.env.AP_FILE_STORAGE_LOCATION
+    const fileStorageLocation = process.env.FLOW_FILE_STORAGE_LOCATION
     
     if (environment !== ApEnvironment.TESTING && fileStorageLocation === FileLocation.S3) {
         try {

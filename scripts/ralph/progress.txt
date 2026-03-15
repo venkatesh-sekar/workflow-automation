@@ -569,3 +569,10 @@
 - **Quality gate:** pass (typecheck clean, 171 tests pass)
 - **Learnings:** none
 ---
+
+## Iteration #82 - env-rebrand
+- **Change:** Renamed remaining hardcoded AP_ env var references to FLOW_ in server/api and shared packages
+- **Files:** packages/server/api/src/app/helper/jwt-utils.ts, packages/server/api/src/app/helper/system-validator.ts, packages/server/api/src/app/app.ts, packages/shared/src/lib/automation/flow-run/flow-run.ts
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** Remaining AP_ references in codebase are code variable names (AP_NODE_SIZE, AP_MAXIMUM_PROFILE_PICTURE_SIZE, AP_PAUSED_FLOW_TIMEOUT_DAYS, DB_GLOBAL_KEY) — not env var references, no need to rename
+---

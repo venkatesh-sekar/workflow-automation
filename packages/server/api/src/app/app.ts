@@ -252,7 +252,7 @@ export async function appPostBoot(app: FastifyInstance): Promise<void> {
 The application started on ${frontendUrl}, as specified by the FRONTEND_URL variable.`)
 
     const environment = system.get(AppSystemProp.ENVIRONMENT)
-    const pieces = process.env.AP_DEV_PIECES
+    const pieces = process.env.FLOW_DEV_PIECES
 
     await migrateQueuesAndRunConsumers(app)
     app.log.info('Queues migrated and consumers run')
@@ -261,7 +261,7 @@ The application started on ${frontendUrl}, as specified by the FRONTEND_URL vari
             `[WARNING]: The application is running in ${environment} mode.`,
         )
         app.log.warn(
-            `[WARNING]: This is only shows pieces specified in AP_DEV_PIECES ${pieces} environment variable.`,
+            `[WARNING]: This is only shows pieces specified in FLOW_DEV_PIECES ${pieces} environment variable.`,
         )
     }
 }

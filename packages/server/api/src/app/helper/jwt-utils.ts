@@ -77,7 +77,7 @@ export const jwtUtils = {
                     prop: AppSystemProp.JWT_SECRET,
                 },
             },
-            `System property AP_${AppSystemProp.JWT_SECRET} must be defined`,
+            `System property FLOW_${AppSystemProp.JWT_SECRET} must be defined`,
         )
     },
     async decodeAndVerify<T>({ jwt, key, algorithm = ALGORITHM, issuer = ISSUER, audience }: VerifyParams): Promise<T> {
