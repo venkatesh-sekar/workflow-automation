@@ -355,8 +355,8 @@ describe('Flow Run Logs API', () => {
             })
 
             // fileService.save needs S3 location to accept null data (metadata-only)
-            const originalLocation = process.env.AP_FILE_STORAGE_LOCATION
-            process.env.AP_FILE_STORAGE_LOCATION = 'S3'
+            const originalLocation = process.env.FLOW_FILE_STORAGE_LOCATION
+            process.env.FLOW_FILE_STORAGE_LOCATION = 'S3'
 
             const token = await generateLogsToken({
                 logsFileId,
@@ -375,7 +375,7 @@ describe('Flow Run Logs API', () => {
                 },
             })
 
-            process.env.AP_FILE_STORAGE_LOCATION = originalLocation
+            process.env.FLOW_FILE_STORAGE_LOCATION = originalLocation
 
             expect(response.statusCode).toBe(StatusCodes.MOVED_TEMPORARILY)
             expect(response.headers.location).toBe(fakeSignedUrl)

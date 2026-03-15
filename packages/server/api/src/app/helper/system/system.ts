@@ -99,7 +99,7 @@ export const system = {
                         prop,
                     },
                 },
-                `System property AP_${prop} is not defined, please check the documentation`,
+                `System property FLOW_${prop} is not defined, please check the documentation`,
             )
         }
         return value
@@ -140,7 +140,7 @@ export const system = {
                         prop,
                     },
                 },
-                `System property AP_${prop} is not defined, please check the documentation`,
+                `System property FLOW_${prop} is not defined, please check the documentation`,
             )
         }
         return value
@@ -164,7 +164,7 @@ export const system = {
                         prop,
                     },
                 },
-                `System property AP_${prop} is not defined, please check the documentation`,
+                `System property FLOW_${prop} is not defined, please check the documentation`,
             )
         }
 

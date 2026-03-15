@@ -153,7 +153,7 @@ export const environmentVariables = {
     },
     getEnvironment: (prop: WorkerSystemProp | AppSystemProp): string | undefined => {
         const environmnetVariables = environmentMigrations.migrate()
-        return environmnetVariables['AP_' + prop]
+        return environmnetVariables['FLOW_' + prop]
     },
     getEnvironmentOrThrow: (prop: WorkerSystemProp | AppSystemProp): string => {
         const value = environmentVariables.getEnvironment(prop)

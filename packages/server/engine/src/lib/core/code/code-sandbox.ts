@@ -21,7 +21,7 @@ const loadCodeSandbox = async (): Promise<CodeSandbox> => {
     }
 
     if (isNil(EXECUTION_MODE)) {
-        throw new EngineGenericError('ExecutionModeNotSetError', 'AP_EXECUTION_MODE environment variable is not set')
+        throw new EngineGenericError('ExecutionModeNotSetError', 'FLOW_EXECUTION_MODE environment variable is not set')
     }
     
     const loader = loaders[EXECUTION_MODE]

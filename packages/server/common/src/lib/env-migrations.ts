@@ -3,7 +3,7 @@ import { DatabaseType } from './database-type'
 import { RedisType } from './redis/types'
 import { AppSystemProp } from './system-props'
 
-const envPrefix = (prop: string): string => `AP_${prop}`
+const envPrefix = (prop: string): string => `FLOW_${prop}`
 
 export const environmentMigrations = {
     migrate(): Record<string, string | undefined> {
@@ -18,7 +18,7 @@ export const environmentMigrations = {
 }
 
 function migrateRedisType(currentRedisType: string | undefined): string | undefined {
-    const queueMode = process.env['AP_QUEUE_MODE']
+    const queueMode = process.env['FLOW_QUEUE_MODE']
     if (queueMode === 'MEMORY') {
         return RedisType.MEMORY
     }

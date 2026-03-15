@@ -555,3 +555,10 @@
 - **Quality gate:** pass (TypeScript: 0 errors, Tests: 21 suites / 171 tests pass)
 - **Learnings:** Promoted auth system insights to global learnings. Phase took 22 iterations (58-79).
 ---
+
+## Iteration #80 - env-rebrand
+- **Change:** Renamed AP_ prefix to FLOW_ in core env var reader (system-props.ts getEnvironment, env-migrations.ts envPrefix+hardcoded AP_QUEUE_MODE), error messages (system.ts, system-validator.ts, code-sandbox.ts), .env.tests, .env, and one test file (flow-run-logs.test.ts)
+- **Files:** packages/server/common/src/lib/system-props.ts, packages/server/common/src/lib/env-migrations.ts, packages/server/api/src/app/helper/system/system.ts, packages/server/api/src/app/helper/system-validator.ts, packages/server/engine/src/lib/core/code/code-sandbox.ts, packages/server/api/.env.tests, packages/server/api/.env, packages/server/api/test/integration/ce/flows/flow-run/flow-run-logs.test.ts, scripts/ralph/learnings/env-rebrand.md
+- **Quality gate:** pass (0 TS errors, 171/171 tests pass)
+- **Learnings:** AP_ prefix centralized in 2 files (system-props.ts and env-migrations.ts); enum values don't contain prefix — prefix added at read time; .env.tests is the main test env source loaded via dotenv
+---

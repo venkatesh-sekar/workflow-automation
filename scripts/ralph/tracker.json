@@ -1,5 +1,5 @@
 {
-  "iteration": 79,
+  "iteration": 80,
   "current_phase": "env-rebrand",
   "phases": {
     "copy-server-core": {
@@ -160,7 +160,9 @@
         "All hardcoded AP_ references replaced",
         "Existing tests updated to use new env var names"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 80, "description": "Renamed AP_ prefix to FLOW_ in core env var reader (system-props.ts, env-migrations.ts), error messages (system.ts, system-validator.ts, code-sandbox.ts), .env.tests, .env, and one test file. All 171 tests pass."}
+      ]
     },
     "strip-ai-providers": {
       "status": "pending",
