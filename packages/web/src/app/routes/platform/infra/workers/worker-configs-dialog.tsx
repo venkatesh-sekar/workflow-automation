@@ -39,9 +39,9 @@ export const WorkerConfigsModal: React.FC<Props> = ({ workerProps }) => {
           {Object.entries(workerProps ?? {}).map(([key, value]) => (
             <div
               key={key}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 p-2 rounded-md bg-gray-50 dark:bg-gray-800 border dark:border-gray-700"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 p-2 rounded-md bg-muted border"
             >
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-200 w-full sm:w-1/3">
+              <label className="text-sm font-medium text-foreground w-full sm:w-1/3">
                 {key}
               </label>
               <Input
@@ -49,11 +49,7 @@ export const WorkerConfigsModal: React.FC<Props> = ({ workerProps }) => {
                 disabled={true}
                 value={value as string}
                 readOnly
-                className="pointer-events-none max-w-[180px] sm:flex-1 p-2 border rounded-md
-                    bg-white dark:bg-gray-900
-                    text-gray-900 dark:text-gray-100
-                    border-gray-300 dark:border-gray-600
-                    "
+                className="pointer-events-none max-w-[180px] sm:flex-1"
               />
             </div>
           ))}

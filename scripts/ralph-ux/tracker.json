@@ -1,11 +1,10 @@
 {
-  "iteration": 19,
-  "current_area": "platform-admin-pages",
+  "iteration": 20,
+  "current_area": "login-auth",
   "queue": [
-    "login-auth",
     "cross-area-polish"
   ],
-  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages"],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages"],
   "completed": [
     {
       "area": "theme-colors",
@@ -158,6 +157,14 @@
       "change": "Fix triggers page default status colors — replaced hardcoded text-gray-500 and text-gray-600 with text-muted-foreground in getStatusIcon and getStatusColor default cases, aligning unknown/indeterminate status to 220° cool blue-gray token system",
       "files_modified": ["packages/web/src/app/routes/platform/infra/triggers/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "platform-admin-pages",
+      "iteration": 20,
+      "date": "2026-03-16",
+      "change": "Fix worker configs dialog — replaced all hardcoded gray colors (bg-gray-50, text-gray-700, text-gray-900, border-gray-300) and dark mode overrides with design tokens (bg-muted, text-foreground, border). Stripped redundant Input className overrides (p-2, border, rounded-md, bg-white) that duplicate inputClass defaults.",
+      "files_modified": ["packages/web/src/app/routes/platform/infra/workers/worker-configs-dialog.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -184,6 +191,7 @@
     "Dialog/panel headings must use font-semibold tracking-tight (matching DialogTitle primitive), never font-bold. The DialogTitle in dialog.tsx line 128 is the canonical text-lg heading style — all equivalent headings should match it.",
     "CenteredPage is used by 10 platform admin pages — fixing shared layout components propagates design consistency more efficiently than fixing individual pages.",
     "For inline text links in content areas, use text-primary font-medium hover:underline underline-offset-4 transition-colors duration-150. Always remove dark: prefixed overrides — this is a light-mode-only redesign. Never use hardcoded Tailwind colors (text-blue-600) for links when a design token exists.",
-    "For status icon/color default cases, use text-muted-foreground — the design system token for secondary/indeterminate content. Don't use two different gray levels (gray-500 vs gray-600) for icon and text of the same semantic state."
+    "For status icon/color default cases, use text-muted-foreground — the design system token for secondary/indeterminate content. Don't use two different gray levels (gray-500 vs gray-600) for icon and text of the same semantic state.",
+    "When Input/component already has token-based styling via its base class (inputClass), don't override with hardcoded colors in the consumer. Strip all color/border/padding overrides and keep only layout constraints (max-w, flex). The base component is the single source of truth for visual styling."
   ]
 }

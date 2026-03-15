@@ -136,3 +136,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/triggers/index.tsx
 - **Learnings:** For status icon/color default cases, use `text-muted-foreground` — don't use two different gray levels for icon and text of the same semantic state.
 ---
+
+## Iteration #20 - platform-admin-pages
+- **Change:** Fixed worker configs dialog — replaced all hardcoded gray colors (bg-gray-50, text-gray-700, text-gray-900, border-gray-300) and dark mode overrides (dark:bg-gray-800, dark:text-gray-200, etc.) with design tokens (bg-muted, text-foreground, border). Stripped redundant Input className overrides (p-2, border, rounded-md, bg-white) that duplicate the Input component's own inputClass defaults. Platform-admin-pages area complete, advancing to login-auth.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/workers/worker-configs-dialog.tsx
+- **Learnings:** Don't override component base styling with hardcoded colors — strip to layout-only constraints and let the component's own token-based classes handle visual styling.
+---
