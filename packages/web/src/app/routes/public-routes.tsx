@@ -8,8 +8,6 @@ import { TemplateDetailsWrapper } from '../guards/template-details-wrapper';
 
 import NotFoundPage from './404-page';
 import AuthenticatePage from './authenticate';
-import { EmbedPage } from './embed';
-import { EmbeddedConnectionDialog } from './embed/embedded-connection-dialog';
 import { RedirectPage } from './redirect';
 
 const ChatPage = React.lazy(() =>
@@ -27,14 +25,6 @@ function SuspenseWrapper({ children }: { children: React.ReactNode }) {
 }
 
 export const publicRoutes = [
-  {
-    path: '/embed',
-    element: <EmbedPage></EmbedPage>,
-  },
-  {
-    path: '/embed/connections',
-    element: <EmbeddedConnectionDialog></EmbeddedConnectionDialog>,
-  },
   {
     path: '/authenticate',
     element: <AuthenticatePage />,

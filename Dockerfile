@@ -1,4 +1,4 @@
-FROM node:20-bullseye-slim AS base
+FROM node:22-bullseye-slim AS base
 
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
@@ -25,23 +25,48 @@ FROM base AS build
 
 WORKDIR /usr/src/app
 
-# Copy package files first for layer caching
-COPY package.json package-lock.json tsconfig.base.json ./
-COPY packages/shared/package.json packages/shared/tsconfig.lib.json packages/shared/tsconfig.json ./packages/shared/
-COPY packages/pieces/framework/package.json packages/pieces/framework/tsconfig.lib.json packages/pieces/framework/tsconfig.json ./packages/pieces/framework/
-COPY packages/pieces/common/package.json packages/pieces/common/tsconfig.lib.json packages/pieces/common/tsconfig.json ./packages/pieces/common/
-COPY packages/server/common/package.json packages/server/common/tsconfig.lib.json packages/server/common/tsconfig.json ./packages/server/common/
-COPY packages/server/engine/package.json ./packages/server/engine/
-COPY packages/server/api/package.json packages/server/api/tsconfig.json packages/server/api/tsconfig.app.json ./packages/server/api/
-COPY packages/server/tsconfig.server.json ./packages/server/
-COPY packages/web/package.json packages/web/tsconfig.json packages/web/tsconfig.node.json packages/web/vite.config.mts ./packages/web/
+# Install TypeScript globally for build steps
+RUN npm install -g typescript@5.5.4
 
-# Install all dependencies
+# Copy all source
+COPY . .
+
+# Install root dev dependencies
 RUN --mount=type=cache,target=/root/.npm \
     npm install --legacy-peer-deps 2>&1 | tail -5
 
-# Copy all source code
-COPY packages/ ./packages/
+# Install dependencies for shared packages (no file: cross-refs that cause issues)
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/shared && npm install --legacy-peer-deps 2>&1 | tail -3
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/pieces/framework && npm install --legacy-peer-deps 2>&1 | tail -3
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/pieces/common && npm install --legacy-peer-deps 2>&1 | tail -3
+
+# Install server/api deps (includes typeorm, piece file: refs, and all server deps)
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/server/api && npm install --legacy-peer-deps 2>&1 | tail -5
+
+# Install server-common deps + symlink typeorm from server/api to avoid duplication
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/server/common && npm install --legacy-peer-deps 2>&1 | tail -3 && \
+    ln -sf /usr/src/app/packages/server/api/node_modules/typeorm node_modules/typeorm
+
+# Install engine deps
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/server/engine && npm install --legacy-peer-deps 2>&1 | tail -3
+
+# Install web deps
+RUN --mount=type=cache,target=/root/.npm \
+    cd packages/web && npm install --legacy-peer-deps 2>&1 | tail -3
+
+# Install piece package dependencies
+RUN --mount=type=cache,target=/root/.npm \
+    for dir in packages/pieces/community/*/  packages/pieces/core/*/; do \
+        if [ -f "$dir/package.json" ]; then \
+            (cd "$dir" && npm install --legacy-peer-deps 2>&1 | tail -1) || true; \
+        fi; \
+    done
 
 # Build shared packages in dependency order
 RUN cd packages/shared && npm run build
@@ -76,38 +101,24 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
 
-# Copy package files and install production deps
-COPY --from=build /usr/src/app/package.json ./
-COPY --from=build /usr/src/app/package-lock.json ./
-COPY --from=build /usr/src/app/packages/shared/package.json ./packages/shared/
-COPY --from=build /usr/src/app/packages/shared/dist/ ./packages/shared/dist/
-COPY --from=build /usr/src/app/packages/pieces/framework/package.json ./packages/pieces/framework/
-COPY --from=build /usr/src/app/packages/pieces/framework/dist/ ./packages/pieces/framework/dist/
-COPY --from=build /usr/src/app/packages/pieces/common/package.json ./packages/pieces/common/
-COPY --from=build /usr/src/app/packages/pieces/common/dist/ ./packages/pieces/common/dist/
-COPY --from=build /usr/src/app/packages/server/common/package.json ./packages/server/common/
-COPY --from=build /usr/src/app/packages/server/common/dist/ ./packages/server/common/dist/
-COPY --from=build /usr/src/app/packages/server/engine/package.json ./packages/server/engine/
-COPY --from=build /usr/src/app/packages/server/api/package.json ./packages/server/api/
+# Copy built server API with dependencies
+COPY --from=build /usr/src/app/packages/server/api/ ./packages/server/api/
 
-# Copy built server API
-COPY --from=build /usr/src/app/packages/server/api/dist/ ./packages/server/api/dist/
+# Copy built shared packages (dist + node_modules for runtime deps)
+COPY --from=build /usr/src/app/packages/shared/ ./packages/shared/
+COPY --from=build /usr/src/app/packages/pieces/framework/ ./packages/pieces/framework/
+COPY --from=build /usr/src/app/packages/pieces/common/ ./packages/pieces/common/
+COPY --from=build /usr/src/app/packages/server/common/ ./packages/server/common/
 
 # Copy built engine
 COPY --from=build /usr/src/app/dist/packages/engine/ ./dist/packages/engine/
 
 # Copy piece packages (runtime needs them for piece loading)
-COPY --from=build /usr/src/app/packages/pieces/ ./packages/pieces/
-
-# Install production dependencies only
-RUN --mount=type=cache,target=/root/.npm \
-    npm install --legacy-peer-deps --omit=dev 2>&1 | tail -5
+COPY --from=build /usr/src/app/packages/pieces/community/ ./packages/pieces/community/
+COPY --from=build /usr/src/app/packages/pieces/core/ ./packages/pieces/core/
 
 # Copy frontend build to nginx
 COPY --from=build /usr/src/app/dist/packages/web/ /usr/share/nginx/html/
-
-# Create engine dist directory
-RUN mkdir -p /usr/src/app/dist/packages/engine
 
 LABEL service=flow
 

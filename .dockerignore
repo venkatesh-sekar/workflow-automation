@@ -1,0 +1,15 @@
+node_modules
+**/node_modules
+# Exclude build artifacts from shared packages (rebuilt in Docker)
+packages/shared/dist
+packages/pieces/framework/dist
+packages/pieces/common/dist
+packages/server/common/dist
+packages/server/api/dist
+dist/packages
+.git
+.env
+.env.*
+!.env.production
+scripts/ralph
+docs

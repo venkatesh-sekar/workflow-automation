@@ -18,8 +18,6 @@ import { AutomationsPage } from './automations';
 const FlowBuilderPage = React.lazy(() =>
   import('./flows/id').then((m) => ({ default: m.FlowBuilderPage })),
 );
-const AnalyticsPage = React.lazy(() => import('./impact'));
-const LeaderboardPage = React.lazy(() => import('./leaderboard'));
 const ProjectReleasesPage = React.lazy(() =>
   import('./project-release').then((m) => ({
     default: m.ProjectReleasesPage,
@@ -192,28 +190,4 @@ export const projectRoutes = [
       </ProjectDashboardLayout>
     ),
   }),
-  {
-    path: '/impact',
-    element: (
-      <ProjectDashboardLayout>
-        <PageTitle title="Impact">
-          <SuspenseWrapper>
-            <AnalyticsPage />
-          </SuspenseWrapper>
-        </PageTitle>
-      </ProjectDashboardLayout>
-    ),
-  },
-  {
-    path: '/leaderboard',
-    element: (
-      <ProjectDashboardLayout>
-        <PageTitle title="Leaderboard">
-          <SuspenseWrapper>
-            <LeaderboardPage />
-          </SuspenseWrapper>
-        </PageTitle>
-      </ProjectDashboardLayout>
-    ),
-  },
 ];

@@ -7,7 +7,7 @@ import {
 } from '@activepieces/server-common'
 import { system } from '../helper/system/system'
 
-export const redisConnections = redisConnectionFactory(() => {
+export const redisConnections: ReturnType<typeof redisConnectionFactory> = redisConnectionFactory(() => {
     return {
         REDIS_TYPE: system.getOrThrow<RedisType>(AppSystemProp.REDIS_TYPE),
         REDIS_SSL_CA_FILE: system.get(AppSystemProp.REDIS_SSL_CA_FILE),

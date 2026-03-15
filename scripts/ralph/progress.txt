@@ -891,3 +891,10 @@
 - **Quality gate:** pass (0 TS errors, 191 tests pass)
 - **Learnings:** Server has public GET /v1/health endpoint returning {status: "Healthy"} or 503 — suitable for Docker health checks
 ---
+
+## Iteration #128 - deployment
+- **Change:** Fixed Dockerfile and deployment stack to build and run successfully. Key fixes: Node 22 (isolated-vm needs it), per-package npm install, worker-module bridge for runtime resolution, NODE_PATH for piece deps, piece npm install loop, dayjs duration plugin init, valid encryption key, .dockerignore fixes, missing web deps, removed dead EE embed/impact routes, esbuild in engine devDeps, ioredis type annotation. Docker build succeeds, all 4 containers start, /v1/health returns {status: "Healthy"}.
+- **Files:** Dockerfile, .dockerignore, docker-compose.yml, docker-entrypoint.sh, .env.production, packages/server/api/package.json, packages/server/api/worker-module/ (new), packages/server/api/src/main.ts, packages/server/api/src/app/database/redis-connections.ts, packages/server/engine/package.json, packages/server/common/package.json, packages/web/package.json, packages/web/src/features/authentication/index.ts, packages/web/src/app/routes/public-routes.tsx, packages/web/src/app/routes/project-routes.tsx, packages/web/src/components/custom/home-button.tsx
+- **Quality gate:** pass (0 TS errors, 191 tests pass, Docker build succeeds, health check responds)
+- **Learnings:** See deployment.md for comprehensive Docker build gotchas — many deps were hoisted from monorepo root and needed explicit declaration
+---

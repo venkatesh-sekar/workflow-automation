@@ -2,6 +2,8 @@ import './instrumentation'
 
 
 import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
+dayjs.extend(duration)
 import { FastifyInstance } from 'fastify'
 import { appPostBoot } from './app/app'
 import { initializeDatabase } from './app/database'

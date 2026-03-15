@@ -4,6 +4,7 @@
   "private": true,
   "type": "commonjs",
   "dependencies": {
+    "worker": "file:./worker-module",
     "@1password/sdk": "0.4.0",
     "@activepieces/engine": "file:../../engine",
     "@activepieces/pieces-common": "file:../../pieces/common",
