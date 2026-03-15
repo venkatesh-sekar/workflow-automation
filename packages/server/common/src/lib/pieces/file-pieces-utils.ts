@@ -2,11 +2,10 @@ import { readdir, readFile, stat } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { sep } from 'path'
-import { Piece, PieceMetadata, pieceTranslation } from '@activepieces/pieces-framework'
+import { Piece, PieceMetadata } from '@activepieces/pieces-framework'
 import { extractPieceFromModule } from '@activepieces/shared'
 import clearModule from 'clear-module'
 import { FastifyBaseLogger } from 'fastify'
-import { AppSystemProp, environmentVariables } from '../system-props'
 
 const SOURCE_PIECES_PATH = resolve(cwd(), 'packages', 'pieces')
 
@@ -30,8 +29,8 @@ export const filePiecesUtils = (log: FastifyBaseLogger) => ({
         }
     },
 
-    findDistPiecePathByPackageName: async (packageName: string): Promise<string | null> => {
-        const paths = await findAllDistPiecesFolders(SOURCE_PIECES_PATH)
+    findPiecePathByPackageName: async (packageName: string): Promise<string | null> => {
+        const paths = await findAllPiecesFolder(SOURCE_PIECES_PATH)
         for (const path of paths) {
             try {
                 const packageJsonName = await filePiecesUtils(log).getPackageNameFromFolderPath(path)
@@ -41,9 +40,9 @@ export const filePiecesUtils = (log: FastifyBaseLogger) => ({
             }
             catch (e) {
                 log.error({
-                    name: 'findDistPiecePathByPackageName',
+                    name: 'findPiecePathByPackageName',
                     message: JSON.stringify(e),
-                }, 'Error finding dist piece path by package name')
+                }, 'Error finding piece path by package name')
             }
         }
         return null
@@ -55,24 +54,23 @@ export const filePiecesUtils = (log: FastifyBaseLogger) => ({
         return piecePath ?? null
     },
 
-    loadDistPiecesMetadata: async (piecesNames: string[]): Promise<PieceMetadata[]> => {
+    loadAllPiecesMetadata: async (): Promise<PieceMetadata[]> => {
         try {
-            const devPieces = await findAllDistPiecesFolders(SOURCE_PIECES_PATH)
-            const paths = devPieces.filter(path => piecesNames.some(name => path.endsWith(sep + name + sep + 'dist')))
+            const paths = await findAllPiecesFolder(SOURCE_PIECES_PATH)
             const pieces = await Promise.all(paths.map((p) => loadPieceFromFolder(p)))
             return pieces.filter((p): p is PieceMetadata => p !== null)
         }
         catch (e) {
             const err = e as Error
-            log.warn({ err }, '[filePieceMetadataService#loadDistPiecesMetadata] Failed to load pieces from folder')
+            log.warn({ err }, '[filePieceMetadataService#loadAllPiecesMetadata] Failed to load pieces from folder')
             return []
         }
     },
 
 
-    clearPieceModuleCache: (distFolderPath: string): void => {
-        const indexPath = join(distFolderPath, 'src', 'index')
-        const packageJsonPath = join(distFolderPath, 'package.json')
+    clearPieceModuleCache: (folderPath: string): void => {
+        const indexPath = join(folderPath, 'src', 'index')
+        const packageJsonPath = join(folderPath, 'package.json')
         clearModule(indexPath)
         clearModule(packageJsonPath)
     },
@@ -99,24 +97,6 @@ const findAllPiecesFolder = async (folderPath: string): Promise<string[]> => {
     return paths
 }
 
-const findAllDistPiecesFolders = async (sourcePiecesPath: string): Promise<string[]> => {
-    const sourceFolders = await findAllPiecesFolder(sourcePiecesPath)
-    const distFolders = []
-    for (const folder of sourceFolders) {
-        const distPath = join(folder, 'dist')
-        try {
-            const distStats = await stat(distPath)
-            if (distStats.isDirectory()) {
-                distFolders.push(distPath)
-            }
-        }
-        catch {
-            // dist folder doesn't exist for this piece, skip
-        }
-    }
-    return distFolders
-}
-
 const loadPieceFromFolder = async (
     folderPath: string,
 ): Promise<PieceMetadata | null> => {
@@ -133,15 +113,12 @@ const loadPieceFromFolder = async (
         pieceVersion,
     })
     const originalMetadata = piece.metadata()
-    const loadTranslations = environmentVariables.getBooleanEnvironment(AppSystemProp.LOAD_TRANSLATIONS_FOR_DEV_PIECES)
-    const i18n = loadTranslations ? await pieceTranslation.initializeI18n(folderPath) : undefined
     const metadata: PieceMetadata = {
         ...originalMetadata,
         name: pieceName,
         version: pieceVersion,
         authors: piece.authors,
         directoryPath: folderPath,
-        i18n,
     }
 
     return metadata

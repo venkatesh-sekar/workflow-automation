@@ -85,7 +85,6 @@ export const WorkerSettingsResponse = z.object({
     MAX_FILE_SIZE_MB: z.number(),
     SANDBOX_MEMORY_LIMIT: z.string(),
     SANDBOX_PROPAGATED_ENV_VARS: z.array(z.string()),
-    DEV_PIECES: z.array(z.string()),
     SENTRY_DSN: z.string().optional(),
     LOKI_PASSWORD: z.string().optional(),
     LOKI_URL: z.string().optional(),

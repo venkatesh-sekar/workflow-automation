@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { Action, Piece, PiecePropertyMap, Trigger } from '@activepieces/pieces-framework'
-import { ActivepiecesError, EngineGenericError, ErrorCode, extractPieceFromModule, getPackageAliasForPiece, getPieceNameFromAlias, isNil, trimVersionFromAlias } from '@activepieces/shared'
+import { ActivepiecesError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@activepieces/shared'
 import { utils } from '../utils'
 
 export const pieceLoader = {
@@ -107,20 +107,14 @@ export const pieceLoader = {
         return { property, piece }
     },
 
-    getPackageAlias: ({ pieceName, pieceVersion, devPieces }: GetPackageAliasParams) => {
-        if (devPieces.includes(getPieceNameFromAlias(pieceName))) {
-            return pieceName
-        }
-
-        return getPackageAliasForPiece({
-            pieceName,
-            pieceVersion,
-        })
+    getPackageAlias: ({ pieceName }: GetPackageAliasParams) => {
+        return pieceName
     },
 
-    getPiecePath: async ({ packageName, devPieces }: GetPiecePathParams): Promise<string> => {
-        const piecePath = devPieces.includes(getPieceNameFromAlias(packageName))
-            ? await findInDistFolder(packageName)
+    getPiecePath: async ({ packageName }: GetPiecePathParams): Promise<string> => {
+        const sourcePiecesPath = path.resolve('packages/pieces')
+        const piecePath = await utils.folderExists(sourcePiecesPath)
+            ? await findInSourceFolder(packageName)
             : await traverseAllParentFoldersToFindPiece(packageName)
         if (isNil(piecePath)) {
             throw new EngineGenericError('PieceNotFoundError', `Piece not found for package: ${packageName}`)
@@ -129,18 +123,15 @@ export const pieceLoader = {
     },
 }
 
-async function findInDistFolder(packageName: string): Promise<string | null> {
+async function findInSourceFolder(packageName: string): Promise<string | null> {
     const sourcePiecesPath = path.resolve('packages/pieces')
-    if (!await utils.folderExists(sourcePiecesPath)) {
-        return null
-    }
-    const distPackageJsonPaths = await findDistPackageJsonFiles(sourcePiecesPath)
-    for (const packageJsonPath of distPackageJsonPaths) {
+    const packageJsonPaths = await findPiecePackageJsonFiles(sourcePiecesPath)
+    for (const packageJsonPath of packageJsonPaths) {
         const { data: result } = await utils.tryCatchAndThrowOnEngineError(async () => {
             const content = await fs.readFile(packageJsonPath, 'utf-8')
             const packageJson = JSON.parse(content)
             if (packageJson.name === packageName) {
-                return path.join(path.dirname(packageJsonPath), 'src', 'index.js')
+                return path.join(path.dirname(packageJsonPath), 'src', 'index.ts')
             }
             return null
         })
@@ -151,9 +142,9 @@ async function findInDistFolder(packageName: string): Promise<string | null> {
     return null
 }
 
-async function findDistPackageJsonFiles(dirPath: string): Promise<string[]> {
+async function findPiecePackageJsonFiles(dirPath: string): Promise<string[]> {
     const results: string[] = []
-    const ignoredDirs = ['node_modules', '.turbo', 'framework', 'common']
+    const ignoredDirs = ['node_modules', '.turbo', 'dist', 'framework', 'common']
 
     async function scanDir(currentPath: string): Promise<void> {
         const items = await fs.readdir(currentPath, { withFileTypes: true })
@@ -162,15 +153,11 @@ async function findDistPackageJsonFiles(dirPath: string): Promise<string[]> {
                 continue
             }
             const fullPath = path.join(currentPath, item.name)
-            if (item.name === 'dist') {
-                const pkgJson = path.join(fullPath, 'package.json')
-                if (await utils.folderExists(pkgJson)) {
-                    results.push(pkgJson)
-                }
-            }
-            else {
-                await scanDir(fullPath)
-            }
+            await scanDir(fullPath)
+        }
+        const pkgJson = path.join(currentPath, 'package.json')
+        if (currentPath !== dirPath && await utils.folderExists(pkgJson)) {
+            results.push(pkgJson)
         }
     }
 

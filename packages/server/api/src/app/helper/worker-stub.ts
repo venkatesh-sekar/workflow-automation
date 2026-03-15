@@ -12,7 +12,7 @@ import {
     TriggerHookType,
 } from '@activepieces/shared'
 import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@activepieces/pieces-framework'
-import { FastifyBaseLogger, FastifyInstance } from 'fastify'
+import { FastifyBaseLogger } from 'fastify'
 
 // Types re-exported from worker
 export type EngineHelperFlowResult = Record<string, never>
@@ -51,8 +51,6 @@ export const flowWorker = (_log: FastifyBaseLogger) => ({
     async init(_opts: { workerToken: string, markAsHealthy: () => Promise<void> }): Promise<void> { /* no-op */ },
     async close(): Promise<void> { /* no-op */ },
 })
-
-export async function devPiecesBuilder(_app: FastifyInstance, _io: unknown, _piecesNames: string[]): Promise<void> { /* no-op */ }
 
 export const packageManager = (_log: FastifyBaseLogger) => ({
     async validate(): Promise<void> { /* no-op */ },

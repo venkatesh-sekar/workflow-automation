@@ -1,6 +1,6 @@
 import { PieceMetadata } from '@activepieces/pieces-framework'
-import { AppSystemProp, rejectedPromiseHandler, WorkerSystemProp } from '@activepieces/server-common'
-import { ApEnvironment, AppConnectionWithoutSensitiveData, ApplicationEventName, AuthenticationEvent, ConnectionEvent, Flow, FlowCreatedEvent, FlowDeletedEvent, FlowRun, FlowRunEvent, FlowUpdatedEvent, Folder, FolderEvent, ProjectWithLimits, spreadIfDefined, Template, UserInvitation, UserWithMetaInformation } from '@activepieces/shared'
+import { rejectedPromiseHandler, WorkerSystemProp } from '@activepieces/server-common'
+import { AppConnectionWithoutSensitiveData, ApplicationEventName, AuthenticationEvent, ConnectionEvent, Flow, FlowCreatedEvent, FlowDeletedEvent, FlowRun, FlowRunEvent, FlowUpdatedEvent, Folder, FolderEvent, ProjectWithLimits, spreadIfDefined, Template, UserInvitation, UserWithMetaInformation } from '@activepieces/shared'
 import swagger from '@fastify/swagger'
 import { createAdapter } from '@socket.io/redis-adapter'
 import { FastifyInstance, FastifyRequest, HTTPMethods } from 'fastify'
@@ -172,6 +172,8 @@ export const setupApp = async (app: FastifyInstance): Promise<FastifyInstance> =
     systemJobHandlers.registerJobHandler(SystemJobName.DELETE_FLOW, (data) => flowBackgroundJobs(app.log).deleteFlowHandler(data))
     systemJobHandlers.registerJobHandler(SystemJobName.UPDATE_FLOW_STATUS, (data) => flowBackgroundJobs(app.log).updateStatusHandler(data))
 
+    await systemJobsSchedule(app.log).startWorker()
+
 
 
     app.get(
@@ -253,17 +255,6 @@ export async function appPostBoot(app: FastifyInstance): Promise<void> {
 
 The application started on ${frontendUrl}, as specified by the FRONTEND_URL variable.`)
 
-    const environment = system.get(AppSystemProp.ENVIRONMENT)
-    const pieces = process.env.FLOW_DEV_PIECES
-
     await migrateQueuesAndRunConsumers(app)
     app.log.info('Queues migrated and consumers run')
-    if (environment === ApEnvironment.DEVELOPMENT) {
-        app.log.warn(
-            `[WARNING]: The application is running in ${environment} mode.`,
-        )
-        app.log.warn(
-            `[WARNING]: This is only shows pieces specified in FLOW_DEV_PIECES ${pieces} environment variable.`,
-        )
-    }
 }

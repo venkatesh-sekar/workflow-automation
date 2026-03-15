@@ -1,18 +1,12 @@
-import { AppSystemProp, WorkerSystemProp } from '@activepieces/server-common'
+import { WorkerSystemProp } from '@activepieces/server-common'
 import { isNil } from '@activepieces/shared'
 import { FastifyInstance } from 'fastify'
-import { devPiecesBuilder, flowWorker } from 'worker'
+import { flowWorker } from 'worker'
 import { accessTokenManager } from './authentication/lib/access-token-manager'
 import { healthStatusService } from './health/health.service'
 import { system } from './helper/system/system'
 
 export const setupWorker = async (app: FastifyInstance): Promise<void> => {
-
-    const devPieces = system.get(AppSystemProp.DEV_PIECES)?.split(',') ?? []
-    if (devPieces.length > 0) {
-        await devPiecesBuilder(app, app.io, devPieces)
-    }
-    
     app.addHook('onClose', async () => {
         await flowWorker(app.log).close()
     })

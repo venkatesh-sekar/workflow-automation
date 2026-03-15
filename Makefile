@@ -5,7 +5,7 @@ API_DIR = packages/server/api
 TYPEORM = cd $(API_DIR) && node_modules/.bin/ts-node --transpile-only -r tsconfig-paths/register -P tsconfig.app.json node_modules/typeorm/cli.js
 DB_ENV = set -a && . ./.env.production && set +a && \
 	export FLOW_POSTGRES_HOST=localhost FLOW_POSTGRES_PORT=5434 \
-	FLOW_ENVIRONMENT=dev FLOW_EDITION=ce FLOW_DEV_PIECES='' &&
+	FLOW_ENVIRONMENT=dev FLOW_EDITION=ce &&
 
 ## Start everything: databases + backend + frontend
 ## Ctrl+C kills all child processes cleanly

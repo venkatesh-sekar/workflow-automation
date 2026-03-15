@@ -8,7 +8,7 @@ import { repoFactory } from '../../core/db/repo-factory'
 import { pubsub } from '../../helper/pubsub'
 import { system } from '../../helper/system/system'
 import { PieceMetadataEntity, PieceMetadataSchema } from './piece-metadata-entity'
-import { filterPieceBasedOnType, isNewerVersion, isSupportedRelease, lastVersionOfEachPiece, loadDevPiecesIfEnabled } from './utils'
+import { filterPieceBasedOnType, isNewerVersion, isSupportedRelease, lastVersionOfEachPiece, loadLocalPieces } from './utils'
 
 const repo = repoFactory(PieceMetadataEntity)
 
@@ -59,7 +59,7 @@ export const pieceCache = (log: FastifyBaseLogger) => {
                 return translatePieces(latestPieces, locale)
             })
 
-            const devPieces = await loadDevPiecesIfEnabled(log)
+            const devPieces = await loadLocalPieces(log)
             const translatedDevPieces = devPieces.map((piece) =>
                 pieceTranslation.translatePiece<PieceMetadataSchema>({ piece, locale, mutate: true }),
             )
@@ -74,7 +74,7 @@ export const pieceCache = (log: FastifyBaseLogger) => {
         async getPieceVersion(params: GetPieceVersionParams): Promise<PieceMetadataSchema | null> {
             const { pieceName, version, platformId } = params
 
-            const devPieces = await loadDevPiecesIfEnabled(log)
+            const devPieces = await loadLocalPieces(log)
             const devPiece = devPieces.find(p => p.name === pieceName && p.version === version)
             if (!isNil(devPiece)) {
                 return devPiece
@@ -99,7 +99,7 @@ export const pieceCache = (log: FastifyBaseLogger) => {
             const cacheKey = CACHE_KEY.registry()
             const allRegistry = await getCachedOrFetch(cacheKey, fetchRegistryFromDB)
 
-            const devPieces = (await loadDevPiecesIfEnabled(log)).map(toRegistryEntry)
+            const devPieces = (await loadLocalPieces(log)).map(toRegistryEntry)
 
             return [...allRegistry, ...devPieces]
                 .filter((piece) => filterPieceBasedOnType(platformId, piece))

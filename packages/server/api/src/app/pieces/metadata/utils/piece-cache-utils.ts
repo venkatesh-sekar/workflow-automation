@@ -1,8 +1,7 @@
-import { AppSystemProp, filePiecesUtils } from '@activepieces/server-common'
-import { apId, isEmpty, isNil, PackageType, PieceType } from '@activepieces/shared'
+import { filePiecesUtils } from '@activepieces/server-common'
+import { apId, isNil, PackageType, PieceType } from '@activepieces/shared'
 import { FastifyBaseLogger } from 'fastify'
 import semVer from 'semver'
-import { system } from '../../../helper/system/system'
 import { PieceRegistryEntry } from '../piece-cache'
 import { PieceMetadataSchema } from '../piece-metadata-entity'
 
@@ -32,13 +31,8 @@ export function lastVersionOfEachPiece(pieces: PieceMetadataSchema[]): PieceMeta
     return Array.from(seen.values())
 }
 
-export async function loadDevPiecesIfEnabled(log: FastifyBaseLogger): Promise<PieceMetadataSchema[]> {
-    const devPiecesConfig = system.get(AppSystemProp.DEV_PIECES)
-    if (isNil(devPiecesConfig) || isEmpty(devPiecesConfig)) {
-        return []
-    }
-    const piecesNames = devPiecesConfig.split(',')
-    const pieces = await filePiecesUtils(log).loadDistPiecesMetadata(piecesNames)
+export async function loadLocalPieces(log: FastifyBaseLogger): Promise<PieceMetadataSchema[]> {
+    const pieces = await filePiecesUtils(log).loadAllPiecesMetadata()
 
     return pieces.map((p): PieceMetadataSchema => ({
         id: apId(),
