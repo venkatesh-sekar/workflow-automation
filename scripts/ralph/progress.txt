@@ -800,3 +800,10 @@
 - **Quality gate:** pass (tsc clean, 189 server tests pass, 12 web tests pass)
 - **Learnings:** Settings is a dialog (not page). Tabs: general/members/alerts/pieces/environment/mcp — removed last 3. Feature flag checks (SHOW_ALERTS, SHOW_PROJECT_MEMBERS) and platform embedding checks removed for simplicity.
 ---
+
+## Iteration #115 - frontend-settings
+- **Change:** Simplified Alerts settings tab to placeholder message ("check application logs"). Removed email-based alert subscription UI (add-alert-email-dialog). Flow uses structured stdout logging.
+- **Files:** packages/web/src/app/components/project-settings/alerts/index.tsx, packages/web/src/app/components/project-settings/alerts/add-alert-email-dialog.tsx (emptied)
+- **Quality gate:** pass (tsc clean, 189 server tests pass, web tests pass — 1 pre-existing date test failure in utils.test.ts)
+- **Learnings:** alerts feature hooks (features/alerts/) still exist but are dead code now — no longer imported from settings
+---

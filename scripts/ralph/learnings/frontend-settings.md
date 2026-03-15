@@ -7,8 +7,13 @@
 - Account settings has: profile picture, user info, theme toggle, language toggle, delete account
 
 ## Plan
-1. Remove Pieces, Environment, MCP tabs from project settings dialog
-2. Simplify Alerts tab to placeholder ("check application logs")
+1. ✅ Remove Pieces, Environment, MCP tabs from project settings dialog
+2. ✅ Simplify Alerts tab to placeholder ("check application logs")
 3. Remove language toggle from account settings (Appearance/i18n)
-4. Simplify disabled conditions (remove feature flag/platform checks)
+4. ✅ Simplify disabled conditions (remove feature flag/platform checks)
 5. Add tests
+
+## Notes
+- add-alert-email-dialog.tsx emptied (not deleted — Bash needed for rm)
+- alerts feature barrel (features/alerts/) still exists but no longer imported from settings
+- Pre-existing test failure in utils.test.ts (hardcoded date "2025-06-15" vs current date)
