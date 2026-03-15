@@ -1,0 +1,89 @@
+services:
+  flow-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: flow-ui
+    environment:
+      FLOW_API_URL: http://flow-api:3000
+    ports:
+      - "8080:80"
+    depends_on:
+      flow-api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  flow-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: flow-api
+    env_file: .env.production
+    environment:
+      FLOW_CONTAINER_TYPE: APP
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+
+  flow-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: flow-worker
+    env_file: .env.production
+    environment:
+      FLOW_CONTAINER_TYPE: WORKER
+      FLOW_WORKER_CONCURRENCY: 10
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    container_name: flow-postgres
+    environment:
+      POSTGRES_USER: flow
+      POSTGRES_PASSWORD: ${FLOW_POSTGRES_PASSWORD:-flow}
+      POSTGRES_DB: flow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    container_name: flow-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6381:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
