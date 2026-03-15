@@ -51,3 +51,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** none
 ---
+
+## Iteration #8 - rename-ap-core-types
+- **Change:** Renamed ApErrorParams→FlowErrorParams (type + all references, 24 occurrences across 10 files)
+- **Files:** 10 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

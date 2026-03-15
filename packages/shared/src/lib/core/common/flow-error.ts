@@ -8,7 +8,7 @@ import type { FlowId } from './id-generator'
 import type { Permission } from './security'
 
 export class FlowError extends Error {
-    constructor(public error: ApErrorParams, message?: string) {
+    constructor(public error: FlowErrorParams, message?: string) {
         super(error.code + (message ? `: ${message}` : ''))
     }
 
@@ -21,7 +21,7 @@ export class FlowError extends Error {
     }
 }
 
-export type ApErrorParams =
+export type FlowErrorParams =
     | AuthenticationParams
     | AuthorizationErrorParams
     | EmailIsNotVerifiedErrorParams

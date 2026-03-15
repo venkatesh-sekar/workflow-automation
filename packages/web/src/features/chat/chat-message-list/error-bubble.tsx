@@ -1,4 +1,4 @@
-import { ApErrorParams, ChatUIResponse, ErrorCode } from '@flow/shared';
+import { FlowErrorParams, ChatUIResponse, ErrorCode } from '@flow/shared';
 import { BotIcon, CircleX, RotateCcw } from 'lucide-react';
 import React from 'react';
 
@@ -12,7 +12,7 @@ import {
 const formatError = (
   projectId: string | undefined | null,
   flowId: string,
-  error: ApErrorParams,
+  error: FlowErrorParams,
 ) => {
   switch (error.code) {
     case ErrorCode.NO_CHAT_RESPONSE:
@@ -54,7 +54,7 @@ const formatError = (
 interface ErrorBubbleProps {
   chatUI: ChatUIResponse | null | undefined;
   flowId: string;
-  sendingError: ApErrorParams;
+  sendingError: FlowErrorParams;
   sendMessage: (arg0: { isRetrying: boolean; message?: any }) => void;
 }
 

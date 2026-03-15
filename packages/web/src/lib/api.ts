@@ -1,4 +1,4 @@
-import { ApErrorParams, ErrorCode, isNil } from '@flow/shared';
+import { FlowErrorParams, ErrorCode, isNil } from '@flow/shared';
 import axios, {
   AxiosError,
   AxiosRequestConfig,
@@ -103,7 +103,7 @@ export const api = {
     if (!isAxiosError(error)) {
       return false;
     }
-    const responseData = error.response?.data as ApErrorParams;
+    const responseData = error.response?.data as FlowErrorParams;
     return responseData.code === errorCode;
   },
   isError(error: unknown): error is HttpError {

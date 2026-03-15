@@ -1,5 +1,5 @@
 import {
-  ApErrorParams,
+  FlowErrorParams,
   ChatUIResponse,
   ErrorCode,
   isNil,
@@ -30,7 +30,7 @@ interface FlowChatProps {
   className?: string;
   showWelcomeMessage?: boolean;
   mode: ChatDrawerSource | null;
-  onError?: (error: ApErrorParams | null) => void;
+  onError?: (error: FlowErrorParams | null) => void;
   onSendingMessage?: (message: ChatMessage) => void;
   closeChat?: () => void;
   messages?: Messages;
@@ -92,7 +92,7 @@ export function FlowChat({
 
   const previousInputRef = useRef('');
   const previousFilesRef = useRef<File[]>([]);
-  const [sendingError, setSendingError] = useState<ApErrorParams | null>(null);
+  const [sendingError, setSendingError] = useState<FlowErrorParams | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
 
@@ -147,7 +147,7 @@ export function FlowChat({
         closeChat?.();
       }
       if (!result) {
-        const error: ApErrorParams = {
+        const error: FlowErrorParams = {
           code: ErrorCode.NO_CHAT_RESPONSE,
           params: {},
         };
@@ -201,7 +201,7 @@ export function FlowChat({
     },
 
     onError: (error: AxiosError) => {
-      const errorData = error.response?.data as ApErrorParams;
+      const errorData = error.response?.data as FlowErrorParams;
       setSendingError(errorData);
       onError?.(errorData);
       scrollToBottom();

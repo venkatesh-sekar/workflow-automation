@@ -3,7 +3,7 @@ import {
   PieceAuthProperty,
 } from '@flow/pieces-framework';
 import {
-  ApErrorParams,
+  FlowErrorParams,
   AppConnectionScope,
   AppConnectionWithoutSensitiveData,
   ErrorCode,
@@ -112,7 +112,7 @@ export const appConnectionsMutations = {
             message: err.message,
           });
         } else if (api.isError(err)) {
-          const apError = err.response?.data as ApErrorParams;
+          const apError = err.response?.data as FlowErrorParams;
           switch (apError.code) {
             case ErrorCode.INVALID_CLOUD_CLAIM: {
               setErrorMessage(

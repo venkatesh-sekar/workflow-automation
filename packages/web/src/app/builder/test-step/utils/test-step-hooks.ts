@@ -1,6 +1,6 @@
 import {
   FlowAction,
-  ApErrorParams,
+  FlowErrorParams,
   ErrorCode,
   parseToJsonIfPossible,
   StepRunResponse,
@@ -152,7 +152,7 @@ export const testStepHooks = {
       },
       onError: (error) => {
         if (api.isError(error)) {
-          const apError = error.response?.data as ApErrorParams;
+          const apError = error.response?.data as FlowErrorParams;
           let message =
             'Failed to run test step, please ensure settings are correct.';
           if (apError.code === ErrorCode.TEST_TRIGGER_FAILED) {

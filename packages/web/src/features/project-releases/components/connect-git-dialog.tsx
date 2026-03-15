@@ -2,7 +2,7 @@ import {
   ConfigureRepoRequest,
   GitBranchType,
   GitRepo,
-  ApErrorParams,
+  FlowErrorParams,
   ErrorCode,
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -81,7 +81,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
       let message = INTERNAL_ERROR_MESSAGE;
 
       if (api.isError(error)) {
-        const responseData = error.response?.data as ApErrorParams;
+        const responseData = error.response?.data as FlowErrorParams;
         if (responseData.code === ErrorCode.INVALID_GIT_CREDENTIALS) {
           message = `Invalid git credentials, please check the credentials, \n ${responseData.params.message}`;
         }

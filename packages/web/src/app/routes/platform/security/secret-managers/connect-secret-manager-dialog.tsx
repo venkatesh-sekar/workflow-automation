@@ -1,7 +1,7 @@
 import {
   ConnectSecretManagerRequest,
   SecretManagerProviderMetaData,
-  ApErrorParams,
+  FlowErrorParams,
   ErrorCode,
 } from '@flow/shared';
 import { t } from 'i18next';
@@ -87,7 +87,7 @@ const ConnectSecretManagerForm = ({
     },
     onError: (error) => {
       if (api.isError(error)) {
-        const apError = error.response?.data as ApErrorParams;
+        const apError = error.response?.data as FlowErrorParams;
         if (apError?.code === ErrorCode.SECRET_MANAGER_CONNECTION_FAILED) {
           form.setError('root.serverError', {
             type: 'manual',

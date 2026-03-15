@@ -1,5 +1,5 @@
 import {
-  ApErrorParams,
+  FlowErrorParams,
   ChatUIResponse,
   FileResponseInterface,
   isNil,
@@ -33,7 +33,7 @@ interface ChatMessageListProps extends React.HTMLAttributes<HTMLDivElement> {
   messagesRef?: React.RefObject<HTMLDivElement | null>;
   messages?: Messages;
   chatUI?: ChatUIResponse | null | undefined;
-  sendingError?: ApErrorParams | null;
+  sendingError?: FlowErrorParams | null;
   isSending?: boolean;
   flowId?: string;
   sendMessage?: (arg0: { isRetrying: boolean; message: ChatMessage }) => void;

@@ -1,5 +1,5 @@
 import {
-  ApErrorParams,
+  FlowErrorParams,
   ErrorCode,
   isNil,
   Template,
@@ -39,7 +39,7 @@ const TemplateViewer = ({ template }: { template: Template }) => {
     },
     onError: (error) => {
       if (api.isError(error)) {
-        const apError = error.response?.data as ApErrorParams;
+        const apError = error.response?.data as FlowErrorParams;
         if (apError.code === ErrorCode.PERMISSION_DENIED) {
           toast.error(t('Import Failed'), {
             description: t("You don't have permission to import this template"),
