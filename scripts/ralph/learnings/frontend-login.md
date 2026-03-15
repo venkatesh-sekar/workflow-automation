@@ -10,3 +10,9 @@
 - Server endpoint: POST /v1/authentication/team-login with {email, apiKey}
 - Frontend uses React 19 + shadcn/ui (Card, Button, Input, Form, Label)
 - FullLogo component loads branding from flags API — will work as-is for now
+
+## Testing
+- Web package had no vitest/jsdom installed — added as devDependencies
+- Existing utils.test.ts has pre-existing formatDate timezone failure (IST offset) — unrelated to login
+- Web tests use `// @vitest-environment jsdom` directive and `vi.mock('i18next', ...)` pattern
+- LoginSchema extracted to login-schema.ts for unit testability (avoids needing React component rendering)

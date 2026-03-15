@@ -744,3 +744,10 @@
 - **Quality gate:** pass (typecheck clean, 189 tests pass)
 - **Learnings:** FullLogo component uses flags-based branding — works for now, will need Flow logo in frontend-branding phase. Old auth components (sign-in-form, sign-up-form, auth-form-template) still exist but are unused by /login route.
 ---
+
+## Iteration #107 - frontend-login
+- **Change:** Added 7 unit tests for LoginSchema validation: valid input, empty email, invalid email format, email without domain, empty team key, any non-empty key, missing fields. Extracted LoginSchema to login-schema.ts for testability. Installed vitest+jsdom in web package.
+- **Files:** packages/web/src/app/routes/login/login-schema.ts (new), packages/web/src/app/routes/login/login-schema.test.ts (new), packages/web/src/app/routes/login/index.tsx (updated imports), packages/web/package.json (vitest+jsdom devDeps)
+- **Quality gate:** pass (typecheck clean, 189 server tests pass, 7 login tests pass)
+- **Learnings:** Web package had no vitest/jsdom — needed as devDependencies. Pre-existing formatDate test has timezone issue (unrelated).
+---

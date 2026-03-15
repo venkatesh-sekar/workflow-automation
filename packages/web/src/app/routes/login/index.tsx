@@ -4,7 +4,6 @@ import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { authenticationApi } from '@/api/authentication-api';
 import { FullLogo } from '@/components/custom/full-logo';
@@ -22,20 +21,16 @@ import { Label } from '@/components/ui/label';
 import { HttpError, api } from '@/lib/api';
 import { authenticationSession } from '@/lib/authentication-session';
 import { useRedirectAfterLogin } from '@/lib/navigation-utils';
-import { formatUtils } from '@/lib/format-utils';
 
-const LoginSchema = z.object({
-  email: z.string().regex(formatUtils.emailRegex, t('Email is invalid')),
-  apiKey: z.string().min(1, t('Team key is required')),
-});
+import { LoginSchema } from './login-schema';
 
-type LoginSchema = z.infer<typeof LoginSchema>;
+type LoginSchemaType = LoginSchema;
 
 const LoginPage: React.FC = () => {
   const token = authenticationSession.getToken();
   const redirectAfterLogin = useRedirectAfterLogin();
 
-  const form = useForm<LoginSchema>({
+  const form = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: '',
@@ -53,7 +48,7 @@ const LoginPage: React.FC = () => {
   const { mutate, isPending } = useMutation<
     AuthenticationResponse,
     HttpError,
-    LoginSchema
+    LoginSchemaType
   >({
     mutationFn: authenticationApi.teamLogin,
     onSuccess: (data) => {
@@ -94,7 +89,7 @@ const LoginPage: React.FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
+  const onSubmit: SubmitHandler<LoginSchemaType> = (data) => {
     form.setError('root.serverError', { message: undefined });
     mutate(data);
   };
