@@ -177,3 +177,10 @@
 - **Quality gate:** pass
 - **Learnings:** none
 ---
+
+## Iteration #26 - strip-telemetry
+- **Change:** Removed Segment backend: gutted telemetry.utils.ts to no-ops (removed Analytics import, hardcoded write key 42TtMD2Fh9PEIcDO2CagCGFmtoPwOmqK, identify/track/trackProject/trackUser/trackPlatform), removed @segment/analytics-node dep
+- **Files:** 2 (telemetry.utils.ts, package.json)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** @segment/analytics-next (frontend) is also in api/package.json — likely misplaced, handle with frontend Segment removal
+---

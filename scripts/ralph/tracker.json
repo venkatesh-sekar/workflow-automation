@@ -1,5 +1,5 @@
 {
-  "iteration": 25,
+  "iteration": 26,
   "current_phase": "strip-telemetry",
   "phases": {
     "rename-packages": {
@@ -109,7 +109,9 @@
         "No hardcoded analytics API keys remain in codebase",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 26, "description": "Removed Segment backend: gutted telemetry.utils.ts to no-ops (removed Analytics import, hardcoded write key, identify/track functions), removed @segment/analytics-node dep from package.json"}
+      ]
     },
     "strip-billing-and-licensing": {
       "status": "pending",
