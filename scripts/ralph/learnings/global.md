@@ -50,3 +50,11 @@ Cross-phase insights that affect future work. Max ~50 lines — consolidate when
 - Dynamic branding: server defaultTheme → flags API → theme-provider.tsx sets title/favicon/CSS vars
 - websiteName='Flow', primaryColor='#dc2626' (red), local favicon.ico
 - Remaining 'Activepieces' refs are code-level (SDK types, imports, comments) — not user-visible
+
+## Deployment (complete)
+- Docker: multi-stage build, Node 22, per-package npm install (no workspaces)
+- Build order: shared → framework → common → server-common → engine → server/api → web
+- Runtime: nginx (SPA + API proxy) + node server, docker-entrypoint.sh with NODE_PATH
+- Key gotchas: typeorm symlink for server-common, worker-module bridge, piece npm install loop
+- Health: GET /v1/health, docker-compose service_healthy dependencies
+- All 16 phases complete. 129 iterations. 191 tests passing.

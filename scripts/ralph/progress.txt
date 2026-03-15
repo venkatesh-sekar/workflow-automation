@@ -898,3 +898,10 @@
 - **Quality gate:** pass (0 TS errors, 191 tests pass, Docker build succeeds, health check responds)
 - **Learnings:** See deployment.md for comprehensive Docker build gotchas — many deps were hoisted from monorepo root and needed explicit declaration
 ---
+
+## Iteration #129 - deployment (phase completion)
+- **Change:** Verified all 4 deployment acceptance criteria met. Marked deployment phase complete. All 16 phases done — created DONE file.
+- **Files:** scripts/ralph/tracker.json, scripts/ralph/learnings/global.md, scripts/ralph/DONE, scripts/ralph/progress.txt
+- **Quality gate:** N/A (phase transition)
+- **Learnings:** Promoted deployment insights to global learnings. All phases complete after 129 iterations.
+---
