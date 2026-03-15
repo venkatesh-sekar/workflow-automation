@@ -1,5 +1,5 @@
 import {
-  ApSubscriptionStatus,
+  FlowSubscriptionStatus,
   AiCreditsAutoTopUpState,
   FlowEdition,
   FlowFlagId,
@@ -54,7 +54,7 @@ function BillingPageDetails() {
   const { mutate: redirectToPortalSession } = billingMutations.usePortalLink();
   const status = platformPlanInfo?.plan?.stripeSubscriptionStatus;
   const isSubscriptionActive =
-    ApSubscriptionStatus.ACTIVE === (status as ApSubscriptionStatus);
+    FlowSubscriptionStatus.ACTIVE === (status as FlowSubscriptionStatus);
 
   if (isPlatformSubscriptionLoading || isNil(platformPlanInfo)) {
     return (

@@ -14,7 +14,7 @@ export type ProjectPlanLimits = {
     piecesFilterType?: PiecesFilterType
 }
 
-export enum ApSubscriptionStatus {
+export enum FlowSubscriptionStatus {
     ACTIVE = 'active',
     CANCELED = 'canceled',
 }

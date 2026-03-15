@@ -93,3 +93,10 @@
 - **Quality gate:** pass (0 typecheck errors)
 - **Learnings:** none
 ---
+
+## Iteration #14 - rename-ap-core-types
+- **Change:** Renamed ApSubscriptionStatus→FlowSubscriptionStatus (enum, 5 refs across 3 files)
+- **Files:** 3 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** none
+---

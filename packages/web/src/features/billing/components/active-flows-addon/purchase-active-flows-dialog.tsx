@@ -1,5 +1,5 @@
 import {
-  ApSubscriptionStatus,
+  FlowSubscriptionStatus,
   PRICE_PER_EXTRA_ACTIVE_FLOWS,
   PlatformPlan,
 } from '@flow/shared';
@@ -76,7 +76,7 @@ export function PurchaseExtraFlowsDialog() {
   const handlePurchase = () => {
     if (!isSame) {
       if (
-        platformPlan.stripeSubscriptionStatus !== ApSubscriptionStatus.ACTIVE
+        platformPlan.stripeSubscriptionStatus !== FlowSubscriptionStatus.ACTIVE
       ) {
         createSubscription({ newActiveFlowsLimit: selectedLimit });
       } else {

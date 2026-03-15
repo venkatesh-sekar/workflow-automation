@@ -1,5 +1,5 @@
 {
-  "iteration": 13,
+  "iteration": 14,
   "current_phase": "rename-ap-core-types",
   "phases": {
     "rename-packages": {
@@ -53,7 +53,8 @@
         {"iteration": 10, "description": "Renamed ApMultipartFile→FlowMultipartFile (type+schema, 13 refs across 4 files)"},
         {"iteration": 11, "description": "Renamed ApLock→FlowLock (type, 2 refs in 1 file)"},
         {"iteration": 12, "description": "Renamed ApSemaphore→FlowSemaphore (class, 1 ref in 1 file)"},
-        {"iteration": 13, "description": "Renamed ApQueueJob→FlowQueueJob (const+type, 2 refs in 1 file)"}
+        {"iteration": 13, "description": "Renamed ApQueueJob→FlowQueueJob (const+type, 2 refs in 1 file)"},
+        {"iteration": 14, "description": "Renamed ApSubscriptionStatus→FlowSubscriptionStatus (enum, 5 refs across 3 files)"}
       ]
     },
     "rename-ap-ui-components": {
