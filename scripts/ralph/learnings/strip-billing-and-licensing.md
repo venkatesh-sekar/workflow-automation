@@ -29,4 +29,5 @@
 - FeatureKey type moved to locked-feature-guard.tsx (only consumer of the type)
 - 15 LockedFeatureGuard consumers passed featureKey prop — all cleaned via sed
 - LockedAlert.button made optional since no "Contact Sales" button exists anymore
-- activate-license-dialog.tsx and license-key.tsx still exist — need to be gutted next
+- activate-license-dialog.tsx deleted, license-key.tsx simplified to FeatureStatus-only display
+- Next billing UI targets: active-flows-addon (purchase dialog + component), ai-credit-usage, billing page cleanup (remove stripe portal link, subscription info, simplify)

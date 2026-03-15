@@ -268,3 +268,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** FeatureKey type was only used via request-trial.tsx import — moved to locked-feature-guard.tsx which was its sole type consumer
 ---
+
+## Iteration #39 - strip-billing-and-licensing
+- **Change:** Deleted activate-license-dialog.tsx (dead — useUpdateLisenceKey hook removed in #37), simplified license-key.tsx to remove license activation UI and activepieces.com/pricing link, kept only FeatureStatus display
+- **Files:** 2 files changed (1 deleted, 1 rewritten)
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Next targets: active-flows-addon, ai-credit-usage, billing page simplification
+---
