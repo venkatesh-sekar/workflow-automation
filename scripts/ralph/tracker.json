@@ -1,5 +1,5 @@
 {
-  "iteration": 86,
+  "iteration": 87,
   "current_phase": "strip-ai-providers",
   "phases": {
     "copy-server-core": {
@@ -179,7 +179,8 @@
       "completed_items": [
         {"iteration": 84, "description": "Stripped provider registry to OpenAI only. Deleted 6 provider files (anthropic, azure, google, openrouter, cloudflare-gateway, openai-compatible). Added null checks in ai-provider-service.ts for unsupported providers. All 171 tests pass."},
         {"iteration": 85, "description": "Stripped shared AI provider types to OpenAI only. Removed 7 provider enums (ANTHROPIC, AZURE, GOOGLE, OPENROUTER, CLOUDFLARE_GATEWAY, ACTIVEPIECES, CUSTOM), deleted their zod schemas/auth configs, removed splitCloudflareGatewayModelId helper. Cleaned ai-provider-service.ts of all ACTIVEPIECES cloud-credits code. Fixed 2 migration files using string literals instead of removed enum values. All 171 tests pass."},
-        {"iteration": 86, "description": "Removed dead AI credit/OpenRouter references: AI_CREDIT_UPDATE_CHECK system job enum+type, OPENROUTER_PROVISION_KEY from AppSystemProp and validator, aiCreditsEnabled() hardcoded to false, CAN_BUY_AI_CREDITS flag hardcoded to false. Rebuilt server-common dist. All 171 tests pass."}
+        {"iteration": 86, "description": "Removed dead AI credit/OpenRouter references: AI_CREDIT_UPDATE_CHECK system job enum+type, OPENROUTER_PROVISION_KEY from AppSystemProp and validator, aiCreditsEnabled() hardcoded to false, CAN_BUY_AI_CREDITS flag hardcoded to false. Rebuilt server-common dist. All 171 tests pass."},
+        {"iteration": 87, "description": "Stripped UI files to OpenAI only. Removed 5 non-OpenAI provider entries from ai-providers.ts, stripped model lists/types from hooks.ts to openai only, simplified upsert-provider-dialog.tsx (removed Cloudflare/Azure/Custom/Anthropic/Google schema branches), emptied dead upsert-provider-config-form.tsx and model-form-popover.tsx. All 171 tests pass."}
       ]
     },
     "build-audit-logs": {

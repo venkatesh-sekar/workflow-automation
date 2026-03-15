@@ -16,8 +16,6 @@
 - ACTIVEPIECES provider was a cloud credits proxy — removed entirely along with aiCreditsEnabled, enrichWithKeysIfNeeded, AI_CREDIT_UPDATE_CHECK
 - Migration files reference removed enum values — use string literals with `as any` for type safety
 - ai-provider-service.ts had significant ACTIVEPIECES-specific code (auto-create, enrichment, credit check scheduling) — all removed
-- UI file upsert-provider-dialog.tsx imports all removed provider types — needs cleanup next
 - Dead references cleaned: AI_CREDIT_UPDATE_CHECK, OPENROUTER_PROVISION_KEY, aiCreditsEnabled
-- Remaining references: UI files (agents hooks, ai-providers.ts, upsert-provider-dialog/config-form) still reference removed provider names
-- shared/user-identity.ts and federated-authn still reference GOOGLE — dead code from removed auth, clean up separately
-- server-common/network-utils.ts references AZURE_OPENAI — check if dead
+- UI files fully cleaned: ai-providers.ts, hooks.ts, upsert-provider-dialog.tsx stripped to OpenAI only; config-form and model-popover emptied (dead code)
+- server-common/network-utils.ts AZURE_OPENAI reference was already cleaned in prior iteration

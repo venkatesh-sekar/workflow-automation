@@ -1,18 +1,8 @@
 import {
   AIProviderConfig,
   AIProviderName,
-  AnthropicProviderAuthConfig,
-  AnthropicProviderConfig,
-  AzureProviderAuthConfig,
-  AzureProviderConfig,
-  CloudflareGatewayProviderAuthConfig,
-  CloudflareGatewayProviderConfig,
   CreateAIProviderRequest,
-  GoogleProviderAuthConfig,
-  GoogleProviderConfig,
   isNil,
-  OpenAICompatibleProviderAuthConfig,
-  OpenAICompatibleProviderConfig,
   OpenAIProviderAuthConfig,
   OpenAIProviderConfig,
   UpdateAIProviderRequest,
@@ -22,13 +12,7 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { t } from 'i18next';
 import { useMemo, useState } from 'react';
-import {
-  FieldErrors,
-  Resolver,
-  ResolverOptions,
-  ResolverResult,
-  useForm,
-} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -54,8 +38,6 @@ import { SUPPORTED_AI_PROVIDERS } from '@/features/agents';
 import { aiProviderApi } from '@/features/platform-admin';
 
 import { ApMarkdown } from '../../../../../../components/custom/markdown';
-
-import { UpsertProviderConfigForm } from './upsert-provider-config-form';
 
 type UpsertAIProviderDialogProps = {
   provider: AIProviderName;
@@ -100,58 +82,7 @@ export const UpsertAIProviderDialogContent = ({
   );
 
   const form = useForm<CreateAIProviderRequest>({
-    resolver: ((
-      values: CreateAIProviderRequest,
-      context: unknown,
-      options: ResolverOptions<CreateAIProviderRequest>,
-    ) => {
-      const originalResolve = zodResolver(
-        createFormSchema(provider, !isNil(providerId)),
-      ) as unknown as (
-        values: CreateAIProviderRequest,
-        context: unknown,
-        options: ResolverOptions<CreateAIProviderRequest>,
-      ) => Promise<ResolverResult<CreateAIProviderRequest>>;
-      if (values.provider === AIProviderName.CLOUDFLARE_GATEWAY) {
-        if (
-          values.config.models.some((m) =>
-            m.modelId.includes('google-vertex-ai'),
-          )
-        ) {
-          const errors: FieldErrors<CreateAIProviderRequest> = {};
-          if (
-            isNil(values.config.vertexProject) ||
-            values.config.vertexProject.trim().length === 0
-          ) {
-            errors.config = {
-              vertexProject: {
-                message: 'Required when using Google Vertex AI models',
-                type: 'required',
-              },
-            };
-          }
-          if (
-            isNil(values.config.vertexRegion) ||
-            values.config.vertexRegion.trim().length === 0
-          ) {
-            errors.config = {
-              ...errors.config,
-              vertexRegion: {
-                message: 'Required when using Google Vertex AI models',
-                type: 'required',
-              },
-            };
-          }
-          if (Object.keys(errors).length > 0) {
-            return {
-              errors,
-              values: {} as Record<string, never>,
-            };
-          }
-        }
-      }
-      return originalResolve(values, context, options);
-    }) as Resolver<CreateAIProviderRequest>,
+    resolver: zodResolver(createFormSchema(!isNil(providerId))),
     defaultValues: {
       provider,
       displayName: defaultDisplayName,
@@ -209,29 +140,6 @@ export const UpsertAIProviderDialogContent = ({
             onSubmit={form.handleSubmit(handleSave)}
           >
             <ScrollArea viewPortClassName="max-h-[calc(70vh)] p-px">
-              <FormField
-                control={form.control}
-                name="displayName"
-                render={({ field }) => (
-                  <FormItem
-                    className="space-y-3"
-                    hidden={
-                      currentProviderDef.provider !== AIProviderName.CUSTOM
-                    }
-                  >
-                    <FormLabel>{t('Display Name')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder={'My Provider'}
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
               {currentProviderDef.markdown && (
                 <div className="mb-4 text-sm text-muted-foreground">
                   <ApMarkdown
@@ -240,12 +148,24 @@ export const UpsertAIProviderDialogContent = ({
                 </div>
               )}
 
-              <UpsertProviderConfigForm
-                form={form}
-                provider={provider}
-                apiKeyRequired={!config}
-                isLoading={isPending}
-                isEditMode={!!providerId}
+              <FormField
+                control={form.control}
+                name="auth.apiKey"
+                render={({ field }) => (
+                  <FormItem className="grid space-y-3">
+                    <FormLabel htmlFor="apiKey">{t('API Key')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        required={!config}
+                        id="apiKey"
+                        placeholder={'sk_************************'}
+                        disabled={isPending}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
 
               {form.formState.errors.root?.serverError && (
@@ -285,44 +205,11 @@ const OptionalAuthSchema = z
   })
   .optional();
 
-const createFormSchema = (provider: AIProviderName, editMode: boolean) => {
-  if (provider === AIProviderName.AZURE) {
-    return z.object({
-      displayName: z.string().min(1),
-      provider: z.literal(AIProviderName.AZURE),
-      config: AzureProviderConfig,
-      auth: editMode ? OptionalAuthSchema : AzureProviderAuthConfig,
-    });
-  }
-  if (provider === AIProviderName.CLOUDFLARE_GATEWAY) {
-    return z.object({
-      displayName: z.string().min(1),
-      provider: z.literal(AIProviderName.CLOUDFLARE_GATEWAY),
-      config: CloudflareGatewayProviderConfig,
-      auth: editMode ? OptionalAuthSchema : CloudflareGatewayProviderAuthConfig,
-    });
-  }
-  if (provider === AIProviderName.CUSTOM) {
-    return z.object({
-      displayName: z.string().min(1),
-      provider: z.literal(AIProviderName.CUSTOM),
-      config: OpenAICompatibleProviderConfig,
-      auth: editMode ? OptionalAuthSchema : OpenAICompatibleProviderAuthConfig,
-    });
-  }
-  const authSchema = z.union([
-    AnthropicProviderAuthConfig,
-    GoogleProviderAuthConfig,
-    OpenAIProviderAuthConfig,
-  ]);
+const createFormSchema = (editMode: boolean) => {
   return z.object({
     displayName: z.string().min(1),
-    provider: z.literal(provider),
-    auth: editMode ? OptionalAuthSchema : authSchema,
-    config: z.union([
-      AnthropicProviderConfig,
-      GoogleProviderConfig,
-      OpenAIProviderConfig,
-    ]),
+    provider: z.literal(AIProviderName.OPENAI),
+    auth: editMode ? OptionalAuthSchema : OpenAIProviderAuthConfig,
+    config: OpenAIProviderConfig,
   });
 };

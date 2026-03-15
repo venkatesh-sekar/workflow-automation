@@ -604,3 +604,10 @@
 - **Quality gate:** pass (0 TS errors, 171 tests pass)
 - **Learnings:** UI files still reference removed provider names — need separate cleanup iteration
 ---
+
+## Iteration #87 - strip-ai-providers
+- **Change:** Stripped UI files to OpenAI only. Removed 5 non-OpenAI entries from ai-providers.ts (Anthropic, Google, Azure, OpenRouter, Cloudflare). Stripped hooks.ts Provider type and model lists to openai only (removed anthropic, google, openrouter, cloudflare, azure, x-ai, activepieces models). Simplified upsert-provider-dialog.tsx — removed all non-OpenAI schema branches, imports of removed types, Cloudflare validation logic, displayName field (OpenAI only), and UpsertProviderConfigForm usage. Emptied dead upsert-provider-config-form.tsx and model-form-popover.tsx (no longer imported).
+- **Files:** packages/web/src/features/agents/ai-providers.ts, packages/web/src/features/agents/ai-model/hooks.ts, packages/web/src/app/routes/platform/setup/ai/universal-pieces/upsert-provider-dialog.tsx, packages/web/src/app/routes/platform/setup/ai/universal-pieces/upsert-provider-config-form.tsx, packages/web/src/app/routes/platform/setup/ai/universal-pieces/model-form-popover.tsx
+- **Quality gate:** pass (typecheck clean, 171 tests pass)
+- **Learnings:** CUSTOM provider was also removed (enum stripped to OPENAI only). Config form and model popover became dead code after dialog simplification.
+---
