@@ -46,9 +46,10 @@ export const FlowSidebarItem = (item: SidebarItemType) => {
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
+        isActive={isLinkActive}
         className={cn(
-          { 'bg-sidebar-accent hover:bg-sidebar-accent!': isLinkActive },
-          '',
+          isLinkActive &&
+            'bg-sidebar-primary/10 hover:bg-sidebar-primary/15 text-sidebar-primary [&_svg]:text-sidebar-primary',
         )}
         onClick={() => navigate(item.to)}
         onMouseEnter={() => setIsHovered(true)}

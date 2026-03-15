@@ -24,3 +24,10 @@
 - **Files changed:** packages/web/src/components/custom/data-table/data-table-select-popover.tsx
 - **Learnings:** For inline checkboxes in popovers, use border-primary in both states with opacity-50 for unselected — ensures control is always visible against white backgrounds. Theme-colors area now complete, advancing to sidebar-navigation.
 ---
+
+## Iteration #4 - sidebar-navigation
+- **Change:** Active sidebar item now uses primary-tinted background (bg-sidebar-primary/10) with text-sidebar-primary color instead of barely-visible bg-sidebar-accent gray. Also passes isActive prop to SidebarMenuButton so the CVA's data-active:font-medium fires correctly — previously the prop was never wired through.
+- **Heuristic:** Visibility of System Status (#1)
+- **Files changed:** packages/web/src/app/components/sidebar/flow-sidebar-item.tsx
+- **Learnings:** FlowSidebarItem was not passing isActive to SidebarMenuButton, so CVA data-active styles never fired. Always verify component props are wired through, not just className overrides.
+---
