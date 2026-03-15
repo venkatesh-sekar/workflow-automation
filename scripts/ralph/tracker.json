@@ -1,6 +1,6 @@
 {
-  "iteration": 48,
-  "current_phase": "strip-billing-and-licensing",
+  "iteration": 49,
+  "current_phase": "strip-external-urls",
   "phases": {
     "rename-packages": {
       "status": "complete",
@@ -120,7 +120,7 @@
       ]
     },
     "strip-billing-and-licensing": {
-      "status": "in-progress",
+      "status": "complete",
       "qualityGate": "full",
       "criteria": [
         "Stripe checkout session endpoints removed from billing-plans-api.ts",
@@ -161,7 +161,7 @@
       ]
     },
     "strip-external-urls": {
-      "status": "pending",
+      "status": "in-progress",
       "qualityGate": "full",
       "criteria": [
         "All cdn.activepieces.com URLs replaced with local assets or removed",
@@ -173,7 +173,9 @@
         "Showcase video URLs from cdn.activepieces.com removed",
         "All tests pass"
       ],
-      "completed_items": []
+      "completed_items": [
+        {"iteration": 49, "description": "Emptied feedbackUrl (feedback.activepieces.com) and supportUrl (community.activepieces.com) exports — consumers still import them but get empty strings"}
+      ]
     },
     "clean-strings-and-comments": {
       "status": "pending",
@@ -224,7 +226,7 @@
       "completed_items": []
     }
   },
-  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry"],
-  "phase_queue": ["strip-external-urls", "clean-strings-and-comments", "clean-dead-code", "final-sweep"],
+  "completed_phases": ["rename-packages", "rename-ap-core-types", "rename-ap-ui-components", "rename-ap-system-props", "strip-telemetry", "strip-billing-and-licensing"],
+  "phase_queue": ["clean-strings-and-comments", "clean-dead-code", "final-sweep"],
   "inserted_phases": []
 }

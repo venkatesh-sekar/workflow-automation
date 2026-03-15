@@ -338,3 +338,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
 - **Learnings:** Test fixture URLs (cloud.activepieces.com in test files) will be cleaned in strip-external-urls phase
 ---
+
+## Iteration #49 - strip-external-urls (PHASE START)
+- **Change:** Emptied feedbackUrl (feedback.activepieces.com→'') and supportUrl (community.activepieces.com→'') exports in shared/src/lib/core/. Consumers still import them but get empty strings. Also completed strip-billing-and-licensing phase — all criteria verified, advanced to strip-external-urls.
+- **Files:** 2 files changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Must run vitest from packages/server/api (not root) — root picks up global vitest 4.1.0 which finds 71 suites instead of 24
+---
