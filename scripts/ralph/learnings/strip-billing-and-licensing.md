@@ -41,4 +41,6 @@
 - Billing page still fetches platformPlanInfo via billingQueries but doesn't use it in render (only LicenseKey with platform is shown) — dead query, clean later
 - piece-sync-service.ts gutted: removed cloud.activepieces.com URL, listCloudPieces, installNewPieces, deletePiecesIfNotOnCloud — sync() is now a no-op log message when OFFICIAL_AUTO mode
 - Removed unused imports: semver, groupBy, PackageType, PieceType, apVersionUtil, PieceMetadata, PieceMetadataSchema, pieceRepos
-- Next targets: cloud-oauth2-service.ts (secrets.activepieces.com), community-templates.service.ts, AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM
+- cloud-oauth2-service.ts gutted to throw errors (no secrets.activepieces.com dependency)
+- Frontend still has secrets.activepieces.com refs in oauth2-connection-settings.tsx and oauth-apps.ts — will be handled in strip-external-urls phase
+- Next targets: community-templates.service.ts, AppSumo, Firebase Scrypt, Cloudflare, Featurebase, SCIM

@@ -296,3 +296,10 @@
 - **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing)
 - **Learnings:** Removed semver, groupBy, PackageType, PieceType, apVersionUtil, PieceMetadata imports that were only needed for cloud sync
 ---
+
+## Iteration #43 - strip-billing-and-licensing
+- **Change:** Gutted cloud-oauth2-service.ts: removed secrets.activepieces.com URLs (refresh + claim endpoints), removed flowAxios/FlowError/system imports — claim() and refresh() now throw 'not supported in self-hosted mode'
+- **Files:** 1 file changed
+- **Quality gate:** pass (0 typecheck errors; 22/24 test failures pre-existing — same baseline)
+- **Learnings:** Frontend still has secrets.activepieces.com refs in oauth2-connection-settings.tsx and oauth-apps.ts — handle in strip-external-urls phase
+---
