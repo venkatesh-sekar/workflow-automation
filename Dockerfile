@@ -109,6 +109,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
 
+# Copy root package.json (required by server-common for version info)
+COPY --from=build /usr/src/app/package.json ./package.json
+
 # Copy built server API with dependencies
 COPY --from=build /usr/src/app/packages/server/api/ ./packages/server/api/
 

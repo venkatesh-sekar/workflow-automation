@@ -321,6 +321,7 @@ import { AddSecretManagersEntity1770717998442 } from './migration/postgres/17707
 import { AddSecretManagersFlag1771167183104 } from './migration/postgres/1771167183104-AddSecretManagersFlag'
 import { AddPreSelectForNewProjectsToAppConnection1772027509095 } from './migration/postgres/1772027509095-AddPreSelectForNewProjectsToAppConnection'
 import { AddEnabledToolsToMcpServer1772027509096 } from './migration/postgres/1772027509096-AddEnabledToolsToMcpServer'
+import { AddApiKeyHashToProject1772027509097 } from './migration/postgres/1772027509097-AddApiKeyHashToProject'
 
 const getSslConfig = (): boolean | TlsOptions => {
     const useSsl = system.get(AppSystemProp.POSTGRES_USE_SSL)
@@ -658,6 +659,7 @@ export const getMigrations = (): (new () => MigrationInterface)[] => {
         AddSecretManagersFlag1771167183104,
         AddPreSelectForNewProjectsToAppConnection1772027509095,
         AddEnabledToolsToMcpServer1772027509096,
+        AddApiKeyHashToProject1772027509097,
     ]
     return migrations
 }

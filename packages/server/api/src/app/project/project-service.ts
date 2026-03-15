@@ -307,6 +307,7 @@ type CreateParams = {
     externalId?: string
     metadata?: Metadata
     maxConcurrentJobs?: number
+    apiKeyHash?: string
     callPostCreateHooks?: boolean
     entityManager?: EntityManager
 }
