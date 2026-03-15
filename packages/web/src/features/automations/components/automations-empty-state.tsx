@@ -233,7 +233,7 @@ export const AutomationsEmptyState = ({
     <div className="flex flex-col gap-8 py-8 px-4 max-w-5xl mx-auto">
       <div>
         <h2 className="text-sm font-medium text-muted-foreground mb-4">
-          {t('Get started with Activepieces')}
+          {t('Get started with Flow')}
         </h2>
         <div className="flex gap-4">
           <GetStartedCard

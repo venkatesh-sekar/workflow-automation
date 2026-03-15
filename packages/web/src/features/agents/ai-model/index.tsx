@@ -30,7 +30,7 @@ type AIModelSelectorProps = {
 
 const ACTIVEPIECES_PROVIDER_CONFIG = {
   provider: AIProviderName.ACTIVEPIECES,
-  name: 'Activepieces',
+  name: 'Flow',
   markdown: '',
   logoUrl: 'https://cdn.activepieces.com/pieces/activepieces.png',
 };

@@ -856,3 +856,10 @@
 - **Quality gate:** pass (0 TS errors, 189 tests pass)
 - **Learnings:** none
 ---
+
+## Iteration #123 - frontend-branding
+- **Change:** Replaced all user-visible 'Activepieces' text strings with 'Flow' across 13 UI source files: install-piece-dialog, automations-empty-state, ai-model, flow-chat, mcp-server, branding settings, saml-dialog, health page, api-keys, features-status, sidebar-usage-limits.
+- **Files:** 13 files in packages/web/src/
+- **Quality gate:** pass (0 TS errors, 189 server tests pass, 60/61 web tests pass — 1 pre-existing formatDate failure)
+- **Learnings:** Remaining 'Activepieces' refs are SDK type names (ee-embed-sdk imports) and 1 code comment — not user-visible, safe to keep.
+---
