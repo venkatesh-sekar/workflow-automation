@@ -1,5 +1,5 @@
 {
-  "iteration": 0,
+  "iteration": 1,
   "current_area": "theme-colors",
   "queue": [
     "sidebar-navigation",
@@ -14,6 +14,20 @@
     "cross-area-polish"
   ],
   "completed_areas": [],
-  "completed": [],
-  "learnings": []
+  "completed": [
+    {
+      "area": "theme-colors",
+      "iteration": 1,
+      "date": "2026-03-16",
+      "change": "Update all :root CSS custom properties to design system spec — muted warm red primary (hue 4°, 55% sat), cool blue-gray neutrals (hue 220°), off-white background, differentiated accent/muted tokens",
+      "files_modified": ["packages/web/src/styles.css"],
+      "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    }
+  ],
+  "learnings": [
+    "Secondary token changed from dark (black bg/white text) to light (96% lightness bg/dark text) — button.tsx spinner uses stroke-background for secondary variant which will be invisible. Fix in future iteration.",
+    "data-table-select-popover.tsx uses bg-secondary for checkbox selected state — will be invisible with light secondary. Needs bg-primary text-primary-foreground instead.",
+    "Differentiate --accent (93%) from --muted (96%) by 3 lightness points to preserve hover visibility on muted surfaces.",
+    "builder-background-pattern shifted to hsl(220 8% 72%) to align with blue-gray palette instead of pure gray #b2b2b2."
+  ]
 }

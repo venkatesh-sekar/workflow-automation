@@ -344,28 +344,28 @@
   }
 
 :root {
-    --background: theme('colors.white');
-    --foreground: theme('colors.neutral.950');
-    --popover: theme('colors.white');
+    --background: #FAFAFA;
+    --foreground: hsl(220 20% 14%);
+    --popover: #FFFFFF;
 
-    --secondary: theme('colors.black');
-    --secondary-foreground: theme('colors.white');
+    --secondary: hsl(220 14% 96%);
+    --secondary-foreground: hsl(220 20% 14%);
 
-    --muted: theme('colors.neutral.100');
-    --muted-foreground: theme('colors.neutral.500');
+    --muted: hsl(220 14% 96%);
+    --muted-foreground: hsl(220 10% 46%);
 
-    --accent: theme('colors.neutral.50');
-    --accent-foreground: theme('colors.neutral.900');
+    --accent: hsl(220 14% 93%);
+    --accent-foreground: hsl(220 20% 14%);
 
-    --border: theme('colors.neutral.200');
-    --input: theme('colors.neutral.200');
+    --border: hsl(220 13% 91%);
+    --input: hsl(220 13% 91%);
 
-    --ring: theme('colors.neutral.400');
+    --ring: hsl(4 55% 48%);
     --radius: 0.625rem;
 
-    --primary-100: 0 93% 85%;
-    --primary: 0 72% 51%;
-    --primary-300: 0 63% 25%;
+    --primary-100: 4 80% 92%;
+    --primary: 4 55% 48%;
+    --primary-300: 4 45% 30%;
     --primary-foreground: 0 0% 98%;
 
     /* Success — Emerald */
@@ -419,17 +419,17 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    --sidebar-background: theme('colors.neutral.50');
-    --sidebar-foreground: theme('colors.neutral.950');
-    --sidebar-primary: 0 72% 51%;
-    --sidebar-primary-foreground: theme('colors.neutral.50');
-    --sidebar-accent: color-mix(in srgb, theme('colors.neutral.200') 60%, transparent);
-    --sidebar-accent-foreground: theme('colors.neutral.900');
-    --sidebar-border: theme('colors.neutral.200');
-    --sidebar-ring: theme('colors.neutral.400');
+    --sidebar-background: hsl(220 15% 97%);
+    --sidebar-foreground: hsl(220 20% 14%);
+    --sidebar-primary: 4 55% 48%;
+    --sidebar-primary-foreground: hsl(220 15% 97%);
+    --sidebar-accent: hsl(220 14% 93%);
+    --sidebar-accent-foreground: hsl(220 20% 14%);
+    --sidebar-border: hsl(220 13% 91%);
+    --sidebar-ring: hsl(4 55% 48%);
     --sidebar-progress: 0 0% 50%;
-    --builder-background: #FBFBFB;
-    --builder-background-pattern: #b2b2b2;
+    --builder-background: #FAFAFA;
+    --builder-background-pattern: hsl(220 8% 72%);
   }
 
 .dark {

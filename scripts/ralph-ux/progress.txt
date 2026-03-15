@@ -3,3 +3,10 @@
 # Theme: Muted warm red, light mode only
 # Started: 2026-03-16
 ---
+
+## Iteration #1 - theme-colors
+- **Change:** Updated all :root CSS custom properties to match design system — primary shifted from pure red (0° 72% 51%) to muted warm red (4° 55% 48%), neutrals shifted from true gray to cool blue-gray (hue 220°), background to off-white #FAFAFA, ring color matches primary, accent differentiated from muted (93% vs 96% lightness), sidebar and builder tokens aligned
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/styles.css
+- **Learnings:** Secondary token inversion (dark→light) will break button.tsx spinner visibility and data-table-select-popover checkbox. These need fixing in upcoming iterations. Always differentiate --accent from --muted by 3+ lightness points for hover visibility.
+---
