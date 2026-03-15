@@ -10,5 +10,6 @@
 - TemplateScope enum added: TEAM (project-scoped, default) and GLOBAL (visible to all)
 - scope field added to Template, entity (default 'TEAM'), create request (optional default TEAM), list query (optional filter)
 - Scope filtering implemented in list() — filters by Equal(scope) when provided
-- Still need: tests for template scope behavior
+- Template scope tests at test/integration/ce/templates/template-scope.test.ts
 - Categories endpoint removed from controller (was CLOUD-only)
+- Test baseline after templates: 24 suites, 189 tests

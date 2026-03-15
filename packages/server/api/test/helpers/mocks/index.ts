@@ -64,6 +64,7 @@ import {
     Table,
     TeamProjectsLimit,
     Template,
+    TemplateScope,
     TemplateStatus,
     TemplateType,
     User,
@@ -147,6 +148,7 @@ export const createMockTemplate = (
         metadata: template?.metadata ?? null,
         author: template?.author ?? faker.person.fullName(),
         categories: template?.categories ?? [],
+        scope: template?.scope ?? TemplateScope.TEAM,
         status: template?.status ?? TemplateStatus.PUBLISHED,
     }
 }

@@ -723,3 +723,10 @@
 - **Quality gate:** pass (typecheck clean, 184 tests pass)
 - **Learnings:** ListParams had stale Omit<..., 'type'> since type was removed from query in #101 — cleaned up
 ---
+
+## Iteration #104 - modify-templates
+- **Change:** Added 5 integration tests for template scope behavior: default TEAM on create, GLOBAL on create, list all without filter, list filtered by TEAM, list filtered by GLOBAL. Updated createMockTemplate mock to include scope field.
+- **Files:** packages/server/api/test/integration/ce/templates/template-scope.test.ts (new), packages/server/api/test/helpers/mocks/index.ts (updated)
+- **Quality gate:** pass (0 TS errors, 189 tests pass across 24 suites)
+- **Learnings:** Template create endpoint accepts scope in body, defaults to TEAM via zod default. List endpoint filters by scope query param.
+---

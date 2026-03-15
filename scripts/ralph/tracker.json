@@ -1,5 +1,5 @@
 {
-  "iteration": 103,
+  "iteration": 104,
   "current_phase": "modify-templates",
   "phases": {
     "copy-server-core": {
@@ -230,7 +230,8 @@
       "completed_items": [
         {"iteration": 101, "description": "Stripped OFFICIAL and SHARED from TemplateType enum (kept CUSTOM only). Removed type from CreateTemplateRequestBody and ListTemplatesRequestQuery. Simplified template controller — removed OFFICIAL cloud-fetch logic, community-templates fallback, categories endpoint. Simplified template service — removed OFFICIAL/SHARED switch branches. Updated flow.service.ts and table.service.ts to use CUSTOM. Migration files untouched (use local enums)."},
         {"iteration": 102, "description": "Added TemplateScope enum (TEAM/GLOBAL) to shared types. Added scope field to Template zod schema, template entity (default TEAM), CreateTemplateRequestBody (optional, default TEAM), and ListTemplatesRequestQuery (optional filter). Updated template.service.ts, flow.service.ts, table.service.ts to populate scope. All 184 tests pass."},
-        {"iteration": 103, "description": "Added scope filtering to template service list() method. When scope query param is provided, filters templates by scope (TEAM or GLOBAL). Cleaned up stale Omit<..., 'type'> in ListParams. All 184 tests pass."}
+        {"iteration": 103, "description": "Added scope filtering to template service list() method. When scope query param is provided, filters templates by scope (TEAM or GLOBAL). Cleaned up stale Omit<..., 'type'> in ListParams. All 184 tests pass."},
+        {"iteration": 104, "description": "Added 5 integration tests for template scope: default TEAM on create, GLOBAL on create, list without scope filter returns all, list with TEAM filter, list with GLOBAL filter. Updated createMockTemplate to include scope field. All 189 tests pass."}
       ]
     },
     "frontend-login": {
