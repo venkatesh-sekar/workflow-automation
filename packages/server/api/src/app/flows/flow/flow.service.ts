@@ -196,18 +196,14 @@ export const flowService = (log: FastifyBaseLogger) => ({
 
         const paginationResult = await paginator.paginate<Flow & { version: FlowVersion | null, triggerSource?: TriggerSource }>(queryBuilder)
 
-        const populatedFlows = await Promise.all(paginationResult.data.map(async (flow) => {
+        const populatedFlows: PopulatedFlow[] = []
+        for (const flow of paginationResult.data) {
             if (isNil(flow.version)) {
-                throw new FlowError({
-                    code: ErrorCode.ENTITY_NOT_FOUND,
-                    params: {
-                        entityType: 'FlowVersion',
-                        message: `flowId=${flow.id}`,
-                    },
-                })
+                log.warn(`Skipping flow ${flow.id} with no version (orphaned flow record)`)
+                continue
             }
             const migratedVersion = await flowVersionMigrationService(log).migrate(flow.version, flow.projectId)
-            return {
+            populatedFlows.push({
                 ...flow,
                 version: migratedVersion,
                 triggerSource: includeTriggerSource && flow.triggerSource
@@ -215,8 +211,8 @@ export const flowService = (log: FastifyBaseLogger) => ({
                         schedule: flow.triggerSource.schedule,
                     }
                     : undefined,
-            }
-        }))
+            })
+        }
         return paginationHelper.createPage(populatedFlows, paginationResult.cursor)
     },
     async exists(id: FlowId): Promise<boolean> {
