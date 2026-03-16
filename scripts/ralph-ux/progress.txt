@@ -331,3 +331,10 @@
 - **Files changed:** packages/web/src/components/ui/dropdown-menu.tsx
 - **Learnings:** DropdownMenuItem and ContextMenuItem dark: cleanup now both complete. Next in systematic cleanup: calendar.tsx.
 ---
+
+## Iteration #48 - cross-area-polish
+- **Change:** Removed dead `dark:hover:text-accent-foreground` override from CalendarDayButton component. The ghost button variant already provides `enabled:hover:text-accent-foreground` for light mode hover text color. Also discovered that select.tsx iteration #45 was a ghost commit — code change was never staged, so select.tsx still has 3 dark: overrides to re-fix.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/calendar.tsx
+- **Learnings:** Calendar dark: cleanup complete. select.tsx #45 was another ghost commit (same pattern as #26, #29). Next priority: re-fix select.tsx dark: overrides.
+---
