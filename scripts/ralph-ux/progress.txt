@@ -365,3 +365,10 @@
 - **Files changed:** packages/web/src/features/chat/chat-message/text-message.tsx
 - **Learnings:** Apply text color tokens on interactive elements (Button), not their positioning wrappers, so component state styles (hover, active, focus) can override the resting color.
 ---
+
+## Iteration #53 - cross-area-polish
+- **Change:** Removed 3 dead `dark:` overrides from InvalidStepIcon SVG component — `dark:stroke-amber-900` from SVG element, `dark:fill-amber-950` from circle background, `dark:fill-amber-600` from exclamation path. Light-mode amber colors (`stroke-amber-500`, `fill-amber-50`, `fill-amber-700`) are already correct for warning/invalid-step semantics, matching the Alert component's warning variant pattern. Cleaned 2 trailing spaces in className strings.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/alert-icon.tsx
+- **Learnings:** Amber colors for warning/invalid states are semantic — they don't need token replacement to the 220° blue-gray palette. Only neutral grays (gray-*, neutral-*) need migration. Remaining in-scope dark: overrides: markdown.tsx, search-input.tsx, image-with-color-background.tsx, field.tsx, data-selector-node-content.tsx, health/index.tsx (possible regression from #18).
+---

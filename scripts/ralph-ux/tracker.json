@@ -1,5 +1,5 @@
 {
-  "iteration": 52,
+  "iteration": 53,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -418,6 +418,14 @@
       "date": "2026-03-16",
       "change": "Fix chat TextMessage hardcoded grays — replaced text-gray-500 with text-muted-foreground on code language label, moved text-muted-foreground onto CopyCode Button (not wrapper div) for proper hover/active state override, replaced bg-gray-200 with bg-muted on inline code elements",
       "files_modified": ["packages/web/src/features/chat/chat-message/text-message.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 53,
+      "date": "2026-03-16",
+      "change": "Remove dead dark: overrides from InvalidStepIcon — removed dark:stroke-amber-900, dark:fill-amber-950, dark:fill-amber-600 from SVG alert icon. Light-mode amber colors (stroke-amber-500, fill-amber-50, fill-amber-700) already correct for warning semantics. Cleaned trailing spaces.",
+      "files_modified": ["packages/web/src/components/custom/alert-icon.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],
