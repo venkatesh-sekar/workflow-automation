@@ -65,7 +65,7 @@ export const machineService = (log: FastifyBaseLogger) => {
                 MAX_CONCURRENT_JOBS_PER_PROJECT: system.getNumberOrThrow(FlowSystemProp.MAX_CONCURRENT_JOBS_PER_PROJECT),
                 FILE_STORAGE_LOCATION: system.getOrThrow(FlowSystemProp.FILE_STORAGE_LOCATION),
                 S3_USE_SIGNED_URLS: system.getOrThrow(FlowSystemProp.S3_USE_SIGNED_URLS),
-                REDIS_TYPE: redisConnections.getRedisType(),
+                REDIS_TYPE: (() => { const rt = redisConnections.getRedisType(); console.log('[DIAG] redisConnections.getRedisType() =', rt, 'FLOW_QUEUE_MODE=', process.env['FLOW_QUEUE_MODE'], 'FLOW_REDIS_TYPE=', process.env['FLOW_REDIS_TYPE']); return rt; })(),
                 REDIS_SSL_CA_FILE: system.get(FlowSystemProp.REDIS_SSL_CA_FILE),
                 REDIS_DB: system.getNumber(FlowSystemProp.REDIS_DB) ?? undefined,
                 REDIS_HOST: system.get(FlowSystemProp.REDIS_HOST),
