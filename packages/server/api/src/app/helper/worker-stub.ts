@@ -15,11 +15,13 @@ import {
 } from '@flow/shared'
 import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@flow/pieces-framework'
 import { pieceHelper } from '../../../../engine/src/lib/helper/piece-helper'
-import { QueueName } from '@flow/server-common'
+import { triggerHookOperation } from '../../../../engine/src/lib/operations/trigger-hook.operation'
+import { QueueName, webhookSecretsUtils } from '@flow/server-common'
 import { Worker, Job } from 'bullmq'
 import { FastifyBaseLogger } from 'fastify'
 import { redisConnections } from '../database/redis-connections'
 import { accessTokenManager } from '../authentication/lib/access-token-manager'
+import { flowVersionRepo } from '../flows/flow-version/flow-version.service'
 import { pubsub } from './pubsub'
 
 // Types re-exported from worker
@@ -147,6 +149,52 @@ export const flowWorker = (log: FastifyBaseLogger) => ({
                                 standardError: '',
                                 standardOutput: '',
                             })
+                            break
+                        }
+                        case WorkerJobType.EXECUTE_TRIGGER_HOOK: {
+                            const flowVersion = await flowVersionRepo().findOneBy({ id: jobData.flowVersionId })
+                            if (isNil(flowVersion)) {
+                                throw new Error(`Flow version not found: ${jobData.flowVersionId}`)
+                            }
+
+                            const engineToken = await accessTokenManager(log).generateEngineToken({
+                                jobId: jobData.requestId,
+                                projectId: jobData.projectId,
+                                platformId: jobData.platformId,
+                            })
+
+                            const suffix = jobData.test ? '/test' : ''
+                            const webhookUrl = `${PUBLIC_API_URL}v1/webhooks/${flowVersion.flowId}${suffix}`
+
+                            const triggerPieceName = flowVersion.trigger?.settings?.pieceName
+                            const appWebhookUrl = triggerPieceName
+                                ? `${PUBLIC_API_URL}v1/app-events/${triggerPieceName}`
+                                : undefined
+
+                            const engineResponse = await triggerHookOperation.execute({
+                                projectId: jobData.projectId,
+                                platformId: jobData.platformId,
+                                hookType: jobData.hookType,
+                                test: jobData.test,
+                                flowVersion,
+                                webhookUrl,
+                                triggerPayload: jobData.triggerPayload,
+                                appWebhookUrl,
+                                webhookSecret: await webhookSecretsUtils.getWebhookSecret(flowVersion),
+                                engineToken,
+                                internalApiUrl: INTERNAL_API_URL,
+                                publicApiUrl: PUBLIC_API_URL,
+                                timeoutInSeconds: 60,
+                            })
+
+                            const triggerResponse: OperationResponse<EngineHelperTriggerResult> = {
+                                status: engineResponse.status,
+                                result: engineResponse.response,
+                                standardError: '',
+                                standardOutput: '',
+                            }
+
+                            await publishResponse(log, jobData.requestId, jobData.webserverId, triggerResponse)
                             break
                         }
                         default:
