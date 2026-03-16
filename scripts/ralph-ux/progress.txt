@@ -317,3 +317,10 @@
 - **Files changed:** packages/web/src/components/ui/select.tsx
 - **Learnings:** Select dark: cleanup complete. Next in systematic cleanup: context-menu.tsx.
 ---
+
+## Iteration #46 - cross-area-polish
+- **Change:** Removed dead `dark:` override from ContextMenuItem — removed `dark:data-[variant=destructive]:focus:bg-destructive/20` from className. Light-mode rule `data-[variant=destructive]:focus:bg-destructive/10` already correct and untouched. ContextMenuItem is a sibling of DropdownMenuItem which carries the identical override (next cleanup target).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/context-menu.tsx
+- **Learnings:** ContextMenuItem and DropdownMenuItem are structural siblings sharing identical Radix primitive patterns and variant shapes. Clean them in sequence. DropdownMenuItem also has `dark:data-[variant=destructive]:focus:bg-destructive/20` to remove next.
+---
