@@ -1,5 +1,5 @@
 {
-  "iteration": 26,
+  "iteration": 27,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -208,9 +208,17 @@
       "area": "cross-area-polish",
       "iteration": 26,
       "date": "2026-03-16",
-      "change": "Fix Card interactive hover and isSelected borders — replaced hardcoded border-gray-400 (hue 0° pure gray) with border-foreground/20 (220° cool blue-gray at 20% opacity). Affects SuggestedTemplateCard hover in automations empty state.",
+      "change": "Fix Card interactive hover and isSelected borders — replaced hardcoded border-gray-400 (hue 0° pure gray) with border-foreground/20 (220° cool blue-gray at 20% opacity). Affects SuggestedTemplateCard hover in automations empty state. NOTE: tracker-only commit, code fix applied in #27.",
       "files_modified": ["packages/web/src/components/ui/card.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 27,
+      "date": "2026-03-16",
+      "change": "Apply Card border fix from #26 (code was missed in that commit) — hover:border-foreground/20 for interactive variant, border-foreground/25 for isSelected (slightly stronger to differentiate selection from hover)",
+      "files_modified": ["packages/web/src/components/ui/card.tsx"],
+      "heuristic": "Consistency and Standards (#4), Visibility of System Status (#1)"
     }
   ],
   "learnings": [
@@ -243,6 +251,7 @@
     "For standalone page cards (login, auth), use shadow-sm instead of drop-shadow-xl. drop-shadow-* uses CSS filter (alpha-shape shadow) while shadow-* uses box-shadow (rectangular). shadow-sm is semantically correct for card elevation and matches shadcn/ui Card conventions. Layout cards inside sidebar containers should use no shadow at all (border only).",
     "Button variant hover classes must use enabled:hover: not bare hover: — matches the pattern in default/outline/secondary/accent/basic variants. Bare hover: fires on disabled buttons (especially with asChild/Slot where the host element may not be a native button). Ghost variant uses enabled:hover:bg-accent enabled:hover:text-accent-foreground.",
     "For skeleton/loading placeholders, use bg-border (91% lightness) not bg-muted (96%) — bg-muted is nearly invisible against #FAFAFA background (96% vs 98% = 1.03:1 contrast), especially at the 50% opacity dim phase of animate-pulse. bg-border provides enough contrast (91% vs 98% = 1.18:1) to remain perceptible throughout the animation cycle.",
-    "For interactive card hover/selected borders, use border-foreground/20 — darkens subtly within the 220° hue family. Don't use border-primary for multi-select card borders (warm red reads as error/warning). Reserve border-primary for single focused/active items only."
+    "For interactive card hover/selected borders, use border-foreground/20 — darkens subtly within the 220° hue family. Don't use border-primary for multi-select card borders (warm red reads as error/warning). Reserve border-primary for single focused/active items only.",
+    "When a component has both hover and selected border states, differentiate with opacity: hover at /20 (subtle affordance), selected at /25 (slightly stronger confirmation). Same token, different weight — perceptible without introducing new colors."
   ]
 }

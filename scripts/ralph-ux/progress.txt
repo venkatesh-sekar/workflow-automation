@@ -185,3 +185,10 @@
 - **Files changed:** packages/web/src/components/ui/card.tsx
 - **Learnings:** For interactive card borders, use `border-foreground/20` — subtle darkening within the 220° hue family. Don't use `border-primary` for multi-select borders (warm red reads as error/warning in enterprise tables).
 ---
+
+## Iteration #27 - cross-area-polish
+- **Change:** Applied Card border fix that was missed in #26 commit (only tracker/progress were committed, not the code). Replaced `hover:border-gray-400` with `hover:border-foreground/20` for interactive variant, and `border-gray-400` with `border-foreground/25` for isSelected — slightly stronger opacity to differentiate selection from hover.
+- **Heuristic:** Consistency and Standards (#4), Visibility of System Status (#1)
+- **Files changed:** packages/web/src/components/ui/card.tsx
+- **Learnings:** When a component has both hover and selected border states, differentiate with opacity: hover at /20, selected at /25. Same token, different weight — perceptible without introducing new colors. Also: always verify code changes are staged before committing tracker updates.
+---
