@@ -178,3 +178,10 @@
 - **Files changed:** packages/web/src/components/ui/skeleton.tsx
 - **Learnings:** For skeleton/loading placeholders, use `bg-border` not `bg-muted` — the 5% lightness gap (91% vs 96%) matters for perceptibility against near-white backgrounds, especially when animate-pulse drops to 50% opacity.
 ---
+
+## Iteration #26 - cross-area-polish
+- **Change:** Fixed Card component hardcoded `border-gray-400` (hue 0° pure gray) to `border-foreground/20` (220° cool blue-gray at 20% opacity) in both `interactive` variant hover and `isSelected` variant. The interactive variant is used by `SuggestedTemplateCard` in automations empty state. `isSelected` is currently dead code but tokenized for consistency.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/card.tsx
+- **Learnings:** For interactive card borders, use `border-foreground/20` — subtle darkening within the 220° hue family. Don't use `border-primary` for multi-select borders (warm red reads as error/warning in enterprise tables).
+---
