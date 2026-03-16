@@ -550,3 +550,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/triggers/index.tsx
 - **Learnings:** status-progress-bar.tsx in same directory still uses bg-amber-400 hover:bg-amber-500 for warning bars — next candidate for warning token migration
 ---
+
+## Iteration #80 - cross-area-polish
+- **Change:** Migrate status-progress-bar warning bars from raw bg-amber-400 hover:bg-amber-500 to semantic bg-warning hover:bg-warning-600 — completes semantic token adoption where success and fault siblings already used semantic tokens. Used -600 hover (not -500) because --warning already resolves to --warning-500 in light mode, so -500 would be a no-op hover.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/triggers/status-progress-bar.tsx
+- **Learnings:** In light mode, --warning resolves to --warning-500 (not -400). The .dark block aliases --warning to --warning-400. So hover:bg-warning-500 is a no-op in light mode — use hover:bg-warning-600 for a visible darkening, paralleling bg-success hover:bg-success-600.
+---
