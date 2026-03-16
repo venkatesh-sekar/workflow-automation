@@ -1,5 +1,5 @@
 {
-  "iteration": 78,
+  "iteration": 79,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -626,6 +626,14 @@
       "date": "2026-03-16",
       "change": "Migrate flow-run warning status badge from raw amber-700/50/200 to semantic warning-700/50/200 tokens — completes semantic token adoption in getStatusContainerClassName where success and error siblings already used semantic tokens",
       "files_modified": ["packages/web/src/features/flow-runs/utils/flow-run-utils.ts"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 79,
+      "date": "2026-03-16",
+      "change": "Migrate platform triggers warning status from raw text-amber-700 to semantic text-warning-700 in both getStatusIcon and getStatusColor — completes warning token adoption where success and fault siblings already used semantic tokens",
+      "files_modified": ["packages/web/src/app/routes/platform/infra/triggers/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

@@ -543,3 +543,10 @@
 - **Files changed:** packages/web/src/features/flow-runs/utils/flow-run-utils.ts
 - **Learnings:** Warning variant uses -700 text step while success/error use -800. Follow-up candidate to normalize to -800 for WCAG contrast parity on text-xs badges. Remaining amber-* in scope: triggers/index.tsx (2 usages). Out of scope: incomplete-settings-widget.tsx (flow-canvas).
 ---
+
+## Iteration #79 - cross-area-polish
+- **Change:** Migrate platform triggers warning status from raw text-amber-700 to semantic text-warning-700 in both getStatusIcon and getStatusColor — completes warning token adoption where success and fault siblings already used semantic tokens
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/triggers/index.tsx
+- **Learnings:** status-progress-bar.tsx in same directory still uses bg-amber-400 hover:bg-amber-500 for warning bars — next candidate for warning token migration
+---
