@@ -1,5 +1,5 @@
 import { FlowSystemProp } from '@flow/server-common'
-import { FlowEnvironment, isNil, LocalesEnum, PieceType } from '@flow/shared'
+import { FlowEnvironment, isNil, PieceType } from '@flow/shared'
 import { FastifyBaseLogger } from 'fastify'
 import { lru, LRU } from 'tiny-lru'
 import { system } from '../../helper/system/system'
@@ -24,7 +24,7 @@ const environment = system.get<FlowEnvironment>(FlowSystemProp.ENVIRONMENT)
 const isTestingEnvironment = environment === FlowEnvironment.TESTING
 
 const CACHE_KEY = {
-    list: (locale: LocalesEnum): string => `list:${locale}`,
+    list: (): string => 'list',
     piece: (name: string, version: string): string => `piece:${name}:${version}`,
     registry: (): string => 'registry',
 }
@@ -38,8 +38,8 @@ export const pieceCache = (log: FastifyBaseLogger) => {
         },
 
         async getList(params: GetListParams): Promise<PieceMetadataSchema[]> {
-            const { platformId, locale = LocalesEnum.ENGLISH } = params
-            const cacheKey = CACHE_KEY.list(locale)
+            const { platformId } = params
+            const cacheKey = CACHE_KEY.list()
 
             const pieces = await getCachedOrFetch(cacheKey, () => loadLocalPieces(log))
 
@@ -140,7 +140,6 @@ type GetPieceVersionParams = {
 
 type GetListParams = {
     platformId?: string
-    locale?: LocalesEnum
 }
 
 type GetRegistryParams = {

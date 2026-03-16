@@ -1,7 +1,6 @@
 import { FlowOperationType, PopulatedFlow } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -31,7 +30,7 @@ import { projectMembersHooks } from '@/features/members/hooks/project-members-ho
 import { flowsApi } from '../api/flows-api';
 
 const ChangeOwnerFormSchema = z.object({
-  ownerId: z.string({ message: t('Please select an owner') }),
+  ownerId: z.string({ message: 'Please select an owner' }),
 });
 
 type ChangeOwnerFormSchema = z.infer<typeof ChangeOwnerFormSchema>;
@@ -80,7 +79,7 @@ const ChangeOwnerDialog = ({
     onSuccess: () => {
       onOwnerChange();
       setIsDialogOpened(false);
-      toast.success(t('Flow owner has been updated'));
+      toast.success('Flow owner has been updated');
     },
   });
 
@@ -89,9 +88,9 @@ const ChangeOwnerDialog = ({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Change Flow Owner')}</DialogTitle>
+          <DialogTitle>{'Change Flow Owner'}</DialogTitle>
           <DialogDescription>
-            {t('Select a team member to take ownership of this flow.')}
+            {'Select a team member to take ownership of this flow.'}
           </DialogDescription>
         </DialogHeader>
         <FormProvider {...form}>
@@ -111,7 +110,7 @@ const ChangeOwnerDialog = ({
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder={t('Select Owner')} />
+                      <SelectValue placeholder={'Select Owner'} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
@@ -140,7 +139,7 @@ const ChangeOwnerDialog = ({
             )}
             <DialogFooter>
               <Button type="submit" loading={isPending}>
-                {t('Transfer')}
+                {'Transfer'}
               </Button>
             </DialogFooter>
           </form>

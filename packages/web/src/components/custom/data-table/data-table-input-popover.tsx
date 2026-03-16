@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { SearchIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
@@ -52,7 +51,7 @@ const DataTableInputPopover = ({
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0" align="start">
         <SearchInput
-          placeholder={t('Search')}
+          placeholder={'Search'}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e)}
         />

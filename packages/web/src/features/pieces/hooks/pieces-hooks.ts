@@ -8,7 +8,6 @@ import {
   AddPieceRequestBody,
   FlowActionType,
   flowPieceUtil,
-  LocalesEnum,
   PieceOptionRequest,
   PlatformWithoutSensitiveData,
   FlowTriggerType,
@@ -17,8 +16,6 @@ import {
   TelemetryEventName,
 } from '@flow/shared';
 import { useMutation, useQueries, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
-import { useTranslation } from 'react-i18next';
 
 import { useTelemetry } from '@/components/providers/telemetry-provider';
 import { appConnectionsApi } from '@/features/connections/api/app-connections';
@@ -80,11 +77,10 @@ type UsePiecesSearchProps = {
 
 export const piecesHooks = {
   usePiece: ({ name, version, enabled = true }: UsePieceProps) => {
-    const { i18n } = useTranslation();
     const query = useQuery<PieceMetadataModel, Error>({
       queryKey: ['piece', name, version],
       queryFn: () =>
-        piecesApi.get({ name, version, locale: i18n.language as LocalesEnum }),
+        piecesApi.get({ name, version }),
       staleTime: Infinity,
       enabled,
     });
@@ -130,7 +126,6 @@ export const piecesHooks = {
     };
   },
   useMultiplePieces: ({ names }: UseMultiplePiecesProps) => {
-    const { i18n } = useTranslation();
     return useQueries({
       queries: names.map((name) => ({
         queryKey: ['piece', name, undefined],
@@ -138,7 +133,6 @@ export const piecesHooks = {
           piecesApi.get({
             name,
             version: undefined,
-            locale: i18n.language as LocalesEnum,
           }),
         staleTime: Infinity,
       })),
@@ -149,7 +143,6 @@ export const piecesHooks = {
     includeHidden = false,
     includeTags = false,
   }: UsePiecesProps) => {
-    const { i18n } = useTranslation();
     const query = useQuery<PieceMetadataModelSummary[], Error>({
       queryKey: ['pieces', searchQuery, includeHidden],
       queryFn: () =>
@@ -158,7 +151,6 @@ export const piecesHooks = {
           searchQuery,
           includeHidden,
           includeTags,
-          locale: i18n.language as LocalesEnum,
         }),
       staleTime: searchQuery ? 0 : Infinity,
     });
@@ -216,23 +208,23 @@ export const piecesHooks = {
       pieceMetadataWithoutPopularOrPinnedPieces.filter(isAppPiece);
 
     const utilitiesCategory = {
-      title: t('Utility'),
+      title: 'Utility',
       metadata: utilityPieces,
     };
     const flowControllerCategory = {
-      title: t('Flow Controller'),
+      title: 'Flow Controller',
       metadata: flowControllerPieces,
     };
     const appsCategory = {
-      title: t('Apps'),
+      title: 'Apps',
       metadata: appPieces,
     };
     const popularCategory = {
-      title: t('Popular'),
+      title: 'Popular',
       metadata: popularPieces,
     };
     const allCategory = {
-      title: t('All'),
+      title: 'All',
       metadata: piecesMetadataWithoutEmptySuggestions,
     };
 
@@ -273,7 +265,7 @@ export const piecesHooks = {
         };
         if (pinnedPieces.length > 0) {
           result.data.unshift({
-            title: t('Highlights'),
+            title: 'Highlights',
             metadata: pinnedPieces,
           });
         }
@@ -405,7 +397,7 @@ const getExploreTabContent = (
   environment: FlowEnvironment | null,
 ) => {
   const popularCategory: CategorizedStepMetadataWithSuggestions = {
-    title: t('Popular'),
+    title: 'Popular',
     metadata: environment === FlowEnvironment.DEVELOPMENT ? queryResult : [],
   };
   if (environment === FlowEnvironment.DEVELOPMENT) {
@@ -425,7 +417,7 @@ const getExploreTabContent = (
   }
 
   const hightlightedPiecesCategory: CategorizedStepMetadataWithSuggestions = {
-    title: t('Highlights'),
+    title: 'Highlights',
     metadata: [],
   };
   const highlightedPieces = getHighlightedPieces(queryResult, type);

@@ -1,4 +1,4 @@
-import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation, pieceTranslation } from '@flow/pieces-framework'
+import { PieceMetadata, PieceMetadataModel, PieceMetadataModelSummary, PiecePackageInformation } from '@flow/pieces-framework'
 import {
     FlowError,
     flowId,
@@ -6,7 +6,6 @@ import {
     ErrorCode,
     EXACT_VERSION_REGEX,
     isNil,
-    LocalesEnum,
     PackageType,
     PieceCategory,
     PieceOrderBy,
@@ -39,7 +38,6 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
         async list(params: ListParams): Promise<PieceMetadataModelSummary[]> {
             const translatedPieces = await pieceCache(log).getList({
                 platformId: params.platformId,
-                locale: params.locale,
             })
             const piecesWithTags = await enrichTags(params.platformId, translatedPieces, params.includeTags)
             const filteredPieces = await pieceListUtils(log).filterPieces({
@@ -75,7 +73,7 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
             // Community edition: no enterprise piece filtering — return all pieces
             return piece
         },
-        async getOrThrow({ version, name, platformId, locale }: GetOrThrowParams): Promise<PieceMetadataModel> {
+        async getOrThrow({ version, name, platformId }: GetOrThrowParams): Promise<PieceMetadataModel> {
             const piece = await this.get({ version, name, platformId })
             if (isNil(piece)) {
                 throw new FlowError({
@@ -85,10 +83,7 @@ export const pieceMetadataService = (log: FastifyBaseLogger) => {
                     },
                 })
             }
-            if (isNil(locale) || locale === LocalesEnum.ENGLISH) {
-                return piece
-            }
-            return pieceTranslation.translatePiece<PieceMetadataModel>({ piece, locale, mutate: false })
+            return piece
         },
         async updateUsage({ id, usage }: UpdateUsage): Promise<void> {
             const existingMetadata = await pieceRepos().findOneByOrFail({
@@ -376,7 +371,6 @@ type ListParams = {
     orderBy?: PieceOrderBy
     searchQuery?: string
     suggestionType?: SuggestionType
-    locale?: LocalesEnum
 }
 
 type GetOrThrowParams = {
@@ -385,7 +379,6 @@ type GetOrThrowParams = {
     entityManager?: EntityManager
     projectId?: string
     platformId?: string
-    locale?: LocalesEnum
 }
 
 type CreateParams = {

@@ -8,7 +8,6 @@ import {
   StepOutput,
   StepOutputStatus,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   CircleAlert,
   CircleCheck,
@@ -130,28 +129,28 @@ export const flowRunUtils = {
         return {
           variant: 'default',
           Icon: Timer,
-          text: t('Running'),
+          text: 'Running',
           extraClassName: 'text-foreground',
         };
       case StepOutputStatus.PAUSED:
         return {
           variant: 'default',
           Icon: PauseIcon,
-          text: t('Paused'),
+          text: 'Paused',
         };
       case StepOutputStatus.STOPPED:
       case StepOutputStatus.SUCCEEDED:
         return {
           variant: 'success',
           Icon: CircleCheck,
-          text: t('Succeeded'),
+          text: 'Succeeded',
           extraClassName: 'text-success-700',
         };
       case StepOutputStatus.FAILED:
         return {
           variant: 'error',
           Icon: CircleAlert,
-          text: t('Failed'),
+          text: 'Failed',
           extraClassName: 'text-destructive-700',
         };
     }

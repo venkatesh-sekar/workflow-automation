@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 const FlowEndWidget = () => {
   return (
     <div
@@ -8,7 +6,7 @@ const FlowEndWidget = () => {
       id="flow-end-button"
     >
       <div className="w-full text-center text-sm h-full bg-border/80 p-1 rounded-md">
-        {t('End')}
+        {'End'}
       </div>
     </div>
   );

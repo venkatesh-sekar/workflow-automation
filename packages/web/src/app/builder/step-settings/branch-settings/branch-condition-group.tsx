@@ -1,5 +1,4 @@
 import { RouterAction } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
@@ -36,7 +35,7 @@ const BranchConditionGroup = React.memo(
       <div className="flex flex-col gap-4">
         {groupIndex > 0 && (
           <HorizontalSeparatorWithText className="my-2">
-            {t('OR')}
+            {'OR'}
           </HorizontalSeparatorWithText>
         )}
         {fields.length === 0 && (
@@ -51,7 +50,7 @@ const BranchConditionGroup = React.memo(
         )}
         {fields.map((condition, conditionIndex) => (
           <React.Fragment key={condition.id}>
-            {conditionIndex > 0 && <div>{t('And If')}</div>}
+            {conditionIndex > 0 && <div>{'And If'}</div>}
             <BranchSingleCondition
               groupIndex={groupIndex}
               readonly={readonly}

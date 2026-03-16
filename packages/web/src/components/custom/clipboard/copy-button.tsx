@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Check, Copy } from 'lucide-react';
 import React, { forwardRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -40,7 +39,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
         setTimeout(() => setIsCopied(false), 1500);
       },
       onError: () => {
-        toast.error(t('Failed to copy to clipboard'), {
+        toast.error('Failed to copy to clipboard', {
           duration: 3000,
         });
       },
@@ -84,7 +83,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
             )}
           </Button>
         </TooltipTrigger>
-        <TooltipContent side={tooltipSide}>{t('Copy')}</TooltipContent>
+        <TooltipContent side={tooltipSide}>{'Copy'}</TooltipContent>
       </Tooltip>
     );
   },

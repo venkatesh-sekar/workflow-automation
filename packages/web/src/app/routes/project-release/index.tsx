@@ -4,7 +4,6 @@ import {
   Permission,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   ChevronDown,
   Undo2,
@@ -59,7 +58,7 @@ const ProjectReleasesPage = () => {
       size: 200,
       accessorFn: (row) => row.name,
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t('Name')} icon={Tag} />
+        <DataTableColumnHeader column={column} title={'Name'} icon={Tag} />
       ),
       cell: ({ row }) => <div className="text-left">{row.original.name}</div>,
     },
@@ -70,7 +69,7 @@ const ProjectReleasesPage = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Source')}
+          title={'Source'}
           icon={Database}
         />
       ),
@@ -86,12 +85,12 @@ const ProjectReleasesPage = () => {
                 <FolderOpenDot className="size-4" />
                 {projects?.find(
                   (project) => project.id === row.original.projectId,
-                )?.displayName ?? t('Project')}
+                )?.displayName ?? 'Project'}
               </div>
             ) : (
               <RotateCcw className="size-4" />
             )}
-            {isGit ? 'Git' : isProject ? '' : t('Rollback')}
+            {isGit ? 'Git' : isProject ? '' : 'Rollback'}
           </div>
         );
       },
@@ -103,7 +102,7 @@ const ProjectReleasesPage = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Imported At')}
+          title={'Imported At'}
           icon={Clock}
         />
       ),
@@ -120,7 +119,7 @@ const ProjectReleasesPage = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Imported By')}
+          title={'Imported By'}
           icon={User}
         />
       ),
@@ -156,7 +155,7 @@ const ProjectReleasesPage = () => {
                   <Undo2 className="size-4" />
                 </ApplyButton>
               </TooltipTrigger>
-              <TooltipContent side="bottom">{t('Rollback')}</TooltipContent>
+              <TooltipContent side="bottom">{'Rollback'}</TooltipContent>
             </Tooltip>
           </div>
         );
@@ -167,8 +166,8 @@ const ProjectReleasesPage = () => {
   return (
     <div className="flex-col w-full gap-4">
       <DataTable
-        emptyStateTextTitle={t('No project releases found')}
-        emptyStateTextDescription={t('Create a project release to get started')}
+        emptyStateTextTitle={'No project releases found'}
+        emptyStateTextDescription={'Create a project release to get started'}
         emptyStateIcon={<Package className="size-14" />}
         columns={columns}
         toolbarButtons={[
@@ -178,7 +177,7 @@ const ProjectReleasesPage = () => {
               variant="outline"
               disabled={!doesUserHavePermissionToWriteRelease}
             >
-              {t('Push Everything')}
+              {'Push Everything'}
             </Button>
           </PushEverythingDialog>,
           <PermissionNeededTooltip
@@ -191,7 +190,7 @@ const ProjectReleasesPage = () => {
                   className="h-9 w-full"
                   disabled={!doesUserHavePermissionToWriteRelease}
                 >
-                  {t('Create Release')}
+                  {'Create Release'}
                   <ChevronDown className="h-3 w-4 ml-2" />
                 </Button>
               </DropdownMenuTrigger>
@@ -208,7 +207,7 @@ const ProjectReleasesPage = () => {
                   >
                     <div className="flex flex-row gap-2 items-center">
                       <GitBranch className="size-4" />
-                      <span>{t('From Git')}</span>
+                      <span>{'From Git'}</span>
                     </div>
                   </ApplyButton>
                 </DropdownMenuItem>
@@ -221,7 +220,7 @@ const ProjectReleasesPage = () => {
                   >
                     <div className="flex flex-row gap-2 items-center">
                       <FolderOpenDot className="size-4" />
-                      <span>{t('From Project')}</span>
+                      <span>{'From Project'}</span>
                     </div>
                   </SelectionButton>
                 </DropdownMenuItem>

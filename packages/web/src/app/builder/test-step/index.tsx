@@ -1,5 +1,4 @@
 import { FlowActionType, FlowTriggerType } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 
 import { TestActionSection } from './test-action-section';
@@ -24,7 +23,7 @@ const TestStepContainer = React.memo(
     return (
       <div className="flex flex-col gap-3 p-4 pb-10">
         <div className="text-md font-semibold ">
-          {t('Generate Sample Data')}
+          {'Generate Sample Data'}
         </div>
         {type === FlowTriggerType.PIECE ? (
           <TestTriggerSection

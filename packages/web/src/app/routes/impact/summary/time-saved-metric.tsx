@@ -1,5 +1,4 @@
 import { PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
 import { Clock } from 'lucide-react';
 
 import { formatUtils } from '@/lib/format-utils';
@@ -45,14 +44,10 @@ export const TimeSavedMetric = ({
     return (
       <MetricCard
         icon={Clock}
-        title={t('Time Saved')}
+        title={'Time Saved'}
         value="N/A"
-        description={t(
-          'Estimated hours saved through automation in the last 3 months. Each automated task saves valuable employee time that can be redirected to high-impact work.',
-        )}
-        subtitle={t('{days} workdays saved', {
-          days: 'N/A',
-        })}
+        description={'Estimated hours saved through automation in the last 3 months. Each automated task saves valuable employee time that can be redirected to high-impact work.'}
+        subtitle={`${'N/A'} workdays saved`}
         iconColor="text-emerald-500"
         iconBgColor="bg-emerald-500/10"
       />
@@ -62,12 +57,10 @@ export const TimeSavedMetric = ({
   return (
     <MetricCard
       icon={Clock}
-      title={t('Time Saved')}
+      title={'Time Saved'}
       value={`${formatUtils.formatNumber(totalMinutes)} mins`}
-      description={t('Total time saved by automation')}
-      subtitle={t('{days} workdays saved', {
-        days: equivalentWorkdays.toLocaleString(),
-      })}
+      description={'Total time saved by automation'}
+      subtitle={`${equivalentWorkdays.toLocaleString()} workdays saved`}
       iconColor="text-success"
       iconBgColor="bg-success/10"
     />

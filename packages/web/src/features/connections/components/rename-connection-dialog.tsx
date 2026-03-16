@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { Pencil } from 'lucide-react';
 import { useState, forwardRef } from 'react';
 import { useForm } from 'react-hook-form';
@@ -83,15 +82,15 @@ const RenameConnectionDialog = forwardRef<
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              {!userHasPermissionToRename ? t('Permission needed') : t('Edit')}
+              {!userHasPermissionToRename ? 'Permission needed' : 'Edit'}
             </TooltipContent>
           </>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t('Rename Connection')}</DialogTitle>
+            <DialogTitle>{'Rename Connection'}</DialogTitle>
             <DialogDescription>
-              {t('Enter a new display name for this connection.')}
+              {'Enter a new display name for this connection.'}
             </DialogDescription>
           </DialogHeader>
           <Form {...renameConnectionForm}>
@@ -109,11 +108,11 @@ const RenameConnectionDialog = forwardRef<
                 name="displayName"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <Label htmlFor="displayName">{t('Name')}</Label>
+                    <Label htmlFor="displayName">{'Name'}</Label>
                     <Input
                       {...field}
                       id="displayName"
-                      placeholder={t('New Connection Name')}
+                      placeholder={'New Connection Name'}
                       className="rounded-sm"
                     />
                     <FormMessage />
@@ -130,10 +129,10 @@ const RenameConnectionDialog = forwardRef<
               )}
               <DialogFooter className="justify-end">
                 <DialogClose asChild>
-                  <Button variant={'outline'}>{t('Cancel')}</Button>
+                  <Button variant={'outline'}>{'Cancel'}</Button>
                 </DialogClose>
 
-                <Button loading={isPending}>{t('Rename')}</Button>
+                <Button loading={isPending}>{'Rename'}</Button>
               </DialogFooter>
             </form>
           </Form>

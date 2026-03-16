@@ -4,7 +4,6 @@ import {
 } from '@flow/pieces-framework';
 import { isNil, OAuth2GrantType, PieceScope } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { CheckIcon, Package, Hash, GitBranch, Puzzle } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -49,7 +48,7 @@ const PlatformPiecesPage = () => {
           header: ({ column }) => (
             <DataTableColumnHeader
               column={column}
-              title={t('Name')}
+              title={'Name'}
               icon={Puzzle}
             />
           ),
@@ -89,7 +88,7 @@ const PlatformPiecesPage = () => {
           header: ({ column }) => (
             <DataTableColumnHeader
               column={column}
-              title={t('Package Name')}
+              title={'Package Name'}
               icon={Hash}
             />
           ),
@@ -103,7 +102,7 @@ const PlatformPiecesPage = () => {
           header: ({ column }) => (
             <DataTableColumnHeader
               column={column}
-              title={t('Version')}
+              title={'Version'}
               icon={GitBranch}
             />
           ),
@@ -142,29 +141,25 @@ const PlatformPiecesPage = () => {
   return (
     <>
       <DashboardPageHeader
-        description={t('Manage the pieces that are available to your users')}
-        title={t('Pieces')}
+        description={'Manage the pieces that are available to your users'}
+        title={'Pieces'}
       />
       <div className="mx-auto w-full flex flex-col flex-1 min-h-0">
         {!isEnabled && (
           <LockedAlert
-            title={t('Control Pieces')}
-            description={t(
-              "Show the pieces that matter most to your users and hide the ones you don't like.",
-            )}
+            title={'Control Pieces'}
+            description={"Show the pieces that matter most to your users and hide the ones you don't like."}
           />
         )}
         <DataTable
-          emptyStateTextTitle={t('No pieces found')}
-          emptyStateTextDescription={t(
-            'Start by installing pieces that you want to use in your automations',
-          )}
+          emptyStateTextTitle={'No pieces found'}
+          emptyStateTextDescription={'Start by installing pieces that you want to use in your automations'}
           emptyStateIcon={<Package className="size-14" />}
           columns={columns}
           filters={[
             {
               type: 'input',
-              title: t('Piece Name'),
+              title: 'Piece Name',
               accessorKey: 'name',
               icon: CheckIcon,
             },

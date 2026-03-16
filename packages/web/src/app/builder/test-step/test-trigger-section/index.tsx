@@ -1,5 +1,4 @@
 import { FlowTrigger, flowStructureUtil, isNil } from '@flow/shared';
-import { t } from 'i18next';
 import React, { useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -132,18 +131,12 @@ const TestTriggerSection = React.memo(
     const getSimulationNote = () => {
       switch (testType) {
         case 'simulation':
-          return t('testPieceWebhookTriggerNote', {
-            pieceName: pieceModel?.displayName,
-            triggerName:
-              pieceModel?.triggers[formValues.settings.triggerName].displayName,
-          });
+          return `testPieceWebhookTriggerNote`;
         case 'webhook':
           return (
             <div className="flex flex-col gap-2">
               <p>
-                {t(
-                  'Send Data to the webhook URL to generate sample data to use in the next steps',
-                )}
+                {'Send Data to the webhook URL to generate sample data to use in the next steps'}
               </p>
               <ManualWebhookTestButton
                 isWebhookTestingDialogOpen={isTestingDialogOpen}

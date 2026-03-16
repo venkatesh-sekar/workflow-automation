@@ -1,6 +1,4 @@
 import { McpServerStatus } from '@flow/shared';
-import { t } from 'i18next';
-
 import {
   Field,
   FieldContent,
@@ -46,11 +44,9 @@ export const McpServerSettings = () => {
     <div className="w-full mt-4">
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldLabel htmlFor="mcp-access">{t('Enable MCP Access')}</FieldLabel>
+          <FieldLabel htmlFor="mcp-access">{'Enable MCP Access'}</FieldLabel>
           <FieldDescription>
-            {t(
-              "Allow external agents to read and trigger your project's flows securely.",
-            )}
+            {"Allow external agents to read and trigger your project's flows securely."}
           </FieldDescription>
         </FieldContent>
         <Switch
@@ -65,8 +61,8 @@ export const McpServerSettings = () => {
         <div className="mt-6">
           <Tabs defaultValue="connection">
             <TabsList>
-              <TabsTrigger value="connection">{t('Connection')}</TabsTrigger>
-              <TabsTrigger value="tools">{t('Tools')}</TabsTrigger>
+              <TabsTrigger value="connection">{'Connection'}</TabsTrigger>
+              <TabsTrigger value="tools">{'Tools'}</TabsTrigger>
             </TabsList>
 
             <TabsContent value="connection" className="mt-4 pb-6" tabIndex={-1}>
@@ -80,27 +76,23 @@ export const McpServerSettings = () => {
             >
               <div>
                 <h3 className="font-semibold text-base mb-1 flex items-center gap-2">
-                  {t('Internal Tools')}
+                  {'Internal Tools'}
                   <Badge variant="outline" className="text-xs">
-                    {t('Beta')}
+                    {'Beta'}
                   </Badge>
                 </h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  {t(
-                    'Control which built-in Flow tools are available to agents via this MCP server.',
-                  )}
+                  {'Control which built-in Flow tools are available to agents via this MCP server.'}
                 </p>
                 <McpTools mcpServer={mcpServer} />
               </div>
 
               <div>
                 <h3 className="font-semibold text-base mb-1">
-                  {t('Your Flows')}
+                  {'Your Flows'}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  {t(
-                    'Flows with the MCP Trigger are exposed as tools on this server.',
-                  )}
+                  {'Flows with the MCP Trigger are exposed as tools on this server.'}
                 </p>
                 <McpFlows mcpServer={mcpServer} />
               </div>

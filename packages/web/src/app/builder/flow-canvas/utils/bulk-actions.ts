@@ -7,7 +7,6 @@ import {
   StepLocationRelativeToParent,
   PasteLocation,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { BuilderState } from '../../builder-hooks';
@@ -82,10 +81,8 @@ export async function pasteNodes(
     applyOperation(request);
   });
   if (addOperations.length === 0) {
-    toast(t('No Steps Pasted'), {
-      description: t(
-        'Please make sure you have copied a step(s) and allowed permission to your clipboard',
-      ),
+    toast('No Steps Pasted', {
+      description: 'Please make sure you have copied a step(s) and allowed permission to your clipboard',
     });
   }
 }

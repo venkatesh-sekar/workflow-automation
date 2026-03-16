@@ -1,5 +1,4 @@
 import { PlatformRole, UserStatus } from '@flow/shared';
-import { t } from 'i18next';
 import {
   CircleMinus,
   MoreVertical,
@@ -62,7 +61,7 @@ export const UserActions = ({
             >
               <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                 <Pencil className="h-4 w-4" />
-                {t('Edit')}
+                {'Edit'}
               </DropdownMenuItem>
             </UpdateUserDialog>
           )}
@@ -79,17 +78,17 @@ export const UserActions = ({
               ) : (
                 <RotateCcw className="h-4 w-4" />
               )}
-              {isActive ? t('Deactivate') : t('Activate')}
+              {isActive ? 'Deactivate' : 'Activate'}
             </DropdownMenuItem>
           )}
           <ConfirmationDeleteDialog
-            title={isInvitation ? t('Delete Invitation') : t('Delete User')}
+            title={isInvitation ? 'Delete Invitation' : 'Delete User'}
             message={
               isInvitation
-                ? t('This invitation will be permanently deleted.')
-                : t('This user and all their data will be permanently deleted.')
+                ? 'This invitation will be permanently deleted.'
+                : 'This user and all their data will be permanently deleted.'
             }
-            entityName={`${isInvitation ? t('Invitation') : t('User')} ${
+            entityName={`${isInvitation ? 'Invitation' : 'User'} ${
               row.data.email
             }`}
             mutationFn={async () => {
@@ -101,7 +100,7 @@ export const UserActions = ({
               onSelect={(e) => e.preventDefault()}
             >
               <Trash className="h-4 w-4" />
-              {t('Delete')}
+              {'Delete'}
             </DropdownMenuItem>
           </ConfirmationDeleteDialog>
         </DropdownMenuContent>

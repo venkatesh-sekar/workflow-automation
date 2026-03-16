@@ -7,7 +7,6 @@ import {
   McpProtocol,
   ValidateAgentMcpToolResponse,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { X } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
@@ -150,11 +149,11 @@ export const AddMcpToolForm = ({
             minLength: { value: 1, message: 'Tool name is required' },
             validate: (value) =>
               isToolNameUnique(value) ||
-              t('An MCP server with this name already exists'),
+              'An MCP server with this name already exists',
           }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('MCP Name')} *</FormLabel>
+              <FormLabel>{'MCP Name'} *</FormLabel>
               <FormControl>
                 <Input placeholder="e.g., my-mcp-server" {...field} />
               </FormControl>
@@ -175,7 +174,7 @@ export const AddMcpToolForm = ({
           }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('Server URL')} *</FormLabel>
+              <FormLabel>{'Server URL'} *</FormLabel>
               <FormControl>
                 <Input placeholder="https://example.com/mcp" {...field} />
               </FormControl>
@@ -189,7 +188,7 @@ export const AddMcpToolForm = ({
           name="protocol"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('Protocol')} *</FormLabel>
+              <FormLabel>{'Protocol'} *</FormLabel>
               <Select value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger>
@@ -197,12 +196,12 @@ export const AddMcpToolForm = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value={McpProtocol.SSE}>{t('SSE')}</SelectItem>
+                  <SelectItem value={McpProtocol.SSE}>{'SSE'}</SelectItem>
                   <SelectItem value={McpProtocol.SIMPLE_HTTP}>
-                    {t('Simple HTTP')}
+                    {'Simple HTTP'}
                   </SelectItem>
                   <SelectItem value={McpProtocol.STREAMABLE_HTTP}>
-                    {t('Streamable HTTP')}
+                    {'Streamable HTTP'}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -216,7 +215,7 @@ export const AddMcpToolForm = ({
           name="authType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('Authentication Type')} *</FormLabel>
+              <FormLabel>{'Authentication Type'} *</FormLabel>
               <Select value={field.value} onValueChange={field.onChange}>
                 <FormControl>
                   <SelectTrigger>
@@ -224,15 +223,15 @@ export const AddMcpToolForm = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value={McpAuthType.NONE}>{t('None')}</SelectItem>
+                  <SelectItem value={McpAuthType.NONE}>{'None'}</SelectItem>
                   <SelectItem value={McpAuthType.HEADERS}>
-                    {t('Headers')}
+                    {'Headers'}
                   </SelectItem>
                   <SelectItem value={McpAuthType.ACCESS_TOKEN}>
-                    {t('Access Token')}
+                    {'Access Token'}
                   </SelectItem>
                   <SelectItem value={McpAuthType.API_KEY}>
-                    {t('Api Key')}
+                    {'Api Key'}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -248,7 +247,7 @@ export const AddMcpToolForm = ({
               name="accessToken"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('Access Token')} *</FormLabel>
+                  <FormLabel>{'Access Token'} *</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter access token" {...field} />
                   </FormControl>
@@ -266,7 +265,7 @@ export const AddMcpToolForm = ({
               name="apiKeyHeader"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('API Key Header')} *</FormLabel>
+                  <FormLabel>{'API Key Header'} *</FormLabel>
                   <FormControl>
                     <Input placeholder="X-API-KEY" {...field} />
                   </FormControl>
@@ -280,7 +279,7 @@ export const AddMcpToolForm = ({
               name="apiKey"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('Api Key')} *</FormLabel>
+                  <FormLabel>{'Api Key'} *</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter API Key" {...field} />
                   </FormControl>
@@ -341,20 +340,20 @@ export const AddMcpToolForm = ({
               className="w-full"
               onClick={addHeaderField}
             >
-              {t('+ Add Header')}
+              {'+ Add Header'}
             </Button>
           </div>
         )}
 
         <DialogFooter className="mt-4">
           <Button type="button" variant="outline" onClick={handleClose}>
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             onClick={form.handleSubmit(handleValidate)}
             disabled={!form.formState.isValid}
           >
-            {t('Validate Server')}
+            {'Validate Server'}
           </Button>
         </DialogFooter>
       </div>

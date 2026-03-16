@@ -1,5 +1,4 @@
 import { FlowFlagId } from '@flow/shared';
-import { t } from 'i18next';
 import { Cpu, HardDrive, MemoryStick, Package } from 'lucide-react';
 import React from 'react';
 import semver from 'semver';
@@ -27,36 +26,34 @@ export default function SettingsHealthPage() {
   const technicalChecks = [
     {
       id: 'version',
-      title: t('Version Check'),
+      title: 'Version Check',
       icon: <Package />,
       isChecked: isVersionUpToDate,
       message: (
         <div>
           <div className="flex flex-row gap-4 items-center">
             <span>
-              <b>{t('Current Version')}</b>: {currentVersion || t('Unknown')}
+              <b>{'Current Version'}</b>: {currentVersion || 'Unknown'}
             </span>
             <span>
-              <b>{t('Latest Version')}</b>: {latestVersion || t('Unknown')}
+              <b>{'Latest Version'}</b>: {latestVersion || 'Unknown'}
             </span>
           </div>
           <div className="mt-2 flex flex-col gap-1">
             {!isVersionUpToDate ? (
               <>
                 <span>
-                  {t(
-                    'A new version is available. Upgrade now to enjoy the latest features, improvements, and bug fixes.',
-                  )}
+                  {'A new version is available. Upgrade now to enjoy the latest features, improvements, and bug fixes.'}
                 </span>
                 <span>
-                  {t('See the')}{' '}
+                  {'See the'}{' '}
                   <a
                     className="font-medium text-primary hover:underline underline-offset-4 transition-colors duration-150"
                     href=""
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {t('release changelog')}
+                    {'release changelog'}
                   </a>
                   .
                 </span>
@@ -69,18 +66,14 @@ export default function SettingsHealthPage() {
     },
     {
       id: 'disk-size',
-      title: t('Disk Size'),
+      title: 'Disk Size',
       icon: <HardDrive />,
       isChecked: systemHealth?.disk,
       message: (
         <span>
           {systemHealth?.disk
-            ? t(
-                'The server has sufficient disk space. At least 30GB of disk space is required for optimal operation.',
-              )
-            : t(
-                'Insufficient disk space. A minimum of 30GB is required for Flow to function properly.',
-              )}
+            ? 'The server has sufficient disk space. At least 30GB of disk space is required for optimal operation.'
+            : 'Insufficient disk space. A minimum of 30GB is required for Flow to function properly.'}
         </span>
       ),
       loading: isPending,
@@ -88,18 +81,14 @@ export default function SettingsHealthPage() {
     },
     {
       id: 'ram',
-      title: t('RAM'),
+      title: 'RAM',
       icon: <MemoryStick />,
       isChecked: systemHealth?.ram,
       message: (
         <span>
           {systemHealth?.ram
-            ? t(
-                'The server meets the minimum RAM requirement. At least 4GB RAM is needed for stable performance.',
-              )
-            : t(
-                'Insufficient RAM. A minimum of 4GB RAM is required for optimal operation.',
-              )}
+            ? 'The server meets the minimum RAM requirement. At least 4GB RAM is needed for stable performance.'
+            : 'Insufficient RAM. A minimum of 4GB RAM is required for optimal operation.'}
         </span>
       ),
       link: '',
@@ -107,18 +96,14 @@ export default function SettingsHealthPage() {
     },
     {
       id: 'cpu',
-      title: t('CPU Cores'),
+      title: 'CPU Cores',
       icon: <Cpu />,
       isChecked: systemHealth?.cpu,
       message: (
         <span>
           {systemHealth?.cpu
-            ? t(
-                'The server has enough CPU resources. At least 1 CPU core is required to run Flow.',
-              )
-            : t(
-                'Not enough CPU resources. At least 1 CPU core is necessary to operate Flow.',
-              )}
+            ? 'The server has enough CPU resources. At least 1 CPU core is required to run Flow.'
+            : 'Not enough CPU resources. At least 1 CPU core is necessary to operate Flow.'}
         </span>
       ),
       link: '',
@@ -128,8 +113,8 @@ export default function SettingsHealthPage() {
 
   return (
     <CenteredPage
-      title={t('System Health Status')}
-      description={t('Check the status of your platform and its components')}
+      title={'System Health Status'}
+      description={'Check the status of your platform and its components'}
     >
       <div className="flex flex-col gap-4">
         {technicalChecks.map((check) => (

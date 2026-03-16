@@ -1,7 +1,6 @@
 import { AuthenticationResponse, ErrorCode, isNil } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -61,26 +60,26 @@ const LoginPage: React.FC = () => {
         )?.code;
         if (isNil(errorCode)) {
           form.setError('root.serverError', {
-            message: t('Something went wrong, please try again later'),
+            message: 'Something went wrong, please try again later',
           });
           return;
         }
         switch (errorCode) {
           case ErrorCode.INVALID_CREDENTIALS: {
             form.setError('root.serverError', {
-              message: t('Invalid email or team key'),
+              message: 'Invalid email or team key',
             });
             break;
           }
           case ErrorCode.USER_IS_INACTIVE: {
             form.setError('root.serverError', {
-              message: t('User has been deactivated'),
+              message: 'User has been deactivated',
             });
             break;
           }
           default: {
             form.setError('root.serverError', {
-              message: t('Something went wrong, please try again later'),
+              message: 'Something went wrong, please try again later',
             });
           }
         }
@@ -102,9 +101,9 @@ const LoginPage: React.FC = () => {
       <span className="text-4xl font-semibold tracking-tight text-primary">Flow</span>
       <Card className="w-md rounded-sm shadow-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{t('Welcome to Flow')}</CardTitle>
+          <CardTitle className="text-2xl">{'Welcome to Flow'}</CardTitle>
           <CardDescription>
-            {t('Enter your email and team key to sign in')}
+            {'Enter your email and team key to sign in'}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -115,7 +114,7 @@ const LoginPage: React.FC = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <Label htmlFor="email">{t('Email')}</Label>
+                    <Label htmlFor="email">{'Email'}</Label>
                     <Input
                       {...field}
                       required
@@ -135,7 +134,7 @@ const LoginPage: React.FC = () => {
                 name="apiKey"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <Label htmlFor="apiKey">{t('Team Key')}</Label>
+                    <Label htmlFor="apiKey">{'Team Key'}</Label>
                     <Input
                       {...field}
                       required
@@ -161,7 +160,7 @@ const LoginPage: React.FC = () => {
                 tabIndex={3}
                 data-testid="login-button"
               >
-                {t('Sign in')}
+                {'Sign in'}
               </Button>
             </form>
           </Form>

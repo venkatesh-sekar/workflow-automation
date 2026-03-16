@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Package } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -16,9 +15,9 @@ const ReleaseCard = () => {
           <Package className="size-8" />
         </div>
         <div className="flex grow flex-col">
-          <div className="text-lg">{t('Releases')}</div>
+          <div className="text-lg">{'Releases'}</div>
           <div className="text-sm text-muted-foreground">
-            {t('Enable releases to easily create and manage project releases.')}
+            {'Enable releases to easily create and manage project releases.'}
           </div>
         </div>
         <div className="flex flex-row justify-center items-center gap-1">
@@ -33,7 +32,7 @@ const ReleaseCard = () => {
               'text-destructive': project.releasesEnabled,
             })}
           >
-            {project.releasesEnabled ? t('Disable') : t('Enable')}
+            {project.releasesEnabled ? 'Disable' : 'Enable'}
           </Button>
         </div>
       </div>

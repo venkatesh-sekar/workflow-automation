@@ -6,8 +6,6 @@ import {
   isNil,
   Step,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { JsonViewer } from '@/components/custom/json-viewer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AgentTimeline } from '@/features/agents';
@@ -41,14 +39,14 @@ export const AgentTestStep = ({
     <div className="flex flex-col justify-center w-full items-start">
       <Tabs defaultValue="timeline" className="w-full">
         <TabsList className="w-[250px] grid grid-cols-2">
-          <TabsTrigger value="timeline">{t('Timeline')}</TabsTrigger>
-          <TabsTrigger value="output">{t('Output')}</TabsTrigger>
+          <TabsTrigger value="timeline">{'Timeline'}</TabsTrigger>
+          <TabsTrigger value="output">{'Output'}</TabsTrigger>
         </TabsList>
         <TabsContent value="timeline">
           <AgentTimeline agentResult={agentResult} />
         </TabsContent>
         <TabsContent value="output">
-          <JsonViewer json={errorMessage ?? agentResult} title={t('Output')} />
+          <JsonViewer json={errorMessage ?? agentResult} title={'Output'} />
         </TabsContent>
       </Tabs>
     </div>

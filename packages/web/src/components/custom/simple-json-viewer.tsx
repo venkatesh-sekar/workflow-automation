@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Copy, Check } from 'lucide-react';
 import React, { useState } from 'react';
 import ReactJson from 'react-json-view';
@@ -29,7 +28,7 @@ export const SimpleJsonViewer: React.FC<SimpleJsonViewerProps> = ({
   const handleCopy = () => {
     navigator.clipboard.writeText(formattedJson);
     setCopied(true);
-    toast.success(t('Copied to clipboard'), {
+    toast.success('Copied to clipboard', {
       duration: 1000,
     });
 

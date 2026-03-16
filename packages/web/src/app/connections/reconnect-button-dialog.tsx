@@ -2,7 +2,6 @@ import {
   AppConnectionScope,
   AppConnectionWithoutSensitiveData,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 
@@ -46,9 +45,9 @@ const ReconnectButtonDialog = ({
         </TooltipTrigger>
         <TooltipContent>
           {!hasPermission ? (
-            <p>{t('Permission needed')}</p>
+            <p>{'Permission needed'}</p>
           ) : (
-            <p>{t('Reconnect')}</p>
+            <p>{'Reconnect'}</p>
           )}
         </TooltipContent>
       </Tooltip>

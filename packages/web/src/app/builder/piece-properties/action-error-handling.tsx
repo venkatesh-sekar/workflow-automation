@@ -1,5 +1,4 @@
 import { FlowAction, FlowTrigger } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -47,12 +46,10 @@ const ActionErrorHandlingForm = React.memo(
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <span className="ml-2">{t('Continue on Failure')}</span>
+                  <span className="ml-2">{'Continue on Failure'}</span>
                 </FormLabel>
                 <ReadMoreDescription
-                  text={t(
-                    'Enable this option to skip this step and continue the flow normally if it fails.',
-                  )}
+                  text={'Enable this option to skip this step and continue the flow normally if it fails.'}
                 />
               </FormItem>
             )}
@@ -76,12 +73,10 @@ const ActionErrorHandlingForm = React.memo(
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <span className="ml-2">{t('Retry on Failure')}</span>
+                  <span className="ml-2">{'Retry on Failure'}</span>
                 </FormLabel>
                 <ReadMoreDescription
-                  text={t(
-                    'Automatically retry up to four attempts when failed.',
-                  )}
+                  text={'Automatically retry up to four attempts when failed.'}
                 />
               </FormItem>
             )}

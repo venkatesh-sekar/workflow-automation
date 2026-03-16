@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useContext } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 
@@ -30,7 +29,7 @@ const RenameFieldPopoverContent = ({ name }: { name: string }) => {
       const errors: FieldErrors<{ name: string }> = {};
       if (values.name.trim().length === 0) {
         errors.name = {
-          message: t('Name is required'),
+          message: 'Name is required',
           type: 'required',
         };
       }
@@ -43,7 +42,7 @@ const RenameFieldPopoverContent = ({ name }: { name: string }) => {
         )
       ) {
         errors.name = {
-          message: t('Name is already taken'),
+          message: 'Name is already taken',
           type: 'unique',
         };
       }
@@ -85,7 +84,7 @@ const RenameFieldPopoverContent = ({ name }: { name: string }) => {
         />
         <div className="flex justify-end">
           <Button type="submit" size="sm">
-            {t('Rename')}
+            {'Rename'}
           </Button>
         </div>
       </form>

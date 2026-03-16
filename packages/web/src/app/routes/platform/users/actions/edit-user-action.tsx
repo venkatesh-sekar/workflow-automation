@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Pencil } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -37,7 +36,7 @@ export const EditUserAction = ({ row, onUpdate }: EditUserActionProps) => {
             </Button>
           </UpdateUserDialog>
         </TooltipTrigger>
-        <TooltipContent side="bottom">{t('Edit user')}</TooltipContent>
+        <TooltipContent side="bottom">{'Edit user'}</TooltipContent>
       </Tooltip>
     </div>
   );

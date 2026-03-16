@@ -1,5 +1,4 @@
 import { Permission, UncategorizedFolderId } from '@flow/shared';
-import { t } from 'i18next';
 import { useCallback } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
@@ -182,7 +181,7 @@ const AutomationsPageContent = ({ projectId }: { projectId: string }) => {
         userHasPermissionToWriteTable={userHasPermissionToWriteTable}
         userHasPermissionToWriteFolder={userHasPermissionToWriteFolder}
         onCreateFlow={mutations.createFlow}
-        onCreateTable={() => mutations.createTable(t('New Table'))}
+        onCreateTable={() => mutations.createTable('New Table')}
         onCreateFolder={() => dialogs.setIsFolderDialogOpen(true)}
         onImportFlow={() => dialogs.setIsImportFlowDialogOpen(true)}
         onImportTable={() => dialogs.setIsImportTableDialogOpen(true)}

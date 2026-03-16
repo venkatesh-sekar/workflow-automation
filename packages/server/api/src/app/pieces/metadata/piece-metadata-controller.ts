@@ -9,7 +9,6 @@ import {
     GetPieceRequestWithScopeParams,
     isNil,
     ListPiecesRequestQuery,
-    LocalesEnum,
     PieceCategory,
     PieceOptionRequest,
     Principal,
@@ -65,14 +64,8 @@ const basePiecesController: FastifyPluginAsyncZod = async (app) => {
             sortBy: query.sortBy,
             orderBy: query.orderBy,
             suggestionType: query.suggestionType,
-            locale: query.locale as LocalesEnum | undefined,
         })
-        return pieceMetadataSummary.map((piece) => {
-            return {
-                ...piece,
-                i18n: undefined,
-            }
-        })
+        return pieceMetadataSummary
     })
 
     app.get(
@@ -89,7 +82,6 @@ const basePiecesController: FastifyPluginAsyncZod = async (app) => {
                 platformId,
                 name: `${decodeScope}/${decodedName}`,
                 version,
-                locale: req.query.locale as LocalesEnum | undefined,
             })
         },
     )
@@ -106,7 +98,6 @@ const basePiecesController: FastifyPluginAsyncZod = async (app) => {
                 platformId,
                 name: decodedName,
                 version,
-                locale: req.query.locale as LocalesEnum | undefined,
             })
         },
     )

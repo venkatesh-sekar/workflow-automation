@@ -5,7 +5,6 @@ import {
   WorkerMachineWithStatus,
 } from '@flow/shared';
 import dayjs from 'dayjs';
-import { t } from 'i18next';
 import {
   InfoIcon,
   Server,
@@ -97,17 +96,15 @@ export default function WorkersPage() {
   return (
     <div className="flex flex-col w-full gap-4">
       <DashboardPageHeader
-        description={t('Check the health of your worker machines')}
-        title={t('Workers Machine')}
+        description={'Check the health of your worker machines'}
+        title={'Workers Machine'}
       />
       {showDemoData && (
         <Alert variant="default">
           <div className="flex items-center gap-2">
             <InfoIcon size={16} />
             <AlertDescription>
-              {t(
-                'This is demo data. In a real environment, this would show your actual worker machines.',
-              )}
+              {'This is demo data. In a real environment, this would show your actual worker machines.'}
             </AlertDescription>
           </div>
         </Alert>
@@ -139,11 +136,9 @@ export default function WorkersPage() {
       {!isLoading && (workersData ?? []).length === 0 && (
         <div className="flex flex-col items-center justify-center py-16 gap-3 text-muted-foreground">
           <Server className="size-14" />
-          <p className="font-medium text-foreground">{t('No workers found')}</p>
+          <p className="font-medium text-foreground">{'No workers found'}</p>
           <p className="text-sm text-center max-w-sm">
-            {t(
-              "You don't have any worker machines yet. Spin up new machines to execute your automations",
-            )}
+            {"You don't have any worker machines yet. Spin up new machines to execute your automations"}
           </p>
         </div>
       )}
@@ -237,7 +232,7 @@ function WorkerCard({ worker, index }: WorkerCardProps) {
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
             <Badge variant={isOnline ? 'success' : 'destructive'}>
-              {t(worker.status.toLowerCase())}
+              {worker.status.toLowerCase()}
             </Badge>
             <WorkerConfigsModal workerProps={workerProps} />
           </div>
@@ -281,12 +276,12 @@ function WorkerCard({ worker, index }: WorkerCardProps) {
         <div className="flex items-center gap-3 text-xs text-muted-foreground min-w-0">
           <span className="flex items-center gap-1 shrink-0">
             <Box size={12} />
-            {usedSandboxes}/{totalSandboxes} {t('sandboxes')}
+            {usedSandboxes}/{totalSandboxes} {'sandboxes'}
           </span>
           <span className="text-muted-foreground/50">·</span>
           <span className="flex items-center gap-1 truncate">
             <Clock size={12} className="shrink-0" />
-            {t('seen')} {timeAgo}
+            {'seen'} {timeAgo}
           </span>
         </div>
         <span className="text-xs text-muted-foreground font-mono shrink-0">

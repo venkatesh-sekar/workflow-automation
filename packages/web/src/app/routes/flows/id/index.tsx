@@ -1,7 +1,6 @@
 import { isNil, PopulatedFlow } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 import { ReactFlowProvider } from '@xyflow/react';
-import { t } from 'i18next';
 import { FileX } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 
@@ -49,9 +48,9 @@ const FlowBuilderPage = () => {
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold">{t('Flow not found')}</h2>
+          <h2 className="text-lg font-semibold">{'Flow not found'}</h2>
           <p className="text-sm text-muted-foreground">
-            {t("The flow you are looking for doesn't exist or was removed.")}
+            {"The flow you are looking for doesn't exist or was removed."}
           </p>
         </div>
 
@@ -59,7 +58,7 @@ const FlowBuilderPage = () => {
           className={cn(buttonVariants({ variant: 'outline' }))}
           to="/dashboard"
         >
-          {t('Go to Dashboard')}
+          {'Go to Dashboard'}
         </Link>
       </div>
     );

@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Check } from 'lucide-react';
 
 import {
@@ -98,7 +97,7 @@ export function AutoComplete<T extends string>({
                     ))}
                   </CommandGroup>
                 ) : (
-                  <CommandEmpty>{t('No items')}</CommandEmpty>
+                  <CommandEmpty>{'No items'}</CommandEmpty>
                 )}
               </ScrollArea>
             </CommandList>

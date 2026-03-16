@@ -4,7 +4,6 @@ import {
   ProjectWithLimits,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   Lock,
   Tag,
@@ -35,7 +34,7 @@ export const projectsTableColumns = ({
       accessorKey: 'displayName',
       size: 270,
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t('Name')} icon={Tag} />
+        <DataTableColumnHeader column={column} title={'Name'} icon={Tag} />
       ),
       cell: ({ row }) => {
         const locked = row.original.plan.locked;
@@ -58,7 +57,7 @@ export const projectsTableColumns = ({
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Active Users')}
+          title={'Active Users'}
           icon={Users}
           className="w-full"
         />
@@ -82,7 +81,7 @@ export const projectsTableColumns = ({
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Active Flows')}
+          title={'Active Flows'}
           icon={Workflow}
           className="w-full"
         />
@@ -109,7 +108,7 @@ export const projectsTableColumns = ({
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('External ID')}
+          title={'External ID'}
           icon={Hash}
         />
       ),
@@ -130,7 +129,7 @@ export const projectsTableColumns = ({
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Global Connections')}
+          title={'Global Connections'}
           icon={Link2}
           className="w-full"
         />
@@ -151,7 +150,7 @@ export const projectsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Created')}
+        title={'Created'}
         icon={Clock}
       />
     ),

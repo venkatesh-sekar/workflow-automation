@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { Copy, Download, Eye, EyeOff } from 'lucide-react';
 import React, { useLayoutEffect, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -44,7 +43,7 @@ const FileButton = ({ fileUrl, handleDownloadFile }: FileButtonProps) => {
         ) : (
           <Eye className="w-4 h-4" />
         )}
-        {t('Download File')}
+        {'Download File'}
       </Button>
     </div>
   );
@@ -81,7 +80,7 @@ const JsonViewer = React.memo(
     const viewerTheme = theme === 'dark' ? 'bright' : 'rjv-default';
     const handleCopy = () => {
       navigator.clipboard.writeText(JSON.stringify(json, null, 2));
-      toast.success(t('Copied to clipboard'), {
+      toast.success('Copied to clipboard', {
         duration: 1000,
       });
     };
@@ -137,7 +136,7 @@ const JsonViewer = React.memo(
                       />
                     </TooltipTrigger>
                     <TooltipContent side="right">
-                      {t('File is not available after execution.')}
+                      {'File is not available after execution.'}
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -184,7 +183,7 @@ const JsonViewer = React.memo(
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="bottom">
-                    {t('Download JSON')}
+                    {'Download JSON'}
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -197,7 +196,7 @@ const JsonViewer = React.memo(
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
-                  {t('Copy to clipboard')}
+                  {'Copy to clipboard'}
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

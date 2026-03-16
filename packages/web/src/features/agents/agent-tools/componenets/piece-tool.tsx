@@ -1,5 +1,4 @@
 import { AgentPieceTool, mcpToolNameUtils } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus, Puzzle, X } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -138,7 +137,7 @@ export const AgentPieceToolComponent = ({
                         <X className="h-3 w-3" />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent>{t('Remove tool')}</TooltipContent>
+                    <TooltipContent>{'Remove tool'}</TooltipContent>
                   </Tooltip>
                 </div>
               </div>
@@ -157,7 +156,7 @@ export const AgentPieceToolComponent = ({
           }
         >
           <Plus className="size-3 mr-1" />
-          {t('Add Action')}
+          {'Add Action'}
         </Button>
       </AccordionContent>
     </AccordionItem>

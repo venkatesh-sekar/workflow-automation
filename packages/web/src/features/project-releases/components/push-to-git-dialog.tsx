@@ -9,7 +9,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React from 'react';
 import { Resolver, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -101,7 +100,7 @@ const PushToGitDialog = (props: PushToGitDialogProps) => {
       }
     },
     onSuccess: () => {
-      toast.success(t('Pushed successfully'), {
+      toast.success('Pushed successfully', {
         duration: 3000,
       });
       setOpen(false);
@@ -118,21 +117,19 @@ const PushToGitDialog = (props: PushToGitDialogProps) => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit((data) => mutate(data))}>
             <DialogHeader>
-              <DialogTitle>{t('Push to Git')}</DialogTitle>
+              <DialogTitle>{'Push to Git'}</DialogTitle>
             </DialogHeader>
             <FormField
               control={form.control}
               name="commitMessage"
               render={({ field }) => (
                 <FormItem className="gap-2 flex flex-col">
-                  <FormLabel>{t('Commit Message')}</FormLabel>
+                  <FormLabel>{'Commit Message'}</FormLabel>
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
                   <FormDescription>
-                    {t(
-                      'Enter a commit message to describe the changes you want to push.',
-                    )}
+                    {'Enter a commit message to describe the changes you want to push.'}
                   </FormDescription>
                 </FormItem>
               )}
@@ -146,14 +143,14 @@ const PushToGitDialog = (props: PushToGitDialogProps) => {
                   form.reset();
                 }}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 type="submit"
                 loading={isPending}
                 onClick={form.handleSubmit((data) => mutate(data))}
               >
-                {t('Push')}
+                {'Push'}
               </Button>
             </DialogFooter>
           </form>

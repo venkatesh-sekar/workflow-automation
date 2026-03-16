@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Search } from 'lucide-react';
 import React from 'react';
 
@@ -28,7 +27,7 @@ export const PiecesList: React.FC<PiecesContentProps> = ({
         <div className="relative border rounded-sm">
           <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
           <Input
-            placeholder={t('Search')}
+            placeholder={'Search'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-9 shadow-none border-none"
@@ -45,7 +44,7 @@ export const PiecesList: React.FC<PiecesContentProps> = ({
           </div>
         ) : isEmpty ? (
           <div className="h-full flex items-center py-2 justify-center text-muted-foreground">
-            {t('No pieces found')}
+            {'No pieces found'}
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-4">

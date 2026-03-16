@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { ArrowLeftIcon } from 'lucide-react';
 
 import { SearchInput } from '@/components/custom/search-input';
@@ -42,7 +41,7 @@ const PiecesSearchInput = ({
         </Button>
       )}
       <SearchInput
-        placeholder={t('Search')}
+        placeholder={'Search'}
         value={searchQuery}
         data-testid="pieces-search-input"
         ref={searchInputRef}

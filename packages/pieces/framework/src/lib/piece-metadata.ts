@@ -3,11 +3,9 @@ import { WebhookRenewConfiguration } from "./trigger/trigger";
 import { ErrorHandlingOptionsParam } from "./action/action";
 import { PieceAuthProperty } from "./property/authentication";
 import { z } from "zod";
-import { LocalesEnum, PackageType, PieceCategory, PieceType, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration } from "@flow/shared";
+import { PackageType, PieceCategory, PieceType, TriggerStrategy, TriggerTestStrategy, WebhookHandshakeConfiguration } from "@flow/shared";
 import { ContextVersion } from "./context/versioning";
 
-const I18nForPiece = z.record(z.string(), z.record(z.string(), z.string())).optional();
-export type I18nForPiece = Partial<Record<LocalesEnum, Record<string, string>>> | undefined
 export const PieceBase = z.object({
   id: z.string().optional(),
   name: z.string(),
@@ -22,7 +20,6 @@ export const PieceBase = z.object({
   categories: z.array(z.nativeEnum(PieceCategory)).optional(),
   minimumSupportedRelease: z.string().optional(),
   maximumSupportedRelease: z.string().optional(),
-  i18n: I18nForPiece,
 })
 
 export type PieceBase = {
@@ -39,7 +36,6 @@ export type PieceBase = {
   categories?: PieceCategory[];
   minimumSupportedRelease?: string;
   maximumSupportedRelease?: string;
-  i18n?: Partial<Record<LocalesEnum, Record<string, string>>>
   // this method didn't exist in older version
   getContextInfo: (() => { version: ContextVersion }) | undefined;
 }

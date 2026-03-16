@@ -1,6 +1,5 @@
 import { FlowTrigger, TriggerEventWithPayload } from '@flow/shared';
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -52,23 +51,23 @@ export const TriggerEventSelect = React.memo(
           >
             {pollResults && pollResults.data.length > 0 ? (
               <SelectValue
-                placeholder={t('No sample data available')}
+                placeholder={'No sample data available'}
               ></SelectValue>
             ) : (
-              t('Old results were removed, retest for new sample data')
+              'Old results were removed, retest for new sample data'
             )}
           </SelectTrigger>
           <SelectContent>
             {pollResults &&
               pollResults.data.map((triggerEvent, index) => (
                 <SelectItem key={triggerEvent.id} value={triggerEvent.id}>
-                  {t('Result #') + (index + 1)}
+                  {'Result #' + (index + 1)}
                 </SelectItem>
               ))}
           </SelectContent>
         </Select>
         <span className="text-sm mt-2 text-muted-foreground">
-          {t('The sample data can be used in the next steps.')}
+          {'The sample data can be used in the next steps.'}
         </span>
       </div>
     );

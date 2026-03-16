@@ -1,5 +1,4 @@
 import { Template } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 
 import { TagWithBright } from '@/components/custom/tag-with-bright';
@@ -37,7 +36,7 @@ export const ExploreTemplateCard = React.memo(
             {template.summary ? (
               template.summary
             ) : (
-              <span className="italic">{t('No summary')}</span>
+              <span className="italic">{'No summary'}</span>
             )}
           </p>
 
@@ -49,7 +48,7 @@ export const ExploreTemplateCard = React.memo(
                   <TagWithBright
                     key={index}
                     index={index}
-                    prefix={t('Save')}
+                    prefix={'Save'}
                     title={tag.title}
                     color={tag.color}
                     size="sm"

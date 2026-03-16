@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React from 'react';
 
 import {
@@ -17,7 +16,7 @@ export const MessageTooltip = React.forwardRef<
         <div>{children}</div>
       </TooltipTrigger>
       {isDisabled && (
-        <TooltipContent side="bottom">{t(message)}</TooltipContent>
+        <TooltipContent side="bottom">{message}</TooltipContent>
       )}
     </Tooltip>
   );

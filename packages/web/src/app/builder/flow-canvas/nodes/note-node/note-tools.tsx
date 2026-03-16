@@ -1,6 +1,5 @@
 import { NoteColorVariant } from '@flow/shared';
 import { Editor } from '@tiptap/core';
-import { t } from 'i18next';
 import { TrashIcon } from 'lucide-react';
 import { forwardRef, useRef, useState } from 'react';
 
@@ -40,7 +39,7 @@ export const NoteTools = ({ editor, currentColor, id }: NoteToolsProps) => {
           />
           <MarkdownTools editor={editor} />
           <Separator orientation="vertical" className="h-[30px]"></Separator>
-          <ToolWrapper tooltip={t('Delete')}>
+          <ToolWrapper tooltip={'Delete'}>
             <Button
               variant="ghost"
               size="icon"
@@ -75,7 +74,7 @@ const NoteColorPicker = ({
   const popoverTriggerRef = useRef<HTMLButtonElement>(null);
   return (
     <Popover onOpenChange={setOpen} open={open}>
-      <ToolWrapper tooltip={t('Color')}>
+      <ToolWrapper tooltip={'Color'}>
         <PopoverTrigger asChild>
           <div>
             <ColorButton

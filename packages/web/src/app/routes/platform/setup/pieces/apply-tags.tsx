@@ -1,5 +1,4 @@
 import { PieceMetadataModelSummary } from '@flow/pieces-framework';
-import { t } from 'i18next';
 import { Trash2 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
@@ -85,14 +84,14 @@ const ApplyTags = ({ selectedPieces, onApplyTags }: ApplyTagsProps) => {
           size="sm"
           disabled={selectedPieces.length === 0}
         >
-          {t('Apply Tags')}
+          {'Apply Tags'}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0" align="start">
         <Command>
           <CommandList>
             {tagOptions.length === 0 ? (
-              <CommandEmpty>{t('No tags created.')}</CommandEmpty>
+              <CommandEmpty>{'No tags created.'}</CommandEmpty>
             ) : (
               <ScrollArea viewPortClassName="max-h-[200px]">
                 <CommandGroup>
@@ -129,11 +128,8 @@ const ApplyTags = ({ selectedPieces, onApplyTags }: ApplyTagsProps) => {
 
                         <span className="flex-grow">{option.label}</span>
                         <ConfirmationDeleteDialog
-                          title={t('Delete Tag')}
-                          message={t(
-                            'Are you sure you want to delete the tag "{tagName}"? It will be removed from all pieces.',
-                            { tagName: option.label },
-                          )}
+                          title={'Delete Tag'}
+                          message={`Are you sure you want to delete the tag "${option.label}"? It will be removed from all pieces.`}
                           entityName={option.label}
                           mutationFn={async () => {
                             deleteTag(option.id);
@@ -175,7 +171,7 @@ const ApplyTags = ({ selectedPieces, onApplyTags }: ApplyTagsProps) => {
                   setCreateDialogOpen(true);
                 }}
               >
-                + {t('New Tag')}
+                + {'New Tag'}
               </CommandItem>
             </CreateTagDialog>
             <Separator />
@@ -183,7 +179,7 @@ const ApplyTags = ({ selectedPieces, onApplyTags }: ApplyTagsProps) => {
               <CommandItem
                 className="justify-center text-center text-primary"
                 onSelect={(e) => {
-                  toast(t('Applying Tags...'), {});
+                  toast('Applying Tags...', {});
                   applyTags({
                     piecesName: selectedPieces.map((piece) => piece.name),
                     tags: Array.from(selectedTags),
@@ -191,7 +187,7 @@ const ApplyTags = ({ selectedPieces, onApplyTags }: ApplyTagsProps) => {
                   setOpen(false);
                 }}
               >
-                {t('Apply Tags')}
+                {'Apply Tags'}
               </CommandItem>
             </CommandGroup>
           </CommandList>

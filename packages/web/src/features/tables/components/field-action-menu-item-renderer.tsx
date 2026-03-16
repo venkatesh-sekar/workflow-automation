@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Pencil, Trash } from 'lucide-react';
 import { useContext } from 'react';
 
@@ -33,15 +32,13 @@ const FlowFieldActionMenuItemRenderer = ({
     case FieldActionType.DELETE:
       return (
         <ConfirmationDeleteDialog
-          title={t('Delete Field')}
-          message={t(
-            'This field and all its data will be permanently deleted.',
-          )}
+          title={'Delete Field'}
+          message={'This field and all its data will be permanently deleted.'}
           mutationFn={async () => {
             await deleteField(field.index);
           }}
-          entityName={t('field')}
-          buttonText={t('Delete')}
+          entityName={'field'}
+          buttonText={'Delete'}
         >
           <DropdownMenuItem
             onSelect={(e) => {
@@ -52,7 +49,7 @@ const FlowFieldActionMenuItemRenderer = ({
             className="flex items-center gap-2 text-destructive cursor-pointer"
           >
             <Trash className="h-4 w-4 text-destructive" />
-            <span className="text-destructive">{t('Delete')}</span>
+            <span className="text-destructive">{'Delete'}</span>
           </DropdownMenuItem>
         </ConfirmationDeleteDialog>
       );
@@ -70,7 +67,7 @@ const FlowFieldActionMenuItemRenderer = ({
           className="flex items-center gap-2 cursor-pointer"
         >
           <Pencil className="h-4 w-4 " />
-          <span>{t('Rename')}</span>
+          <span>{'Rename'}</span>
         </DropdownMenuItem>
       );
     default:

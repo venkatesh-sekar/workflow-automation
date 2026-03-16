@@ -1,5 +1,4 @@
 import { Editor } from '@tiptap/react';
-import { t } from 'i18next';
 import {
   ImageIcon,
   UnderlineIcon,
@@ -86,7 +85,7 @@ export const MarkdownTools = ({ editor }: { editor: Editor }) => {
       className="flex items-center gap-0.5 text-foreground"
     >
       <ImageTool editor={editor} containerRef={containerRef} />
-      <ToolWrapper tooltip={t('Strike')}>
+      <ToolWrapper tooltip={'Strike'}>
         <Button
           onClick={handleStrike}
           size={'icon'}
@@ -95,7 +94,7 @@ export const MarkdownTools = ({ editor }: { editor: Editor }) => {
           <Strikethrough className="size-4" />
         </Button>
       </ToolWrapper>
-      <ToolWrapper tooltip={t('Bold')}>
+      <ToolWrapper tooltip={'Bold'}>
         <Button
           onClick={handleBold}
           size={'icon'}
@@ -104,7 +103,7 @@ export const MarkdownTools = ({ editor }: { editor: Editor }) => {
           <BoldIcon className="size-4" />
         </Button>
       </ToolWrapper>
-      <ToolWrapper tooltip={t('Italic')}>
+      <ToolWrapper tooltip={'Italic'}>
         <Button
           onClick={handleItalic}
           size={'icon'}
@@ -113,7 +112,7 @@ export const MarkdownTools = ({ editor }: { editor: Editor }) => {
           <ItalicIcon className="size-4" />
         </Button>
       </ToolWrapper>
-      <ToolWrapper tooltip={t('Underline')}>
+      <ToolWrapper tooltip={'Underline'}>
         <Button
           onClick={handleUnderline}
           size={'icon'}
@@ -147,7 +146,7 @@ const ImageTool = ({
   };
   return (
     <Popover modal={false} open={open} onOpenChange={setOpen}>
-      <ToolWrapper tooltip={t('Image')}>
+      <ToolWrapper tooltip={'Image'}>
         <PopoverTrigger asChild>
           <Button size={'icon'} variant={'ghost'}>
             <ImageIcon className="size-4" />

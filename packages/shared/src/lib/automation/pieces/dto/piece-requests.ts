@@ -54,7 +54,6 @@ export const ListPiecesRequestQuery = z.object({
     orderBy: z.nativeEnum(PieceOrderBy).optional(),
     categories: OptionalArrayFromQuery(z.nativeEnum(PieceCategory)),
     suggestionType: z.nativeEnum(SuggestionType).optional(),
-    locale: z.string().optional(),
 })
 
 export type ListPiecesRequestQuery = z.infer<typeof ListPiecesRequestQuery>
@@ -70,7 +69,6 @@ export type RegistryPiecesRequestQuery = z.infer<typeof RegistryPiecesRequestQue
 export const GetPieceRequestQuery = z.object({
     version: VersionType.optional(),
     projectId: z.string().optional(),
-    locale: z.string().optional(),
 })
 
 export type GetPieceRequestQuery = z.infer<typeof GetPieceRequestQuery>

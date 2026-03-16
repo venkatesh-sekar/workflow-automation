@@ -1,5 +1,4 @@
 import { Template } from '@flow/shared';
-import { t } from 'i18next';
 import { LayoutGrid } from 'lucide-react';
 
 import {
@@ -76,9 +75,9 @@ export const SelectedCategoryView = ({
             <EmptyMedia variant="icon">
               <LayoutGrid />
             </EmptyMedia>
-            <EmptyTitle>{t('Empty category')}</EmptyTitle>
+            <EmptyTitle>{'Empty category'}</EmptyTitle>
             <EmptyDescription>
-              {t('No templates available at the moment')}
+              {'No templates available at the moment'}
             </EmptyDescription>
           </EmptyHeader>
         </Empty>

@@ -1,5 +1,4 @@
 import { AgentOutputFieldType, AgentOutputField } from '@flow/shared';
-import { t } from 'i18next';
 import { X } from 'lucide-react';
 import { ControllerRenderProps } from 'react-hook-form';
 
@@ -38,7 +37,7 @@ export const AgentStructuredOutput = ({
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-sm font-medium">{t('Structured Output')}</h2>
+        <h2 className="text-sm font-medium">{'Structured Output'}</h2>
       </div>
 
       <div className="flex flex-col gap-2 mt-4">
@@ -83,7 +82,7 @@ export const AgentStructuredOutput = ({
           </Card>
         ) : (
           <div className="text-muted-foreground text-sm">
-            {t('No structured output fields yet.')}
+            {'No structured output fields yet.'}
           </div>
         )}
         <AddFieldPopover disabled={disabled} onAddField={handleAddField} />

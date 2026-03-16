@@ -6,7 +6,6 @@ import {
   TableOperationType,
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { PencilIcon, Plus, TrashIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Resolver, useForm, UseFormReturn } from 'react-hook-form';
@@ -46,7 +45,7 @@ type CreateReleaseDialogProps = {
 };
 
 const formSchema = z.object({
-  name: z.string().min(1, t('Name is required')),
+  name: z.string().min(1, 'Name is required'),
   description: z.string().optional(),
 });
 
@@ -109,7 +108,7 @@ const CreateReleaseDialogContent = ({
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
             <Label className="text-sm" htmlFor="name">
-              {t('Name')}
+              {'Name'}
             </Label>
             <Input
               id="name"
@@ -119,7 +118,7 @@ const CreateReleaseDialogContent = ({
                   form.setError('name', { message: '' });
                 }
               }}
-              placeholder={t('Meeting Summary Flow')}
+              placeholder={'Meeting Summary Flow'}
             />
             {form.formState.errors.name && (
               <p className="text-sm text-destructive">
@@ -129,12 +128,12 @@ const CreateReleaseDialogContent = ({
           </div>
           <div className="flex flex-col gap-2">
             <Label className="text-sm" htmlFor="description">
-              {t('Description')}
+              {'Description'}
             </Label>
             <Textarea
               id="description"
               {...form.register('description')}
-              placeholder={t('Added new features and fixed bugs')}
+              placeholder={'Added new features and fixed bugs'}
             />
             {form.formState.errors.description && (
               <p className="text-sm text-destructive">
@@ -151,7 +150,7 @@ const CreateReleaseDialogContent = ({
                     onCheckedChange={handleSelectAll}
                   />
                   <Label className="text-sm font-medium">
-                    {t('Flows Changes')} ({selectedChanges.size}/
+                    {'Flows Changes'} ({selectedChanges.size}/
                     {plan?.flows.length || 0})
                   </Label>
                 </div>
@@ -182,14 +181,12 @@ const CreateReleaseDialogContent = ({
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col justify -center gap-1 py-2 border-b">
                   <Label className="text-sm font-medium">
-                    {t('Connections Changes')} ({plan?.connections?.length || 0}
+                    {'Connections Changes'} ({plan?.connections?.length || 0}
                     )
                   </Label>
                   <div className="flex items-center text-sm text-muted-foreground">
                     <span className="flex items-center gap-2">
-                      {t(
-                        'New connections are placeholders and need to be reconnected again',
-                      )}
+                      {'New connections are placeholders and need to be reconnected again'}
                     </span>
                   </div>
                 </div>
@@ -207,7 +204,7 @@ const CreateReleaseDialogContent = ({
                             <span>
                               {connection.connectionState.displayName}
                             </span>
-                            <span> {t('renamed to')} </span>
+                            <span> {'renamed to'} </span>
                             <span>
                               {connection.newConnectionState.displayName}
                             </span>
@@ -235,7 +232,7 @@ const CreateReleaseDialogContent = ({
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col justify -center gap-1 py-2 border-b">
                   <Label className="text-sm font-medium">
-                    {t('Tables Changes')} ({plan?.tables?.length || 0})
+                    {'Tables Changes'} ({plan?.tables?.length || 0})
                   </Label>
                 </div>
                 <ScrollArea viewPortClassName="max-h-[10vh]">
@@ -282,7 +279,7 @@ const CreateReleaseDialogContent = ({
 
       {loading ||
         (!loading && !isThereAnyChanges && (
-          <div className="text-sm py-2">{t('No changes to apply')}</div>
+          <div className="text-sm py-2">{'No changes to apply'}</div>
         ))}
 
       {!loading && isThereAnyChanges && (
@@ -292,7 +289,7 @@ const CreateReleaseDialogContent = ({
             variant={'outline'}
             onClick={() => setOpen(false)}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             size={'sm'}
@@ -340,7 +337,7 @@ const CreateReleaseDialogContent = ({
               }
             }}
           >
-            {t('Apply Changes')}
+            {'Apply Changes'}
           </Button>
         </DialogFooter>
       )}
@@ -383,10 +380,10 @@ const CreateReleaseDialog = ({
         <DialogHeader className="shrink-0">
           <DialogTitle>
             {diffRequest.type === ProjectReleaseType.GIT
-              ? t('Create Git Release')
+              ? 'Create Git Release'
               : diffRequest.type === ProjectReleaseType.PROJECT
-              ? t('Create Project Release')
-              : `${t('Create Rollback to')} ${form.getValues('name')}`}
+              ? 'Create Project Release'
+              : `${'Create Rollback to'} ${form.getValues('name')}`}
           </DialogTitle>
         </DialogHeader>
 

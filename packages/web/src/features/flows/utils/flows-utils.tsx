@@ -1,6 +1,5 @@
 import { PopulatedFlow, FlowTriggerType } from '@flow/shared';
 import cronstrue from 'cronstrue/i18n';
-import { t } from 'i18next';
 import JSZip from 'jszip';
 import { TimerReset, TriangleAlert, Zap } from 'lucide-react';
 
@@ -38,18 +37,16 @@ export const flowsUtils = {
       case FlowTriggerType.PIECE: {
         const cronExpression = flow.triggerSource?.schedule?.cronExpression;
         return cronExpression
-          ? `${t('Run')} ${cronstrue
+          ? `${'Run'} ${cronstrue
               .toString(cronExpression, { locale: 'en' })
               .toLocaleLowerCase()}`
-          : t('Real time flow');
+          : 'Real time flow';
       }
       case FlowTriggerType.EMPTY:
         console.error(
-          t("Flow can't be published with empty trigger {name}", {
-            name: flow.version.displayName,
-          }),
+          `Flow can't be published with empty trigger ${flow.version.displayName}`,
         );
-        return t('Please contact support as your published flow has a problem');
+        return 'Please contact support as your published flow has a problem';
     }
   },
   flowStatusIconRenderer: (flow: PopulatedFlow) => {
@@ -65,9 +62,7 @@ export const flowsUtils = {
       }
       case FlowTriggerType.EMPTY: {
         console.error(
-          t("Flow can't be published with empty trigger {name}", {
-            name: flow.version.displayName,
-          }),
+          `Flow can't be published with empty trigger ${flow.version.displayName}`,
         );
         return <TriangleAlert className="h-4 w-4 text-destructive" />;
       }

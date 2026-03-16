@@ -11,8 +11,6 @@ import {
   OAuth2GrantType,
 } from '@flow/shared';
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
-
 import {
   RadioGroupList,
   RadioGroupListItem,
@@ -67,7 +65,7 @@ export function MutliAuthList({
       <DialogHeader className="mb-0">
         <DialogTitle className="px-5">
           <div className="flex items-center gap-2">
-            {t('Select an Authentication Method')}
+            {'Select an Authentication Method'}
           </div>
         </DialogTitle>
       </DialogHeader>
@@ -80,10 +78,10 @@ export function MutliAuthList({
       <DialogFooter className="mt-4">
         <div className="mx-5 w-full flex justify-end gap-2">
           <DialogClose asChild>
-            <Button variant="outline">{t('Cancel')}</Button>
+            <Button variant="outline">{'Cancel'}</Button>
           </DialogClose>
           <Button variant="default" onClick={() => confirmSelectedItem()}>
-            {t('Next')}
+            {'Next'}
           </Button>
         </div>
       </DialogFooter>
@@ -127,9 +125,7 @@ function createOAuth2Options(
         grantType: OAuth2GrantType.AUTHORIZATION_CODE,
         oauth2App: predefinedOAuth2App,
       },
-      description: t(
-        'Quickly connect using a preconfigured OAuth2 app. No setup required.',
-      ),
+      description: 'Quickly connect using a preconfigured OAuth2 app. No setup required.',
     });
   }
 
@@ -144,9 +140,7 @@ function createOAuth2Options(
         grantType: OAuth2GrantType.AUTHORIZATION_CODE,
         oauth2App: emptyOAuth2App,
       },
-      description: t(
-        'Connect using your own OAuth2 credentials for more flexibility and control.',
-      ),
+      description: 'Connect using your own OAuth2 credentials for more flexibility and control.',
     });
   }
 
@@ -161,9 +155,7 @@ function createOAuth2Options(
         grantType: OAuth2GrantType.CLIENT_CREDENTIALS,
         oauth2App: emptyOAuth2App,
       },
-      description: t(
-        'Authenticate securely from your server using the Client Credentials flow. Ideal for backend integrations.',
-      ),
+      description: 'Authenticate securely from your server using the Client Credentials flow. Ideal for backend integrations.',
     });
   }
 

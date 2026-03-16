@@ -11,7 +11,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { t } from 'i18next';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useRef, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -619,7 +618,7 @@ export function DataTable<
       {!hidePagination && !virtualizeRows && (
         <div className="flex items-center justify-end gap-4 px-2 py-4 text-sm">
           <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">{t('Rows per page')}</span>
+            <span className="text-muted-foreground">{'Rows per page'}</span>
             <Select
               value={`${table.getState().pagination.pageSize}`}
               onValueChange={(value) => {
@@ -661,7 +660,7 @@ export function DataTable<
             }
           >
             <ChevronLeft className="h-4 w-4" />
-            {t('Previous')}
+            {'Previous'}
           </Button>
           <Button
             variant="ghost"
@@ -678,7 +677,7 @@ export function DataTable<
               clientPagination ? !table.getCanNextPage() : !nextPageCursor
             }
           >
-            {t('Next')}
+            {'Next'}
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>

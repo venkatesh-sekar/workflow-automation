@@ -7,7 +7,6 @@ import {
     PieceAuthProperty,
     PieceMetadata,
     PiecePropertyMap,
-    pieceTranslation,
     PropertyType,
     StaticPropsValue } from '@flow/pieces-framework'
 import {
@@ -150,16 +149,12 @@ export const pieceHelper = {
     async extractPieceMetadata({ params }: { params: ExecuteExtractPieceMetadata }): Promise<PieceMetadata> {
         const { pieceName, pieceVersion } = params
         const piece = await pieceLoader.loadPieceOrThrow({ pieceName, pieceVersion })
-        const pieceAlias = pieceLoader.getPackageAlias({ pieceName })
-        const pieceFolderPath = await pieceLoader.getPiecePath({ packageName: pieceAlias })
-        const i18n = await pieceTranslation.initializeI18n(pieceFolderPath)
         const fullMetadata = piece.metadata()
         return {
             ...fullMetadata,
             name: pieceName,
             version: pieceVersion,
             authors: piece.authors,
-            i18n,
         }
     },
 }

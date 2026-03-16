@@ -4,7 +4,6 @@ import {
   PropertyType,
 } from '@flow/pieces-framework';
 import { isNil, PropertySettings } from '@flow/shared';
-import { t } from 'i18next';
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 
 import { SecretInput } from '@/app/connections/secret-input';
@@ -132,7 +131,7 @@ export const selectGenericFormComponentForProperty = ({
             onChange={field.onChange}
             value={field.value}
             disabled={disabled}
-            placeholder={property.options.placeholder ?? t('Select an option')}
+            placeholder={property.options.placeholder ?? 'Select an option'}
             showDeselect={!property.required}
           ></SearchableSelect>
         </AutoFormFieldWrapper>
@@ -172,7 +171,7 @@ export const selectGenericFormComponentForProperty = ({
           dynamicInputModeToggled={dynamicInputModeToggled}
         >
           <MultiSelectPieceProperty
-            placeholder={property.options.placeholder ?? t('Select an option')}
+            placeholder={property.options.placeholder ?? 'Select an option'}
             options={property.options.options}
             onChange={field.onChange}
             initialValues={field.value}

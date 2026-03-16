@@ -1,7 +1,5 @@
 import { PROJECT_COLOR_PALETTE } from '@flow/shared';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
-
 import { flowsApi } from '@/features/flows';
 import { foldersApi } from '@/features/folders';
 import { projectCollectionUtils, getProjectName } from '@/features/projects';
@@ -178,32 +176,32 @@ export function useGlobalSearchResults(query: string, open: boolean) {
   const groups: SearchResultGroup[] = [
     {
       type: 'flow',
-      heading: t('Flows'),
+      heading: 'Flows',
       items: flowResults,
       isLoading: flowsQuery.isLoading && (searchEnabled || suggestionsEnabled),
     },
     {
       type: 'table',
-      heading: t('Tables'),
+      heading: 'Tables',
       items: tableResults,
       isLoading: tablesQuery.isLoading && (searchEnabled || suggestionsEnabled),
     },
     {
       type: 'folder',
-      heading: t('Folders'),
+      heading: 'Folders',
       items: folderResults,
       isLoading:
         foldersQuery.isLoading && (searchEnabled || suggestionsEnabled),
     },
     {
       type: 'project',
-      heading: t('Projects'),
+      heading: 'Projects',
       items: projectResults,
       isLoading: false,
     },
     {
       type: 'page',
-      heading: t('Pages'),
+      heading: 'Pages',
       items: pageResults,
       isLoading: false,
     },

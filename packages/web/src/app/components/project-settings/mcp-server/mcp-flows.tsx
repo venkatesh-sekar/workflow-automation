@@ -1,6 +1,4 @@
 import { PopulatedMcpServer, FlowStatus } from '@flow/shared';
-import { t } from 'i18next';
-
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +8,7 @@ export function McpFlows({ mcpServer }: McpFlowsProps) {
   if (flows.length === 0) {
     return (
       <div className="border rounded-lg px-4 py-3 text-sm text-muted-foreground">
-        {t('No MCP flows available')}
+        {'No MCP flows available'}
       </div>
     );
   }
@@ -37,7 +35,7 @@ export function McpFlows({ mcpServer }: McpFlowsProps) {
                   isEnabled ? 'bg-success' : 'bg-border',
                 )}
               />
-              <span>{isEnabled ? t('On') : t('Off')}</span>
+              <span>{isEnabled ? 'On' : 'Off'}</span>
             </Badge>
           </div>
         );

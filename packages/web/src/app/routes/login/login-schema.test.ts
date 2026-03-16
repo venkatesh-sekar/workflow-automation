@@ -1,10 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
 
-vi.mock('i18next', () => ({
-  default: { language: 'en' },
-  t: (key: string) => key,
-}));
-
 import { LoginSchema } from './login-schema';
 
 describe('LoginSchema', () => {

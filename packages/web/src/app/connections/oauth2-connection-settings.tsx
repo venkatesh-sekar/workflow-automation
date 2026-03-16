@@ -14,7 +14,6 @@ import {
   UpsertPlatformOAuth2Request,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -67,7 +66,7 @@ function OAuth2ConnectionSettings({
     <div className="flex flex-col gap-4">
       {showRedirectUrlInput && (
         <div className="flex flex-col gap-2">
-          <FormLabel>{t('Redirect URL')}</FormLabel>
+          <FormLabel>{'Redirect URL'}</FormLabel>
           <FormControl>
             <Input disabled type="text" value={redirectUrl} />
           </FormControl>
@@ -82,9 +81,9 @@ function OAuth2ConnectionSettings({
             control={form.control}
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>{t('Client ID')}</FormLabel>
+                <FormLabel>{'Client ID'}</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder={t('Client ID')} />
+                  <Input {...field} type="text" placeholder={'Client ID'} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -95,12 +94,12 @@ function OAuth2ConnectionSettings({
             control={form.control}
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>{t('Client Secret')}</FormLabel>
+                <FormLabel>{'Client Secret'}</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="password"
-                    placeholder={t('Client Secret')}
+                    placeholder={'Client Secret'}
                   />
                 </FormControl>
                 <FormMessage />
@@ -151,7 +150,7 @@ function OAuth2ConnectionSettings({
               }
             }}
           >
-            {hasCode ? t('Disconnect') : t('Connect')}
+            {hasCode ? 'Disconnect' : 'Connect'}
           </Button>
         </div>
       )}

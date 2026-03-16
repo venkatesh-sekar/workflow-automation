@@ -5,7 +5,6 @@ import {
   ErrorCode,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { useMemo, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -112,7 +111,7 @@ const SignUpForm = ({
         )?.code;
         if (isNil(errorCode)) {
           form.setError('root.serverError', {
-            message: t('Something went wrong, please try again later'),
+            message: 'Something went wrong, please try again later',
           });
           return;
         }
@@ -123,33 +122,31 @@ const SignUpForm = ({
           }
           case ErrorCode.INVITATION_ONLY_SIGN_UP: {
             form.setError('root.serverError', {
-              message: t(
-                'Sign up is restricted. You need an invitation to join. Please contact the administrator.',
-              ),
+              message: 'Sign up is restricted. You need an invitation to join. Please contact the administrator.',
             });
             break;
           }
           case ErrorCode.EXISTING_USER: {
             form.setError('root.serverError', {
-              message: t('Email is already used'),
+              message: 'Email is already used',
             });
             break;
           }
           case ErrorCode.EMAIL_AUTH_DISABLED: {
             form.setError('root.serverError', {
-              message: t('Email authentication is disabled'),
+              message: 'Email authentication is disabled',
             });
             break;
           }
           case ErrorCode.DOMAIN_NOT_ALLOWED: {
             form.setError('root.serverError', {
-              message: t('Email domain is disallowed'),
+              message: 'Email domain is disallowed',
             });
             break;
           }
           default: {
             form.setError('root.serverError', {
-              message: t('Something went wrong, please try again later'),
+              message: 'Something went wrong, please try again later',
             });
             break;
           }
@@ -188,11 +185,11 @@ const SignUpForm = ({
               control={form.control}
               name="firstName"
               rules={{
-                required: t('First name is required'),
+                required: 'First name is required',
               }}
               render={({ field }) => (
                 <FormItem className="w-full grid space-y-2">
-                  <Label htmlFor="firstName">{t('First Name')}</Label>
+                  <Label htmlFor="firstName">{'First Name'}</Label>
                   <Input
                     {...field}
                     required
@@ -210,11 +207,11 @@ const SignUpForm = ({
               control={form.control}
               name="lastName"
               rules={{
-                required: t('Last name is required'),
+                required: 'Last name is required',
               }}
               render={({ field }) => (
                 <FormItem className="w-full grid space-y-2">
-                  <Label htmlFor="lastName">{t('Last Name')}</Label>
+                  <Label htmlFor="lastName">{'Last Name'}</Label>
                   <Input
                     {...field}
                     required
@@ -233,13 +230,13 @@ const SignUpForm = ({
             control={form.control}
             name="email"
             rules={{
-              required: t('Email is required'),
+              required: 'Email is required',
               validate: (email: string) =>
-                formatUtils.emailRegex.test(email) || t('Email is invalid'),
+                formatUtils.emailRegex.test(email) || 'Email is invalid',
             }}
             render={({ field }) => (
               <FormItem className="grid space-y-2">
-                <Label htmlFor="email">{t('Email')}</Label>
+                <Label htmlFor="email">{'Email'}</Label>
                 <Input
                   {...field}
                   required
@@ -257,7 +254,7 @@ const SignUpForm = ({
             control={form.control}
             name="password"
             rules={{
-              required: t('Password is required'),
+              required: 'Password is required',
               validate: passwordValidation,
             }}
             render={({ field }) => (
@@ -270,7 +267,7 @@ const SignUpForm = ({
                 }}
                 onBlur={() => setPasswordFocused(false)}
               >
-                <Label htmlFor="password">{t('Password')}</Label>
+                <Label htmlFor="password">{'Password'}</Label>
                 <Popover open={isPasswordFocused}>
                   <PopoverTrigger asChild>
                     <Input
@@ -308,7 +305,7 @@ const SignUpForm = ({
                     ></Checkbox>
                   </FormControl>
                   <Label htmlFor="newsLetter">
-                    {t(`Receive updates and newsletters from Flow`)}
+                    {`Receive updates and newsletters from Flow`}
                   </Label>
                   <FormMessage />
                 </FormItem>
@@ -326,7 +323,7 @@ const SignUpForm = ({
             onClick={(e) => form.handleSubmit(onSubmit)(e)}
             data-testid="sign-up-button"
           >
-            {t('Sign up')}
+            {'Sign up'}
           </Button>
         </form>
       </Form>
@@ -338,24 +335,24 @@ const SignUpForm = ({
           })}
         >
           {(termsOfServiceUrl || privacyPolicyUrl) &&
-            t('By creating an account, you agree to our')}
+            'By creating an account, you agree to our'}
           {termsOfServiceUrl && (
             <Link
               to={termsOfServiceUrl || ''}
               target="_blank"
               className="px-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
             >
-              {t('terms of service')}
+              {'terms of service'}
             </Link>
           )}
-          {termsOfServiceUrl && privacyPolicyUrl && t('and')}
+          {termsOfServiceUrl && privacyPolicyUrl && 'and'}
           {privacyPolicyUrl && (
             <Link
               to={privacyPolicyUrl || ''}
               target="_blank"
               className="pl-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
             >
-              {t('privacy policy')}
+              {'privacy policy'}
             </Link>
           )}
           .

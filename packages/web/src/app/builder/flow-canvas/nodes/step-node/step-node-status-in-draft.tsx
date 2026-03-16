@@ -5,7 +5,6 @@ import {
   flowStructureUtil,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { RouteOff, TriangleAlert } from 'lucide-react';
 import React, { useMemo } from 'react';
 
@@ -74,17 +73,17 @@ const FlowStepNodeStatusInDraft = ({ stepName }: { stepName: string }) => {
   > = {
     skipped: {
       variant: 'default',
-      text: t('Skipped'),
+      text: 'Skipped',
       icon: <RouteOff className="size-3" />,
     },
     invalid: {
       variant: 'warning',
-      text: t('Incomplete'),
+      text: 'Incomplete',
       icon: <InvalidStepIcon className="size-3" />,
     },
     testing: {
       variant: 'default',
-      text: t('Testing...'),
+      text: 'Testing...',
       icon: (
         <StepStatusIcon
           status={StepOutputStatus.RUNNING}
@@ -95,7 +94,7 @@ const FlowStepNodeStatusInDraft = ({ stepName }: { stepName: string }) => {
     },
     failed: {
       variant: 'error',
-      text: t('Failed'),
+      text: 'Failed',
       icon: (
         <StepStatusIcon
           status={StepOutputStatus.FAILED}
@@ -106,17 +105,17 @@ const FlowStepNodeStatusInDraft = ({ stepName }: { stepName: string }) => {
     },
     'needs-test': {
       variant: 'default',
-      text: t('Test me'),
+      text: 'Test me',
       icon: <TriangleAlert className="size-3" />,
     },
     untested: {
       variant: 'default',
-      text: t('Test me'),
+      text: 'Test me',
       icon: <TriangleAlert className="size-3" />,
     },
     tested: {
       variant: 'success',
-      text: t('Tested'),
+      text: 'Tested',
       icon: (
         <StepStatusIcon
           status={StepOutputStatus.SUCCEEDED}
@@ -176,12 +175,12 @@ const FlowStepNodeStatusInDraft = ({ stepName }: { stepName: string }) => {
         </TooltipTrigger>
         {status === 'untested' && (
           <TooltipContent>
-            {t('This step has not been tested yet')}
+            {'This step has not been tested yet'}
           </TooltipContent>
         )}
         {status === 'needs-test' && (
           <TooltipContent>
-            {t('This step has been updated since the last test')}
+            {'This step has been updated since the last test'}
           </TooltipContent>
         )}
       </Tooltip>

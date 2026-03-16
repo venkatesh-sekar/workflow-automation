@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { GripVertical, Plus, TrashIcon } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
@@ -168,7 +167,7 @@ const ArrayInput = React.memo(
                         className="size-4 text-destructive"
                         aria-hidden="true"
                       />
-                      <span className="sr-only">{t('Remove')}</span>
+                      <span className="sr-only">{'Remove'}</span>
                     </Button>
                   )}
                 </div>
@@ -186,7 +185,7 @@ const ArrayInput = React.memo(
             }}
             type="button"
           >
-            <TextWithIcon icon={<Plus size={18} />} text={t('Add Item')} />
+            <TextWithIcon icon={<Plus size={18} />} text={'Add Item'} />
           </Button>
         )}
       </>

@@ -1,5 +1,4 @@
 import { flowStructureUtil } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 import { useFlowRipple } from '@/components/providers/theme-provider';
@@ -124,7 +123,7 @@ const DataSelectorNodeContent = ({
                 }
               }}
             >
-              {t('Insert')}
+              {'Insert'}
             </Button>
           )}
           {node.children && node.children.length > 0 && (

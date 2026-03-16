@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { PanelLeftCloseIcon } from '@/components/icons/panel-left-close';
 import { PanelLeftOpenIcon } from '@/components/icons/panel-left-open';
 import { Button } from '@/components/ui/button';
@@ -24,7 +22,7 @@ export const FlowSidebarToggle = () => {
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        {open ? t('Close Sidebar') : t('Open Sidebar')}
+        {open ? 'Close Sidebar' : 'Open Sidebar'}
       </TooltipContent>
     </Tooltip>
   );

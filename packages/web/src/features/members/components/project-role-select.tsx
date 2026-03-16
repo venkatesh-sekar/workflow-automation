@@ -1,6 +1,5 @@
 import { isNil } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
@@ -44,13 +43,13 @@ export const ProjectRoleSelect = ({ form }: ProjectRoleSelectProps) => {
       name="projectRole"
       render={({ field }) => (
         <FormItem className="grid gap-3">
-          <Label>{t('Project Role')}</Label>
+          <Label>{'Project Role'}</Label>
           <RoleSelector
             type="project"
             value={field.value || defaultProjectRole}
             onValueChange={field.onChange}
             roles={roles}
-            placeholder={t('Select a project role')}
+            placeholder={'Select a project role'}
           />
           <FormMessage />
         </FormItem>

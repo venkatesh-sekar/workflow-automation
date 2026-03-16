@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { useBuilderStateContext } from '@/app/builder/builder-hooks';
 import { RightSideBarType } from '@/app/builder/types';
 import { CardList, CardListItemSkeleton } from '@/components/custom/card-list';
@@ -24,11 +22,11 @@ const FlowVersionsList = () => {
   return (
     <>
       <SidebarHeader onClose={() => setRightSidebar(RightSideBarType.NONE)}>
-        {t('Version History')}
+        {'Version History'}
       </SidebarHeader>
       <CardList>
         {isLoading && <CardListItemSkeleton numberOfCards={10} />}
-        {isError && <div>{t('Error, please try again.')}</div>}
+        {isError && <div>{'Error, please try again.'}</div>}
         {flowVersionPage && flowVersionPage.data && (
           <ScrollArea className="w-full h-full">
             {flowVersionPage.data.map((flowVersion, index) => (

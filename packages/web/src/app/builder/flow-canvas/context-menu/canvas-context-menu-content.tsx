@@ -5,7 +5,6 @@ import {
   flowStructureUtil,
   StepLocationRelativeToParent,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   ArrowLeftRight,
   ClipboardPaste,
@@ -158,7 +157,7 @@ export const CanvasContextMenuContent = ({
           }}
           className="flex items-center gap-2"
         >
-          <ArrowLeftRight className="w-4 h-4"></ArrowLeftRight> {t('Replace')}
+          <ArrowLeftRight className="w-4 h-4"></ArrowLeftRight> {'Replace'}
         </ContextMenuItem>
       )}
       {showCopy && (
@@ -169,7 +168,7 @@ export const CanvasContextMenuContent = ({
           }}
         >
           <ShortcutWrapper shortcut={CanvasShortcuts['Copy']}>
-            <Copy className="w-4 h-4"></Copy> {t('Copy')}
+            <Copy className="w-4 h-4"></Copy> {'Copy'}
           </ShortcutWrapper>
         </ContextMenuItem>
       )}
@@ -181,7 +180,7 @@ export const CanvasContextMenuContent = ({
             onClick={duplicateStep}
             className="flex items-center gap-2"
           >
-            <CopyPlus className="w-4 h-4"></CopyPlus> {t('Duplicate')}
+            <CopyPlus className="w-4 h-4"></CopyPlus> {'Duplicate'}
           </ContextMenuItem>
         )}
 
@@ -202,7 +201,7 @@ export const CanvasContextMenuContent = ({
               ) : (
                 <RouteOff className="h-4 w-4"></RouteOff>
               )}
-              {areAllStepsSkipped ? t('Unskip') : t('Skip')}
+              {areAllStepsSkipped ? 'Unskip' : 'Skip'}
             </ShortcutWrapper>
           </ContextMenuItem>
         )}
@@ -223,7 +222,7 @@ export const CanvasContextMenuContent = ({
             className="flex items-center gap-2"
           >
             <ClipboardPlus className="w-4 h-4"></ClipboardPlus>{' '}
-            {t('Paste After Last Step')}
+            {'Paste After Last Step'}
           </ContextMenuItem>
         )}
 
@@ -243,7 +242,7 @@ export const CanvasContextMenuContent = ({
             className="flex items-center gap-2"
           >
             <ClipboardPaste className="w-4 h-4"></ClipboardPaste>{' '}
-            {t('Paste Inside Loop')}
+            {'Paste Inside Loop'}
           </ContextMenuItem>
         )}
 
@@ -263,7 +262,7 @@ export const CanvasContextMenuContent = ({
             className="flex items-center gap-2"
           >
             <ClipboardPlus className="w-4 h-4"></ClipboardPlus>{' '}
-            {t('Paste After')}
+            {'Paste After'}
           </ContextMenuItem>
         )}
 
@@ -271,7 +270,7 @@ export const CanvasContextMenuContent = ({
           <ContextMenuSub>
             <ContextMenuSubTrigger className="flex items-center gap-2">
               <ClipboardPaste className="w-4 h-4"></ClipboardPaste>{' '}
-              {t('Paste Inside...')}
+              {'Paste Inside...'}
             </ContextMenuSubTrigger>
             <ContextMenuSubContent>
               {firstSelectedStep &&
@@ -320,7 +319,7 @@ export const CanvasContextMenuContent = ({
                   );
                 }}
               >
-                + {t('New Branch')}
+                + {'New Branch'}
               </ContextMenuItem>
             </ContextMenuSubContent>
           </ContextMenuSub>
@@ -342,7 +341,7 @@ export const CanvasContextMenuContent = ({
             >
               <ShortcutWrapper shortcut={CanvasShortcuts['Delete']}>
                 <Trash className="w-4 stroke-destructive h-4"></Trash>{' '}
-                <div className="text-destructive">{t('Delete')}</div>
+                <div className="text-destructive">{'Delete'}</div>
               </ShortcutWrapper>
             </ContextMenuItem>
           </>

@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
@@ -32,7 +31,7 @@ export const DeleteAccount = () => {
       const errors: Record<string, { message: string }> = {};
       if (values.email !== userEmail) {
         errors.email = {
-          message: t('Email is incorrect'),
+          message: 'Email is incorrect',
         };
       }
       return {
@@ -66,7 +65,7 @@ export const DeleteAccount = () => {
                 <FormItem>
                   <FormLabel className="flex items-center gap-2 mb-2">
                     {' '}
-                    <Trash className="w-4 h-4" /> {t('Delete Your Account')}
+                    <Trash className="w-4 h-4" /> {'Delete Your Account'}
                   </FormLabel>
                   <div className="flex items-center gap-4 w-full">
                     <Input
@@ -84,13 +83,13 @@ export const DeleteAccount = () => {
                             disabled={isDeleteButtonDisabled}
                             loading={isPending}
                           >
-                            {t('Delete')}
+                            {'Delete'}
                           </Button>
                         </div>
                       </TooltipTrigger>
                       {isDeleteButtonDisabled && (
                         <TooltipContent>
-                          {t('Please enter your email first.')}
+                          {'Please enter your email first.'}
                         </TooltipContent>
                       )}
                     </Tooltip>
@@ -99,11 +98,9 @@ export const DeleteAccount = () => {
 
                   <FormDescription>
                     <p className="mt-2">
-                      {t(
-                        'Enter your email to delete your account, including your flows, connections, agents, tables and projects.',
-                      )}{' '}
+                      {'Enter your email to delete your account, including your flows, connections, agents, tables and projects.'}{' '}
                       <span className="text-foreground font-semibold">
-                        {t('This action is irreversible.')}
+                        {'This action is irreversible.'}
                       </span>
                     </p>
                   </FormDescription>

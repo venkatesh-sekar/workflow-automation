@@ -4,7 +4,6 @@ import {
   PieceProperty,
 } from '@flow/pieces-framework';
 import { FlowTrigger, McpPropertyType } from '@flow/shared';
-import { t } from 'i18next';
 import { useForm, useFormContext } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -86,7 +85,7 @@ function McpToolTestingDialog({
         ) {
           acc[field.name] = {
             type: 'required',
-            message: t('{field} is required', { field: field.name }),
+            message: `${field.name} is required`,
           };
         }
         return acc;
@@ -124,9 +123,9 @@ function McpToolTestingDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-full max-w-xl flex flex-col max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="px-0.5">{t('Set Sample Data')}</DialogTitle>
+          <DialogTitle className="px-0.5">{'Set Sample Data'}</DialogTitle>
           <DialogDescription className="px-0.5">
-            {t('Provide sample values for testing this tool trigger.')}
+            {'Provide sample values for testing this tool trigger.'}
           </DialogDescription>
         </DialogHeader>
 
@@ -178,7 +177,7 @@ function McpToolTestingDialog({
                 ) : (
                   <div className="p-4 rounded-lg text-center">
                     <p className="text-sm text-muted-foreground">
-                      {t('No input fields defined in the schema')}
+                      {'No input fields defined in the schema'}
                     </p>
                   </div>
                 )}
@@ -191,10 +190,10 @@ function McpToolTestingDialog({
                 onClick={() => onOpenChange(false)}
                 disabled={isSavingMockdata}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button type="submit" loading={isSavingMockdata}>
-                {t('Use Sample Data')}
+                {'Use Sample Data'}
               </Button>
             </DialogFooter>
           </form>

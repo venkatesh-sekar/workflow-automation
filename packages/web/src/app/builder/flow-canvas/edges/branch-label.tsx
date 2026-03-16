@@ -7,7 +7,6 @@ import {
   StepLocationRelativeToParent,
 } from '@flow/shared';
 import { useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import { CopyPlus, EllipsisVertical, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -118,7 +117,7 @@ const BranchLabel = (props: BaseBranchLabel) => {
           }}
         >
           <div className="truncate">
-            {props.label === 'Otherwise' ? t('Otherwise') : props.label}
+            {props.label === 'Otherwise' ? 'Otherwise' : props.label}
           </div>
 
           {!isOtherwiseBranch &&
@@ -159,7 +158,7 @@ const BranchLabel = (props: BaseBranchLabel) => {
                   >
                     <div className="flex cursor-pointer  flex-row gap-2 items-center">
                       <CopyPlus className="h-4 w-4" />
-                      <span>{t('Duplicate Branch')}</span>
+                      <span>{'Duplicate Branch'}</span>
                     </div>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -182,7 +181,7 @@ const BranchLabel = (props: BaseBranchLabel) => {
                     <div className="flex cursor-pointer  flex-row gap-2 items-center">
                       <Trash2 className="h-4 w-4 text-destructive" />
                       <span className="text-destructive">
-                        {t('Delete Branch')}
+                        {'Delete Branch'}
                       </span>
                     </div>
                   </DropdownMenuItem>

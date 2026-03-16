@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Download } from 'lucide-react';
 import { useRef } from 'react';
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
@@ -76,7 +75,7 @@ export function AnalyticsAreaChart({
                 <Download className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>{t('Download as PNG')}</TooltipContent>
+            <TooltipContent>{'Download as PNG'}</TooltipContent>
           </Tooltip>
         </div>
       </CardHeader>

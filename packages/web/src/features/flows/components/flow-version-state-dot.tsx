@@ -1,5 +1,4 @@
 import { FlowVersionState } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 
 import {
@@ -47,8 +46,8 @@ const FlowVersionStateDot = React.memo((state: FlowVersionStateProps) => {
         </div>
       </TooltipTrigger>
       <TooltipContent>
-        {stateName === 'Draft' && t('Draft')}
-        {stateName === 'Published' && t('Published')}
+        {stateName === 'Draft' && 'Draft'}
+        {stateName === 'Published' && 'Published'}
       </TooltipContent>
     </Tooltip>
   );

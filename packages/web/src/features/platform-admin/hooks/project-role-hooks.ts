@@ -4,7 +4,6 @@ import {
   SeekPage,
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { projectRoleApi } from '../api/project-role-api';
@@ -55,7 +54,7 @@ export const projectRoleMutations = {
       },
       onSuccess: onSave,
       onError: () => {
-        toast.error(t('Role name already exists'), {
+        toast.error('Role name already exists', {
           duration: 3000,
         });
       },
@@ -67,7 +66,7 @@ export const projectRoleMutations = {
       mutationFn: (name: string) => projectRoleApi.delete(name),
       onSuccess: () => {
         onSuccess();
-        toast.success(t('Project Role entry deleted successfully'), {
+        toast.success('Project Role entry deleted successfully', {
           duration: 3000,
         });
       },

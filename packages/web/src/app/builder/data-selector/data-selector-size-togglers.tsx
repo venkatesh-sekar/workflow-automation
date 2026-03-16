@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { ExpandIcon, MinusIcon, PanelRightDashedIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -48,7 +47,7 @@ export const DataSelectorSizeTogglers = ({
             <ExpandIcon className="size-5"></ExpandIcon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{t('Expand')}</TooltipContent>
+        <TooltipContent>{'Expand'}</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -61,7 +60,7 @@ export const DataSelectorSizeTogglers = ({
             <PanelRightDashedIcon className="size-5"></PanelRightDashedIcon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{t('Dock')}</TooltipContent>
+        <TooltipContent>{'Dock'}</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>
@@ -74,7 +73,7 @@ export const DataSelectorSizeTogglers = ({
             <MinusIcon className="size-5"></MinusIcon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{t('Minimize')}</TooltipContent>
+        <TooltipContent>{'Minimize'}</TooltipContent>
       </Tooltip>
     </>
   );

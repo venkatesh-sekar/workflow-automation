@@ -6,7 +6,6 @@ import {
   UncategorizedFolderId,
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useCallback } from 'react';
 import { toast } from 'sonner';
 
@@ -59,9 +58,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
     },
     onSuccess: () => {
       deps.invalidateAll();
-      toast.success(t('Item deleted successfully'));
+      toast.success('Item deleted successfully');
     },
-    onError: () => toast.error(t('Failed to delete item')),
+    onError: () => toast.error('Failed to delete item'),
   });
 
   const { mutateAsync: bulkDelete, isPending: isDeleting } = useMutation({
@@ -77,9 +76,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
     onSuccess: () => {
       deps.clearSelection();
       deps.invalidateAll();
-      toast.success(t('Items deleted successfully'));
+      toast.success('Items deleted successfully');
     },
-    onError: () => toast.error(t('Failed to delete items')),
+    onError: () => toast.error('Failed to delete items'),
   });
 
   const { mutateAsync: bulkMoveTo, isPending: isBulkMoving } = useMutation({
@@ -113,9 +112,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
       }
       deps.clearSelection();
       deps.invalidateAll();
-      toast.success(t('Items moved successfully'));
+      toast.success('Items moved successfully');
     },
-    onError: () => toast.error(t('Failed to move items')),
+    onError: () => toast.error('Failed to move items'),
   });
 
   const { mutateAsync: rename, isPending: isRenaming } = useMutation({
@@ -139,9 +138,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
     },
     onSuccess: () => {
       deps.invalidateAll();
-      toast.success(t('Renamed successfully'));
+      toast.success('Renamed successfully');
     },
-    onError: () => toast.error(t('Failed to rename item')),
+    onError: () => toast.error('Failed to rename item'),
   });
 
   const { mutate: duplicateFlow, isPending: isDuplicating } = useMutation({
@@ -166,9 +165,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
     onSuccess: (data) => {
       openNewWindow(`/flows/${data.id}`);
       deps.invalidateAll();
-      toast.success(t('Flow duplicated successfully'));
+      toast.success('Flow duplicated successfully');
     },
-    onError: () => toast.error(t('Failed to duplicate flow')),
+    onError: () => toast.error('Failed to duplicate flow'),
   });
 
   const { mutate: moveItem, isPending: isMovingItem } = useMutation({
@@ -197,9 +196,9 @@ export function useAutomationsMutations(deps: MutationDeps) {
         deps.unpinItem?.(item.id);
       }
       deps.invalidateAll();
-      toast.success(t('Moved successfully'));
+      toast.success('Moved successfully');
     },
-    onError: () => toast.error(t('Failed to move item')),
+    onError: () => toast.error('Failed to move item'),
   });
 
   const { mutate: exportTable, isPending: isExportingTable } = useMutation({
@@ -207,8 +206,8 @@ export function useAutomationsMutations(deps: MutationDeps) {
       const exported = await tablesApi.export(table.id);
       tablesUtils.exportTables([exported]);
     },
-    onSuccess: () => toast.success(t('Table has been exported.')),
-    onError: () => toast.error(t('Failed to export table')),
+    onSuccess: () => toast.success('Table has been exported.'),
+    onError: () => toast.error('Failed to export table'),
   });
 
   const handleBulkExport = useCallback(
@@ -229,11 +228,11 @@ export function useAutomationsMutations(deps: MutationDeps) {
             tablesUtils.exportTables(exported);
             toast.success(
               exported.length === 1
-                ? t('Table has been exported.')
-                : t('Tables have been exported.'),
+                ? 'Table has been exported.'
+                : 'Tables have been exported.',
             );
           })
-          .catch(() => toast.error(t('Failed to export tables')));
+          .catch(() => toast.error('Failed to export tables'));
       }
 
       deps.clearSelection();

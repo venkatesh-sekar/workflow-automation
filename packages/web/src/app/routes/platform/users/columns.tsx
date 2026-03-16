@@ -1,7 +1,5 @@
 import { PlatformRole, UserStatus } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
-
 import {
   Tag,
   Fingerprint,
@@ -37,7 +35,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Identity')}
+        title={'Identity'}
         icon={Fingerprint}
       />
     ),
@@ -56,7 +54,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
                 <Info className="h-4 w-4 text-warning-700" />
               </TooltipTrigger>
               <TooltipContent>
-                <p>{t('Pending Invitation')}</p>
+                <p>{'Pending Invitation'}</p>
               </TooltipContent>
             </Tooltip>
           )}
@@ -93,7 +91,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     accessorKey: 'name',
     size: 210,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Name')} icon={Tag} />
+      <DataTableColumnHeader column={column} title={'Name'} icon={Tag} />
     ),
     cell: ({ row }) => {
       if (row.original.type === 'invitation') {
@@ -111,17 +109,17 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     accessorKey: 'role',
     size: 90,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Role')} icon={Shield} />
+      <DataTableColumnHeader column={column} title={'Role'} icon={Shield} />
     ),
     cell: ({ row }) => {
       const platformRole = row.original.data.platformRole;
       return (
         <div className="text-left">
           {platformRole === PlatformRole.ADMIN
-            ? t('Admin')
+            ? 'Admin'
             : platformRole === PlatformRole.OPERATOR
-            ? t('Operator')
-            : t('Member')}
+            ? 'Operator'
+            : 'Member'}
         </div>
       );
     },
@@ -132,7 +130,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Created')}
+        title={'Created'}
         icon={Clock}
       />
     ),
@@ -150,7 +148,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Last Active')}
+        title={'Last Active'}
         icon={Clock}
       />
     ),
@@ -173,19 +171,19 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Status')}
+        title={'Status'}
         icon={Activity}
       />
     ),
     cell: ({ row }) => {
       if (row.original.type === 'invitation') {
-        return <div className="text-left text-warning-700">{t('Pending')}</div>;
+        return <div className="text-left text-warning-700">{'Pending'}</div>;
       }
       return (
         <div className="text-left">
           {row.original.data.status === UserStatus.ACTIVE
-            ? t('Activated')
-            : t('Deactivated')}
+            ? 'Activated'
+            : 'Deactivated'}
         </div>
       );
     },

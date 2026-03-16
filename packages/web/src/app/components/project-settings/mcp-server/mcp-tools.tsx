@@ -1,5 +1,4 @@
 import { PopulatedMcpServer } from '@flow/shared';
-import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
@@ -83,7 +82,7 @@ export function McpTools({ mcpServer }: McpToolsProps) {
                     <Lock className="h-4 w-4 text-muted-foreground shrink-0" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    {t('Required by other tools — always enabled')}
+                    {'Required by other tools — always enabled'}
                   </TooltipContent>
                 </Tooltip>
               ) : (
@@ -92,15 +91,13 @@ export function McpTools({ mcpServer }: McpToolsProps) {
                     allChecked ? true : someChecked ? 'indeterminate' : false
                   }
                   onCheckedChange={(v) => toggleCategory(toolNames, v === true)}
-                  aria-label={t('Select all in {{category}}', {
-                    category: category.label,
-                  })}
+                  aria-label={`Select all in {${category.label}}`}
                 />
               )}
-              <span className="text-sm font-semibold">{t(category.label)}</span>
+              <span className="text-sm font-semibold">{category.label}</span>
               {category.locked && (
                 <span className="text-xs text-muted-foreground ml-1">
-                  ({t('always enabled')})
+                  ({'always enabled'})
                 </span>
               )}
             </div>

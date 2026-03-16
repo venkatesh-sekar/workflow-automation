@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { RefreshCcw } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -18,7 +17,7 @@ const DynamicPropertiesErrorBoundary = ({
       fallback={
         !triedRerenderingRef.current ? (
           <div className="text-sm text-destructive italic flex justify-between items-center">
-            {t('Unexpected error, please retry')}
+            {'Unexpected error, please retry'}
             <Button
               size="icon"
               variant="outline"
@@ -32,7 +31,7 @@ const DynamicPropertiesErrorBoundary = ({
           </div>
         ) : (
           <div className="text-sm text-destructive italic flex justify-between items-center">
-            {t('Unexpected error, please refresh the page or contact support')}
+            {'Unexpected error, please refresh the page or contact support'}
             <Button
               size="icon"
               variant="outline"

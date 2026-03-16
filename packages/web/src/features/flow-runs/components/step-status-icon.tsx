@@ -1,5 +1,4 @@
 import { StepOutputStatus } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 
 import { LoadingSpinner } from '@/components/custom/spinner';
@@ -18,11 +17,11 @@ type StepStatusIconProps = {
 };
 
 const statusText = {
-  [StepOutputStatus.RUNNING]: t('Step running'),
-  [StepOutputStatus.PAUSED]: t('Step paused'),
-  [StepOutputStatus.STOPPED]: t('Step Stopped'),
-  [StepOutputStatus.SUCCEEDED]: t('Step Succeeded'),
-  [StepOutputStatus.FAILED]: t('Step Failed'),
+  [StepOutputStatus.RUNNING]: 'Step running',
+  [StepOutputStatus.PAUSED]: 'Step paused',
+  [StepOutputStatus.STOPPED]: 'Step Stopped',
+  [StepOutputStatus.SUCCEEDED]: 'Step Succeeded',
+  [StepOutputStatus.FAILED]: 'Step Failed',
 };
 
 const StepStatusIcon = React.memo(

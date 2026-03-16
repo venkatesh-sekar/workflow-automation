@@ -1,5 +1,4 @@
 import { FlowFlagId, BADGES, UserWithBadges } from '@flow/shared';
-import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 
 import {
@@ -48,7 +47,7 @@ export const UserBadges = ({
           showBorder ? 'mb-2' : ''
         }`}
       >
-        {t('Badges')}
+        {'Badges'}
       </h5>
       <div className="flex items-center gap-1 flex-wrap">
         {badgesToShow.map(([badgeName, badge]) => {

@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { SlidersHorizontal } from 'lucide-react';
 import React, { useState } from 'react';
 
@@ -26,14 +25,14 @@ export const WorkerConfigsModal: React.FC<Props> = ({ workerProps }) => {
           variant="ghost"
           size="icon"
           className="size-7 text-muted-foreground hover:text-foreground"
-          title={t('Configs')}
+          title={'Configs'}
         >
           <SlidersHorizontal size={14} />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[95vw] max-w-[600px] max-h-[80vh]">
         <DialogHeader>
-          <DialogTitle>{t('Environment Variables')}</DialogTitle>
+          <DialogTitle>{'Environment Variables'}</DialogTitle>
         </DialogHeader>
         <div className="space-y-4 max-h-[60vh] overflow-y-auto">
           {Object.entries(workerProps ?? {}).map(([key, value]) => (

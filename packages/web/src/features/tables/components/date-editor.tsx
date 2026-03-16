@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
 
 import { Calendar } from '@/components/ui/calendar';
@@ -72,7 +71,7 @@ function DateEditor() {
             {isEditing && (
               <input
                 ref={inputRef}
-                placeholder={t('mm/dd/yyy')}
+                placeholder={'mm/dd/yyy'}
                 value={inputValue}
                 type="text"
                 onClick={(e) => {

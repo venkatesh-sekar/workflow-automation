@@ -6,7 +6,6 @@ import {
   isNil,
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -96,26 +95,24 @@ export const UseTemplateDialog = ({
     onSuccess: (flows) => {
       onOpenChange(false);
       if (flows.length === 1) {
-        toast.success(t('Flow created successfully'));
+        toast.success('Flow created successfully');
         navigate(`/flows/${flows[0].id}`);
       } else {
         toast.success(
-          t('{count} flows created successfully in a new folder', {
-            count: flows.length,
-          }),
+          `${flows.length} flows created successfully in a new folder`,
         );
         navigate(`/flows`);
       }
     },
     onError: (error) => {
-      toast.error(t('Failed to create flow from template'));
+      toast.error('Failed to create flow from template');
       console.error('Error creating flow:', error);
     },
   });
 
   const handleConfirmUseTemplate = () => {
     if (!selectedProjectId) {
-      toast.error(t('Please select a project'));
+      toast.error('Please select a project');
       return;
     }
     createFlow({ projectId: selectedProjectId, folderId: selectedFolderId });
@@ -138,27 +135,22 @@ export const UseTemplateDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Use Template')}</DialogTitle>
+          <DialogTitle>{'Use Template'}</DialogTitle>
           <DialogDescription>
             {hasMultipleFlows
-              ? t(
-                  'This template includes {count} flows with all dependencies. A new folder will be created to organize them.',
-                  { count: flowCount },
-                )
-              : t(
-                  'Select the project and folder where you want to use this template.',
-                )}
+              ? `This template includes ${flowCount} flows with all dependencies. A new folder will be created to organize them.`
+              : 'Select the project and folder where you want to use this template.'}
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="project">{t('Project')}</Label>
+            <Label htmlFor="project">{'Project'}</Label>
             <Select
               value={selectedProjectId}
               onValueChange={setSelectedProjectId}
             >
               <SelectTrigger id="project">
-                <SelectValue placeholder={t('Select a project')} />
+                <SelectValue placeholder={'Select a project'} />
               </SelectTrigger>
               <SelectContent>
                 {projects?.map((project) => (
@@ -175,17 +167,17 @@ export const UseTemplateDialog = ({
           </div>
           {!hasMultipleFlows && (
             <div className="flex flex-col gap-2">
-              <Label htmlFor="folder">{t('Folder')}</Label>
+              <Label htmlFor="folder">{'Folder'}</Label>
               <Select
                 value={selectedFolderId}
                 onValueChange={setSelectedFolderId}
               >
                 <SelectTrigger id="folder">
-                  <SelectValue placeholder={t('Select a folder')} />
+                  <SelectValue placeholder={'Select a folder'} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value={UncategorizedFolderId}>
-                    {t('Uncategorized')}
+                    {'Uncategorized'}
                   </SelectItem>
                   {folders?.map((folder) => (
                     <SelectItem key={folder.id} value={folder.id}>
@@ -203,14 +195,14 @@ export const UseTemplateDialog = ({
             onClick={() => onOpenChange(false)}
             disabled={isPending}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             onClick={handleConfirmUseTemplate}
             loading={isPending}
             disabled={!selectedProjectId}
           >
-            {t('Confirm')}
+            {'Confirm'}
           </Button>
         </DialogFooter>
       </DialogContent>

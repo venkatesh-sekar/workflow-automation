@@ -3,7 +3,6 @@ import {
   ProjectType,
   ProjectWithLimits,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Check, ChevronDown, LayoutGrid } from 'lucide-react';
 import { useState } from 'react';
 
@@ -33,14 +32,14 @@ export function ProjectSelect({
 }: ProjectSelectProps) {
   const [open, setOpen] = useState(false);
 
-  const allProjectsItem = { id: 'all', displayName: t('All Projects') };
+  const allProjectsItem = { id: 'all', displayName: 'All Projects' };
   const items = [allProjectsItem, ...projects];
 
   const selectedProject = selectedProjectId
     ? projects.find((p) => p.id === selectedProjectId)
     : null;
 
-  const displayValue = selectedProject?.displayName ?? t('All Projects');
+  const displayValue = selectedProject?.displayName ?? 'All Projects';
 
   const handleSelect = (projectId: string) => {
     onProjectChange(projectId);

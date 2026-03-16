@@ -7,7 +7,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -73,7 +72,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
     },
     onSuccess: (repo) => {
       refetch();
-      toast.success(t('Connected successfully'), {
+      toast.success('Connected successfully', {
         duration: 3000,
       });
     },
@@ -98,7 +97,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
       {showButton && (
         <DialogTrigger asChild>
           <Button size={'sm'} className="w-32">
-            {t('Connect Git')}
+            {'Connect Git'}
           </Button>
         </DialogTrigger>
       )}
@@ -109,7 +108,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
             onSubmit={form.handleSubmit((data) => mutate(data))}
           >
             <DialogHeader>
-              <DialogTitle>{t('Connect Git')}</DialogTitle>
+              <DialogTitle>{'Connect Git'}</DialogTitle>
             </DialogHeader>
 
             <div className="grid gap-4">
@@ -118,7 +117,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                 name="remoteUrl"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('Remote URL')}</FormLabel>
+                    <FormLabel>{'Remote URL'}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="git@github.com:org/repo.git"
@@ -133,7 +132,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                 name="branch"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('Branch')}</FormLabel>
+                    <FormLabel>{'Branch'}</FormLabel>
                     <FormControl>
                       <Input placeholder="main" {...field} />
                     </FormControl>
@@ -145,14 +144,12 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                 name="slug"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('Folder')}</FormLabel>
+                    <FormLabel>{'Folder'}</FormLabel>
                     <FormControl>
                       <Input placeholder="flows" {...field} />
                     </FormControl>
                     <FormDescription>
-                      {t(
-                        'Folder name is the name of the folder where the project will be stored or fetched.',
-                      )}
+                      {'Folder name is the name of the folder where the project will be stored or fetched.'}
                     </FormDescription>
                   </FormItem>
                 )}
@@ -162,7 +159,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                 name="sshPrivateKey"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('SSH Private Key')}</FormLabel>
+                    <FormLabel>{'SSH Private Key'}</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="-----BEGIN OPENSSH PRIVATE KEY-----"
@@ -170,7 +167,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                       />
                     </FormControl>
                     <FormDescription>
-                      {t('The SSH private key to use for authentication.')}
+                      {'The SSH private key to use for authentication.'}
                     </FormDescription>
                   </FormItem>
                 )}
@@ -185,7 +182,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
             <DialogFooter>
               <DialogClose>
                 <Button type="button" variant={'outline'} loading={isPending}>
-                  {t('Cancel')}
+                  {'Cancel'}
                 </Button>
               </DialogClose>
               <Button
@@ -193,7 +190,7 @@ const ConnectGitDialog = ({ open, setOpen, showButton }: ConnectGitProps) => {
                 onClick={form.handleSubmit((data) => mutate(data))}
                 loading={isPending}
               >
-                {t('Connect')}
+                {'Connect'}
               </Button>
             </DialogFooter>
           </form>

@@ -1,6 +1,5 @@
 import { MarkdownVariant } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Check, Copy, Info, AlertTriangle, Lightbulb } from 'lucide-react';
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -80,7 +79,7 @@ const FlowMarkdown = React.memo(
         setCopiedText(null);
       },
       onError: () => {
-        toast.error(t('Failed to copy to clipboard'), {
+        toast.error('Failed to copy to clipboard', {
           duration: 3000,
         });
       },

@@ -7,7 +7,6 @@ import {
   UserWithMetaInformation,
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { platformUserApi } from '@/api/platform-user-api';
@@ -57,7 +56,7 @@ export const platformUserMutations = {
       },
       onSuccess: () => {
         onSuccess();
-        toast.success(t('User deleted successfully'), { duration: 3000 });
+        toast.success('User deleted successfully', { duration: 3000 });
       },
     });
   },
@@ -69,7 +68,7 @@ export const platformUserMutations = {
       },
       onSuccess: () => {
         onSuccess();
-        toast.success(t('Invitation deleted successfully'), { duration: 3000 });
+        toast.success('Invitation deleted successfully', { duration: 3000 });
       },
     });
   },
@@ -83,8 +82,8 @@ export const platformUserMutations = {
         onSuccess();
         toast.success(
           data.status === UserStatus.ACTIVE
-            ? t('User activated successfully')
-            : t('User deactivated successfully'),
+            ? 'User activated successfully'
+            : 'User deactivated successfully',
           { duration: 3000 },
         );
       },

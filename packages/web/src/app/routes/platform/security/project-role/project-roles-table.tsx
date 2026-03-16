@@ -1,5 +1,4 @@
 import { ProjectRole, RoleType, SeekPage } from '@flow/shared';
-import { t } from 'i18next';
 import {
   Eye,
   PenLine,
@@ -74,7 +73,7 @@ export const ProjectRolesTable = ({
       <div className="flex flex-col items-center gap-3 py-12 text-muted-foreground">
         <Shield className="size-10" />
         <p className="text-sm">
-          {t('No project roles yet. Create one to get started.')}
+          {'No project roles yet. Create one to get started.'}
         </p>
       </div>
     );
@@ -94,7 +93,7 @@ export const ProjectRolesTable = ({
                     role.type === RoleType.DEFAULT ? 'accent' : 'secondary'
                   }
                 >
-                  {role.type === RoleType.DEFAULT ? t('Default') : t('Custom')}
+                  {role.type === RoleType.DEFAULT ? 'Default' : 'Custom'}
                 </Badge>
               </ItemDescription>
             </ItemContent>
@@ -111,8 +110,8 @@ export const ProjectRolesTable = ({
                 <Users className="size-4" />
                 <span className="text-xs">
                   {role.userCount === 1
-                    ? t('1 user')
-                    : t(`${role.userCount} users`)}
+                    ? '1 user'
+                    : `${role.userCount} users`}
                 </span>
               </Button>
               <ProjectRoleDialog
@@ -133,13 +132,10 @@ export const ProjectRolesTable = ({
               {role.type !== RoleType.DEFAULT && (
                 <ConfirmationDeleteDialog
                   isDanger={true}
-                  title={t('Delete Role')}
-                  message={t(
-                    'Deleting this role will remove {count} project member(s) and all associated invitations.',
-                    { count: role.userCount },
-                  )}
-                  entityName={`${t('Project Role')} ${role.name}`}
-                  buttonText={t('Delete Role')}
+                  title={'Delete Role'}
+                  message={`Deleting this role will remove ${role.userCount} project member(s) and all associated invitations.`}
+                  entityName={`${'Project Role'} ${role.name}`}
+                  buttonText={'Delete Role'}
                   mutationFn={async () => deleteProjectRole(role.name)}
                 >
                   <Button variant="ghost" size="sm" className="size-8 p-0">

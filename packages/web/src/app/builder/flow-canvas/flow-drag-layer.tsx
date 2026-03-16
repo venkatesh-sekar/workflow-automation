@@ -17,7 +17,6 @@ import {
   PointerSensorOptions,
 } from '@dnd-kit/core';
 import { ReactFlowInstance, useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import type { PointerEvent } from 'react';
 import { useCallback, useRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -185,10 +184,8 @@ function handleStepDragEnd({
         droppedAtNodeData.parentStepName,
       );
       if (isPartOfInnerFlow) {
-        toast(t('Invalid Move'), {
-          description: t(
-            'The destination location is a child of the dragged step',
-          ),
+        toast('Invalid Move', {
+          description: 'The destination location is a child of the dragged step',
           duration: 3000,
         });
         return;

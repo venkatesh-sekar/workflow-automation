@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -32,7 +30,7 @@ export function TimeSavedFilterContent({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-1.5">
-        <Label className="text-sm text-muted-foreground">{t('Minimum')}</Label>
+        <Label className="text-sm text-muted-foreground">{'Minimum'}</Label>
         <div className="relative">
           <Input
             type="number"
@@ -53,7 +51,7 @@ export function TimeSavedFilterContent({
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label className="text-sm text-muted-foreground">{t('Maximum')}</Label>
+        <Label className="text-sm text-muted-foreground">{'Maximum'}</Label>
         <div className="relative">
           <Input
             type="number"
@@ -76,7 +74,7 @@ export function TimeSavedFilterContent({
       </div>
 
       <Button onClick={onApply} className="w-full mt-1">
-        {t('Apply')}
+        {'Apply'}
       </Button>
     </div>
   );

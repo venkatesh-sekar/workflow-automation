@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -54,11 +53,9 @@ export const NewProjectDialog = (props: NewProjectDialogProps) => {
       <DialogTrigger asChild>{props.children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Create Team')}</DialogTitle>
+          <DialogTitle>{'Create Team'}</DialogTitle>
           <DialogDescription>
-            {t(
-              'Set up a new team to organize your automations and connections.',
-            )}
+            {'Set up a new team to organize your automations and connections.'}
           </DialogDescription>
         </DialogHeader>
         {(!isLoadingConnections || !globalConnectionsEnabled) && (
@@ -95,7 +92,7 @@ const NewProjectForm = ({
   const form = useForm<CreatePlatformProjectRequest>({
     resolver: zodResolver(
       z.object({
-        displayName: z.string().min(1, t('Name is required')),
+        displayName: z.string().min(1, 'Name is required'),
       }),
     ),
     defaultValues: {
@@ -128,11 +125,11 @@ const NewProjectForm = ({
             name="displayName"
             render={({ field }) => (
               <FormItem className="grid space-y-2">
-                <Label htmlFor="displayName">{t('Team Name')}</Label>
+                <Label htmlFor="displayName">{'Team Name'}</Label>
                 <Input
                   {...field}
                   id="displayName"
-                  placeholder={t('Team Name')}
+                  placeholder={'Team Name'}
                   className="rounded-sm"
                 />
                 <FormMessage />
@@ -144,9 +141,9 @@ const NewProjectForm = ({
               name="globalConnectionExternalIds"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label>{t('Global Connections')}</Label>
+                  <Label>{'Global Connections'}</Label>
                   <MultiSelectPieceProperty
-                    placeholder={t('Select global connections')}
+                    placeholder={'Select global connections'}
                     options={
                       globalConnections.map((connection) => ({
                         value: connection.externalId,
@@ -187,7 +184,7 @@ const NewProjectForm = ({
             setOpen(false);
           }}
         >
-          {t('Cancel')}
+          {'Cancel'}
         </Button>
         <Button
           disabled={isPending}
@@ -198,7 +195,7 @@ const NewProjectForm = ({
             form.handleSubmit(() => mutate(form.getValues()))(e);
           }}
         >
-          {t('Create Team')}
+          {'Create Team'}
         </Button>
       </DialogFooter>
     </>

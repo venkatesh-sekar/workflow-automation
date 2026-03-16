@@ -4,7 +4,6 @@ import {
   mcpToolNameUtils,
   PopulatedFlow,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Workflow } from 'lucide-react';
 import { useMemo } from 'react';
 import { useDebounce } from 'use-debounce';
@@ -127,13 +126,13 @@ export const FlowDialogContent = ({
           </div>
 
           <div className="text-base font-semibold text-foreground">
-            {t('No flows found')}
+            {'No flows found'}
           </div>
 
           <div className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {searchQuery
-              ? t('Try adjusting your search or create a new flow.')
-              : t('Create a flow to use it as a tool in your agent.')}
+              ? 'Try adjusting your search or create a new flow.'
+              : 'Create a flow to use it as a tool in your agent.'}
           </div>
 
           {!searchQuery && (

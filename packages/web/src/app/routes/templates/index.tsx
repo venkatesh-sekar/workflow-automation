@@ -3,7 +3,6 @@ import {
   TemplateTelemetryEventType,
   UncategorizedFolderId,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -64,7 +63,7 @@ const TemplatesPage = () => {
                   <SearchInput
                     value={search}
                     onChange={handleSearchChange}
-                    placeholder={t('Search templates by name or description')}
+                    placeholder={'Search templates by name or description'}
                   ></SearchInput>
                   <div className="flex flex-row justify-end w-[50%]">
                     <Button
@@ -74,7 +73,7 @@ const TemplatesPage = () => {
                       disabled={isCreateFlowPending}
                     >
                       <Plus className="w-4 h-4" />
-                      {t('Start from scratch')}
+                      {'Start from scratch'}
                     </Button>
                   </div>
                 </div>

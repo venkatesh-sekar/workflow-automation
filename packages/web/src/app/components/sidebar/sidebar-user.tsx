@@ -1,6 +1,5 @@
 import { isNil, Permission } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { ChevronsUpDown, LogOut, UserCogIcon, UserPlus } from 'lucide-react';
 import { useState } from 'react';
 
@@ -113,12 +112,12 @@ export function SidebarUser() {
             <DropdownMenuGroup>
               <DropdownMenuItem onClick={() => setAccountSettingsOpen(true)}>
                 <UserCogIcon className="w-4 h-4 mr-2" />
-                {t('Account Settings')}
+                {'Account Settings'}
               </DropdownMenuItem>
               {canInviteUsers && (
                 <DropdownMenuItem onClick={() => setInviteUserOpen(true)}>
                   <UserPlus className="w-4 h-4 mr-2" />
-                  {t('Invite User')}
+                  {'Invite User'}
                 </DropdownMenuItem>
               )}
               <HelpAndFeedback />
@@ -126,7 +125,7 @@ export function SidebarUser() {
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
-              {t('Log out')}
+              {'Log out'}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

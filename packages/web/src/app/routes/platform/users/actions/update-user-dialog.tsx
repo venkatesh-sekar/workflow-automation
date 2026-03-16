@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { Resolver, useForm } from 'react-hook-form';
 
@@ -70,7 +69,7 @@ export const UpdateUserDialog = ({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Update User Role')}</DialogTitle>
+          <DialogTitle>{'Update User Role'}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="grid space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -78,7 +77,7 @@ export const UpdateUserDialog = ({
               name="role"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="role">{t('Role')}</Label>
+                  <Label htmlFor="role">{'Role'}</Label>
                   <RoleSelector
                     type="platform"
                     value={field.value}
@@ -92,7 +91,7 @@ export const UpdateUserDialog = ({
               name="externalId"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="externalId">{t('External ID')}</Label>
+                  <Label htmlFor="externalId">{'External ID'}</Label>
                   <Input
                     id="externalId"
                     value={field.value}
@@ -118,7 +117,7 @@ export const UpdateUserDialog = ({
               setOpen(false);
             }}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             disabled={isPending}
@@ -132,7 +131,7 @@ export const UpdateUserDialog = ({
               });
             }}
           >
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -1,5 +1,4 @@
 import { FlowStatus, PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
 import { Workflow } from 'lucide-react';
 
 import { MetricCard, MetricCardSkeleton } from './metric-card';
@@ -21,12 +20,10 @@ export const ActiveFlowsMetric = ({ report }: ActiveFlowsMetricProps) => {
   return (
     <MetricCard
       icon={Workflow}
-      title={t('Active Flows')}
+      title={'Active Flows'}
       value={activeFlows.toLocaleString()}
-      description={t('Number of currently active flows')}
-      subtitle={t('{total} total flows created', {
-        total: totalFlows.toLocaleString(),
-      })}
+      description={'Number of currently active flows'}
+      subtitle={`${totalFlows.toLocaleString()} total flows created`}
       iconColor="text-purple-500"
       iconBgColor="bg-purple-500/10"
     />

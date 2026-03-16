@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { AlertCircle, RefreshCw, Home } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -34,21 +33,21 @@ export const Error = () => {
 
             <div className="space-y-3">
               <h1 className="text-2xl font-semibold text-foreground">
-                {t('Something went wrong')}
+                {'Something went wrong'}
               </h1>
               <p className="text-lg text-muted-foreground">
-                {t('Subscription update failed')}
+                {'Subscription update failed'}
               </p>
             </div>
 
             <div className="bg-muted/30 rounded-lg p-4 text-left">
               <h3 className="text-sm font-medium text-foreground mb-2">
-                {t('What you can do:')}
+                {'What you can do:'}
               </h3>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>{t('Verify your payment method')}</li>
-                <li>{t('Try again in a few moments')}</li>
-                <li>{t('Contact support if issues persist')}</li>
+                <li>{'Verify your payment method'}</li>
+                <li>{'Try again in a few moments'}</li>
+                <li>{'Contact support if issues persist'}</li>
               </ul>
             </div>
 
@@ -58,7 +57,7 @@ export const Error = () => {
                 className="w-full"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
-                {t('Try Again')}
+                {'Try Again'}
               </Button>
 
               <Button
@@ -67,14 +66,12 @@ export const Error = () => {
                 className="w-full"
               >
                 <Home className="w-4 h-4 mr-2" />
-                {t('Go to Dashboard')}
+                {'Go to Dashboard'}
               </Button>
             </div>
 
             <p className="text-xs text-muted-foreground">
-              {t('Redirecting to billing in {countdown} seconds...', {
-                countdown,
-              })}
+              {`Redirecting to billing in ${countdown} seconds...`}
             </p>
           </div>
         </CardContent>

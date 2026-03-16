@@ -4,8 +4,6 @@ import {
   FlowActionType,
   AI_PIECE_NAME,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import {
   CategorizedStepMetadataWithSuggestions,
   PieceStepMetadataWithSuggestions,
@@ -31,11 +29,11 @@ const getAiAndAgentsPieces = (queryResult: StepMetadataWithSuggestions[]) => {
   const pieces = filterResultByPieceType(queryResult);
   const aiAndAgentsPieces = pieces.filter(isAiAndAgentPiece);
   const recommendedCategory: CategorizedStepMetadataWithSuggestions = {
-    title: t('Recommended'),
+    title: 'Recommended',
     metadata: [],
   };
   const othersCategory: CategorizedStepMetadataWithSuggestions = {
-    title: t('Others'),
+    title: 'Others',
     metadata: [],
   };
   const recommendedPieces = aiAndAgentsPieces.filter((piece) =>

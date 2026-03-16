@@ -2,7 +2,6 @@ import { Note, NoteColorVariant } from '@flow/shared';
 import { useDraggable } from '@dnd-kit/core';
 import { Editor } from '@tiptap/core';
 import { NodeProps, NodeResizeControl } from '@xyflow/react';
-import { t } from 'i18next';
 import { useRef, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
@@ -190,7 +189,7 @@ const NoteContent = ({ note, isDragging }: NoteContentProps) => {
                   },
                 )}
                 onlyEditableOnDoubleClick={true}
-                placeholder={t('Double click to edit...')}
+                placeholder={'Double click to edit...'}
                 placeholderClassName={cn(
                   'text-xs',
                   NoteColorVariantClassName[color],
@@ -206,7 +205,7 @@ const NoteContent = ({ note, isDragging }: NoteContentProps) => {
           </TooltipTrigger>
           {!readonly && !isDragging && !editorRef.current?.isFocused && (
             <TooltipContent side="right">
-              {t('Double click to edit')}
+              {'Double click to edit'}
             </TooltipContent>
           )}
         </Tooltip>

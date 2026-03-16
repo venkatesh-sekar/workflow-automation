@@ -1,6 +1,5 @@
 'use client';
 
-import { t } from 'i18next';
 import * as React from 'react';
 
 import {
@@ -75,8 +74,8 @@ export const TimePeriodSelect = React.forwardRef<
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="AM">{t('AM')}</SelectItem>
-            <SelectItem value="PM">{t('PM')}</SelectItem>
+            <SelectItem value="AM">{'AM'}</SelectItem>
+            <SelectItem value="PM">{'PM'}</SelectItem>
           </SelectContent>
         </Select>
       </div>

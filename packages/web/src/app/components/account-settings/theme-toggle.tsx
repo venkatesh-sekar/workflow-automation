@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Monitor, Moon, Palette, Sun } from 'lucide-react';
 
 import { useTheme } from '@/components/providers/theme-provider';
@@ -18,7 +17,7 @@ export const ThemeToggle = () => {
     <div className="space-y-2">
       <Label className="text-sm font-medium flex items-center gap-2">
         <Palette className="w-4 h-4" />
-        {t('Theme')}
+        {'Theme'}
       </Label>
       <Select value={theme} onValueChange={setTheme}>
         <SelectTrigger className="h-9">

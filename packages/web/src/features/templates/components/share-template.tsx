@@ -5,7 +5,6 @@ import {
   Template,
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -41,8 +40,8 @@ const TemplateViewer = ({ template }: { template: Template }) => {
       if (api.isError(error)) {
         const apError = error.response?.data as FlowErrorParams;
         if (apError.code === ErrorCode.PERMISSION_DENIED) {
-          toast.error(t('Import Failed'), {
-            description: t("You don't have permission to import this template"),
+          toast.error('Import Failed', {
+            description: "You don't have permission to import this template",
             duration: 3000,
           });
           return;
@@ -73,7 +72,7 @@ const TemplateViewer = ({ template }: { template: Template }) => {
           <div className="space-y-4">
             <div className="flex flex-row w-full justify-between items-center py-2">
               <span className="text-sm font-medium text-muted-foreground">
-                {t('Steps in this flow')}
+                {'Steps in this flow'}
               </span>
               {template.flows?.[0]?.trigger && (
                 <PieceIconList
@@ -86,7 +85,7 @@ const TemplateViewer = ({ template }: { template: Template }) => {
               <>
                 <Separator />
                 <div className="space-y-2 py-2">
-                  <h3 className="text-sm font-semibold">{t('Description')}</h3>
+                  <h3 className="text-sm font-semibold">{'Description'}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {template.description}
                   </p>
@@ -96,7 +95,7 @@ const TemplateViewer = ({ template }: { template: Template }) => {
           </div>
           <div className="flex items-center justify-end pt-2">
             <Button loading={isPending} onClick={handleUseTemplate} size="lg">
-              {t('Use Template')}
+              {'Use Template'}
             </Button>
           </div>
         </CardContent>

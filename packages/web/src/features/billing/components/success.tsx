@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Check, TrendingUp, TrendingDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -33,48 +32,48 @@ export const Success = () => {
           icon: TrendingUp,
           iconBg: 'bg-success-50',
           iconColor: 'text-success-600',
-          title: t('Successfully Upgraded!'),
-          description: t('Subscription updated successfully'),
+          title: 'Successfully Upgraded!',
+          description: 'Subscription updated successfully',
         };
       case 'downgrade':
         return {
           icon: TrendingDown,
           iconBg: 'bg-warning-50',
           iconColor: 'text-warning-600',
-          title: t('Plan Downgraded'),
-          description: t('Subscription updated successfully'),
+          title: 'Plan Downgraded',
+          description: 'Subscription updated successfully',
         };
       case 'create':
         return {
           icon: Check,
           iconBg: 'bg-primary/10',
           iconColor: 'text-primary',
-          title: t('Success!'),
-          description: t('Subscription created successfully'),
+          title: 'Success!',
+          description: 'Subscription created successfully',
         };
       case 'ai-credit-auto-topup':
         return {
           icon: Check,
           iconBg: 'bg-primary/10',
           iconColor: 'text-primary',
-          title: t('Success!'),
-          description: t('AI credit auto topup enabled successfully'),
+          title: 'Success!',
+          description: 'AI credit auto topup enabled successfully',
         };
       case 'ai-credit-payment':
         return {
           icon: Check,
           iconBg: 'bg-primary/10',
           iconColor: 'text-primary',
-          title: t('Success!'),
-          description: t('AI credits purchased successfully'),
+          title: 'Success!',
+          description: 'AI credits purchased successfully',
         };
       default:
         return {
           icon: Check,
           iconBg: 'bg-primary/10',
           iconColor: 'text-primary',
-          title: t('Success!'),
-          description: t('Subscription updated successfully'),
+          title: 'Success!',
+          description: 'Subscription updated successfully',
         };
     }
   };
@@ -104,7 +103,7 @@ export const Success = () => {
 
             <div className="flex flex-col gap-3 pt-2">
               <Button onClick={() => navigate('/')} className="w-full">
-                {t('Go to Dashboard')}
+                {'Go to Dashboard'}
               </Button>
 
               <Button
@@ -112,14 +111,12 @@ export const Success = () => {
                 variant="outline"
                 className="w-full"
               >
-                {t('View Billing Details')}
+                {'View Billing Details'}
               </Button>
             </div>
 
             <p className="text-xs text-muted-foreground">
-              {t('Redirecting to billing in {countdown} seconds...', {
-                countdown,
-              })}
+              {`Redirecting to billing in ${countdown} seconds...`}
             </p>
           </div>
         </CardContent>

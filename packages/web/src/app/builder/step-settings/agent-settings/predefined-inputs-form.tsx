@@ -5,7 +5,6 @@ import {
   PredefinedInputField,
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -181,7 +180,7 @@ export const PredefinedInputsForm = () => {
               piece={selectedPiece}
               value={form.watch('auth') as string | null}
               onChange={handleAuthChange}
-              placeholder={t('Connect your account')}
+              placeholder={'Connect your account'}
             />
           )}
           {Object.keys(properties).length > 0 && (
@@ -219,14 +218,14 @@ export const PredefinedInputsForm = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value={FieldControlMode.AGENT_DECIDE}>
-                            {t('Let agent decide')}
+                            {'Let agent decide'}
                           </SelectItem>
                           <SelectItem value={FieldControlMode.CHOOSE_YOURSELF}>
-                            {t('Set value myself')}
+                            {'Set value myself'}
                           </SelectItem>
                           {!property.required && (
                             <SelectItem value={FieldControlMode.LEAVE_EMPTY}>
-                              {t('Leave empty')}
+                              {'Leave empty'}
                             </SelectItem>
                           )}
                         </SelectContent>

@@ -1,5 +1,4 @@
 import { PlatformAnalyticsReport, UserStatus } from '@flow/shared';
-import { t } from 'i18next';
 import { Users } from 'lucide-react';
 
 import { MetricCard, MetricCardSkeleton } from './metric-card';
@@ -24,13 +23,10 @@ export const ActiveUsersMetric = ({ report }: ActiveUsersMetricProps) => {
   return (
     <MetricCard
       icon={Users}
-      title={t('Active Users')}
+      title={'Active Users'}
       value={activeUsers.toLocaleString()}
-      description={t('Users actively using the platform')}
-      subtitle={t('{rate}% adoption rate ({total} total users)', {
-        rate: adoptionRate,
-        total: totalUsers.toLocaleString(),
-      })}
+      description={'Users actively using the platform'}
+      subtitle={`${adoptionRate}% adoption rate (${totalUsers.toLocaleString()} total users)`}
       iconColor="text-amber-500"
       iconBgColor="bg-amber-500/10"
     />

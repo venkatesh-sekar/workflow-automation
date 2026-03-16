@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -80,9 +79,9 @@ export function usePinnedItems() {
         return next;
       });
       if (wasPinned) {
-        toast.success(t('Removed from favorites.'));
+        toast.success('Removed from favorites.');
       } else {
-        toast.success(t('Favorited and moved to the top.'));
+        toast.success('Favorited and moved to the top.');
       }
     },
     [projectId, userId, pinnedList],

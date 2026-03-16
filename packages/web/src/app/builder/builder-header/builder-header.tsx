@@ -7,7 +7,6 @@ import {
   UncategorizedFolderId,
 } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { ChevronDown, CircleHelp, HistoryIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
@@ -182,7 +181,7 @@ export const BuilderHeader = () => {
           onClick={() => openNewWindow(supportUrl)}
         >
           <CircleHelp className="w-4 h-4"></CircleHelp>
-          {t('Support')}
+          {'Support'}
         </Button>
       )}
       {hasPermissionToReadRuns && (
@@ -192,7 +191,7 @@ export const BuilderHeader = () => {
           className="gap-2 px-2"
         >
           <HistoryIcon className="w-4 h-4" />
-          {t('Runs')}
+          {'Runs'}
         </Button>
       )}
 

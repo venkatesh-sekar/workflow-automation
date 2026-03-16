@@ -1,7 +1,6 @@
 import { DropdownState, PropertyType } from '@flow/pieces-framework';
 import { AUTHENTICATION_PROPERTY_NAME, isNil } from '@flow/shared';
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UseFormReturn, useWatch } from 'react-hook-form';
 
@@ -48,7 +47,7 @@ const DynamicDropdownPiecePropertyImplementation = React.memo(
     ];
     const [dropdownState, setDropdownState] = useState<DropdownState<unknown>>({
       disabled: false,
-      placeholder: t('Select an option'),
+      placeholder: 'Select an option',
       options: [],
     });
     const { propertyLoadingFinished, propertyLoadingStarted } = useContext(
@@ -133,7 +132,7 @@ const DynamicDropdownPiecePropertyImplementation = React.memo(
     const isDisabled = dropdownState.disabled || props.disabled;
     return props.multiple ? (
       <MultiSelectPieceProperty
-        placeholder={dropdownState.placeholder ?? t('Select an option')}
+        placeholder={dropdownState.placeholder ?? 'Select an option'}
         options={selectOptions}
         loading={isPending}
         onChange={(value) => props.onChange(value)}
@@ -156,7 +155,7 @@ const DynamicDropdownPiecePropertyImplementation = React.memo(
         options={selectOptions}
         disabled={dropdownState.disabled || props.disabled}
         loading={isPending}
-        placeholder={dropdownState.placeholder ?? t('Select an option')}
+        placeholder={dropdownState.placeholder ?? 'Select an option'}
         value={props.value}
         onChange={(value) => props.onChange(value)}
         showDeselect={

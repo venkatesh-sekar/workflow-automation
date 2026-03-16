@@ -1,5 +1,4 @@
 import { Tag } from '@flow/shared';
-import { t } from 'i18next';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -51,7 +50,7 @@ export function CreateTagDialog({
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
-            <Label htmlFor="tagName">{t('Tag')}</Label>
+            <Label htmlFor="tagName">{'Tag'}</Label>
             <Input
               id="tagName"
               value={tagName}
@@ -61,7 +60,7 @@ export function CreateTagDialog({
           </div>
           <DialogFooter>
             <Button type="submit" loading={isPending}>
-              {t('Create')}
+              {'Create'}
             </Button>
           </DialogFooter>
         </form>

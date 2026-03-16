@@ -1,5 +1,4 @@
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
 import { useState } from 'react';
 
 import {
@@ -121,7 +120,7 @@ const MultiSelectPieceProperty = ({
         {selectedIndicies.length < 10 ? (
           <MultiSelectValue placeholder={placeholder} />
         ) : (
-          t('{number} items selected', { number: selectedIndicies.length })
+          `${selectedIndicies.length} items selected`
         )}
       </MultiSelectTrigger>
       <MultiSelectContent>
@@ -137,7 +136,7 @@ const MultiSelectPieceProperty = ({
                 }}
               >
                 {filteredOptions.length > 1 && (
-                  <MultiSelectItem>{t('Select All')}</MultiSelectItem>
+                  <MultiSelectItem>{'Select All'}</MultiSelectItem>
                 )}
               </div>
 
@@ -155,12 +154,12 @@ const MultiSelectPieceProperty = ({
                 </MultiSelectItem>
               ))}
               {filteredOptions.length === 0 && (
-                <CommandEmpty>{t('No results found.')}</CommandEmpty>
+                <CommandEmpty>{'No results found.'}</CommandEmpty>
               )}
             </>
           )}
           {loading && (
-            <MultiSelectItem disabled>{t('Loading...')}</MultiSelectItem>
+            <MultiSelectItem disabled>{'Loading...'}</MultiSelectItem>
           )}
         </MultiSelectList>
       </MultiSelectContent>

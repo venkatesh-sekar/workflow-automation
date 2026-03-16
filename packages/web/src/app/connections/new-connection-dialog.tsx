@@ -1,6 +1,5 @@
 import { PieceMetadataModelSummary } from '@flow/pieces-framework';
 import { AppConnectionWithoutSensitiveData, isNil } from '@flow/shared';
-import { t } from 'i18next';
 import React, { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -79,11 +78,11 @@ const NewConnectionDialog = React.memo(
           <DialogTrigger asChild>{children}</DialogTrigger>
           <DialogContent className="min-w-[700px] max-w-[700px] h-[680px] max-h-[680px] flex flex-col">
             <DialogHeader>
-              <DialogTitle>{t('New Connection')}</DialogTitle>
+              <DialogTitle>{'New Connection'}</DialogTitle>
             </DialogHeader>
             <div className="mb-4">
               <Input
-                placeholder={t('Search')}
+                placeholder={'Search'}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -92,7 +91,7 @@ const NewConnectionDialog = React.memo(
               <div className="grid grid-cols-4 gap-4">
                 {(isLoading ||
                   (filteredPieces && filteredPieces.length === 0)) && (
-                  <div className="text-center">{t('No pieces found')}</div>
+                  <div className="text-center">{'No pieces found'}</div>
                 )}
                 {!isLoading &&
                   filteredPieces &&
@@ -116,7 +115,7 @@ const NewConnectionDialog = React.memo(
             <DialogFooter>
               <DialogClose asChild>
                 <Button type="button" variant="ghost">
-                  {t('Close')}
+                  {'Close'}
                 </Button>
               </DialogClose>
             </DialogFooter>

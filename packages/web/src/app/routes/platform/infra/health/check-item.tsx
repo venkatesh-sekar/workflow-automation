@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { CheckCircle, ExternalLink, XCircle } from 'lucide-react';
 
 import {
@@ -53,12 +52,12 @@ const CheckItem = ({
           {isChecked ? (
             <div className="text-success-700 flex items-center gap-2">
               <CheckCircle size={18} />
-              {t('Passed')}
+              {'Passed'}
             </div>
           ) : (
             <div className="text-destructive-700 flex items-center gap-2">
               <XCircle size={18} />
-              {t('Needs Attention')}
+              {'Needs Attention'}
             </div>
           )}
         </ItemActions>

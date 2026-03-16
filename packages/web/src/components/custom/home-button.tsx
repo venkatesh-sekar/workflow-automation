@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -48,7 +47,7 @@ const HomeButton = () => {
           </HomeButtonWrapper>
           {!showBackButton && (
             <TooltipContent side="bottom">
-              {t('Go to Dashboard')}
+              {'Go to Dashboard'}
             </TooltipContent>
           )}
         </Tooltip>

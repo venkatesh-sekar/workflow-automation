@@ -1,5 +1,4 @@
 import { FlowVersionState, Permission } from '@flow/shared';
-import { t } from 'i18next';
 import { EyeIcon, PencilIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-use';
@@ -75,7 +74,7 @@ function getButtonTextAndIcon({
 }: {
   hasPermissionToEditFlow: boolean;
 }) {
-  const text = hasPermissionToEditFlow ? t('Edit flow') : t('View draft');
+  const text = hasPermissionToEditFlow ? 'Edit flow' : 'View draft';
 
   if (hasPermissionToEditFlow) {
     return {

@@ -1,6 +1,5 @@
 import { PiecesFilterType } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -58,16 +57,14 @@ export const ManagePiecesDialog = React.memo(
       <Dialog open={open} onOpenChange={(open) => setOpen(open)}>
         <DialogTrigger asChild>
           <Button variant="default" className="flex gap-2 items-center">
-            {t('Manage Pieces')}
+            {'Manage Pieces'}
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t('Manage Pieces')}</DialogTitle>
+            <DialogTitle>{'Manage Pieces'}</DialogTitle>
             <DialogDescription>
-              {t(
-                'Choose which pieces you want to be available for your current project users',
-              )}
+              {'Choose which pieces you want to be available for your current project users'}
             </DialogDescription>
           </DialogHeader>
           <Form {...form}>
@@ -76,9 +73,9 @@ export const ManagePiecesDialog = React.memo(
                 name="pieces"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <Label htmlFor="pieces">{t('Pieces')}</Label>
+                    <Label htmlFor="pieces">{'Pieces'}</Label>
                     <MultiSelectPieceProperty
-                      placeholder={t('Pieces')}
+                      placeholder={'Pieces'}
                       options={
                         allPieces?.map((piece) => ({
                           value: piece.name,
@@ -106,7 +103,7 @@ export const ManagePiecesDialog = React.memo(
                 setOpen(false);
               }}
             >
-              {t('Cancel')}
+              {'Cancel'}
             </Button>
             <Button
               onClick={(e) => {
@@ -127,7 +124,7 @@ export const ManagePiecesDialog = React.memo(
                 })(e);
               }}
             >
-              {t('Save')}
+              {'Save'}
             </Button>
           </DialogFooter>
         </DialogContent>

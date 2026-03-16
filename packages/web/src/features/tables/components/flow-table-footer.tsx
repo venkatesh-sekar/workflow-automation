@@ -1,6 +1,4 @@
 import { FlowFlagId } from '@flow/shared';
-import { t } from 'i18next';
-
 import { flagsHooks } from '@/hooks/flags-hooks';
 
 import { useTableState } from './flow-table-state-provider';
@@ -31,20 +29,16 @@ const FlowTableFooter = ({
           {!areAllRecordsSelected && (
             <>
               {!hasSelectedRows &&
-                `${t('recordsCount', {
-                  recordsCount,
-                })} (${recordsPercentage.toFixed(2)}%)`}{' '}
+                `${`recordsCount`} (${recordsPercentage.toFixed(2)}%)`}{' '}
               {hasSelectedRows &&
-                `${t('selected')} ${t('recordsCount', {
-                  recordsCount: selectedRecords.size,
-                })}`}
+                `${'selected'} ${`recordsCount`}`}
             </>
           )}
-          {areAllRecordsSelected && t('All records selected')}
+          {areAllRecordsSelected && 'All records selected'}
         </div>
         <div className="h-4 w-px bg-border" />
         <div className="text-sm font-normal">
-          {t('fieldsCount', { fieldsCount })} ({fieldsPercentage.toFixed(2)}%)
+          {`fieldsCount`} ({fieldsPercentage.toFixed(2)}%)
         </div>
       </div>
     </div>

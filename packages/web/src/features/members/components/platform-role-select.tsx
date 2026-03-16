@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { UseFormReturn } from 'react-hook-form';
 
 import { FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -15,12 +14,12 @@ export const PlatformRoleSelect = ({ form }: PlatformRoleSelectProps) => {
       name="platformRole"
       render={({ field }) => (
         <FormItem className="grid gap-3">
-          <Label>{t('Platform Role')}</Label>
+          <Label>{'Platform Role'}</Label>
           <RoleSelector
             type="platform"
             value={field.value}
             onValueChange={field.onChange}
-            placeholder={t('Select a platform role')}
+            placeholder={'Select a platform role'}
           />
           <FormMessage />
         </FormItem>

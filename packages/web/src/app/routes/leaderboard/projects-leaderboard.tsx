@@ -1,6 +1,5 @@
 import { ColorName, PROJECT_COLOR_PALETTE } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { Rocket } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -53,7 +52,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<ProjectStats>>[] => [
   {
     accessorKey: 'rank',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Rank')} />
+      <DataTableColumnHeader column={column} title={'Rank'} />
     ),
     cell: ({ row }) => <RankCell rank={row.original.rank} />,
     enableSorting: false,
@@ -62,7 +61,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<ProjectStats>>[] => [
   {
     accessorKey: 'projectName',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Projects')} />
+      <DataTableColumnHeader column={column} title={'Projects'} />
     ),
     cell: ({ row }) => {
       const palette = row.original.iconColor
@@ -88,7 +87,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<ProjectStats>>[] => [
   {
     accessorKey: 'flowCount',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Active Flows')} />
+      <DataTableColumnHeader column={column} title={'Active Flows'} />
     ),
     cell: ({ row }) => (
       <div className="text-left">{row.original.flowCount}</div>
@@ -98,7 +97,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<ProjectStats>>[] => [
   {
     accessorKey: 'minutesSaved',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Time Saved')} />
+      <DataTableColumnHeader column={column} title={'Time Saved'} />
     ),
     cell: ({ row }) => (
       <div className="text-left">
@@ -134,10 +133,8 @@ export function ProjectsLeaderboard({
       isLoading={isLoading ?? false}
       clientPagination={true}
       getRowClassName={getRowClassName}
-      emptyStateTextTitle={t('No projects on the board yet')}
-      emptyStateTextDescription={t(
-        'Projects will rank here as flows are created and time is saved',
-      )}
+      emptyStateTextTitle={'No projects on the board yet'}
+      emptyStateTextDescription={'Projects will rank here as flows are created and time is saved'}
       emptyStateIcon={<Rocket className="h-10 w-10 text-muted-foreground" />}
       onRowClick={(row) => {
         window.open(`/projects/${row.projectId}`, '_blank');

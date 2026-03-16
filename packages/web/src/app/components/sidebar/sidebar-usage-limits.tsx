@@ -1,5 +1,4 @@
 import { FlowEdition, FlowFlagId, isNil, PlatformRole } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronRight, Info, Play, Sparkles, Workflow } from 'lucide-react';
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
@@ -49,21 +48,19 @@ const SidebarUsageLimits = React.memo(() => {
     <div className="flex flex-col w-full p-2.5 bg-background rounded-md border">
       <div className="flex flex-col gap-1.5">
         <UsageRow
-          name={t('Runs')}
+          name={'Runs'}
           icon={<Play className="size-4 text-foreground" />}
           isUnlimited={true}
         />
         <UsageRow
-          name={t('AI Credits')}
+          name={'AI Credits'}
           icon={<Sparkles className="size-4 text-foreground" />}
           value={Math.round(platform.usage?.aiCreditsRemaining ?? 0)}
-          suffix={t('remaining')}
-          tooltip={t(
-            'Used when running AI pieces with Flow as the provider instead of your own API keys.',
-          )}
+          suffix={'remaining'}
+          tooltip={'Used when running AI pieces with Flow as the provider instead of your own API keys.'}
         />
         <UsageRow
-          name={t('Active Flows')}
+          name={'Active Flows'}
           icon={<Workflow className="size-4 text-foreground" />}
           value={platform.usage?.activeFlows ?? 0}
           max={platform?.plan.activeFlowsLimit}
@@ -73,7 +70,7 @@ const SidebarUsageLimits = React.memo(() => {
             to="/platform/setup/billing"
             className="flex items-center gap-1 text-xs text-foreground/80 hover:text-foreground mt-1 w-fit"
           >
-            <span>{t('Manage Plan')}</span>
+            <span>{'Manage Plan'}</span>
             <ChevronRight className="size-4" />
           </Link>
         )}
@@ -122,7 +119,7 @@ const UsageRow = ({
       <div className="flex items-center gap-2 text-foreground">
         {isUnlimited ? (
           <span className="text-foreground bg-muted px-2 py-1 rounded-md">
-            ∞ {t('Unlimited')}
+            ∞ {'Unlimited'}
           </span>
         ) : suffix ? (
           <span>
@@ -131,7 +128,7 @@ const UsageRow = ({
         ) : (
           <span>
             {formatUtils.formatNumber(value ?? 0)} /{' '}
-            {hasMax ? formatUtils.formatNumber(max) : t('Unlimited')}
+            {hasMax ? formatUtils.formatNumber(max) : 'Unlimited'}
           </span>
         )}
       </div>

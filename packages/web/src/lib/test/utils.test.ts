@@ -2,11 +2,6 @@
 import { AxiosError, AxiosHeaders } from 'axios';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-vi.mock('i18next', () => ({
-  default: { language: 'en' },
-  t: (key: string) => key,
-}));
-
 import { formatUtils } from '../format-utils';
 import { validationUtils } from '../validation-utils';
 

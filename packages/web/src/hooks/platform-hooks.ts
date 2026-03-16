@@ -4,7 +4,6 @@ import {
   useMutation,
   useSuspenseQuery,
 } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -19,11 +18,11 @@ export const platformHooks = {
         await platformApi.deleteAccount();
       },
       onSuccess: () => {
-        toast.success(t('Account deleted successfully'));
+        toast.success('Account deleted successfully');
         navigate('/login');
       },
       onError: () => {
-        toast.error(t('Failed to delete account. Please try again.'));
+        toast.error('Failed to delete account. Please try again.');
       },
     });
   },

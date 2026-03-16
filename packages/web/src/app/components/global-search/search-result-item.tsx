@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Dot, FolderIcon, User } from 'lucide-react';
 
 import { TableIcon } from '@/components/icons/table';
@@ -138,7 +137,7 @@ export function SearchResultRow({ item }: { item: SearchResultItem }) {
       </span>
       {item.status === 'ENABLED' && (
         <span className="shrink-0 rounded-full bg-success-50 px-1.5 py-0.5 text-[10px] font-medium text-success-700">
-          {t('Live')}
+          {'Live'}
         </span>
       )}
       <ItemMeta
@@ -170,7 +169,7 @@ export function HistoryResultRow({ item }: { item: SearchHistoryItem }) {
       </span>
       {item.status === 'ENABLED' && (
         <span className="shrink-0 rounded-full bg-success-50 px-1.5 py-0.5 text-[10px] font-medium text-success-700">
-          {t('Live')}
+          {'Live'}
         </span>
       )}
       <ItemMeta projectName={item.projectName} folderName={item.folderName} />

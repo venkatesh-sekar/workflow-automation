@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { CenteredPage } from '@/app/components/centered-page';
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { AppearanceSection } from '@/app/routes/platform/setup/branding/appearance-section';
@@ -10,15 +8,13 @@ export const BrandingPage = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.customAppearanceEnabled}
-      lockTitle={t('Brand Flow')}
-      lockDescription={t(
-        'Give your users an experience that looks like you by customizing the color, logo and more',
-      )}
+      lockTitle={'Brand Flow'}
+      lockDescription={'Give your users an experience that looks like you by customizing the color, logo and more'}
       lockVideoUrl=""
     >
       <CenteredPage
-        title={t('Branding')}
-        description={t('Configure the appearance for your platform.')}
+        title={'Branding'}
+        description={'Configure the appearance for your platform.'}
       >
         <AppearanceSection />
       </CenteredPage>

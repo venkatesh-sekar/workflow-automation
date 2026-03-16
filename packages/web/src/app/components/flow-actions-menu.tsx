@@ -7,7 +7,6 @@ import {
   PopulatedFlow,
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import {
   Copy,
   CornerUpLeft,
@@ -118,7 +117,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
     onSuccess: () => {
       setIsRenameOpen(false);
       onRename();
-      toast.success(t('Flow has been renamed.'));
+      toast.success('Flow has been renamed.');
     },
   });
 
@@ -131,7 +130,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
     onSuccess: () => {
       setIsMoveOpen(false);
       onMoveTo(folderToMoveId);
-      toast.success(t('Moved flow successfully'));
+      toast.success('Moved flow successfully');
     },
   });
 
@@ -190,7 +189,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                   >
                     <div className="flex cursor-pointer flex-row gap-2 items-center">
                       <Pencil className="h-4 w-4" />
-                      <span>{t('Rename')}</span>
+                      <span>{'Rename'}</span>
                     </div>
                   </DropdownMenuItem>
                 </PermissionNeededTooltip>
@@ -209,7 +208,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                 >
                   <div className="flex cursor-pointer flex-row gap-2 items-center">
                     <Pencil className="h-4 w-4" />
-                    <span>{t('Rename')}</span>
+                    <span>{'Rename'}</span>
                   </div>
                 </DropdownMenuItem>
               )}
@@ -226,7 +225,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                 >
                   <div className="flex cursor-pointer  flex-row gap-2 items-center">
                     <UploadCloud className="h-4 w-4" />
-                    <span>{t('Push to Git')}</span>
+                    <span>{'Push to Git'}</span>
                   </div>
                 </DropdownMenuItem>
               </PushToGitDialog>
@@ -253,7 +252,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
               >
                 <div className="flex cursor-pointer  flex-row gap-2 items-center">
                   <CornerUpLeft className="h-4 w-4" />
-                  <span>{t('Move To')}</span>
+                  <span>{'Move To'}</span>
                 </div>
               </DropdownMenuItem>
             </PermissionNeededTooltip>
@@ -273,7 +272,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                 >
                   <div className="flex cursor-pointer  flex-row gap-2 items-center">
                     <User className="h-4 w-4" />
-                    <span>{t('Change Owner')}</span>
+                    <span>{'Change Owner'}</span>
                   </div>
                 </DropdownMenuItem>
               </ChangeOwnerDialog>
@@ -294,7 +293,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                     <Copy className="h-4 w-4" />
                   )}
                   <span>
-                    {isDuplicatePending ? t('Duplicating') : t('Duplicate')}
+                    {isDuplicatePending ? 'Duplicating' : 'Duplicate'}
                   </span>
                 </div>
               </DropdownMenuItem>
@@ -305,7 +304,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
             <DropdownMenuItem onClick={onVersionsListClick}>
               <div className="flex cursor-pointer  flex-row gap-2 items-center">
                 <GalleryVerticalEnd className="h-4 w-4" />
-                <span>{t('Versions')}</span>
+                <span>{'Versions'}</span>
               </div>
             </DropdownMenuItem>
           )}
@@ -322,7 +321,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                   >
                     <div className="flex cursor-pointer flex-row gap-2 items-center">
                       <Import className="w-4 h-4" />
-                      {t('Import')}
+                      {'Import'}
                     </div>
                   </DropdownMenuItem>
                 </ImportFlowDialog>
@@ -337,7 +336,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                 ) : (
                   <Download className="h-4 w-4" />
                 )}
-                <span>{isExportPending ? t('Exporting') : t('Export')}</span>
+                <span>{isExportPending ? 'Exporting' : 'Export'}</span>
               </div>
             </DropdownMenuItem>
           )}
@@ -349,7 +348,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
               <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                 <div className="flex cursor-pointer  flex-row gap-2 items-center">
                   <Share2 className="h-4 w-4" />
-                  <span>{t('Share')}</span>
+                  <span>{'Share'}</span>
                 </div>
               </DropdownMenuItem>
             </ShareTemplateDialog>
@@ -362,19 +361,15 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                 hasPermission={userHasPermissionToUpdateFlow}
               >
                 <ConfirmationDeleteDialog
-                  title={t('Delete Flow')}
+                  title={'Delete Flow'}
                   message={
                     <>
                       <div>
-                        {t(
-                          'This will permanently delete the flow, all its data, and any background runs.',
-                        )}
+                        {'This will permanently delete the flow, all its data, and any background runs.'}
                       </div>
                       {isDevelopmentBranch && (
                         <div className="font-bold mt-2">
-                          {t(
-                            'You are on a development branch, this will also delete the flow from the remote repository.',
-                          )}
+                          {'You are on a development branch, this will also delete the flow from the remote repository.'}
                         </div>
                       )}
                     </>
@@ -383,8 +378,8 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                     await flowsApi.delete(flow.id);
                     onDelete();
                   }}
-                  entityName={t('flow')}
-                  buttonText={t('Delete')}
+                  entityName={'flow'}
+                  buttonText={'Delete'}
                 >
                   <DropdownMenuItem
                     disabled={!userHasPermissionToUpdateFlow}
@@ -393,7 +388,7 @@ const FlowActionMenu: React.FC<FlowActionMenuProps> = ({
                   >
                     <div className="flex cursor-pointer  flex-row gap-2 items-center">
                       <Trash2 className="h-4 w-4 text-destructive" />
-                      <span className="text-destructive">{t('Delete')}</span>
+                      <span className="text-destructive">{'Delete'}</span>
                     </div>
                   </DropdownMenuItem>
                 </ConfirmationDeleteDialog>

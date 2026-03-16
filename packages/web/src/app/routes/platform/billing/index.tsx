@@ -3,8 +3,6 @@ import {
   FlowFlagId,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { CenteredPage } from '@/app/components/centered-page';
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { LoadingSpinner } from '@/components/custom/spinner';
@@ -21,10 +19,8 @@ export default function Billing() {
   return (
     <LockedFeatureGuard
       locked={edition === FlowEdition.COMMUNITY}
-      lockTitle={t('Unlock Billing Page')}
-      lockDescription={t(
-        'Switch to the Enterprise edition to access billing and usage management.',
-      )}
+      lockTitle={'Unlock Billing Page'}
+      lockDescription={'Switch to the Enterprise edition to access billing and usage management.'}
     >
       <BillingPageDetails />
     </LockedFeatureGuard>
@@ -51,15 +47,15 @@ function BillingPageDetails() {
   if (isError) {
     return (
       <article className="h-full flex items-center justify-center w-full">
-        {t('Failed to load billing information')}
+        {'Failed to load billing information'}
       </article>
     );
   }
 
   return (
     <CenteredPage
-      title={t('Billing')}
-      description={t('Manage your usage and plan details.')}
+      title={'Billing'}
+      description={'Manage your usage and plan details.'}
     >
       <div className="flex flex-col gap-6">
         <LicenseKey platform={platform} />

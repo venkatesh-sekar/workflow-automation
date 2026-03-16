@@ -3,7 +3,6 @@ import {
   Permission,
   ProjectType,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Bell, Settings, Users } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
@@ -62,7 +61,7 @@ export function ProjectSettingsDialog({
       externalId: values.externalId,
       icon: values.icon,
     });
-    toast.success(t('Your changes have been saved.'), {
+    toast.success('Your changes have been saved.', {
       duration: 3000,
     });
     onClose();
@@ -83,13 +82,13 @@ export function ProjectSettingsDialog({
   const tabs = [
     {
       id: 'general' as SettingsTabId,
-      label: t('General'),
+      label: 'General',
       icon: <Settings className="w-4 h-4" />,
       disabled: project.type !== ProjectType.TEAM,
     },
     {
       id: 'members' as SettingsTabId,
-      label: t('Members'),
+      label: 'Members',
       icon: <Users className="w-4 h-4" />,
       disabled:
         project.type !== ProjectType.TEAM ||
@@ -97,7 +96,7 @@ export function ProjectSettingsDialog({
     },
     {
       id: 'alerts' as SettingsTabId,
-      label: t('Alerts'),
+      label: 'Alerts',
       icon: <Bell className="w-4 h-4" />,
       disabled: project.type !== ProjectType.TEAM,
     },
@@ -125,7 +124,7 @@ export function ProjectSettingsDialog({
         </span>
         {hasUnsavedChanges && (
           <Badge variant="ghost" className="text-muted-foreground">
-            {t('Unsaved changes')}
+            {'Unsaved changes'}
           </Badge>
         )}
       </div>
@@ -138,14 +137,14 @@ export function ProjectSettingsDialog({
       <div className="border-t bg-background rounded-br-md">
         <div className="flex items-center justify-end gap-3 px-6 py-4">
           <Button variant="outline" size="sm" onClick={onClose}>
-            {t('Close')}
+            {'Close'}
           </Button>
           <Button
             disabled={!form.formState.isDirty}
             size="sm"
             onClick={form.handleSubmit(handleSave)}
           >
-            {t('Save Changes')}
+            {'Save Changes'}
           </Button>
         </div>
       </div>

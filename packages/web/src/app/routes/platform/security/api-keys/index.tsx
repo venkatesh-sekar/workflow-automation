@@ -1,5 +1,4 @@
 import { ApiKeyResponseWithoutValue } from '@flow/shared';
-import { t } from 'i18next';
 import { Key, MoreHorizontal, Trash } from 'lucide-react';
 
 import { CenteredPage } from '@/app/components/centered-page';
@@ -40,19 +39,17 @@ const ApiKeysPage = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.apiKeysEnabled}
-      lockTitle={t('Enable API Keys')}
-      lockDescription={t(
-        'Create and manage API keys to access Flow APIs.',
-      )}
+      lockTitle={'Enable API Keys'}
+      lockDescription={'Create and manage API keys to access Flow APIs.'}
       lockVideoUrl=""
     >
       <CenteredPage
-        title={t('API Keys')}
-        description={t('Manage API keys to access Flow APIs.')}
+        title={'API Keys'}
+        description={'Manage API keys to access Flow APIs.'}
         actions={
           <NewApiKeyDialog onCreate={() => refetch()}>
             <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-              {t('New API Key')}
+              {'New API Key'}
             </AnimatedIconButton>
           </NewApiKeyDialog>
         }
@@ -65,7 +62,7 @@ const ApiKeysPage = () => {
           <div className="flex flex-col items-center gap-3 py-12 text-muted-foreground">
             <Key className="size-10" />
             <p className="text-sm">
-              {t('No API keys yet. Create one to get started.')}
+              {'No API keys yet. Create one to get started.'}
             </p>
           </div>
         )}
@@ -84,18 +81,18 @@ const ApiKeysPage = () => {
                       sk-...{apiKey.truncatedValue}
                     </span>
                     {' · '}
-                    {t('Created')}{' '}
+                    {'Created'}{' '}
                     {formatUtils.formatDateToAgo(new Date(apiKey.created))}
                     {apiKey.lastUsedAt ? (
                       <>
                         {' '}
-                        · {t('Last used')}{' '}
+                        · {'Last used'}{' '}
                         {formatUtils.formatDateToAgo(
                           new Date(apiKey.lastUsedAt),
                         )}
                       </>
                     ) : (
-                      <> · {t('Never used')}</>
+                      <> · {'Never used'}</>
                     )}
                   </ItemDescription>
                 </ItemContent>
@@ -108,12 +105,10 @@ const ApiKeysPage = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <ConfirmationDeleteDialog
-                        title={t('Revoke API Key')}
-                        message={t(
-                          'Revoking this API key will immediately break any integrations using it. This action cannot be undone.',
-                        )}
-                        entityName={t('API Key')}
-                        buttonText={t('Revoke')}
+                        title={'Revoke API Key'}
+                        message={'Revoking this API key will immediately break any integrations using it. This action cannot be undone.'}
+                        entityName={'API Key'}
+                        buttonText={'Revoke'}
                         mutationFn={async () => {
                           await apiKeyApi.delete(apiKey.id);
                           refetch();
@@ -125,7 +120,7 @@ const ApiKeysPage = () => {
                           onSelect={(e) => e.preventDefault()}
                         >
                           <Trash className="size-4 mr-2 text-destructive" />
-                          {t('Revoke API Key')}
+                          {'Revoke API Key'}
                         </DropdownMenuItem>
                       </ConfirmationDeleteDialog>
                     </DropdownMenuContent>

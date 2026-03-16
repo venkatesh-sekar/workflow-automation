@@ -4,7 +4,6 @@ import {
   singleValueConditions,
   RouterAction,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 import { useFormContext } from 'react-hook-form';
 
@@ -24,30 +23,28 @@ import {
 import { TextInputWithMentions } from '../../piece-properties/text-input-with-mentions';
 
 const textToBranchOperation: Record<BranchOperator, string> = {
-  [BranchOperator.TEXT_CONTAINS]: t('(Text) Contains'),
-  [BranchOperator.TEXT_DOES_NOT_CONTAIN]: t('(Text) Does not contain'),
-  [BranchOperator.TEXT_EXACTLY_MATCHES]: t('(Text) Exactly matches'),
-  [BranchOperator.TEXT_DOES_NOT_EXACTLY_MATCH]: t(
-    '(Text) Does not exactly match',
-  ),
-  [BranchOperator.TEXT_STARTS_WITH]: t('(Text) Starts with'),
-  [BranchOperator.TEXT_DOES_NOT_START_WITH]: t('(Text) Does not start with'),
-  [BranchOperator.TEXT_ENDS_WITH]: t('(Text) Ends with'),
-  [BranchOperator.TEXT_DOES_NOT_END_WITH]: t('(Text) Does not end with'),
-  [BranchOperator.LIST_CONTAINS]: t('(List) Contains'),
-  [BranchOperator.LIST_DOES_NOT_CONTAIN]: t('(List) Does not contain'),
-  [BranchOperator.NUMBER_IS_GREATER_THAN]: t('(Number) Is greater than'),
-  [BranchOperator.NUMBER_IS_LESS_THAN]: t('(Number) Is less than'),
-  [BranchOperator.NUMBER_IS_EQUAL_TO]: t('(Number) Is equal to'),
-  [BranchOperator.DATE_IS_AFTER]: t('(Date/time) After'),
-  [BranchOperator.DATE_IS_BEFORE]: t('(Date/time) Before'),
-  [BranchOperator.DATE_IS_EQUAL]: t('(Date/time) Equals'),
-  [BranchOperator.BOOLEAN_IS_TRUE]: t('(Boolean) Is true'),
-  [BranchOperator.BOOLEAN_IS_FALSE]: t('(Boolean) Is false'),
-  [BranchOperator.LIST_IS_EMPTY]: t('(List) Is empty'),
-  [BranchOperator.LIST_IS_NOT_EMPTY]: t('(List) Is not empty'),
-  [BranchOperator.EXISTS]: t('Exists'),
-  [BranchOperator.DOES_NOT_EXIST]: t('Does not exist'),
+  [BranchOperator.TEXT_CONTAINS]: '(Text) Contains',
+  [BranchOperator.TEXT_DOES_NOT_CONTAIN]: '(Text) Does not contain',
+  [BranchOperator.TEXT_EXACTLY_MATCHES]: '(Text) Exactly matches',
+  [BranchOperator.TEXT_DOES_NOT_EXACTLY_MATCH]: '(Text) Does not exactly match',
+  [BranchOperator.TEXT_STARTS_WITH]: '(Text) Starts with',
+  [BranchOperator.TEXT_DOES_NOT_START_WITH]: '(Text) Does not start with',
+  [BranchOperator.TEXT_ENDS_WITH]: '(Text) Ends with',
+  [BranchOperator.TEXT_DOES_NOT_END_WITH]: '(Text) Does not end with',
+  [BranchOperator.LIST_CONTAINS]: '(List) Contains',
+  [BranchOperator.LIST_DOES_NOT_CONTAIN]: '(List) Does not contain',
+  [BranchOperator.NUMBER_IS_GREATER_THAN]: '(Number) Is greater than',
+  [BranchOperator.NUMBER_IS_LESS_THAN]: '(Number) Is less than',
+  [BranchOperator.NUMBER_IS_EQUAL_TO]: '(Number) Is equal to',
+  [BranchOperator.DATE_IS_AFTER]: '(Date/time) After',
+  [BranchOperator.DATE_IS_BEFORE]: '(Date/time) Before',
+  [BranchOperator.DATE_IS_EQUAL]: '(Date/time) Equals',
+  [BranchOperator.BOOLEAN_IS_TRUE]: '(Boolean) Is true',
+  [BranchOperator.BOOLEAN_IS_FALSE]: '(Boolean) Is false',
+  [BranchOperator.LIST_IS_EMPTY]: '(List) Is empty',
+  [BranchOperator.LIST_IS_NOT_EMPTY]: '(List) Is not empty',
+  [BranchOperator.EXISTS]: 'Exists',
+  [BranchOperator.DOES_NOT_EXIST]: 'Does not exist',
 };
 const operationOptions = Object.keys(textToBranchOperation).map((operator) => {
   return {
@@ -98,7 +95,7 @@ const BranchSingleCondition = ({
               </div>
             </TooltipTrigger>
             <TooltipContent side="bottom">
-              {t('Incomplete condition')}
+              {'Incomplete condition'}
             </TooltipContent>
           </Tooltip>
         )}
@@ -116,7 +113,7 @@ const BranchSingleCondition = ({
                 <FormItem>
                   <TextInputWithMentions
                     disabled={readonly}
-                    placeholder={t('First value')}
+                    placeholder={'First value'}
                     onChange={(value) => {
                       field.onChange(value);
                       form.trigger();
@@ -164,7 +161,7 @@ const BranchSingleCondition = ({
               render={({ field }) => (
                 <FormItem>
                   <TextInputWithMentions
-                    placeholder={t('Second value')}
+                    placeholder={'Second value'}
                     disabled={readonly}
                     initialValue={field.value || ''}
                     onChange={(value) => {
@@ -193,7 +190,7 @@ const BranchSingleCondition = ({
                     checked={field.value}
                     onCheckedChange={(e) => field.onChange(e)}
                   />
-                  <Label htmlFor="case-sensitive">{t('Case sensitive')}</Label>
+                  <Label htmlFor="case-sensitive">{'Case sensitive'}</Label>
                 </div>
                 <FormMessage />
               </FormItem>
@@ -209,7 +206,7 @@ const BranchSingleCondition = ({
               size={'sm'}
               onClick={deleteClick}
             >
-              <Trash className="w-4 h-4"></Trash> {t('Remove')}
+              <Trash className="w-4 h-4"></Trash> {'Remove'}
             </Button>
           )}
         </div>

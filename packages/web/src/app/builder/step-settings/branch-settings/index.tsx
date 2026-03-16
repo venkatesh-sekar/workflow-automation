@@ -1,5 +1,4 @@
 import { emptyCondition } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
@@ -50,7 +49,7 @@ const BranchSettings = React.memo(
 
     return (
       <div className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-        <div className="text-md ">{t('Execute If')}</div>
+        <div className="text-md ">{'Execute If'}</div>
         {fields.map((fieldGroup, groupIndex) => (
           <BranchConditionGroup
             key={fieldGroup.id}

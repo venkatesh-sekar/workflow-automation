@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
@@ -24,21 +23,21 @@ export const DeleteUserAction = ({
 }: DeleteUserActionProps) => {
   const isInvitation = row.type === 'invitation';
   const email = row.data.email;
-  const entityType = isInvitation ? t('Invitation') : t('User');
+  const entityType = isInvitation ? 'Invitation' : 'User';
 
   return (
     <div className="flex items-end justify-end">
       <Tooltip>
         <TooltipTrigger>
           <ConfirmationDeleteDialog
-            title={isInvitation ? t('Delete Invitation') : t('Delete User')}
+            title={isInvitation ? 'Delete Invitation' : 'Delete User'}
             message={
               isInvitation
-                ? t('This invitation will be permanently deleted.')
-                : t('This user and all their data will be permanently deleted.')
+                ? 'This invitation will be permanently deleted.'
+                : 'This user and all their data will be permanently deleted.'
             }
             entityName={`${entityType} ${email}`}
-            buttonText={t('Delete')}
+            buttonText={'Delete'}
             mutationFn={async () => {
               onDelete(isInvitation ? row.id : row.data.id, isInvitation);
             }}
@@ -49,7 +48,7 @@ export const DeleteUserAction = ({
           </ConfirmationDeleteDialog>
         </TooltipTrigger>
         <TooltipContent side="bottom">
-          {isInvitation ? t('Delete invitation') : t('Delete user')}
+          {isInvitation ? 'Delete invitation' : 'Delete user'}
         </TooltipContent>
       </Tooltip>
     </div>

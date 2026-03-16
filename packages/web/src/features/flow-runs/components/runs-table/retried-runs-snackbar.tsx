@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Info } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -25,9 +24,7 @@ export const RetriedRunsSnackbar = ({
       <div className="flex items-center justify-between animate-fade">
         <div className="flex items-center gap-2">
           <Info className="size-5" />
-          {t('runsRetriedNote', {
-            runsCount: retriedRunsIds.length,
-          })}
+          {`runsRetriedNote`}
         </div>
 
         <Button
@@ -42,7 +39,7 @@ export const RetriedRunsSnackbar = ({
             clearRetriedRuns();
           }}
         >
-          {t('View')}
+          {'View'}
         </Button>
       </div>
     </div>

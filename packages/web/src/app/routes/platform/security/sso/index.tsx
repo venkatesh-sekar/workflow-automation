@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { LockIcon, MailIcon, Earth } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -35,21 +34,19 @@ const SSOPage = () => {
       platformId: platform.id,
       refetch,
       onSuccess: () => {
-        toast.success(t('Email authentication updated'), { duration: 3000 });
+        toast.success('Email authentication updated', { duration: 3000 });
       },
     });
 
   return (
     <LockedFeatureGuard
       locked={!platform.plan.ssoEnabled}
-      lockTitle={t('Enable Single Sign On')}
-      lockDescription={t(
-        'Let your users sign in with your current SSO provider or give them self serve sign up access',
-      )}
+      lockTitle={'Enable Single Sign On'}
+      lockDescription={'Let your users sign in with your current SSO provider or give them self serve sign up access'}
     >
       <CenteredPage
-        title={t('Single Sign On')}
-        description={t('Manage single sign on providers')}
+        title={'Single Sign On'}
+        description={'Manage single sign on providers'}
       >
         <div className="flex flex-col gap-4">
           <Item variant="outline">
@@ -57,9 +54,9 @@ const SSOPage = () => {
               <Earth />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>{t('Allowed Domains')}</ItemTitle>
+              <ItemTitle>{'Allowed Domains'}</ItemTitle>
               <ItemDescription>
-                {t('Restrict authentication to specific email domains.')}
+                {'Restrict authentication to specific email domains.'}
               </ItemDescription>
               {(platform?.allowedAuthDomains ?? []).length > 0 && (
                 <div className="mt-1 gap-2 flex">
@@ -83,9 +80,7 @@ const SSOPage = () => {
             <ItemContent>
               <ItemTitle>Google</ItemTitle>
               <ItemDescription>
-                {t(
-                  "Allow logins through google's single sign-on functionality.",
-                )}
+                {"Allow logins through google's single sign-on functionality."}
               </ItemDescription>
             </ItemContent>
             <ItemActions>
@@ -104,11 +99,9 @@ const SSOPage = () => {
               <LockIcon />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>{t('SAML 2.0')}</ItemTitle>
+              <ItemTitle>{'SAML 2.0'}</ItemTitle>
               <ItemDescription>
-                {t(
-                  "Allow logins through saml 2.0's single sign-on functionality.",
-                )}
+                {"Allow logins through saml 2.0's single sign-on functionality."}
               </ItemDescription>
             </ItemContent>
             <ItemActions>
@@ -125,9 +118,9 @@ const SSOPage = () => {
               <MailIcon />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>{t('Allowed Email Login')}</ItemTitle>
+              <ItemTitle>{'Allowed Email Login'}</ItemTitle>
               <ItemDescription>
-                {t('Allow logins through email and password.')}
+                {'Allow logins through email and password.'}
               </ItemDescription>
             </ItemContent>
             <ItemActions>

@@ -11,7 +11,6 @@ import {
   PropertyExecutionType,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus, Globe } from 'lucide-react';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -90,13 +89,13 @@ function ConnectionSelect(params: ConnectionSelectProps) {
           {(isLoadingConnections || !pieceWithCorrectVersion) && (
             <div className="flex flex-col gap-2">
               <FormLabel>
-                {t('Connection')} <span className="text-destructive">*</span>
+                {'Connection'} <span className="text-destructive">*</span>
               </FormLabel>
               <SearchableSelect
                 options={[]}
                 disabled={true}
                 loading={isLoadingConnections}
-                placeholder={t('Select a connection')}
+                placeholder={'Select a connection'}
                 value={field.value as React.Key}
                 onChange={(value) => field.onChange(value)}
                 showDeselect={false}
@@ -160,7 +159,7 @@ function ConnectionSelect(params: ConnectionSelectProps) {
                               }}
                               disabled={!hasPermissionToCreateConnection}
                             >
-                              {t('Reconnect')}
+                              {'Reconnect'}
                             </Button>
                           </PermissionNeededTooltip>
                         </div>
@@ -169,7 +168,7 @@ function ConnectionSelect(params: ConnectionSelectProps) {
                     <SelectTrigger className="flex gap-2 items-center">
                       <SelectValue
                         className="truncate grow shrink"
-                        placeholder={t('Select a connection')}
+                        placeholder={'Select a connection'}
                         data-testid="select-connection-value"
                       >
                         {!isNil(field.value) &&
@@ -210,7 +209,7 @@ function ConnectionSelect(params: ConnectionSelectProps) {
                             role="button"
                             className="z-50 opacity-0 pointer-events-none"
                           >
-                            {t('Reconnect')}
+                            {'Reconnect'}
                           </span>
                         )}
                     </SelectTrigger>
@@ -238,7 +237,7 @@ function ConnectionSelect(params: ConnectionSelectProps) {
                           )}
                         >
                           <Plus size={16} />
-                          {t('Create Connection')}
+                          {'Create Connection'}
                         </span>
                       </SelectAction>
                     </PermissionNeededTooltip>

@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useContext } from 'react';
 
 import {
@@ -31,10 +30,10 @@ const TestButtonTooltip = ({
         {(invalid || isLoadingDynamicProperties || saving) && (
           <TooltipContent side="bottom">
             {invalid
-              ? t('Please fix inputs first')
+              ? 'Please fix inputs first'
               : isLoadingDynamicProperties
-              ? t('Please wait until all inputs are loaded')
-              : t('Saving...')}
+              ? 'Please wait until all inputs are loaded'
+              : 'Saving...'}
           </TooltipContent>
         )}
       </Tooltip>

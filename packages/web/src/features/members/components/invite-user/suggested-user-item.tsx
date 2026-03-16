@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Mail } from 'lucide-react';
 
 import { UserAvatar } from '@/components/custom/user-avatar';
@@ -41,13 +40,13 @@ function PlatformUserItem({
   const getBadge = () => {
     if (user.memberStatus === 'has-access') {
       return {
-        label: t('Has Access'),
+        label: 'Has Access',
         className: 'text-primary bg-primary/15',
       };
     }
     if (user.memberStatus === 'already-invited') {
       return {
-        label: t('Invited'),
+        label: 'Invited',
         className: 'text-muted-foreground bg-muted-foreground/15',
       };
     }
@@ -102,25 +101,25 @@ function EmailStatusSuggestionItem({
     switch (emailStatus.type) {
       case 'external':
         return {
-          label: t('External'),
+          label: 'External',
           className: 'text-muted-foreground bg-muted-foreground/15',
           disabled: false,
         };
       case 'has-access':
         return {
-          label: t('Has Access'),
+          label: 'Has Access',
           className: 'text-primary bg-primary/15',
           disabled: true,
         };
       case 'in-project':
         return {
-          label: t('Member'),
+          label: 'Member',
           className: 'text-warning bg-warning/15',
           disabled: true,
         };
       case 'already-invited':
         return {
-          label: t('Invited'),
+          label: 'Invited',
           className: 'text-muted-foreground bg-muted-foreground/15',
           disabled: false,
         };

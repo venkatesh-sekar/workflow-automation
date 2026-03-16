@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -27,10 +26,8 @@ export const TokenCheckerWrapper: React.FC<{ children: React.ReactNode }> = ({
     projectCollectionUtils.useHasAccessToProject(projectIdFromParams);
 
   if (!hasAccessToProject) {
-    toast.error(t('Invalid Access'), {
-      description: t(
-        'You tried to access a project that you do not have access to.',
-      ),
+    toast.error('Invalid Access', {
+      description: 'You tried to access a project that you do not have access to.',
       duration: 10000,
     });
     return <Navigate to="/" replace />;

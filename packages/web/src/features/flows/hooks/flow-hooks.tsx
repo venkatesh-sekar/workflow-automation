@@ -20,7 +20,6 @@ import {
   UpdateRunProgressRequest,
 } from '@flow/shared';
 import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -120,13 +119,11 @@ export const flowHooks = {
           openDialog({
             title:
               change === 'publish'
-                ? t('Publish failed')
-                : t('Status update failed'),
+                ? 'Publish failed'
+                : 'Status update failed',
             description: (
               <p>
-                {t(
-                  'An error occurred while changing the flow status. This may be due to an issue in the trigger piece or its settings.',
-                )}
+                {'An error occurred while changing the flow status. This may be due to an issue in the trigger piece or its settings.'}
               </p>
             ),
             error: {
@@ -146,7 +143,7 @@ export const flowHooks = {
           errorCode === ErrorCode.FLOW_OPERATION_IN_PROGRESS &&
           errorMessage
         ) {
-          toast.error(t('Flow Is Busy'), {
+          toast.error('Flow Is Busy', {
             description: errorMessage,
             duration: 5000,
           });
@@ -177,8 +174,8 @@ export const flowHooks = {
         if (res.length > 0) {
           toast.success(
             res.length === 1
-              ? t(`${res[0].version.displayName} has been exported.`)
-              : t('Flows have been exported.'),
+              ? `${res[0].version.displayName} has been exported.`
+              : 'Flows have been exported.',
             {
               duration: 3000,
             },
@@ -231,7 +228,7 @@ export const flowHooks = {
       mutationFn: async () => {
         const flow = await flowsApi.create({
           projectId: authenticationSession.getProjectId()!,
-          displayName: t('Untitled'),
+          displayName: 'Untitled',
         });
         const mcpPiece = await piecesApi.get({
           name: '@flow/piece-mcp',
@@ -384,7 +381,7 @@ export const flowHooks = {
             : undefined;
         const flow = await flowsApi.create({
           projectId: authenticationSession.getProjectId()!,
-          displayName: t('Untitled'),
+          displayName: 'Untitled',
           folderName: folder?.displayName,
         });
         return flow;

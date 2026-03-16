@@ -1,5 +1,4 @@
 import { EventDestination } from '@flow/shared';
-import { t } from 'i18next';
 import { MoreVertical, Pencil, Trash } from 'lucide-react';
 import { useState } from 'react';
 
@@ -43,17 +42,15 @@ const EventDestinationActions = ({
               }}
             >
               <Pencil className="h-4 w-4 mr-2" />
-              {t('Edit')}
+              {'Edit'}
             </DropdownMenuItem>
           </EventDestinationDialog>
 
           <ConfirmationDeleteDialog
-            title={t('Delete Destination')}
-            message={t(
-              'Deleting this destination will stop all event notifications to this endpoint.',
-            )}
+            title={'Delete Destination'}
+            message={'Deleting this destination will stop all event notifications to this endpoint.'}
             entityName="destination"
-            buttonText={t('Delete')}
+            buttonText={'Delete'}
             showToast
             mutationFn={async () => {
               if (destination) {
@@ -69,7 +66,7 @@ const EventDestinationActions = ({
               }}
             >
               <Trash className="h-4 w-4 mr-2" />
-              {t('Delete')}
+              {'Delete'}
             </DropdownMenuItem>
           </ConfirmationDeleteDialog>
         </DropdownMenuContent>

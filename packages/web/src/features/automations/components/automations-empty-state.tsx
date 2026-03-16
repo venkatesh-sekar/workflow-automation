@@ -3,7 +3,6 @@ import {
   Template,
   UncategorizedFolderId,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   ChevronRight,
   Plus,
@@ -134,7 +133,7 @@ const SuggestedTemplateCard = ({
 
         <p className="text-muted-foreground text-sm line-clamp-2 mt-1 flex-shrink-0">
           {template.summary || (
-            <span className="italic">{t('No summary')}</span>
+            <span className="italic">{'No summary'}</span>
           )}
         </p>
 
@@ -144,7 +143,7 @@ const SuggestedTemplateCard = ({
               <TagWithBright
                 key={index}
                 index={index}
-                prefix={t('Save')}
+                prefix={'Save'}
                 title={tag.title}
                 color={tag.color}
                 size="sm"
@@ -226,18 +225,18 @@ export const AutomationsEmptyState = ({
     <div className="flex flex-col gap-8 py-8 px-4 max-w-5xl mx-auto">
       <div>
         <h2 className="text-sm font-medium text-muted-foreground mb-4">
-          {t('Get started with Flow')}
+          {'Get started with Flow'}
         </h2>
         <div className="flex gap-4">
           <GetStartedCard
             icon={<Workflow className="h-5 w-5 text-purple-600" />}
             iconBgClass="bg-purple-100"
-            title={t('Build a Flow')}
-            description={t('Create automated workflows')}
+            title={'Build a Flow'}
+            description={'Create automated workflows'}
           >
             <ActionRow
               icon={<Plus className="h-4 w-4" />}
-              label={t('Start from scratch')}
+              label={'Start from scratch'}
               onClick={() => createFlow()}
               disabled={isCreateFlowPending}
               hasPermission={userHasPermissionToWriteFlow}
@@ -258,7 +257,7 @@ export const AutomationsEmptyState = ({
                     <span className="text-muted-foreground">
                       <Upload className="h-4 w-4" />
                     </span>
-                    <span className="text-sm font-medium">{t('Import')}</span>
+                    <span className="text-sm font-medium">{'Import'}</span>
                   </div>
                   <ChevronRight className="h-4 w-4 text-muted-foreground" />
                 </button>
@@ -266,7 +265,7 @@ export const AutomationsEmptyState = ({
             </PermissionNeededTooltip>
             <ActionRow
               icon={<Sparkles className="h-4 w-4" />}
-              label={t('Use Templates')}
+              label={'Use Templates'}
               onClick={handleViewAllTemplates}
               hasPermission={userHasPermissionToWriteFlow}
             />
@@ -275,19 +274,19 @@ export const AutomationsEmptyState = ({
           <GetStartedCard
             icon={<Table2 className="h-5 w-5 text-emerald-600" />}
             iconBgClass="bg-emerald-100"
-            title={t('Create a Table')}
-            description={t('Organize and manage data')}
+            title={'Create a Table'}
+            description={'Organize and manage data'}
           >
             <ActionRow
               icon={<Plus className="h-4 w-4" />}
-              label={t('Start from scratch')}
-              onClick={() => createTable({ name: t('New Table') })}
+              label={'Start from scratch'}
+              onClick={() => createTable({ name: 'New Table' })}
               disabled={isCreateTablePending}
               hasPermission={userHasPermissionToWriteTable}
             />
             <ActionRow
               icon={<Upload className="h-4 w-4" />}
-              label={t('Import')}
+              label={'Import'}
               onClick={() => setIsImportTableDialogOpen(true)}
               hasPermission={userHasPermissionToWriteTable}
             />
@@ -299,14 +298,14 @@ export const AutomationsEmptyState = ({
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              {t('Templates For You')}
+              {'Templates For You'}
               <Sparkles className="h-4 w-4 text-yellow-500" />
             </h2>
             <button
               onClick={handleViewAllTemplates}
               className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
             >
-              {t('All templates')}
+              {'All templates'}
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>

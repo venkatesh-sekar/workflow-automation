@@ -1,5 +1,4 @@
 import { FolderDto, PopulatedFlow, Table } from '@flow/shared';
-import { t } from 'i18next';
 import {
   ArrowDown,
   ChevronDown,
@@ -106,7 +105,7 @@ export const AutomationsTableRow = ({
         >
           <ArrowDown className="h-4 w-4" />
           <span>
-            {t('Load {count} more items...', { count: item.loadMoreCount })}
+            {`Load ${item.loadMoreCount} more items...`}
           </span>
         </div>
       </div>
@@ -146,7 +145,7 @@ export const AutomationsTableRow = ({
               </button>
             </TooltipTrigger>
             <TooltipContent side="top">
-              {isPinned ? t('Remove from favorites') : t('Add to favorites')}
+              {isPinned ? 'Remove from favorites' : 'Add to favorites'}
             </TooltipContent>
           </Tooltip>
         )}
@@ -216,17 +215,17 @@ export const AutomationsTableRow = ({
                   const url = new URL(window.location.href);
                   url.searchParams.set('folder', item.id);
                   navigator.clipboard.writeText(url.toString());
-                  toast.success(t('URL copied to clipboard'));
+                  toast.success('URL copied to clipboard');
                 }}
               >
                 <Link className="h-4 w-4 mr-2" />
-                {t('Copy URL')}
+                {'Copy URL'}
               </DropdownMenuItem>
             )}
 
             <DropdownMenuItem onClick={onRename}>
               <Pencil className="h-4 w-4 mr-2" />
-              {t('Rename')}
+              {'Rename'}
             </DropdownMenuItem>
 
             {item.type === 'flow' && !embedState.hideDuplicateFlow && (
@@ -239,7 +238,7 @@ export const AutomationsTableRow = ({
                 ) : (
                   <Copy className="h-4 w-4 mr-2" />
                 )}
-                {isDuplicating ? t('Duplicating...') : t('Duplicate')}
+                {isDuplicating ? 'Duplicating...' : 'Duplicate'}
               </DropdownMenuItem>
             )}
 
@@ -252,7 +251,7 @@ export const AutomationsTableRow = ({
                   }}
                 >
                   <CornerUpLeft className="h-4 w-4 mr-2" />
-                  {t('Move To')}
+                  {'Move To'}
                 </DropdownMenuItem>
               )}
 
@@ -261,7 +260,7 @@ export const AutomationsTableRow = ({
                 onClick={() => onExportFlow(item.data as PopulatedFlow)}
               >
                 <Download className="h-4 w-4 mr-2" />
-                {t('Export')}
+                {'Export'}
               </DropdownMenuItem>
             )}
 
@@ -270,7 +269,7 @@ export const AutomationsTableRow = ({
                 onClick={() => onExportTable(item.data as Table)}
               >
                 <Download className="h-4 w-4 mr-2" />
-                {t('Export')}
+                {'Export'}
               </DropdownMenuItem>
             )}
 
@@ -281,27 +280,25 @@ export const AutomationsTableRow = ({
               >
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                   <Share2 className="h-4 w-4 mr-2" />
-                  {t('Share')}
+                  {'Share'}
                 </DropdownMenuItem>
               </ShareTemplateDialog>
             )}
 
             <DropdownMenuSeparator />
             <ConfirmationDeleteDialog
-              title={t('Delete {type}', { type: item.type })}
-              message={t('Deleting "{name}" cannot be undone.', {
-                name: item.name,
-              })}
+              title={`Delete ${item.type}`}
+              message={`Deleting "${item.name}" cannot be undone.`}
               mutationFn={async () => onDelete()}
               entityName={item.type}
-              buttonText={t('Delete')}
+              buttonText={'Delete'}
             >
               <DropdownMenuItem
                 onSelect={(e) => e.preventDefault()}
                 className="text-destructive focus:text-destructive"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                {t('Delete')}
+                {'Delete'}
               </DropdownMenuItem>
             </ConfirmationDeleteDialog>
           </DropdownMenuContent>
@@ -340,7 +337,7 @@ const RowItemDetails = ({ item }: { item: TreeItem }) => {
     case 'folder':
       return (
         <span className="text-muted-foreground">
-          {item.childCount} {item.childCount === 1 ? t('file') : t('files')}
+          {item.childCount} {item.childCount === 1 ? 'file' : 'files'}
         </span>
       );
     case 'flow': {

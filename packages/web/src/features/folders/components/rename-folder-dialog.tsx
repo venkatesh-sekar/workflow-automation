@@ -2,7 +2,6 @@ import { FolderDto } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { HttpStatusCode } from 'axios';
-import { t } from 'i18next';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -32,8 +31,8 @@ type CreateFolderDialogProps = {
 
 const CreateFolderFormSchema = z.object({
   displayName: z
-    .string({ message: t('Please enter folder name') })
-    .regex(/.*\S.*/, t('Please enter folder name')),
+    .string({ message: 'Please enter folder name' })
+    .regex(/.*\S.*/, 'Please enter folder name'),
 });
 
 type CreateFolderFormSchema = z.infer<typeof CreateFolderFormSchema>;
@@ -64,14 +63,14 @@ export const CreateFolderDialog = ({
       onOpenChange(false);
       updateSearchParams(folder.id);
       refetchFolders();
-      toast.success(t('Added folder successfully'));
+      toast.success('Added folder successfully');
     },
     onError: (error) => {
       if (api.isError(error)) {
         switch (error.response?.status) {
           case HttpStatusCode.Conflict: {
             form.setError('root.serverError', {
-              message: t('The folder name already exists.'),
+              message: 'The folder name already exists.',
             });
             break;
           }
@@ -88,7 +87,7 @@ export const CreateFolderDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('New Folder')}</DialogTitle>
+          <DialogTitle>{'New Folder'}</DialogTitle>
         </DialogHeader>
         <FormProvider {...form}>
           <form onSubmit={form.handleSubmit((data) => mutate(data))}>
@@ -101,7 +100,7 @@ export const CreateFolderDialog = ({
                     {...field}
                     required
                     id="folder"
-                    placeholder={t('Folder Name')}
+                    placeholder={'Folder Name'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -119,10 +118,10 @@ export const CreateFolderDialog = ({
                 onClick={() => onOpenChange(false)}
                 type="button"
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button type="submit" loading={isPending}>
-                {t('Confirm')}
+                {'Confirm'}
               </Button>
             </DialogFooter>
           </form>

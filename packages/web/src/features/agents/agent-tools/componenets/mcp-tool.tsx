@@ -1,5 +1,4 @@
 import { AgentMcpTool } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus, X } from 'lucide-react';
 
 import { McpSvg } from '@/assets/img/custom/mcp';
@@ -37,7 +36,7 @@ export const AgentMcpToolComponent = ({
           <div className="h-8 w-8 rounded-md bg-muted flex items-center justify-center">
             <McpSvg className="size-3.5" />
           </div>
-          <span className="text-sm font-medium">{t('MCP Servers')}</span>
+          <span className="text-sm font-medium">{'MCP Servers'}</span>
         </div>
       </AccordionTrigger>
 
@@ -78,7 +77,7 @@ export const AgentMcpToolComponent = ({
                     <X className="h-3 w-3" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t('Remove MCP server')}</TooltipContent>
+                <TooltipContent>{'Remove MCP server'}</TooltipContent>
               </Tooltip>
             </div>
           ))}
@@ -91,7 +90,7 @@ export const AgentMcpToolComponent = ({
           onClick={() => setShowAddMcpDialog(true)}
         >
           <Plus className="size-3 mr-1" />
-          {t('Add MCP Server')}
+          {'Add MCP Server'}
         </Button>
       </AccordionContent>
     </AccordionItem>

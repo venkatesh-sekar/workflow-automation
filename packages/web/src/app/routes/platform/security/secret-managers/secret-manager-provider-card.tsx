@@ -1,5 +1,4 @@
 import { SecretManagerProviderMetaData } from '@flow/shared';
-import { t } from 'i18next';
 import { CircleAlert, Pencil, RefreshCcw, Trash } from 'lucide-react';
 
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
@@ -46,17 +45,13 @@ const SecretManagerProviderCard = ({
                   <CircleAlert className="size-4 text-destructive" />
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
-                  {t(
-                    'Your configuration is not working, please try reconnecting',
-                  )}
+                  {'Your configuration is not working, please try reconnecting'}
                 </TooltipContent>
               </Tooltip>
             )}
         </ItemTitle>
         <ItemDescription>
-          {t('Configure credentials for {managerName} secret manager.', {
-            managerName: provider.name,
-          })}
+          {`Configure credentials for ${provider.name} secret manager.`}
         </ItemDescription>
       </ItemContent>
       <ItemActions>
@@ -67,7 +62,7 @@ const SecretManagerProviderCard = ({
             </Button>
           ) : (
             <Button variant={'basic'} size={'sm'}>
-              {t('Connect')}
+              {'Connect'}
             </Button>
           )}
         </ConnectSecretManagerDialog>
@@ -84,15 +79,13 @@ const SecretManagerProviderCard = ({
                   <RefreshCcw className="size-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>{t('Clear Cache')}</TooltipContent>
+              <TooltipContent>{'Clear Cache'}</TooltipContent>
             </Tooltip>
             <ConfirmationDeleteDialog
-              title={t('Disconnect Secret Manager')}
-              message={t(
-                'Disconnecting this secret manager will stop syncing secrets with the provider.',
-              )}
+              title={'Disconnect Secret Manager'}
+              message={'Disconnecting this secret manager will stop syncing secrets with the provider.'}
               entityName={provider.name}
-              buttonText={t('Disconnect')}
+              buttonText={'Disconnect'}
               mutationFn={async () => disconnect({ providerId: provider.id })}
             >
               <Button variant={'ghost'} size={'sm'} loading={isDisconnecting}>

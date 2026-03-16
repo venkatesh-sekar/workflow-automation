@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { SearchX } from 'lucide-react';
 
 import {
@@ -16,11 +15,9 @@ export const EmptyTemplatesView = () => {
         <EmptyMedia variant="icon">
           <SearchX />
         </EmptyMedia>
-        <EmptyTitle>{t('No templates found')}</EmptyTitle>
+        <EmptyTitle>{'No templates found'}</EmptyTitle>
         <EmptyDescription>
-          {t(
-            'No templates match your search criteria. Try adjusting your search terms.',
-          )}
+          {'No templates match your search criteria. Try adjusting your search terms.'}
         </EmptyDescription>
       </EmptyHeader>
     </Empty>

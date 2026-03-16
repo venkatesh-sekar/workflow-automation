@@ -4,7 +4,6 @@ import {
   summarizeApplicationEvent,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   CheckIcon,
   Eye,
@@ -61,7 +60,7 @@ export default function AuditLogsPage() {
   const filters: DataTableFilters<keyof ApplicationEvent>[] = [
     {
       type: 'select',
-      title: t('Action'),
+      title: 'Action',
       accessorKey: 'action',
       options: Object.values(ApplicationEventName).map((action) => {
         return {
@@ -73,7 +72,7 @@ export default function AuditLogsPage() {
     },
     {
       type: 'select',
-      title: t('Performed By'),
+      title: 'Performed By',
       accessorKey: 'userId',
       options:
         users?.data?.map((user) => {
@@ -86,7 +85,7 @@ export default function AuditLogsPage() {
     },
     {
       type: 'select',
-      title: t('Project'),
+      title: 'Project',
       accessorKey: 'projectId',
       options:
         projects?.map((project) => {
@@ -99,7 +98,7 @@ export default function AuditLogsPage() {
     },
     {
       type: 'date',
-      title: t('Created'),
+      title: 'Created',
       accessorKey: 'created',
       icon: CheckIcon,
     },
@@ -111,21 +110,17 @@ export default function AuditLogsPage() {
   return (
     <LockedFeatureGuard
       locked={!isEnabled}
-      lockTitle={t('Unlock Audit Logs')}
-      lockDescription={t(
-        'Comply with internal and external security policies by tracking activities done within your account',
-      )}
+      lockTitle={'Unlock Audit Logs'}
+      lockDescription={'Comply with internal and external security policies by tracking activities done within your account'}
     >
       <div className="flex flex-col  w-full">
         <DashboardPageHeader
-          description={t('Track activities done within your platform')}
-          title={t('Audit Logs')}
+          description={'Track activities done within your platform'}
+          title={'Audit Logs'}
         />
         <DataTable
-          emptyStateTextTitle={t('No audit logs found')}
-          emptyStateTextDescription={t(
-            'Come back later when you have some activity to audit',
-          )}
+          emptyStateTextTitle={'No audit logs found'}
+          emptyStateTextDescription={'Come back later when you have some activity to audit'}
           emptyStateIcon={<History className="size-14" />}
           filters={filters}
           columns={[
@@ -135,7 +130,7 @@ export default function AuditLogsPage() {
               header: ({ column }) => (
                 <DataTableColumnHeader
                   column={column}
-                  title={t('Action')}
+                  title={'Action'}
                   icon={Wand}
                 />
               ),
@@ -161,7 +156,7 @@ export default function AuditLogsPage() {
               header: ({ column }) => (
                 <DataTableColumnHeader
                   column={column}
-                  title={t('Details')}
+                  title={'Details'}
                   icon={FileText}
                 />
               ),
@@ -179,7 +174,7 @@ export default function AuditLogsPage() {
               header: ({ column }) => (
                 <DataTableColumnHeader
                   column={column}
-                  title={t('Performed By')}
+                  title={'Performed By'}
                   icon={User}
                 />
               ),
@@ -195,7 +190,7 @@ export default function AuditLogsPage() {
               header: ({ column }) => (
                 <DataTableColumnHeader
                   column={column}
-                  title={t('Project')}
+                  title={'Project'}
                   icon={Folder}
                 />
               ),
@@ -208,7 +203,7 @@ export default function AuditLogsPage() {
                     </div>
                   </Link>
                 ) : (
-                  <div className="text-left">{t('N/A')}</div>
+                  <div className="text-left">{'N/A'}</div>
                 );
               },
             },
@@ -218,7 +213,7 @@ export default function AuditLogsPage() {
               header: ({ column }) => (
                 <DataTableColumnHeader
                   column={column}
-                  title={t('Created')}
+                  title={'Created'}
                   icon={Clock}
                 />
               ),
@@ -266,13 +261,13 @@ export default function AuditLogsPage() {
             <div className="flex-1 overflow-y-auto">
               <div className="px-6 py-5 flex flex-col gap-4">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  {t('Who & When')}
+                  {'Who & When'}
                 </p>
                 <div className="grid grid-cols-[150px_1fr] gap-y-3 text-sm">
                   {selectedEvent?.userEmail && (
                     <>
                       <span className="text-muted-foreground">
-                        {t('Performed By')}
+                        {'Performed By'}
                       </span>
                       <span className="font-medium">
                         {selectedEvent.userEmail}
@@ -282,7 +277,7 @@ export default function AuditLogsPage() {
                   {selectedEvent?.projectDisplayName && (
                     <>
                       <span className="text-muted-foreground">
-                        {t('Project')}
+                        {'Project'}
                       </span>
                       <span className="font-medium">
                         {selectedEvent.projectDisplayName}
@@ -292,12 +287,12 @@ export default function AuditLogsPage() {
                   {selectedEvent?.ip && (
                     <>
                       <span className="text-muted-foreground">
-                        {t('IP Address')}
+                        {'IP Address'}
                       </span>
                       <span className="font-medium">{selectedEvent.ip}</span>
                     </>
                   )}
-                  <span className="text-muted-foreground">{t('Created')}</span>
+                  <span className="text-muted-foreground">{'Created'}</span>
                   <span className="font-medium">
                     {selectedEvent && (
                       <FormattedDate date={new Date(selectedEvent.created)} />
@@ -311,7 +306,7 @@ export default function AuditLogsPage() {
                     <Separator />
                     <div className="px-6 py-5 flex flex-col gap-4">
                       <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                        {t('Event Details')}
+                        {'Event Details'}
                       </p>
                       <div className="grid grid-cols-[150px_1fr] gap-y-3 text-sm">
                         {extractEventDetails(selectedEvent).map(
@@ -331,7 +326,7 @@ export default function AuditLogsPage() {
               <Separator />
               <div className="px-6 py-5 flex flex-col gap-4">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  {t('Full Payload')}
+                  {'Full Payload'}
                 </p>
                 <SimpleJsonViewer data={selectedEvent?.data ?? {}} />
               </div>
@@ -349,27 +344,27 @@ function convertToIcon(event: ApplicationEvent) {
     case ApplicationEventName.FLOW_RUN_STARTED:
       return {
         icon: <Logs className="size-4" />,
-        tooltip: t('Flow Run'),
+        tooltip: 'Flow Run',
       };
     case ApplicationEventName.FLOW_CREATED:
     case ApplicationEventName.FLOW_DELETED:
     case ApplicationEventName.FLOW_UPDATED:
       return {
         icon: <Workflow className="size-4" />,
-        tooltip: t('Flow'),
+        tooltip: 'Flow',
       };
     case ApplicationEventName.FOLDER_CREATED:
     case ApplicationEventName.FOLDER_DELETED:
     case ApplicationEventName.FOLDER_UPDATED:
       return {
         icon: <Folder className="size-4" />,
-        tooltip: t('Folder'),
+        tooltip: 'Folder',
       };
     case ApplicationEventName.CONNECTION_DELETED:
     case ApplicationEventName.CONNECTION_UPSERTED:
       return {
         icon: <Link2 className="size-4" />,
-        tooltip: t('Connection'),
+        tooltip: 'Connection',
       };
     case ApplicationEventName.USER_SIGNED_UP:
     case ApplicationEventName.USER_SIGNED_IN:
@@ -377,12 +372,12 @@ function convertToIcon(event: ApplicationEvent) {
     case ApplicationEventName.USER_EMAIL_VERIFIED:
       return {
         icon: <Users className="size-4" />,
-        tooltip: t('User'),
+        tooltip: 'User',
       };
     case ApplicationEventName.SIGNING_KEY_CREATED:
       return {
         icon: <Key className="size-4" />,
-        tooltip: t('Signing Key'),
+        tooltip: 'Signing Key',
       };
     default:
       return undefined;
@@ -404,7 +399,7 @@ function convertToDetails(event: ApplicationEvent): string {
         event.data.flowRun.environment,
       )} environment`;
     case ApplicationEventName.FLOW_CREATED:
-      return t('A new flow was created');
+      return 'A new flow was created';
     case ApplicationEventName.FLOW_DELETED:
       return `Flow "${event.data.flowVersion.displayName}" was deleted`;
     default:
@@ -420,29 +415,29 @@ function extractEventDetails(event: ApplicationEvent): EventDetailRow[] {
       const { flowRun } = event.data;
       const rows: EventDetailRow[] = [
         {
-          label: t('Status'),
+          label: 'Status',
           value: formatUtils.convertEnumToHumanReadable(flowRun.status),
         },
         {
-          label: t('Environment'),
+          label: 'Environment',
           value: formatUtils.convertEnumToHumanReadable(flowRun.environment),
         },
       ];
       if (flowRun.triggeredBy) {
         rows.push({
-          label: t('Triggered By'),
+          label: 'Triggered By',
           value: formatUtils.convertEnumToHumanReadable(flowRun.triggeredBy),
         });
       }
       if (flowRun.startTime) {
         rows.push({
-          label: t('Start Time'),
+          label: 'Start Time',
           value: new Date(flowRun.startTime).toLocaleString(),
         });
       }
       if (flowRun.finishTime) {
         rows.push({
-          label: t('Finish Time'),
+          label: 'Finish Time',
           value: new Date(flowRun.finishTime).toLocaleString(),
         });
       }
@@ -452,19 +447,19 @@ function extractEventDetails(event: ApplicationEvent): EventDetailRow[] {
       return [];
     case ApplicationEventName.FLOW_DELETED:
     case ApplicationEventName.FLOW_UPDATED:
-      return [{ label: t('Flow'), value: event.data.flowVersion.displayName }];
+      return [{ label: 'Flow', value: event.data.flowVersion.displayName }];
     case ApplicationEventName.CONNECTION_UPSERTED:
     case ApplicationEventName.CONNECTION_DELETED: {
       const { connection } = event.data;
       return [
-        { label: t('Connection'), value: connection.displayName },
-        { label: t('Piece'), value: connection.pieceName },
+        { label: 'Connection', value: connection.displayName },
+        { label: 'Piece', value: connection.pieceName },
         {
-          label: t('Type'),
+          label: 'Type',
           value: formatUtils.convertEnumToHumanReadable(connection.type),
         },
         {
-          label: t('Status'),
+          label: 'Status',
           value: formatUtils.convertEnumToHumanReadable(connection.status),
         },
       ];
@@ -472,7 +467,7 @@ function extractEventDetails(event: ApplicationEvent): EventDetailRow[] {
     case ApplicationEventName.FOLDER_CREATED:
     case ApplicationEventName.FOLDER_UPDATED:
     case ApplicationEventName.FOLDER_DELETED:
-      return [{ label: t('Folder'), value: event.data.folder.displayName }];
+      return [{ label: 'Folder', value: event.data.folder.displayName }];
     case ApplicationEventName.USER_SIGNED_IN:
     case ApplicationEventName.USER_PASSWORD_RESET:
     case ApplicationEventName.USER_EMAIL_VERIFIED:
@@ -480,22 +475,22 @@ function extractEventDetails(event: ApplicationEvent): EventDetailRow[] {
     case ApplicationEventName.USER_SIGNED_UP:
       return [
         {
-          label: t('Source'),
+          label: 'Source',
           value: formatUtils.convertEnumToHumanReadable(event.data.source),
         },
       ];
     case ApplicationEventName.SIGNING_KEY_CREATED:
       return [
-        { label: t('Key Name'), value: event.data.signingKey.displayName },
+        { label: 'Key Name', value: event.data.signingKey.displayName },
       ];
     case ApplicationEventName.PROJECT_ROLE_CREATED:
     case ApplicationEventName.PROJECT_ROLE_UPDATED:
     case ApplicationEventName.PROJECT_ROLE_DELETED: {
       const { projectRole } = event.data;
       return [
-        { label: t('Role'), value: projectRole.name },
+        { label: 'Role', value: projectRole.name },
         {
-          label: t('Permissions'),
+          label: 'Permissions',
           value: projectRole.permissions
             .map((p) => formatUtils.convertEnumToHumanReadable(p))
             .join(', '),
@@ -505,14 +500,14 @@ function extractEventDetails(event: ApplicationEvent): EventDetailRow[] {
     case ApplicationEventName.PROJECT_RELEASE_CREATED: {
       const { release } = event.data;
       const rows: EventDetailRow[] = [
-        { label: t('Release'), value: release.name },
+        { label: 'Release', value: release.name },
         {
-          label: t('Type'),
+          label: 'Type',
           value: formatUtils.convertEnumToHumanReadable(release.type),
         },
       ];
       if (release.description) {
-        rows.push({ label: t('Description'), value: release.description });
+        rows.push({ label: 'Description', value: release.description });
       }
       return rows;
     }

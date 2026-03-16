@@ -1,5 +1,4 @@
 import { Permission, UserInvitation } from '@flow/shared';
-import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
@@ -46,8 +45,8 @@ export function InvitationCard({ invitation }: { invitation: UserInvitation }) {
           <ConfirmationDeleteDialog
             mutationFn={() => deleteInvitation()}
             entityName={invitation.email}
-            title={t('Remove {email}', { email: invitation.email })}
-            message={t('This invitation will be revoked immediately.')}
+            title={`Remove ${invitation.email}`}
+            message={'This invitation will be revoked immediately.'}
           >
             <Button
               disabled={!userHasPermissionToRemoveInvitation}

@@ -5,7 +5,6 @@ import {
   Table,
 } from '@flow/shared';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { t } from 'i18next';
 import { Activity, Clock, Info, Type, User } from 'lucide-react';
 
 import { useEmbedding } from '@/components/providers/embed-provider';
@@ -90,27 +89,27 @@ export const AutomationsTable = ({
           <div className="w-8 shrink-0"></div>
           <div className="flex-1 min-w-[200px] pl-2 flex items-center gap-1.5">
             <Type className="h-3.5 w-3.5" />
-            {t('Name')}
+            {'Name'}
           </div>
 
           <div className="w-[230px] shrink-0 px-2 flex items-center gap-1.5">
             <Info className="h-3.5 w-3.5" />
-            {t('Details')}
+            {'Details'}
           </div>
 
           <div className="w-[200px] shrink-0 px-2 flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" />
-            {t('Last modified')}
+            {'Last modified'}
           </div>
           {!embedState.isEmbedded && (
             <div className="w-[250px] shrink-0 px-2 flex items-center gap-1.5">
               <User className="h-3.5 w-3.5" />
-              {t('Owner')}
+              {'Owner'}
             </div>
           )}
           <div className="w-[120px] shrink-0 px-2 flex items-center gap-1.5">
             <Activity className="h-3.5 w-3.5" />
-            {t('Status')}
+            {'Status'}
           </div>
           <div className="w-[50px] shrink-0 px-2"></div>
         </div>

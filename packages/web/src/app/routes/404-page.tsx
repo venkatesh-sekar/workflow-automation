@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { LucideIcon, SearchX } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -27,16 +26,16 @@ const NotFoundPage: React.FC<NotFoundPageProps> = ({
           <Icon className="h-24 w-24" />
         </div>
         <p className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-          {t(title)}
+          {title}
         </p>
 
         <p className="mb-4 text-lg font-light text-foreground">
-          {t(description)}
+          {description}
         </p>
         {showHomeButton && (
           <Link to="/">
             <Button size="lg" variant={'default'}>
-              {t(buttonText)}
+              {buttonText}
             </Button>
           </Link>
         )}

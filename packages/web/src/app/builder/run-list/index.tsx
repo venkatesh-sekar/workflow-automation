@@ -4,7 +4,6 @@ import {
   SeekPage,
 } from '@flow/shared';
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React, { useMemo } from 'react';
 
 import { useBuilderStateContext } from '@/app/builder/builder-hooks';
@@ -87,16 +86,16 @@ const RunsList = React.memo(() => {
   return (
     <div className="h-full w-full flex flex-col">
       <SidebarHeader onClose={() => setRightSidebar(RightSideBarType.NONE)}>
-        {t('Recent Runs')}
+        {'Recent Runs'}
       </SidebarHeader>
       {isLoading && <CardListItemSkeleton numberOfCards={10} />}
 
-      {isError && <div>{t('Error, please try again.')}</div>}
+      {isError && <div>{'Error, please try again.'}</div>}
 
       {runs &&
         runs.pages.flatMap((page) => page.data).length === 0 &&
         !isLoading &&
-        !isRefetching && <CardListEmpty message={t('No runs found')} />}
+        !isRefetching && <CardListEmpty message={'No runs found'} />}
 
       {runs && runs.pages.flatMap((page) => page.data).length > 0 && (
         <VirtualizedScrollArea
@@ -125,7 +124,7 @@ const RunsList = React.memo(() => {
                   onClick={() => fetchNextPage()}
                   loading={isFetchingNextPage}
                 >
-                  {t('More...')}
+                  {'More...'}
                 </Button>
               </div>
             );

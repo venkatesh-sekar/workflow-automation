@@ -1,5 +1,4 @@
 import { FlowTrigger } from '@flow/shared';
-import { t } from 'i18next';
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -29,7 +28,7 @@ export const ManualWebhookTestButton = ({
           setIsWebhookTestingDialogOpen(true);
         }}
       >
-        {t('Generate Sample Data')}
+        {'Generate Sample Data'}
       </Button>
 
       <TestWebhookDialog

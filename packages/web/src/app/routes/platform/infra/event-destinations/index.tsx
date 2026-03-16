@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Globe } from 'lucide-react';
 
 import { CenteredPage } from '@/app/components/centered-page';
@@ -35,18 +34,16 @@ const EventDestinationsPage = () => {
   return (
     <LockedFeatureGuard
       locked={!isEnabled}
-      lockTitle={t('Unlock Event Streaming')}
-      lockDescription={t(
-        'Configure destination URL to receive events from your platform to your external system',
-      )}
+      lockTitle={'Unlock Event Streaming'}
+      lockDescription={'Configure destination URL to receive events from your platform to your external system'}
     >
       <CenteredPage
-        title={t('Event Streaming')}
-        description={t('Configure event destinations for your platform')}
+        title={'Event Streaming'}
+        description={'Configure event destinations for your platform'}
         actions={
           <EventDestinationDialog destination={null}>
             <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-              {t('New Destination')}
+              {'New Destination'}
             </AnimatedIconButton>
           </EventDestinationDialog>
         }
@@ -59,7 +56,7 @@ const EventDestinationsPage = () => {
           <div className="flex flex-col items-center gap-3 py-12 text-muted-foreground">
             <Globe className="size-10" />
             <p className="text-sm">
-              {t('No destinations yet. Create one to get started.')}
+              {'No destinations yet. Create one to get started.'}
             </p>
           </div>
         )}
@@ -77,7 +74,7 @@ const EventDestinationsPage = () => {
                   </ItemTitle>
                   <ItemDescription className="text-xs !flex flex-wrap items-center gap-x-1 gap-y-2 overflow-visible [text-wrap:unset] mt-1">
                     <span className="text-muted-foreground shrink-0 mr-1.5">
-                      {t('Events')}
+                      {'Events'}
                     </span>
                     {destination.events.map((event) => (
                       <Badge key={event} variant="outline" className="text-xs">
@@ -86,7 +83,7 @@ const EventDestinationsPage = () => {
                     ))}
                   </ItemDescription>
                   <p className="text-xs text-muted-foreground mt-2">
-                    {t('Created')}{' '}
+                    {'Created'}{' '}
                     {formatUtils.formatDateToAgo(new Date(destination.created))}
                   </p>
                 </ItemContent>

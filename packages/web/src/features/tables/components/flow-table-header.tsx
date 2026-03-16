@@ -1,5 +1,4 @@
 import { Permission } from '@flow/shared';
-import { t } from 'i18next';
 import {
   ChevronDown,
   RefreshCw,
@@ -108,7 +107,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
             <div className="flex items-center gap-1">
               <EditableText
                 className="hover:cursor-text"
-                value={table?.name || t('Table Editor')}
+                value={table?.name || 'Table Editor'}
                 readonly={!userHasTableWritePermission}
                 onValueChange={(newName) => {
                   renameTable(newName);
@@ -116,7 +115,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
                 isEditing={isEditingTableName}
                 setIsEditing={setIsEditingTableName}
                 tooltipContent={
-                  userHasTableWritePermission ? t('Edit Table Name') : ''
+                  userHasTableWritePermission ? 'Edit Table Name' : ''
                 }
               />
               <DropdownMenu>
@@ -136,18 +135,18 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
                     disabled={!userHasTableWritePermission}
                   >
                     <Edit2 className="mr-2 h-4 w-4" />
-                    {t('Rename')}
+                    {'Rename'}
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onSelect={() => setIsImportTableDialogOpen(true)}
                   >
                     <Import className="mr-2 h-4 w-4" />
-                    {t('Import')}
+                    {'Import'}
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={exportTemplate}>
                     <FileJson className="mr-2 h-4 w-4" />
-                    {t('Export Template')}
+                    {'Export Template'}
                   </DropdownMenuItem>
                   {showPushToGit && (
                     <>
@@ -162,7 +161,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
                             onClick={(e) => e.stopPropagation()}
                           >
                             <UploadCloud className="mr-2 h-4 w-4" />
-                            {t('Push to Git')}
+                            {'Push to Git'}
                           </DropdownMenuItem>
                         </PushToGitDialog>
                       </PermissionNeededTooltip>
@@ -172,18 +171,16 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
                   {!showPushToGit && <DropdownMenuSeparator />}
                   <DropdownMenuItem onSelect={downloadCsv}>
                     <Download className="mr-2 h-4 w-4" />
-                    {t('Download Data')}
+                    {'Download Data'}
                   </DropdownMenuItem>
                   <PermissionNeededTooltip
                     hasPermission={userHasTableWritePermission}
                   >
                     <ConfirmationDeleteDialog
-                      title={t('Delete Table')}
-                      message={t(
-                        'This will permanently delete the table and all its data.',
-                      )}
-                      entityName={t('table')}
-                      buttonText={t('Delete')}
+                      title={'Delete Table'}
+                      message={'This will permanently delete the table and all its data.'}
+                      entityName={'table'}
+                      buttonText={'Delete'}
                       mutationFn={async () => {
                         await tablesApi.delete(table.id);
                         onBack();
@@ -196,7 +193,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
                         className="text-destructive focus:text-destructive"
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
-                        {t('Delete')}
+                        {'Delete'}
                       </DropdownMenuItem>
                     </ConfirmationDeleteDialog>
                   </PermissionNeededTooltip>
@@ -214,16 +211,16 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
       {isSaving && (
         <div className="flex items-center gap-2 text-muted-foreground animate-in fade-in">
           <RefreshCw className="h-4 w-4 animate-spin" />
-          <span className="text-sm">{t('Saving...')}</span>
+          <span className="text-sm">{'Saving...'}</span>
         </div>
       )}
       {selectedRecords.size > 0 && (
         <PermissionNeededTooltip hasPermission={userHasTableWritePermission}>
           <ConfirmationDeleteDialog
-            title={t('Delete Records')}
-            message={t('The selected records will be permanently deleted.')}
-            entityName={selectedRecords.size === 1 ? t('record') : t('records')}
-            buttonText={t('Delete')}
+            title={'Delete Records'}
+            message={'The selected records will be permanently deleted.'}
+            entityName={selectedRecords.size === 1 ? 'record' : 'records'}
+            buttonText={'Delete'}
             mutationFn={async () => {
               const indices = Array.from(selectedRecords).map((row) =>
                 records.findIndex((r) => r.uuid === row),
@@ -238,7 +235,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
               disabled={!userHasTableWritePermission}
             >
               <Trash2 className="size-4" />
-              {t('Delete Records')}{' '}
+              {'Delete Records'}{' '}
               {selectedRecords.size > 0 ? `(${selectedRecords.size})` : ''}
             </Button>
           </ConfirmationDeleteDialog>
@@ -261,7 +258,7 @@ export function FlowTableHeader({ onBack }: FlowTableHeaderProps) {
           onClick={downloadCsv}
         >
           <Download className="size-4" />
-          {t('Download Data')}
+          {'Download Data'}
         </Button>
         <ImportTableDialog
           open={isImportTableDialogOpen}

@@ -13,8 +13,6 @@ import {
   FlowTriggerType,
   Note,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { flowRunUtils } from '@/features/flow-runs';
 import { NEW_FLOW_QUERY_PARAM } from '@/lib/route-utils';
 
@@ -360,7 +358,7 @@ const buildRouterChildGraph = (step: RouterAction) => {
             isBranchEmpty: isNil(step.children[branchIndex]),
             label:
               step.settings.branches[branchIndex]?.branchName ??
-              `${t('Branch')} ${branchIndex + 1} (missing branch)`,
+              `${'Branch'} ${branchIndex + 1} (missing branch)`,
             branchIndex,
             stepLocationRelativeToParent:
               StepLocationRelativeToParent.INSIDE_BRANCH as const,

@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { Control } from 'react-hook-form';
 
 import { projectCollectionUtils } from '@/features/projects/stores/project-collection';
@@ -22,9 +21,9 @@ export const AssignConnectionToProjectsControl = ({
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col gap-2">
-          <Label>{t('Available for Projects')}</Label>
+          <Label>{'Available for Projects'}</Label>
           <MultiSelectPieceProperty
-            placeholder={t('Select projects')}
+            placeholder={'Select projects'}
             options={
               projects?.map((project) => ({
                 value: project.id,

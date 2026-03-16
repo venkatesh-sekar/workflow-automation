@@ -1,6 +1,5 @@
 import { AppConnectionScope, PopulatedFlow } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { GlobeIcon, WorkflowIcon } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
 import { FieldErrors, useForm, useWatch } from 'react-hook-form';
@@ -89,8 +88,8 @@ const ReplaceConnectionsDialog = ({
         setStep(STEP.CONFIRM);
       },
       onError: () => {
-        toast.error(t('Error'), {
-          description: t('Failed to get affected flows'),
+        toast.error('Error', {
+          description: 'Failed to get affected flows',
         });
       },
     });
@@ -108,21 +107,21 @@ const ReplaceConnectionsDialog = ({
       if (!values.pieceName) {
         errors.pieceName = {
           type: 'required',
-          message: t('Please select a piece'),
+          message: 'Please select a piece',
         };
       }
 
       if (!values.sourceConnections?.id) {
         errors.sourceConnections = {
           type: 'required',
-          message: t('Please select a connection to replace'),
+          message: 'Please select a connection to replace',
         };
       }
 
       if (!values.replacedWithConnection?.id) {
         errors.replacedWithConnection = {
           type: 'required',
-          message: t('Please select a connection to replace with'),
+          message: 'Please select a connection to replace with',
         };
       }
 
@@ -207,19 +206,15 @@ const ReplaceConnectionsDialog = ({
         <DialogHeader>
           <DialogTitle>
             {step === STEP.SELECT
-              ? t('Replace Connections')
-              : t('Confirm Replacement')}
+              ? 'Replace Connections'
+              : 'Confirm Replacement'}
           </DialogTitle>
           <DialogDescription>
             {step === STEP.SELECT ? (
-              t(
-                'This will replace one connection with another connection, existing flows will be changed to use the new connection, and the old connection will be deleted.',
-              )
+              'This will replace one connection with another connection, existing flows will be changed to use the new connection, and the old connection will be deleted.'
             ) : (
               <>
-                {t(
-                  'Existing MCP servers will not be changed automatically, you have to reconnect them manually.',
-                )}
+                {'Existing MCP servers will not be changed automatically, you have to reconnect them manually.'}
               </>
             )}
           </DialogDescription>
@@ -238,7 +233,7 @@ const ReplaceConnectionsDialog = ({
                 name="pieceName"
                 render={({ field }) => (
                   <div className="flex flex-col gap-2">
-                    <Label>{t('Piece')}</Label>
+                    <Label>{'Piece'}</Label>
                     <SearchableSelect
                       value={field.value}
                       onChange={(value) => {
@@ -253,7 +248,7 @@ const ReplaceConnectionsDialog = ({
                         });
                       }}
                       options={piecesOptions}
-                      placeholder={t('Select a piece')}
+                      placeholder={'Select a piece'}
                       loading={piecesLoading}
                       valuesRendering={(value) => {
                         const piece = pieces?.find((p) => p.name === value);
@@ -281,7 +276,7 @@ const ReplaceConnectionsDialog = ({
                     name="sourceConnections"
                     render={({ field }) => (
                       <div className="flex flex-col gap-2">
-                        <Label>{t('Connection to replace')}</Label>
+                        <Label>{'Connection to replace'}</Label>
                         <SearchableSelect
                           value={field.value?.id}
                           loading={connectionsLoading}
@@ -307,7 +302,7 @@ const ReplaceConnectionsDialog = ({
                               label: conn.displayName,
                               value: conn.id,
                             }))}
-                          placeholder={t('Choose connection to replace')}
+                          placeholder={'Choose connection to replace'}
                           valuesRendering={(value) => {
                             const conn = filteredConnections.find(
                               (c) => c.id === value,
@@ -335,7 +330,7 @@ const ReplaceConnectionsDialog = ({
                       name="replacedWithConnection"
                       render={({ field }) => (
                         <div className="flex flex-col gap-2">
-                          <Label>{t('Replaced With')}</Label>
+                          <Label>{'Replaced With'}</Label>
                           <SearchableSelect
                             value={field.value?.id}
                             loading={connectionsLoading}
@@ -349,7 +344,7 @@ const ReplaceConnectionsDialog = ({
                               });
                             }}
                             options={replacedWithOptions}
-                            placeholder={t('Choose connection to replace with')}
+                            placeholder={'Choose connection to replace with'}
                             valuesRendering={(value) => {
                               const conn = filteredConnections.find(
                                 (c) => c.id === value,
@@ -381,11 +376,11 @@ const ReplaceConnectionsDialog = ({
               <DialogFooter>
                 <DialogClose asChild>
                   <Button type="button" variant="ghost">
-                    {t('Cancel')}
+                    {'Cancel'}
                   </Button>
                 </DialogClose>
                 <Button type="submit" loading={isFetchingAffectedFlows}>
-                  {t('Next')}
+                  {'Next'}
                 </Button>
               </DialogFooter>
             </form>
@@ -401,7 +396,7 @@ const ReplaceConnectionsDialog = ({
               <div className="flex flex-col gap-2">
                 {affectedFlows.length === 0 ? (
                   <span className="text-center text-muted-foreground p-4">
-                    {t('No flows will be affected by this change')}
+                    {'No flows will be affected by this change'}
                   </span>
                 ) : (
                   affectedFlows.map((flow) => (
@@ -431,14 +426,14 @@ const ReplaceConnectionsDialog = ({
 
             <DialogFooter>
               <Button type="button" variant="accent" onClick={handleBack}>
-                {t('Back')}
+                {'Back'}
               </Button>
               <Button
                 type="button"
                 onClick={() => handleConfirmedSubmit(form.getValues())}
                 loading={isReplacing}
               >
-                {t('Replace')}
+                {'Replace'}
               </Button>
             </DialogFooter>
           </div>

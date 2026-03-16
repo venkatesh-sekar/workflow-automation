@@ -1,5 +1,4 @@
 import { FieldType, isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
@@ -55,20 +54,20 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
       const errors: FieldErrors<NewFieldFormData> = {};
       if (data.name.trim().length === 0) {
         errors['name'] = {
-          message: t('Name is required'),
+          message: 'Name is required',
           type: 'required',
         };
       } else {
         if (fields?.find((field) => field.name.trim() === data.name.trim())) {
           errors['name'] = {
-            message: t('Name must be unique'),
+            message: 'Name must be unique',
             type: 'unique',
           };
         }
       }
       if (isNil(data.type)) {
         errors['type'] = {
-          message: t('Type is required'),
+          message: 'Type is required',
           type: 'required',
         };
       }
@@ -80,7 +79,7 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
       ) {
         errors['data'] = {
           options: {
-            message: t('Please add at least one option'),
+            message: 'Please add at least one option',
             type: 'required',
           },
         };
@@ -101,7 +100,7 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
     <Popover open={open} modal={false} onOpenChange={setOpen}>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent className="w-[400px] py-4 px-2">
-        <div className="text-lg font-semibold mb-4 px-3">{t('New Field')}</div>
+        <div className="text-lg font-semibold mb-4 px-3">{'New Field'}</div>
 
         <Form {...form}>
           <form
@@ -137,7 +136,7 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="grid space-y-3">
-                    <Label htmlFor="name">{t('Name')}</Label>
+                    <Label htmlFor="name">{'Name'}</Label>
                     <Input thin={true} {...field} id="name" />
                     <FormMessage />
                   </FormItem>
@@ -148,7 +147,7 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
                 name="type"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <Label>{t('Type')}</Label>
+                    <Label>{'Type'}</Label>
                     <ScrollArea className="max-h-[200px] rounded-md border">
                       <RadioGroup
                         value={field.value}
@@ -181,8 +180,8 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
                             >
                               {tablesUtils.getColumnIcon(type)}
                               {FIELD_TYPE_FRIENDLY_NAME[type]
-                                ? t(FIELD_TYPE_FRIENDLY_NAME[type])
-                                : t(type)}
+                                ? FIELD_TYPE_FRIENDLY_NAME[type]
+                                : type}
                             </Label>
                           </div>
                         ))}
@@ -199,7 +198,7 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
                   render={({ field }) => (
                     //needs to be wrapped in form field to show the error message
                     <FormItem className="grid space-y-3">
-                      <Label>{t('Options')}</Label>
+                      <Label>{'Options'}</Label>
                       <ArrayInput
                         inputName="data.options"
                         disabled={false}
@@ -219,10 +218,10 @@ export function NewFieldPopup({ children }: NewFieldDialogProps) {
                 variant="ghost"
                 onClick={() => setOpen(false)}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button type="submit" size="sm">
-                {t('Create')}
+                {'Create'}
               </Button>
             </div>
           </form>

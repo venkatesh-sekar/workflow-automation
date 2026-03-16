@@ -1,5 +1,4 @@
 import { PlatformWithoutSensitiveData } from '@flow/shared';
-import { t } from 'i18next';
 import { Shield } from 'lucide-react';
 
 import {
@@ -23,12 +22,12 @@ export const LicenseKey = ({
         <Shield />
       </ItemMedia>
       <ItemContent>
-        <ItemTitle>{t('Platform Features')}</ItemTitle>
+        <ItemTitle>{'Platform Features'}</ItemTitle>
       </ItemContent>
       <ItemFooter>
         <div className="flex flex-col gap-2 w-full pt-2">
           <h4 className="text-sm font-medium text-muted-foreground">
-            {t('Enabled Features')}
+            {'Enabled Features'}
           </h4>
           <FeatureStatus platform={platform} />
         </div>

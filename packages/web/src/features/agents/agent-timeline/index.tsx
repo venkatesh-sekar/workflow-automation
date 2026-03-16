@@ -4,8 +4,6 @@ import {
   ContentBlockType,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 import {
@@ -28,7 +26,7 @@ export const AgentTimeline = ({
   className = '',
 }: AgentTimelineProps) => {
   if (isNil(agentResult)) {
-    return <p>{t('No agent output available')}</p>;
+    return <p>{'No agent output available'}</p>;
   }
 
   return (

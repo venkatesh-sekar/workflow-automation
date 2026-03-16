@@ -1,5 +1,4 @@
 import { FlowFlagId, supportUrl } from '@flow/shared';
-import { t } from 'i18next';
 import { BookOpen, CircleHelp, History } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +19,7 @@ export const HelpAndFeedback = () => {
     <DropdownMenuSub>
       <DropdownMenuSubTrigger className="flex items-center w-full text-left px-2 py-1.5 text-sm rounded-sm cursor-pointer">
         <CircleHelp className="w-4 h-4 mr-2" />
-        {t('Help & Feedback')}
+        {'Help & Feedback'}
       </DropdownMenuSubTrigger>
       <DropdownMenuSubContent className="w-[220px]">
         <DropdownMenuItem asChild>
@@ -46,7 +45,7 @@ export const HelpAndFeedback = () => {
           >
             <div className="flex items-center gap-2">
               <History className="size-4" />
-              <span>{t('Changelog')}</span>
+              <span>{'Changelog'}</span>
             </div>
           </Link>
         </DropdownMenuItem>
@@ -65,7 +64,7 @@ export const HelpAndFeedback = () => {
               >
                 <div className="flex items-center gap-2">
                   <CircleHelp className="size-4" />
-                  <span>{t('Community Support')}</span>
+                  <span>{'Community Support'}</span>
                 </div>
               </Link>
             </DropdownMenuItem>

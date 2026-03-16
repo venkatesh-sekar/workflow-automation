@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useMemo } from 'react';
 
 import { StepStatusIcon, flowRunUtils } from '@/features/flow-runs';
@@ -25,7 +24,7 @@ const FlowStepNodeStatusInRun = ({ stepName }: { stepName: string }) => {
   }
   const { variant, text } = stepStatusInRun
     ? flowRunUtils.getStatusIconForStep(stepStatusInRun)
-    : ({ variant: 'default', text: t('Testing...') } as const);
+    : ({ variant: 'default', text: 'Testing...' } as const);
   return (
     <div className="absolute right-[1px]  h-[20px] -top-[28px]">
       <div className={flowRunUtils.getStatusContainerClassName(variant, true)}>

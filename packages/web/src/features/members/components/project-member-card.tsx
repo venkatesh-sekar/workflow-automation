@@ -1,5 +1,4 @@
 import { ProjectMemberWithUser, Permission } from '@flow/shared';
-import { t } from 'i18next';
 import { Trash } from 'lucide-react';
 
 import { ConfirmationDeleteDialog } from '@/components/custom/delete-dialog';
@@ -68,10 +67,8 @@ export function ProjectMemberCard({
               disabled={!userHasPermissionToRemoveMember}
             />
             <ConfirmationDeleteDialog
-              title={t('Remove Member')}
-              message={t(
-                'This member will lose access to the project immediately.',
-              )}
+              title={'Remove Member'}
+              message={'This member will lose access to the project immediately.'}
               mutationFn={() => deleteMember()}
               entityName={`${member.user.firstName} ${member.user.lastName}`}
             >

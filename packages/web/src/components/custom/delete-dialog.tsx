@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { TriangleAlert } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -55,7 +54,7 @@ export const ConfirmationDeleteDialog = ({
     onSuccess: () => {
       handleClose();
       if (showToast) {
-        toast.success(t('Removed {entityName}', { entityName }));
+        toast.success(`Removed ${entityName}`);
       }
     },
     onError,
@@ -95,7 +94,7 @@ export const ConfirmationDeleteDialog = ({
             disabled={isPending}
             onClick={() => handleClose()}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             variant="destructive"
@@ -103,7 +102,7 @@ export const ConfirmationDeleteDialog = ({
             onClick={() => mutate()}
           >
             {isDanger && <TriangleAlert className="size-4 mr-2" />}
-            {buttonText || t('Remove')}
+            {buttonText || 'Remove'}
           </Button>
         </DialogFooter>
       </DialogContent>

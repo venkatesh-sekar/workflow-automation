@@ -1,7 +1,6 @@
 import { HttpMethod } from '@flow/pieces-common';
 import { FlowAction, FlowFlagId, FlowTrigger } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { ControllerRenderProps, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -115,7 +114,7 @@ const TestTriggerWebhookDialog = ({
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Send Sample Data to Webhook')}</DialogTitle>
+          <DialogTitle>{'Send Sample Data to Webhook'}</DialogTitle>
         </DialogHeader>
         <TestWebhookFunctionalityForm
           showMethodDropdown={true}
@@ -139,7 +138,7 @@ const TestWaitForNextWebhookDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Send Sample Data to Webhook')}</DialogTitle>
+          <DialogTitle>{'Send Sample Data to Webhook'}</DialogTitle>
         </DialogHeader>
         <TestWebhookFunctionalityForm
           showMethodDropdown={false}
@@ -190,7 +189,7 @@ const TestWebhookFunctionalityForm = (
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>{t('Method')}</FormLabel>
+                  <FormLabel>{'Method'}</FormLabel>
                   <SearchableSelect
                     options={Object.values(HttpMethod).map((method) => ({
                       value: method,
@@ -201,7 +200,7 @@ const TestWebhookFunctionalityForm = (
                     }}
                     value={field.value}
                     disabled={false}
-                    placeholder={t('Select an option')}
+                    placeholder={'Select an option'}
                   />
                 </FormItem>
               );
@@ -210,11 +209,11 @@ const TestWebhookFunctionalityForm = (
         )}
         <Tabs defaultValue="queryParams">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="queryParams">{t('Query Params')}</TabsTrigger>
+            <TabsTrigger value="queryParams">{'Query Params'}</TabsTrigger>
 
-            <TabsTrigger value="headers">{t('Headers')}</TabsTrigger>
+            <TabsTrigger value="headers">{'Headers'}</TabsTrigger>
 
-            <TabsTrigger value="body">{t('Body')}</TabsTrigger>
+            <TabsTrigger value="body">{'Body'}</TabsTrigger>
           </TabsList>
           <TabsContent value="queryParams">
             <FormField
@@ -260,20 +259,20 @@ const TestWebhookFunctionalityForm = (
                 render={({ field }) => {
                   return (
                     <FormItem>
-                      <FormLabel>{t('Type')}</FormLabel>
+                      <FormLabel>{'Type'}</FormLabel>
                       <SearchableSelect
                         options={[
                           {
                             value: BodyType.JSON,
-                            label: t('JSON'),
+                            label: 'JSON',
                           },
                           {
                             value: BodyType.TEXT,
-                            label: t('Text'),
+                            label: 'Text',
                           },
                           {
                             value: BodyType.FORM_DATA,
-                            label: t('Form Data'),
+                            label: 'Form Data',
                           },
                         ]}
                         onChange={(val) => {
@@ -290,7 +289,7 @@ const TestWebhookFunctionalityForm = (
                         }}
                         value={field.value}
                         disabled={false}
-                        placeholder={t('Select an option')}
+                        placeholder={'Select an option'}
                         showDeselect={true}
                       ></SearchableSelect>
                     </FormItem>
@@ -303,7 +302,7 @@ const TestWebhookFunctionalityForm = (
                 render={({ field }) => {
                   return (
                     <FormItem className="mt-4">
-                      <FormLabel>{t('Body')}</FormLabel>
+                      <FormLabel>{'Body'}</FormLabel>
                       <BodyFormInput
                         bodyType={form.getValues('bodyType')}
                         field={field}
@@ -319,11 +318,11 @@ const TestWebhookFunctionalityForm = (
         <DialogFooter>
           <DialogClose asChild>
             <Button type="button" variant="outline">
-              {t('Cancel')}
+              {'Cancel'}
             </Button>
           </DialogClose>
           <Button type="submit" loading={isLoading}>
-            {t('Send')}
+            {'Send'}
           </Button>
         </DialogFooter>
       </form>

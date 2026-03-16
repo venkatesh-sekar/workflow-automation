@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Paperclip } from 'lucide-react';
 import * as React from 'react';
 
@@ -42,13 +41,13 @@ function Input({
           className={cn('grow cursor-pointer outline-hidden bg-transparent', {
             'text-muted-foreground': !fileName,
           })}
-          value={fileName || defaultFileName || t('Select a file')}
+          value={fileName || defaultFileName || 'Select a file'}
           readOnly
         />
         <div className="basis-1">
           <SelectUtilButton
             onClick={(e) => e.preventDefault()}
-            tooltipText={fileName ? fileName : t('Select a file')}
+            tooltipText={fileName ? fileName : 'Select a file'}
             Icon={Paperclip}
           ></SelectUtilButton>
         </div>

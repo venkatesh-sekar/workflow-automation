@@ -1,6 +1,5 @@
 import { isNil } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { Lock, Unlock } from 'lucide-react';
 import { useState, forwardRef } from 'react';
 import { useForm } from 'react-hook-form';
@@ -96,14 +95,14 @@ export const ConfigurePieceOAuth2Dialog = forwardRef<
           </TooltipTrigger>
           <TooltipContent>
             {isNil(oauth2App)
-              ? t('Configure OAuth2 App')
-              : t('Delete OAuth2 App')}
+              ? 'Configure OAuth2 App'
+              : 'Delete OAuth2 App'}
           </TooltipContent>
         </Tooltip>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Configure OAuth2 App')}</DialogTitle>
+          <DialogTitle>{'Configure OAuth2 App'}</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -121,7 +120,7 @@ export const ConfigurePieceOAuth2Dialog = forwardRef<
               name="clientId"
               render={({ field }) => (
                 <FormItem className="grid space-y-4">
-                  <Label htmlFor="clientId">{t('Client ID')}</Label>
+                  <Label htmlFor="clientId">{'Client ID'}</Label>
                   <Input
                     {...field}
                     required
@@ -136,7 +135,7 @@ export const ConfigurePieceOAuth2Dialog = forwardRef<
               name="clientSecret"
               render={({ field }) => (
                 <FormItem className="grid space-y-4">
-                  <Label htmlFor="clientSecret">{t('Client Secret')}</Label>
+                  <Label htmlFor="clientSecret">{'Client Secret'}</Label>
                   <Input
                     {...field}
                     required
@@ -155,14 +154,14 @@ export const ConfigurePieceOAuth2Dialog = forwardRef<
 
             <DialogFooter>
               <Button variant="outline" onClick={() => setOpen(false)}>
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 loading={isUpserting}
                 disabled={!form.formState.isValid}
                 type="submit"
               >
-                {t('Save')}
+                {'Save'}
               </Button>
             </DialogFooter>
           </form>

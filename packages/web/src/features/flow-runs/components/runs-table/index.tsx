@@ -7,7 +7,6 @@ import {
   Permission,
 } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import {
   CheckIcon,
   Redo,
@@ -131,7 +130,7 @@ export const RunsTable = () => {
     () => [
       {
         type: 'select',
-        title: t('Flow name'),
+        title: 'Flow name',
         accessorKey: 'flowId',
         options:
           flows?.map((flow) => ({
@@ -142,7 +141,7 @@ export const RunsTable = () => {
       },
       {
         type: 'select',
-        title: t('Status'),
+        title: 'Status',
         accessorKey: 'status',
         options: Object.values(FlowRunStatus).map((status) => {
           return {
@@ -155,14 +154,14 @@ export const RunsTable = () => {
       },
       {
         type: 'date',
-        title: t('Created'),
+        title: 'Created',
         accessorKey: 'created',
         icon: CheckIcon,
         defaultPresetName: '7days',
       },
       {
         type: 'checkbox',
-        title: t('Show archived'),
+        title: 'Show archived',
         accessorKey: 'archivedAt',
       },
     ],
@@ -239,16 +238,16 @@ export const RunsTable = () => {
               >
                 <Archive className="size-4 mr-1" />
                 {selectedRows.length > 0
-                  ? `${t('Archive')} ${
+                  ? `${'Archive'} ${
                       !isDisabled
                         ? selectedAll
                           ? excludedRows.size > 0
-                            ? `${t('all except')} ${excludedRows.size}`
-                            : t('all')
+                            ? `${'all except'} ${excludedRows.size}`
+                            : 'all'
                           : `(${selectedRows.length})`
                         : ''
                     }`
-                  : t('Archive')}
+                  : 'Archive'}
               </Button>
             </div>
           );
@@ -272,7 +271,7 @@ export const RunsTable = () => {
                 hasPermission={userHasPermissionToRetryRun}
               >
                 <MessageTooltip
-                  message={t('Only paused or queued runs can be cancelled')}
+                  message={'Only paused or queued runs can be cancelled'}
                   isDisabled={allCancellable}
                 >
                   <Button
@@ -313,14 +312,14 @@ export const RunsTable = () => {
                   >
                     <X className="h-3 w-4 mr-1" />
                     {selectedRows.length > 0
-                      ? `${t('Cancel')} ${
+                      ? `${'Cancel'} ${
                           selectedAll
                             ? excludedRows.size > 0
-                              ? `${t('all except')} ${excludedRows.size}`
-                              : t('all')
+                              ? `${'all except'} ${excludedRows.size}`
+                              : 'all'
                             : `(${selectedRows.length})`
                         }`
-                      : t('Cancel')}
+                      : 'Cancel'}
                   </Button>
                 </MessageTooltip>
               </PermissionNeededTooltip>
@@ -351,16 +350,16 @@ export const RunsTable = () => {
                     >
                       <RotateCw className="size-4 mr-1" />
                       {selectedRows.length > 0
-                        ? `${t('Retry')} ${
+                        ? `${'Retry'} ${
                             !isDisabled
                               ? selectedAll
                                 ? excludedRows.size > 0
-                                  ? `${t('all except')} ${excludedRows.size}`
-                                  : t('all')
+                                  ? `${'all except'} ${excludedRows.size}`
+                                  : 'all'
                                 : `(${selectedRows.length})`
                               : ''
                           }`
-                        : t('Retry')}
+                        : 'Retry'}
                       <ChevronDown className="h-3 w-4 ml-1" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -397,16 +396,14 @@ export const RunsTable = () => {
                       >
                         <div className="flex flex-row gap-2 items-center">
                           <RotateCw className="h-4 w-4" />
-                          <span>{t('on latest version')}</span>
+                          <span>{'on latest version'}</span>
                         </div>
                       </DropdownMenuItem>
                     </PermissionNeededTooltip>
 
                     {selectedRows.some((row) => isFailedState(row.status)) && (
                       <MessageTooltip
-                        message={t(
-                          'Only failed runs can be retried from failed step',
-                        )}
+                        message={'Only failed runs can be retried from failed step'}
                         isDisabled={!allFailed}
                       >
                         <DropdownMenuItem
@@ -440,7 +437,7 @@ export const RunsTable = () => {
                         >
                           <div className="flex flex-row gap-2 items-center">
                             <Redo className="h-4 w-4" />
-                            <span>{t('from failed step')}</span>
+                            <span>{'from failed step'}</span>
                           </div>
                         </DropdownMenuItem>
                       </MessageTooltip>
@@ -491,7 +488,7 @@ export const RunsTable = () => {
             }}
           >
             <div className="flex flex-row gap-2 items-center">
-              {t('Viewing retried runs')} ({retriedRunsInQueryParams.length}){' '}
+              {'Viewing retried runs'} ({retriedRunsInQueryParams.length}){' '}
               <X className="size-4" />
             </div>
           </Button>,
@@ -501,10 +498,8 @@ export const RunsTable = () => {
   return (
     <div className="relative">
       <DataTable
-        emptyStateTextTitle={t('No flow runs found')}
-        emptyStateTextDescription={t(
-          'Come back later when your automations start running',
-        )}
+        emptyStateTextTitle={'No flow runs found'}
+        emptyStateTextDescription={'Come back later when your automations start running'}
         emptyStateIcon={<History className="size-14" />}
         columns={columns}
         page={data}

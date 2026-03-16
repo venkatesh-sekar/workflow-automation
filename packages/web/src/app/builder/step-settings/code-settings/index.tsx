@@ -1,5 +1,4 @@
 import { CodeAction, MarkdownVariant } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -43,7 +42,7 @@ const CodeSettings = React.memo(({ readonly }: CodeSettingsProps) => {
               <FlowMarkdown markdown={markdown} variant={MarkdownVariant.INFO} />
             </div>
             <div className="flex items-center justify-between mb-2!">
-              <FormLabel>{t('Inputs')}</FormLabel>
+              <FormLabel>{'Inputs'}</FormLabel>
             </div>
 
             <DictionaryProperty

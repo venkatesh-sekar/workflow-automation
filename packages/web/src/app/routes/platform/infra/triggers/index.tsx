@@ -1,6 +1,5 @@
 import { TriggerStatusReport } from '@flow/shared';
 import dayjs from 'dayjs';
-import { t } from 'i18next';
 import {
   CheckCircle,
   XCircle,
@@ -250,14 +249,12 @@ export default function TriggerHealthPage() {
   return (
     <div className="flex flex-col w-full gap-4">
       <DashboardPageHeader
-        title={t('Trigger Health Status')}
-        description={t('Monitor the health and performance of your triggers')}
+        title={'Trigger Health Status'}
+        description={'Monitor the health and performance of your triggers'}
       />
       <DataTable
-        emptyStateTextTitle={t('No trigger data available')}
-        emptyStateTextDescription={t(
-          'Trigger health information will appear here',
-        )}
+        emptyStateTextTitle={'No trigger data available'}
+        emptyStateTextDescription={'Trigger health information will appear here'}
         emptyStateIcon={<CheckCircle className="size-14" />}
         hidePagination={true}
         columns={columns}

@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { useContext } from 'react';
 
 import { Dot } from '@/components/custom/dot';
@@ -53,20 +52,20 @@ export const FirstTimeTestingSection = ({
             data-testid="test-trigger-button"
           >
             <Dot animation={true} variant={'primary'}></Dot>
-            {t('Test Trigger')}
+            {'Test Trigger'}
           </Button>
         </TestButtonTooltip>
 
         {!isNil(mockData) && JSON.stringify(mockData) !== '{}' && (
           <>
-            {t('Or')}
+            {'Or'}
             <Button
               variant="outline"
               size="sm"
               onClick={() => onSaveMockAsSampleData(mockData)}
               loading={isSaving}
             >
-              {t('Use Mock Data')}
+              {'Use Mock Data'}
             </Button>
           </>
         )}
@@ -88,7 +87,7 @@ export const FirstTimeTestingSection = ({
             disabled={!isValid || isLoadingDynamicProperties}
           >
             <Dot animation={true} variant={'primary'}></Dot>
-            {t('Test Tool')}
+            {'Test Tool'}
           </Button>
         </TestButtonTooltip>
       </div>
@@ -107,7 +106,7 @@ export const FirstTimeTestingSection = ({
           disabled={!isValid || isLoadingDynamicProperties}
         >
           <Dot animation={true} variant={'primary'}></Dot>
-          {t('Load Sample Data')}
+          {'Load Sample Data'}
         </Button>
       </TestButtonTooltip>
     </div>

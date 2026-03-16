@@ -1,5 +1,4 @@
 import { PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
 import { Download } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -34,7 +33,7 @@ export function FlowDetailsHeader({ report }: FlowDetailsHeaderProps) {
 
   return (
     <div className="flex items-center justify-between">
-      <div className="text-lg font-semibold">{t('Details')}</div>
+      <div className="text-lg font-semibold">{'Details'}</div>
       <Button
         variant="outline"
         size="sm"
@@ -42,7 +41,7 @@ export function FlowDetailsHeader({ report }: FlowDetailsHeaderProps) {
         disabled={!report?.flows || report.flows.length === 0}
       >
         <Download className="h-4 w-4 mr-2" />
-        {t('Download')}
+        {'Download'}
       </Button>
     </div>
   );

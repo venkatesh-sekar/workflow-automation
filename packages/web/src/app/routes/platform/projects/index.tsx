@@ -3,7 +3,6 @@ import {
   TeamProjectsLimit,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { CheckIcon, Package, Pencil, Trash } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -174,9 +173,7 @@ export default function ProjectsPage() {
             </TooltipTrigger>
             {isDisabled && (
               <TooltipContent side="right">
-                {t(
-                  'Cannot delete active team, switch to another team first',
-                )}
+                {'Cannot delete active team, switch to another team first'}
               </TooltipContent>
             )}
           </Tooltip>
@@ -199,12 +196,10 @@ export default function ProjectsPage() {
           return (
             <div onClick={(e) => e.stopPropagation()}>
               <ConfirmationDeleteDialog
-                title={t('Delete Teams')}
-                message={t(
-                  'The selected teams and all their data will be permanently deleted.',
-                )}
-                entityName={t('Teams')}
-                buttonText={t('Delete')}
+                title={'Delete Teams'}
+                message={'The selected teams and all their data will be permanently deleted.'}
+                entityName={'Teams'}
+                buttonText={'Delete'}
                 mutationFn={async () => {
                   const deletableProjects = selectedRows.filter(
                     (row) => row.id !== currentProject?.id,
@@ -216,7 +211,7 @@ export default function ProjectsPage() {
                   setSelectedRows([]);
                 }}
                 onError={(error) => {
-                  toast.error(t('Error'), {
+                  toast.error('Error', {
                     description: errorToastMessage(error),
                     duration: 3000,
                   });
@@ -230,7 +225,7 @@ export default function ProjectsPage() {
                     disabled={!canDeleteAny}
                   >
                     <Trash className="mr-1 w-4" />
-                    {`${t('Delete')} (${selectedRows.length})`}
+                    {`${'Delete'} (${selectedRows.length})`}
                   </Button>
                 )}
               </ConfirmationDeleteDialog>
@@ -246,7 +241,7 @@ export default function ProjectsPage() {
     () => [
       <NewProjectDialog key="new-team">
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-          {t('New Team')}
+          {'New Team'}
         </AnimatedIconButton>
       </NewProjectDialog>,
     ],
@@ -255,14 +250,12 @@ export default function ProjectsPage() {
 
   const errorToastMessage = (error: unknown): string | undefined => {
     if (validationUtils.isValidationError(error)) {
-      console.error(t('Validation error'), error);
+      console.error('Validation error', error);
       switch (error.response?.data?.params?.message) {
         case 'PROJECT_HAS_ENABLED_FLOWS':
-          return t('Team has enabled flows. Please disable them first.');
+          return 'Team has enabled flows. Please disable them first.';
         case 'ACTIVE_PROJECT':
-          return t(
-            'This team is active. Please switch to another team first.',
-          );
+          return 'This team is active. Please switch to another team first.';
       }
       return undefined;
     }
@@ -290,7 +283,7 @@ export default function ProjectsPage() {
                 <Pencil className="size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('Edit team')}</TooltipContent>
+            <TooltipContent side="bottom">{'Edit team'}</TooltipContent>
           </Tooltip>
         </div>
       );
@@ -300,22 +293,18 @@ export default function ProjectsPage() {
   return (
     <LockedFeatureGuard
       locked={!isEnabled}
-      lockTitle={t('Unlock Teams')}
-      lockDescription={t(
-        'Orchestrate your automation teams with their own flows, connections and usage quotas',
-      )}
+      lockTitle={'Unlock Teams'}
+      lockDescription={'Orchestrate your automation teams with their own flows, connections and usage quotas'}
       lockVideoUrl=""
     >
       <div className="flex flex-col w-full">
         <DashboardPageHeader
-          title={t('Teams')}
-          description={t('Manage your automation teams')}
+          title={'Teams'}
+          description={'Manage your automation teams'}
         />
         <DataTable
-          emptyStateTextTitle={t('No teams found')}
-          emptyStateTextDescription={t(
-            'Start by creating teams to manage your automations',
-          )}
+          emptyStateTextTitle={'No teams found'}
+          emptyStateTextDescription={'Start by creating teams to manage your automations'}
           emptyStateIcon={<Package className="size-14" />}
           onRowClick={async (project) => {
             await projectCollectionUtils.setCurrentProject(project.id);
@@ -324,7 +313,7 @@ export default function ProjectsPage() {
           filters={[
             {
               type: 'input',
-              title: t('Name'),
+              title: 'Name',
               accessorKey: 'displayName',
               icon: CheckIcon,
             },

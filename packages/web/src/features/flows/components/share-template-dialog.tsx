@@ -1,7 +1,6 @@
 import { Template, TemplateScope } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -94,17 +93,13 @@ const ShareTemplateDialog: React.FC<{
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Share Template')}</DialogTitle>
+          <DialogTitle>{'Share Template'}</DialogTitle>
           <DialogDescription className="flex flex-col gap-2">
             <span>
-              {t(
-                'Generate or update a template link for the current flow to easily share it with others.',
-              )}
+              {'Generate or update a template link for the current flow to easily share it with others.'}
             </span>
             <span>
-              {t(
-                'The template will not have any credentials in connection fields, keeping sensitive information secure.',
-              )}
+              {'The template will not have any credentials in connection fields, keeping sensitive information secure.'}
             </span>
           </DialogDescription>
         </DialogHeader>
@@ -118,12 +113,12 @@ const ShareTemplateDialog: React.FC<{
               name="description"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="description">{t('Description')}</Label>
+                  <Label htmlFor="description">{'Description'}</Label>
                   <Input
                     {...field}
                     required
                     id="description"
-                    placeholder={t('A short description of the template')}
+                    placeholder={'A short description of the template'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -135,7 +130,7 @@ const ShareTemplateDialog: React.FC<{
                 {shareTemplateForm.formState.errors.root.serverError.message}
               </FormMessage>
             )}
-            <Button loading={isPending}>{t('Share')}</Button>
+            <Button loading={isPending}>{'Share'}</Button>
           </form>
         </Form>
       </DialogContent>

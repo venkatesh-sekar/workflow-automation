@@ -2,7 +2,6 @@ import {
   PlatformPlanLimits,
   PlatformWithoutSensitiveData,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Check, Lock } from 'lucide-react';
 
 const LICENSE_PROPS_MAP = {
@@ -87,7 +86,7 @@ export const FeatureStatus = ({
                   featureEnabled ? '' : 'text-muted-foreground'
                 }`}
               >
-                {t(value.label)}
+                {value.label}
               </span>
             </div>
           );

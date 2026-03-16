@@ -4,7 +4,6 @@ import {
   validateIndexBound,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { User } from 'lucide-react';
 
 import {
@@ -32,7 +31,7 @@ function useOwnerColumn<T extends HasOwner | HasOwnerId>(
     accessorKey: 'owner',
     size: 180,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Owner')} icon={User} />
+      <DataTableColumnHeader column={column} title={'Owner'} icon={User} />
     ),
     cell: ({ row }) => {
       if ('ownerId' in row.original) {
@@ -71,7 +70,7 @@ function useOwnerColumnFilter<
   }));
   const ownerColumnFilter: DataTableFilters<keyof T & string> = {
     type: 'select',
-    title: t('Owner'),
+    title: 'Owner',
     accessorKey: 'owner',
     icon: User,
     options: ownersOptions ?? [],

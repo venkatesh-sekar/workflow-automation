@@ -1,5 +1,4 @@
 import { isNil, Permission } from '@flow/shared';
-import { t } from 'i18next';
 import { Info } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,7 @@ const ViewingOldVersionWidget = () => {
         <div className="flex items-center gap-2">
           <Info className="size-5" />
           <span>
-            {t('Viewing version')} #{versionNumber}
+            {'Viewing version'} #{versionNumber}
           </span>
         </div>
 
@@ -47,7 +46,7 @@ const ViewingOldVersionWidget = () => {
               onConfirm={undefined}
             >
               <Button variant="ghost" size="sm">
-                {t('Use as Draft')}
+                {'Use as Draft'}
               </Button>
             </OverwriteDraftDialog>
           )}

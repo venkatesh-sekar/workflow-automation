@@ -4,7 +4,6 @@ import {
   Permission,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   CheckIcon,
   Trash,
@@ -57,13 +56,13 @@ const STATUS_QUERY_PARAM = 'status';
 const filters: DataTableFilters<keyof AppConnectionWithoutSensitiveData>[] = [
   {
     type: 'input',
-    title: t('Search'),
+    title: 'Search',
     accessorKey: 'displayName',
     icon: Search,
   },
   {
     type: 'select',
-    title: t('Status'),
+    title: 'Status',
     accessorKey: STATUS_QUERY_PARAM,
     options: Object.values(AppConnectionStatus).map((status) => {
       return {
@@ -94,14 +93,14 @@ const GlobalConnectionsTable = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Name')}
+          title={'Name'}
           icon={Puzzle}
         />
       ),
       cell: ({ row }) => {
         return (
           <CopyTextTooltip
-            title={t('External ID')}
+            title={'External ID'}
             text={row.original.externalId || ''}
           >
             <div className="flex items-center gap-2 w-fit">
@@ -122,7 +121,7 @@ const GlobalConnectionsTable = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Status')}
+          title={'Status'}
           icon={Activity}
         />
       ),
@@ -147,7 +146,7 @@ const GlobalConnectionsTable = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Connected At')}
+          title={'Connected At'}
           icon={Clock}
         />
       ),
@@ -166,7 +165,7 @@ const GlobalConnectionsTable = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Projects')}
+          title={'Projects'}
           icon={FolderOpen}
         />
       ),
@@ -248,13 +247,11 @@ const GlobalConnectionsTable = () => {
           return (
             <div onClick={(e) => e.stopPropagation()}>
               <ConfirmationDeleteDialog
-                title={t('Delete Connections')}
-                message={t(
-                  'The selected connections will be permanently deleted.',
-                )}
+                title={'Delete Connections'}
+                message={'The selected connections will be permanently deleted.'}
                 warning={<DeleteConnectionWarning />}
                 entityName="connections"
-                buttonText={t('Delete')}
+                buttonText={'Delete'}
                 mutationFn={async () => {
                   try {
                     await bulkDeleteGlobalConnections.mutateAsync(
@@ -275,7 +272,7 @@ const GlobalConnectionsTable = () => {
                     disabled={!userHasPermissionToWriteAppConnection}
                   >
                     <Trash className="mr-1 w-4" />
-                    {`${t('Delete')} (${selectedRows.length})`}
+                    {`${'Delete'} (${selectedRows.length})`}
                   </Button>
                 )}
               </ConfirmationDeleteDialog>
@@ -298,7 +295,7 @@ const GlobalConnectionsTable = () => {
         }}
       >
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-          {t('New Connection')}
+          {'New Connection'}
         </AnimatedIconButton>
       </NewConnectionDialog>,
     ],
@@ -309,23 +306,17 @@ const GlobalConnectionsTable = () => {
     <div className="flex-col w-full">
       <LockedFeatureGuard
         locked={!platform.plan.globalConnectionsEnabled}
-        lockTitle={t('Enable Global Connections')}
-        lockDescription={t(
-          'Manage platform-wide connections to external systems.',
-        )}
+        lockTitle={'Enable Global Connections'}
+        lockDescription={'Manage platform-wide connections to external systems.'}
         lockVideoUrl=""
       >
         <DashboardPageHeader
-          description={t(
-            'Manage platform-wide connections to external systems.',
-          )}
-          title={t('Global Connections')}
+          description={'Manage platform-wide connections to external systems.'}
+          title={'Global Connections'}
         />
         <DataTable
-          emptyStateTextTitle={t('No global connections found')}
-          emptyStateTextDescription={t(
-            'Create a global connection that can be shared to multiple projects',
-          )}
+          emptyStateTextTitle={'No global connections found'}
+          emptyStateTextDescription={'Create a global connection that can be shared to multiple projects'}
           emptyStateIcon={<Globe className="size-14" />}
           columns={columns}
           page={globalConnections}

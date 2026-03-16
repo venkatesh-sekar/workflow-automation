@@ -1,5 +1,4 @@
 import { PieceMetadataModelSummary } from '@flow/pieces-framework';
-import { t } from 'i18next';
 import React, { useState } from 'react';
 
 // eslint-disable-next-line import/no-restricted-paths
@@ -31,7 +30,7 @@ export const ConnectionDropdown = React.memo(
     onChange,
     disabled = false,
     showError = false,
-    placeholder = t('Select a connection'),
+    placeholder = 'Select a connection',
   }: ConnectionDropdownProps) => {
     const [connectionDialogOpen, setConnectionDialogOpen] = useState(false);
 
@@ -61,7 +60,7 @@ export const ConnectionDropdown = React.memo(
       })) ?? [];
 
     const connectionOptionsWithNewConnectionOption = [
-      { label: t('+ New Connection'), value: '' },
+      { label: '+ New Connection', value: '' },
       ...connectionOptions,
     ];
 
@@ -102,7 +101,7 @@ export const ConnectionDropdown = React.memo(
           />
           {showError && (
             <p className="text-sm font-medium text-destructive break-words">
-              {t('Connection is required')}
+              {'Connection is required'}
             </p>
           )}
         </div>

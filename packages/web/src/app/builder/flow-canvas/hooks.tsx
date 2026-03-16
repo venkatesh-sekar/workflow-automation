@@ -8,7 +8,6 @@ import {
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import { useEffect, useRef } from 'react';
 import { PanelImperativeHandle } from 'react-resizable-panels';
 import { useLocation, usePrevious } from 'react-use';
@@ -91,9 +90,7 @@ const useShowBuilderIsSavingWarningBeforeLeaving = () => {
     if (isEmbedded) {
       return;
     }
-    const message = t(
-      'Leaving this page while saving will discard your changes, are you sure you want to leave?',
-    );
+    const message = 'Leaving this page while saving will discard your changes, are you sure you want to leave?';
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       if (isSaving) {
         e.preventDefault();

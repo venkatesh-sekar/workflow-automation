@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { AlertCircle } from 'lucide-react';
 import React from 'react';
 
@@ -21,7 +20,7 @@ export const SimulationNote = ({
     <div className="flex flex-col gap-4 w-full">
       <div className="flex gap-2 items-center justify-center w-full">
         <LoadingSpinner className="size-4"></LoadingSpinner>
-        <div>{t('Testing Trigger')}</div>
+        <div>{'Testing Trigger'}</div>
         <div className="grow"></div>
 
         <Button
@@ -33,7 +32,7 @@ export const SimulationNote = ({
             abortControllerRef.current = new AbortController();
           }}
         >
-          {t('Cancel')}
+          {'Cancel'}
         </Button>
       </div>
 
@@ -41,7 +40,7 @@ export const SimulationNote = ({
         <Alert>
           <AlertCircle className="h-4 w-4 text-warning" />
           <div className="flex flex-col gap-1">
-            <AlertTitle>{t('Action Required')}:</AlertTitle>
+            <AlertTitle>{'Action Required'}:</AlertTitle>
             <AlertDescription>
               <div className="break-wrods">{note}</div>
             </AlertDescription>

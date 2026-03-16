@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -28,7 +27,7 @@ import { templatesApi } from '@/features/templates';
 import { api } from '@/lib/api';
 
 const UpdateFlowTemplateSchema = z.object({
-  displayName: z.string().min(1, t('Name is required')),
+  displayName: z.string().min(1, 'Name is required'),
   summary: z.string(),
   description: z.string(),
   blogUrl: z.string(),
@@ -116,7 +115,7 @@ export const UpdateTemplateDialog = ({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Update Template')}</DialogTitle>
+          <DialogTitle>{'Update Template'}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="grid space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -125,14 +124,14 @@ export const UpdateTemplateDialog = ({
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
                   <Label htmlFor="name">
-                    {t('Name')}{' '}
+                    {'Name'}{' '}
                     <span className="text-destructive-300">{'*'}</span>
                   </Label>
                   <Input
                     {...field}
                     required
                     id="name"
-                    placeholder={t('Template Name')}
+                    placeholder={'Template Name'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -143,11 +142,11 @@ export const UpdateTemplateDialog = ({
               name="summary"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="summary">{t('Summary')}</Label>
+                  <Label htmlFor="summary">{'Summary'}</Label>
                   <Input
                     {...field}
                     id="summary"
-                    placeholder={t('Template Summary')}
+                    placeholder={'Template Summary'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -158,14 +157,14 @@ export const UpdateTemplateDialog = ({
               name="description"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="description">{t('Description')}</Label>
+                  <Label htmlFor="description">{'Description'}</Label>
 
                   <Textarea
                     {...field}
                     required
                     id="description"
                     className="rounded-sm"
-                    placeholder={t('Template Description')}
+                    placeholder={'Template Description'}
                   />
 
                   <FormMessage />
@@ -176,12 +175,12 @@ export const UpdateTemplateDialog = ({
               name="blogUrl"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="blogUrl">{t('Blog URL')}</Label>
+                  <Label htmlFor="blogUrl">{'Blog URL'}</Label>
                   <Input
                     {...field}
                     required
                     id="blogUrl"
-                    placeholder={t('Template Blog URL')}
+                    placeholder={'Template Blog URL'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -192,7 +191,7 @@ export const UpdateTemplateDialog = ({
               name="template"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="template">{t('Template')}</Label>
+                  <Label htmlFor="template">{'Template'}</Label>
                   <Input
                     type="file"
                     accept=".json"
@@ -204,13 +203,13 @@ export const UpdateTemplateDialog = ({
                             field.onChange(flowTemplate);
                           } else {
                             form.setError('template', {
-                              message: t('Invalid JSON'),
+                              message: 'Invalid JSON',
                             });
                           }
                         });
                     }}
                     id="template"
-                    placeholder={t('Template')}
+                    placeholder={'Template'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -228,7 +227,7 @@ export const UpdateTemplateDialog = ({
               setOpen(false);
             }}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             disabled={isPending}
@@ -237,7 +236,7 @@ export const UpdateTemplateDialog = ({
               form.handleSubmit(onSubmit)(e);
             }}
           >
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </DialogContent>

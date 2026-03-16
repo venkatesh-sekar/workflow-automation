@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
@@ -39,7 +38,7 @@ export function DataTableBulkActions<TData>({
             ))}
             <div className="border-l h-6 mx-1" />
             <span className="text-sm text-muted-foreground">
-              {t('{count} selected', { count: selectedRows.length })}
+              {`${selectedRows.length} selected`}
             </span>
             <Button
               variant="ghost"

@@ -4,7 +4,6 @@ import {
   PlatformRole,
   UserStatus,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Users } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -133,7 +132,7 @@ export const MembersSettings = () => {
     <div className="space-y-4">
       <div className="flex items-center gap-2 justify-between">
         <DataTableInputPopover
-          title={t('Search')}
+          title={'Search'}
           filterValue={filterValue}
           handleFilterChange={setFilterValue}
         />
@@ -143,7 +142,7 @@ export const MembersSettings = () => {
             iconSize={16}
             onClick={() => setInviteOpen(true)}
           >
-            {t('Add Members')}
+            {'Add Members'}
           </AnimatedIconButton>
         )}
       </div>
@@ -160,10 +159,8 @@ export const MembersSettings = () => {
           platformUsersIsPending
         }
         hidePagination={true}
-        emptyStateTextTitle={t('No members found')}
-        emptyStateTextDescription={t(
-          'Start by inviting team members to collaborate.',
-        )}
+        emptyStateTextTitle={'No members found'}
+        emptyStateTextDescription={'Start by inviting team members to collaborate.'}
         emptyStateIcon={<Users className="size-14" />}
       />
       <InviteUserDialog open={inviteOpen} setOpen={setInviteOpen} />

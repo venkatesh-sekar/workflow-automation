@@ -13,7 +13,6 @@ import {
   SeekPage,
   CountFlowsRequest,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { UNSAVED_CHANGES_TOAST } from '@/components/ui/sonner';
@@ -39,13 +38,11 @@ export const flowsApi = {
             error.response?.data as { code: ErrorCode }
           )?.code;
           if (errorCode === ErrorCode.FLOW_IN_USE) {
-            toast.error(t('Flow Is In Use'), {
-              description: t(
-                'Flow is being used by another user, please try again later.',
-              ),
+            toast.error('Flow Is In Use', {
+              description: 'Flow is being used by another user, please try again later.',
               duration: Infinity,
               action: {
-                label: t('Refresh'),
+                label: 'Refresh',
                 onClick: () => window.location.reload(),
               },
             });

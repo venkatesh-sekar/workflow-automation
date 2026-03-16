@@ -1,5 +1,4 @@
 import { PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
 import { Zap } from 'lucide-react';
 
 import { MetricCard, MetricCardSkeleton } from './metric-card';
@@ -22,9 +21,9 @@ export const FlowRunsMetric = ({ report }: FlowRunsMetricProps) => {
   return (
     <MetricCard
       icon={Zap}
-      title={t('Automation Runs')}
+      title={'Automation Runs'}
       value={totalFlowRuns.toLocaleString()}
-      description={t('Total automation executions')}
+      description={'Total automation executions'}
       iconColor="text-rose-500"
       iconBgColor="bg-rose-500/10"
     />

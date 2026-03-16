@@ -1,5 +1,4 @@
 import { flowStructureUtil, isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { SearchXIcon } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -115,7 +114,7 @@ const DataSelector = ({ parentHeight, parentWidth }: DataSelectorProps) => {
       )}
     >
       <div className="text-lg items-center px-5 py-2 flex gap-2">
-        {t('Data Selector')} <div className="grow"></div>{' '}
+        {'Data Selector'} <div className="grow"></div>{' '}
         <DataSelectorSizeTogglers
           state={DataSelectorSize}
           setListSizeState={setDataSelectorSize}
@@ -157,10 +156,10 @@ const DataSelector = ({ parentHeight, parentWidth }: DataSelectorProps) => {
             <div className="flex items-center justify-center gap-2 mt-5  flex-col">
               <SearchXIcon className="w-[35px] h-[35px]"></SearchXIcon>
               <div className="text-center font-semibold text-md">
-                {t('No matching data')}
+                {'No matching data'}
               </div>
               <div className="text-center ">
-                {t('Try adjusting your search')}
+                {'Try adjusting your search'}
               </div>
             </div>
           )}

@@ -1,5 +1,4 @@
 import { Permission, ProjectRole, RoleType } from '@flow/shared';
-import { t } from 'i18next';
 import { useState, ReactNode } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -208,23 +207,21 @@ export const ProjectRoleDialog = ({
         <DialogHeader>
           <DialogTitle>
             {mode === 'create'
-              ? t('Create Role')
+              ? 'Create Role'
               : projectRole?.type === RoleType.DEFAULT
-              ? t('View Role: {name}', { name: projectRole?.name })
-              : t('Edit Role: {name}', { name: projectRole?.name })}
+              ? `View Role: ${projectRole?.name}`
+              : `Edit Role: ${projectRole?.name}`}
           </DialogTitle>
           <DialogDescription>
             {mode === 'create'
-              ? t(
-                  'Define a custom role with specific permissions for project members.',
-                )
-              : t('Review and manage permissions for this role.')}
+              ? 'Define a custom role with specific permissions for project members.'
+              : 'Review and manage permissions for this role.'}
           </DialogDescription>
         </DialogHeader>
         <div className="grid space-y-4 mt-4">
           <div>
             <span className="text-sm font-medium text-foreground">
-              {t('Name')}
+              {'Name'}
             </span>
             <Input
               value={roleName}
@@ -232,14 +229,14 @@ export const ProjectRoleDialog = ({
               required
               id="name"
               type="text"
-              placeholder={t('Role Name')}
+              placeholder={'Role Name'}
               className="rounded-sm mt-2"
               disabled={disabled}
             />
           </div>
           <div>
             <span className="text-sm font-medium text-foreground">
-              {t('Permissions')}
+              {'Permissions'}
             </span>
             <div className="overflow-y-auto p-2 rounded-md">
               <ScrollArea className="h-[55vh] pr-4">
@@ -266,7 +263,7 @@ export const ProjectRoleDialog = ({
                               }
                               disabled={disabled}
                             >
-                              {t('None')}
+                              {'None'}
                             </Button>
                           )}
                           {!permission.disableRead && (
@@ -281,7 +278,7 @@ export const ProjectRoleDialog = ({
                               }
                               disabled={disabled}
                             >
-                              {t('Read')}
+                              {'Read'}
                             </Button>
                           )}
                           <Button
@@ -292,7 +289,7 @@ export const ProjectRoleDialog = ({
                             }
                             disabled={disabled}
                           >
-                            {t('Write')}
+                            {'Write'}
                           </Button>
                         </div>
                       </div>
@@ -307,7 +304,7 @@ export const ProjectRoleDialog = ({
           </div>
           {!disabled && (
             <Button onClick={handleSubmit}>
-              {mode === 'create' ? t('Create') : t('Save')}
+              {mode === 'create' ? 'Create' : 'Save'}
             </Button>
           )}
         </div>

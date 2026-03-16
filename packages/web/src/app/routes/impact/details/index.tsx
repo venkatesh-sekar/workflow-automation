@@ -5,7 +5,6 @@ import {
   ProjectWithLimits,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   AlertCircle,
   ChevronDown,
@@ -78,7 +77,7 @@ export function FlowsDetails({
       {
         accessorKey: 'flowName',
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={t('Flow Name')} />
+          <DataTableColumnHeader column={column} title={'Flow Name'} />
         ),
         cell: ({ row }) => (
           <div
@@ -99,7 +98,7 @@ export function FlowsDetails({
       {
         accessorKey: 'ownerId',
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={t('Owner')} />
+          <DataTableColumnHeader column={column} title={'Owner'} />
         ),
         cell: ({ row }) => (
           <div className="flex items-center gap-2">
@@ -118,7 +117,7 @@ export function FlowsDetails({
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Time Saved Per Run')}
+            title={'Time Saved Per Run'}
             sortable
           />
         ),
@@ -141,11 +140,11 @@ export function FlowsDetails({
                 <TooltipTrigger asChild>
                   <div className="flex items-center gap-1.5 text-muted-foreground cursor-not-allowed">
                     <Plus className="h-3.5 w-3.5" />
-                    <span>{t('Add Estimated Time')}</span>
+                    <span>{'Add Estimated Time'}</span>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="top">
-                  {t("You don't have permission to add")}
+                  {"You don't have permission to add"}
                 </TooltipContent>
               </Tooltip>
             );
@@ -162,7 +161,7 @@ export function FlowsDetails({
                   >
                     <Button variant="link" size="xs">
                       <Pencil className="size-3! mr-1" />
-                      <span>{t('Edit')}</span>
+                      <span>{'Edit'}</span>
                     </Button>
                   </EditTimeSavedPopover>
                 </span>
@@ -177,7 +176,7 @@ export function FlowsDetails({
             >
               <div className="flex items-center gap-1.5 cursor-pointer text-primary hover:underline">
                 <Plus className="h-3.5 w-3.5" />
-                <span>{t('Add Estimated Time')}</span>
+                <span>{'Add Estimated Time'}</span>
               </div>
             </EditTimeSavedPopover>
           );
@@ -188,7 +187,7 @@ export function FlowsDetails({
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Total Time Saved')}
+            title={'Total Time Saved'}
             sortable
           />
         ),
@@ -204,7 +203,7 @@ export function FlowsDetails({
       {
         accessorKey: 'projectName',
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={t('Project Name')} />
+          <DataTableColumnHeader column={column} title={'Project Name'} />
         ),
         cell: ({ row }) => {
           const project = projects?.find(
@@ -267,7 +266,7 @@ export function FlowsDetails({
         <div className="relative w-[200px]">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder={t('Search flows')}
+            placeholder={'Search flows'}
             value={filters.searchQuery}
             onChange={(e) => filters.setSearchQuery(e.target.value)}
             className="pl-9 pr-8"
@@ -296,10 +295,10 @@ export function FlowsDetails({
               disabled={filters.filteredData.length === 0}
             >
               <Download className="h-4 w-4 mr-2" />
-              {t('Download')}
+              {'Download'}
             </Button>
           </TooltipTrigger>
-          <TooltipContent>{t('Download flows details')}</TooltipContent>
+          <TooltipContent>{'Download flows details'}</TooltipContent>
         </Tooltip>
       </div>
 
@@ -309,13 +308,10 @@ export function FlowsDetails({
             <AlertCircle className="h-5 w-5 text-warning shrink-0 mt-0.5" />
             <div className="flex flex-col gap-1">
               <p className="text-sm font-medium">
-                {t(
-                  'There are {count} flows missing their Estimated Time Per Run.',
-                  { count: flowsMissingTimeSaved },
-                )}
+                {`There are ${flowsMissingTimeSaved} flows missing their Estimated Time Per Run.`}
               </p>
               <p className="text-sm text-muted-foreground">
-                {t('This will cause inaccurate analytics and unreliable data.')}
+                {'This will cause inaccurate analytics and unreliable data.'}
               </p>
             </div>
           </div>
@@ -332,11 +328,11 @@ export function FlowsDetails({
         isLoading={isLoading}
         clientPagination={true}
         initialSorting={[{ id: 'minutesSaved', desc: true }]}
-        emptyStateTextTitle={t('No Flows Found')}
+        emptyStateTextTitle={'No Flows Found'}
         emptyStateTextDescription={
           filters.searchQuery
-            ? t('Try adjusting your search')
-            : t('Start running your flows to see time saved')
+            ? 'Try adjusting your search'
+            : 'Start running your flows to see time saved'
         }
         emptyStateIcon={
           <Workflow className="h-10 w-10 text-muted-foreground" />
@@ -357,7 +353,7 @@ function TimeSavedFilter({ filters }: { filters: FiltersReturn }) {
       <PopoverTrigger asChild>
         <Button variant="outline" className="gap-2 font-normal border-dashed">
           <Clock className="h-4 w-4" />
-          <span>{t('Total Time Saved')}</span>
+          <span>{'Total Time Saved'}</span>
           {filters.timeSavedLabel && (
             <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-medium">
               {filters.timeSavedLabel}
@@ -392,7 +388,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
       <PopoverTrigger asChild>
         <Button variant="outline" className="gap-2 font-normal border-dashed">
           <Filter className="h-4 w-4" />
-          <span>{t('Owner')}</span>
+          <span>{'Owner'}</span>
           {filters.selectedOwners.length > 0 && (
             <span className="flex items-center gap-1">
               {filters.selectedOwners.slice(0, 2).map((owner) => (
@@ -419,7 +415,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder={t('Search owners...')}
+              placeholder={'Search owners...'}
               value={filters.ownerFilter.searchQuery}
               onChange={(e) =>
                 filters.updateOwnerFilter({ searchQuery: e.target.value })
@@ -445,7 +441,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
           ))}
           {filters.filteredOwners.length === 0 && (
             <div className="py-6 text-center text-sm text-muted-foreground">
-              {t('No owners found')}
+              {'No owners found'}
             </div>
           )}
         </div>
@@ -455,7 +451,7 @@ function OwnerFilter({ filters }: { filters: FiltersReturn }) {
               onClick={() => filters.updateOwnerFilter({ selectedIds: [] })}
               className="w-full text-center text-sm text-primary hover:underline"
             >
-              {t('Clear all')}
+              {'Clear all'}
             </button>
           </div>
         )}

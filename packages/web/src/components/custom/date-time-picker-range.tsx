@@ -1,5 +1,4 @@
 import { format, subDays, addDays, startOfDay, endOfDay } from 'date-fns';
-import { t } from 'i18next';
 import { Calendar as CalendarIcon, Clock } from 'lucide-react';
 import * as React from 'react';
 import { DateRange } from 'react-day-picker';
@@ -75,14 +74,14 @@ const PRESETS: Record<PresetKey, () => { from: Date; to: Date }> = {
 
 const getPresetLabel = (value: string) => {
   const labels: Record<string, string> = {
-    '7days': t('Last 7 Days'),
-    '14days': t('Last 14 Days'),
-    '30days': t('Last 30 Days'),
-    '90days': t('Last 90 Days'),
-    '7': t('Next 7 days'),
-    '14': t('Next 14 days'),
-    '30': t('Next 30 days'),
-    '90': t('Next 90 days'),
+    '7days': 'Last 7 Days',
+    '14days': 'Last 14 Days',
+    '30days': 'Last 30 Days',
+    '90days': 'Last 90 Days',
+    '7': 'Next 7 days',
+    '14': 'Next 14 days',
+    '30': 'Next 30 days',
+    '90': 'Next 90 days',
   };
   return labels[value] || '';
 };
@@ -239,14 +238,14 @@ export function DateTimePickerWithRange({
               date.to ? (
                 <div className="flex gap-2 items-center">
                   <div>{format(date.from, 'LLL dd, y, hh:mm a')}</div>
-                  <div>{t('to')}</div>
+                  <div>{'to'}</div>
                   <div>{format(date.to, 'LLL dd, y, hh:mm a')}</div>
                 </div>
               ) : (
                 format(date.from, 'LLL dd, y, hh:mm a')
               )
             ) : (
-              <span>{t('Pick a date range')}</span>
+              <span>{'Pick a date range'}</span>
             )}
           </Button>
         </PopoverTrigger>
@@ -257,22 +256,22 @@ export function DateTimePickerWithRange({
               value={selectedPreset || undefined}
             >
               <SelectTrigger>
-                <SelectValue placeholder={t('Select preset')} />
+                <SelectValue placeholder={'Select preset'} />
               </SelectTrigger>
               <SelectContent>
                 {presetType === 'past' ? (
                   <>
-                    <SelectItem value="7days">{t('Last 7 Days')}</SelectItem>
-                    <SelectItem value="14days">{t('Last 14 Days')}</SelectItem>
-                    <SelectItem value="30days">{t('Last 30 Days')}</SelectItem>
-                    <SelectItem value="90days">{t('Last 90 Days')}</SelectItem>
+                    <SelectItem value="7days">{'Last 7 Days'}</SelectItem>
+                    <SelectItem value="14days">{'Last 14 Days'}</SelectItem>
+                    <SelectItem value="30days">{'Last 30 Days'}</SelectItem>
+                    <SelectItem value="90days">{'Last 90 Days'}</SelectItem>
                   </>
                 ) : (
                   <>
-                    <SelectItem value="7">{t('Next 7 days')}</SelectItem>
-                    <SelectItem value="14">{t('Next 14 days')}</SelectItem>
-                    <SelectItem value="30">{t('Next 30 days')}</SelectItem>
-                    <SelectItem value="90">{t('Next 90 days')}</SelectItem>
+                    <SelectItem value="7">{'Next 7 days'}</SelectItem>
+                    <SelectItem value="14">{'Next 14 days'}</SelectItem>
+                    <SelectItem value="30">{'Next 30 days'}</SelectItem>
+                    <SelectItem value="90">{'Next 90 days'}</SelectItem>
                   </>
                 )}
               </SelectContent>
@@ -295,7 +294,7 @@ export function DateTimePickerWithRange({
 
           <div className="flex gap-1.5 px-2 items-center text-sm mb-3">
             <Clock className="w-4 h-4 text-muted-foreground" />
-            {t('Select Time Range')}
+            {'Select Time Range'}
           </div>
 
           <div className="flex gap-3 items-center px-2 mb-2">
@@ -314,7 +313,7 @@ export function DateTimePickerWithRange({
                 onChange(updated);
               }}
             />
-            {t('to')}
+            {'to'}
             <TimePicker
               date={timeDate.to}
               name="to"
@@ -344,7 +343,7 @@ export function DateTimePickerWithRange({
                 onChange(undefined);
               }}
             >
-              {t('Clear')}
+              {'Clear'}
             </Button>
           </div>
         </PopoverContent>

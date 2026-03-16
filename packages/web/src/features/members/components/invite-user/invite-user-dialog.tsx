@@ -7,7 +7,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { CopyIcon } from 'lucide-react';
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
@@ -51,12 +50,12 @@ import { UserSuggestionsPopover } from './user-suggestions-popover';
 const FormSchema = z.object({
   emails: z
     .array(z.string())
-    .min(1, t('Please enter at least one email address')),
+    .min(1, 'Please enter at least one email address'),
   type: z.nativeEnum(InvitationType, {
-    message: t('Please select invitation type'),
+    message: 'Please select invitation type',
   }),
   platformRole: z.nativeEnum(PlatformRole, {
-    message: t('Please select platform role'),
+    message: 'Please select platform role',
   }),
   projectRole: z.string().optional(),
 });
@@ -118,7 +117,7 @@ export const InviteUserDialog = ({
       } else {
         setOpen(false);
         form.reset();
-        toast.success(t('Invitation sent successfully'), {
+        toast.success('Invitation sent successfully', {
           duration: 3000,
         });
       }
@@ -126,7 +125,7 @@ export const InviteUserDialog = ({
       onInviteSuccess?.();
     },
     onError: (error) => {
-      toast.error(error.message || t('Failed to send invitations'), {
+      toast.error(error.message || 'Failed to send invitations', {
         duration: 4000,
       });
     },
@@ -153,7 +152,7 @@ export const InviteUserDialog = ({
     if (data.emails.length === 0) {
       form.setError('emails', {
         type: 'required',
-        message: t('Please enter at least one email address'),
+        message: 'Please enter at least one email address',
       });
       return;
     }
@@ -165,7 +164,7 @@ export const InviteUserDialog = ({
     if (invalidEmails.length > 0) {
       form.setError('emails', {
         type: 'validation',
-        message: t('Please fix invalid email addresses'),
+        message: 'Please fix invalid email addresses',
       });
       return;
     }
@@ -173,7 +172,7 @@ export const InviteUserDialog = ({
     if (data.type === InvitationType.PROJECT && !data.projectRole) {
       form.setError('projectRole', {
         type: 'required',
-        message: t('Please select a project role'),
+        message: 'Please select a project role',
       });
       return;
     }
@@ -183,7 +182,7 @@ export const InviteUserDialog = ({
 
   const copyInvitationLink = () => {
     navigator.clipboard.writeText(invitationLink);
-    toast.success(t('Invitation link copied successfully'), {
+    toast.success('Invitation link copied successfully', {
       duration: 3000,
     });
   };
@@ -225,30 +224,24 @@ export const InviteUserDialog = ({
             <DialogHeader>
               <DialogTitle>
                 {invitationLink
-                  ? t('Invitation Link')
+                  ? 'Invitation Link'
                   : isPlatformPage
-                  ? t('Invite to Your Platform')
-                  : t('Add Members')}
+                  ? 'Invite to Your Platform'
+                  : 'Add Members'}
               </DialogTitle>
               <DialogDescription>
                 {invitationLink ? (
-                  t(
-                    'Please copy the link below and share it with the user you want to invite, the invitation expires in 7 days.',
-                  )
+                  'Please copy the link below and share it with the user you want to invite, the invitation expires in 7 days.'
                 ) : isPlatformPage ? (
-                  t(
-                    'Invite team members to collaborate and build amazing flows together.',
-                  )
+                  'Invite team members to collaborate and build amazing flows together.'
                 ) : (
                   <>
-                    {t('Add new members to')}{' '}
+                    {'Add new members to'}{' '}
                     <span className="text-foreground font-semibold">
                       {project.displayName}
                     </span>
                     {'. '}
-                    {t(
-                      'They will be added immediately and receive an email notification.',
-                    )}
+                    {'They will be added immediately and receive an email notification.'}
                   </>
                 )}
               </DialogDescription>
@@ -265,7 +258,7 @@ export const InviteUserDialog = ({
                     name="emails"
                     render={({ field }) => (
                       <FormItem className="grid gap-2">
-                        <Label htmlFor="emails">{t('Emails')}</Label>
+                        <Label htmlFor="emails">{'Emails'}</Label>
                         <UserSuggestionsPopover
                           open={showSuggestions}
                           onOpenChange={setShowSuggestions}
@@ -279,7 +272,7 @@ export const InviteUserDialog = ({
                               key={tagInputKey}
                               {...field}
                               type="email"
-                              placeholder={t('Invite users by email')}
+                              placeholder={'Invite users by email'}
                               onInputChange={handleInputChange}
                             />
                           </div>
@@ -304,11 +297,11 @@ export const InviteUserDialog = ({
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button type="button" variant={'outline'}>
-                        {t('Cancel')}
+                        {'Cancel'}
                       </Button>
                     </DialogClose>
                     <Button type="submit" loading={isPending}>
-                      {isPlatformPage ? t('Invite') : t('Add')}
+                      {isPlatformPage ? 'Invite' : 'Add'}
                     </Button>
                   </DialogFooter>
                 </form>
@@ -316,7 +309,7 @@ export const InviteUserDialog = ({
             ) : (
               <>
                 <Label htmlFor="invitationLink" className="mb-2">
-                  {t('Invitation Link')}
+                  {'Invitation Link'}
                 </Label>
                 <div className="flex">
                   <Input
@@ -324,7 +317,7 @@ export const InviteUserDialog = ({
                     type="text"
                     readOnly={true}
                     defaultValue={invitationLink}
-                    placeholder={t('Invitation Link')}
+                    placeholder={'Invitation Link'}
                     onFocus={(event) => {
                       event.target.select();
                       copyInvitationLink();
@@ -344,7 +337,7 @@ export const InviteUserDialog = ({
                       </Button>
                     </TooltipTrigger>
 
-                    <TooltipContent side="bottom">{t('Copy')}</TooltipContent>
+                    <TooltipContent side="bottom">{'Copy'}</TooltipContent>
                   </Tooltip>
                 </div>
               </>

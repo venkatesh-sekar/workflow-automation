@@ -8,7 +8,6 @@ import {
   normalizeToolOutputToExecuteResponse,
   type ToolCallContentBlock,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   CircleX,
   Loader2,
@@ -122,7 +121,7 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
       >
         <span className="text-sm font-semibold">
           {isLoading ? 'Loading...' : metadata?.displayName ?? 'Unknown Tool'}
-          {!isSuccess && t(' (Failed)')}
+          {!isSuccess && ' (Failed)'}
         </span>
       </span>
     </div>
@@ -157,14 +156,14 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
                       variant="outline"
                       className="text-xs"
                     >
-                      {t('Parameters')}
+                      {'Parameters'}
                     </TabsTrigger>
                     <TabsTrigger
                       value="result"
                       variant="outline"
                       className="text-xs"
                     >
-                      {isNil(errorMessage) ? t('Output') : t('Error')}
+                      {isNil(errorMessage) ? 'Output' : 'Error'}
                     </TabsTrigger>
                   </TabsList>
 
@@ -176,7 +175,7 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
                       <DataList data={resolvedFields} />
                     ) : (
                       <div className="text-muted-foreground text-sm">
-                        {t('No resolved fields')}
+                        {'No resolved fields'}
                       </div>
                     )}
                   </TabsContent>
@@ -195,7 +194,7 @@ export const AgentToolBlock = ({ block, index }: AgentToolBlockProps) => {
                       />
                     ) : (
                       <div className="text-muted-foreground text-sm">
-                        {t('No result')}
+                        {'No result'}
                       </div>
                     )}
                   </TabsContent>
@@ -234,7 +233,7 @@ export const MarkdownBlock = ({
 export const StructuredOutputBlock = ({ output }: { output: any }) => {
   return (
     <TimelineItem icon={<Braces className="h-4 w-4 text-muted-foreground" />}>
-      <JsonViewer json={output} title={t('output')} />
+      <JsonViewer json={output} title={'output'} />
     </TimelineItem>
   );
 };
@@ -245,7 +244,7 @@ export const ThinkingBlock = () => {
       icon={<Loader2 className="h-4 w-4 text-muted-foreground animate-spin" />}
     >
       <div className="bg-accent/20 rounded-md p-3 w-full text-sm text-foreground border border-border animate-pulse">
-        <span>{t('Agent is thinking...')}</span>
+        <span>{'Agent is thinking...'}</span>
       </div>
     </TimelineItem>
   );
@@ -289,7 +288,7 @@ export const DoneBlock = () => {
       icon={<CircleCheckBig className="h-4 w-4 text-success-600" />}
     >
       <div className="border border-success/40 bg-success-50/60 rounded-md p-3 text-sm text-success-700 font-medium flex items-center gap-2">
-        <span>{t('Done!')}</span>
+        <span>{'Done!'}</span>
       </div>
     </TimelineItem>
   );
@@ -299,7 +298,7 @@ export const FailedBlock = () => {
   return (
     <TimelineItem icon={<CircleX className="h-4 w-4 text-destructive-600" />}>
       <div className="border border-destructive/40 bg-destructive-50/60 rounded-md p-3 text-sm text-destructive-700 font-medium flex items-center gap-2">
-        <span>{t('Failed')}</span>
+        <span>{'Failed'}</span>
       </div>
     </TimelineItem>
   );

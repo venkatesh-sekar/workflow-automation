@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { CenteredPage } from '@/app/components/centered-page';
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { SkeletonList } from '@/components/ui/skeleton';
@@ -16,12 +14,12 @@ const SecretManagersPage = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.secretManagersEnabled}
-      lockTitle={t('Enable Secret Managers')}
-      lockDescription={t('Manage your secrets from a single and secure place')}
+      lockTitle={'Enable Secret Managers'}
+      lockDescription={'Manage your secrets from a single and secure place'}
     >
       <CenteredPage
-        title={t('Secret Managers')}
-        description={t('Manage Secret Managers')}
+        title={'Secret Managers'}
+        description={'Manage Secret Managers'}
       >
         <div className="flex flex-col gap-4">
           {isLoading ? (

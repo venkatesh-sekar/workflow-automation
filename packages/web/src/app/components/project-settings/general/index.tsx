@@ -5,7 +5,6 @@ import {
   ProjectIcon,
   ProjectType,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
@@ -56,7 +55,7 @@ export const GeneralSettings = ({ form }: GeneralSettingsProps) => {
         {showGeneralSettings && (
           <div>
             <Label htmlFor="projectName" className="text-sm font-medium">
-              {t('Project Name')}
+              {'Project Name'}
             </Label>
             <div className="flex mt-2">
               <FormField
@@ -125,7 +124,7 @@ export const GeneralSettings = ({ form }: GeneralSettingsProps) => {
                     <Input
                       {...field}
                       id="projectName"
-                      placeholder={t('Project Name')}
+                      placeholder={'Project Name'}
                       className="h-10 rounded-l-none border-l-0"
                       disabled={form.formState.disabled}
                     />
@@ -142,18 +141,18 @@ export const GeneralSettings = ({ form }: GeneralSettingsProps) => {
             render={({ field }) => (
               <FormItem>
                 <Label htmlFor="externalId" className="text-sm font-medium">
-                  {t('External ID')}
+                  {'External ID'}
                 </Label>
 
                 <Input
                   {...field}
                   id="externalId"
-                  placeholder={t('org-3412321')}
+                  placeholder={'org-3412321'}
                   className="h-10 font-mono"
                   disabled={form.formState.disabled}
                 />
                 <FormDescription className="text-xs text-muted-foreground">
-                  {t('Used to identify the project based on your SaaS ID')}
+                  {'Used to identify the project based on your SaaS ID'}
                 </FormDescription>
                 <FormMessage />
               </FormItem>

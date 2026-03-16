@@ -2,12 +2,10 @@ import {
   FlowAction,
   FlowActionType,
   FlowTriggerType,
-  LocalesEnum,
   SuggestionType,
   FlowTrigger,
 } from '@flow/shared';
 import { useQueries, useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 
 import { authenticationSession } from '@/lib/authentication-session';
 
@@ -24,13 +22,12 @@ import {
 
 export const stepsHooks = {
   useStepMetadata: ({ step }: UseStepMetadata) => {
-    const { i18n } = useTranslation();
     const query = useQuery<
       StepMetadataWithActionOrTriggerOrAgentDisplayName,
       Error
     >({
-      queryKey: getQueryKeyForStepMetadata(step, i18n.language as LocalesEnum),
-      queryFn: () => stepUtils.getMetadata(step, i18n.language as LocalesEnum),
+      queryKey: getQueryKeyForStepMetadata(step),
+      queryFn: () => stepUtils.getMetadata(step),
     });
     return {
       stepMetadata: query.data,
@@ -38,23 +35,18 @@ export const stepsHooks = {
     };
   },
   useStepsMetadata: (props: (FlowAction | FlowTrigger)[]) => {
-    const { i18n } = useTranslation();
     return useQueries({
       queries: props.map((step) => {
         return {
-          queryKey: getQueryKeyForStepMetadata(
-            step,
-            i18n.language as LocalesEnum,
-          ),
+          queryKey: getQueryKeyForStepMetadata(step),
           queryFn: () =>
-            stepUtils.getMetadata(step, i18n.language as LocalesEnum),
+            stepUtils.getMetadata(step),
           staleTime: Infinity,
         };
       }),
     });
   },
   useAllStepsMetadata: ({ searchQuery, type, enabled }: UseMetadataProps) => {
-    const { i18n } = useTranslation();
     const query = useQuery<StepMetadataWithSuggestions[], Error>({
       queryKey: ['pieces-metadata', searchQuery, type],
       queryFn: async () => {
@@ -63,7 +55,6 @@ export const stepsHooks = {
           searchQuery,
           suggestionType:
             type === 'action' ? SuggestionType.ACTION : SuggestionType.TRIGGER,
-          locale: i18n.language as LocalesEnum,
         });
 
         const filteredPiecesBySuggestionType = pieces.filter(
@@ -129,7 +120,6 @@ type UseMetadataProps = {
 
 const getQueryKeyForStepMetadata = (
   step: FlowAction | FlowTrigger,
-  locale: LocalesEnum,
 ): (string | undefined)[] => {
   const isPieceStep =
     step.type === FlowActionType.PIECE || step.type === FlowTriggerType.PIECE;
@@ -147,7 +137,6 @@ const getQueryKeyForStepMetadata = (
     pieceName,
     pieceVersion,
     customLogoUrl,
-    locale,
     step.type,
   ];
 };

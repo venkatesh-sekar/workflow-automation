@@ -4,7 +4,6 @@ import {
   UserStatus,
   UserWithMetaInformation,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { User } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
@@ -106,19 +105,17 @@ export default function UsersPage() {
   return (
     <LockedFeatureGuard
       locked={false}
-      lockTitle={t('Unlock Users')}
-      lockDescription={t('Manage your users and their access to your projects')}
+      lockTitle={'Unlock Users'}
+      lockDescription={'Manage your users and their access to your projects'}
     >
       <div className="flex flex-col w-full">
         <DashboardPageHeader
-          title={t('Users')}
-          description={t(
-            'Manage, delete, activate and deactivate users on platform',
-          )}
+          title={'Users'}
+          description={'Manage, delete, activate and deactivate users on platform'}
         />
         <DataTable
-          emptyStateTextTitle={t('No users found')}
-          emptyStateTextDescription={t('Start inviting users to your project')}
+          emptyStateTextTitle={'No users found'}
+          emptyStateTextDescription={'Start inviting users to your project'}
           emptyStateIcon={<User className="size-14" />}
           columns={columns}
           page={{
@@ -136,7 +133,7 @@ export default function UsersPage() {
               onClick={() => setInviteOpen(true)}
             >
               <UserRoundPlusIcon size={16} />
-              <span className="text-sm font-medium">{t('Invite')}</span>
+              <span className="text-sm font-medium">{'Invite'}</span>
             </Button>,
           ]}
           actions={[

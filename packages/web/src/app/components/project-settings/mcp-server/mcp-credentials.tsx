@@ -1,5 +1,4 @@
 import { FlowFlagId, Permission, PopulatedMcpServer } from '@flow/shared';
-import { t } from 'i18next';
 import { Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 
@@ -70,7 +69,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
       {/* Base URL Field */}
       <div className="flex flex-col gap-2">
         <label className="text-xs font-medium text-muted-foreground">
-          {t('Server URL')}
+          {'Server URL'}
         </label>
         <div className="flex items-center gap-2">
           <div className="bg-muted/50 rounded-md px-3 py-2 text-sm flex-1 overflow-x-auto">
@@ -83,7 +82,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
       {/* Token Field */}
       <div className="flex flex-col gap-2">
         <label className="text-xs font-medium text-muted-foreground">
-          {t('Token')}
+          {'Token'}
         </label>
         <div className="flex items-center gap-2">
           <div className="bg-muted/50 rounded-md px-3 py-2 text-sm flex-1 overflow-x-auto">
@@ -92,7 +91,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
           <ButtonWithTooltip
             className="h-9 w-9"
             tooltip={
-              showToken ? t('Hide sensitive data') : t('Show sensitive data')
+              showToken ? 'Hide sensitive data' : 'Show sensitive data'
             }
             onClick={toggleTokenVisibility}
             variant="outline"
@@ -105,9 +104,7 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
             }
           />
           <ButtonWithTooltip
-            tooltip={t(
-              'Create a new token. The current one will stop working.',
-            )}
+            tooltip={'Create a new token. The current one will stop working.'}
             onClick={() => rotateToken()}
             variant="outline"
             className="h-9 w-9"
@@ -124,29 +121,23 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
           <CopyButton textToCopy={mcpServer?.token ?? ''} />
         </div>
         <p className="text-xs text-muted-foreground mt-1">
-          {t(
-            'Use this token with the Authorization header (Bearer) for requests to this server.',
-          )}
+          {'Use this token with the Authorization header (Bearer) for requests to this server.'}
         </p>
       </div>
 
       {/* JSON Configuration (Cursor / URL + headers) */}
       <CollapsibleJson
         json={jsonConfiguration}
-        label={t('MCP Client Configuration (JSON)')}
-        description={t(
-          'Copy to your MCP client (e.g. Cursor) if it supports url + headers. Use the Server URL above; it must end with /http (not /sse).',
-        )}
+        label={'MCP Client Configuration (JSON)'}
+        description={'Copy to your MCP client (e.g. Cursor) if it supports url + headers. Use the Server URL above; it must end with /http (not /sse).'}
         defaultOpen={false}
       />
 
       {/* Claude Desktop (mcp-remote) */}
       <CollapsibleJson
         json={claudeDesktopConfiguration}
-        label={t('Claude Desktop (mcp-remote)')}
-        description={t(
-          'Copy into your Claude Desktop config file (e.g. claude_desktop_config.json).',
-        )}
+        label={'Claude Desktop (mcp-remote)'}
+        description={'Copy into your Claude Desktop config file (e.g. claude_desktop_config.json).'}
         defaultOpen={false}
       />
 
@@ -155,15 +146,13 @@ export function McpCredentials({ mcpServer }: McpCredentialsProps) {
         json={customConnectorConfiguration}
         label={
           <span className="flex items-center gap-2">
-            {t('Claude Custom Connector')}
+            {'Claude Custom Connector'}
             <Badge variant="outline" className="text-xs">
-              {t('Beta')}
+              {'Beta'}
             </Badge>
           </span>
         }
-        description={t(
-          "Only use connectors from developers you trust. The platform does not control which tools developers make available and cannot verify that they will work as intended or that they won't change.",
-        )}
+        description={"Only use connectors from developers you trust. The platform does not control which tools developers make available and cannot verify that they will work as intended or that they won't change."}
         defaultOpen={false}
       />
     </div>

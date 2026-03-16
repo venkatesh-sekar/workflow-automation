@@ -9,7 +9,6 @@ import {
   RouterExecutionType,
 } from '@flow/shared';
 import { useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import { Split } from 'lucide-react';
 import { memo, useEffect } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
@@ -141,26 +140,26 @@ export const RouterSettings = memo(({ readonly }: { readonly: boolean }) => {
           name="settings.executionType"
           render={({ field }) => (
             <FormItem>
-              <Label>{t('Execute')}</Label>
+              <Label>{'Execute'}</Label>
               <Select
                 disabled={field.disabled}
                 onValueChange={field.onChange}
                 value={field.value}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t('Execute')} />
+                  <SelectValue placeholder={'Execute'} />
                 </SelectTrigger>
 
                 <SelectContent>
                   <SelectItem
                     value={`${RouterExecutionType.EXECUTE_FIRST_MATCH}`}
                   >
-                    {t('Only the first (left) matching branch')}
+                    {'Only the first (left) matching branch'}
                   </SelectItem>
                   <SelectItem
                     value={`${RouterExecutionType.EXECUTE_ALL_MATCH}`}
                   >
-                    {t('All matching paths from left to right')}
+                    {'All matching paths from left to right'}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -173,7 +172,7 @@ export const RouterSettings = memo(({ readonly }: { readonly: boolean }) => {
         <div>
           <div className="flex gap-2 mb-2 items-center">
             <Split className="w-4 h-4 rotate-180"></Split>
-            <Label>{t('Branches')}</Label>
+            <Label>{'Branches'}</Label>
           </div>
 
           <BranchesList

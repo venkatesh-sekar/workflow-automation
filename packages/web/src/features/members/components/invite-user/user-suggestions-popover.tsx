@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { Command, CommandGroup, CommandList } from '@/components/ui/command';
 import {
   Popover,
@@ -46,7 +44,7 @@ export function UserSuggestionsPopover({
       >
         <Command>
           <CommandList>
-            <CommandGroup heading={t('Suggestions')}>
+            <CommandGroup heading={'Suggestions'}>
               {suggestedUsers.map((user) => (
                 <SuggestedUserItem
                   key={user.id}

@@ -1,6 +1,5 @@
 import { isNil, ProjectReleaseType } from '@flow/shared';
 import { formatDistance } from 'date-fns';
-import { t } from 'i18next';
 import {
   ChevronRight,
   GitBranch,
@@ -27,19 +26,19 @@ const getReleaseSummaryType = (type: ProjectReleaseType) => {
     case ProjectReleaseType.GIT:
       return (
         <span className="flex items-center gap-1">
-          <GitBranch className="size-4" /> {t('Git')}
+          <GitBranch className="size-4" /> {'Git'}
         </span>
       );
     case ProjectReleaseType.PROJECT:
       return (
         <span className="flex items-center gap-1">
-          <FolderOpenDot className="size-4" /> {t('Project')}
+          <FolderOpenDot className="size-4" /> {'Project'}
         </span>
       );
     case ProjectReleaseType.ROLLBACK:
       return (
         <span className="flex items-center gap-1">
-          <RotateCcw className="size-4" /> {t('Rollback')}
+          <RotateCcw className="size-4" /> {'Rollback'}
         </span>
       );
   }
@@ -73,7 +72,7 @@ const ViewRelease = () => {
             className="p-0 h-auto text-sm text-muted-foreground hover:text-primary"
             onClick={() => navigate('/releases')}
           >
-            {t('Releases')}
+            {'Releases'}
           </Button>
           <ChevronRight className="h-4 w-4" />
           <span>{release?.name}</span>
@@ -97,21 +96,21 @@ const ViewRelease = () => {
                     }}
                     defaultName={release?.name}
                   >
-                    <Button disabled={isLoading}>{t('Rollback')}</Button>
+                    <Button disabled={isLoading}>{'Rollback'}</Button>
                   </ApplyButton>
                 </TooltipTrigger>
-                <TooltipContent side="bottom">{t('Rollback')}</TooltipContent>
+                <TooltipContent side="bottom">{'Rollback'}</TooltipContent>
               </Tooltip>
             </div>
             <p className="text-sm text-muted-foreground">
-              {t('Created')}: {timeAgo}
+              {'Created'}: {timeAgo}
             </p>
           </div>
         </div>
       </div>
 
       <div className="space-y-2">
-        <span className="text-md font-semibold">{t('Summary')}</span>
+        <span className="text-md font-semibold">{'Summary'}</span>
         {isLoading ? (
           <Skeleton className="h-24 w-full" />
         ) : (
@@ -121,12 +120,12 @@ const ViewRelease = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span className="flex items-center flex-row gap-1">
-                      {t('Imported by')}
+                      {'Imported by'}
                       <span className="font-semibold text-md">
                         {release?.importedByUser?.firstName}{' '}
                         {release?.importedByUser?.lastName}
                       </span>
-                      {t('from')}{' '}
+                      {'from'}{' '}
                       {getReleaseSummaryType(
                         release?.type ?? ProjectReleaseType.GIT,
                       )}
@@ -142,13 +141,13 @@ const ViewRelease = () => {
         )}
       </div>
       <div className="space-y-2">
-        <span className="text-md font-semibold">{t('Description')}</span>
+        <span className="text-md font-semibold">{'Description'}</span>
         {isLoading ? (
           <Skeleton className="h-24 w-full" />
         ) : (
           <div className="flex flex-col items-start gap-2">
             <pre className="whitespace-pre-wrap">
-              {release?.description || t('No description provided')}
+              {release?.description || 'No description provided'}
             </pre>
           </div>
         )}

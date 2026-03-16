@@ -4,7 +4,6 @@ import {
   isNil,
   RouterActionSettings,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { GripVertical, Trash, CopyPlus, Pencil } from 'lucide-react';
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -170,7 +169,7 @@ export const BranchListItem = ({
               <InvalidStepIcon className="h-4 w-4 shrink-0"></InvalidStepIcon>
             </TooltipTrigger>
             <TooltipContent side="bottom">
-              {t('Incomplete settings')}
+              {'Incomplete settings'}
             </TooltipContent>
           </Tooltip>
         </div>
@@ -196,7 +195,7 @@ export const BranchListItem = ({
                 <Trash className="w-4 h-4 stroke-destructive"></Trash>
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('Delete')}</TooltipContent>
+            <TooltipContent side="bottom">{'Delete'}</TooltipContent>
           </Tooltip>
         )}
         <Tooltip>
@@ -212,7 +211,7 @@ export const BranchListItem = ({
               <Pencil className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">{t('Rename')}</TooltipContent>
+          <TooltipContent side="bottom">{'Rename'}</TooltipContent>
         </Tooltip>
 
         <Tooltip>
@@ -228,7 +227,7 @@ export const BranchListItem = ({
               <CopyPlus className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">{t('Duplicate')}</TooltipContent>
+          <TooltipContent side="bottom">{'Duplicate'}</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -241,7 +240,7 @@ export const BranchListItem = ({
               <GripVertical className="size-4" aria-hidden="true" />
             </SortableDragHandle>
           </TooltipTrigger>
-          <TooltipContent side="bottom">{t('Move')}</TooltipContent>
+          <TooltipContent side="bottom">{'Move'}</TooltipContent>
         </Tooltip>
       </div>
     </div>

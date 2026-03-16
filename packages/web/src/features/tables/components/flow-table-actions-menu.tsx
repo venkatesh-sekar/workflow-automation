@@ -1,5 +1,4 @@
 import { Permission, Table } from '@flow/shared';
-import { t } from 'i18next';
 import {
   Download,
   PencilIcon,
@@ -51,7 +50,7 @@ const FlowTableActionsMenu = ({
       onSuccess: () => {
         setIsRenameOpen(false);
         refetch?.();
-        toast.success(t('Table renamed'));
+        toast.success('Table renamed');
       },
     });
   const renameTable = () =>
@@ -98,7 +97,7 @@ const FlowTableActionsMenu = ({
             >
               <div className="flex items-center gap-2">
                 <PencilIcon className="h-4 w-4" />
-                {t('Rename')}
+                {'Rename'}
               </div>
             </DropdownMenuItem>
           </PermissionNeededTooltip>
@@ -107,12 +106,12 @@ const FlowTableActionsMenu = ({
 
           <DropdownMenuItem onSelect={() => setIsImportTableDialogOpen(true)}>
             <Import className="mr-2 h-4 w-4" />
-            {t('Import')}
+            {'Import'}
           </DropdownMenuItem>
 
           <DropdownMenuItem onSelect={exportTemplate}>
             <FileJson className="mr-2 h-4 w-4" />
-            {t('Export Template')}
+            {'Export Template'}
           </DropdownMenuItem>
 
           {showPushToGit && (
@@ -128,7 +127,7 @@ const FlowTableActionsMenu = ({
                     onClick={(e) => e.stopPropagation()}
                   >
                     <UploadCloud className="mr-2 h-4 w-4" />
-                    {t('Push to Git')}
+                    {'Push to Git'}
                   </DropdownMenuItem>
                 </PushToGitDialog>
               </PermissionNeededTooltip>
@@ -139,7 +138,7 @@ const FlowTableActionsMenu = ({
 
           <DropdownMenuItem onSelect={downloadCsv}>
             <Download className="mr-2 h-4 w-4" />
-            {t('Download Data')}
+            {'Download Data'}
           </DropdownMenuItem>
 
           <PermissionNeededTooltip
@@ -151,12 +150,10 @@ const FlowTableActionsMenu = ({
               onClick={(e) => e.stopPropagation()}
             >
               <ConfirmationDeleteDialog
-                title={t('Delete Table')}
-                message={t(
-                  'This table and all its data will be permanently deleted.',
-                )}
+                title={'Delete Table'}
+                message={'This table and all its data will be permanently deleted.'}
                 entityName={table.name}
-                buttonText={t('Delete')}
+                buttonText={'Delete'}
                 mutationFn={async () => {
                   await tablesApi.delete(table.id);
                   onDelete?.();
@@ -165,7 +162,7 @@ const FlowTableActionsMenu = ({
               >
                 <div className="flex items-center gap-2 text-destructive">
                   <TrashIcon className="h-4 w-4" />
-                  {t('Delete')}
+                  {'Delete'}
                 </div>
               </ConfirmationDeleteDialog>
             </DropdownMenuItem>

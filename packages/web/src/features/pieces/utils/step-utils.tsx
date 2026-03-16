@@ -7,7 +7,6 @@ import {
   FlowAction,
   FlowActionType,
   flowStructureUtil,
-  LocalesEnum,
   spreadIfDefined,
   Step,
   FlowTriggerType,
@@ -15,8 +14,6 @@ import {
   StepOutput,
   StepRunResponse,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { piecesApi } from '../api/pieces-api';
 import {
   PieceStepMetadata,
@@ -30,27 +27,27 @@ export const CORE_STEP_METADATA: Record<
   PrimitiveStepMetadata
 > = {
   [FlowActionType.CODE]: {
-    displayName: t('Code'),
+    displayName: 'Code',
     logoUrl: '',
-    description: t('Powerful Node.js & TypeScript code with npm'),
+    description: 'Powerful Node.js & TypeScript code with npm',
     type: FlowActionType.CODE as const,
   },
   [FlowActionType.LOOP_ON_ITEMS]: {
-    displayName: t('Loop on Items'),
+    displayName: 'Loop on Items',
     logoUrl: '',
     description: 'Iterate over a list of items',
     type: FlowActionType.LOOP_ON_ITEMS as const,
   },
   [FlowActionType.ROUTER]: {
-    displayName: t('Router'),
+    displayName: 'Router',
     logoUrl: '',
-    description: t('Split your flow into branches depending on condition(s)'),
+    description: 'Split your flow into branches depending on condition(s)',
     type: FlowActionType.ROUTER as const,
   },
   [FlowTriggerType.EMPTY]: {
-    displayName: t('Empty Trigger'),
+    displayName: 'Empty Trigger',
     logoUrl: '',
-    description: t('Empty Trigger'),
+    description: 'Empty Trigger',
     type: FlowTriggerType.EMPTY as const,
   },
 } as const;
@@ -63,7 +60,6 @@ export const CORE_ACTIONS_METADATA = [
 export const stepUtils = {
   getKeys(
     step: FlowAction | FlowTrigger,
-    locale: LocalesEnum,
   ): (string | undefined)[] {
     const isPieceStep =
       step.type === FlowActionType.PIECE || step.type === FlowTriggerType.PIECE;
@@ -75,11 +71,10 @@ export const stepUtils = {
         : undefined
       : undefined;
 
-    return [pieceName, pieceVersion, customLogoUrl, locale, step.type];
+    return [pieceName, pieceVersion, customLogoUrl, step.type];
   },
   async getMetadata(
     step: FlowAction | FlowTrigger,
-    locale: LocalesEnum,
   ): Promise<StepMetadataWithActionOrTriggerOrAgentDisplayName> {
     const customLogoUrl =
       'customLogoUrl' in step ? step.customLogoUrl : undefined;
@@ -99,7 +94,6 @@ export const stepUtils = {
         const piece = await piecesApi.get({
           name: step.settings.pieceName,
           version: step.settings.pieceVersion,
-          locale,
         });
         const metadata = stepUtils.mapPieceToMetadata({
           piece,

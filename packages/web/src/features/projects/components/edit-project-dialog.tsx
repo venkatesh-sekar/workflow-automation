@@ -5,7 +5,6 @@ import {
   PlatformRole,
 } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -69,7 +68,7 @@ export function EditProjectDialog({
         <DialogHeader>
           {' '}
           <DialogTitle>
-            {t('Edit')} {initialValues?.projectName}
+            {'Edit'} {initialValues?.projectName}
           </DialogTitle>
         </DialogHeader>
 
@@ -116,7 +115,7 @@ const EditProjectForm = ({
       queryClient.invalidateQueries({
         queryKey: globalConnectionsQueries.getGlobalConnectionsQueryKey([]),
       });
-      toast.success(t('Your changes have been saved.'), {
+      toast.success('Your changes have been saved.', {
         duration: 3000,
       });
       onClose();
@@ -156,11 +155,11 @@ const EditProjectForm = ({
           name="displayName"
           render={({ field }) => (
             <FormItem>
-              <Label htmlFor="displayName">{t('Project Name')}</Label>
+              <Label htmlFor="displayName">{'Project Name'}</Label>
               <Input
                 {...field}
                 id="displayName"
-                placeholder={t('Project Name')}
+                placeholder={'Project Name'}
                 className="rounded-sm"
               />
               <FormMessage />
@@ -174,14 +173,14 @@ const EditProjectForm = ({
               name="externalId"
               render={({ field }) => (
                 <FormItem>
-                  <Label htmlFor="externalId">{t('External ID')}</Label>
+                  <Label htmlFor="externalId">{'External ID'}</Label>
                   <FormDescription>
-                    {t('Used to identify the project based on your SaaS ID')}
+                    {'Used to identify the project based on your SaaS ID'}
                   </FormDescription>
                   <Input
                     {...field}
                     id="externalId"
-                    placeholder={t('org-3412321')}
+                    placeholder={'org-3412321'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -195,9 +194,9 @@ const EditProjectForm = ({
             name="globalConnectionExternalIds"
             render={({ field }) => (
               <FormItem>
-                <Label>{t('Global Connections')}</Label>
+                <Label>{'Global Connections'}</Label>
                 <MultiSelectPieceProperty
-                  placeholder={t('Select global connections')}
+                  placeholder={'Select global connections'}
                   options={globalConnections.map((connection) => ({
                     value: connection.externalId,
                     label: connection.displayName,
@@ -217,10 +216,10 @@ const EditProjectForm = ({
 
         <DialogFooter className="justify-end mt-6">
           <Button type="button" variant="outline" onClick={onClose}>
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button type="submit" disabled={isPending} loading={isPending}>
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </form>

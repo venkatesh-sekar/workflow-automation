@@ -6,7 +6,6 @@ import {
   McpProtocol,
   ValidateAgentMcpToolResponse,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -115,10 +114,10 @@ export function AgentMcpDialog({
           : tool,
       );
       onToolsUpdate(updatedTools);
-      toast(t('MCP server updated successfully'));
+      toast('MCP server updated successfully');
     } else {
       onToolsUpdate([...tools, pendingTool]);
-      toast(t('MCP server added successfully'));
+      toast('MCP server added successfully');
     }
 
     handleClose();
@@ -143,7 +142,7 @@ export function AgentMcpDialog({
         {step === 'form' && (
           <DialogHeader>
             <DialogTitle>
-              {editingMcpTool ? t('Edit MCP Server') : t('Add MCP Server')}
+              {editingMcpTool ? 'Edit MCP Server' : 'Add MCP Server'}
             </DialogTitle>
           </DialogHeader>
         )}
@@ -164,10 +163,10 @@ export function AgentMcpDialog({
             <Loader2 className="w-12 h-12 animate-spin text-primary" />
             <div className="text-center space-y-2">
               <h3 className="text-lg font-semibold">
-                {t('Connecting to MCP Server')}
+                {'Connecting to MCP Server'}
               </h3>
               <p className="text-sm text-muted-foreground">
-                {t('Validating server configuration...')}
+                {'Validating server configuration...'}
               </p>
             </div>
           </div>
@@ -182,7 +181,7 @@ export function AgentMcpDialog({
                 </div>
                 <div className="text-center space-y-2">
                   <h3 className="text-lg font-semibold">
-                    {t('Connection Failed')}
+                    {'Connection Failed'}
                   </h3>
                   <p className="text-sm text-muted-foreground max-w-md">
                     {validationResult.error}
@@ -196,10 +195,10 @@ export function AgentMcpDialog({
                 </div>
                 <div className="text-center space-y-2">
                   <h3 className="text-lg font-semibold">
-                    {t('Connection Successful')}
+                    {'Connection Successful'}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {t('Available tools from MCP server:')}
+                    {'Available tools from MCP server:'}
                   </p>
                 </div>
 
@@ -226,11 +225,11 @@ export function AgentMcpDialog({
                 variant="outline"
                 onClick={handleBackToForm}
               >
-                {t('Back')}
+                {'Back'}
               </Button>
               {!validationResult.error && (
                 <Button onClick={handleAddTool}>
-                  {editingMcpTool ? t('Update Server') : t('Add Server')}
+                  {editingMcpTool ? 'Update Server' : 'Add Server'}
                 </Button>
               )}
             </DialogFooter>

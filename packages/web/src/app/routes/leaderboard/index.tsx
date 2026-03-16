@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { useQueries } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { t } from 'i18next';
 import {
   Calendar,
   ChevronDown,
@@ -348,13 +347,13 @@ export default function LeaderboardPage() {
           showSidebarToggle={true}
           title={
             <div className="flex items-center gap-1.5">
-              <span className="text-sm font-medium">{t('Leaderboard')}</span>
+              <span className="text-sm font-medium">{'Leaderboard'}</span>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Info className="h-4 w-4 text-muted-foreground cursor-help" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  {t('See top performers by flows created and time saved')}
+                  {'See top performers by flows created and time saved'}
                 </TooltipContent>
               </Tooltip>
             </div>
@@ -363,10 +362,10 @@ export default function LeaderboardPage() {
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-3 py-1.5 border border-dashed rounded-md text-sm text-muted-foreground">
                 <span>
-                  {t('Updated')}{' '}
+                  {'Updated'}{' '}
                   {dayjs(analyticsData?.cachedAt).format('MMM DD, hh:mm A')}
                   {' — '}
-                  {t('Refreshes daily')}
+                  {'Refreshes daily'}
                 </span>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -377,7 +376,7 @@ export default function LeaderboardPage() {
                       onClick={() =>
                         refreshAnalytics(undefined, {
                           onSuccess: () =>
-                            toast.success(t('Data refreshed successfully')),
+                            toast.success('Data refreshed successfully'),
                         })
                       }
                       disabled={isRefreshing}
@@ -389,7 +388,7 @@ export default function LeaderboardPage() {
                       />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>{t('Refresh analytics')}</TooltipContent>
+                  <TooltipContent>{'Refresh analytics'}</TooltipContent>
                 </Tooltip>
               </div>
 
@@ -405,19 +404,19 @@ export default function LeaderboardPage() {
                 </SelectTrigger>
                 <SelectContent side="bottom" align="end">
                   <SelectItem value={AnalyticsTimePeriod.LAST_WEEK}>
-                    {t('Last 7 days')}
+                    {'Last 7 days'}
                   </SelectItem>
                   <SelectItem value={AnalyticsTimePeriod.LAST_MONTH}>
-                    {t('Last 30 days')}
+                    {'Last 30 days'}
                   </SelectItem>
                   <SelectItem value={AnalyticsTimePeriod.LAST_THREE_MONTHS}>
-                    {t('Last 3 months')}
+                    {'Last 3 months'}
                   </SelectItem>
                   <SelectItem value={AnalyticsTimePeriod.LAST_SIX_MONTHS}>
-                    {t('Last 6 months')}
+                    {'Last 6 months'}
                   </SelectItem>
                   <SelectItem value={AnalyticsTimePeriod.LAST_YEAR}>
-                    {t('Last year')}
+                    {'Last year'}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -437,11 +436,11 @@ export default function LeaderboardPage() {
           >
             <TabsTrigger variant="outline" value="creators">
               <Users className="w-4 h-4 mr-1.5" />
-              {t('People')}
+              {'People'}
             </TabsTrigger>
             <TabsTrigger variant="outline" value="projects">
               <LayoutGrid className="w-4 h-4 mr-1.5" />
-              {t('Projects')}
+              {'Projects'}
             </TabsTrigger>
           </TabsList>
 
@@ -457,8 +456,8 @@ export default function LeaderboardPage() {
                 onChange={setSearchQuery}
                 placeholder={
                   activeTab === 'creators'
-                    ? t('Search users')
-                    : t('Search projects')
+                    ? 'Search users'
+                    : 'Search projects'
                 }
                 className="w-[200px]"
               />
@@ -472,7 +471,7 @@ export default function LeaderboardPage() {
                     className="gap-2 font-normal border-dashed"
                   >
                     <Clock className="h-4 w-4" />
-                    <span>{t('Time Saved')}</span>
+                    <span>{'Time Saved'}</span>
                     {timeSavedLabel && (
                       <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-medium">
                         {timeSavedLabel}
@@ -498,7 +497,7 @@ export default function LeaderboardPage() {
               {hasActiveFilters && (
                 <Button variant="ghost" size="sm" onClick={clearAllFilters}>
                   <X className="h-4 w-4" />
-                  {t('Clear')}
+                  {'Clear'}
                 </Button>
               )}
             </div>
@@ -511,10 +510,10 @@ export default function LeaderboardPage() {
                   disabled={isDownloadDisabled}
                 >
                   <Download className="h-4 w-4 mr-2" />
-                  {t('Download')}
+                  {'Download'}
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>{t('Download leaderboard data')}</TooltipContent>
+              <TooltipContent>{'Download leaderboard data'}</TooltipContent>
             </Tooltip>
           </div>
 

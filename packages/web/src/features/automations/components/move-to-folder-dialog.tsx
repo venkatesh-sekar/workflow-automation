@@ -1,5 +1,4 @@
 import { FolderDto, UncategorizedFolderId } from '@flow/shared';
-import { t } from 'i18next';
 import { FolderIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -43,21 +42,21 @@ export const MoveToFolderDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Move to Folder')}</DialogTitle>
+          <DialogTitle>{'Move to Folder'}</DialogTitle>
           <DialogDescription>
-            {t('Choose a destination folder for the selected items.')}
+            {'Choose a destination folder for the selected items.'}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-2">
-          <Label>{t('Folder')}</Label>
+          <Label>{'Folder'}</Label>
           <Select value={selectedFolderId} onValueChange={onFolderChange}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={t('Select a folder')} />
+              <SelectValue placeholder={'Select a folder'} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value={UncategorizedFolderId}>
                 <FolderIcon className="mr-2 h-4 w-4" />
-                {t('Uncategorized (No Folder)')}
+                {'Uncategorized (No Folder)'}
               </SelectItem>
               {folders?.map((folder) => (
                 <SelectItem key={folder.id} value={folder.id}>
@@ -70,14 +69,14 @@ export const MoveToFolderDialog = ({
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             onClick={onConfirm}
             disabled={!selectedFolderId || isMoving}
             loading={isMoving}
           >
-            {t('Move')}
+            {'Move'}
           </Button>
         </DialogFooter>
       </DialogContent>

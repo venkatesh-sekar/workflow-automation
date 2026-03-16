@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { AlertCircleIcon } from 'lucide-react';
 
 import { CollapsibleJson } from '@/components/custom/collapsible-json';
@@ -47,14 +46,14 @@ const FlowErrorDialog = () => {
         <div className="w-full flex flex-col items-stretch mt-2">
           <CollapsibleJson
             json={params?.error}
-            label={t('Technical Details')}
+            label={'Technical Details'}
             defaultOpen={true}
             className="w-full text-left"
           />
         </div>
         <DialogFooter className="mt-2">
           <Button variant="outline" onClick={closeDialog}>
-            {t('Close')}
+            {'Close'}
           </Button>
         </DialogFooter>
       </DialogContent>

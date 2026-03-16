@@ -5,7 +5,6 @@ import {
   flowStructureUtil,
 } from '@flow/shared';
 import { useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import React, { useMemo } from 'react';
 
 import { BuilderState } from '@/app/builder/builder-hooks';
@@ -53,7 +52,7 @@ const IncompleteSettingsButton: React.FC<IncompleteSettingsButtonProps> = ({
           e.preventDefault();
         }}
       >
-        {t('incompleteSteps', { invalidSteps: invalidSteps })}
+        {`incompleteSteps`}
       </Button>
     )
   );

@@ -1,5 +1,4 @@
 import { FlowActionType, flowStructureUtil, isNil } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
@@ -101,10 +100,7 @@ const LoopIterationInput = ({ stepName }: { stepName: string }) => {
             />
           </TooltipTrigger>
           <TooltipContent side="left">
-            {t(
-              'Show child steps output on round ({iteration}/{totalIterations})',
-              { iteration: currentIndex + 1, totalIterations },
-            )}
+            {`Show child steps output on round (${currentIndex + 1}/${totalIterations})`}
           </TooltipContent>
         </Tooltip>
         <LoopIterationInputButton

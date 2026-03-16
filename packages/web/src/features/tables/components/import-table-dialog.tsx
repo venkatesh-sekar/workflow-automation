@@ -1,6 +1,5 @@
 import { FlowFlagId, SharedTemplate, TableTemplate, TemplateScope } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Import } from 'lucide-react';
 import { parse } from 'papaparse';
 import { useState } from 'react';
@@ -106,7 +105,7 @@ const ImportTableDialog = ({
 
       if (!values.file) {
         errors.file = {
-          message: t('Please select a JSON or CSV file'),
+          message: 'Please select a JSON or CSV file',
           type: 'required',
         };
         return { values: {}, errors };
@@ -118,7 +117,7 @@ const ImportTableDialog = ({
       );
       if (!validation.valid) {
         errors.file = {
-          message: t(validation.error!),
+          message: validation.error!,
           type: 'invalid',
         };
         return { values: {}, errors };
@@ -134,7 +133,7 @@ const ImportTableDialog = ({
   const handleCsvImport = async (data: { fieldsMapping: FieldsMapping }) => {
     const tableState = getTableState();
     if (!tableId || !tableState) {
-      throw new Error(t('CSV import is only available for existing tables'));
+      throw new Error('CSV import is only available for existing tables');
     }
 
     const records = await recordsApi.importCsv({
@@ -175,7 +174,7 @@ const ImportTableDialog = ({
     }
 
     if (!template.tables || template.tables.length === 0) {
-      throw new Error(t('No tables found in template'));
+      throw new Error('No tables found in template');
     }
 
     if (tableId) {
@@ -236,13 +235,13 @@ const ImportTableDialog = ({
             className="flex gap-2 items-center"
           >
             <Import className="w-4 h-4 shrink-0" />
-            {t('Import')}
+            {'Import'}
           </Button>
         </DialogTrigger>
       )}
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Import Table')}</DialogTitle>
+          <DialogTitle>{'Import Table'}</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -255,61 +254,35 @@ const ImportTableDialog = ({
               markdown={(() => {
                 if (fileType === 'csv') {
                   return [
-                    t('Import records from a CSV file'),
-                    t('Records will be added to the bottom of the table'),
-                    t(
-                      'Any records after the limit ({maxRecords} records) will be ignored',
-                      {
-                        maxRecords: maxRecords ?? 0,
-                      },
-                    ),
+                    'Import records from a CSV file',
+                    'Records will be added to the bottom of the table',
+                    `Any records after the limit (${maxRecords ?? 0} records) will be ignored`,
                   ].join('\n\n');
                 }
 
                 if (fileType === 'json' && tableId) {
                   return [
-                    t(
-                      '⚠️ **Warning:** This will completely replace the current table',
-                    ),
-                    t('All existing fields and records will be deleted'),
-                    t(
-                      'Any records after the limit ({maxRecords} records) will be ignored',
-                      {
-                        maxRecords: maxRecords ?? 0,
-                      },
-                    ),
+                    '⚠️ **Warning:** This will completely replace the current table',
+                    'All existing fields and records will be deleted',
+                    `Any records after the limit (${maxRecords ?? 0} records) will be ignored`,
                   ].join('\n\n');
                 }
 
                 if (!allowedFileTypes.includes('csv')) {
                   return [
-                    t('Import a table from JSON template'),
+                    'Import a table from JSON template',
                     tableId
-                      ? t(
-                          '⚠️ This will completely replace the current table with the template structure and data',
-                        )
-                      : t(
-                          'The table will be created with all its fields and data',
-                        ),
-                    t(
-                      'Any records after the limit ({maxRecords} records) will be ignored',
-                      {
-                        maxRecords: maxRecords ?? 0,
-                      },
-                    ),
+                      ? '⚠️ This will completely replace the current table with the template structure and data'
+                      : 'The table will be created with all its fields and data',
+                    `Any records after the limit (${maxRecords ?? 0} records) will be ignored`,
                   ].join('\n\n');
                 }
 
                 return [
-                  t('Import a table from JSON or add records from CSV'),
-                  t('**JSON:** Creates a new table with fields and data'),
-                  t('**CSV:** Adds records to an existing table'),
-                  t(
-                    'Any records after the limit ({maxRecords} records) will be ignored',
-                    {
-                      maxRecords: maxRecords ?? 0,
-                    },
-                  ),
+                  'Import a table from JSON or add records from CSV',
+                  '**JSON:** Creates a new table with fields and data',
+                  '**CSV:** Adds records to an existing table',
+                  `Any records after the limit (${maxRecords ?? 0} records) will be ignored`,
                 ].join('\n\n');
               })()}
             />
@@ -319,11 +292,9 @@ const ImportTableDialog = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {t(
-                      allowedFileTypes
+                    {allowedFileTypes
                         .map((t) => t.toUpperCase())
-                        .join(' or ') + ' file',
-                    )}
+                        .join(' or ') + ' file'}
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -341,23 +312,21 @@ const ImportTableDialog = ({
                           maxFileSize ?? undefined,
                         );
                         if (!validation.valid) {
-                          setServerError(t(validation.error!));
+                          setServerError(validation.error!);
                           return;
                         }
 
                         const extension = fileUtils.getExtension(file.name);
                         if (!fileUtils.isValidType(extension)) {
-                          setServerError(t('Invalid file type'));
+                          setServerError('Invalid file type');
                           return;
                         }
 
                         if (!allowedFileTypes.includes(extension)) {
                           setServerError(
-                            t('Only {types} files are allowed', {
-                              types: allowedFileTypes
+                            `Only ${allowedFileTypes
                                 .map((t) => t.toUpperCase())
-                                .join(', '),
-                            }),
+                                .join(', ')} files are allowed`,
                           );
                           return;
                         }
@@ -367,18 +336,14 @@ const ImportTableDialog = ({
                         if (extension === 'csv') {
                           if (!tableId) {
                             setServerError(
-                              t(
-                                'CSV import is only available for existing tables',
-                              ),
+                              'CSV import is only available for existing tables',
                             );
                             return;
                           }
 
                           if (!tableStore) {
                             setServerError(
-                              t(
-                                'CSV import is only available from the table editor.',
-                              ),
+                              'CSV import is only available from the table editor.',
                             );
                             return;
                           }
@@ -399,7 +364,7 @@ const ImportTableDialog = ({
                             setCsvColumns(parsedCsvRecords[0] ?? []);
                             setCsvRecords(parsedCsvRecords.slice(1));
                           } catch (error) {
-                            setServerError(t('Failed to parse CSV file'));
+                            setServerError('Failed to parse CSV file');
                           }
                         } else {
                           setCsvColumns([]);
@@ -435,9 +400,7 @@ const ImportTableDialog = ({
             {serverError && (
               <div className=" flex items-center justify-between">
                 <div className="text-destructive">
-                  {t(
-                    'An unexpected error occurred while importing the file, please hit the copy error and send it to support',
-                  )}
+                  {'An unexpected error occurred while importing the file, please hit the copy error and send it to support'}
                 </div>
                 <div className="min-w-4">
                   <CopyButton
@@ -451,11 +414,11 @@ const ImportTableDialog = ({
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline" size="sm" disabled={isLoading}>
-                  {t('Cancel')}
+                  {'Cancel'}
                 </Button>
               </DialogClose>
               <Button type="submit" size="sm" loading={isLoading}>
-                {t('Import')}
+                {'Import'}
               </Button>
             </DialogFooter>
           </form>

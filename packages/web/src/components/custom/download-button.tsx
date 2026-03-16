@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Download } from 'lucide-react';
 import React from 'react';
 
@@ -46,7 +45,7 @@ export const DownloadButton = ({
           <Download className="h-4 w-4"></Download>
         </Button>
       </TooltipTrigger>
-      <TooltipContent side={tooltipSide}>{t('Download')}</TooltipContent>
+      <TooltipContent side={tooltipSide}>{'Download'}</TooltipContent>
     </Tooltip>
   );
 };

@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { Pencil } from 'lucide-react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -94,13 +93,13 @@ const EditGlobalConnectionDialog: React.FC<EditGlobalConnectionDialogProps> = ({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              {!userHasPermissionToEdit ? t('Permission needed') : t('Edit')}
+              {!userHasPermissionToEdit ? 'Permission needed' : 'Edit'}
             </TooltipContent>
           </>
         </DialogTrigger>
         <DialogContent onInteractOutside={(event) => event.preventDefault()}>
           <DialogHeader>
-            <DialogTitle>{t('Edit Global Connection')}</DialogTitle>
+            <DialogTitle>{'Edit Global Connection'}</DialogTitle>
           </DialogHeader>
           <Form {...editConnectionForm}>
             <form
@@ -121,11 +120,11 @@ const EditGlobalConnectionDialog: React.FC<EditGlobalConnectionDialogProps> = ({
                   name="displayName"
                   render={({ field }) => (
                     <FormItem className="grid space-y-2">
-                      <Label htmlFor="displayName">{t('Name')}</Label>
+                      <Label htmlFor="displayName">{'Name'}</Label>
                       <Input
                         {...field}
                         id="displayName"
-                        placeholder={t('Connection Name')}
+                        placeholder={'Connection Name'}
                         className="rounded-sm"
                       />
                       <FormMessage />
@@ -150,7 +149,7 @@ const EditGlobalConnectionDialog: React.FC<EditGlobalConnectionDialogProps> = ({
                         htmlFor="preSelectForNewProjects"
                         className="cursor-pointer"
                       >
-                        {t('Include by default in new projects')}
+                        {'Include by default in new projects'}
                       </Label>
                     </FormItem>
                   )}
@@ -175,10 +174,10 @@ const EditGlobalConnectionDialog: React.FC<EditGlobalConnectionDialogProps> = ({
                     setIsOpen(false);
                   }}
                 >
-                  {t('Cancel')}
+                  {'Cancel'}
                 </Button>
                 <Button loading={isUpdatingGlobalConnection}>
-                  {t('Save')}
+                  {'Save'}
                 </Button>
               </DialogFooter>
             </form>

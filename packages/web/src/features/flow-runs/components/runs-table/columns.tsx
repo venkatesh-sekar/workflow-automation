@@ -1,6 +1,5 @@
 import { FlowRun, FlowRunStatus, isNil, SeekPage } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   Archive,
   ChevronDown,
@@ -118,7 +117,7 @@ export const runsTableColumns = ({
                     table.toggleAllPageRowsSelected(true);
                   }}
                 >
-                  {t('Select shown')}
+                  {'Select shown'}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="cursor-pointer"
@@ -135,7 +134,7 @@ export const runsTableColumns = ({
                     }
                   }}
                 >
-                  {t('Select all')}
+                  {'Select all'}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -194,7 +193,7 @@ export const runsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Flow')}
+        title={'Flow'}
         icon={Workflow}
       />
     ),
@@ -217,7 +216,7 @@ export const runsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Status')}
+        title={'Status'}
         icon={Activity}
       />
     ),
@@ -240,7 +239,7 @@ export const runsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Started At')}
+        title={'Started At'}
         icon={Clock}
       />
     ),
@@ -261,7 +260,7 @@ export const runsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Duration')}
+        title={'Duration'}
         icon={Timer}
       />
     ),
@@ -290,11 +289,9 @@ export const runsTableColumns = ({
             </div>
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            {t(
-              `Time waited before first execution attempt: ${formatUtils.formatDuration(
+            {`Time waited before first execution attempt: ${formatUtils.formatDuration(
                 waitDuration,
-              )}`,
-            )}
+              )}`}
           </TooltipContent>
         </Tooltip>
       );
@@ -305,7 +302,7 @@ export const runsTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Failed Step')}
+        title={'Failed Step'}
         icon={AlertTriangle}
       />
     ),

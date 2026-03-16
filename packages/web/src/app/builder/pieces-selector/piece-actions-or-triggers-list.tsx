@@ -4,7 +4,6 @@ import {
   FlowTriggerType,
   TelemetryEventName,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { MoveLeft } from 'lucide-react';
 import React from 'react';
 
@@ -81,7 +80,7 @@ export const PieceActionsOrTriggersList: React.FC<
     return (
       <div className="flex flex-col gap-2 items-center justify-center h-full w-full">
         <MoveLeft className="w-10 h-10 rtl:rotate-180" />
-        <div className="text-sm">{t('Please select a piece first')}</div>
+        <div className="text-sm">{'Please select a piece first'}</div>
       </div>
     );
   }

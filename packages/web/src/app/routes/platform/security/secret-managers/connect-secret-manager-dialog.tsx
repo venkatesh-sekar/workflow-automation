@@ -4,7 +4,6 @@ import {
   FlowErrorParams,
   ErrorCode,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -40,7 +39,7 @@ const ConnectSecretManagerDialog = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            {t('Connect')} {manager.name}
+            {'Connect'} {manager.name}
           </DialogTitle>
           <DialogDescription>
             <a
@@ -50,7 +49,7 @@ const ConnectSecretManagerDialog = ({
               className="text-primary inline-flex items-center gap-1 hover:underline"
             >
               <ExternalLink className="size-3" />
-              {t('View docs')}
+              {'View docs'}
             </a>
           </DialogDescription>
         </DialogHeader>
@@ -91,20 +90,13 @@ const ConnectSecretManagerForm = ({
         if (apError?.code === ErrorCode.SECRET_MANAGER_CONNECTION_FAILED) {
           form.setError('root.serverError', {
             type: 'manual',
-            message: t(
-              'Failed to connect to secret manager with error: "{msg}"',
-              {
-                msg: apError.params?.message,
-              },
-            ),
+            message: `Failed to connect to secret manager with error: "${apError.params?.message}"`,
           });
         }
       } else {
         form.setError('root.serverError', {
           type: 'manual',
-          message: t(
-            'Failed to connect to secret manager, please check console',
-          ),
+          message: 'Failed to connect to secret manager, please check console',
         });
       }
     },
@@ -158,14 +150,14 @@ const ConnectSecretManagerForm = ({
               setOpen(false);
             }}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             disabled={!form.formState.isValid}
             loading={isPending}
             type="submit"
           >
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </form>

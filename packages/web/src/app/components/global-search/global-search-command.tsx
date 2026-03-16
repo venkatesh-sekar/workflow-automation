@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Search } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ export function GlobalSearchCommand() {
     >
       <Search className="size-4 shrink-0 mr-auto" />
       <span className="flex-1 text-left text-muted-foreground group-data-[collapsible=icon]:hidden">
-        {t('Search...')}
+        {'Search...'}
       </span>
       <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted py-0.5 px-1 font-mono text-[9px] font-medium sm:flex group-data-[collapsible=icon]:hidden!">
         {isMac ? '⌘' : 'Ctrl'}&nbsp;K

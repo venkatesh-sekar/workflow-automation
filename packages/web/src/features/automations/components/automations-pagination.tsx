@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -36,7 +35,7 @@ export const AutomationsPagination = ({
   return (
     <div className="flex items-center justify-end gap-4 px-2 py-4 text-sm">
       <div className="flex items-center gap-2">
-        <span className="text-muted-foreground">{t('Rows per page')}</span>
+        <span className="text-muted-foreground">{'Rows per page'}</span>
         <Select
           value={String(pageSize)}
           onValueChange={(val) => onPageSizeChange(Number(val))}
@@ -61,7 +60,7 @@ export const AutomationsPagination = ({
         className="gap-1"
       >
         <ChevronLeft className="h-4 w-4" />
-        {t('Previous')}
+        {'Previous'}
       </Button>
       <Button
         variant="ghost"
@@ -70,7 +69,7 @@ export const AutomationsPagination = ({
         disabled={currentPage >= maxPages - 1}
         className="gap-1"
       >
-        {t('Next')}
+        {'Next'}
         <ChevronRight className="h-4 w-4" />
       </Button>
     </div>

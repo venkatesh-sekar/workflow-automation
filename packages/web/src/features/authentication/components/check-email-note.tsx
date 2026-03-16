@@ -1,5 +1,4 @@
 import { CreateOtpRequestBody, OtpType } from '@flow/shared';
-import { t } from 'i18next';
 import { MailCheck } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -10,8 +9,8 @@ const CheckEmailNote = ({ email, type }: CreateOtpRequestBody) => {
     onSuccess: () => {
       toast.success(
         type === OtpType.EMAIL_VERIFICATION
-          ? t('Verification email resent, if previous one expired.')
-          : t('Password reset link resent, if previous one expired.'),
+          ? 'Verification email resent, if previous one expired.'
+          : 'Password reset link resent, if previous one expired.',
         {
           duration: 3000,
         },
@@ -24,13 +23,13 @@ const CheckEmailNote = ({ email, type }: CreateOtpRequestBody) => {
         <MailCheck className="w-16 h-16" />
         <span className="text-left w-fit">
           {type === OtpType.EMAIL_VERIFICATION
-            ? t('We sent you a link to complete your registration to')
-            : t('We sent you a link to reset your password to')}
+            ? 'We sent you a link to complete your registration to'
+            : 'We sent you a link to reset your password to'}
           <strong>&nbsp;{email}</strong>.
         </span>
       </div>
       <div className="flex flex-row gap-1">
-        {t("Didn't receive an email or it expired?")}
+        {"Didn't receive an email or it expired?"}
         <button
           className="cursor-pointer text-primary underline"
           onClick={() =>
@@ -40,7 +39,7 @@ const CheckEmailNote = ({ email, type }: CreateOtpRequestBody) => {
             })
           }
         >
-          {t('Resend')}
+          {'Resend'}
         </button>
       </div>
     </div>

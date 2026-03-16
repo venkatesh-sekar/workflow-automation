@@ -5,7 +5,6 @@ import {
   PieceCategory,
 } from '@flow/shared';
 import { cva } from 'class-variance-authority';
-import { t } from 'i18next';
 import { useMemo } from 'react';
 
 import {
@@ -118,7 +117,7 @@ export function PieceIconList({
                 .map((m) => m?.displayName || '')
                 .slice(0, -1)
                 .join(', ') +
-                ` ${t('and')} ${
+                ` ${'and'} ${
                   extraMetadata[extraMetadata.length - 1].displayName
                 }`}
             {extraMetadata.length === 1 && extraMetadata[0].displayName}

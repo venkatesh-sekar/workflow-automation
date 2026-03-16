@@ -13,7 +13,6 @@ import {
   UpsertAppConnectionRequestBody,
 } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { UseFormReturn } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -116,56 +115,44 @@ export const appConnectionsMutations = {
           switch (apError.code) {
             case ErrorCode.INVALID_CLOUD_CLAIM: {
               setErrorMessage(
-                t(
-                  'Could not claim the authorization code, make sure you have correct settings and try again.',
-                ),
+                'Could not claim the authorization code, make sure you have correct settings and try again.',
               );
               break;
             }
             case ErrorCode.INVALID_CLAIM: {
               setErrorMessage(
-                t('Connection failed with error {msg}', {
-                  msg: apError.params.message,
-                }),
+                `Connection failed with error ${apError.params.message}`,
               );
               break;
             }
             case ErrorCode.INVALID_APP_CONNECTION: {
               setErrorMessage(
-                t('Connection failed with error {msg}', {
-                  msg: apError.params.error,
-                }),
+                `Connection failed with error ${apError.params.error}`,
               );
               break;
             }
             // can happen in embedding sdk connect method
             case ErrorCode.PERMISSION_DENIED: {
               setErrorMessage(
-                t(`You don't have the permission to create a connection.`),
+                `You don't have the permission to create a connection.`,
               );
               break;
             }
             case ErrorCode.SECRET_MANAGER_GET_SECRET_FAILED: {
               setErrorMessage(
-                t('Secret was not found: "{msg}"', {
-                  msg: apError.params.message,
-                }),
+                `Secret was not found: "${apError.params.message}"`,
               );
               break;
             }
             case ErrorCode.SECRET_MANAGER_CONNECTION_FAILED: {
               setErrorMessage(
-                t('Failed to connect to secret manager with error: "{msg}"', {
-                  msg: apError.params.message,
-                }),
+                `Failed to connect to secret manager with error: "${apError.params.message}"`,
               );
               break;
             }
             case ErrorCode.VALIDATION: {
               setErrorMessage(
-                t('Validation error: {msg}', {
-                  msg: apError.params.message,
-                }),
+                `Validation error: ${apError.params.message}`,
               );
               break;
             }
@@ -220,8 +207,8 @@ export const appConnectionsMutations = {
       },
       onSuccess: () => {
         refetch();
-        toast.success(t('Success'), {
-          description: t('Connection has been renamed.'),
+        toast.success('Success', {
+          description: 'Connection has been renamed.',
           duration: 3000,
         });
         setIsRenameDialogOpen(false);
@@ -247,15 +234,15 @@ export const appConnectionsMutations = {
         await appConnectionsApi.replace(request);
       },
       onSuccess: () => {
-        toast.success(t('Success'), {
-          description: t('Connections replaced successfully'),
+        toast.success('Success', {
+          description: 'Connections replaced successfully',
         });
         setDialogOpen(false);
         refetch();
       },
       onError: () => {
-        toast.error(t('Error'), {
-          description: t('Failed to replace connections'),
+        toast.error('Error', {
+          description: 'Failed to replace connections',
         });
       },
     });

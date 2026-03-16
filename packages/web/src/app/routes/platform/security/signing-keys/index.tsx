@@ -1,5 +1,4 @@
 import { SigningKey } from '@flow/shared';
-import { t } from 'i18next';
 import { ExternalLink, Key, MoreHorizontal, Trash } from 'lucide-react';
 
 import { CenteredPage } from '@/app/components/centered-page';
@@ -43,16 +42,14 @@ const SigningKeysPage = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.embeddingEnabled}
-      lockTitle={t('Unlock Embedding Through JS SDK')}
-      lockDescription={t(
-        'Enable signing keys to access embedding functionalities.',
-      )}
+      lockTitle={'Unlock Embedding Through JS SDK'}
+      lockDescription={'Enable signing keys to access embedding functionalities.'}
     >
       <CenteredPage
-        title={t('Embedding')}
+        title={'Embedding'}
         description={
           <>
-            {t("Show your product's automations inside your own UI.")}
+            {"Show your product's automations inside your own UI."}
             <Button
               variant="link"
               size="sm"
@@ -64,7 +61,7 @@ const SigningKeysPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t('Read more')}
+                {'Read more'}
                 <ExternalLink className="size-3" />
               </a>
             </Button>
@@ -73,7 +70,7 @@ const SigningKeysPage = () => {
         actions={
           <NewSigningKeyDialog onCreate={() => refetch()}>
             <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-              {t('New Signing Key')}
+              {'New Signing Key'}
             </AnimatedIconButton>
           </NewSigningKeyDialog>
         }
@@ -85,7 +82,7 @@ const SigningKeysPage = () => {
         {!isLoading && signingKeys.length === 0 && (
           <div className="flex flex-col items-center gap-3 py-12 text-muted-foreground">
             <Key className="size-10" />
-            <p className="text-sm">{t('No signing keys found')}</p>
+            <p className="text-sm">{'No signing keys found'}</p>
           </div>
         )}
 
@@ -106,7 +103,7 @@ const SigningKeysPage = () => {
                     {signingKey.displayName}{' '}
                   </ItemTitle>
                   <ItemDescription className="text-xs">
-                    {' ' + t('Created')}{' '}
+                    {' ' + 'Created'}{' '}
                     {formatUtils.formatDateToAgo(new Date(signingKey.created))}
                     <br />
                     <span className="text-xs text-muted-foreground">
@@ -123,12 +120,10 @@ const SigningKeysPage = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <ConfirmationDeleteDialog
-                        title={t('Delete Signing Key')}
-                        message={t(
-                          'Deleting this signing key will invalidate any tokens signed with it.',
-                        )}
-                        entityName={t('Signing Key')}
-                        buttonText={t('Delete')}
+                        title={'Delete Signing Key'}
+                        message={'Deleting this signing key will invalidate any tokens signed with it.'}
+                        entityName={'Signing Key'}
+                        buttonText={'Delete'}
                         mutationFn={async () => {
                           await signingKeyApi.delete(signingKey.id);
                           refetch();
@@ -140,7 +135,7 @@ const SigningKeysPage = () => {
                           onSelect={(e) => e.preventDefault()}
                         >
                           <Trash className="size-4 mr-2 text-destructive" />
-                          {t('Delete Signing Key')}
+                          {'Delete Signing Key'}
                         </DropdownMenuItem>
                       </ConfirmationDeleteDialog>
                     </DropdownMenuContent>

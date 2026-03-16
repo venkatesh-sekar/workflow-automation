@@ -6,7 +6,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Info } from 'lucide-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -67,7 +66,7 @@ const PushEverythingDialog = (props: PushEverythingDialogProps) => {
       });
     },
     onSuccess: () => {
-      toast.success(t('Everything is pushed successfully'), {
+      toast.success('Everything is pushed successfully', {
         duration: 3000,
       });
       setOpen(false);
@@ -84,7 +83,7 @@ const PushEverythingDialog = (props: PushEverythingDialogProps) => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit((data) => mutate(data))}>
             <DialogHeader>
-              <DialogTitle>{t('Push Everything to Git')}</DialogTitle>
+              <DialogTitle>{'Push Everything to Git'}</DialogTitle>
             </DialogHeader>
             <FormField
               control={form.control}
@@ -92,15 +91,13 @@ const PushEverythingDialog = (props: PushEverythingDialogProps) => {
               render={({ field }) => (
                 <FormItem className="gap-2 flex flex-col">
                   <div className="flex items-center gap-2">
-                    <FormLabel>{t('Commit Message')}</FormLabel>
+                    <FormLabel>{'Commit Message'}</FormLabel>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Info className="w-4 h-4 text-muted-foreground cursor-help" />
                       </TooltipTrigger>
                       <TooltipContent className="max-w-xs">
-                        {t(
-                          'Push all published flows, connections, and tables to the Git repository.',
-                        )}
+                        {'Push all published flows, connections, and tables to the Git repository.'}
                       </TooltipContent>
                     </Tooltip>
                   </div>
@@ -108,9 +105,7 @@ const PushEverythingDialog = (props: PushEverythingDialogProps) => {
                     <Textarea {...field} />
                   </FormControl>
                   <div className="text-sm text-muted-foreground">
-                    {t(
-                      'Enter a commit message to describe the changes you want to push.',
-                    )}
+                    {'Enter a commit message to describe the changes you want to push.'}
                   </div>
                 </FormItem>
               )}
@@ -124,14 +119,14 @@ const PushEverythingDialog = (props: PushEverythingDialogProps) => {
                   form.reset();
                 }}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 type="submit"
                 loading={isPending}
                 onClick={form.handleSubmit((data) => mutate(data))}
               >
-                {t('Push')}
+                {'Push'}
               </Button>
             </DialogFooter>
           </form>

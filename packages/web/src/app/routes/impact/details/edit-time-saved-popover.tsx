@@ -1,6 +1,5 @@
 import { FlowOperationType } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useContext, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -64,13 +63,13 @@ export function EditTimeSavedPopover({
         previousValueRef.current > 0;
       toast.success(
         isEdit
-          ? t('Time saved updated successfully')
-          : t('Time saved added successfully'),
+          ? 'Time saved updated successfully'
+          : 'Time saved added successfully',
       );
     },
     onError: () => {
       setTimeSavedPerRunOverride(flowId, previousValueRef.current ?? null);
-      toast.error(t('Failed to update time saved'));
+      toast.error('Failed to update time saved');
     },
   });
 
@@ -140,7 +139,7 @@ export function EditTimeSavedPopover({
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent className="w-[260px] p-4" align="start">
         <div className="flex flex-col gap-4">
-          <div className="text-sm font-semibold">{t('Time Saved Per Run')}</div>
+          <div className="text-sm font-semibold">{'Time Saved Per Run'}</div>
 
           <div className="flex items-center rounded-md border border-input bg-background px-3 py-1.5 gap-1 focus-within:ring-1 focus-within:ring-ring">
             <div className="flex flex-col items-center gap-0.5 flex-1">
@@ -195,15 +194,15 @@ export function EditTimeSavedPopover({
           </div>
 
           <p className="text-xs text-muted-foreground">
-            {t('How long this task takes without automation.')}
+            {'How long this task takes without automation.'}
           </p>
 
           <div className="flex gap-2 justify-end">
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
-              {t('Cancel')}
+              {'Cancel'}
             </Button>
             <Button size="sm" onClick={handleSave} loading={isPending}>
-              {t('Save')}
+              {'Save'}
             </Button>
           </div>
         </div>

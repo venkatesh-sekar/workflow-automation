@@ -1,5 +1,4 @@
 import { AgentFlowTool } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus, Workflow, X } from 'lucide-react';
 
 import {
@@ -36,7 +35,7 @@ export const AgentFlowToolComponent = ({
           <div className="h-8 w-8 rounded-md bg-muted flex items-center justify-center">
             <Workflow className="size-4 text-muted-foreground" />
           </div>
-          <span className="text-sm font-medium">{t('Flows')}</span>
+          <span className="text-sm font-medium">{'Flows'}</span>
         </div>
       </AccordionTrigger>
 
@@ -52,7 +51,7 @@ export const AgentFlowToolComponent = ({
               `}
             >
               <span className="text-xs font-medium max-w-40 truncate">
-                {tool.flowDisplayName ?? tool.toolName ?? t('Flow')}
+                {tool.flowDisplayName ?? tool.toolName ?? 'Flow'}
               </span>
 
               <Tooltip>
@@ -73,7 +72,7 @@ export const AgentFlowToolComponent = ({
                     <X className="h-3 w-3" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t('Remove flow')}</TooltipContent>
+                <TooltipContent>{'Remove flow'}</TooltipContent>
               </Tooltip>
             </div>
           ))}
@@ -85,7 +84,7 @@ export const AgentFlowToolComponent = ({
           onClick={() => setShowAddFlowDialog(true)}
         >
           <Plus className="size-3 mr-1" />
-          {t('Add Flow')}
+          {'Add Flow'}
         </Button>
       </AccordionContent>
     </AccordionItem>

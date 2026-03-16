@@ -14,7 +14,6 @@ import {
   UpsertAppConnectionRequestBody,
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { Resolver, useForm } from 'react-hook-form';
 
@@ -122,12 +121,8 @@ function CreateOrEditConnectionSection({
         <DialogTitle className="px-5">
           <div className="flex items-center gap-2">
             {reconnectConnection
-              ? t('Reconnect {displayName} Connection', {
-                  displayName: reconnectConnection.displayName,
-                })
-              : t('Connect to {displayName}', {
-                  displayName: piece.displayName,
-                })}
+              ? `Reconnect ${reconnectConnection.displayName} Connection`
+              : `Connect to ${piece.displayName}`}
           </div>
         </DialogTitle>
         <DialogDescription></DialogDescription>
@@ -157,7 +152,7 @@ function CreateOrEditConnectionSection({
                 render={({ field }) => (
                   <FormItem className="flex flex-col gap-2">
                     <FormLabel htmlFor="displayName">
-                      {t('Connection Name')}
+                      {'Connection Name'}
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -165,7 +160,7 @@ function CreateOrEditConnectionSection({
                         required
                         id="displayName"
                         type="text"
-                        placeholder={t('Connection name')}
+                        placeholder={'Connection name'}
                       />
                     </FormControl>
                     <FormMessage />
@@ -193,7 +188,7 @@ function CreateOrEditConnectionSection({
                         htmlFor="preSelectForNewProjects"
                         className="cursor-pointer"
                       >
-                        {t('Include by default in new projects')}
+                        {'Include by default in new projects'}
                       </Label>
                     </FormItem>
                   )}
@@ -205,7 +200,7 @@ function CreateOrEditConnectionSection({
                       name="request.externalId"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('External ID')}</FormLabel>
+                          <FormLabel>{'External ID'}</FormLabel>
                           <Input {...field} />
                         </FormItem>
                       )}
@@ -238,12 +233,12 @@ function CreateOrEditConnectionSection({
                   type="button"
                   onClick={onTryAnotherMethodButtonClicked}
                 >
-                  {t('Try another method')}
+                  {'Try another method'}
                 </Button>
               )}
               <div className="grow"></div>
               <DialogClose asChild>
-                <Button variant="outline">{t('Cancel')}</Button>
+                <Button variant="outline">{'Cancel'}</Button>
               </DialogClose>
               <Button
                 onClick={(e) => form.handleSubmit(() => upsertConnection())(e)}
@@ -251,7 +246,7 @@ function CreateOrEditConnectionSection({
                 type="submit"
                 disabled={!form.formState.isValid}
               >
-                {t('Save')}
+                {'Save'}
               </Button>
             </div>
           </DialogFooter>
@@ -378,12 +373,8 @@ function CreateOrEditConnectionDialog({
               <DialogTitle className="px-5">
                 <div className="flex items-center gap-2">
                   {reconnectConnection
-                    ? t('Reconnect {displayName} Connection', {
-                        displayName: reconnectConnection.displayName,
-                      })
-                    : t('Connect to {displayName}', {
-                        displayName: piece.displayName,
-                      })}
+                    ? `Reconnect ${reconnectConnection.displayName} Connection`
+                    : `Connect to ${piece.displayName}`}
                 </div>
               </DialogTitle>
             </DialogHeader>

@@ -1,5 +1,4 @@
 import { ProjectMemberWithUser, ProjectRole } from '@flow/shared';
-import { t } from 'i18next';
 import { Loader2, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -37,10 +36,10 @@ export const ProjectRoleUsersSheet = ({
       <SheetContent className="w-[600px] sm:max-w-[600px] flex flex-col p-0">
         <SheetHeader className="px-6 py-4 border-b shrink-0">
           <SheetTitle className="text-base">
-            {projectRole?.name} {t('Role')} {t('Users')}
+            {projectRole?.name} {'Role'} {'Users'}
           </SheetTitle>
           <SheetDescription>
-            {t('View the users assigned to this role')}
+            {'View the users assigned to this role'}
           </SheetDescription>
         </SheetHeader>
         <div className="flex-1 overflow-hidden">
@@ -51,9 +50,9 @@ export const ProjectRoleUsersSheet = ({
           ) : users.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-2 text-muted-foreground">
               <Users className="size-14" />
-              <p className="text-sm font-medium">{t('No users found')}</p>
+              <p className="text-sm font-medium">{'No users found'}</p>
               <p className="text-xs">
-                {t('Start by assigning users to this role')}
+                {'Start by assigning users to this role'}
               </p>
             </div>
           ) : (

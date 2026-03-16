@@ -5,7 +5,6 @@ import {
   UserWithMetaInformation,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { Info, Trash2, User, Shield, ChevronDown } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -79,7 +78,7 @@ const RoleCell = ({
 
   const { mutate } = projectMembersMutations.useUpdateMemberRole({
     onSuccess: () => {
-      toast.success(t('Role updated successfully'));
+      toast.success('Role updated successfully');
       refetch();
     },
     onError: () => {
@@ -113,7 +112,7 @@ const RoleCell = ({
               <Info className="h-4 w-4 text-warning-700 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6" />
             </TooltipTrigger>
             <TooltipContent>
-              <p>{t('Pending Invitation')}</p>
+              <p>{'Pending Invitation'}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -184,20 +183,20 @@ const ActionsCell = ({
       ? `${row.original.data.user.firstName} ${row.original.data.user.lastName}`
       : row.original.data.email;
 
-  const removeLabel = `${t('Remove')} ${displayName}`;
+  const removeLabel = `${'Remove'} ${displayName}`;
 
   return (
     <PermissionNeededTooltip hasPermission={userHasPermissionToDelete}>
       <ConfirmationDeleteDialog
         title={
           row.original.type === 'invitation'
-            ? t('Remove Invitation')
-            : t('Remove Member')
+            ? 'Remove Invitation'
+            : 'Remove Member'
         }
         message={
           row.original.type === 'invitation'
-            ? t('This invitation will be revoked immediately.')
-            : t('This member will lose access to the project immediately.')
+            ? 'This invitation will be revoked immediately.'
+            : 'This member will lose access to the project immediately.'
         }
         mutationFn={() => deleteMember()}
         entityName={displayName}
@@ -226,7 +225,7 @@ export const membersTableColumns = ({
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('User Name')}
+        title={'User Name'}
         icon={User}
       />
     ),
@@ -292,7 +291,7 @@ export const membersTableColumns = ({
     accessorKey: 'role',
     size: 180,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Role')} icon={Shield} />
+      <DataTableColumnHeader column={column} title={'Role'} icon={Shield} />
     ),
     cell: ({ row }) => {
       return (

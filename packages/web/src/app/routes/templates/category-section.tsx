@@ -1,5 +1,4 @@
 import { Template } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 
@@ -48,7 +47,7 @@ export const CategorySection = React.memo(
                 onClick={() => onCategorySelect(category)}
                 className="flex items-center"
               >
-                {t('View all')}
+                {'View all'}
               </Button>
               <div className="flex items-center">
                 <CarouselPrevious

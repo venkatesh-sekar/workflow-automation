@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -32,26 +30,26 @@ export const RenameDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Rename')}</DialogTitle>
+          <DialogTitle>{'Rename'}</DialogTitle>
           <DialogDescription>
-            {t('Enter a new name for this item.')}
+            {'Enter a new name for this item.'}
           </DialogDescription>
         </DialogHeader>
         <Input
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder={t('Enter new name')}
+          placeholder={'Enter new name'}
         />
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             onClick={onConfirm}
             disabled={!value.trim() || isRenaming}
             loading={isRenaming}
           >
-            {t('Rename')}
+            {'Rename'}
           </Button>
         </DialogFooter>
       </DialogContent>

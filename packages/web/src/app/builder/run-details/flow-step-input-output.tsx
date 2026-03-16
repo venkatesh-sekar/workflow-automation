@@ -8,7 +8,6 @@ import {
   isNil,
   FlowFlagId,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Info, Timer } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -91,7 +90,7 @@ export const FlowStepInputOutput = () => {
     return (
       <div className="px-4 bg-muted rounded-md m-4 py-2 flex items-center gap-1.5">
         <Info className="w-4 h-4" />
-        <span>{t("This step didn't run")}</span>
+        <span>{"This step didn't run"}</span>
       </div>
     );
   }
@@ -106,7 +105,7 @@ export const FlowStepInputOutput = () => {
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Timer className="w-4 h-4" />
           <span>
-            {t('Duration')}:{' '}
+            {'Duration'}:{' '}
             {formatUtils.formatDuration(
               selectedStepOutput.duration ?? 0,
               false,
@@ -116,15 +115,15 @@ export const FlowStepInputOutput = () => {
 
         <Tabs defaultValue={isAgent ? 'timeline' : 'output'} className="w-full">
           <TabsList className={`w-full grid ${gridCols}`}>
-            <TabsTrigger value="input">{t('Input')}</TabsTrigger>
+            <TabsTrigger value="input">{'Input'}</TabsTrigger>
             {isAgent && (
-              <TabsTrigger value="timeline">{t('Timeline')}</TabsTrigger>
+              <TabsTrigger value="timeline">{'Timeline'}</TabsTrigger>
             )}
-            <TabsTrigger value="output">{t('Output')}</TabsTrigger>
+            <TabsTrigger value="output">{'Output'}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="input">
-            <JsonViewer json={selectedStepOutput.input} title={t('Input')} />
+            <JsonViewer json={selectedStepOutput.input} title={'Input'} />
           </TabsContent>
 
           {isAgent && (
@@ -138,7 +137,7 @@ export const FlowStepInputOutput = () => {
             {isStepRunning ? (
               <StepOutputSkeleton className="p-4" />
             ) : (
-              <JsonViewer json={parsedOutput} title={t('Output')} />
+              <JsonViewer json={parsedOutput} title={'Output'} />
             )}
           </TabsContent>
         </Tabs>
@@ -159,16 +158,11 @@ function handleRunFailureOrEmptyLog(
   }
 
   if ([FlowRunStatus.INTERNAL_ERROR].includes(run.status)) {
-    return t(
-      'There are no logs captured for this run, because of an internal error, please contact support.',
-    );
+    return 'There are no logs captured for this run, because of an internal error, please contact support.';
   }
 
   if (isNil(run.logsFileId)) {
-    return t(
-      'Logs are kept for {days} days after execution and then deleted.',
-      { days: retentionDays },
-    );
+    return `Logs are kept for ${retentionDays} days after execution and then deleted.`;
   }
   return null;
 }

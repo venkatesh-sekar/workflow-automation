@@ -1,5 +1,4 @@
 import { FlowAction, FlowTrigger } from '@flow/shared';
-import { t } from 'i18next';
 import { useState } from 'react';
 
 import { SIDEBAR_ID } from '@/app/components/sidebar/dashboard';
@@ -46,10 +45,10 @@ const StepDragOverlay = ({ step }: { step: FlowAction | FlowTrigger }) => {
       id={'dragged-step-overlay'}
     >
       <img
-        id={t('logo')}
+        id={'logo'}
         className={'object-contain left-0 right-0 static !cursor-grabbing'}
         src={step?.settings?.customLogoUrl ?? stepMetadata?.logoUrl}
-        alt={t('Step Icon')}
+        alt={'Step Icon'}
       />
     </div>
   );

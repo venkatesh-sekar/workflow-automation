@@ -1,5 +1,4 @@
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
 import { Check, ChevronsUpDown, RefreshCcw, X } from 'lucide-react';
 import React, { useState, useRef } from 'react';
 
@@ -177,7 +176,7 @@ export const SearchableSelect = <T,>({
           <div className="right-10 top-2 absolute flex gap-2  z-50 items-center">
             {showDeselect && !disabled && selectedOption && !loading && (
               <SelectUtilButton
-                tooltipText={t('Unset')}
+                tooltipText={'Unset'}
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
@@ -188,7 +187,7 @@ export const SearchableSelect = <T,>({
             )}
             {showRefresh && !loading && (
               <SelectUtilButton
-                tooltipText={t('Refresh')}
+                tooltipText={'Refresh'}
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
@@ -211,7 +210,7 @@ export const SearchableSelect = <T,>({
       >
         <Command className="w-full" shouldFilter={false}>
           <CommandInput
-            placeholder={t(placeholder)}
+            placeholder={placeholder}
             value={searchTerm}
             onValueChange={(e) => {
               setSearchTerm(e);
@@ -221,7 +220,7 @@ export const SearchableSelect = <T,>({
             }}
           />
           {filterOptionsIndices.length === 0 && (
-            <CommandEmpty>{t('No results found.')}</CommandEmpty>
+            <CommandEmpty>{'No results found.'}</CommandEmpty>
           )}
 
           <CommandGroup>
@@ -270,7 +269,7 @@ export const SearchableSelect = <T,>({
                     );
                   })}
                 {loading && (
-                  <CommandItem disabled>{t('Loading...')}</CommandItem>
+                  <CommandItem disabled>{'Loading...'}</CommandItem>
                 )}
               </ScrollArea>
             </CommandList>

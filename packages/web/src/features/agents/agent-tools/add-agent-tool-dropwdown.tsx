@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Hammer, Workflow } from 'lucide-react';
 import { useState } from 'react';
 
@@ -46,17 +45,17 @@ export const AddToolDropdown = ({
           onSelect={() => openAddPieceToolDialog({ page: 'pieces-list' })}
         >
           <Hammer className="size-3.5 me-2" />
-          <span>{t('Piece tool')}</span>
+          <span>{'Piece tool'}</span>
         </DropdownMenuItem>
 
         <DropdownMenuItem onSelect={() => setShowAddFlowDialog(true)}>
           <Workflow className="size-3.5 me-2" />
-          <span>{t('Flow tool')}</span>
+          <span>{'Flow tool'}</span>
         </DropdownMenuItem>
 
         <DropdownMenuItem onSelect={() => setShowAddMcpDialog(true)}>
           <McpSvg className="size-3.5 me-2" />
-          <span>{t('Mcp server')}</span>
+          <span>{'Mcp server'}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

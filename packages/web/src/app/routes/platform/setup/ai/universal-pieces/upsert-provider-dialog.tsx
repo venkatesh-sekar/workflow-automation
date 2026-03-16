@@ -10,7 +10,6 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { t } from 'i18next';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -131,7 +130,7 @@ export const UpsertAIProviderDialogContent = ({
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {providerId ? t('Update AI Provider') : t('Add AI Provider')}
+            {providerId ? 'Update AI Provider' : 'Add AI Provider'}
           </DialogTitle>
         </DialogHeader>
 
@@ -154,7 +153,7 @@ export const UpsertAIProviderDialogContent = ({
                 name="auth.apiKey"
                 render={({ field }) => (
                   <FormItem className="grid space-y-3">
-                    <FormLabel htmlFor="apiKey">{t('API Key')}</FormLabel>
+                    <FormLabel htmlFor="apiKey">{'API Key'}</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -187,10 +186,10 @@ export const UpsertAIProviderDialogContent = ({
                 }}
                 disabled={isPending}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button disabled={isPending} loading={isPending} type="submit">
-                {t('Save')}
+                {'Save'}
               </Button>
             </DialogFooter>
           </form>

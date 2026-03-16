@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Eye, EyeOff, Pin, PinOff } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -60,8 +59,8 @@ const PieceActions = ({ pieceName, isEnabled }: PieceActionsProps) => {
         </TooltipTrigger>
         <TooltipContent>
           {filtered
-            ? t('Hide this piece from all projects')
-            : t('Show this piece for all projects')}
+            ? 'Hide this piece from all projects'
+            : 'Show this piece for all projects'}
         </TooltipContent>
       </Tooltip>
 
@@ -88,7 +87,7 @@ const PieceActions = ({ pieceName, isEnabled }: PieceActionsProps) => {
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          {pinned ? t('Unpin this piece') : t('Pin this piece')}
+          {pinned ? 'Unpin this piece' : 'Pin this piece'}
         </TooltipContent>
       </Tooltip>
     </div>

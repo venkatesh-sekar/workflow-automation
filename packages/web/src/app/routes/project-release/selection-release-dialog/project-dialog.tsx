@@ -1,7 +1,6 @@
 import { DiffReleaseRequest, ProjectReleaseType } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -24,7 +23,7 @@ import { projectCollectionUtils } from '@/features/projects';
 import { CreateReleaseDialog } from '../create-release-dialog';
 
 const FormSchema = z.object({
-  selectedProject: z.string({ message: t('Please select project') }),
+  selectedProject: z.string({ message: 'Please select project' }),
 });
 
 type FormSchema = z.infer<typeof FormSchema>;
@@ -54,8 +53,8 @@ export function ProjectSelectionDialog({
         (!plan.flows || plan.flows.length === 0) &&
         (!plan.tables || plan.tables.length === 0)
       ) {
-        toast(t('No Changes Found'), {
-          description: t('There are no differences to apply'),
+        toast('No Changes Found', {
+          description: 'There are no differences to apply',
         });
         return;
       }
@@ -76,7 +75,7 @@ export function ProjectSelectionDialog({
     if (!data.selectedProject) {
       form.setError('selectedProject', {
         type: 'required',
-        message: t('Please select a project'),
+        message: 'Please select a project',
       });
       return;
     }
@@ -100,7 +99,7 @@ export function ProjectSelectionDialog({
       >
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>{t('Create Release')}</DialogTitle>
+            <DialogTitle>{'Create Release'}</DialogTitle>
           </DialogHeader>
           <Form {...form}>
             <form
@@ -112,11 +111,11 @@ export function ProjectSelectionDialog({
                 name="selectedProject"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
-                    <Label>{t('Project')}</Label>
+                    <Label>{'Project'}</Label>
                     <SearchableSelect
                       onChange={field.onChange}
                       value={field.value}
-                      placeholder={t('Search projects...')}
+                      placeholder={'Search projects...'}
                       options={(projects ?? [])
                         .filter((project) => project.id !== projectId)
                         .map((project) => ({
@@ -136,14 +135,14 @@ export function ProjectSelectionDialog({
                   type="button"
                   onClick={() => setOpen(false)}
                 >
-                  {t('Cancel')}
+                  {'Cancel'}
                 </Button>
                 <Button
                   type="submit"
                   onClick={() => form.handleSubmit(onSubmit)}
                   loading={isDoingDiff}
                 >
-                  {t('Review Changes')}
+                  {'Review Changes'}
                 </Button>
               </DialogFooter>
             </form>

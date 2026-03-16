@@ -1,5 +1,4 @@
 import { AIProviderName } from '@flow/shared';
-import { t } from 'i18next';
 import { Check, ChevronsUpDown, Loader2 } from 'lucide-react';
 import * as React from 'react';
 
@@ -116,7 +115,7 @@ export function AIModelSelector({
 
   return (
     <div className="space-y-2">
-      <h2 className="text-sm font-medium">{t('AI Model *')}</h2>
+      <h2 className="text-sm font-medium">{'AI Model *'}</h2>
 
       <div className="flex items-stretch border rounded-md bg-background overflow-hidden">
         <Popover open={providerOpen} onOpenChange={setProviderOpen}>
@@ -131,7 +130,7 @@ export function AIModelSelector({
               {providersLoading ? (
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>{t('Loading...')}</span>
+                  <span>{'Loading...'}</span>
                 </div>
               ) : selectedProvider ? (
                 <div className="flex items-center gap-2">
@@ -149,8 +148,8 @@ export function AIModelSelector({
               ) : (
                 <span className="text-muted-foreground">
                   {providers.length === 0
-                    ? t('No providers')
-                    : t('Select provider')}
+                    ? 'No providers'
+                    : 'Select provider'}
                 </span>
               )}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -161,8 +160,8 @@ export function AIModelSelector({
             align="start"
           >
             <Command>
-              <CommandInput placeholder={t('Search providers...')} />
-              <CommandEmpty>{t('No provider found.')}</CommandEmpty>
+              <CommandInput placeholder={'Search providers...'} />
+              <CommandEmpty>{'No provider found.'}</CommandEmpty>
               <CommandGroup className="max-h-64 overflow-auto">
                 {sortedProviders.map((provider) => (
                   <CommandItem
@@ -217,7 +216,7 @@ export function AIModelSelector({
               {modelsLoading ? (
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>{t('Loading...')}</span>
+                  <span>{'Loading...'}</span>
                 </div>
               ) : selectedModel ? (
                 <span className="truncate">
@@ -227,10 +226,10 @@ export function AIModelSelector({
               ) : (
                 <span className="text-muted-foreground">
                   {!selectedProvider
-                    ? t('Select provider first')
+                    ? 'Select provider first'
                     : models.length === 0
-                    ? t('No models')
-                    : t('Select model')}
+                    ? 'No models'
+                    : 'Select model'}
                 </span>
               )}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -241,8 +240,8 @@ export function AIModelSelector({
             align="start"
           >
             <Command>
-              <CommandInput placeholder={t('Search models...')} />
-              <CommandEmpty>{t('No model found.')}</CommandEmpty>
+              <CommandInput placeholder={'Search models...'} />
+              <CommandEmpty>{'No model found.'}</CommandEmpty>
               <CommandGroup className="max-h-64 overflow-auto">
                 {models.map((model) => (
                   <CommandItem

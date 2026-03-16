@@ -5,7 +5,6 @@ import {
   flowStructureUtil,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import React, { useContext, useState } from 'react';
 
 import { Dot } from '@/components/custom/dot';
@@ -111,7 +110,7 @@ const TestStepSectionImplementation = React.memo(
                 disabled={!currentStep.valid || isLoadingDynamicProperties}
               >
                 <Dot animation={true} variant={'primary'}></Dot>
-                {t('Test Step')}
+                {'Test Step'}
               </Button>
             </TestButtonTooltip>
           </div>

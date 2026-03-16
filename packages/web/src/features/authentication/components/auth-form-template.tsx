@@ -2,7 +2,6 @@ import {
   FlowFlagId,
   ThirdPartyAuthnProvidersToShowMap,
 } from '@flow/shared';
-import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -30,22 +29,22 @@ const BottomNote = ({ isSignup }: { isSignup: boolean }) => {
 
   return isSignup ? (
     <div className="mb-4 text-center text-sm">
-      {t('Already have an account?')}
+      {'Already have an account?'}
       <Link
         to={`/login?${searchQuery}`}
         className="pl-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
       >
-        {t('Sign in')}
+        {'Sign in'}
       </Link>
     </div>
   ) : (
     <div className="mb-4 text-center text-sm">
-      {t("Don't have an account?")}
+      {"Don't have an account?"}
       <Link
         to={`/login?${searchQuery}`}
         className="pl-1 text-muted-foreground hover:text-primary text-sm transition-all duration-200"
       >
-        {t('Sign up')}
+        {'Sign up'}
       </Link>
     </div>
   );
@@ -64,7 +63,7 @@ const AuthSeparator = ({
   return (thirdPartyAuthProviders?.google || thirdPartyAuthProviders?.saml) &&
     isEmailAuthEnabled ? (
     <HorizontalSeparatorWithText className="my-4">
-      {t('OR')}
+      {'OR'}
     </HorizontalSeparatorWithText>
   ) : null;
 };
@@ -80,13 +79,13 @@ const AuthFormTemplate = React.memo(
     );
     const data = {
       signin: {
-        title: t('Welcome Back!'),
-        description: t('Enter your email below to sign in to your account'),
+        title: 'Welcome Back!',
+        description: 'Enter your email below to sign in to your account',
         showNameFields: false,
       },
       signup: {
-        title: t("Let's Get Started!"),
-        description: t('Create your account and start flowing!'),
+        title: "Let's Get Started!",
+        description: 'Create your account and start flowing!',
         showNameFields: true,
       },
     }[form];

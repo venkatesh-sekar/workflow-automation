@@ -1,6 +1,5 @@
 import { BADGES, UserWithBadges } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { Trophy } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -75,7 +74,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
   {
     accessorKey: 'rank',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Rank')} />
+      <DataTableColumnHeader column={column} title={'Rank'} />
     ),
     cell: ({ row }) => <RankCell rank={row.original.rank} />,
     enableSorting: false,
@@ -84,7 +83,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
   {
     accessorKey: 'userName',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('User')} />
+      <DataTableColumnHeader column={column} title={'User'} />
     ),
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
@@ -101,7 +100,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
   {
     accessorKey: 'flowCount',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Active Flows')} />
+      <DataTableColumnHeader column={column} title={'Active Flows'} />
     ),
     cell: ({ row }) => (
       <div className="text-left">{row.original.flowCount}</div>
@@ -112,7 +111,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
   {
     accessorKey: 'minutesSaved',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Time Saved')} />
+      <DataTableColumnHeader column={column} title={'Time Saved'} />
     ),
     cell: ({ row }) => (
       <div className="text-left">
@@ -125,7 +124,7 @@ const createColumns = (): ColumnDef<RowDataWithActions<UserStats>>[] => [
   {
     accessorKey: 'badges',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Badges')} />
+      <DataTableColumnHeader column={column} title={'Badges'} />
     ),
     cell: ({ row }) => (
       <BadgesCell
@@ -159,10 +158,8 @@ export function UsersLeaderboard({ data, isLoading }: UsersLeaderboardProps) {
       isLoading={isLoading ?? false}
       clientPagination={true}
       getRowClassName={getRowClassName}
-      emptyStateTextTitle={t('No automation heroes yet')}
-      emptyStateTextDescription={t(
-        'Once your team starts building flows, their achievements will shine here',
-      )}
+      emptyStateTextTitle={'No automation heroes yet'}
+      emptyStateTextDescription={'Once your team starts building flows, their achievements will shine here'}
       emptyStateIcon={<Trophy className="h-10 w-10 text-muted-foreground" />}
     />
   );

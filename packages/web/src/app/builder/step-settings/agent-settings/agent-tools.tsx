@@ -1,6 +1,5 @@
 import { AgentToolType } from '@flow/shared';
 import type { AgentPieceTool, AgentTool } from '@flow/shared';
-import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import { ControllerRenderProps } from 'react-hook-form';
 
@@ -58,7 +57,7 @@ export const AgentTools = ({
 
   return (
     <div>
-      <h2 className="text-sm font-medium">{t('Agent Tools')}</h2>
+      <h2 className="text-sm font-medium">{'Agent Tools'}</h2>
 
       <div className="mt-2">
         {tools.length > 0 ? (
@@ -94,7 +93,7 @@ export const AgentTools = ({
             <AddToolDropdown disabled={disabled} align="start">
               <Button variant="outline" className="mt-2">
                 <Plus className="size-4 mr-2" />
-                {t('Add')}
+                {'Add'}
               </Button>
             </AddToolDropdown>
           </>
@@ -123,13 +122,13 @@ export const AgentTools = ({
             </div>
 
             <p className="text-sm font-medium text-muted-foreground">
-              {t('Connect apps, flows, MCPs and more.')}
+              {'Connect apps, flows, MCPs and more.'}
             </p>
 
             <AddToolDropdown disabled={disabled} align="center">
               <Button variant="outline" className="gap-2">
                 <Plus className="size-4" />
-                {t('Add')}
+                {'Add'}
               </Button>
             </AddToolDropdown>
           </div>

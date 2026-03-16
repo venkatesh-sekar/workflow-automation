@@ -1,5 +1,4 @@
 import { AgentTool, isNil, mcpToolNameUtils } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronLeft } from 'lucide-react';
 import { useMemo, useEffect } from 'react';
 import { toast } from 'sonner';
@@ -154,7 +153,7 @@ export function AgentPieceDialog({
   const renderDialogHeaderContent = () => {
     switch (selectedPage) {
       case 'pieces-list': {
-        return t('Connect apps with the agent');
+        return 'Connect apps with the agent';
       }
       case 'actions-list': {
         return (
@@ -170,9 +169,9 @@ export function AgentPieceDialog({
                     <ChevronLeft className="size-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t('Back')}</TooltipContent>
+                <TooltipContent>{'Back'}</TooltipContent>
               </Tooltip>
-              {t(selectedPiece.displayName)}
+              {selectedPiece.displayName}
             </div>
           )
         );
@@ -191,7 +190,7 @@ export function AgentPieceDialog({
                     <ChevronLeft className="size-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t('Back')}</TooltipContent>
+                <TooltipContent>{'Back'}</TooltipContent>
               </Tooltip>
               {selectedAction.displayName}
             </div>
@@ -214,7 +213,7 @@ export function AgentPieceDialog({
           <DialogFooter className="border-t p-4 mt-auto">
             <DialogClose asChild>
               <Button type="button" variant="outline">
-                {t('Close')}
+                {'Close'}
               </Button>
             </DialogClose>
             <Button
@@ -223,7 +222,7 @@ export function AgentPieceDialog({
               type="button"
               onClick={handleSave}
             >
-              {editingPieceTool ? t('Update Tool') : t('Add Tool')}
+              {editingPieceTool ? 'Update Tool' : 'Add Tool'}
             </Button>
           </DialogFooter>
         )}

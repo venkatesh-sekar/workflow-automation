@@ -3,7 +3,6 @@ import { javascript } from '@codemirror/lang-javascript';
 import { json } from '@codemirror/lang-json';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
 import CodeMirror, { EditorState, EditorView } from '@uiw/react-codemirror';
-import { t } from 'i18next';
 import { Code, Package } from 'lucide-react';
 import { useRef, useState } from 'react';
 
@@ -100,7 +99,7 @@ const CodeEditor = ({
             })}
             onClick={() => handleCodeClick()}
           >
-            {t('Code')}
+            {'Code'}
           </div>
           {allowNpmPackagesInCodeStep && (
             <div
@@ -109,7 +108,7 @@ const CodeEditor = ({
               })}
               onClick={() => handlePackageClick()}
             >
-              {t('Dependencies')}
+              {'Dependencies'}
             </div>
           )}
         </div>
@@ -122,7 +121,7 @@ const CodeEditor = ({
             onClick={applyCodeToCurrentStep}
           >
             <Code className="w-3 h-3" />
-            {t('Use code')}
+            {'Use code'}
           </Button>
         ) : (
           allowNpmPackagesInCodeStep && (
@@ -134,7 +133,7 @@ const CodeEditor = ({
                 onClick={() => {}}
               >
                 <Package className="w-4 h-4" />
-                {t('Add package')}
+                {'Add package'}
               </Button>
             </AddNpmDialog>
           )

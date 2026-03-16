@@ -7,7 +7,6 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { HttpStatusCode } from 'axios';
-import { t } from 'i18next';
 import pako from 'pako';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -95,18 +94,18 @@ const InstallPieceDialog = ({
           form.setValue('pieceVersion', packageJsonMatch[2]);
         } else {
           form.setError('pieceArchive', {
-            message: t('package.json not found in archive'),
+            message: 'package.json not found in archive',
           });
         }
       } catch (error) {
         console.error('Error processing file:', error);
         form.setError('pieceArchive', {
-          message: t('Error processing archive file'),
+          message: 'Error processing archive file',
         });
       }
     } else {
       form.setError('pieceArchive', {
-        message: t('Please upload a .tgz file'),
+        message: 'Please upload a .tgz file',
       });
     }
   };
@@ -118,12 +117,12 @@ const InstallPieceDialog = ({
       if (data.packageType === PackageType.REGISTRY) {
         if (!data.pieceName) {
           form.setError('pieceName', {
-            message: t('Piece name is required for NPM Registry'),
+            message: 'Piece name is required for NPM Registry',
           });
         }
         if (!data.pieceVersion) {
           form.setError('pieceVersion', {
-            message: t('Piece version is required for NPM Registry'),
+            message: 'Piece version is required for NPM Registry',
           });
         }
         if (!data.pieceName || !data.pieceVersion) {
@@ -137,7 +136,7 @@ const InstallPieceDialog = ({
       setIsOpen(false);
       form.reset();
       onInstallPiece();
-      toast.success(t('Piece installed'), {
+      toast.success('Piece installed', {
         duration: 3000,
       });
     },
@@ -146,14 +145,12 @@ const InstallPieceDialog = ({
         switch (error.response?.status) {
           case HttpStatusCode.Conflict:
             form.setError('root.serverError', {
-              message: t(
-                'A piece with this name and version is already installed. Please update the version number in package.json and try again.',
-              ),
+              message: 'A piece with this name and version is already installed. Please update the version number in package.json and try again.',
             });
             break;
           default:
             form.setError('root.serverError', {
-              message: t('Something went wrong, please try again later'),
+              message: 'Something went wrong, please try again later',
             });
             break;
         }
@@ -165,12 +162,12 @@ const InstallPieceDialog = ({
     <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
       <DialogTrigger asChild>
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-          {t('Install Piece')}
+          {'Install Piece'}
         </AnimatedIconButton>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Install a piece')}</DialogTitle>
+          <DialogTitle>{'Install a piece'}</DialogTitle>
           <DialogDescription>
             <FlowMarkdown
               markdown={
@@ -195,7 +192,7 @@ const InstallPieceDialog = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel htmlFor="packageType">
-                    {t('Package Type')}
+                    {'Package Type'}
                   </FormLabel>
                   <Select
                     value={field.value}
@@ -215,13 +212,13 @@ const InstallPieceDialog = ({
                     <SelectContent>
                       <SelectGroup>
                         <SelectItem value={PackageType.REGISTRY}>
-                          {t('NPM Registry')}
+                          {'NPM Registry'}
                         </SelectItem>
                         <SelectItem
                           value={PackageType.ARCHIVE}
                           disabled={!isEnabled || !privatePiecesEnabled}
                         >
-                          {t('Packed Archive (.tgz)')}
+                          {'Packed Archive (.tgz)'}
                         </SelectItem>
                       </SelectGroup>
                     </SelectContent>
@@ -239,7 +236,7 @@ const InstallPieceDialog = ({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel htmlFor="pieceName">
-                        {t('Piece Name')}
+                        {'Piece Name'}
                       </FormLabel>
                       <Input
                         {...field}
@@ -259,7 +256,7 @@ const InstallPieceDialog = ({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel htmlFor="pieceVersion">
-                        {t('Piece Version')}
+                        {'Piece Version'}
                       </FormLabel>
                       <Input
                         {...field}
@@ -283,7 +280,7 @@ const InstallPieceDialog = ({
                 render={({ field: { value, onChange, ...fieldProps } }) => (
                   <FormItem>
                     <FormLabel htmlFor="pieceArchive">
-                      {t('Package Archive')}
+                      {'Package Archive'}
                     </FormLabel>
                     <Input
                       {...fieldProps}
@@ -296,7 +293,7 @@ const InstallPieceDialog = ({
                           handleArchiveUpload(file);
                         }
                       }}
-                      placeholder={t('Package archive')}
+                      placeholder={'Package archive'}
                       className="rounded-sm"
                     />
                     <FormMessage />
@@ -311,7 +308,7 @@ const InstallPieceDialog = ({
               </FormMessage>
             )}
             <Button loading={isPending} type="submit">
-              {t('Install')}
+              {'Install'}
             </Button>
           </form>
         </FormProvider>

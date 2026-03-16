@@ -13,8 +13,6 @@ import {
   PackageType,
   PieceOptionRequest,
 } from '@flow/shared';
-import { t } from 'i18next';
-
 import { internalErrorToast } from '@/components/ui/sonner';
 import { api } from '@/lib/api';
 
@@ -27,7 +25,6 @@ export const piecesApi = {
   ): Promise<PieceMetadataModel> {
     return api.get<PieceMetadataModel>(`/v1/pieces/${request.name}`, {
       version: request.version ?? undefined,
-      locale: request.locale ?? undefined,
       projectId: request.projectId ?? undefined,
     });
   },
@@ -55,9 +52,8 @@ export const piecesApi = {
             options: {
               options: [],
               disabled: true,
-              placeholder: t(
+              placeholder:
                 'An internal error occurred, please contact support',
-              ),
             },
             type: PropertyType.DROPDOWN,
           };

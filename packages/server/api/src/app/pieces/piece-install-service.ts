@@ -43,7 +43,6 @@ export const pieceInstallService = (log: FastifyBaseLogger) => ({
                         pieceInformation.maximumSupportedRelease ?? '999.999.999',
                     name: pieceInformation.name,
                     version: pieceInformation.version,
-                    i18n: pieceInformation.i18n,
                 },
                 packageType: params.packageType,
                 platformId,

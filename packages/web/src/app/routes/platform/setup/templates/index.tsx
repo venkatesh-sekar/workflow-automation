@@ -1,7 +1,6 @@
 import { Template } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { FileText, Pencil, Trash, Tag, Clock, Puzzle } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -50,7 +49,7 @@ const PlatformTemplatesPage = () => {
   const bulkDeleteMutation = templatesMutations.useBulkDeleteTemplates({
     onSuccess: () => {
       refetch();
-      toast.success(t('Templates deleted successfully'), {
+      toast.success('Templates deleted successfully', {
         duration: 3000,
       });
     },
@@ -109,7 +108,7 @@ const PlatformTemplatesPage = () => {
       accessorKey: 'name',
       size: 200,
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t('Name')} icon={Tag} />
+        <DataTableColumnHeader column={column} title={'Name'} icon={Tag} />
       ),
       cell: ({ row }) => {
         return <div className="text-left">{row.original.name}</div>;
@@ -121,7 +120,7 @@ const PlatformTemplatesPage = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Created')}
+          title={'Created'}
           icon={Clock}
         />
       ),
@@ -139,7 +138,7 @@ const PlatformTemplatesPage = () => {
       header: ({ column }) => (
         <DataTableColumnHeader
           column={column}
-          title={t('Pieces')}
+          title={'Pieces'}
           icon={Puzzle}
         />
       ),
@@ -160,11 +159,9 @@ const PlatformTemplatesPage = () => {
         ) => (
           <div onClick={(e) => e.stopPropagation()}>
             <ConfirmationDeleteDialog
-              title={t('Delete Templates')}
-              message={t(
-                'Are you sure you want to delete the selected templates?',
-              )}
-              entityName={t('Templates')}
+              title={'Delete Templates'}
+              message={'Are you sure you want to delete the selected templates?'}
+              entityName={'Templates'}
               mutationFn={async () => {
                 await bulkDeleteMutation.mutateAsync(
                   selectedRows.map((row) => row.id),
@@ -180,7 +177,7 @@ const PlatformTemplatesPage = () => {
                   className="text-destructive hover:text-destructive"
                 >
                   <Trash className="mr-1 w-4" />
-                  {`${t('Delete')} (${selectedRows.length})`}
+                  {`${'Delete'} (${selectedRows.length})`}
                 </Button>
               )}
             </ConfirmationDeleteDialog>
@@ -195,7 +192,7 @@ const PlatformTemplatesPage = () => {
     () => [
       <CreateTemplateDialog key="new-template" onDone={() => refetch()}>
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-          {t('New Template')}
+          {'New Template'}
         </AnimatedIconButton>
       </CreateTemplateDialog>,
     ],
@@ -206,24 +203,18 @@ const PlatformTemplatesPage = () => {
   return (
     <LockedFeatureGuard
       locked={!isEnabled}
-      lockTitle={t('Unlock Templates')}
-      lockDescription={t(
-        'Convert the most common automations into reusable templates 1 click away from your users',
-      )}
+      lockTitle={'Unlock Templates'}
+      lockDescription={'Convert the most common automations into reusable templates 1 click away from your users'}
       lockVideoUrl=""
     >
       <div className="flex flex-col w-full">
         <DashboardPageHeader
-          description={t(
-            'Convert the most common automations into reusable templates',
-          )}
-          title={t('Templates')}
+          description={'Convert the most common automations into reusable templates'}
+          title={'Templates'}
         />
         <DataTable
-          emptyStateTextTitle={t('No templates found')}
-          emptyStateTextDescription={t(
-            'Create a template for your user to inspire them',
-          )}
+          emptyStateTextTitle={'No templates found'}
+          emptyStateTextDescription={'Create a template for your user to inspire them'}
           emptyStateIcon={<FileText className="size-14" />}
           columns={columnsWithCheckbox}
           page={data}
@@ -247,7 +238,7 @@ const PlatformTemplatesPage = () => {
                       </UpdateTemplateDialog>
                     </TooltipTrigger>
                     <TooltipContent side="bottom">
-                      {t('Edit template')}
+                      {'Edit template'}
                     </TooltipContent>
                   </Tooltip>
                 </div>

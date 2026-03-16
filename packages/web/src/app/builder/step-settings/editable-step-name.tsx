@@ -1,5 +1,4 @@
 import { isNil } from '@flow/shared';
-import { t } from 'i18next'; // Import t directly from i18next
 import { Pencil } from 'lucide-react';
 import React from 'react';
 
@@ -39,7 +38,7 @@ const EditableStepName: React.FC<EditableStepNameProps> = ({
           }}
           readonly={readonly}
           value={displayName}
-          tooltipContent={readonly ? '' : t('Edit Step Name')}
+          tooltipContent={readonly ? '' : 'Edit Step Name'}
           isEditing={isEditingStepOrBranchName}
           setIsEditing={setIsEditingStepOrBranchName}
         />
@@ -64,7 +63,7 @@ const EditableStepName: React.FC<EditableStepNameProps> = ({
             }}
             readonly={readonly}
             value={branchName}
-            tooltipContent={readonly ? '' : t('Edit Branch Name')}
+            tooltipContent={readonly ? '' : 'Edit Branch Name'}
             isEditing={isEditingStepOrBranchName}
             setIsEditing={setIsEditingStepOrBranchName}
           />

@@ -1,5 +1,4 @@
 import { HttpStatusCode } from 'axios';
-import { t } from 'i18next';
 import { MailCheck, MailX } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
@@ -59,9 +58,7 @@ const VerifyEmail = () => {
               <>
                 <MailCheck className="w-16 h-16" />
                 <span className="text-left w-fit">
-                  {t(
-                    'Email has been verified. You will be redirected to sign in...',
-                  )}
+                  {'Email has been verified. You will be redirected to sign in...'}
                 </span>
               </>
             )}
@@ -69,7 +66,7 @@ const VerifyEmail = () => {
               <>
                 <LoadingSpinner className="size-6" />
                 <span className="text-left w-fit">
-                  {t('Verifying email...')}
+                  {'Verifying email...'}
                 </span>
               </>
             )}
@@ -79,11 +76,9 @@ const VerifyEmail = () => {
                 <MailX className="w-16 h-16" />
                 <div className="text-left w-fit">
                   <div>
-                    {t(
-                      'invitation has expired, once you sign in again you will be able to resend the verification email.',
-                    )}
+                    {'invitation has expired, once you sign in again you will be able to resend the verification email.'}
                   </div>
-                  <div>{t('Redirecting to sign in...')}</div>
+                  <div>{'Redirecting to sign in...'}</div>
                 </div>
               </>
             )}

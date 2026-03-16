@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -19,7 +18,7 @@ const SidebarHeader = ({ children, onClose }: SidebarHeaderProps) => {
           e.stopPropagation();
           onClose();
         }}
-        aria-label={t('Close')}
+        aria-label={'Close'}
       >
         <X size={16} />
       </Button>

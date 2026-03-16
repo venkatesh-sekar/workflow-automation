@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Search, X } from 'lucide-react';
 import * as React from 'react';
 
@@ -15,7 +14,7 @@ export type SearchInputProps = Omit<
 };
 
 const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
-  ({ type, placeholder = t('Search'), ...props }, ref) => {
+  ({ type, placeholder = 'Search', ...props }, ref) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     React.useImperativeHandle(ref, () => inputRef.current!);
@@ -38,7 +37,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         />
         {props.value !== '' && (
           <SelectUtilButton
-            tooltipText={t('Clear')}
+            tooltipText={'Clear'}
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();

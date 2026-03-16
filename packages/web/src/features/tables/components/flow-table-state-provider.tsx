@@ -1,6 +1,5 @@
 import { Field, Table, PopulatedRecord, isNil } from '@flow/shared';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { FileX } from 'lucide-react';
 import { createContext, useContext, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -120,11 +119,9 @@ export function FlowTableStateProvider({
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold">{t('Table not available')}</h2>
+          <h2 className="text-lg font-semibold">{'Table not available'}</h2>
           <p className="text-sm text-muted-foreground">
-            {t(
-              'We couldn’t load this table. It may have been removed or is unavailable.',
-            )}
+            {'We couldn’t load this table. It may have been removed or is unavailable.'}
           </p>
         </div>
 
@@ -132,7 +129,7 @@ export function FlowTableStateProvider({
           className={cn(buttonVariants({ variant: 'outline' }))}
           to="/tables"
         >
-          {t('Go to Tables')}
+          {'Go to Tables'}
         </Link>
       </div>
     );

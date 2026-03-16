@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React from 'react';
 
 import {
@@ -17,7 +16,7 @@ export const PermissionNeededTooltip = React.forwardRef<
         <div>{children}</div>
       </TooltipTrigger>
       {!hasPermission && (
-        <TooltipContent side="top">{t('Permission needed')}</TooltipContent>
+        <TooltipContent side="top">{'Permission needed'}</TooltipContent>
       )}
     </Tooltip>
   );

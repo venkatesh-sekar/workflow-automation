@@ -1,7 +1,6 @@
 import { ApiKeyResponseWithValue } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -32,7 +31,7 @@ type NewApiKeyDialogProps = {
   onCreate: () => void;
 };
 const FormSchema = z.object({
-  displayName: z.string().min(1, t('Name is required')),
+  displayName: z.string().min(1, 'Name is required'),
 });
 
 type FormSchema = z.infer<typeof FormSchema>;
@@ -69,13 +68,11 @@ export const NewApiKeyDialog = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            {apiKey ? t('API Key Created') : t('Create API Key')}
+            {apiKey ? 'API Key Created' : 'Create API Key'}
           </DialogTitle>
           {!apiKey && (
             <DialogDescription>
-              {t(
-                'Create a new API key for programmatic access to the platform.',
-              )}
+              {'Create a new API key for programmatic access to the platform.'}
             </DialogDescription>
           )}
         </DialogHeader>
@@ -84,13 +81,9 @@ export const NewApiKeyDialog = ({
             <div className="p-4">
               <div className="flex flex-col items-start gap-2">
                 <span className="text-md">
-                  {t(
-                    'Please save this secret key somewhere safe and accessible. For security reasons,',
-                  )}{' '}
+                  {'Please save this secret key somewhere safe and accessible. For security reasons,'}{' '}
                   <span className="font-semibold">
-                    {t(
-                      "you won't be able to view it again after closing this dialog.",
-                    )}
+                    {"you won't be able to view it again after closing this dialog."}
                   </span>
                 </span>
                 <CopyToClipboardInput
@@ -109,7 +102,7 @@ export const NewApiKeyDialog = ({
                 }}
                 type="button"
               >
-                {t('Done')}
+                {'Done'}
               </Button>
             </DialogFooter>
           </>
@@ -125,11 +118,11 @@ export const NewApiKeyDialog = ({
                 name="displayName"
                 render={({ field }) => (
                   <FormItem className="grid space-y-4">
-                    <FormLabel>{t('Name')}</FormLabel>
+                    <FormLabel>{'Name'}</FormLabel>
                     <Input
                       {...field}
                       required
-                      placeholder={t('API Key Name')}
+                      placeholder={'API Key Name'}
                       className="rounded-sm"
                     />
                     <FormMessage />
@@ -142,10 +135,10 @@ export const NewApiKeyDialog = ({
                   type="button"
                   onClick={() => setOpen(false)}
                 >
-                  {t('Cancel')}
+                  {'Cancel'}
                 </Button>
                 <Button disabled={isPending} loading={isPending}>
-                  {t('Create')}
+                  {'Create'}
                 </Button>
               </DialogFooter>
             </form>

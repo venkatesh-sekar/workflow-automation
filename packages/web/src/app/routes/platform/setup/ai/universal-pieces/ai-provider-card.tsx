@@ -1,5 +1,4 @@
 import { AIProviderWithoutSensitiveData } from '@flow/shared';
-import { t } from 'i18next';
 import { Pencil, Trash } from 'lucide-react';
 
 import {
@@ -41,9 +40,7 @@ const AIProviderCard = ({
         <ItemTitle>{providerConfig?.name ?? providerInfo.name}</ItemTitle>
         {allowWrite && (
           <ItemDescription>
-            {t('Configure credentials for {providerName} AI provider.', {
-              providerName: providerInfo.name,
-            })}
+            {`Configure credentials for ${providerInfo.name} AI provider.`}
           </ItemDescription>
         )}
       </ItemContent>
@@ -63,7 +60,7 @@ const AIProviderCard = ({
               </Button>
             ) : (
               <Button variant={'basic'} size={'sm'}>
-                {t('Enable')}
+                {'Enable'}
               </Button>
             )}
           </UpsertAIProviderDialog>

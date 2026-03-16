@@ -4,7 +4,6 @@ import {
   UserWithBadges,
 } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Camera, Mail } from 'lucide-react';
 import { useRef } from 'react';
 import { toast } from 'sonner';
@@ -41,10 +40,10 @@ export function AccountSettingsDialog({
   const uploadMutation = userMutations.useUploadProfilePicture({
     onSuccess: () => {
       userHooks.invalidateCurrentUser(queryClient);
-      toast.success(t('Profile picture updated successfully'));
+      toast.success('Profile picture updated successfully');
     },
     onError: (error: Error) => {
-      toast.error(error.message || t('Failed to upload profile picture'));
+      toast.error(error.message || 'Failed to upload profile picture');
     },
   });
 
@@ -52,12 +51,12 @@ export function AccountSettingsDialog({
     const file = event.target.files?.[0];
     if (file) {
       if (file.size > AP_MAXIMUM_PROFILE_PICTURE_SIZE) {
-        toast.error(t('File size exceeds 5MB limit'));
+        toast.error('File size exceeds 5MB limit');
         return;
       }
       if (!PROFILE_PICTURE_ALLOWED_TYPES.includes(file.type)) {
         toast.error(
-          t('Invalid file type. Allowed types: JPEG, PNG, GIF, WEBP'),
+          'Invalid file type. Allowed types: JPEG, PNG, GIF, WEBP',
         );
         return;
       }
@@ -75,7 +74,7 @@ export function AccountSettingsDialog({
       <DialogContent className="max-w-2xl w-full max-h-[90vh] pb-4 flex flex-col px-5">
         <DialogHeader>
           <DialogTitle className="font-semibold">
-            {t('Account Settings')}
+            {'Account Settings'}
           </DialogTitle>
         </DialogHeader>
 

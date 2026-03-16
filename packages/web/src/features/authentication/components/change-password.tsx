@@ -1,5 +1,4 @@
 import { ResetPasswordRequestBody } from '@flow/shared';
-import { t } from 'i18next';
 import { useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -46,14 +45,14 @@ const ChangePasswordForm = () => {
 
   const { mutate, isPending } = authMutations.useResetPassword({
     onSuccess: () => {
-      toast.success(t('Your password was changed successfully'), {
+      toast.success('Your password was changed successfully', {
         duration: 3000,
       });
       navigate('/login');
     },
     onError: (error) => {
       setServerError(
-        t('Your password reset request has expired, please request a new one'),
+        'Your password reset request has expired, please request a new one',
       );
       console.error(error);
     },
@@ -66,8 +65,8 @@ const ChangePasswordForm = () => {
   return (
     <Card className="w-md rounded-sm shadow-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">{t('Reset Password')}</CardTitle>
-        <CardDescription>{t('Enter your new password')}</CardDescription>
+        <CardTitle className="text-2xl">{'Reset Password'}</CardTitle>
+        <CardDescription>{'Enter your new password'}</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -76,7 +75,7 @@ const ChangePasswordForm = () => {
               control={form.control}
               name="newPassword"
               rules={{
-                required: t('Password is required'),
+                required: 'Password is required',
                 validate: passwordValidation,
               }}
               render={({ field }) => (
@@ -85,7 +84,7 @@ const ChangePasswordForm = () => {
                   onClick={() => inputRef?.current?.focus()}
                   onFocus={() => setPasswordFocused(true)}
                 >
-                  <Label htmlFor="newPassword">{t('Password')}</Label>
+                  <Label htmlFor="newPassword">{'Password'}</Label>
                   <Popover open={isPasswordFocused}>
                     <PopoverTrigger asChild>
                       <Input
@@ -116,7 +115,7 @@ const ChangePasswordForm = () => {
               loading={isPending}
               onClick={(e) => form.handleSubmit(onSubmit)(e)}
             >
-              {t('Confirm')}
+              {'Confirm'}
             </Button>
           </form>
         </Form>

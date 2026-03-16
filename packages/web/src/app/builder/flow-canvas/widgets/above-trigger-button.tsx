@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useEffect } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -98,7 +97,7 @@ const AboveTriggerButton = ({
       </TooltipTrigger>
       {disable && (
         <TooltipContent side="bottom">
-          {t('Please test the trigger first')}
+          {'Please test the trigger first'}
         </TooltipContent>
       )}
     </Tooltip>

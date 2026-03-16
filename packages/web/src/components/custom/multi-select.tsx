@@ -2,7 +2,6 @@
 
 // Used form here https://github.com/shadcn-ui/ui/pull/2773/files
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
-import { t } from 'i18next'; // Use t function from react-i18next
 import { Check, ChevronsUpDown, RefreshCcw, X } from 'lucide-react';
 import { Popover as PopoverPrimitive } from 'radix-ui';
 import React, { ComponentPropsWithoutRef } from 'react';
@@ -64,7 +63,7 @@ const useMultiSelect = () => {
 
   if (!context) {
     throw new Error(
-      t('useMultiSelect must be used within MultiSelectProvider'),
+      'useMultiSelect must be used within MultiSelectProvider',
     );
   }
 
@@ -243,7 +242,7 @@ const MultiSelectTrigger = React.forwardRef<
           <div className="flex gap-2 items-center">
             {showDeselect && (
               <SelectUtilButton
-                tooltipText={t('Unset')}
+                tooltipText={'Unset'}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -254,7 +253,7 @@ const MultiSelectTrigger = React.forwardRef<
             )}
             {props.showRefresh && (
               <SelectUtilButton
-                tooltipText={t('Refresh')}
+                tooltipText={'Refresh'}
                 onClick={props.onRefresh}
                 Icon={RefreshCcw}
               ></SelectUtilButton>
@@ -361,9 +360,7 @@ const MultiSelectValue = React.forwardRef<
           })}
           {remainingPiecesCount ? (
             <span className="text-muted-foreground text-xs leading-4 py-.5">
-              {t('+{remainingPiecesCount} more', {
-                remainingPiecesCount: remainingPiecesCount,
-              })}
+              {`+${remainingPiecesCount} more`}
             </span>
           ) : null}
         </div>

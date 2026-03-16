@@ -6,7 +6,6 @@ import {
   PlatformRole,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import {
   CheckIcon,
   Globe,
@@ -131,7 +130,7 @@ function AppConnectionsPage() {
       [
         {
           type: 'select',
-          title: t('Status'),
+          title: 'Status',
           accessorKey: 'status',
           options: Object.values(AppConnectionStatus).map((status) => {
             return {
@@ -143,14 +142,14 @@ function AppConnectionsPage() {
         },
         {
           type: 'select',
-          title: t('Pieces'),
+          title: 'Pieces',
           accessorKey: 'pieceName',
           icon: Puzzle,
           options: pieceOptions,
         },
         {
           type: 'input',
-          title: t('Name'),
+          title: 'Name',
           accessorKey: 'displayName',
           icon: Puzzle,
         },
@@ -170,7 +169,7 @@ function AppConnectionsPage() {
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Name')}
+            title={'Name'}
             icon={Puzzle}
           />
         ),
@@ -179,7 +178,7 @@ function AppConnectionsPage() {
           return (
             <div className="flex items-center gap-2">
               <CopyTextTooltip
-                title={t('External ID')}
+                title={'External ID'}
                 text={row.original.externalId || ''}
               >
                 <div className="flex items-center gap-2 w-fit">
@@ -200,9 +199,7 @@ function AppConnectionsPage() {
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>
-                      {t(
-                        'This connection is global and can be managed in the platform admin',
-                      )}
+                      {'This connection is global and can be managed in the platform admin'}
                     </p>
                   </TooltipContent>
                 </Tooltip>
@@ -217,7 +214,7 @@ function AppConnectionsPage() {
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Status')}
+            title={'Status'}
             icon={Activity}
           />
         ),
@@ -242,7 +239,7 @@ function AppConnectionsPage() {
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Connected At')}
+            title={'Connected At'}
             icon={Clock}
           />
         ),
@@ -260,7 +257,7 @@ function AppConnectionsPage() {
         header: ({ column }) => (
           <DataTableColumnHeader
             column={column}
-            title={t('Flows')}
+            title={'Flows'}
             icon={Workflow}
           />
         ),
@@ -338,10 +335,8 @@ function AppConnectionsPage() {
             <>
               {selectedRows.length > 0 && (
                 <ConfirmationDeleteDialog
-                  title={t('Delete Connections')}
-                  message={t(
-                    'The selected connections will be permanently deleted.',
-                  )}
+                  title={'Delete Connections'}
+                  message={'The selected connections will be permanently deleted.'}
                   warning={<DeleteConnectionWarning />}
                   mutationFn={async () => {
                     await deleteConnections(selectedRows.map((row) => row.id));
@@ -349,8 +344,8 @@ function AppConnectionsPage() {
                     resetSelection();
                     setSelectedRows([]);
                   }}
-                  entityName={t('connection')}
-                  buttonText={t('Delete')}
+                  entityName={'connection'}
+                  buttonText={'Delete'}
                   open={showDeleteDialog}
                   onOpenChange={setShowDeleteDialog}
                   showToast
@@ -362,7 +357,7 @@ function AppConnectionsPage() {
                     onClick={() => setShowDeleteDialog(true)}
                   >
                     <Trash2 className="h-4 w-4 mr-1" />
-                    {t('Delete')} ({selectedRows.length})
+                    {'Delete'} ({selectedRows.length})
                   </Button>
                 </ConfirmationDeleteDialog>
               )}
@@ -393,7 +388,7 @@ function AppConnectionsPage() {
             variant="outline"
             disabled={!userHasPermissionToWriteAppConnection}
           >
-            {t('Replace')}
+            {'Replace'}
           </AnimatedIconButton>
         </ReplaceConnectionsDialog>
       </PermissionNeededTooltip>,
@@ -414,7 +409,7 @@ function AppConnectionsPage() {
             size="sm"
             disabled={!userHasPermissionToWriteAppConnection}
           >
-            {t('New Connection')}
+            {'New Connection'}
           </AnimatedIconButton>
         </NewConnectionDialog>
       </PermissionNeededTooltip>,
@@ -424,10 +419,8 @@ function AppConnectionsPage() {
   return (
     <div className="flex-col w-full">
       <DataTable
-        emptyStateTextTitle={t('No connections found')}
-        emptyStateTextDescription={t(
-          'Come back later when you create a automation to manage your connections',
-        )}
+        emptyStateTextTitle={'No connections found'}
+        emptyStateTextDescription={'Come back later when you create a automation to manage your connections'}
         emptyStateIcon={<Globe className="size-14" />}
         columns={columns}
         page={filteredData}

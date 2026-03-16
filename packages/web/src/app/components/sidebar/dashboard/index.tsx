@@ -1,6 +1,4 @@
 import { Permission } from '@flow/shared';
-import { t } from 'i18next';
-
 import { BoxIcon } from '@/components/icons/box';
 import { ConnectIcon } from '@/components/icons/connect';
 import { HistoryIcon } from '@/components/icons/history';
@@ -38,7 +36,7 @@ export function ProjectDashboardSidebar({
     {
       type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/automations'),
-      label: t('Flows'),
+      label: 'Flows',
       icon: WorkflowIcon,
       hasPermission: checkAccess(Permission.READ_FLOW),
       show: true,
@@ -46,7 +44,7 @@ export function ProjectDashboardSidebar({
     {
       type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/connections'),
-      label: t('Connections'),
+      label: 'Connections',
       icon: ConnectIcon,
       hasPermission: checkAccess(Permission.READ_APP_CONNECTION),
       show: true,
@@ -54,7 +52,7 @@ export function ProjectDashboardSidebar({
     {
       type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/runs'),
-      label: t('Runs'),
+      label: 'Runs',
       icon: HistoryIcon,
       hasPermission: checkAccess(Permission.READ_RUN),
       show: true,
@@ -62,7 +60,7 @@ export function ProjectDashboardSidebar({
     {
       type: 'link' as const,
       to: authenticationSession.appendProjectRoutePrefix('/releases'),
-      label: t('Releases'),
+      label: 'Releases',
       icon: BoxIcon,
       hasPermission: checkAccess(Permission.READ_PROJECT_RELEASE),
       show: project.releasesEnabled,
@@ -74,7 +72,7 @@ export function ProjectDashboardSidebar({
         {
           type: 'link' as const,
           to: '/platform',
-          label: t('Platform Admin'),
+          label: 'Platform Admin',
           icon: ShieldIcon,
           show: true,
           hasPermission: true,

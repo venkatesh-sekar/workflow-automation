@@ -16,7 +16,6 @@ import {
   AppConnectionStatus,
   OAuth2GrantType,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { CheckIcon, UnplugIcon, XIcon } from 'lucide-react';
 
 import { OAuth2App } from '@/features/connections/utils/oauth2-utils';
@@ -28,14 +27,14 @@ import { globalConnectionsApi } from '../api/global-connections';
 
 export class ConnectionNameAlreadyExists extends Error {
   constructor() {
-    super(t('Connection name already used'));
+    super('Connection name already used');
     this.name = 'ConnectionNameAlreadyExists';
   }
 }
 
 export class NoProjectSelected extends Error {
   constructor() {
-    super(t('Please select at least one project'));
+    super('Please select at least one project');
     this.name = 'NoProjectSelected';
   }
 }

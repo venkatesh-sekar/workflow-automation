@@ -5,7 +5,6 @@ import {
   PopulatedFlow,
   isNil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
 import { FlowErrorDialog } from '@/components/custom/flow-error-dialog/flow-error-dialog';
@@ -68,11 +67,11 @@ const FlowStatusToggle = ({ flow }: FlowStatusToggleProps) => {
         <TooltipContent side="bottom">
           {userHasPermissionToToggleFlowStatus
             ? isNil(flow.publishedVersionId)
-              ? t('Please publish flow first')
+              ? 'Please publish flow first'
               : isFlowPublished
-              ? t('Flow is on')
-              : t('Flow is off')
-            : t('Permission Needed')}
+              ? 'Flow is on'
+              : 'Flow is off'
+            : 'Permission Needed'}
         </TooltipContent>
       </Tooltip>
       {isLoading ? (

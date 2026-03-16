@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React from 'react';
 
 import {
@@ -18,7 +17,7 @@ export const PublishedNeededTooltip = React.forwardRef<
       </TooltipTrigger>
       {!allowPush && (
         <TooltipContent side="top">
-          {t('Only published flows can be pushed to Git')}
+          {'Only published flows can be pushed to Git'}
         </TooltipContent>
       )}
     </Tooltip>

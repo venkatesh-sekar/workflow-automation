@@ -1,5 +1,4 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React, {
   createContext,
   useCallback,
@@ -134,11 +133,11 @@ function GlobalSearchDialogContent({
   const noResults = hasQuery && !isLoading && groups.length === 0;
 
   const TYPE_CATEGORIES = [
-    { type: 'flow', heading: t('Flows') },
-    { type: 'table', heading: t('Tables') },
-    { type: 'folder', heading: t('Folders') },
-    { type: 'project', heading: t('Projects') },
-    { type: 'page', heading: t('Pages') },
+    { type: 'flow', heading: 'Flows' },
+    { type: 'table', heading: 'Tables' },
+    { type: 'folder', heading: 'Folders' },
+    { type: 'project', heading: 'Projects' },
+    { type: 'page', heading: 'Pages' },
   ] as const;
 
   const mergedGroups = !hasQuery
@@ -188,7 +187,7 @@ function GlobalSearchDialogContent({
       className="sm:max-w-[620px]"
     >
       <CommandInput
-        placeholder={t('Search pages, flows, tables...')}
+        placeholder={'Search pages, flows, tables...'}
         value={search}
         onValueChange={setSearch}
       />
@@ -231,14 +230,14 @@ function GlobalSearchDialogContent({
         {noResults && (
           <div className="flex flex-col items-center justify-center gap-3 py-16 text-center">
             <p className="text-sm text-muted-foreground">
-              {t('No results found.')}
+              {'No results found.'}
             </p>
             <button
               type="button"
               className="text-xs text-primary underline hover:no-underline"
               onClick={() => setSearch('')}
             >
-              {t('Clear search')}
+              {'Clear search'}
             </button>
           </div>
         )}
@@ -275,19 +274,19 @@ function GlobalSearchDialogContent({
           <kbd className="inline-flex h-5 items-center rounded border bg-background px-1 font-mono">
             ↓
           </kbd>
-          {t('to navigate')}
+          {'to navigate'}
         </span>
         <span className="flex items-center gap-1.5">
           <kbd className="inline-flex h-5 items-center rounded border bg-background px-1 font-mono">
             ↵
           </kbd>
-          {t('to select')}
+          {'to select'}
         </span>
         <span className="flex items-center gap-1.5">
           <kbd className="inline-flex h-5 items-center rounded border bg-background px-1.5 font-mono text-[10px]">
             esc
           </kbd>
-          {t('to close')}
+          {'to close'}
         </span>
         {!hasQuery && hasHistory && (
           <button
@@ -297,7 +296,7 @@ function GlobalSearchDialogContent({
               setHistory([]);
             }}
           >
-            {t('Clear history')}
+            {'Clear history'}
           </button>
         )}
       </div>

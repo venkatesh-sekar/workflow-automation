@@ -8,7 +8,6 @@ import {
   Template,
 } from '@flow/shared';
 import { ReactFlowProvider } from '@xyflow/react';
-import { t } from 'i18next';
 import { ArrowLeft, ArrowRight, Link, ExternalLink } from 'lucide-react';
 import { useMemo, useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -124,9 +123,9 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
     const shareUrl = `${window.location.origin}/templates/${template.id}`;
     try {
       await navigator.clipboard.writeText(shareUrl);
-      toast.success(t('Link copied to clipboard!'));
+      toast.success('Link copied to clipboard!');
     } catch (error) {
-      toast.error(t('Failed to copy link'));
+      toast.error('Failed to copy link');
     }
   };
 
@@ -142,13 +141,13 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium whitespace-nowrap">
-              {t('All Templates')}
+              {'All Templates'}
             </span>
           </Button>
         </div>
         <Button variant="outline" size="sm" onClick={handleShare}>
           <Link className="w-4 h-4" />
-          {t('Share')}
+          {'Share'}
         </Button>
       </div>
       <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
@@ -163,7 +162,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                     <TagWithBright
                       index={index}
                       key={index}
-                      prefix={t('Save')}
+                      prefix={'Save'}
                       title={tag.title}
                       color={tag.color}
                       size="sm"
@@ -179,7 +178,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                     size="xl"
                     className="flex-1"
                   >
-                    {t('Use Template')}
+                    {'Use Template'}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                   <Button
@@ -188,14 +187,14 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                     size="xl"
                     className="flex-1"
                   >
-                    {t('Setup guide')}
+                    {'Setup guide'}
                     <ExternalLink className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-medium">
-                    {t('About this template')}
+                    {'About this template'}
                   </span>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {template.description}
@@ -205,7 +204,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                 {template.flows && (
                   <div className="flex flex-col gap-2">
                     <span className="text-sm font-medium">
-                      {t("What's included?")}
+                      {"What's included?"}
                     </span>
 
                     <div className="grid grid-cols-1 gap-3">
@@ -230,7 +229,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
 
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-medium">
-                    {t('Used Pieces')}
+                    {'Used Pieces'}
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {template.pieces.map((pieceName: string, index: number) => (
@@ -240,7 +239,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
                 </div>
 
                 <div className="flex items-center gap-1 text-xs">
-                  <span>{t('By')}</span>
+                  <span>{'By'}</span>
                   <span className="font-medium">{template.author}</span>
                   <span>•</span>
                   <span>
@@ -287,7 +286,7 @@ const TemplateDetailsPage = ({ template }: TemplateDetailsPageProps) => {
               <div className="text-muted-foreground text-sm flex items-center justify-center h-full" />
             ) : (
               <div className="text-muted-foreground text-sm flex items-center justify-center h-full">
-                {t('No flow preview available')}
+                {'No flow preview available'}
               </div>
             )}
           </div>

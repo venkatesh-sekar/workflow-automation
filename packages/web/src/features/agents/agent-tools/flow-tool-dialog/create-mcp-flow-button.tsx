@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { Button } from '@/components/ui/button';
 import { flowHooks } from '@/features/flows/hooks/flow-hooks';
 
@@ -12,7 +10,7 @@ export const CreateMcpFlowButton = () => {
       variant="outline"
       className="mr-auto"
     >
-      {isPending ? t('Creating...') : t('New MCP Flow')}
+      {isPending ? 'Creating...' : 'New MCP Flow'}
     </Button>
   );
 };

@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -30,7 +29,7 @@ import { api } from '@/lib/api';
 import { Textarea } from '../../../../../components/ui/textarea';
 
 const CreateFlowTemplateSchema = z.object({
-  displayName: z.string().min(1, t('Name is required')),
+  displayName: z.string().min(1, 'Name is required'),
   summary: z.string(),
   description: z.string(),
   blogUrl: z.string(),
@@ -105,7 +104,7 @@ export const CreateTemplateDialog = ({
   const onSubmit = () => {
     if (!form.getValues().template) {
       form.setError('template', {
-        message: t('Template is required'),
+        message: 'Template is required',
       });
       return;
     }
@@ -124,7 +123,7 @@ export const CreateTemplateDialog = ({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Create New Template')}</DialogTitle>
+          <DialogTitle>{'Create New Template'}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="grid space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -133,14 +132,14 @@ export const CreateTemplateDialog = ({
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
                   <Label htmlFor="name">
-                    {t('Name')}{' '}
+                    {'Name'}{' '}
                     <span className="text-destructive-300">{'*'}</span>
                   </Label>
                   <Input
                     {...field}
                     required
                     id="name"
-                    placeholder={t('Template Name')}
+                    placeholder={'Template Name'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -151,11 +150,11 @@ export const CreateTemplateDialog = ({
               name="summary"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="summary">{t('Summary')}</Label>
+                  <Label htmlFor="summary">{'Summary'}</Label>
                   <Input
                     {...field}
                     id="summary"
-                    placeholder={t('Template Summary')}
+                    placeholder={'Template Summary'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -166,14 +165,14 @@ export const CreateTemplateDialog = ({
               name="description"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="description">{t('Description')}</Label>
+                  <Label htmlFor="description">{'Description'}</Label>
 
                   <Textarea
                     {...field}
                     required
                     id="description"
                     className="rounded-sm"
-                    placeholder={t('Template Description')}
+                    placeholder={'Template Description'}
                   />
 
                   <FormMessage />
@@ -184,12 +183,12 @@ export const CreateTemplateDialog = ({
               name="blogUrl"
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
-                  <Label htmlFor="blogUrl">{t('Blog URL')}</Label>
+                  <Label htmlFor="blogUrl">{'Blog URL'}</Label>
                   <Input
                     {...field}
                     required
                     id="blogUrl"
-                    placeholder={t('Template Blog URL')}
+                    placeholder={'Template Blog URL'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -201,7 +200,7 @@ export const CreateTemplateDialog = ({
               render={({ field }) => (
                 <FormItem className="grid space-y-2">
                   <Label htmlFor="template">
-                    {t('Template')}
+                    {'Template'}
                     <span className="text-destructive-300">{' *'} </span>
                   </Label>
                   <Input
@@ -215,14 +214,14 @@ export const CreateTemplateDialog = ({
                             field.onChange(flowTemplate);
                           } else {
                             form.setError('template', {
-                              message: t('Invalid JSON'),
+                              message: 'Invalid JSON',
                             });
                           }
                         });
                     }}
                     required
                     id="template"
-                    placeholder={t('Template')}
+                    placeholder={'Template'}
                     className="rounded-sm"
                   />
                   <FormMessage />
@@ -240,7 +239,7 @@ export const CreateTemplateDialog = ({
               setOpen(false);
             }}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button
             disabled={isPending}
@@ -249,7 +248,7 @@ export const CreateTemplateDialog = ({
               form.handleSubmit(onSubmit)(e);
             }}
           >
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </DialogContent>

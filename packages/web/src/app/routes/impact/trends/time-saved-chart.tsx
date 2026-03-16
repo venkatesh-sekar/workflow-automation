@@ -1,5 +1,4 @@
 import { PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
 import { Clock } from 'lucide-react';
 
 import { formatUtils } from '@/lib/format-utils';
@@ -25,18 +24,16 @@ export function TimeSavedChart({ report }: TimeSavedChartProps) {
 
   return (
     <AnalyticsAreaChart
-      title={t('Time Saved Over Time')}
-      subtitle={t('Track how much time your automations are saving')}
-      tooltipLabel={t('Time Saved')}
+      title={'Time Saved Over Time'}
+      subtitle={'Track how much time your automations are saving'}
+      tooltipLabel={'Time Saved'}
       dataKey="minutesSaved"
       color="#10b981"
       gradientId="fillTimeSaved"
       chartData={chartData}
       isLoading={!report}
       emptyIcon={<Clock className="h-10 w-10 text-muted-foreground/50" />}
-      emptyText={t(
-        'No time saved yet. Data will appear here once your flows start running.',
-      )}
+      emptyText={'No time saved yet. Data will appear here once your flows start running.'}
       downloadFilename="time-saved"
       yAxisFormatter={(v) => formatUtils.formatToHoursAndMinutes(v)}
       tooltipFormatter={(v) => formatUtils.formatToHoursAndMinutes(v)}

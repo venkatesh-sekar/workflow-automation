@@ -4,7 +4,6 @@ import {
   SecretManagerProviderMetaData,
 } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { platformHooks } from '@/hooks/platform-hooks';
@@ -42,7 +41,7 @@ export const secretManagersHooks = {
       mutationFn: secretManagersApi.connect,
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['secret-managers'] });
-        toast.success(t('Connected successfully'));
+        toast.success('Connected successfully');
         onSuccess();
       },
       onError,
@@ -54,7 +53,7 @@ export const secretManagersHooks = {
       mutationFn: secretManagersApi.disconnect,
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['secret-managers'] });
-        toast.success(t('Disconnected successfully'));
+        toast.success('Disconnected successfully');
       },
     });
   },
@@ -64,7 +63,7 @@ export const secretManagersHooks = {
       mutationFn: secretManagersApi.clearCache,
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['secret-managers'] });
-        toast.success(t('Cache cleared successfully'));
+        toast.success('Cache cleared successfully');
       },
     });
   },

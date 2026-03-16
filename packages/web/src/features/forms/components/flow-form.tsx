@@ -10,7 +10,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
@@ -60,7 +59,7 @@ const putBackQuotesForInputNames = (
 
 const requiredPropertySettings = {
   minLength: 1,
-  errorMessage: t('This field is required'),
+  errorMessage: 'This field is required',
 };
 
 const createPropertySchema = (input: FormInputWithName): ZodType => {
@@ -70,7 +69,7 @@ const createPropertySchema = (input: FormInputWithName): ZodType => {
     case FormInputType.TEXT:
     case FormInputType.TEXT_AREA:
       return input.required
-        ? z.string().min(1, t('This field is required'))
+        ? z.string().min(1, 'This field is required')
         : z.string();
     case FormInputType.FILE:
       return z.unknown();
@@ -171,7 +170,7 @@ const FlowForm = ({ form, useDraft }: FlowFormProps) => {
             handleDownloadFile(formResult.value as FileResponseInterface);
             break;
           default:
-            toast.success(t('Your submission was successfully received.'), {
+            toast.success('Your submission was successfully received.', {
               duration: 3000,
             });
             break;
@@ -181,14 +180,12 @@ const FlowForm = ({ form, useDraft }: FlowFormProps) => {
         if (api.isError(error)) {
           const status = error.response?.status;
           if (status === 404) {
-            toast.error(t('Flow not found'), {
-              description: t(
-                'The flow you are trying to submit to does not exist.',
-              ),
+            toast.error('Flow not found', {
+              description: 'The flow you are trying to submit to does not exist.',
               duration: 3000,
             });
           } else {
-            toast.error(t('The flow failed to execute.'), {
+            toast.error('The flow failed to execute.', {
               duration: 3000,
             });
           }
@@ -301,7 +298,7 @@ const FlowForm = ({ form, useDraft }: FlowFormProps) => {
                   className="w-full mt-4"
                   loading={isPending}
                 >
-                  {t('Submit')}
+                  {'Submit'}
                 </Button>
 
                 {markdownResponse && (

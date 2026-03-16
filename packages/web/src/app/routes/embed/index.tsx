@@ -11,7 +11,6 @@ import {
 } from 'ee-embed-sdk';
 import React from 'react';
 import { flushSync } from 'react-dom';
-import { useTranslation } from 'react-i18next';
 import { useEffectOnce } from 'react-use';
 
 import { memoryRouter } from '@/app/guards';
@@ -90,20 +89,16 @@ const EmbedPage = React.memo(() => {
   const { mutateAsync } = useMutation({
     mutationFn: async ({
       externalAccessToken,
-      locale,
-    }: {
+      }: {
       externalAccessToken: string;
-      locale: string;
     }) => {
       const data = await managedAuthApi.generateFlowToken({
         externalAccessToken,
       });
-      await i18n.changeLanguage(locale);
       return data;
     },
   });
   const { setTheme } = useTheme();
-  const { i18n } = useTranslation();
   const { checkAccess } = useAuthorization();
   const initState = (event: MessageEvent<FlowVendorInit>) => {
     if (
@@ -117,7 +112,6 @@ const EmbedPage = React.memo(() => {
         mutateAsync(
           {
             externalAccessToken: event.data.data.jwtToken,
-            locale: event.data.data.locale ?? 'en',
           },
           {
             onSuccess: (data) => {

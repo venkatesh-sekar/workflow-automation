@@ -1,5 +1,4 @@
 import { FlowOperationType, FlowTriggerType } from '@flow/shared';
-import { t } from 'i18next';
 import {
   CheckCircle2Icon,
   LayoutGridIcon,
@@ -42,17 +41,17 @@ const getTabsList = (
   const baseTabs = [
     {
       value: PieceSelectorTabType.EXPLORE,
-      name: t('Explore'),
+      name: 'Explore',
       icon: <LayoutGridIcon className="size-5" />,
     },
     {
       value: PieceSelectorTabType.APPS,
-      name: t('Apps'),
+      name: 'Apps',
       icon: <PuzzleIcon className="size-5" />,
     },
     {
       value: PieceSelectorTabType.UTILITY,
-      name: t('Utility'),
+      name: 'Utility',
       icon: <WrenchIcon className="size-5" />,
     },
   ];
@@ -65,12 +64,12 @@ const getTabsList = (
   if (replaceOrAddAction && !isEmbeddingEnabled) {
     baseTabs.splice(1, 0, {
       value: PieceSelectorTabType.AI_AND_AGENTS,
-      name: t('AI & Agents'),
+      name: 'AI & Agents',
       icon: <SparklesIcon className="size-5" />,
     });
     baseTabs.push({
       value: PieceSelectorTabType.APPROVALS,
-      name: t('Approvals'),
+      name: 'Approvals',
       icon: <CheckCircle2Icon className="size-5" />,
     });
   }

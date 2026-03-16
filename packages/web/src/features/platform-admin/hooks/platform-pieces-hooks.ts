@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { platformApi } from '@/api/platforms-api';
@@ -27,7 +26,7 @@ export const platformPiecesMutations = {
         await refetch();
       },
       onSuccess: () => {
-        toast.success(t('Your changes have been saved.'), { duration: 3000 });
+        toast.success('Your changes have been saved.', { duration: 3000 });
       },
     });
   },
@@ -49,7 +48,7 @@ export const platformPiecesMutations = {
         await refetch();
       },
       onSuccess: () => {
-        toast.success(t('Your changes have been saved.'), { duration: 3000 });
+        toast.success('Your changes have been saved.', { duration: 3000 });
       },
     });
   },
@@ -59,10 +58,8 @@ export const platformPiecesMutations = {
         await piecesApi.syncFromCloud();
       },
       onSuccess: () => {
-        toast.success(t('Pieces synced'), {
-          description: t(
-            'Pieces have been synced successfully.',
-          ),
+        toast.success('Pieces synced', {
+          description: 'Pieces have been synced successfully.',
         });
       },
     });

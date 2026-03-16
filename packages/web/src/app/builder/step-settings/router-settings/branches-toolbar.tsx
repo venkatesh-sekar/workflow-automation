@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 import React from 'react';
 
@@ -19,7 +18,7 @@ const BranchesToolbar: React.FC<BranchesToolbarProps> = ({
         onClick={addButtonClicked}
       >
         <Plus className="w-4 h-4"></Plus>
-        {t('Add Branch')}
+        {'Add Branch'}
       </Button>
     </div>
   );

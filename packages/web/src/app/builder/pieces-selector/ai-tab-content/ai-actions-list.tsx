@@ -3,7 +3,6 @@ import {
   FlowActionType,
   TelemetryEventName,
 } from '@flow/shared';
-import { t } from 'i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -77,9 +76,7 @@ export const AIPieceActionsList: React.FC<AIPieceActionsListProps> = ({
               onClick={() => {
                 if (!isAgentsConfigured) {
                   toast('Connect to OpenAI', {
-                    description: t(
-                      "To create an agent, you'll first need to connect to OpenAI in platform settings.",
-                    ),
+                    description: "To create an agent, you'll first need to connect to OpenAI in platform settings.",
                     action: {
                       label: 'Set Up',
                       onClick: () => {

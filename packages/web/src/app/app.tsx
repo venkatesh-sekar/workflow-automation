@@ -5,7 +5,6 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { EmbeddingProvider } from '@/components/providers/embed-provider';
 import TelemetryProvider from '@/components/providers/telemetry-provider';
@@ -29,7 +28,6 @@ const queryClient = new QueryClient({
 });
 
 export function App() {
-  const { i18n } = useTranslation();
   return (
     <QueryClientProvider client={queryClient}>
       <RefreshAnalyticsProvider>
@@ -38,12 +36,10 @@ export function App() {
             <EmbeddingFontLoader>
               <TelemetryProvider>
                 <TooltipProvider>
-                  <React.Fragment key={i18n.language}>
-                    <ThemeProvider storageKey="vite-ui-theme">
-                      <FlowRouter />
-                      <Toaster position="bottom-right" />
-                    </ThemeProvider>
-                  </React.Fragment>
+                  <ThemeProvider storageKey="vite-ui-theme">
+                    <FlowRouter />
+                    <Toaster position="bottom-right" />
+                  </ThemeProvider>
                 </TooltipProvider>
               </TelemetryProvider>
             </EmbeddingFontLoader>

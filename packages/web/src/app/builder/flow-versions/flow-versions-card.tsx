@@ -3,7 +3,6 @@ import {
   FlowVersionState,
   Permission,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { EllipsisVertical, Eye, EyeIcon, Pencil } from 'lucide-react';
 import React, { useState } from 'react';
 
@@ -76,7 +75,7 @@ const FlowVersionDetailsCard = React.memo(
             className="text-sm font-medium leading-none select-none cursor-default"
           ></FormattedDate>
           <p className="flex gap-1 text-xs text-muted-foreground">
-            {t('Version')} #{flowVersionNumber}
+            {'Version'} #{flowVersionNumber}
           </p>
         </div>
         <div className="grow"></div>
@@ -88,7 +87,7 @@ const FlowVersionDetailsCard = React.memo(
                   <EyeIcon className="w-5 h-5 "></EyeIcon>
                 </div>
               </TooltipTrigger>
-              <TooltipContent>{t('Viewing')}</TooltipContent>
+              <TooltipContent>{'Viewing'}</TooltipContent>
             </Tooltip>
           )}
 
@@ -113,7 +112,7 @@ const FlowVersionDetailsCard = React.memo(
                 className="w-full"
               >
                 <Eye className="mr-2 h-4 w-4" />
-                <span>{t('View')}</span>
+                <span>{'View'}</span>
               </DropdownMenuItem>
               {flowVersion.state !== FlowVersionState.DRAFT && (
                 <OverwriteDraftDialog
@@ -131,7 +130,7 @@ const FlowVersionDetailsCard = React.memo(
                     disabled={!userHasPermissionToWriteFlow}
                   >
                     <Pencil className="mr-2 h-4 w-4" />
-                    <span>{t('Use as Draft')}</span>
+                    <span>{'Use as Draft'}</span>
                   </DropdownMenuItem>
                 </OverwriteDraftDialog>
               )}

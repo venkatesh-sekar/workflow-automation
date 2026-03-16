@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 dayjs.extend(duration);
-import i18next, { t } from 'i18next';
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -24,7 +23,7 @@ export const formatUtils = {
     );
   },
   formatNumber(number: number) {
-    return new Intl.NumberFormat(i18next.language).format(number);
+    return new Intl.NumberFormat('en').format(number);
   },
   formatDateOnlyOrFail(date: Date, fallback: string) {
     try {
@@ -34,7 +33,7 @@ export const formatUtils = {
     }
   },
   formatDateOnly(date: Date) {
-    return Intl.DateTimeFormat(i18next.language, {
+    return Intl.DateTimeFormat('en', {
       month: 'numeric',
       day: 'numeric',
       year: 'numeric',
@@ -47,20 +46,20 @@ export const formatUtils = {
     const isYesterday = inputDate.isSame(now.subtract(1, 'day'), 'day');
     const isSameYear = inputDate.isSame(now, 'year');
 
-    const timeFormat = new Intl.DateTimeFormat(i18next.language, {
+    const timeFormat = new Intl.DateTimeFormat('en', {
       hour: 'numeric',
       minute: 'numeric',
       hour12: true,
     });
 
     if (isToday) {
-      return `${t('Today')}, ${timeFormat.format(date)}`;
+      return `${'Today'}, ${timeFormat.format(date)}`;
     } else if (isYesterday) {
-      return `${t('Yesterday')}, ${timeFormat.format(date)}`;
+      return `${'Yesterday'}, ${timeFormat.format(date)}`;
     }
 
     if (isSameYear && !hideCurrentYear) {
-      return Intl.DateTimeFormat(i18next.language, {
+      return Intl.DateTimeFormat('en', {
         month: 'short',
         day: 'numeric',
         hour: 'numeric',
@@ -69,7 +68,7 @@ export const formatUtils = {
       }).format(date);
     }
 
-    return Intl.DateTimeFormat(i18next.language, {
+    return Intl.DateTimeFormat('en', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
@@ -90,30 +89,30 @@ export const formatUtils = {
       const diffInMinutes = now.diff(inputDate, 'minute');
       const diffInHours = now.diff(inputDate, 'hour');
       if (diffInSeconds < 60) {
-        return t('Just now');
+        return 'Just now';
       }
       if (diffInMinutes < 60) {
         return diffInMinutes === 1
-          ? t('1 min ago')
-          : t('{count} mins ago', { count: diffInMinutes });
+          ? '1 min ago'
+          : `${diffInMinutes} mins ago`;
       }
       return diffInHours === 1
-        ? t('1 hour ago')
-        : t('{count} hours ago', { count: diffInHours });
+        ? '1 hour ago'
+        : `${diffInHours} hours ago`;
     }
 
     if (isYesterday) {
-      return t('Yesterday');
+      return 'Yesterday';
     }
 
     if (isSameYear) {
-      return Intl.DateTimeFormat(i18next.language, {
+      return Intl.DateTimeFormat('en', {
         month: 'short',
         day: 'numeric',
       }).format(date);
     }
 
-    return Intl.DateTimeFormat(i18next.language, {
+    return Intl.DateTimeFormat('en', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',

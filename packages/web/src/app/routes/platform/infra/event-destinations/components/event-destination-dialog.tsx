@@ -3,7 +3,6 @@ import {
   EventDestination,
   CreatePlatformEventDestinationRequestBody,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -56,14 +55,14 @@ export const EventDestinationDialog = ({
   const { mutate: createDestination, isPending: isCreating } =
     eventDestinationsCollectionUtils.useCreateEventDestination(
       () => {
-        toast.success(t('Success'), {
-          description: t('Event destination created successfully'),
+        toast.success('Success', {
+          description: 'Event destination created successfully',
         });
         setIsOpen(false);
         form.reset();
       },
       (error: Error) => {
-        toast.error(t('Error'), {
+        toast.error('Error', {
           description: error.message,
         });
       },
@@ -72,15 +71,15 @@ export const EventDestinationDialog = ({
   const handleSubmit = (data: CreatePlatformEventDestinationRequestBody) => {
     // Basic validation
     if (!data.url || data.url.trim() === '') {
-      toast.error(t('Error'), {
-        description: t('Please enter a valid URL'),
+      toast.error('Error', {
+        description: 'Please enter a valid URL',
       });
       return;
     }
 
     if (!data.events || data.events.length === 0) {
-      toast.error(t('Error'), {
-        description: t('Please select at least one event'),
+      toast.error('Error', {
+        description: 'Please select at least one event',
       });
       return;
     }
@@ -89,13 +88,13 @@ export const EventDestinationDialog = ({
       // Update existing destination
       try {
         eventDestinationsCollectionUtils.update(destination.id, data);
-        toast.success(t('Success'), {
-          description: t('Event destination updated successfully'),
+        toast.success('Success', {
+          description: 'Event destination updated successfully',
         });
         setIsOpen(false);
         form.reset();
       } catch (error) {
-        toast.error(t('Error'), {
+        toast.error('Error', {
           description: error instanceof Error ? error.message : 'Unknown error',
         });
       }
@@ -114,15 +113,13 @@ export const EventDestinationDialog = ({
         <DialogHeader>
           <DialogTitle>
             {destination
-              ? t('Update Event Destination')
-              : t('Create Event Destination')}
+              ? 'Update Event Destination'
+              : 'Create Event Destination'}
           </DialogTitle>
           <DialogDescription>
             {destination
-              ? t('Update the webhook endpoint and event subscriptions.')
-              : t(
-                  'Configure a webhook endpoint to receive platform event notifications.',
-                )}
+              ? 'Update the webhook endpoint and event subscriptions.'
+              : 'Configure a webhook endpoint to receive platform event notifications.'}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -135,7 +132,7 @@ export const EventDestinationDialog = ({
               name="url"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('Webhook URL')}</FormLabel>
+                  <FormLabel>{'Webhook URL'}</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="https://example.com/webhook"
@@ -153,7 +150,7 @@ export const EventDestinationDialog = ({
               render={() => (
                 <FormItem>
                   <div className="mb-4">
-                    <FormLabel className="text-base">{t('Events')}</FormLabel>
+                    <FormLabel className="text-base">{'Events'}</FormLabel>
                   </div>
                   <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
                     {availableEvents.map((event) => (
@@ -202,7 +199,7 @@ export const EventDestinationDialog = ({
                 onClick={() => setIsOpen(false)}
                 disabled={isCreating}
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 type="button"
@@ -210,12 +207,12 @@ export const EventDestinationDialog = ({
                 onClick={() => testDestination({ url: form.getValues('url') })}
                 disabled={form.getValues('url') === '' || isTesting}
               >
-                {isTesting ? t('Testing...') : t('Test Destination')}
+                {isTesting ? 'Testing...' : 'Test Destination'}
               </Button>
               <Button type="submit" disabled={isCreating} loading={isCreating}>
                 {destination
-                  ? t('Update Destination')
-                  : t('Create Destination')}
+                  ? 'Update Destination'
+                  : 'Create Destination'}
               </Button>
             </DialogFooter>
           </form>

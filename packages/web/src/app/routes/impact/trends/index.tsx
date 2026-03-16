@@ -1,6 +1,4 @@
 import { PlatformAnalyticsReport } from '@flow/shared';
-import { t } from 'i18next';
-
 import { RunsChart } from './runs-chart';
 import { TimeSavedChart } from './time-saved-chart';
 

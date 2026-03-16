@@ -1,5 +1,4 @@
 import { FlowEdition, FlowFlagId } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronsUpDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +29,7 @@ function SidebarLogoCollapsed({ linkTo }: { linkTo?: string }) {
     >
       <img
         src={branding.logos.logoIconUrl}
-        alt={t('home')}
+        alt={'home'}
         className="h-5! w-5! shrink-0"
         draggable={false}
       />
@@ -49,7 +48,7 @@ function SidebarLogoFull({ linkTo }: { linkTo?: string }) {
     >
       <img
         src={branding.logos.fullLogoUrl}
-        alt={t('home')}
+        alt={'home'}
         className="h-8 object-contain animate-in fade-in duration-100 delay-[100ms] fill-mode-backwards"
         draggable={false}
       />
@@ -92,7 +91,7 @@ export const AppSidebarHeader = () => {
               <PlatformSwitcher>
                 <SidebarMenuButton className="h-10! w-full">
                   <span className="truncate font-medium flex-1 text-left text-sm">
-                    {currentPlatform?.name ?? t('platform')}
+                    {currentPlatform?.name ?? 'platform'}
                   </span>
                   <ChevronsUpDown className="ml-auto size-3! shrink-0" />
                 </SidebarMenuButton>

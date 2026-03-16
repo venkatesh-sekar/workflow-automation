@@ -1,7 +1,6 @@
 import { PieceMetadataModelSummary } from '@flow/pieces-framework';
 import { PieceType } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
-import { t } from 'i18next';
 import { Package, Trash, Puzzle, Tag, Hash, GitBranch } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
@@ -20,7 +19,7 @@ const columns: ColumnDef<RowDataWithActions<PieceMetadataModelSummary>>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t('Piece')} icon={Puzzle} />
+      <DataTableColumnHeader column={column} title={'Piece'} icon={Puzzle} />
     ),
     cell: ({ row }) => {
       return (
@@ -41,7 +40,7 @@ const columns: ColumnDef<RowDataWithActions<PieceMetadataModelSummary>>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Display Name')}
+        title={'Display Name'}
         icon={Tag}
       />
     ),
@@ -54,7 +53,7 @@ const columns: ColumnDef<RowDataWithActions<PieceMetadataModelSummary>>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Package Name')}
+        title={'Package Name'}
         icon={Hash}
       />
     ),
@@ -67,7 +66,7 @@ const columns: ColumnDef<RowDataWithActions<PieceMetadataModelSummary>>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t('Version')}
+        title={'Version'}
         icon={GitBranch}
       />
     ),
@@ -84,11 +83,9 @@ const columns: ColumnDef<RowDataWithActions<PieceMetadataModelSummary>>[] = [
       }
       return (
         <ConfirmationDeleteDialog
-          title={t('Delete {name}', { name: row.original.name })}
-          entityName={t('Piece')}
-          message={t(
-            'This will permanently delete this piece, all steps using it will fail.',
-          )}
+          title={`Delete ${row.original.name}`}
+          entityName={'Piece'}
+          message={'This will permanently delete this piece, all steps using it will fail.'}
           mutationFn={async () => {
             row.original.delete();
             await piecesApi.delete(row.original.id!);
@@ -121,7 +118,7 @@ const PiecesSettings = () => {
     () => [
       <DataTableInputPopover
         key="search"
-        title={t('Piece Name')}
+        title={'Piece Name'}
         filterValue={searchQuery}
         handleFilterChange={setSearchQuery}
       />,
@@ -133,17 +130,13 @@ const PiecesSettings = () => {
     <div className="space-y-6">
       {!platform.plan.managePiecesEnabled && (
         <LockedAlert
-          title={t('Control Pieces')}
-          description={t(
-            "Show the pieces that matter most to your users and hide the ones you don't like.",
-          )}
+          title={'Control Pieces'}
+          description={"Show the pieces that matter most to your users and hide the ones you don't like."}
         />
       )}
       <DataTable
-        emptyStateTextTitle={t('No pieces found')}
-        emptyStateTextDescription={t(
-          'Add a piece to your project that you want to use in your automations',
-        )}
+        emptyStateTextTitle={'No pieces found'}
+        emptyStateTextDescription={'Add a piece to your project that you want to use in your automations'}
         emptyStateIcon={<Package className="size-14" />}
         columns={columns}
         customFilters={customFilters}

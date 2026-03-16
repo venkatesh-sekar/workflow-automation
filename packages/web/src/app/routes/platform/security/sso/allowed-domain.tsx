@@ -4,7 +4,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
@@ -65,7 +64,7 @@ export const AllowedDomainDialog = ({
       await refetch();
     },
     onSuccess: () => {
-      toast.success(t('Allowed domains updated'), {
+      toast.success('Allowed domains updated', {
         duration: 3000,
       });
       setOpen(false);
@@ -84,12 +83,12 @@ export const AllowedDomainDialog = ({
     >
       <DialogTrigger asChild>
         <Button size={'sm'} variant={'basic'} onClick={() => setOpen(true)}>
-          {platform.allowedAuthDomains.length > 0 ? t('Update') : t('Enable')}
+          {platform.allowedAuthDomains.length > 0 ? 'Update' : 'Enable'}
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Configure Allowed Domains')}</DialogTitle>
+          <DialogTitle>{'Configure Allowed Domains'}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form
@@ -106,9 +105,7 @@ export const AllowedDomainDialog = ({
           >
             <div className="flex flex-col gap-1">
               <div className="text-muted-foreground text-sm">
-                {t(
-                  'Enter the allowed domains for the users to authenticate with. An empty list will allow all domains.',
-                )}
+                {'Enter the allowed domains for the users to authenticate with. An empty list will allow all domains.'}
               </div>
             </div>
             {fields.map((field, index) => (
@@ -121,7 +118,7 @@ export const AllowedDomainDialog = ({
                       <Input
                         {...field}
                         id={`allowedAuthDomains.${index}`}
-                        placeholder={t('example.com')}
+                        placeholder={'example.com'}
                         className="rounded-sm"
                       />
                       <Button
@@ -145,7 +142,7 @@ export const AllowedDomainDialog = ({
               size="sm"
             >
               <Plus className="size-4" />
-              {t('Add Domain')}
+              {'Add Domain'}
             </Button>
             {form?.formState?.errors?.root?.serverError && (
               <FormMessage>
@@ -159,14 +156,14 @@ export const AllowedDomainDialog = ({
                 onClick={() => setOpen(false)}
                 type="button"
               >
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 loading={isPending}
                 disabled={!form.formState.isValid}
                 type="submit"
               >
-                {t('Save')}
+                {'Save'}
               </Button>
             </DialogFooter>
           </form>

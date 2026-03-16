@@ -4,7 +4,6 @@ import {
   FlowStatus,
   FolderDto,
 } from '@flow/shared';
-import { t } from 'i18next';
 import {
   Filter,
   FolderIcon,
@@ -103,8 +102,8 @@ export const AutomationsFilters = ({
   const { embedState } = useEmbedding();
   const ownerOptions = useOwnerOptions();
   const typeOptions = [
-    { value: 'flow', label: t('Flows') },
-    { value: 'table', label: t('Tables') },
+    { value: 'flow', label: 'Flows' },
+    { value: 'table', label: 'Tables' },
   ];
 
   const statusOptions = Object.values(FlowStatus).map((status) => ({
@@ -137,7 +136,7 @@ export const AutomationsFilters = ({
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder={t('Search flows and tables...')}
+              placeholder={'Search flows and tables...'}
               value={searchTerm}
               onChange={(e) => {
                 onSearchChange(e.target.value);
@@ -159,7 +158,7 @@ export const AutomationsFilters = ({
           </div>
 
           <MultiSelectFilter
-            label={t('Type')}
+            label={'Type'}
             icon={<Filter className="h-4 w-4" />}
             options={typeOptions}
             selectedValues={typeFilter}
@@ -170,7 +169,7 @@ export const AutomationsFilters = ({
           />
 
           <MultiSelectFilter
-            label={t('Status')}
+            label={'Status'}
             icon={<ToggleLeft className="h-4 w-4" />}
             options={statusOptions}
             selectedValues={statusFilter}
@@ -181,7 +180,7 @@ export const AutomationsFilters = ({
           />
 
           <MultiSelectFilter
-            label={t('Connections')}
+            label={'Connections'}
             icon={<Link2 className="h-4 w-4" />}
             options={connectionOptions}
             selectedValues={connectionFilter}
@@ -194,7 +193,7 @@ export const AutomationsFilters = ({
 
           {!embedState.isEmbedded && (
             <MultiSelectFilter
-              label={t('Owner')}
+              label={'Owner'}
               icon={<User className="h-4 w-4" />}
               options={ownerOptions}
               selectedValues={ownerFilter}
@@ -208,7 +207,7 @@ export const AutomationsFilters = ({
 
           {folderOptions.length > 0 && (
             <MultiSelectFilter
-              label={t('Folder')}
+              label={'Folder'}
               icon={<FolderIcon className="h-4 w-4" />}
               options={folderOptions}
               selectedValues={folderFilter}
@@ -231,7 +230,7 @@ export const AutomationsFilters = ({
               }}
             >
               <X className="h-3.5 w-3.5" />
-              {t('Clear all')}
+              {'Clear all'}
             </Button>
           )}
         </div>
@@ -247,7 +246,7 @@ export const AutomationsFilters = ({
                   size="sm"
                   className="h-9"
                 >
-                  {t('Import')}
+                  {'Import'}
                 </AnimatedIconButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
@@ -260,7 +259,7 @@ export const AutomationsFilters = ({
                     className="cursor-pointer"
                   >
                     <Workflow className="h-4 w-4 mr-2" />
-                    {t('Import Flow')}
+                    {'Import Flow'}
                   </DropdownMenuItem>
                 </PermissionNeededTooltip>
                 <PermissionNeededTooltip
@@ -272,7 +271,7 @@ export const AutomationsFilters = ({
                     className="cursor-pointer"
                   >
                     <Table2 className="h-4 w-4 mr-2" />
-                    {t('Import Table')}
+                    {'Import Table'}
                   </DropdownMenuItem>
                 </PermissionNeededTooltip>
               </DropdownMenuContent>
@@ -287,7 +286,7 @@ export const AutomationsFilters = ({
                 size="sm"
                 className="h-9"
               >
-                {t('Create New')}
+                {'Create New'}
               </AnimatedIconButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
@@ -311,7 +310,7 @@ export const AutomationsFilters = ({
                   ) : (
                     <Workflow className="h-4 w-4 mr-2" />
                   )}
-                  {isCreatingFlow ? t('Creating...') : t('New Flow')}
+                  {isCreatingFlow ? 'Creating...' : 'New Flow'}
                 </DropdownMenuItem>
               </PermissionNeededTooltip>
               <PermissionNeededTooltip
@@ -334,7 +333,7 @@ export const AutomationsFilters = ({
                   ) : (
                     <Table2 className="h-4 w-4 mr-2" />
                   )}
-                  {isCreatingTable ? t('Creating...') : t('New Table')}
+                  {isCreatingTable ? 'Creating...' : 'New Table'}
                 </DropdownMenuItem>
               </PermissionNeededTooltip>
               {!embedState.hideFolders && (
@@ -353,7 +352,7 @@ export const AutomationsFilters = ({
                       className="cursor-pointer"
                     >
                       <FolderPlus className="h-4 w-4 mr-2" />
-                      {t('New Folder')}
+                      {'New Folder'}
                     </DropdownMenuItem>
                   </PermissionNeededTooltip>
                 </>

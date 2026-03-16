@@ -3,7 +3,6 @@ import {
   FlowRunStatus,
   isFlowRunStateTerminal,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { CircleHelp } from 'lucide-react';
 
 import { flowRunUtils } from '@/features/flow-runs';
@@ -27,36 +26,27 @@ function getStatusText({
 }) {
   switch (status) {
     case FlowRunStatus.SUCCEEDED:
-      return t('Run Succeeded');
+      return 'Run Succeeded';
     case FlowRunStatus.FAILED:
-      return t('Run Failed');
+      return 'Run Failed';
     case FlowRunStatus.PAUSED:
-      return t('Run Paused');
+      return 'Run Paused';
     case FlowRunStatus.QUOTA_EXCEEDED:
-      return t('Quota Exceeded');
+      return 'Quota Exceeded';
     case FlowRunStatus.LOG_SIZE_EXCEEDED:
-      return t(
-        'Run failed due to output of steps exceeding the log size limit',
-      );
+      return 'Run failed due to output of steps exceeding the log size limit';
     case FlowRunStatus.MEMORY_LIMIT_EXCEEDED:
-      return t(
-        'Run failed due to exceeding the memory limit of {memoryLimit} MB',
-        {
-          memoryLimit: Math.floor(memoryLimit / 1024),
-        },
-      );
+      return `Run failed due to exceeding the memory limit of ${Math.floor(memoryLimit / 1024)} MB`;
     case FlowRunStatus.QUEUED:
-      return t('Queued');
+      return 'Queued';
     case FlowRunStatus.RUNNING:
-      return t('Running');
+      return 'Running';
     case FlowRunStatus.TIMEOUT:
-      return t('Run exceeded {timeout} seconds, try to optimize your steps.', {
-        timeout,
-      });
+      return `Run exceeded ${timeout} seconds, try to optimize your steps.`;
     case FlowRunStatus.INTERNAL_ERROR:
-      return t('Run failed for an unknown reason, contact support.');
+      return 'Run failed for an unknown reason, contact support.';
     case FlowRunStatus.CANCELED:
-      return t('Run Cancelled');
+      return 'Run Cancelled';
   }
 }
 
@@ -103,7 +93,7 @@ const RunInfoWidget = () => {
                 &nbsp;-&nbsp;
                 {run.startTime && (
                   <DateSection
-                    text={t('Started')}
+                    text={'Started'}
                     dateOrDuration={formatUtils.formatDateWithTime(
                       new Date(run.startTime),
                       true,
@@ -113,7 +103,7 @@ const RunInfoWidget = () => {
                 {', '}
                 {run.finishTime && run.startTime && (
                   <DateSection
-                    text={t('Took')}
+                    text={'Took'}
                     dateOrDuration={formatUtils.formatDuration(
                       new Date(run.finishTime).getTime() -
                         new Date(run.startTime).getTime(),

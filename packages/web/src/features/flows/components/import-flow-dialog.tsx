@@ -7,7 +7,6 @@ import {
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import { HttpStatusCode } from 'axios';
-import { t } from 'i18next';
 import JSZip from 'jszip';
 import { TriangleAlert } from 'lucide-react';
 import React, { useState, useRef } from 'react';
@@ -130,9 +129,7 @@ const ImportFlowDialog = (
       });
 
       toast.success(
-        t(`flowsImported`, {
-          flowsCount: flows.length,
-        }),
+        `flowsImported`,
       );
 
       if (flows.length === 1) {
@@ -152,7 +149,7 @@ const ImportFlowDialog = (
         api.isError(err) &&
         err.response?.status === HttpStatusCode.BadRequest
       ) {
-        setErrorMessage(t('Template file is invalid'));
+        setErrorMessage('Template file is invalid');
         console.log(err);
       } else {
         internalErrorToast();
@@ -164,10 +161,8 @@ const ImportFlowDialog = (
     if (templates.length === 0) {
       setErrorMessage(
         failedFiles.length
-          ? t(
-              'No valid templates found. The following files failed to import: ',
-            ) + failedFiles.join(', ')
-          : t('Please select a file first'),
+          ? 'No valid templates found. The following files failed to import: ' + failedFiles.join(', ')
+          : 'Please select a file first',
       );
     } else {
       setErrorMessage('');
@@ -213,7 +208,7 @@ const ImportFlowDialog = (
         setFailedFiles((prevFailedFiles) => [...prevFailedFiles, file.name]);
       }
     } else {
-      setErrorMessage(t('Unsupported file type'));
+      setErrorMessage('Unsupported file type');
       return;
     }
     setTemplates(newTemplates);
@@ -234,7 +229,7 @@ const ImportFlowDialog = (
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <div className="flex flex-col gap-3">
-            <DialogTitle>{t('Import Flow')}</DialogTitle>
+            <DialogTitle>{'Import Flow'}</DialogTitle>
           </div>
         </DialogHeader>
         <div className="flex flex-col gap-4">
@@ -242,13 +237,13 @@ const ImportFlowDialog = (
             <Alert variant="warning">
               <TriangleAlert className="h-4 w-4" />
               <AlertDescription>
-                {t('Importing a flow will overwrite your current one.')}
+                {'Importing a flow will overwrite your current one.'}
               </AlertDescription>
             </Alert>
           )}
           <div className="w-full flex flex-col gap-2 justify-between items-start">
             <span className="w-16 text-sm font-medium text-foreground">
-              {t('Flow')}
+              {'Flow'}
             </span>
             <Input
               id="file-input"
@@ -261,7 +256,7 @@ const ImportFlowDialog = (
           {!props.insideBuilder && (
             <div className="w-full flex flex-col gap-2 justify-between items-start">
               <span className="w-16 text-sm font-medium text-foreground">
-                {t('Folder')}
+                {'Folder'}
               </span>
               {isLoading ? (
                 <div className="flex justify-center items-center w-full">
@@ -275,14 +270,14 @@ const ImportFlowDialog = (
                   <SelectTrigger>
                     <SelectValue
                       defaultValue={selectedFolderId}
-                      placeholder={t('Select a folder')}
+                      placeholder={'Select a folder'}
                     />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>{t('Folders')}</SelectLabel>
+                      <SelectLabel>{'Folders'}</SelectLabel>
                       <SelectItem value={UncategorizedFolderId}>
-                        {t('Uncategorized')}
+                        {'Uncategorized'}
                       </SelectItem>
                       {folders?.map((folder) => (
                         <SelectItem key={folder.id} value={folder.id}>
@@ -307,10 +302,10 @@ const ImportFlowDialog = (
             onClick={() => setIsDialogOpen(false)}
             disabled={isPending}
           >
-            {t('Cancel')}
+            {'Cancel'}
           </Button>
           <Button onClick={handleSubmit} loading={isPending}>
-            {t('Import')}
+            {'Import'}
           </Button>
         </DialogFooter>
       </DialogContent>

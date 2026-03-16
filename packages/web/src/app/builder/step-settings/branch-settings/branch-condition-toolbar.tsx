@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { Button } from '@/components/ui/button';
 
 type BranchConditionToolbarProps = {
@@ -20,7 +18,7 @@ const BranchConditionToolbar = (props: BranchConditionToolbarProps) => {
           onClick={props.onAnd}
           disabled={props.readonly}
         >
-          {t('+ And')}
+          {'+ And'}
         </Button>
       )}
 
@@ -31,7 +29,7 @@ const BranchConditionToolbar = (props: BranchConditionToolbarProps) => {
           onClick={props.onOr}
           disabled={props.readonly}
         >
-          {t('+ Or')}
+          {'+ Or'}
         </Button>
       )}
     </div>

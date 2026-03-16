@@ -5,7 +5,6 @@ import {
 } from '@flow/shared';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -59,7 +58,7 @@ export const ConfigureSamlDialog = ({
       await refetch();
     },
     onSuccess: () => {
-      toast.success(t('Single sign-on settings updated'), {
+      toast.success('Single sign-on settings updated', {
         duration: 3000,
       });
       setOpen(false);
@@ -92,37 +91,34 @@ export const ConfigureSamlDialog = ({
               e.preventDefault();
             }}
           >
-            {t('Disable')}
+            {'Disable'}
           </Button>
         ) : (
           <Button size={'sm'} variant={'basic'} onClick={() => setOpen(true)}>
-            {t('Enable')}
+            {'Enable'}
           </Button>
         )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Configure SAML 2.0 SSO')}</DialogTitle>
+          <DialogTitle>{'Configure SAML 2.0 SSO'}</DialogTitle>
         </DialogHeader>
         {samlAcs && (
           <div className="mb-4">
             <FlowMarkdown
-              markdown={t(
-                `
+              markdown={`
 **Setup Instructions**:
 Please check the SAML SSO documentation for setup instructions.
 
 **Single sign-on URL**:
 \`\`\`text
-{samlAcs}
+${samlAcs ?? ''}
 \`\`\`
 **Audience URI (SP Entity ID)**:
 \`\`\`text
 Flow
 \`\`\`
-`,
-                { samlAcs: samlAcs ?? '' },
-              )}
+`}
             />
           </div>
         )}
@@ -142,7 +138,7 @@ Flow
               name="idpMetadata"
               render={({ field }) => (
                 <FormItem className="grid space-y-4">
-                  <Label htmlFor="idpMetadata">{t('IDP Metadata')}</Label>
+                  <Label htmlFor="idpMetadata">{'IDP Metadata'}</Label>
                   <Input
                     {...field}
                     required
@@ -157,7 +153,7 @@ Flow
               name="idpCertificate"
               render={({ field }) => (
                 <FormItem className="grid space-y-4">
-                  <Label htmlFor="idpCertificate">{t('IDP Certificate')}</Label>
+                  <Label htmlFor="idpCertificate">{'IDP Certificate'}</Label>
                   <Textarea
                     {...field}
                     required
@@ -176,14 +172,14 @@ Flow
 
             <DialogFooter>
               <Button variant="outline" onClick={() => setOpen(false)}>
-                {t('Cancel')}
+                {'Cancel'}
               </Button>
               <Button
                 loading={isPending}
                 disabled={!form.formState.isValid}
                 type="submit"
               >
-                {t('Save')}
+                {'Save'}
               </Button>
             </DialogFooter>
           </form>

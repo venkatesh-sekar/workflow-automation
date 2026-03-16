@@ -10,7 +10,6 @@ import {
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
 import deepEqual from 'deep-equal';
-import { t } from 'i18next';
 import { useFormContext } from 'react-hook-form';
 
 import { internalErrorToast } from '@/components/ui/sonner';
@@ -89,7 +88,7 @@ export const testStepHooks = {
         console.error(error);
         setErrorMessage?.(
           testStepUtils.formatErrorMessage(
-            t('There is no sample data available found for this trigger.'),
+            'There is no sample data available found for this trigger.',
           ),
         );
       },
@@ -170,7 +169,7 @@ export const testStepHooks = {
         } else {
           setErrorMessage(
             testStepUtils.formatErrorMessage(
-              t('Internal error, please try again later.'),
+              'Internal error, please try again later.',
             ),
           );
         }

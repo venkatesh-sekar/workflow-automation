@@ -1,5 +1,4 @@
 import {
-    LocalesEnum,
     McpServer,
     McpToolDefinition,
     PieceCategory,
@@ -14,7 +13,6 @@ const listPiecesSchema = z.object({
     tags: z.array(z.string()).optional(),
     searchQuery: z.string().optional(),
     suggestionType: z.enum(Object.values(SuggestionType) as [string, ...string[]]).optional(),
-    locale: z.enum(Object.values(LocalesEnum) as [string, ...string[]]).optional(),
     includeActions: z.boolean().optional(),
     includeTriggers: z.boolean().optional(),
 })
@@ -28,7 +26,6 @@ export const apListPiecesTool = (mcp: McpServer, log: FastifyBaseLogger): McpToo
             tags: listPiecesSchema.shape.tags,
             searchQuery: listPiecesSchema.shape.searchQuery,
             suggestionType: listPiecesSchema.shape.suggestionType,
-            locale: listPiecesSchema.shape.locale,
             includeActions: z.boolean().optional().describe('When true, include action names and descriptions for each piece'),
             includeTriggers: z.boolean().optional().describe('When true, include trigger names and descriptions for each piece'),
         },
@@ -42,7 +39,6 @@ export const apListPiecesTool = (mcp: McpServer, log: FastifyBaseLogger): McpToo
                     tags: params.tags,
                     searchQuery: params.searchQuery,
                     suggestionType: params.suggestionType as SuggestionType | undefined,
-                    locale: params.locale as LocalesEnum | undefined,
                 })
 
                 if (!params.includeActions && !params.includeTriggers) {

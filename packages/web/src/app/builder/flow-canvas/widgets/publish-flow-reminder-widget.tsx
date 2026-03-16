@@ -7,7 +7,6 @@ import {
   Permission,
 } from '@flow/shared';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Info } from 'lucide-react';
 
 import { RightSideBarType } from '@/app/builder/types';
@@ -99,7 +98,7 @@ const PublishFlowReminderWidget = () => {
     <LargeWidgetWrapper>
       <div className="flex items-center gap-2">
         <Info className="size-5" />
-        {showLoading ? loadingText : t('You have unpublished changes')}
+        {showLoading ? loadingText : 'You have unpublished changes'}
       </div>
       {showLoading ? (
         <LoadingSpinner className="size-5 stroke-foreground" />
@@ -112,7 +111,7 @@ const PublishFlowReminderWidget = () => {
               className="hover:bg-gray-300/10 text-foreground"
               onClick={() => discardChange()}
             >
-              {t('Discard changes')}
+              {'Discard changes'}
             </Button>
           )}
 
@@ -129,13 +128,13 @@ const PublishFlowReminderWidget = () => {
                   onClick={() => publish()}
                   disabled={!isValid}
                 >
-                  {t('Publish')}
+                  {'Publish'}
                 </Button>
               </div>
             </TooltipTrigger>
-            {isSaving && <TooltipContent>{t('Saving...')}</TooltipContent>}
+            {isSaving && <TooltipContent>{'Saving...'}</TooltipContent>}
             {!isValid && (
-              <TooltipContent>{t('You have incomplete steps')}</TooltipContent>
+              <TooltipContent>{'You have incomplete steps'}</TooltipContent>
             )}
           </Tooltip>
         </div>
@@ -180,13 +179,13 @@ function pickLoadingText({
   isSaving: boolean;
 }) {
   if (isSaving) {
-    return t('Saving...');
+    return 'Saving...';
   }
   if (isDiscardingChanges) {
-    return t('Discarding changes...');
+    return 'Discarding changes...';
   }
   if (isPublishing) {
-    return t('Publishing...');
+    return 'Publishing...';
   }
   return '';
 }

@@ -4,7 +4,6 @@ import {
   UpdateRunProgressRequest,
   assertNotNullOrUndefined,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { useRef } from 'react';
 
 import { EditFlowOrViewDraftButton } from '@/app/builder/builder-header/flow-status/view-draft-or-edit-flow-button';
@@ -101,7 +100,7 @@ const TestFlowWidget = () => {
         onClick={() => {
           setChatDrawerOpenSource(ChatDrawerSource.TEST_FLOW);
         }}
-        text={t('Open Chat')}
+        text={'Open Chat'}
         loading={isTestingFlow}
       />
     );
@@ -112,7 +111,7 @@ const TestFlowWidget = () => {
       onClick={() => {
         runFlow();
       }}
-      text={isManualTrigger ? t('Run Flow') : t('Test Flow')}
+      text={isManualTrigger ? 'Run Flow' : 'Test Flow'}
       disable={!triggerHasSampleData && !isManualTrigger}
       loading={isTestingFlow}
     />

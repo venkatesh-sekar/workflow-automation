@@ -1,6 +1,5 @@
 import { AgentTool, isNil, mcpToolNameUtils } from '@flow/shared';
 import Fuse from 'fuse.js';
-import { t } from 'i18next';
 import { Search } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
@@ -48,7 +47,7 @@ export const PieceActionsList: React.FC<PieceActionsDialogProps> = ({
   }, [debouncedQuery, fuse, selectedPiece?.suggestedActions]);
 
   if (isNil(selectedPiece)) {
-    return <p>{t('No app is selected')}</p>;
+    return <p>{'No app is selected'}</p>;
   }
 
   return (
@@ -57,7 +56,7 @@ export const PieceActionsList: React.FC<PieceActionsDialogProps> = ({
         <div className="relative border rounded-sm">
           <Search className="absolute left-2 top-2.5 size-4 text-muted-foreground" />
           <Input
-            placeholder={t('Search')}
+            placeholder={'Search'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-9 shadow-none border-none"
@@ -108,7 +107,7 @@ export const PieceActionsList: React.FC<PieceActionsDialogProps> = ({
 
                     {isDisabled && (
                       <span className="text-xs text-muted-foreground">
-                        {t('(Already added)')}
+                        {'(Already added)'}
                       </span>
                     )}
                   </div>
@@ -126,7 +125,7 @@ export const PieceActionsList: React.FC<PieceActionsDialogProps> = ({
 
         {filteredActions.length === 0 && (
           <div className="text-center text-muted-foreground py-8">
-            {t('No actions found')}
+            {'No actions found'}
           </div>
         )}
       </div>

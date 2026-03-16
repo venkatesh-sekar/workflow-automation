@@ -6,7 +6,6 @@ import {
   FlowTriggerType,
   flowStructureUtil,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { ChevronLeftIcon, ChevronRightIcon, Info } from 'lucide-react';
 import React from 'react';
 
@@ -118,7 +117,7 @@ const PreviousOrNextButton = ({ isNext }: { isNext: boolean }) => {
       </TooltipTrigger>
       {!isDisabled && (
         <TooltipContent side="bottom">
-          {isNext ? t('Next step') : t('Previous step')}
+          {isNext ? 'Next step' : 'Previous step'}
         </TooltipContent>
       )}
     </Tooltip>

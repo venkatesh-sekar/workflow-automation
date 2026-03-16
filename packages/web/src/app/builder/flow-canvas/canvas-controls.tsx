@@ -1,5 +1,4 @@
 import { Node, useKeyPress, useReactFlow } from '@xyflow/react';
-import { t } from 'i18next';
 import {
   Fullscreen,
   Hand,
@@ -194,7 +193,7 @@ const CanvasControls = ({
     >
       <div className=" absolute flex ml-2 items-center justify-center p-1.5 pointer-events-auto rounded-lg bg-background border border-sidebar-border">
         <CanvasButtonWrapper
-          tooltip={t('Minimap' + (isMac() ? ' (⌘ + M)' : ' (Ctrl + M)'))}
+          tooltip={'Minimap' + (isMac() ? ' (⌘ + M)' : ' (Ctrl + M)')}
         >
           <Button
             variant={showMinimap ? 'default' : 'ghost'}
@@ -210,17 +209,17 @@ const CanvasControls = ({
       <div className="grow"></div>
 
       <div className="bg-background gap-2 flex items-center shadow-2xl justify-center border border-sidebar-border p-1.5 rounded-lg pointer-events-auto">
-        <CanvasButtonWrapper tooltip={t('Zoom in')}>
+        <CanvasButtonWrapper tooltip={'Zoom in'}>
           <Button variant="ghost" size="icon" onClick={handleZoomIn}>
             <Plus className="size-4" />
           </Button>
         </CanvasButtonWrapper>
-        <CanvasButtonWrapper tooltip={t('Zoom out')}>
+        <CanvasButtonWrapper tooltip={'Zoom out'}>
           <Button variant="ghost" size="icon" onClick={handleZoomOut}>
             <Minus className="size-4" />
           </Button>
         </CanvasButtonWrapper>
-        <CanvasButtonWrapper tooltip={t('Fit to view')}>
+        <CanvasButtonWrapper tooltip={'Fit to view'}>
           <Button
             variant="ghost"
             size="icon"
@@ -232,7 +231,7 @@ const CanvasControls = ({
         <div>
           <Separator orientation="vertical" className="h-5"></Separator>
         </div>
-        <CanvasButtonWrapper tooltip={t('Grab mode')}>
+        <CanvasButtonWrapper tooltip={'Grab mode'}>
           <Button
             variant={isInGrabMode ? 'default' : 'ghost'}
             size="icon"
@@ -241,7 +240,7 @@ const CanvasControls = ({
             <Hand className="size-4" />
           </Button>
         </CanvasButtonWrapper>
-        <CanvasButtonWrapper tooltip={t('Select mode')}>
+        <CanvasButtonWrapper tooltip={'Select mode'}>
           <Button
             variant={!isInGrabMode ? 'default' : 'ghost'}
             size="icon"
@@ -251,7 +250,7 @@ const CanvasControls = ({
           </Button>
         </CanvasButtonWrapper>
         {!readonly && (
-          <CanvasButtonWrapper tooltip={t('Add note')}>
+          <CanvasButtonWrapper tooltip={'Add note'}>
             <Button
               variant={
                 noteDragOverlayMode === NoteDragOverlayMode.CREATE

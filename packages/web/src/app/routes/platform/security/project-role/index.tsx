@@ -1,5 +1,3 @@
-import { t } from 'i18next';
-
 import { CenteredPage } from '@/app/components/centered-page';
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { AnimatedIconButton } from '@/components/custom/animated-icon-button';
@@ -26,11 +24,11 @@ const ProjectRolePage = () => {
     <Tooltip>
       <TooltipTrigger>
         <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm" disabled>
-          {t('New Role')}
+          {'New Role'}
         </AnimatedIconButton>
       </TooltipTrigger>
       <TooltipContent side="bottom">
-        {t('Contact sales to unlock custom roles')}
+        {'Contact sales to unlock custom roles'}
       </TooltipContent>
     </Tooltip>
   ) : (
@@ -40,7 +38,7 @@ const ProjectRolePage = () => {
       platformId={platform.id}
     >
       <AnimatedIconButton icon={PlusIcon} iconSize={16} size="sm">
-        {t('New Role')}
+        {'New Role'}
       </AnimatedIconButton>
     </ProjectRoleDialog>
   );
@@ -48,17 +46,13 @@ const ProjectRolePage = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.projectRolesEnabled}
-      lockTitle={t('Project Role Management')}
-      lockDescription={t(
-        'Define custom roles and permissions to control what your team members can access and modify',
-      )}
+      lockTitle={'Project Role Management'}
+      lockDescription={'Define custom roles and permissions to control what your team members can access and modify'}
       lockVideoUrl=""
     >
       <CenteredPage
-        title={t('Project Role Management')}
-        description={t(
-          'Define custom roles and permissions that can be assigned to your team members',
-        )}
+        title={'Project Role Management'}
+        description={'Define custom roles and permissions that can be assigned to your team members'}
         actions={newRoleButton}
       >
         <ProjectRolesTable

@@ -1,6 +1,5 @@
 import { AnalyticsTimePeriod } from '@flow/shared';
 import dayjs from 'dayjs';
-import { t } from 'i18next';
 import { Calendar, Info, LineChart, List, RefreshCcw } from 'lucide-react';
 import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -99,13 +98,13 @@ export default function ImpactPage() {
         showSidebarToggle={true}
         title={
           <div className="flex items-center gap-1.5">
-            <span className="text-sm font-medium">{t('Impact')}</span>
+            <span className="text-sm font-medium">{'Impact'}</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Info className="h-4 w-4 text-muted-foreground cursor-help" />
               </TooltipTrigger>
               <TooltipContent>
-                {t('View impact analytics and metrics for the active flows.')}
+                {'View impact analytics and metrics for the active flows.'}
               </TooltipContent>
             </Tooltip>
           </div>
@@ -114,8 +113,8 @@ export default function ImpactPage() {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 px-3 py-1.5 border border-dashed rounded-md text-sm text-muted-foreground">
               <span>
-                {t('Updated')} {dayjs(data?.updated).format('MMM DD, hh:mm A')}{' '}
-                — {t('Refreshes daily')}
+                {'Updated'} {dayjs(data?.updated).format('MMM DD, hh:mm A')}{' '}
+                — {'Refreshes daily'}
               </span>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -126,7 +125,7 @@ export default function ImpactPage() {
                     onClick={() =>
                       refreshAnalytics(undefined, {
                         onSuccess: () =>
-                          toast.success(t('Data refreshed successfully')),
+                          toast.success('Data refreshed successfully'),
                       })
                     }
                     disabled={isRefreshing}
@@ -138,7 +137,7 @@ export default function ImpactPage() {
                     />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t('Refresh analytics')}</TooltipContent>
+                <TooltipContent>{'Refresh analytics'}</TooltipContent>
               </Tooltip>
             </div>
 
@@ -152,19 +151,19 @@ export default function ImpactPage() {
               </SelectTrigger>
               <SelectContent side="bottom" align="end">
                 <SelectItem value={AnalyticsTimePeriod.LAST_WEEK}>
-                  {t('Last 7 days')}
+                  {'Last 7 days'}
                 </SelectItem>
                 <SelectItem value={AnalyticsTimePeriod.LAST_MONTH}>
-                  {t('Last 30 days')}
+                  {'Last 30 days'}
                 </SelectItem>
                 <SelectItem value={AnalyticsTimePeriod.LAST_THREE_MONTHS}>
-                  {t('Last 3 months')}
+                  {'Last 3 months'}
                 </SelectItem>
                 <SelectItem value={AnalyticsTimePeriod.LAST_SIX_MONTHS}>
-                  {t('Last 6 months')}
+                  {'Last 6 months'}
                 </SelectItem>
                 <SelectItem value={AnalyticsTimePeriod.LAST_YEAR}>
-                  {t('Last year')}
+                  {'Last year'}
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -190,11 +189,11 @@ export default function ImpactPage() {
         >
           <TabsTrigger variant="outline" value="analytics">
             <LineChart className="w-4 h-4 mr-2" />
-            {t('Analytics')}
+            {'Analytics'}
           </TabsTrigger>
           <TabsTrigger variant="outline" value="details">
             <List className="w-4 h-4 mr-2" />
-            {t('Details')}
+            {'Details'}
           </TabsTrigger>
         </TabsList>
 

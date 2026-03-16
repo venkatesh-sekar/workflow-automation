@@ -1,6 +1,5 @@
 import { ProjectMemberWithUser } from '@flow/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -53,7 +52,7 @@ export function EditRoleDialog({
       });
     },
     onSuccess: () => {
-      toast.success(t('Role updated successfully'), {
+      toast.success('Role updated successfully', {
         duration: 3000,
       });
       onSave();
@@ -82,13 +81,13 @@ export function EditRoleDialog({
       <DialogContent className="w-full max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {t('Edit Role for')} {member.user.firstName} {member.user.lastName}
+            {'Edit Role for'} {member.user.firstName} {member.user.lastName}
           </DialogTitle>
         </DialogHeader>
         <div className="grid gap-2">
           <Select onValueChange={handleRoleChange} defaultValue={selectedRole}>
             <SelectTrigger>
-              <SelectValue placeholder={t('Select Role')} />
+              <SelectValue placeholder={'Select Role'} />
             </SelectTrigger>
             <SelectContent>
               {roles.map((role) => (
@@ -101,7 +100,7 @@ export function EditRoleDialog({
         </div>
         <DialogFooter>
           <Button onClick={handleSave} loading={isPending}>
-            {t('Save')}
+            {'Save'}
           </Button>
         </DialogFooter>
       </DialogContent>

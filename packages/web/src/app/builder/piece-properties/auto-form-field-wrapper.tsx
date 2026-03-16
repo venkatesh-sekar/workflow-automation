@@ -8,7 +8,6 @@ import {
   FlowTrigger,
   PropertyExecutionType,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Calendar, SquareFunction, File } from 'lucide-react';
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -59,7 +58,7 @@ function AutoFormFieldWrapper({
             {placeBeforeLabelText && !dynamicInputModeToggled && children}
             <div className="pt-1">
               <span>
-                {isAuthProperty ? t('Connection') : property.displayName}
+                {isAuthProperty ? 'Connection' : property.displayName}
               </span>{' '}
               {(isAuthProperty || property.required) && (
                 <span className="text-destructive">*</span>
@@ -123,7 +122,7 @@ function AutoFormFielWrapperErrorBoundary({
       fallbackRender={() => (
         <div className="text-sm  flex items-center justify-between">
           <div className="text-destructive">
-            {t('input value is invalid, please contact support')}
+            {'input value is invalid, please contact support'}
           </div>
           <Button
             variant="outline"
@@ -137,12 +136,12 @@ function AutoFormFielWrapperErrorBoundary({
                   disabled: field.disabled,
                 }),
               );
-              toast(t('Info copied to clipboard, please send it to support'), {
+              toast('Info copied to clipboard, please send it to support', {
                 duration: 3000,
               });
             }}
           >
-            {t('Info')}
+            {'Info'}
           </Button>
         </div>
       )}
@@ -249,7 +248,7 @@ function DynamicValueToggle({
             />
           </Toggle>
         </TooltipTrigger>
-        <TooltipContent side="top">{t('Dynamic value')}</TooltipContent>
+        <TooltipContent side="top">{'Dynamic value'}</TooltipContent>
       </Tooltip>
     </div>
   );
@@ -276,9 +275,9 @@ function PropertyTypeTooltip({ property }: { property: PieceProperty }) {
       <TooltipContent side="bottom">
         <>
           {property.type === PropertyType.FILE &&
-            t('File Input i.e a url or file passed from a previous step')}
+            'File Input i.e a url or file passed from a previous step'}
           {property.type === PropertyType.DATE_TIME &&
-            t('Date Input must comply with ISO 8601 format')}
+            'Date Input must comply with ISO 8601 format'}
         </>
       </TooltipContent>
     </Tooltip>

@@ -1,6 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -63,7 +62,7 @@ export const AppearanceSection = () => {
       window.location.reload();
     },
     onSuccess: () => {
-      toast.success(t('Your changes have been saved.'), {
+      toast.success('Your changes have been saved.', {
         duration: 3000,
       });
       form.reset(form.getValues());
@@ -83,12 +82,12 @@ export const AppearanceSection = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <FormLabel htmlFor="name">{t('Platform Name')}</FormLabel>
+                    <FormLabel htmlFor="name">{'Platform Name'}</FormLabel>
                     <Input
                       {...field}
                       required
                       id="name"
-                      placeholder={t('Platform Name')}
+                      placeholder={'Platform Name'}
                       className="rounded-sm"
                     />
                     <FormMessage />
@@ -100,7 +99,7 @@ export const AppearanceSection = () => {
                 name="logoUrl"
                 render={() => (
                   <FormItem className="grid space-y-2">
-                    <FormLabel htmlFor="logoFile">{t('Logo')}</FormLabel>
+                    <FormLabel htmlFor="logoFile">{'Logo'}</FormLabel>
                     <div className="flex flex-row gap-2 items-center">
                       <Input
                         type="file"
@@ -119,7 +118,7 @@ export const AppearanceSection = () => {
                 name="iconUrl"
                 render={() => (
                   <FormItem className="grid space-y-2">
-                    <FormLabel htmlFor="iconFile">{t('Icon')}</FormLabel>
+                    <FormLabel htmlFor="iconFile">{'Icon'}</FormLabel>
                     <div className="flex flex-row gap-2 items-center">
                       <Input
                         type="file"
@@ -139,7 +138,7 @@ export const AppearanceSection = () => {
                 render={() => (
                   <FormItem className="grid space-y-2">
                     <FormLabel htmlFor="faviconUrl">
-                      {t('Favicon URL')}
+                      {'Favicon URL'}
                     </FormLabel>
                     <div className="flex flex-row gap-2 items-center">
                       <Input
@@ -160,7 +159,7 @@ export const AppearanceSection = () => {
                 name="color"
                 render={({ field }) => (
                   <FormItem className="grid space-y-2">
-                    <FormLabel htmlFor="color">{t('Primary Color')}</FormLabel>
+                    <FormLabel htmlFor="color">{'Primary Color'}</FormLabel>
                     <div className="flex flex-row gap-2 items-center">
                       <ColorPicker
                         value={field.value as string}
@@ -185,7 +184,7 @@ export const AppearanceSection = () => {
                 loading={isPending}
                 disabled={!form.formState.isValid}
               >
-                {t('Save')}
+                {'Save'}
               </Button>
             </div>
           </form>

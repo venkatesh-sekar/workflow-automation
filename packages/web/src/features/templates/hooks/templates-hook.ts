@@ -1,6 +1,5 @@
 import { Template } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useDebounce } from 'use-debounce';
@@ -111,7 +110,7 @@ export const templatesMutations = {
         templatesApi.create(request),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: templateKeys.custom });
-        toast.success(t('Template created successfully'), { duration: 3000 });
+        toast.success('Template created successfully', { duration: 3000 });
         onDone();
       },
       onError,
@@ -135,7 +134,7 @@ export const templatesMutations = {
       }) => templatesApi.update(templateId, request),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: templateKeys.custom });
-        toast.success(t('Template updated successfully'), { duration: 3000 });
+        toast.success('Template updated successfully', { duration: 3000 });
         onDone();
       },
       onError,

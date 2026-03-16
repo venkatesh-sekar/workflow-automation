@@ -1,5 +1,4 @@
 import { PlatformRole, UserStatus } from '@flow/shared';
-import { t } from 'i18next';
 import { CircleMinus, RotateCcw } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -51,10 +50,10 @@ export const ToggleUserStatusAction = ({
         </TooltipTrigger>
         <TooltipContent side="bottom">
           {isAdmin
-            ? t('Admin cannot be deactivated')
+            ? 'Admin cannot be deactivated'
             : isActive
-            ? t('Deactivate user')
-            : t('Activate user')}
+            ? 'Deactivate user'
+            : 'Activate user'}
         </TooltipContent>
       </Tooltip>
     </div>

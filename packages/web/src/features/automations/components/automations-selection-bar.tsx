@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { Download, FolderInput, Trash2, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -51,7 +50,7 @@ export const AutomationsSelectionBar = ({
                 disabled={isMoving || !hasMovableOrExportableItems}
               >
                 <FolderInput className="h-4 w-4 mr-1" />
-                {t('Move to')}
+                {'Move to'}
               </Button>
             )}
             {!embedState.hideExportAndImportFlow && (
@@ -66,18 +65,15 @@ export const AutomationsSelectionBar = ({
                 ) : (
                   <Download className="size-4 mr-2" />
                 )}
-                {isExporting ? t('Exporting') : t('Export')}
+                {isExporting ? 'Exporting' : 'Export'}
               </Button>
             )}
             <ConfirmationDeleteDialog
-              title={t('Delete Selected Items')}
-              message={t(
-                'This will permanently delete {count} selected items. This action cannot be undone.',
-                { count: selectedCount },
-              )}
+              title={'Delete Selected Items'}
+              message={`This will permanently delete ${selectedCount} selected items. This action cannot be undone.`}
               mutationFn={async () => onDeleteClick()}
-              entityName={t('items')}
-              buttonText={t('Delete')}
+              entityName={'items'}
+              buttonText={'Delete'}
             >
               <Button
                 variant="ghost"
@@ -86,12 +82,12 @@ export const AutomationsSelectionBar = ({
                 disabled={isDeleting}
               >
                 <Trash2 className="h-4 w-4 mr-1" />
-                {t('Delete')}
+                {'Delete'}
               </Button>
             </ConfirmationDeleteDialog>
             <div className="border-l h-6 mx-1" />
             <span className="text-sm text-muted-foreground">
-              {t('{count} selected', { count: selectedCount })}
+              {`${selectedCount} selected`}
             </span>
             <Button
               variant="ghost"

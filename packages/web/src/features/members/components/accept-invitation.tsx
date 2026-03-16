@@ -1,5 +1,4 @@
 import { HttpStatusCode } from 'axios';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -59,17 +58,15 @@ const AcceptInvitation = () => {
       {isInvitationLinkValid ? (
         <>
           <p className="text-2xl font-semibold tracking-tight text-center">
-            {t('Team Invitation Accepted')}
+            {'Team Invitation Accepted'}
           </p>
           <p className="mt-4 text-lg text-center text-muted-foreground">
-            {t(
-              'Thank you for accepting the invitation. We are redirecting you right now...',
-            )}
+            {'Thank you for accepting the invitation. We are redirecting you right now...'}
           </p>
         </>
       ) : (
         <p className="mt-4 text-lg text-center text-destructive">
-          {t('Invalid invitation token. Please try again.')}
+          {'Invalid invitation token. Please try again.'}
         </p>
       )}
     </div>

@@ -1,6 +1,4 @@
 import { PlatformRole } from '@flow/shared';
-import { t } from 'i18next';
-
 import {
   Select,
   SelectContent,
@@ -20,29 +18,25 @@ type RoleConfig<T = string> = {
 const PLATFORM_ROLES: RoleConfig<PlatformRole>[] = [
   {
     value: PlatformRole.ADMIN,
-    label: t('Admin'),
-    description: t('Full access to all projects and platform settings'),
+    label: 'Admin',
+    description: 'Full access to all projects and platform settings',
   },
   {
     value: PlatformRole.OPERATOR,
-    label: t('Operator'),
-    description: t(
-      'Access and edit flows in all projects, no platform settings',
-    ),
+    label: 'Operator',
+    description: 'Access and edit flows in all projects, no platform settings',
   },
   {
     value: PlatformRole.MEMBER,
-    label: t('Member'),
-    description: t(
-      "Access to personal project and any team projects they're invited to",
-    ),
+    label: 'Member',
+    description: "Access to personal project and any team projects they're invited to",
   },
 ];
 
 const PROJECT_ROLE_DESCRIPTIONS: Record<string, string> = {
-  Admin: t('Manage project settings, members, connections, and git sync'),
-  Editor: t('Build, publish, and manage flows'),
-  Viewer: t('View flows and monitor run history'),
+  Admin: 'Manage project settings, members, connections, and git sync',
+  Editor: 'Build, publish, and manage flows',
+  Viewer: 'View flows and monitor run history',
 };
 
 export const getProjectRoleDescription = (roleName: string): string => {
@@ -68,7 +62,7 @@ export const RoleSelector = ({
 }: RoleSelectorProps) => {
   const isPlatform = type === 'platform';
 
-  const label = isPlatform ? t('Platform Roles') : t('Project Roles');
+  const label = isPlatform ? 'Platform Roles' : 'Project Roles';
 
   const options = isPlatform
     ? PLATFORM_ROLES.map((role) => ({
@@ -90,7 +84,7 @@ export const RoleSelector = ({
         {selectedRole ? (
           <span className="font-normal">{selectedRole.label}</span>
         ) : (
-          <SelectValue placeholder={placeholder || t('Select Role')} />
+          <SelectValue placeholder={placeholder || 'Select Role'} />
         )}
       </SelectTrigger>
       <SelectContent>
@@ -103,9 +97,9 @@ export const RoleSelector = ({
               className="py-3"
             >
               <div className="flex flex-col gap-1">
-                <span className="font-medium">{t(option.label)}</span>
+                <span className="font-medium">{option.label}</span>
                 <span className="text-xs text-muted-foreground">
-                  {t(option.description)}
+                  {option.description}
                 </span>
               </div>
             </SelectItem>
@@ -138,13 +132,13 @@ export const RoleDropdown = ({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>{t('Roles')}</SelectLabel>
+          <SelectLabel>{'Roles'}</SelectLabel>
           {roles.map((role) => (
             <SelectItem key={role.name} value={role.name} className="py-3">
               <div className="flex flex-col gap-1">
                 <span className="font-medium">{role.name}</span>
                 <span className="text-xs text-muted-foreground">
-                  {t(getProjectRoleDescription(role.name))}
+                  {getProjectRoleDescription(role.name)}
                 </span>
               </div>
             </SelectItem>

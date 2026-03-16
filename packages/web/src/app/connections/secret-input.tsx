@@ -2,7 +2,6 @@ import {
   SecretManagerProviderId,
   SecretManagerFieldsSeparator,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { KeyRound } from 'lucide-react';
 import * as React from 'react';
 import { useState, useCallback, useMemo, useEffect } from 'react';
@@ -57,7 +56,7 @@ const SecretManagerToggleButton = React.memo(
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          {isActive ? t('Disable Secret Manager') : t('Use Secret Manager')}
+          {isActive ? 'Disable Secret Manager' : 'Use Secret Manager'}
         </TooltipContent>
       </Tooltip>
     );

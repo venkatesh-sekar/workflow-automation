@@ -1,6 +1,5 @@
 import { Tag } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import { piecesTagsApi } from '../api/pieces-tags';
@@ -26,7 +25,7 @@ export const piecesTagMutations = {
     return useMutation({
       mutationFn: (id: string) => piecesTagsApi.delete(id),
       onSuccess: () => {
-        toast.success(t('Tag deleted'));
+        toast.success('Tag deleted');
         queryClient.invalidateQueries({ queryKey: piecesTagKeys.all });
         queryClient.invalidateQueries({ queryKey: ['pieces'] });
         onSuccess();
@@ -39,7 +38,7 @@ export const piecesTagMutations = {
         await piecesTagsApi.tagPieces({ piecesName, tags });
       },
       onSuccess: () => {
-        toast(t('Tags applied.'), {});
+        toast('Tags applied.', {});
         onSuccess();
       },
     });
@@ -54,8 +53,8 @@ export const piecesTagMutations = {
     return useMutation({
       mutationFn: (name: string) => piecesTagsApi.upsert({ name }),
       onSuccess: (data) => {
-        toast.success(t('Tag created'), {
-          description: t(`Tag "${data.name}" has been created successfully.`),
+        toast.success('Tag created', {
+          description: `Tag "${data.name}" has been created successfully.`,
         });
         onTagCreated(data);
         setIsOpen(false);

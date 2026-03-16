@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { toast } from 'sonner';
 
 import LockedFeatureGuard from '@/app/components/locked-feature-guard';
@@ -26,7 +25,7 @@ const EnvironmentSettings = () => {
   const { mutate } = gitSyncMutations.useDisconnectGitSync({
     onSuccess: () => {
       refetch();
-      toast.success(t('Git Connection Removed'), {
+      toast.success('Git Connection Removed', {
         duration: 3000,
       });
     },
@@ -35,10 +34,8 @@ const EnvironmentSettings = () => {
   return (
     <LockedFeatureGuard
       locked={!platform.plan.environmentsEnabled}
-      lockTitle={t('Enable Environments')}
-      lockDescription={t(
-        'Deploy flows across development, staging and production environments with version control and team collaboration',
-      )}
+      lockTitle={'Enable Environments'}
+      lockDescription={'Deploy flows across development, staging and production environments with version control and team collaboration'}
     >
       <div className="flex w-full flex-col items-start justify-center gap-4">
         <Card className="w-full p-4">
@@ -47,14 +44,14 @@ const EnvironmentSettings = () => {
               <>
                 <div className="flex grow flex-col gap-2">
                   <p>
-                    {t('Repository URL')}:{' '}
-                    {gitSync?.remoteUrl ?? t('Not connected')}
+                    {'Repository URL'}:{' '}
+                    {gitSync?.remoteUrl ?? 'Not connected'}
                   </p>
                   <p>
-                    {t('Branch')}: {gitSync?.branch ?? t('Not connected')}
+                    {'Branch'}: {gitSync?.branch ?? 'Not connected'}
                   </p>
                   <p>
-                    {t('Project Folder')}: {gitSync?.slug ?? t('Not connected')}
+                    {'Project Folder'}: {gitSync?.slug ?? 'Not connected'}
                   </p>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
@@ -69,7 +66,7 @@ const EnvironmentSettings = () => {
                         className="w-32 text-destructive"
                         variant={'basic'}
                       >
-                        {t('Disconnect')}
+                        {'Disconnect'}
                       </Button>
                     </div>
                   )}

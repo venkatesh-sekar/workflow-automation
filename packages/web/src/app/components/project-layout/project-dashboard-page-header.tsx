@@ -1,5 +1,4 @@
 import { ProjectType } from '@flow/shared';
-import { t } from 'i18next';
 import { Lock } from 'lucide-react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -47,9 +46,7 @@ export const ProjectDashboardPageHeader = ({
             </TooltipTrigger>
             <TooltipContent>
               <p>
-                {t(
-                  'This is your private project. Only you can see and access it.',
-                )}
+                {'This is your private project. Only you can see and access it.'}
               </p>
             </TooltipContent>
           </Tooltip>

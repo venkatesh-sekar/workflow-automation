@@ -1,5 +1,4 @@
 import { Permission } from '@flow/shared';
-import { t } from 'i18next';
 import { useState } from 'react';
 
 import { RightSideBarType } from '@/app/builder/types';
@@ -51,19 +50,19 @@ const OverwriteDraftDialog = ({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t('Overwrite Draft')}</DialogTitle>
+          <DialogTitle>{'Overwrite Draft'}</DialogTitle>
           <DialogDescription>
-            {t('Your current draft will be replaced with')}{' '}
+            {'Your current draft will be replaced with'}{' '}
             <span className="font-semibold">
-              {t('version #{versionNumber}', { versionNumber })}
+              {`version #${versionNumber}`}
             </span>
             {'. '}
-            {t('This cannot be undone.')}
+            {'This cannot be undone.'}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="justify-end">
           <DialogClose asChild>
-            <Button variant={'outline'}>{t('Cancel')}</Button>
+            <Button variant={'outline'}>{'Cancel'}</Button>
           </DialogClose>
           <DialogClose asChild>
             <Button
@@ -76,7 +75,7 @@ const OverwriteDraftDialog = ({
                 onConfirm?.();
               }}
             >
-              {t('Overwrite')}
+              {'Overwrite'}
             </Button>
           </DialogClose>
         </DialogFooter>

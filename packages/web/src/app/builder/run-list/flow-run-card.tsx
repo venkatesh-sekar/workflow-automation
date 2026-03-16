@@ -6,7 +6,6 @@ import {
   isFlowRunStateTerminal,
   Permission,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { Eye, Repeat, Timer } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -84,7 +83,7 @@ const FlowRunCard = React.memo(
                     })}
                   />
                 </TooltipTrigger>
-                <TooltipContent>{t('Canceled')}</TooltipContent>
+                <TooltipContent>{'Canceled'}</TooltipContent>
               </Tooltip>
             ) : (
               <Icon
@@ -111,7 +110,7 @@ const FlowRunCard = React.memo(
           }) && (
             <p className="flex gap-1 text-xs text-muted-foreground">
               <Timer className="h-3.5 w-3.5" />
-              {t('Took')}{' '}
+              {'Took'}{' '}
               {formatUtils.formatDuration(
                 run.startTime && run.finishTime
                   ? new Date(run.finishTime).getTime() -
@@ -123,12 +122,12 @@ const FlowRunCard = React.memo(
           )}
           {run.status === FlowRunStatus.RUNNING && (
             <p className="flex gap-1 text-xs text-muted-foreground">
-              {t('Running')}...
+              {'Running'}...
             </p>
           )}
           {run.status === FlowRunStatus.QUEUED && (
             <p className="flex gap-1 text-xs text-muted-foreground">
-              {t('Queued')}...
+              {'Queued'}...
             </p>
           )}
         </div>
@@ -167,7 +166,7 @@ const FlowRunCard = React.memo(
                       </Button>
                     </DropdownMenuTrigger>
                   </TooltipTrigger>
-                  <TooltipContent>{t('Retry run')}</TooltipContent>
+                  <TooltipContent>{'Retry run'}</TooltipContent>
                 </Tooltip>
                 <DropdownMenuContent>
                   <DropdownMenuItem
@@ -185,7 +184,7 @@ const FlowRunCard = React.memo(
                     className="cursor-pointer"
                   >
                     <div className="flex flex-row gap-2 items-center">
-                      <span>{t('On latest version')}</span>
+                      <span>{'On latest version'}</span>
                     </div>
                   </DropdownMenuItem>
 
@@ -206,7 +205,7 @@ const FlowRunCard = React.memo(
                       className="cursor-pointer"
                     >
                       <div className="flex flex-row gap-2 items-center">
-                        <span>{t('From failed step')}</span>
+                        <span>{'From failed step'}</span>
                       </div>
                     </DropdownMenuItem>
                   )}

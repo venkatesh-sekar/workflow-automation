@@ -34,7 +34,6 @@ import {
   PropertySettings,
   PieceTriggerSettings,
 } from '@flow/shared';
-import { t } from 'i18next';
 import { z, ZodType } from 'zod';
 
 function buildInputSchemaForStep(
@@ -184,10 +183,10 @@ function buildConnectionSchema(auth: PieceAuthProperty) {
   const connectionSchema = z.object({
     externalId: z
       .string()
-      .min(1, t('Name can only contain letters, numbers and underscores'))
+      .min(1, 'Name can only contain letters, numbers and underscores')
       .regex(
         /^[A-Za-z0-9_\-@+.]*$/,
-        t('Name can only contain letters, numbers and underscores'),
+        'Name can only contain letters, numbers and underscores',
       ),
   });
 

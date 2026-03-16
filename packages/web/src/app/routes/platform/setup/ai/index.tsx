@@ -1,6 +1,4 @@
 import { PlatformRole, FlowFlagId } from '@flow/shared';
-import { t } from 'i18next';
-
 import { CenteredPage } from '@/app/components/centered-page';
 import { SUPPORTED_AI_PROVIDERS } from '@/features/agents';
 import {
@@ -28,21 +26,15 @@ export default function AIProvidersPage() {
   return (
     <LockedFeatureGuard
       locked={currentUser?.platformRole !== PlatformRole.ADMIN}
-      lockTitle={t('Unlock AI')}
-      lockDescription={t(
-        'Set your AI providers so your users enjoy a seamless building experience with our universal AI pieces',
-      )}
+      lockTitle={'Unlock AI'}
+      lockDescription={'Set your AI providers so your users enjoy a seamless building experience with our universal AI pieces'}
     >
       <CenteredPage
-        title={t('AI Providers')}
+        title={'AI Providers'}
         description={
           allowWrite
-            ? t(
-                'Set provider credentials that will be used by universal AI pieces, i.e Text AI.',
-              )
-            : t(
-                'Available AI providers that will be used by universal AI pieces, i.e Text AI.',
-              )
+            ? 'Set provider credentials that will be used by universal AI pieces, i.e Text AI.'
+            : 'Available AI providers that will be used by universal AI pieces, i.e Text AI.'
         }
       >
         <div className="flex flex-col gap-4">
