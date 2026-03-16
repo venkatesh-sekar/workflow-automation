@@ -406,3 +406,9 @@
 - **Files changed:** packages/web/src/app/builder/data-selector/data-selector-node-content.tsx
 - **Learnings:** none
 ---
+## Iteration #59 - cross-area-polish
+- **Change:** Fixed flow-run-utils.ts status classes — removed 6 dead `dark:` overrides from `getStepOutputStatus` (2 on extraClassName) and `getStatusContainerClassName` (4 on container variant strings). Also removed duplicate `border-amber-500` from warning variant (conflicted with `border-amber-200` — kept `-200` to match success and error variants). Cleaned double spaces in default and animation class strings.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/flow-runs/utils/flow-run-utils.ts
+- **Learnings:** When status badge strings have duplicate conflicting border classes, keep the `-200` step to match sibling variants. The duplicate was likely a leftover from an earlier iteration.
+---

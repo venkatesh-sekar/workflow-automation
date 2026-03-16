@@ -1,5 +1,5 @@
 {
-  "iteration": 58,
+  "iteration": 59,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -467,6 +467,14 @@
       "change": "Remove dead dark:hover:bg-accent/20 from DataSelectorNodeContent — unreachable dark-mode hover opacity reduction. Light-mode hover:bg-accent already correct.",
       "files_modified": ["packages/web/src/app/builder/data-selector/data-selector-node-content.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 59,
+      "date": "2026-03-16",
+      "change": "Fix flow-run-utils status classes — removed 6 dead dark: overrides from getStepOutputStatus and getStatusContainerClassName, removed duplicate border-amber-500 from warning variant (conflicted with border-amber-200), cleaned double spaces in default and animation class strings",
+      "files_modified": ["packages/web/src/features/flow-runs/utils/flow-run-utils.ts"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -512,6 +520,7 @@
     "For small interactive thumb/knob elements (switches, sliders), use shadow-sm not shadow-lg. shadow-lg's 15px blur exceeds the element's own dimensions at small sizes, creating a disproportionate halo. shadow-sm provides enough lift to separate thumb from track without visual noise. Design spec: shadow-lg is reserved for dropdowns/modals only.",
     "For copy/action buttons in code blocks, apply text-muted-foreground on the Button element itself (not the wrapper div) so ghost variant hover/active states can override the muted color during interactions. Wrapper div should only carry positioning classes.",
     "FlowMarkdown Container uses raw Tailwind colors (bg-amber-50, text-amber-700) for WARNING variant instead of semantic tokens (bg-warning-50, text-warning-700). Values are equivalent but should be migrated in a follow-up for full token consistency with alert.tsx base component.",
-    "Remaining in-scope dark: overrides after #58: flow-run-utils.ts (6 dark: overrides on status badge/text classes), billing/success.tsx (4 dark: overrides on icon styles). Flow-canvas files and chart.tsx are out of scope."
+    "Remaining in-scope dark: overrides after #59: billing/success.tsx (4 dark: overrides on icon styles). Flow-canvas files and chart.tsx are out of scope.",
+    "When status badge class strings have duplicate conflicting border classes (e.g. border-amber-200 and border-amber-500), keep the -200 step to match sibling variants (success and error both use -200). The duplicate was likely a leftover from an earlier iteration."
   ]
 }
