@@ -358,3 +358,10 @@
 - **Files changed:** packages/web/src/components/ui/switch.tsx
 - **Learnings:** For small interactive thumb/knob elements, use shadow-sm not shadow-lg. The blur radius should not exceed the element's own dimensions.
 ---
+
+## Iteration #52 - cross-area-polish
+- **Change:** Fixed chat TextMessage hardcoded grays — replaced `text-gray-500` (hue 0°) with `text-muted-foreground` (hsl 220 10% 46%) on code block language label, moved `text-muted-foreground` from CopyCode wrapper div onto the Button element itself so ghost variant hover/active states can override the muted resting color during interactions, replaced `bg-gray-200` (hue 0°) with `bg-muted` (hsl 220 14% 96%) on inline `<code>` elements.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/chat/chat-message/text-message.tsx
+- **Learnings:** Apply text color tokens on interactive elements (Button), not their positioning wrappers, so component state styles (hover, active, focus) can override the resting color.
+---

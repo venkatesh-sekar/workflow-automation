@@ -76,7 +76,7 @@ export const TextMessage: React.FC<TextMessageProps> = React.memo(
                     readOnly={true}
                     extensions={extensions}
                   />
-                  <div className="absolute top-4 left-5 text-xs text-gray-500">
+                  <div className="absolute top-4 left-5 text-xs text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <CodeIcon className="size-3" />
                       <span>{match[1]}</span>
@@ -84,14 +84,14 @@ export const TextMessage: React.FC<TextMessageProps> = React.memo(
                   </div>
                   <CopyCode
                     textToCopy={String(children).trim()}
-                    className="absolute top-2 right-2 text-xs text-gray-500"
+                    className="absolute top-2 right-2 text-xs"
                   />
                 </div>
               ) : (
                 <code
                   className={cn(
                     className,
-                    'bg-gray-200 px-[6px] py-[2px] rounded-xs font-mono text-sm',
+                    'bg-muted px-[6px] py-[2px] rounded-xs font-mono text-sm',
                   )}
                   {...props}
                 >
@@ -134,7 +134,7 @@ const CopyCode = ({
     <div className={className}>
       <Button
         variant="ghost"
-        className="gap-2"
+        className="gap-2 text-muted-foreground"
         size="xs"
         onClick={() => {
           setIsCopied(true);
