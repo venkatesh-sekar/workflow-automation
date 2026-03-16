@@ -515,3 +515,10 @@
 - **Files changed:** packages/web/src/features/billing/components/success.tsx
 - **Learnings:** none
 ---
+
+## Iteration #75 - cross-area-polish
+- **Change:** Migrate global-search Live badge from raw bg-green-500/10 text-green-600 to semantic bg-success-50 text-success-700 tokens (both SearchResultRow and HistoryResultRow). Also fixed missing t() i18n wrapper on HistoryResultRow bare "Live" string.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/global-search/search-result-item.tsx
+- **Learnings:** none
+---

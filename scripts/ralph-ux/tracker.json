@@ -1,5 +1,5 @@
 {
-  "iteration": 74,
+  "iteration": 75,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -594,6 +594,14 @@
       "date": "2026-03-16",
       "change": "Migrate billing success downgrade case from raw orange-50/600 to semantic warning-50/600 tokens. Also stripped dark: overrides from both upgrade and downgrade cases (light-mode-only redesign).",
       "files_modified": ["packages/web/src/features/billing/components/success.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 75,
+      "date": "2026-03-16",
+      "change": "Migrate global-search Live badge from raw bg-green-500/10 text-green-600 to semantic bg-success-50 text-success-700 tokens. Also fixed missing t() i18n wrapper on HistoryResultRow Live text.",
+      "files_modified": ["packages/web/src/app/components/global-search/search-result-item.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

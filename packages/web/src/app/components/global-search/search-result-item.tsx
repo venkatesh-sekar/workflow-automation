@@ -137,7 +137,7 @@ export function SearchResultRow({ item }: { item: SearchResultItem }) {
         {item.label}
       </span>
       {item.status === 'ENABLED' && (
-        <span className="shrink-0 rounded-full bg-green-500/10 px-1.5 py-0.5 text-[10px] font-medium text-green-600">
+        <span className="shrink-0 rounded-full bg-success-50 px-1.5 py-0.5 text-[10px] font-medium text-success-700">
           {t('Live')}
         </span>
       )}
@@ -169,8 +169,8 @@ export function HistoryResultRow({ item }: { item: SearchHistoryItem }) {
         {item.label}
       </span>
       {item.status === 'ENABLED' && (
-        <span className="shrink-0 rounded-full bg-green-500/10 px-1.5 py-0.5 text-[10px] font-medium text-green-600">
-          Live
+        <span className="shrink-0 rounded-full bg-success-50 px-1.5 py-0.5 text-[10px] font-medium text-success-700">
+          {t('Live')}
         </span>
       )}
       <ItemMeta projectName={item.projectName} folderName={item.folderName} />
