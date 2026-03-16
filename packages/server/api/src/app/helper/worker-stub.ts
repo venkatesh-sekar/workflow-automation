@@ -16,10 +16,11 @@ import {
 import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@flow/pieces-framework'
 import { pieceHelper } from '../../../../engine/src/lib/helper/piece-helper'
 import { triggerHookOperation } from '../../../../engine/src/lib/operations/trigger-hook.operation'
-import { QueueName, webhookSecretsUtils } from '@flow/server-common'
+import { FlowSystemProp, QueueName, webhookSecretsUtils } from '@flow/server-common'
 import { Worker, Job } from 'bullmq'
 import { FastifyBaseLogger } from 'fastify'
 import { redisConnections } from '../database/redis-connections'
+import { system } from './system/system'
 import { accessTokenManager } from '../authentication/lib/access-token-manager'
 import { flowVersionRepo } from '../flows/flow-version/flow-version.service'
 import { pubsub } from './pubsub'
@@ -63,6 +64,7 @@ let worker: Worker | undefined
 
 export const flowWorker = (log: FastifyBaseLogger) => ({
     async init(_opts: { workerToken: string, markAsHealthy: () => Promise<void> }): Promise<void> {
+        await webhookSecretsUtils.init(system.getOrThrow(FlowSystemProp.APP_WEBHOOK_SECRETS))
         const connection = await redisConnections.create()
 
         worker = new Worker(
