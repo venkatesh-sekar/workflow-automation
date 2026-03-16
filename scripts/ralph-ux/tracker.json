@@ -1,5 +1,5 @@
 {
-  "iteration": 31,
+  "iteration": 32,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -251,6 +251,14 @@
       "change": "Fix TagInput hardcoded neutrals — replaced 8+ hue-0° neutral/gray colors and 6 dead dark: overrides with design tokens (border-input, bg-background, ring-ring, placeholder:text-muted-foreground, bg-muted for email badges)",
       "files_modified": ["packages/web/src/components/custom/tag-input.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 32,
+      "date": "2026-03-16",
+      "change": "Fix CircularIcon hardcoded grays — replaced 3 hue-0° gray classes and removed 3 dead dark: overrides with design tokens (text-border for track, text-foreground for percentage text, text-muted-foreground for label)",
+      "files_modified": ["packages/web/src/components/custom/circular-icon.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -287,6 +295,7 @@
     "When a component has both hover and selected border states, differentiate with opacity: hover at /20 (subtle affordance), selected at /25 (slightly stronger confirmation). Same token, different weight — perceptible without introducing new colors.",
     "Place transition-colors as a base class, not inside hover: variant — hover:transition-colors only applies the transition on hover entry, so mouse-out snaps back immediately without animation. Base transition-colors governs both enter and exit symmetrically.",
     "For small status indicator dots (w-2 h-2) in disabled/off state, use bg-border — it's a neutral surface token at 91% lightness, semantically appropriate for inactive indicators. Don't use bg-muted-foreground (a text/icon token, not a surface token). bg-border is already used on the outline badge's own border, making the visual relationship coherent.",
-    "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms."
+    "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms.",
+    "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels."
   ]
 }

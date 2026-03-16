@@ -220,3 +220,10 @@
 - **Files changed:** packages/web/src/components/custom/tag-input.tsx
 - **Learnings:** Composite input containers (tag-input, multi-select) must mirror canonical inputClass tokens. Hardcoded `neutral-*` and `bg-white` bypass the 220° cool blue-gray system and look hue-mismatched next to standard inputs in composed forms.
 ---
+
+## Iteration #32 - cross-area-polish
+- **Change:** Fixed CircularIcon hardcoded grays — replaced 3 hue-0° gray classes (`text-gray-200`, `text-gray-700`, `text-gray-700`) and removed 3 dead `dark:` overrides with design tokens. Background track: `text-border` (subtle 91% lightness ring). Percentage text: `text-foreground` (high-contrast bold data). Label: `text-muted-foreground` (subordinate secondary text).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/circular-icon.tsx
+- **Learnings:** For SVG stroke elements using `stroke="currentColor"`, apply color via `text-{token}` class — same token routing as HTML elements but rendered as a stroke instead of fill or background.
+---

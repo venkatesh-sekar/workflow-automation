@@ -26,7 +26,7 @@ export const CircularIcon: React.FC<Props> = ({
           r={radius}
           strokeWidth={strokeWidth}
           stroke="currentColor"
-          className="text-gray-200 dark:text-gray-700"
+          className="text-border"
           fill="transparent"
         />
         {/* Progress Circle */}
@@ -50,7 +50,7 @@ export const CircularIcon: React.FC<Props> = ({
           textAnchor="middle"
           fontSize={size * 0.225}
           fontWeight="bold"
-          className="fill-current text-gray-700 dark:text-gray-200"
+          className="fill-current text-foreground"
         >
           {value.toFixed(1)}%
         </text>
@@ -58,7 +58,7 @@ export const CircularIcon: React.FC<Props> = ({
 
       {/* Label */}
       {label && (
-        <div className="text-sm text-gray-700 dark:text-gray-400">{label}</div>
+        <div className="text-sm text-muted-foreground">{label}</div>
       )}
     </div>
   );
