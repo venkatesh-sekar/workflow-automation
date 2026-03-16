@@ -1,5 +1,5 @@
 {
-  "iteration": 48,
+  "iteration": 49,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -387,6 +387,14 @@
       "change": "Remove dead dark: override from CalendarDayButton — removed dark:hover:text-accent-foreground from className. Ghost button variant already provides enabled:hover:text-accent-foreground for light mode.",
       "files_modified": ["packages/web/src/components/ui/calendar.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 49,
+      "date": "2026-03-16",
+      "change": "Re-fix select.tsx dark: overrides (ghost commit from #45) — removed dark:bg-input/30, dark:hover:bg-input/50, dark:aria-invalid:ring-destructive/40 from SelectTrigger className. Verified with git diff --stat before committing.",
+      "files_modified": ["packages/web/src/components/ui/select.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -427,7 +435,7 @@
     "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
     "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
     "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>.",
-    "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43), toggle.tsx (#44), context-menu.tsx (#46), dropdown-menu.tsx (#47), calendar.tsx (#48). Ghost commits: select.tsx (#45) — code never staged, still has 3 dark: overrides. Remaining: select.tsx (re-fix), switch.tsx, chart.tsx.",
+    "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43), toggle.tsx (#44), select.tsx (#49 — re-fix of ghost commit #45), context-menu.tsx (#46), dropdown-menu.tsx (#47), calendar.tsx (#48). Remaining: switch.tsx, chart.tsx.",
     "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}."
   ]
 }

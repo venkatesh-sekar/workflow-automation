@@ -338,3 +338,10 @@
 - **Files changed:** packages/web/src/components/ui/calendar.tsx
 - **Learnings:** Calendar dark: cleanup complete. select.tsx #45 was another ghost commit (same pattern as #26, #29). Next priority: re-fix select.tsx dark: overrides.
 ---
+
+## Iteration #49 - cross-area-polish
+- **Change:** Re-fixed select.tsx dark: overrides that were missed in ghost commit #45 — removed `dark:bg-input/30`, `dark:hover:bg-input/50`, `dark:aria-invalid:ring-destructive/40` from SelectTrigger className. Verified code change was present in `git diff --stat` before committing. Select has 3 dark: overrides (vs 2 for other form primitives) because it also had a dark hover background state.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/select.tsx
+- **Learnings:** Ghost commit pattern finally broken — always verify `git diff --stat` shows source file changes before committing tracker updates. Updated systematic cleanup tracker: switch.tsx and chart.tsx remain.
+---
