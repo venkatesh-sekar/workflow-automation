@@ -1,5 +1,5 @@
 {
-  "iteration": 63,
+  "iteration": 64,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -507,6 +507,14 @@
       "change": "Remove drop-shadow-xl from new-field-popup PopoverContent — base PopoverContent already supplies shadow-md. drop-shadow-xl uses CSS filter (alpha-shape shadow) which is harsher and a different rendering mechanism. This was the last in-scope drop-shadow-xl override.",
       "files_modified": ["packages/web/src/features/tables/components/new-field-popup.tsx"],
       "heuristic": "Aesthetic and Minimalist Design (#8), Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 64,
+      "date": "2026-03-16",
+      "change": "Replace drop-shadow-md with shadow-md on TextEditor editing overlay — drop-shadow (CSS filter) on a rectangular div offers no advantage over box-shadow and uses a different rendering mechanism than every other elevated element in the codebase. shadow-md is the correct tier for a small floating overlay.",
+      "files_modified": ["packages/web/src/features/tables/components/text-editor.tsx"],
+      "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [

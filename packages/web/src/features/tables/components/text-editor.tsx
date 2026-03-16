@@ -21,7 +21,7 @@ const TextEditor = () => {
     <div className="h-full relative w-full relative">
       <div
         className={cn({
-          'h-min-[300px] w-min-[calc(100%+50px)] w-full absolute top-0  z-50 border-2 border-primary  drop-shadow-md':
+          'h-min-[300px] w-min-[calc(100%+50px)] w-full absolute top-0  z-50 border-2 border-primary  shadow-md':
             isEditing,
         })}
       >
