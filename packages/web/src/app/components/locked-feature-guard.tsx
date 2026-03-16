@@ -51,7 +51,7 @@ export const LockedFeatureGuard = ({
   return (
     <div className="flex w-full flex-col items-center justify-center gap-2">
       <div className="pt-8 text-center flex flex-col gap-2 justify-center items-center">
-        <h1 className="text-3xl font-bold">{lockTitle}</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">{lockTitle}</h1>
         <div className="text-center w-[485px] my-4 flex flex-col gap-2 justify-center items-center">
           <p className="text-md leading-relaxed text-muted-foreground">
             {lockDescription}

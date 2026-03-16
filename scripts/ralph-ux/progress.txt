@@ -459,3 +459,10 @@
 - **Files changed:** packages/web/src/features/members/components/accept-invitation.tsx
 - **Learnings:** none
 ---
+
+## Iteration #67 - cross-area-polish
+- **Change:** Fix LockedFeatureGuard heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec. Shared component used across multiple platform locked-feature pages.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/locked-feature-guard.tsx
+- **Learnings:** Remaining font-bold heading outliers: view-release.tsx (text-3xl), share-template.tsx (text-2xl), 404-page.tsx (text-3xl). Each should be font-semibold tracking-tight in separate iterations.
+---
