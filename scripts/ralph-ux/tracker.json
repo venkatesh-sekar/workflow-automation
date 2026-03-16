@@ -1,5 +1,5 @@
 {
-  "iteration": 68,
+  "iteration": 69,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -547,6 +547,14 @@
       "change": "Fix view-release page heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec. Continues heading weight normalization sweep from #66 and #67.",
       "files_modified": ["packages/web/src/app/routes/project-release/view-release.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 69,
+      "date": "2026-03-16",
+      "change": "Fix share-template heading typography — replaced font-bold (700) with font-semibold (600) to match design system heading spec. Continues heading weight normalization sweep; only 404-page.tsx remains.",
+      "files_modified": ["packages/web/src/features/templates/components/share-template.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -595,6 +603,6 @@
     "All in-scope dark: overrides now cleaned. Remaining out-of-scope: chart.tsx (structural THEMES constant), flow-canvas files. billing/success.tsx downgrade case uses raw orange-50/600 instead of semantic warning tokens — follow-up for token migration.",
     "When status badge class strings have duplicate conflicting border classes (e.g. border-amber-200 and border-amber-500), keep the -200 step to match sibling variants (success and error both use -200). The duplicate was likely a leftover from an earlier iteration.",
     "Never add shadow overrides to PopoverContent — the base component already supplies shadow-md which is the correct elevation for floating panels. All 15 PopoverContent usages now rely on the base shadow consistently. drop-shadow-xl on popovers was the only remaining in-scope drop-shadow-xl.",
-    "Remaining font-bold heading outliers at text-3xl/text-2xl: view-release.tsx line 84, share-template.tsx line 69, 404-page.tsx line 29. Each should be font-semibold tracking-tight. code-editor.tsx uses font-bold for active tab state (builder-chrome) — different pattern, may be intentional emphasis. Small icon letters (search-result-item, sidebar project avatar, impact pages) use font-bold at text-xs/text-[10px] for decorative purposes — leave alone."
+    "Remaining font-bold heading outlier: 404-page.tsx line 29 (text-3xl font-bold tracking-tight) — should be font-semibold. view-release.tsx fixed in #68, share-template.tsx fixed in #69. code-editor.tsx uses font-bold for active tab state (builder-chrome) — different pattern, may be intentional emphasis. Small icon letters (search-result-item, sidebar project avatar, impact pages) use font-bold at text-xs/text-[10px] for decorative purposes — leave alone. share-template.tsx also has border-2 shadow-lg on Card which is heavier than design system spec (border + shadow-sm) — follow-up candidate."
   ]
 }

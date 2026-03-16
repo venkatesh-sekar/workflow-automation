@@ -473,3 +473,10 @@
 - **Files changed:** packages/web/src/app/routes/project-release/view-release.tsx
 - **Learnings:** Remaining font-bold heading outliers: share-template.tsx (text-2xl), 404-page.tsx (text-3xl).
 ---
+
+## Iteration #69 - cross-area-polish
+- **Change:** Fix share-template heading typography — replaced font-bold (700) with font-semibold (600) to match design system heading spec. Continues heading weight normalization sweep from #66, #67, #68; only 404-page.tsx remains.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/templates/components/share-template.tsx
+- **Learnings:** share-template.tsx Card also uses border-2 shadow-lg which is heavier than design system spec — candidate for follow-up. UI review also noted PERMISSION_DENIED toast lacks recovery guidance.
+---
