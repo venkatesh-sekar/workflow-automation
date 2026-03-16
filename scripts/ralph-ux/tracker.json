@@ -1,5 +1,5 @@
 {
-  "iteration": 28,
+  "iteration": 29,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -227,6 +227,14 @@
       "change": "Fix PieceSelectorTabs hover — replaced hardcoded hover:bg-gray-300/30 dark:hover:bg-gray-300/10 with hover:bg-accent, removed stray data-[state=active]:active no-op class, converted both TabsList and TabsTrigger classNames from template literals to cn()",
       "files_modified": ["packages/web/src/features/pieces/components/piece-selector-tabs.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 29,
+      "date": "2026-03-16",
+      "change": "Fix BranchListItem hover — replaced hardcoded hover:bg-gray-100 dark:hover:bg-accent with hover:bg-accent, moved transition-colors to base (symmetric enter/exit), migrated raw className string to cn()",
+      "files_modified": ["packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx"],
+      "heuristic": "Consistency and Standards (#4), Visibility of System Status (#1)"
     }
   ],
   "learnings": [
@@ -260,6 +268,7 @@
     "Button variant hover classes must use enabled:hover: not bare hover: — matches the pattern in default/outline/secondary/accent/basic variants. Bare hover: fires on disabled buttons (especially with asChild/Slot where the host element may not be a native button). Ghost variant uses enabled:hover:bg-accent enabled:hover:text-accent-foreground.",
     "For skeleton/loading placeholders, use bg-border (91% lightness) not bg-muted (96%) — bg-muted is nearly invisible against #FAFAFA background (96% vs 98% = 1.03:1 contrast), especially at the 50% opacity dim phase of animate-pulse. bg-border provides enough contrast (91% vs 98% = 1.18:1) to remain perceptible throughout the animation cycle.",
     "For interactive card hover/selected borders, use border-foreground/20 — darkens subtly within the 220° hue family. Don't use border-primary for multi-select card borders (warm red reads as error/warning). Reserve border-primary for single focused/active items only.",
-    "When a component has both hover and selected border states, differentiate with opacity: hover at /20 (subtle affordance), selected at /25 (slightly stronger confirmation). Same token, different weight — perceptible without introducing new colors."
+    "When a component has both hover and selected border states, differentiate with opacity: hover at /20 (subtle affordance), selected at /25 (slightly stronger confirmation). Same token, different weight — perceptible without introducing new colors.",
+    "Place transition-colors as a base class, not inside hover: variant — hover:transition-colors only applies the transition on hover entry, so mouse-out snaps back immediately without animation. Base transition-colors governs both enter and exit symmetrically."
   ]
 }

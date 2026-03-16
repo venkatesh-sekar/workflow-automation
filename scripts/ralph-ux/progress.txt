@@ -199,3 +199,10 @@
 - **Files changed:** packages/web/src/features/pieces/components/piece-selector-tabs.tsx
 - **Learnings:** When fixing hover tokens in non-button components, use `hover:bg-accent` (not `enabled:hover:`) — the `enabled:` guard is only needed on Button variants where `asChild`/`Slot` can bypass native disabled behavior. TabsTrigger uses `data-[disabled]` which Radix handles separately.
 ---
+
+## Iteration #29 - cross-area-polish
+- **Change:** Fixed BranchListItem hover in builder router settings — replaced hardcoded `hover:bg-gray-100` (hue 0° pure gray) and `dark:hover:bg-accent` override with `hover:bg-accent` (220° cool blue-gray token). Moved `transition-colors` from `hover:` variant to base class so the transition governs both enter and exit symmetrically (previously mouse-out snapped back without animation). Migrated raw className string to `cn()` per coding rules. Cleaned up double spaces.
+- **Heuristic:** Consistency and Standards (#4), Visibility of System Status (#1)
+- **Files changed:** packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx
+- **Learnings:** Place `transition-colors` as a base class, not inside `hover:` variant — `hover:transition-colors` only applies the CSS transition property on hover entry, so mouse-out removal causes an instant snap-back without animation.
+---
