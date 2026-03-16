@@ -262,3 +262,10 @@
 - **Files changed:** packages/web/src/components/ui/badge.tsx
 - **Learnings:** Systematic dark: cleanup backlog identified across 13 shared UI components. Priority order by usage frequency: button.tsx > alert.tsx (also has text-destructive-300 inversion bug) > checkbox.tsx > input.tsx > remaining primitives.
 ---
+
+## Iteration #38 - cross-area-polish
+- **Change:** Fixed Alert component — removed dead `dark:` overrides from warning (`dark:border-warning dark:text-warning-300`), destructive (`dark:border-destructive`), and primary (`dark:border-primary`) variants. Fixed `text-destructive-300` (HSL 82% lightness, ~1.5:1 contrast ratio — WCAG AA failure) to `text-destructive-700` (41% lightness, ~5.5:1 contrast), matching the warning variant's `text-warning-700` pattern. Destructive alerts were functionally unreadable in light mode.
+- **Heuristic:** Visibility of System Status (#1), Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/alert.tsx
+- **Learnings:** For semantic alert text on light backgrounds, use the -700 step (text-destructive-700, text-warning-700). The -300 step is a dark-mode-only tint that fails WCAG contrast on white/near-white surfaces.
+---

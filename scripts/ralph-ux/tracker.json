@@ -1,5 +1,5 @@
 {
-  "iteration": 37,
+  "iteration": 38,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -299,6 +299,14 @@
       "change": "Remove dead dark: overrides from Badge component — removed dark:aria-invalid:ring-destructive/40 from base class, dark:bg-destructive-950 dark:text-destructive-300 dark:border-destructive-400 from destructive variant, dark:bg-success-950 dark:text-success-300 dark:border-success-400 from success variant",
       "files_modified": ["packages/web/src/components/ui/badge.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 38,
+      "date": "2026-03-16",
+      "change": "Fix Alert dark: overrides and destructive-300 legibility bug — removed dead dark:border-warning dark:text-warning-300, dark:border-destructive, dark:border-primary overrides from warning/destructive/primary variants. Fixed text-destructive-300 (HSL 82% lightness, ~1.5:1 contrast on white) to text-destructive-700 (41% lightness, ~5.5:1 contrast) matching warning variant pattern",
+      "files_modified": ["packages/web/src/components/ui/alert.tsx"],
+      "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -339,6 +347,7 @@
     "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
     "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
     "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>.",
-    "Systematic dark: cleanup needed across shared UI components: button.tsx (destructive variant has dark: overrides), alert.tsx (has dark: overrides AND a likely text-destructive-300 inversion bug — should be text-destructive-700 for light mode legibility), checkbox.tsx, input.tsx, textarea.tsx, radio-group.tsx, toggle.tsx, select.tsx, context-menu.tsx, dropdown-menu.tsx, calendar.tsx, chart.tsx, switch.tsx. Prioritize by usage frequency: button > alert > checkbox > input."
+    "Systematic dark: cleanup needed across shared UI components: button.tsx (base dark:aria-invalid + destructive variant dark: overrides), checkbox.tsx, input.tsx, textarea.tsx, radio-group.tsx, toggle.tsx, select.tsx, context-menu.tsx, dropdown-menu.tsx, calendar.tsx, chart.tsx, switch.tsx. Prioritize by usage frequency: button > checkbox > input.",
+    "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}."
   ]
 }
