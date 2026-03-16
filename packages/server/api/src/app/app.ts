@@ -34,6 +34,7 @@ import { mcpServerModule } from './mcp/mcp-module'
 import { communityPiecesModule } from './pieces/community-piece-module'
 import { pieceModule } from './pieces/metadata/piece-metadata-controller'
 import { pieceMetadataService } from './pieces/metadata/piece-metadata-service'
+import { pieceSyncService } from './pieces/piece-sync-service'
 import { tagsModule } from './pieces/tags/tags-module'
 import { platformModule } from './platform/platform.module'
 import { projectModule } from './project/project-module'
@@ -164,6 +165,7 @@ export const setupApp = async (app: FastifyInstance): Promise<FastifyInstance> =
     await app.register(queueMetricsModule)
     systemJobHandlers.registerJobHandler(SystemJobName.DELETE_FLOW, (data) => flowBackgroundJobs(app.log).deleteFlowHandler(data))
     systemJobHandlers.registerJobHandler(SystemJobName.UPDATE_FLOW_STATUS, (data) => flowBackgroundJobs(app.log).updateStatusHandler(data))
+    await pieceSyncService(app.log).setup()
 
     await systemJobsSchedule(app.log).startWorker()
 
