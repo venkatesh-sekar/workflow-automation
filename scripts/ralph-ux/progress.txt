@@ -206,3 +206,10 @@
 - **Files changed:** packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx
 - **Learnings:** Place `transition-colors` as a base class, not inside `hover:` variant — `hover:transition-colors` only applies the CSS transition property on hover entry, so mouse-out removal causes an instant snap-back without animation.
 ---
+
+## Iteration #30 - cross-area-polish
+- **Change:** Fixed MCP flows disabled toggle dot — replaced hardcoded `bg-gray-400` (hue 0° pure gray) with `bg-border` (hsl 220 13% 91%, the design system's neutral border token). `bg-border` is semantically correct as a surface/indicator token, unlike `bg-muted-foreground` which is a text token. Also converted template literal className to `cn()` and added `cn` import per coding rules.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/project-settings/mcp-server/mcp-flows.tsx
+- **Learnings:** For disabled indicator dots, use `bg-border` — a neutral surface token already present on the outline badge's own border, creating visual coherence. Don't use foreground tokens as backgrounds.
+---

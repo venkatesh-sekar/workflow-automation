@@ -2,6 +2,7 @@ import { PopulatedMcpServer, FlowStatus } from '@flow/shared';
 import { t } from 'i18next';
 
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export function McpFlows({ mcpServer }: McpFlowsProps) {
   const flows = mcpServer?.flows ?? [];
@@ -31,9 +32,10 @@ export function McpFlows({ mcpServer }: McpFlowsProps) {
               className="flex items-center gap-1.5"
             >
               <div
-                className={`w-2 h-2 rounded-full ${
-                  isEnabled ? 'bg-success' : 'bg-gray-400'
-                }`}
+                className={cn(
+                  'w-2 h-2 rounded-full',
+                  isEnabled ? 'bg-success' : 'bg-border',
+                )}
               />
               <span>{isEnabled ? t('On') : t('Off')}</span>
             </Badge>
