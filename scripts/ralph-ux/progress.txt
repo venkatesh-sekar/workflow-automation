@@ -234,3 +234,10 @@
 - **Files changed:** packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx
 - **Learnings:** Ghost commit pattern recurred (iterations #26 and #29). Always run `git diff --stat` before committing to verify both source and tracker files are staged.
 ---
+
+## Iteration #34 - cross-area-polish
+- **Change:** Fixed accept-invitation body text — replaced hardcoded `text-gray-700` (hue 0° pure gray) with `text-muted-foreground` (hsl 220 10% 46%, the design system's secondary text token). The invitation acceptance page is a user-facing trust-critical screen shown during team onboarding.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/members/components/accept-invitation.tsx
+- **Learnings:** none
+---

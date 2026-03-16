@@ -1,5 +1,5 @@
 {
-  "iteration": 33,
+  "iteration": 34,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -266,6 +266,14 @@
       "date": "2026-03-16",
       "change": "Apply BranchListItem hover fix missed in #29 — replaced hover:bg-gray-100 dark:hover:bg-accent with hover:bg-accent, moved transition-colors to base, migrated raw string to cn()",
       "files_modified": ["packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 34,
+      "date": "2026-03-16",
+      "change": "Fix accept-invitation body text — replaced hardcoded text-gray-700 (hue 0° pure gray) with text-muted-foreground (220° cool blue-gray token) for secondary text beneath heading",
+      "files_modified": ["packages/web/src/features/members/components/accept-invitation.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],
