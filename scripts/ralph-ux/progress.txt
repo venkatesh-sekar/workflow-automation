@@ -418,3 +418,9 @@
 - **Files changed:** packages/web/src/features/billing/components/success.tsx
 - **Learnings:** All in-scope dark: overrides now cleaned across 20+ shared UI and feature components. Remaining out-of-scope: chart.tsx (structural THEMES constant generating CSS variables), flow-canvas files. billing/success.tsx downgrade case uses raw `orange-50`/`orange-600` instead of semantic warning tokens — track as separate follow-up.
 ---
+## Iteration #61 - cross-area-polish
+- **Change:** Fixed remaining auth card shadows — replaced `drop-shadow-xl` with `shadow-sm` on change-password and verify-email Cards. These were missed in iteration #22 which fixed the login page and auth-form-template. All 4 standalone auth page cards now use `shadow-sm` consistently. `drop-shadow-xl` (CSS filter, ~20px blur) was outdated Bootstrap-era styling; `shadow-sm` (box-shadow, 1px 2px / 5% opacity) provides subtle lift matching shadcn/ui conventions.
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/features/authentication/components/change-password.tsx, packages/web/src/features/authentication/components/verify-email.tsx
+- **Learnings:** none
+---

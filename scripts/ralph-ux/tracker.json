@@ -1,5 +1,5 @@
 {
-  "iteration": 60,
+  "iteration": 61,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -483,6 +483,14 @@
       "change": "Remove dead dark: overrides from billing Success component — removed dark:bg-success-950, dark:text-success-400, dark:bg-orange-950, dark:text-orange-400 from upgrade and downgrade action config icon styles. Light-mode classes (success-50/600, orange-50/600) already correct.",
       "files_modified": ["packages/web/src/features/billing/components/success.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 61,
+      "date": "2026-03-16",
+      "change": "Fix remaining auth card shadows — replaced drop-shadow-xl with shadow-sm on change-password and verify-email Cards, completing the pattern from iteration #22 (login/auth-form-template). All standalone auth page cards now use shadow-sm consistently.",
+      "files_modified": ["packages/web/src/features/authentication/components/change-password.tsx", "packages/web/src/features/authentication/components/verify-email.tsx"],
+      "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
