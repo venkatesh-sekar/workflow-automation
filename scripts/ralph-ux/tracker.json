@@ -1,5 +1,5 @@
 {
-  "iteration": 77,
+  "iteration": 78,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -618,6 +618,14 @@
       "date": "2026-03-16",
       "change": "Remove raw text-amber-900 and redundant inline from AlertsSettings Bell icon — let Alert default variant [&>svg]:text-current cascade handle the color via text-card-foreground token",
       "files_modified": ["packages/web/src/app/components/project-settings/alerts/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 78,
+      "date": "2026-03-16",
+      "change": "Migrate flow-run warning status badge from raw amber-700/50/200 to semantic warning-700/50/200 tokens — completes semantic token adoption in getStatusContainerClassName where success and error siblings already used semantic tokens",
+      "files_modified": ["packages/web/src/features/flow-runs/utils/flow-run-utils.ts"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

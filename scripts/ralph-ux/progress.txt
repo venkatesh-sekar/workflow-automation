@@ -536,3 +536,10 @@
 - **Files changed:** packages/web/src/app/components/project-settings/alerts/index.tsx
 - **Learnings:** When Alert variant="default" provides `[&>svg]:text-current`, don't add explicit icon color classes — let the cascade handle it. Only warning/destructive/primary variants need explicit icon colors, and those are already handled by the Alert component itself.
 ---
+
+## Iteration #78 - cross-area-polish
+- **Change:** Migrated flow-run warning status badge from raw `text-amber-700 bg-amber-50 border-amber-200` to semantic `text-warning-700 bg-warning-50 border-warning-200` tokens. This was the sole raw-color outlier in `getStatusContainerClassName` — success and error siblings already used semantic tokens (success-800/50/200 and destructive-800/50/200).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/flow-runs/utils/flow-run-utils.ts
+- **Learnings:** Warning variant uses -700 text step while success/error use -800. Follow-up candidate to normalize to -800 for WCAG contrast parity on text-xs badges. Remaining amber-* in scope: triggers/index.tsx (2 usages). Out of scope: incomplete-settings-widget.tsx (flow-canvas).
+---

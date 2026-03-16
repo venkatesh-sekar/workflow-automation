@@ -166,7 +166,7 @@ export const flowRunUtils = {
         variant === 'success',
       'text-destructive-800 bg-destructive-50 border-destructive-200':
         variant === 'error',
-      'text-amber-700 bg-amber-50 border-amber-200':
+      'text-warning-700 bg-warning-50 border-warning-200':
         variant === 'warning',
       'bg-background border-border text-foreground': variant === 'default',
       'flex gap-1 animate-in fade-in slide-in-from-bottom-2 duration-500 items-center justify-center px-2 py-0.5':
