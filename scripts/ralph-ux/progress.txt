@@ -143,3 +143,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/workers/worker-configs-dialog.tsx
 - **Learnings:** Don't override component base styling with hardcoded colors — strip to layout-only constraints and let the component's own token-based classes handle visual styling.
 ---
+
+## Iteration #21 - login-auth
+- **Change:** Fixed login page hardcoded colors — replaced `text-red-600` on brand wordmark with `text-primary` and updated `font-bold` to `font-semibold tracking-tight` per heading spec. Removed `bg-red-600 hover:bg-red-700` className from sign-in button entirely — Button's default variant already renders `bg-primary text-primary-foreground hover:bg-primary/90`. Tailwind's `red-600` (`hsl(0 72% 51%)`) was noticeably different from the design token `--primary` (`hsl(4 55% 48%)`).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/login/index.tsx
+- **Learnings:** Button default variant already has correct primary styling — remove hardcoded color overrides entirely rather than replacing with token equivalents, to avoid tailwind-merge conflicts.
+---
