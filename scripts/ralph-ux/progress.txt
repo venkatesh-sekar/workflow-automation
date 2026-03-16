@@ -393,3 +393,10 @@
 - **Files changed:** packages/web/src/components/custom/search-input.tsx
 - **Learnings:** none
 ---
+
+## Iteration #57 - cross-area-polish
+- **Change:** Removed dead `dark:bg-foreground/10` from ImageWithColorBackground component — unreachable dark-mode background tint on bordered image containers when no extracted color is present. Light-mode `border border-border/50` already correct and untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/image-with-color-background.tsx
+- **Learnings:** none
+---

@@ -55,8 +55,7 @@ const ImageWithColorBackground = ({
     <span
       className={cn('relative inline-block h-full w-full', className, {
         'bg-background': backgroundColor === null,
-        'border border-border/50 dark:bg-foreground/10':
-          backgroundColor === null && border,
+        'border border-border/50': backgroundColor === null && border,
         'rounded-lg': roundedCorner,
       })}
       style={
