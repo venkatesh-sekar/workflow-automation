@@ -23,5 +23,5 @@ await esbuild.build({
         '@flow/piece-registry': path.resolve(__dirname, '../../pieces/registry.ts'),
         '@flow/server-common': path.resolve(__dirname, '../common/src'),
     },
-    external: ['isolated-vm', 'utf-8-validate', 'bufferutil', 'cpu-features', 'ssh2'],
+    external: ['isolated-vm', 'utf-8-validate', 'bufferutil', 'cpu-features', 'ssh2', 'pdf-parse', 'pg-format'],
 })
