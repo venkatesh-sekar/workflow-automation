@@ -452,3 +452,10 @@
 - **Files changed:** packages/web/src/app/builder/run-list/flow-run-card.tsx
 - **Learnings:** All in-scope drop-shadow-* classes now eliminated. Only remaining drop-shadow-md is in flow-canvas (out of scope). The codebase shadow system is now fully standardized: shadow-sm for small controls, shadow-md for popover-tier overlays (base component), shadow-lg for dialogs/sheets.
 ---
+
+## Iteration #66 - cross-area-polish
+- **Change:** Fix accept-invitation heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec and billing confirmation screen pattern (error.tsx, success.tsx)
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/members/components/accept-invitation.tsx
+- **Learnings:** none
+---

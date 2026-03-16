@@ -1,5 +1,5 @@
 {
-  "iteration": 65,
+  "iteration": 66,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -523,6 +523,14 @@
       "change": "Replace drop-shadow-md with shadow-sm on FlowRunCard retry button — last in-scope drop-shadow on an interactive control. CSS filter shadow on a 32px rounded-full button created disproportionate halo; shadow-sm provides subtle lift matching Switch thumb pattern from #51.",
       "files_modified": ["packages/web/src/app/builder/run-list/flow-run-card.tsx"],
       "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 66,
+      "date": "2026-03-16",
+      "change": "Fix accept-invitation heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec and billing confirmation screen pattern (error.tsx, success.tsx)",
+      "files_modified": ["packages/web/src/features/members/components/accept-invitation.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [

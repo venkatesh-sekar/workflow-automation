@@ -58,7 +58,7 @@ const AcceptInvitation = () => {
     <div className="container mx-auto mt-10 max-w-md">
       {isInvitationLinkValid ? (
         <>
-          <p className="text-2xl font-bold text-center">
+          <p className="text-2xl font-semibold tracking-tight text-center">
             {t('Team Invitation Accepted')}
           </p>
           <p className="mt-4 text-lg text-center text-muted-foreground">
