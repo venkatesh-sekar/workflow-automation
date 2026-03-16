@@ -213,3 +213,10 @@
 - **Files changed:** packages/web/src/app/components/project-settings/mcp-server/mcp-flows.tsx
 - **Learnings:** For disabled indicator dots, use `bg-border` — a neutral surface token already present on the outline badge's own border, creating visual coherence. Don't use foreground tokens as backgrounds.
 ---
+
+## Iteration #31 - cross-area-polish
+- **Change:** Fixed TagInput component hardcoded neutral/gray colors — replaced 8+ hue-0° `neutral-*` and `gray-*` classes plus 6 dead `dark:` overrides with design tokens. Wrapper: `border-input`, `bg-background`, `ring-offset-background`, `has-focus-visible:ring-ring`. Placeholder: `placeholder:text-muted-foreground`. Email badge defaults: `border-input bg-muted` (replacing `border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700`). TagInput now matches the canonical `inputClass` token pattern used by Input, Select, and other form elements.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/tag-input.tsx
+- **Learnings:** Composite input containers (tag-input, multi-select) must mirror canonical inputClass tokens. Hardcoded `neutral-*` and `bg-white` bypass the 220° cool blue-gray system and look hue-mismatched next to standard inputs in composed forms.
+---

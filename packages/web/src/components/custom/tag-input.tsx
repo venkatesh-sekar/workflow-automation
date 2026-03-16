@@ -46,7 +46,7 @@ const TagInput = forwardRef<HTMLInputElement, TagInputProps>((props, ref) => {
   const effectiveBadgeClassName =
     badgeClassName ||
     (type === 'email'
-      ? 'rounded-sm border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 font-normal'
+      ? 'rounded-sm border border-input bg-muted font-normal'
       : undefined);
 
   const effectiveInvalidBadgeClassName =
@@ -125,7 +125,7 @@ const TagInput = forwardRef<HTMLInputElement, TagInputProps>((props, ref) => {
         <div
           className={cn(
             // caveat: :has() variant requires tailwind v3.4 or above: https://tailwindcss.com/blog/tailwindcss-v3-4#new-has-variant
-            'has-focus-visible:ring-neutral-950 dark:has-focus-visible:ring-neutral-300 border-neutral-200 dark:border-neutral-800 dark:bg-neutral-950 dark:ring-offset-neutral-950 flex min-h-10 w-full rounded-md border bg-white ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 has-focus-visible:outline-hidden has-focus-visible:ring-2 has-focus-visible:ring-offset-2',
+            'has-focus-visible:ring-ring border-input bg-background ring-offset-background flex min-h-10 w-full rounded-md border disabled:cursor-not-allowed disabled:opacity-50 has-focus-visible:outline-hidden has-focus-visible:ring-2 has-focus-visible:ring-offset-2',
             className,
           )}
         >
@@ -173,7 +173,7 @@ const TagInput = forwardRef<HTMLInputElement, TagInputProps>((props, ref) => {
               })}
               <input
                 className={
-                  'placeholder:text-neutral-500 dark:placeholder:text-neutral-400 w-full min-w-[200px] flex-1 outline-hidden bg-transparent'
+                  'placeholder:text-muted-foreground w-full min-w-[200px] flex-1 outline-hidden bg-transparent'
                 }
                 autoComplete="off"
                 value={pendingDataPoint}

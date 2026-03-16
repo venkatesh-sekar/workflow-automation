@@ -1,5 +1,5 @@
 {
-  "iteration": 30,
+  "iteration": 31,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -243,6 +243,14 @@
       "change": "Fix MCP flows disabled toggle dot — replaced hardcoded bg-gray-400 (hue 0°) with bg-border (220° token), converted template literal to cn()",
       "files_modified": ["packages/web/src/app/components/project-settings/mcp-server/mcp-flows.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 31,
+      "date": "2026-03-16",
+      "change": "Fix TagInput hardcoded neutrals — replaced 8+ hue-0° neutral/gray colors and 6 dead dark: overrides with design tokens (border-input, bg-background, ring-ring, placeholder:text-muted-foreground, bg-muted for email badges)",
+      "files_modified": ["packages/web/src/components/custom/tag-input.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -278,6 +286,7 @@
     "For interactive card hover/selected borders, use border-foreground/20 — darkens subtly within the 220° hue family. Don't use border-primary for multi-select card borders (warm red reads as error/warning). Reserve border-primary for single focused/active items only.",
     "When a component has both hover and selected border states, differentiate with opacity: hover at /20 (subtle affordance), selected at /25 (slightly stronger confirmation). Same token, different weight — perceptible without introducing new colors.",
     "Place transition-colors as a base class, not inside hover: variant — hover:transition-colors only applies the transition on hover entry, so mouse-out snaps back immediately without animation. Base transition-colors governs both enter and exit symmetrically.",
-    "For small status indicator dots (w-2 h-2) in disabled/off state, use bg-border — it's a neutral surface token at 91% lightness, semantically appropriate for inactive indicators. Don't use bg-muted-foreground (a text/icon token, not a surface token). bg-border is already used on the outline badge's own border, making the visual relationship coherent."
+    "For small status indicator dots (w-2 h-2) in disabled/off state, use bg-border — it's a neutral surface token at 91% lightness, semantically appropriate for inactive indicators. Don't use bg-muted-foreground (a text/icon token, not a surface token). bg-border is already used on the outline badge's own border, making the visual relationship coherent.",
+    "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms."
   ]
 }
