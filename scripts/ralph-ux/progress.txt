@@ -400,3 +400,9 @@
 - **Files changed:** packages/web/src/components/custom/image-with-color-background.tsx
 - **Learnings:** none
 ---
+## Iteration #58 - cross-area-polish
+- **Change:** Removed dead `dark:hover:bg-accent/20` from DataSelectorNodeContent — unreachable dark-mode hover opacity reduction on data selector tree items. Light-mode `hover:bg-accent` already correct and untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/builder/data-selector/data-selector-node-content.tsx
+- **Learnings:** none
+---
