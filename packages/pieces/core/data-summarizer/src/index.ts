@@ -11,7 +11,7 @@ export const dataSummarizer = createPiece({
   displayName: 'Data Summarizer',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/data-summarizer.svg',
   authors: ['tahboubali'],
   actions: [calculateAverage, calculateSum, countUniques, getMinMax],
   triggers: [],

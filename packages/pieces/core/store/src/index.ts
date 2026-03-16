@@ -13,7 +13,7 @@ export const storage = createPiece({
   displayName: 'Storage',
   description: 'Store or retrieve data from key/value database',
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/store.svg',
   categories: [PieceCategory.CORE],
   auth: PieceAuth.None(),
   authors: ["JanHolger","fardeenpanjwani-codeglo","Abdallah-Alwarawreh","Salem-Alaa","kishanprmr","MoShizzle","khaledmashaly","abuaboud"],

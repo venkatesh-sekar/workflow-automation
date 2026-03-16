@@ -7,7 +7,7 @@ export const http = createPiece({
   version: '0.11.7',
   displayName: 'HTTP',
   description: 'Sends HTTP requests and return responses',
-  logoUrl: '',
+  logoUrl: '/pieces/http.svg',
   categories: [PieceCategory.CORE],
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.20.3',

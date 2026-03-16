@@ -28,13 +28,12 @@ type AIPieceActionsListProps = {
 };
 
 const ACTION_ICON_MAP: Record<string, string> = {
-  run_agent: '',
-  generateImage: '',
-  askAi: '',
-  summarizeText: '',
-  classifyText: '',
-  extractStructuredData:
-    '',
+  run_agent: '/pieces/agent.svg',
+  generateImage: '/pieces/image-ai.svg',
+  askAi: '/pieces/text-ai.svg',
+  summarizeText: '/pieces/text-ai.svg',
+  classifyText: '/pieces/text-ai.svg',
+  extractStructuredData: '/pieces/utility-ai.svg',
 };
 
 export const AIPieceActionsList: React.FC<AIPieceActionsListProps> = ({

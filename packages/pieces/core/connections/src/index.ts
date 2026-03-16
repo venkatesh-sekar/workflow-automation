@@ -8,7 +8,7 @@ export const connections = createPiece({
   displayName: 'Connections',
   description: 'Read connections dynamically',
   minimumSupportedRelease: '0.36.1',
-  logoUrl: '',
+  logoUrl: '/pieces/connections.svg',
   categories: [PieceCategory.CORE],
   auth: PieceAuth.None(),
   authors: ["kishanprmr","AbdulTheActivePiecer","khaledmashaly","abuaboud"],

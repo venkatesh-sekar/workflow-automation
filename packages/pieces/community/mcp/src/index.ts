@@ -9,7 +9,7 @@ export const mcp = createPiece({
   displayName: "MCP",
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.50.2',
-  logoUrl: "",
+  logoUrl: "/pieces/mcp.svg",
   authors: ['Gamal72', 'hazemadelkhalel'],
   description: 'Connect to your hosted MCP Server using any MCP client to communicate with tools',
   actions: [replyToMcpClient],

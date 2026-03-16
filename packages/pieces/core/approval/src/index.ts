@@ -10,7 +10,7 @@ export const approval = createPiece({
   description: 'Build approval process in your workflows',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/approvals.svg',
   authors: ["kishanprmr","MoShizzle","khaledmashaly","abuaboud"],
   categories: [PieceCategory.CORE, PieceCategory.FLOW_CONTROL],
   actions: [waitForApprovalLink, createApprovalLink],

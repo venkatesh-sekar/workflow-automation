@@ -12,7 +12,7 @@ export const forms = createPiece({
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.65.0',
   categories: [PieceCategory.CORE],
-  logoUrl: '',
+  logoUrl: '/pieces/human-input.svg',
   authors: ['anasbarg', 'MoShizzle', 'abuaboud'],
   actions: [returnResponse],
   triggers: [onFormSubmission, onChatSubmission],

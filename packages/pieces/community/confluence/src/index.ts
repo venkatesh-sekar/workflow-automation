@@ -12,7 +12,7 @@ export const confluence = createPiece({
   displayName: "Confluence",
   auth: confluenceAuth,
   minimumSupportedRelease: '0.30.0',
-  logoUrl: "",
+  logoUrl: "/pieces/confluence.png",
   authors: ["geekyme"],
   actions: [getPageContent,createPageFromTemplateAction,
     createCustomApiCallAction({

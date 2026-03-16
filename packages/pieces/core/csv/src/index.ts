@@ -9,7 +9,7 @@ export const csv = createPiece({
   displayName: 'CSV',
   description: 'Manipulate CSV text',
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/csv.svg',
   auth: PieceAuth.None(),
   categories: [PieceCategory.CORE],
   actions: [csvToJsonAction, jsonToCsvAction],

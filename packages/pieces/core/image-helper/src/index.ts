@@ -15,7 +15,7 @@ export const imageHelper = createPiece({
 
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/image-helper.svg',
   authors: ["AbdullahBitar","kishanprmr","abuaboud"],
   categories: [PieceCategory.CORE],
   actions: [imageToBase64, getMetaData, cropImage, rotateImage, resizeImage, compressImage],

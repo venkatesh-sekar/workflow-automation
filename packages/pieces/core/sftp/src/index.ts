@@ -20,7 +20,7 @@ export const ftpSftp = createPiece({
   displayName: 'FTP/SFTP',
   description: 'Connect to FTP, FTPS or SFTP servers',
   minimumSupportedRelease: '0.30.0',
-  logoUrl: '',
+  logoUrl: '/pieces/sftp.svg',
   categories: [PieceCategory.CORE, PieceCategory.DEVELOPER_TOOLS],
   authors: [
     'Abdallah-Alwarawreh',

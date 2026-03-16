@@ -11,7 +11,7 @@ export const schedule = createPiece({
   name: '@flow/piece-schedule',
   version: '0.1.17',
   displayName: 'Schedule',
-  logoUrl: '',
+  logoUrl: '/pieces/schedule.svg',
   description: 'Trigger flow with fixed schedule',
   categories: [PieceCategory.CORE],
   auth: PieceAuth.None(),

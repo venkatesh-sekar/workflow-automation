@@ -56,7 +56,7 @@ export const slack = createPiece({
   displayName: 'Slack',
   description: 'Channel-based messaging platform',
   minimumSupportedRelease: '0.79.0',
-  logoUrl: '',
+  logoUrl: '/pieces/slack.png',
   categories: [PieceCategory.COMMUNICATION],
   auth: slackAuth,
   events: {

@@ -14,7 +14,7 @@ export const tables = createPiece({
   name: '@flow/piece-tables',
   version: '0.2.17',
   displayName: 'Tables',
-  logoUrl: '',
+  logoUrl: '/pieces/tables.svg',
   categories: [PieceCategory.CORE],
   minimumSupportedRelease: '0.80.0',
   authors: ['amrdb'],

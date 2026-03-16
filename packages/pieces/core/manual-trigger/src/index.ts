@@ -9,7 +9,7 @@ export const manualTriggerPiece = createPiece({
       displayName: "Manual Trigger",
       auth: PieceAuth.None(),
       minimumSupportedRelease: '0.78.0',
-      logoUrl: "",
+      logoUrl: "/pieces/manual-trigger.svg",
       authors: ['AbdulTheActivePiecer'],
       actions: [],
       triggers: [manualTrigger],

@@ -15,7 +15,7 @@ export const PDF = createPiece({
   displayName: 'PDF',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.34.2',
-  logoUrl: '',
+  logoUrl: '/pieces/pdf.svg',
   authors: [
     'nyamkamunhjin',
     'abuaboud',

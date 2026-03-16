@@ -19,7 +19,7 @@ export const ai = createPiece({
     PieceCategory.ARTIFICIAL_INTELLIGENCE,
     PieceCategory.UNIVERSAL_AI,
   ],
-  logoUrl: "",
+  logoUrl: "/pieces/text-ai.svg",
   authors: ['anasbarg', 'amrdb', 'Louai-Zokerburg'],
   actions: [askAI, summarizeText, generateImageAction, classifyText, extractStructuredData, runAgent],
   triggers: [],

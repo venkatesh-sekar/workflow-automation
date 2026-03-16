@@ -18,7 +18,7 @@ export const math = createPiece({
   description: markdownDescription,
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.36.1',
-  logoUrl: '',
+  logoUrl: '/pieces/math-helper.svg',
   categories: [PieceCategory.CORE],
   authors: ["kishanprmr","MoShizzle","abuaboud"],
   actions: [

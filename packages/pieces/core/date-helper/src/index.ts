@@ -19,7 +19,7 @@ export const utilityDate = createPiece({
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.36.1',
   categories: [PieceCategory.CORE],
-  logoUrl: '',
+  logoUrl: '/pieces/date-helper.svg',
   authors: [
     'joeworkman',
     'kishanprmr',

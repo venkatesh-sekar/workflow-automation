@@ -12,7 +12,7 @@ export const webhook = createPiece({
   auth: PieceAuth.None(),
   categories: [PieceCategory.CORE],
   minimumSupportedRelease: '0.52.0',
-  logoUrl: '',
+  logoUrl: '/pieces/webhooks.svg',
   authors: ['abuaboud', 'pfernandez98', 'kishanprmr','AbdulTheActivePiecer'],
   actions: [returnResponse,returnResponseAndWaitForNextWebhook],
   triggers: [catchWebhook],

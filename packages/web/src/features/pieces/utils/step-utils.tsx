@@ -28,25 +28,25 @@ export const CORE_STEP_METADATA: Record<
 > = {
   [FlowActionType.CODE]: {
     displayName: 'Code',
-    logoUrl: '',
+    logoUrl: '/pieces/code.svg',
     description: 'Powerful Node.js & TypeScript code with npm',
     type: FlowActionType.CODE as const,
   },
   [FlowActionType.LOOP_ON_ITEMS]: {
     displayName: 'Loop on Items',
-    logoUrl: '',
+    logoUrl: '/pieces/loop.svg',
     description: 'Iterate over a list of items',
     type: FlowActionType.LOOP_ON_ITEMS as const,
   },
   [FlowActionType.ROUTER]: {
     displayName: 'Router',
-    logoUrl: '',
+    logoUrl: '/pieces/branch.svg',
     description: 'Split your flow into branches depending on condition(s)',
     type: FlowActionType.ROUTER as const,
   },
   [FlowTriggerType.EMPTY]: {
     displayName: 'Empty Trigger',
-    logoUrl: '',
+    logoUrl: '/pieces/empty-trigger.svg',
     description: 'Empty Trigger',
     type: FlowTriggerType.EMPTY as const,
   },

@@ -18,7 +18,7 @@ export const textHelper = createPiece({
   description: 'Tools for text processing',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.36.1',
-  logoUrl: '',
+  logoUrl: '/pieces/text-helper.svg',
   authors: [
     'joeworkman',
     'kishanprmr',
