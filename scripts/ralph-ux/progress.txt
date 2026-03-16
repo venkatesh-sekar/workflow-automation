@@ -431,3 +431,10 @@
 - **Files changed:** packages/web/src/components/custom/field.tsx
 - **Learnings:** Complete dark: cleanup inventory — 25+ files cleaned across iterations #37-#62. Remaining out-of-scope: chart.tsx THEMES constant (generates CSS variables via style tag, not a simple dark: class), flow-canvas files (all out of scope per redesign rules).
 ---
+
+## Iteration #63 - cross-area-polish
+- **Change:** Remove drop-shadow-xl from new-field-popup PopoverContent — base PopoverContent already supplies shadow-md. drop-shadow-xl uses CSS filter (alpha-shape shadow) which is harsher and a different rendering mechanism. This was the last in-scope drop-shadow-xl override.
+- **Heuristic:** Aesthetic and Minimalist Design (#8), Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/tables/components/new-field-popup.tsx
+- **Learnings:** Never add shadow overrides to PopoverContent — base component supplies shadow-md. All 15 PopoverContent usages now consistent.
+---
