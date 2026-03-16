@@ -1,5 +1,5 @@
 {
-  "iteration": 76,
+  "iteration": 77,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -610,6 +610,14 @@
       "date": "2026-03-16",
       "change": "Actually migrate billing success downgrade case from raw orange-50/600 to semantic warning-50/600 tokens — iteration #74 was a ghost commit that only updated tracker files without changing the source file.",
       "files_modified": ["packages/web/src/features/billing/components/success.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    }
+    ,{
+      "area": "cross-area-polish",
+      "iteration": 77,
+      "date": "2026-03-16",
+      "change": "Remove raw text-amber-900 and redundant inline from AlertsSettings Bell icon — let Alert default variant [&>svg]:text-current cascade handle the color via text-card-foreground token",
+      "files_modified": ["packages/web/src/app/components/project-settings/alerts/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

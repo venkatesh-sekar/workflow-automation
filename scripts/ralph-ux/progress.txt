@@ -529,3 +529,10 @@
 - **Files changed:** packages/web/src/features/billing/components/success.tsx
 - **Learnings:** Ghost commits continue to occur despite learning #44. After committing, verify with `git show HEAD --stat` that the source file appears in the diff, not just tracker files.
 ---
+
+## Iteration #77 - cross-area-polish
+- **Change:** Remove raw text-amber-900 and redundant `inline` from AlertsSettings Bell icon — the Alert default variant already applies `[&>svg]:text-current` which cascades `text-card-foreground`, the correct neutral token for an informational alert. Amber was semantically misleading (reads as warning).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/project-settings/alerts/index.tsx
+- **Learnings:** When Alert variant="default" provides `[&>svg]:text-current`, don't add explicit icon color classes — let the cascade handle it. Only warning/destructive/primary variants need explicit icon colors, and those are already handled by the Alert component itself.
+---

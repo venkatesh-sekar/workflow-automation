@@ -6,7 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 export const AlertsSettings = () => {
   return (
     <Alert variant="default">
-      <Bell className="inline w-4 h-4 text-amber-900" />
+      <Bell className="w-4 h-4" />
       <div className="flex flex-col gap-1">
         <AlertTitle>{t('Alerts')}</AlertTitle>
         <AlertDescription className="text-sm">
