@@ -1,5 +1,5 @@
 {
-  "iteration": 35,
+  "iteration": 36,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -283,6 +283,14 @@
       "change": "Fix import-flow-dialog labels — replaced hardcoded text-gray-700 (hue 0° pure gray) with text-foreground (220° cool blue-gray token) on Flow and Folder form field labels in both features/automations and features/flows copies",
       "files_modified": ["packages/web/src/features/automations/components/import-flow-dialog.tsx", "packages/web/src/features/flows/components/import-flow-dialog.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 36,
+      "date": "2026-03-16",
+      "change": "Fix git push dialog helper text — replaced hardcoded text-gray-500 with text-muted-foreground in push-everything-dialog, and replaced bare <div> with <FormDescription> (which includes text-sm text-muted-foreground + aria-describedby wiring) inside FormItem in push-to-git-dialog",
+      "files_modified": ["packages/web/src/features/project-releases/components/push-to-git-dialog.tsx", "packages/web/src/app/routes/project-release/push-everything-dialog/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -321,6 +329,7 @@
     "For small status indicator dots (w-2 h-2) in disabled/off state, use bg-border — it's a neutral surface token at 91% lightness, semantically appropriate for inactive indicators. Don't use bg-muted-foreground (a text/icon token, not a surface token). bg-border is already used on the outline badge's own border, making the visual relationship coherent.",
     "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms.",
     "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
-    "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged."
+    "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
+    "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>."
   ]
 }

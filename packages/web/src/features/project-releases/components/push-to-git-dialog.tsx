@@ -26,6 +26,7 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -128,14 +129,14 @@ const PushToGitDialog = (props: PushToGitDialogProps) => {
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
+                  <FormDescription>
+                    {t(
+                      'Enter a commit message to describe the changes you want to push.',
+                    )}
+                  </FormDescription>
                 </FormItem>
               )}
             />
-            <div className="text-sm text-gray-500 mt-2">
-              {t(
-                'Enter a commit message to describe the changes you want to push.',
-              )}
-            </div>
             <DialogFooter>
               <Button
                 type="button"

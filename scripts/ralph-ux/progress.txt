@@ -248,3 +248,10 @@
 - **Files changed:** packages/web/src/features/automations/components/import-flow-dialog.tsx, packages/web/src/features/flows/components/import-flow-dialog.tsx
 - **Learnings:** There are two copies of import-flow-dialog (features/automations and features/flows) — always fix both when doing token replacements. Form field labels use text-foreground (primary text), not text-muted-foreground (secondary text).
 ---
+
+## Iteration #36 - cross-area-polish
+- **Change:** Fixed git push dialog helper text — replaced hardcoded `text-gray-500` (hue 0° pure gray) with design tokens in both git push dialogs. In `push-to-git-dialog.tsx`, replaced bare `<div>` with `<FormDescription>` (which includes `text-sm text-muted-foreground` plus `aria-describedby` wiring) and moved it inside `<FormItem>` for proper form field association. In `push-everything-dialog/index.tsx`, replaced `text-gray-500` with `text-muted-foreground` (already correctly placed inside `<FormItem>`).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/project-releases/components/push-to-git-dialog.tsx, packages/web/src/app/routes/project-release/push-everything-dialog/index.tsx
+- **Learnings:** For form field helper/description text, prefer `<FormDescription>` over bare `<div>` — it includes `text-sm text-muted-foreground` and wires `aria-describedby` via FormItem context automatically.
+---
