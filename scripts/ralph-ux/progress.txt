@@ -275,3 +275,10 @@
 - **Files changed:** packages/web/src/components/ui/button.tsx
 - **Learnings:** Button dark: cleanup complete. Updated systematic cleanup tracker: badge (#37), alert (#38), button (#39) done. Next priority: checkbox.tsx (3 occurrences).
 ---
+
+## Iteration #40 - cross-area-polish
+- **Change:** Removed dead `dark:` overrides from Checkbox component — `dark:bg-input/30` and `dark:aria-invalid:ring-destructive/40` from base class, `dark:data-[state=checked]:bg-primary` from primary variant, `dark:data-[state=checked]:bg-secondary` from secondary variant. Items 3-4 were no-op duplicates that restated the same token value as the light-mode rule. Light-mode classes untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/checkbox.tsx
+- **Learnings:** Some dark: overrides are not just dead but genuinely no-op (restating identical token). Still remove them — they add cognitive noise and parse cost. Radio-group.tsx carries identical base-class overrides and should be cleaned next.
+---
