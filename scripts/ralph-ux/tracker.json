@@ -1,5 +1,5 @@
 {
-  "iteration": 34,
+  "iteration": 35,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -274,6 +274,14 @@
       "date": "2026-03-16",
       "change": "Fix accept-invitation body text — replaced hardcoded text-gray-700 (hue 0° pure gray) with text-muted-foreground (220° cool blue-gray token) for secondary text beneath heading",
       "files_modified": ["packages/web/src/features/members/components/accept-invitation.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 35,
+      "date": "2026-03-16",
+      "change": "Fix import-flow-dialog labels — replaced hardcoded text-gray-700 (hue 0° pure gray) with text-foreground (220° cool blue-gray token) on Flow and Folder form field labels in both features/automations and features/flows copies",
+      "files_modified": ["packages/web/src/features/automations/components/import-flow-dialog.tsx", "packages/web/src/features/flows/components/import-flow-dialog.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

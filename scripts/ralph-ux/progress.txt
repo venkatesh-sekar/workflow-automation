@@ -241,3 +241,10 @@
 - **Files changed:** packages/web/src/features/members/components/accept-invitation.tsx
 - **Learnings:** none
 ---
+
+## Iteration #35 - cross-area-polish
+- **Change:** Fixed import-flow-dialog form field labels — replaced hardcoded `text-gray-700` (hue 0° pure gray) with `text-foreground` (hsl 220 20% 14%, the design system's primary text token) on "Flow" and "Folder" label spans. Applied to both copies of the component: `features/automations/` and `features/flows/`. Used `text-foreground` (not `text-muted-foreground`) because these are primary form field labels with `font-medium` weight — they need full contrast to identify required inputs.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/automations/components/import-flow-dialog.tsx, packages/web/src/features/flows/components/import-flow-dialog.tsx
+- **Learnings:** There are two copies of import-flow-dialog (features/automations and features/flows) — always fix both when doing token replacements. Form field labels use text-foreground (primary text), not text-muted-foreground (secondary text).
+---
