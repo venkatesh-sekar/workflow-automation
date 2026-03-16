@@ -386,3 +386,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/health/index.tsx
 - **Learnings:** Fourth ghost commit discovered (#18, #26, #29, #45). Updated remaining dark: override inventory — 4 files remain in scope.
 ---
+
+## Iteration #56 - cross-area-polish
+- **Change:** Removed dead `dark:bg-transparent` from SearchInput inner Input className — redundant no-op that restates the same value as the light-mode `bg-transparent` class. The override originally existed to cancel `dark:bg-input/30` from `inputClass`, but `inputClass` was already cleaned of dark: overrides in iteration #42.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/search-input.tsx
+- **Learnings:** none
+---
