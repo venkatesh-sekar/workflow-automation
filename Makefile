@@ -81,9 +81,6 @@ dev-install:
 dev-build-deps:
 	@echo "Building shared dependencies..."
 	cd packages/shared && npm run build
-	cd packages/pieces/framework && npm run build
-	cd packages/pieces/common && npm run build
-	cd packages/server/common && npm run build
 	cd packages/server/engine && npm run build
 	@echo "All dependencies built."
 

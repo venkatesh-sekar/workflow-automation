@@ -1,4 +1,4 @@
-import { slack } from '@flow/piece-slack'
+import { pieceRegistry } from '@flow/piece-registry'
 import { Piece, PieceAuthProperty } from '@flow/pieces-framework'
 import {
     rejectedPromiseHandler,
@@ -28,7 +28,7 @@ import { triggerSourceService } from '../trigger-source/trigger-source-service'
 import { appEventRoutingService } from './app-event-routing.service'
 
 const appWebhooks: Record<string, Piece<PieceAuthProperty | PieceAuthProperty[] | undefined>> = {
-    slack,
+    slack: pieceRegistry.get('@flow/piece-slack') as Piece<PieceAuthProperty>,
 }
 const pieceNames: Record<string, string> = {
     slack: '@flow/piece-slack',

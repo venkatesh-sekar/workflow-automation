@@ -8,7 +8,13 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "worker": ["./src/app/helper/worker-stub.ts"]
+      "worker": ["./src/app/helper/worker-stub.ts"],
+      "@flow/engine": ["../../engine/src/main.ts"],
+      "@flow/pieces-common": ["../../pieces/common/src/index.ts"],
+      "@flow/pieces-framework": ["../../pieces/framework/src/index.ts"],
+      "@flow/server-common": ["../common/src/index.ts"],
+      "@flow/piece-registry": ["../../pieces/registry.ts"],
+      "@flow/shared": ["../../shared/src/index.ts"]
     }
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],

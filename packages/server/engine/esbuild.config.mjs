@@ -17,9 +17,11 @@ await esbuild.build({
     format: 'cjs',
     sourcemap: true,
     alias: {
-        '@activepieces/shared': path.resolve(__dirname, '../../shared/src'),
-        '@activepieces/pieces-framework': path.resolve(__dirname, '../../pieces/framework/src'),
-        '@activepieces/pieces-common': path.resolve(__dirname, '../../pieces/common/src'),
+        '@flow/shared': path.resolve(__dirname, '../../shared/src'),
+        '@flow/pieces-framework': path.resolve(__dirname, '../../pieces/framework/src'),
+        '@flow/pieces-common': path.resolve(__dirname, '../../pieces/common/src'),
+        '@flow/piece-registry': path.resolve(__dirname, '../../pieces/registry.ts'),
+        '@flow/server-common': path.resolve(__dirname, '../common/src'),
     },
-    external: ['isolated-vm', 'utf-8-validate', 'bufferutil'],
+    external: ['isolated-vm', 'utf-8-validate', 'bufferutil', 'cpu-features', 'ssh2'],
 })
