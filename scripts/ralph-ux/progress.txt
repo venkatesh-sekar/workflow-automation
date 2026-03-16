@@ -494,3 +494,10 @@
 - **Files changed:** packages/web/src/features/templates/components/share-template.tsx
 - **Learnings:** none
 ---
+
+## Iteration #72 - cross-area-polish
+- **Change:** Migrated all pending-invitation `text-orange-700` to semantic `text-warning-700` across both project-settings/members/columns.tsx (2 instances) and platform/users/columns.tsx (3 instances). Also fixed template-literal className to `cn()` in platform/users/columns.tsx line 62 per web package coding rules.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/project-settings/members/columns.tsx, packages/web/src/app/routes/platform/users/columns.tsx
+- **Learnings:** When migrating raw Tailwind colors to semantic tokens, grep for the same raw color across all in-scope files to batch the migration — partial migration creates cross-page inconsistency worse than the original.
+---

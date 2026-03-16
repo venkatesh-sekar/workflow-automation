@@ -1,5 +1,5 @@
 {
-  "iteration": 71,
+  "iteration": 72,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -571,6 +571,14 @@
       "change": "Fix share-template Card elevation — replaced shadow-lg border-2 with shadow-sm, letting Card base handle the 1px border. Standalone page cards should use shadow-sm max, not overlay-level shadow-lg.",
       "files_modified": ["packages/web/src/features/templates/components/share-template.tsx"],
       "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 72,
+      "date": "2026-03-16",
+      "change": "Migrate pending-invitation text-orange-700 to text-warning-700 across project-settings members and platform users tables. Also fixed template-literal className to cn() in platform/users/columns.tsx.",
+      "files_modified": ["packages/web/src/app/components/project-settings/members/columns.tsx", "packages/web/src/app/routes/platform/users/columns.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [

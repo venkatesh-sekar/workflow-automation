@@ -1,6 +1,7 @@
 import { PlatformRole, UserStatus } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { t } from 'i18next';
+
 import {
   Tag,
   Fingerprint,
@@ -21,6 +22,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
 import { UserRowData } from './index';
 
@@ -51,7 +53,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
           {isInvitation && (
             <Tooltip>
               <TooltipTrigger>
-                <Info className="h-4 w-4 text-orange-700" />
+                <Info className="h-4 w-4 text-warning-700" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>{t('Pending Invitation')}</p>
@@ -59,9 +61,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
             </Tooltip>
           )}
           <div
-            className={`flex flex-col gap-0.5 ${
-              isInvitation ? 'text-orange-700' : ''
-            }`}
+            className={cn('flex flex-col gap-0.5', isInvitation && 'text-warning-700')}
           >
             {showEmail && (
               <div className="flex items-center gap-1.5">
@@ -179,7 +179,7 @@ export const createUsersTableColumns = (): ColumnDefWithAccessorKey[] => [
     ),
     cell: ({ row }) => {
       if (row.original.type === 'invitation') {
-        return <div className="text-left text-orange-700">{t('Pending')}</div>;
+        return <div className="text-left text-warning-700">{t('Pending')}</div>;
       }
       return (
         <div className="text-left">
