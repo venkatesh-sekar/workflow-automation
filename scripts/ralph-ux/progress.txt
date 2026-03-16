@@ -501,3 +501,10 @@
 - **Files changed:** packages/web/src/app/components/project-settings/members/columns.tsx, packages/web/src/app/routes/platform/users/columns.tsx
 - **Learnings:** When migrating raw Tailwind colors to semantic tokens, grep for the same raw color across all in-scope files to batch the migration — partial migration creates cross-page inconsistency worse than the original.
 ---
+
+## Iteration #73 - cross-area-polish
+- **Change:** Migrate FlowMarkdown WARNING variant from raw amber-* to semantic warning-* tokens (bg-warning-50, text-warning-700). Removed explicit stroke-amber-700 from AlertTriangle icon — inherits currentColor from parent, matching Info and Lightbulb icon pattern.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/markdown.tsx
+- **Learnings:** none
+---

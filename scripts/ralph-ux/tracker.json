@@ -1,5 +1,5 @@
 {
-  "iteration": 72,
+  "iteration": 73,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -578,6 +578,14 @@
       "date": "2026-03-16",
       "change": "Migrate pending-invitation text-orange-700 to text-warning-700 across project-settings members and platform users tables. Also fixed template-literal className to cn() in platform/users/columns.tsx.",
       "files_modified": ["packages/web/src/app/components/project-settings/members/columns.tsx", "packages/web/src/app/routes/platform/users/columns.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 73,
+      "date": "2026-03-16",
+      "change": "Migrate FlowMarkdown WARNING variant from raw amber-* to semantic warning-* tokens (bg-warning-50, text-warning-700). Removed explicit stroke-amber-700 from AlertTriangle icon — inherits currentColor from parent, matching Info and Lightbulb icon pattern.",
+      "files_modified": ["packages/web/src/components/custom/markdown.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],
