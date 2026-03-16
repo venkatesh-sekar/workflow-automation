@@ -4,22 +4,33 @@
  * the engine's piece helpers without forking a child process.
  */
 import {
+    EngineHttpResponse,
     EngineResponseStatus,
+    EngineSocketEvent,
     ExecuteActionResponse,
+    ExecuteFlowOperation,
     ExecuteToolResponse,
     ExecuteTriggerResponse,
     ExecuteValidateAuthResponse,
+    ExecutionType,
+    FlowRunStatus,
+    SendFlowResponseRequest,
     TriggerHookType,
+    UploadRunLogsRequest,
     WorkerJobType,
     isNil,
 } from '@flow/shared'
 import { DropdownState, DynamicPropsValue, PieceMetadata, PropertyType } from '@flow/pieces-framework'
 import { pieceHelper } from '../../../../engine/src/lib/helper/piece-helper'
+import { flowOperation } from '../../../../engine/src/lib/operations/flow.operation'
 import { triggerHookOperation } from '../../../../engine/src/lib/operations/trigger-hook.operation'
+import { progressService } from '../../../../engine/src/lib/services/progress.service'
+import { workerSocket } from '../../../../engine/src/lib/worker-socket'
 import { FlowSystemProp, QueueName, webhookSecretsUtils } from '@flow/server-common'
 import { Worker, Job } from 'bullmq'
 import { FastifyBaseLogger } from 'fastify'
 import { redisConnections } from '../database/redis-connections'
+import { runsMetadataQueue } from '../flows/flow-run/flow-runs-queue'
 import { system } from './system/system'
 import { accessTokenManager } from '../authentication/lib/access-token-manager'
 import { flowVersionRepo } from '../flows/flow-version/flow-version.service'
@@ -199,6 +210,99 @@ export const flowWorker = (log: FastifyBaseLogger) => ({
                             await publishResponse(log, jobData.requestId, jobData.webserverId, triggerResponse)
                             break
                         }
+                        case WorkerJobType.EXECUTE_FLOW: {
+                            const flowVersion = await flowVersionRepo().findOneBy({ id: jobData.flowVersionId })
+                            if (isNil(flowVersion)) {
+                                throw new Error(`Flow version not found: ${jobData.flowVersionId}`)
+                            }
+
+                            const engineToken = await accessTokenManager(log).generateEngineToken({
+                                jobId: jobData.runId,
+                                projectId: jobData.projectId,
+                                platformId: jobData.platformId,
+                            })
+
+                            const input: ExecuteFlowOperation = {
+                                projectId: jobData.projectId,
+                                platformId: jobData.platformId,
+                                engineToken,
+                                internalApiUrl: INTERNAL_API_URL,
+                                publicApiUrl: PUBLIC_API_URL,
+                                timeoutInSeconds: 600,
+                                flowVersion,
+                                flowRunId: jobData.runId,
+                                executionType: jobData.executionType as ExecutionType.BEGIN,
+                                runEnvironment: jobData.environment,
+                                executionState: { steps: {}, tags: [] },
+                                serverHandlerId: jobData.synchronousHandlerId ?? null,
+                                httpRequestId: jobData.httpRequestId ?? null,
+                                progressUpdateType: jobData.progressUpdateType,
+                                stepNameToTest: jobData.stepNameToTest ?? null,
+                                sampleData: jobData.sampleData,
+                                logsUploadUrl: jobData.logsUploadUrl,
+                                logsFileId: jobData.logsFileId,
+                                triggerPayload: jobData.payload,
+                                executeTrigger: jobData.executeTrigger ?? false,
+                            }
+
+                            // Override workerSocket to intercept engine events inline
+                            // (mirrors upstream sandbox-event-handlers.ts)
+                            const originalSend = workerSocket.sendToWorkerWithAck
+                            workerSocket.sendToWorkerWithAck = async (event: EngineSocketEvent, data: unknown): Promise<void> => {
+                                switch (event) {
+                                    case EngineSocketEvent.UPLOAD_RUN_LOG: {
+                                        const req = data as UploadRunLogsRequest
+                                        await runsMetadataQueue(log).add({
+                                            id: req.runId,
+                                            projectId: req.projectId,
+                                            status: req.status,
+                                            failedStep: req.failedStep,
+                                            startTime: req.startTime,
+                                            finishTime: req.finishTime,
+                                            logsFileId: req.logsFileId,
+                                            tags: req.tags,
+                                            pauseMetadata: req.pauseMetadata,
+                                            stepsCount: req.stepsCount,
+                                        })
+                                        // Handle sync flow error response
+                                        const nonSupportedStatuses = [FlowRunStatus.RUNNING, FlowRunStatus.SUCCEEDED, FlowRunStatus.PAUSED]
+                                        if (!nonSupportedStatuses.includes(req.status) && !isNil(req.workerHandlerId) && !isNil(req.httpRequestId)) {
+                                            await publishResponse(log, req.httpRequestId, req.workerHandlerId, getFlowErrorResponse(req.status))
+                                        }
+                                        break
+                                    }
+                                    case EngineSocketEvent.SEND_FLOW_RESPONSE: {
+                                        const req = data as SendFlowResponseRequest
+                                        if (req.workerHandlerId && req.httpRequestId) {
+                                            await publishResponse(log, req.httpRequestId, req.workerHandlerId, req.runResponse)
+                                        }
+                                        break
+                                    }
+                                    case EngineSocketEvent.UPDATE_RUN_PROGRESS:
+                                    case EngineSocketEvent.UPDATE_STEP_PROGRESS:
+                                    case EngineSocketEvent.ENGINE_RESPONSE:
+                                    case EngineSocketEvent.ENGINE_STDOUT:
+                                    case EngineSocketEvent.ENGINE_STDERR:
+                                        // No-op in inline mode (no frontend websocket, no sandbox)
+                                        break
+                                    default:
+                                        log.debug({ event }, '[inlineWorker] Unhandled engine socket event')
+                                }
+                            }
+
+                            // Start backup loop (mirrors engine/src/main.ts)
+                            progressService.init()
+
+                            try {
+                                await flowOperation.execute(input)
+                                log.info({ runId: jobData.runId }, '[inlineWorker] Flow execution completed')
+                            }
+                            finally {
+                                await progressService.shutdown()
+                                workerSocket.sendToWorkerWithAck = originalSend
+                            }
+                            break
+                        }
                         default:
                             log.warn({ jobType: jobData.jobType }, '[inlineWorker] Unhandled job type')
                     }
@@ -236,6 +340,22 @@ export const flowWorker = (log: FastifyBaseLogger) => ({
         }
     },
 })
+
+function getFlowErrorResponse(status: FlowRunStatus): EngineHttpResponse {
+    switch (status) {
+        case FlowRunStatus.INTERNAL_ERROR:
+            return { status: 500, body: { message: 'An internal error has occurred' }, headers: {} }
+        case FlowRunStatus.FAILED:
+        case FlowRunStatus.MEMORY_LIMIT_EXCEEDED:
+            return { status: 500, body: { message: 'The flow has failed and there is no response returned' }, headers: {} }
+        case FlowRunStatus.TIMEOUT:
+            return { status: 504, body: { message: 'The request took too long to reply' }, headers: {} }
+        case FlowRunStatus.QUOTA_EXCEEDED:
+            return { status: 204, body: {}, headers: {} }
+        default:
+            throw new Error(`Unexpected flow run status: ${status}`)
+    }
+}
 
 async function publishResponse(log: FastifyBaseLogger, requestId: string, webserverId: string, response: unknown): Promise<void> {
     const message = JSON.stringify({ requestId, response })
