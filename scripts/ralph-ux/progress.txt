@@ -310,3 +310,10 @@
 - **Files changed:** packages/web/src/components/ui/toggle.tsx
 - **Learnings:** Toggle dark: cleanup complete. Next in systematic cleanup: select.tsx.
 ---
+
+## Iteration #45 - cross-area-polish
+- **Change:** Removed dead `dark:` overrides from Select component — removed `dark:bg-input/30`, `dark:hover:bg-input/50`, `dark:aria-invalid:ring-destructive/40` from SelectTrigger className. Select has 3 overrides (vs 2 for other form primitives) because it also had a dark hover state. Light-mode classes (`bg-transparent`, `aria-invalid:ring-destructive/20`) untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/select.tsx
+- **Learnings:** Select dark: cleanup complete. Next in systematic cleanup: context-menu.tsx.
+---
