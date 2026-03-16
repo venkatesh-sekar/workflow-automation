@@ -157,3 +157,10 @@
 - **Files changed:** packages/web/src/app/routes/login/index.tsx, packages/web/src/features/authentication/components/auth-form-template.tsx
 - **Learnings:** Use `shadow-sm` (box-shadow) not `drop-shadow-*` (CSS filter) for card elevation — different utility families with different rendering. Standalone page cards get `shadow-sm`; layout cards inside sidebar containers get no shadow at all.
 ---
+
+## Iteration #23 - cross-area-polish
+- **Change:** Added conditional color to DataTableColumnHeader sort icon — `text-foreground` when actively sorted (asc/desc), `text-muted-foreground` when unsorted. Users can now identify the active sort column at a glance by the darker arrow icon. Resolves the follow-up noted in iteration #12 learnings.
+- **Heuristic:** Visibility of System Status (#1)
+- **Files changed:** packages/web/src/components/custom/data-table/data-table-column-header.tsx
+- **Learnings:** For stateful icons in shared components, use conditional cn() color: active state gets text-foreground, inactive/idle gets text-muted-foreground. This two-tier contrast pattern signals state without introducing new colors.
+---

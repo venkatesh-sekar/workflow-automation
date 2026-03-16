@@ -50,7 +50,12 @@ export function DataTableColumnHeader<TData, TValue>({
           <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0 mr-2" />
         )}
         {title}
-        <SortIcon className="ml-2 h-4 w-4" />
+        <SortIcon
+          className={cn(
+            'ml-2 h-4 w-4 flex-shrink-0',
+            sortDirection ? 'text-foreground' : 'text-muted-foreground',
+          )}
+        />
       </Button>
     );
   }

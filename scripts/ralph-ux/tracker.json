@@ -1,5 +1,5 @@
 {
-  "iteration": 22,
+  "iteration": 23,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -179,6 +179,14 @@
       "change": "Replace harsh drop-shadow-xl with subtle shadow-sm on both auth cards — team login page and sign-in/sign-up auth template. Card border + off-white bg contrast provides primary separation; shadow-sm adds minimal lift per design spec.",
       "files_modified": ["packages/web/src/app/routes/login/index.tsx", "packages/web/src/features/authentication/components/auth-form-template.tsx"],
       "heuristic": "Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 23,
+      "date": "2026-03-16",
+      "change": "Add conditional color to sort icon — text-foreground when actively sorted (asc/desc), text-muted-foreground when unsorted, so users can identify the active sort column at a glance",
+      "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
+      "heuristic": "Visibility of System Status (#1)"
     }
   ],
   "learnings": [
@@ -196,7 +204,7 @@
     "Table column headers should use text-muted-foreground font-normal to be visually subordinate to data rows. Align all three hierarchy signals (size, weight, color) in the same direction — don't use font-medium to compensate for muted color.",
     "For structural/container icons (folders), use text-muted-foreground/70 — subordinate to semantic icons (text-primary for flows, text-emerald-500 for tables) but clearly from the design token system. Never use raw Tailwind grays (gray-400) which have hue 0° instead of the 220° cool blue-gray palette.",
     "DataTableColumnHeader -ml-3 on sortable button is a negative margin violation but compensates for table cell padding. Audit th/td padding before removing — otherwise sortable headers will appear indented.",
-    "When sortDirection is active (asc/desc), the SortIcon should get text-foreground to signal active sort state. Currently all states render at muted contrast. Follow-up needed for Heuristic #1 (Visibility of System Status).",
+    "Sort icon active state: use text-foreground when sortDirection is truthy, text-muted-foreground when unsorted. Resolved in iteration #23.",
     "Vite build has pre-existing zod resolution failure — use tsc --noEmit for verification when vite build is broken.",
     "For table cell links (navigable counts, IDs), use text-primary hover:underline cursor-pointer transition-colors duration-150 wrapped in cn(). Don't use permanent underline — reveal on hover matches Linear/Retool table cell link pattern. Don't use hover:text-primary-300 as it's darker, not lighter.",
     "For inline separators between metadata items, use <div className=\"h-4 w-px bg-border\" /> — the established codebase pattern. Never use bare text pipe characters. The parent gap utility handles spacing automatically.",
