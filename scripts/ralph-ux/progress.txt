@@ -345,3 +345,9 @@
 - **Files changed:** packages/web/src/components/ui/select.tsx
 - **Learnings:** Ghost commit pattern finally broken — always verify `git diff --stat` shows source file changes before committing tracker updates. Updated systematic cleanup tracker: switch.tsx and chart.tsx remain.
 ---
+## Iteration #50 - cross-area-polish
+- **Change:** Removed dead `dark:bg-foreground` override from Switch thumb component. In dark mode this would have set the thumb to near-black (#0D0F12 range) — a live silent-failure risk if `.dark` class ever applied. Light-mode `bg-background` (#FAFAFA) is already correct for the white thumb against colored track, matching Linear/Notion switch pattern.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/switch.tsx
+- **Learnings:** Switch dark: cleanup complete. Chart.tsx THEMES constant is structural (generates CSS variables for chart colors via `<style>` tag) — not a simple `dark:` class to remove. Switch thumb also has shadow-lg which is disproportionate for a 16px element — downgrade to shadow-sm in next iteration.
+---
