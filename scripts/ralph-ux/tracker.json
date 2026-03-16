@@ -1,5 +1,5 @@
 {
-  "iteration": 27,
+  "iteration": 28,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -219,6 +219,14 @@
       "change": "Apply Card border fix from #26 (code was missed in that commit) — hover:border-foreground/20 for interactive variant, border-foreground/25 for isSelected (slightly stronger to differentiate selection from hover)",
       "files_modified": ["packages/web/src/components/ui/card.tsx"],
       "heuristic": "Consistency and Standards (#4), Visibility of System Status (#1)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 28,
+      "date": "2026-03-16",
+      "change": "Fix PieceSelectorTabs hover — replaced hardcoded hover:bg-gray-300/30 dark:hover:bg-gray-300/10 with hover:bg-accent, removed stray data-[state=active]:active no-op class, converted both TabsList and TabsTrigger classNames from template literals to cn()",
+      "files_modified": ["packages/web/src/features/pieces/components/piece-selector-tabs.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [

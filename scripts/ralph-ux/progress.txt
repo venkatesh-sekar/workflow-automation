@@ -192,3 +192,10 @@
 - **Files changed:** packages/web/src/components/ui/card.tsx
 - **Learnings:** When a component has both hover and selected border states, differentiate with opacity: hover at /20, selected at /25. Same token, different weight — perceptible without introducing new colors. Also: always verify code changes are staged before committing tracker updates.
 ---
+
+## Iteration #28 - cross-area-polish
+- **Change:** Fixed PieceSelectorTabs hover — replaced hardcoded `hover:bg-gray-300/30 dark:hover:bg-gray-300/10` (hue 0° raw gray) with `hover:bg-accent` (220° cool blue-gray token). Removed stray `data-[state=active]:active` class (not a valid Tailwind utility, resolved to nothing). Converted both `TabsList` and `TabsTrigger` classNames from template literals to `cn()` per CLAUDE.md coding rules.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/pieces/components/piece-selector-tabs.tsx
+- **Learnings:** When fixing hover tokens in non-button components, use `hover:bg-accent` (not `enabled:hover:`) — the `enabled:` guard is only needed on Button variants where `asChild`/`Slot` can bypass native disabled behavior. TabsTrigger uses `data-[disabled]` which Radix handles separately.
+---
