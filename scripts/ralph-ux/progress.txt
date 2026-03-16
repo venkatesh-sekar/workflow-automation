@@ -508,3 +508,10 @@
 - **Files changed:** packages/web/src/components/custom/markdown.tsx
 - **Learnings:** none
 ---
+
+## Iteration #74 - cross-area-polish
+- **Change:** Migrate billing success downgrade case from raw orange-50/600 to semantic warning-50/600 tokens. Also stripped dark: overrides from both upgrade and downgrade cases (light-mode-only redesign).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/billing/components/success.tsx
+- **Learnings:** none
+---
