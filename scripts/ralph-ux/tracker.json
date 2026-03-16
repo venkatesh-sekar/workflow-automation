@@ -1,5 +1,5 @@
 {
-  "iteration": 61,
+  "iteration": 62,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -491,6 +491,14 @@
       "change": "Fix remaining auth card shadows — replaced drop-shadow-xl with shadow-sm on change-password and verify-email Cards, completing the pattern from iteration #22 (login/auth-form-template). All standalone auth page cards now use shadow-sm consistently.",
       "files_modified": ["packages/web/src/features/authentication/components/change-password.tsx", "packages/web/src/features/authentication/components/verify-email.tsx"],
       "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 62,
+      "date": "2026-03-16",
+      "change": "Remove last in-scope dark: override from FieldLabel — removed dark:has-data-[state=checked]:bg-primary/10 from checked-state styling. Light-mode has-data-[state=checked]:bg-primary/5 already correct. All in-scope dark: class overrides now cleaned.",
+      "files_modified": ["packages/web/src/components/custom/field.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [

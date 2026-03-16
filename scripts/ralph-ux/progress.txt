@@ -424,3 +424,10 @@
 - **Files changed:** packages/web/src/features/authentication/components/change-password.tsx, packages/web/src/features/authentication/components/verify-email.tsx
 - **Learnings:** none
 ---
+
+## Iteration #62 - cross-area-polish
+- **Change:** Removed last in-scope `dark:` class override — `dark:has-data-[state=checked]:bg-primary/10` from FieldLabel component's checked-state styling. Light-mode `has-data-[state=checked]:bg-primary/5` and `has-data-[state=checked]:border-primary` already correct. This completes the systematic dark: cleanup — all in-scope `dark:` class overrides across shared UI, custom components, and feature files are now removed. Only out-of-scope items remain: chart.tsx (structural THEMES constant), flow-canvas files.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/field.tsx
+- **Learnings:** Complete dark: cleanup inventory — 25+ files cleaned across iterations #37-#62. Remaining out-of-scope: chart.tsx THEMES constant (generates CSS variables via style tag, not a simple dark: class), flow-canvas files (all out of scope per redesign rules).
+---
