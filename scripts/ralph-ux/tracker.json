@@ -1,5 +1,5 @@
 {
-  "iteration": 53,
+  "iteration": 54,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -427,6 +427,14 @@
       "change": "Remove dead dark: overrides from InvalidStepIcon — removed dark:stroke-amber-900, dark:fill-amber-950, dark:fill-amber-600 from SVG alert icon. Light-mode amber colors (stroke-amber-500, fill-amber-50, fill-amber-700) already correct for warning semantics. Cleaned trailing spaces.",
       "files_modified": ["packages/web/src/components/custom/alert-icon.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 54,
+      "date": "2026-03-16",
+      "change": "Fix FlowMarkdown TIP variant legibility and remove WARNING dark: overrides — changed text-success-300 (~67% lightness, ~2:1 contrast on bg-success-100) to text-success-700 (24% lightness, ~7:1 contrast). Removed dead dark:bg-amber-950 and dark:text-amber-600 from WARNING variant.",
+      "files_modified": ["packages/web/src/components/custom/markdown.tsx"],
+      "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -470,6 +478,8 @@
     "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43), toggle.tsx (#44), select.tsx (#49 — re-fix of ghost commit #45), context-menu.tsx (#46), dropdown-menu.tsx (#47), calendar.tsx (#48), switch.tsx (#50). Remaining: chart.tsx (THEMES constant is structural, not a simple dark: class — needs different approach). Also: switch.tsx shadow-lg on thumb should be downgraded to shadow-sm in next iteration.",
     "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}.",
     "For small interactive thumb/knob elements (switches, sliders), use shadow-sm not shadow-lg. shadow-lg's 15px blur exceeds the element's own dimensions at small sizes, creating a disproportionate halo. shadow-sm provides enough lift to separate thumb from track without visual noise. Design spec: shadow-lg is reserved for dropdowns/modals only.",
-    "For copy/action buttons in code blocks, apply text-muted-foreground on the Button element itself (not the wrapper div) so ghost variant hover/active states can override the muted color during interactions. Wrapper div should only carry positioning classes."
+    "For copy/action buttons in code blocks, apply text-muted-foreground on the Button element itself (not the wrapper div) so ghost variant hover/active states can override the muted color during interactions. Wrapper div should only carry positioning classes.",
+    "FlowMarkdown Container uses raw Tailwind colors (bg-amber-50, text-amber-700) for WARNING variant instead of semantic tokens (bg-warning-50, text-warning-700). Values are equivalent but should be migrated in a follow-up for full token consistency with alert.tsx base component.",
+    "Remaining in-scope dark: overrides after #54: search-input.tsx, image-with-color-background.tsx, field.tsx, data-selector-node-content.tsx, health/index.tsx (possible regression from #18), billing/success.tsx. Flow-canvas files and chart.tsx are out of scope."
   ]
 }

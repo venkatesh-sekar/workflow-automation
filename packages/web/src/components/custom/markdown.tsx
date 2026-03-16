@@ -42,9 +42,9 @@ const Container = ({
   return (
     <Alert
       className={cn('rounded-md border', {
-        'dark:bg-amber-950 bg-amber-50  border-none dark:text-amber-600 text-amber-700':
+        'bg-amber-50 border-none text-amber-700':
           variant === MarkdownVariant.WARNING,
-        'bg-success-100 text-success-300 border-none':
+        'bg-success-100 text-success-700 border-none':
           variant === MarkdownVariant.TIP,
         'p-0 bg-transparent border-none':
           variant === MarkdownVariant.BORDERLESS,

@@ -372,3 +372,10 @@
 - **Files changed:** packages/web/src/components/custom/alert-icon.tsx
 - **Learnings:** Amber colors for warning/invalid states are semantic — they don't need token replacement to the 220° blue-gray palette. Only neutral grays (gray-*, neutral-*) need migration. Remaining in-scope dark: overrides: markdown.tsx, search-input.tsx, image-with-color-background.tsx, field.tsx, data-selector-node-content.tsx, health/index.tsx (possible regression from #18).
 ---
+
+## Iteration #54 - cross-area-polish
+- **Change:** Fixed FlowMarkdown TIP variant legibility bug — changed `text-success-300` (~67% lightness, ~2:1 contrast on bg-success-100) to `text-success-700` (24% lightness, ~7:1 contrast, WCAG AA compliant). Same pattern as `text-destructive-300` → `text-destructive-700` fix in alert.tsx (#38). Also removed dead `dark:bg-amber-950` and `dark:text-amber-600` from WARNING variant. Lightbulb icon inherits corrected color via currentColor — no separate fix needed.
+- **Heuristic:** Visibility of System Status (#1), Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/custom/markdown.tsx
+- **Learnings:** FlowMarkdown WARNING variant uses raw Tailwind colors (bg-amber-50, text-amber-700) instead of semantic tokens (bg-warning-50, text-warning-700) — follow-up for token migration. Updated remaining dark: override inventory.
+---
