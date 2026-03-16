@@ -269,3 +269,9 @@
 - **Files changed:** packages/web/src/components/ui/alert.tsx
 - **Learnings:** For semantic alert text on light backgrounds, use the -700 step (text-destructive-700, text-warning-700). The -300 step is a dark-mode-only tint that fails WCAG contrast on white/near-white surfaces.
 ---
+## Iteration #39 - cross-area-polish
+- **Change:** Removed dead `dark:` overrides from Button component — `dark:aria-invalid:ring-destructive/40` from base class, `dark:bg-destructive/60 dark:focus-visible:ring-destructive/40` from destructive variant. Light-mode classes (`aria-invalid:ring-destructive/20`, `bg-destructive text-white enabled:hover:bg-destructive/90 focus-visible:ring-destructive/20`) already correct and untouched. Button is the highest-usage UI component (~90 files), so this cleans the single source of truth for all destructive buttons site-wide.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/button.tsx
+- **Learnings:** Button dark: cleanup complete. Updated systematic cleanup tracker: badge (#37), alert (#38), button (#39) done. Next priority: checkbox.tsx (3 occurrences).
+---
