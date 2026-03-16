@@ -487,3 +487,10 @@
 - **Files changed:** packages/web/src/app/routes/404-page.tsx
 - **Learnings:** All font-bold headings now normalized. Remaining follow-up: share-template.tsx border-2 shadow-lg Card override.
 ---
+
+## Iteration #71 - cross-area-polish
+- **Change:** Fix share-template Card elevation — replaced shadow-lg border-2 with shadow-sm, letting Card base handle the 1px border. shadow-lg is reserved for floating overlays (dropdowns, modals, sheets); standalone page cards should use shadow-sm at most.
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/features/templates/components/share-template.tsx
+- **Learnings:** none
+---

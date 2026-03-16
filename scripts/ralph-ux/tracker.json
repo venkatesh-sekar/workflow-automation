@@ -1,5 +1,5 @@
 {
-  "iteration": 70,
+  "iteration": 71,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -563,6 +563,14 @@
       "change": "Fix 404-page heading typography — replaced font-bold (700) with font-semibold (600) to match design system heading spec. Last remaining font-bold heading outlier; completes heading weight normalization sweep.",
       "files_modified": ["packages/web/src/app/routes/404-page.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 71,
+      "date": "2026-03-16",
+      "change": "Fix share-template Card elevation — replaced shadow-lg border-2 with shadow-sm, letting Card base handle the 1px border. Standalone page cards should use shadow-sm max, not overlay-level shadow-lg.",
+      "files_modified": ["packages/web/src/features/templates/components/share-template.tsx"],
+      "heuristic": "Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
