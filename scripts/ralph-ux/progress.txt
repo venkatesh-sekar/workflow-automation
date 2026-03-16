@@ -296,3 +296,10 @@
 - **Files changed:** packages/web/src/components/ui/input.tsx
 - **Learnings:** Input dark: cleanup complete. Updated systematic cleanup tracker: next is textarea.tsx.
 ---
+
+## Iteration #43 - cross-area-polish
+- **Change:** Removed dead `dark:aria-invalid:ring-destructive/40` override from Textarea component. Identical pattern to input (#42), checkbox (#40), radio-group (#41). Light-mode `aria-invalid:ring-destructive/20` untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/textarea.tsx
+- **Learnings:** Textarea dark: cleanup complete. Next in systematic cleanup: toggle.tsx.
+---
