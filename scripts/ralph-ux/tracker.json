@@ -1,5 +1,5 @@
 {
-  "iteration": 23,
+  "iteration": 24,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -187,6 +187,14 @@
       "change": "Add conditional color to sort icon — text-foreground when actively sorted (asc/desc), text-muted-foreground when unsorted, so users can identify the active sort column at a glance",
       "files_modified": ["packages/web/src/components/custom/data-table/data-table-column-header.tsx"],
       "heuristic": "Visibility of System Status (#1)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 24,
+      "date": "2026-03-16",
+      "change": "Fix ghost button hover — replaced hardcoded hover:bg-gray-300/30 (hue 0° raw gray) and dark: override with enabled:hover:bg-accent (220° cool blue-gray token), matching enabled: guard pattern used by all other variants",
+      "files_modified": ["packages/web/src/components/ui/button.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -216,6 +224,7 @@
     "For status icon/color default cases, use text-muted-foreground — the design system token for secondary/indeterminate content. Don't use two different gray levels (gray-500 vs gray-600) for icon and text of the same semantic state.",
     "When Input/component already has token-based styling via its base class (inputClass), don't override with hardcoded colors in the consumer. Strip all color/border/padding overrides and keep only layout constraints (max-w, flex). The base component is the single source of truth for visual styling.",
     "Button default variant already renders bg-primary text-primary-foreground hover:bg-primary/90 — never override with hardcoded color classes. Remove the className entirely rather than replacing with bg-primary, to avoid tailwind-merge conflicts.",
-    "For standalone page cards (login, auth), use shadow-sm instead of drop-shadow-xl. drop-shadow-* uses CSS filter (alpha-shape shadow) while shadow-* uses box-shadow (rectangular). shadow-sm is semantically correct for card elevation and matches shadcn/ui Card conventions. Layout cards inside sidebar containers should use no shadow at all (border only)."
+    "For standalone page cards (login, auth), use shadow-sm instead of drop-shadow-xl. drop-shadow-* uses CSS filter (alpha-shape shadow) while shadow-* uses box-shadow (rectangular). shadow-sm is semantically correct for card elevation and matches shadcn/ui Card conventions. Layout cards inside sidebar containers should use no shadow at all (border only).",
+    "Button variant hover classes must use enabled:hover: not bare hover: — matches the pattern in default/outline/secondary/accent/basic variants. Bare hover: fires on disabled buttons (especially with asChild/Slot where the host element may not be a native button). Ghost variant uses enabled:hover:bg-accent enabled:hover:text-accent-foreground."
   ]
 }

@@ -164,3 +164,10 @@
 - **Files changed:** packages/web/src/components/custom/data-table/data-table-column-header.tsx
 - **Learnings:** For stateful icons in shared components, use conditional cn() color: active state gets text-foreground, inactive/idle gets text-muted-foreground. This two-tier contrast pattern signals state without introducing new colors.
 ---
+
+## Iteration #24 - cross-area-polish
+- **Change:** Fixed ghost button hover — replaced hardcoded `hover:bg-gray-300/30` (hue 0° raw gray) and `dark:hover:bg-gray-300/10` override with `enabled:hover:bg-accent enabled:hover:text-accent-foreground`. Uses the `--accent` token (220° cool blue-gray) and matches the `enabled:` guard pattern used by all other button variants. Ghost is the highest-volume variant (~90 files), so this fix propagates across table headers, icon toolbars, sidebar toggles, pagination, and more.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/button.tsx
+- **Learnings:** Button variant hover classes must use `enabled:hover:` not bare `hover:` — bare hover fires on disabled buttons, especially with asChild/Slot where the host may not be a native button element.
+---
