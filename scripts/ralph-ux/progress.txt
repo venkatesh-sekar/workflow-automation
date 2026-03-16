@@ -227,3 +227,10 @@
 - **Files changed:** packages/web/src/components/custom/circular-icon.tsx
 - **Learnings:** For SVG stroke elements using `stroke="currentColor"`, apply color via `text-{token}` class — same token routing as HTML elements but rendered as a stroke instead of fill or background.
 ---
+
+## Iteration #33 - cross-area-polish
+- **Change:** Applied BranchListItem hover fix that was missed in #29's commit (code was never staged). Replaced `hover:bg-gray-100` (hue 0° pure gray) and `dark:hover:bg-accent` (dead dark override) with `hover:bg-accent` (220° token). Moved `hover:transition-colors` to base `transition-colors` for symmetric enter/exit animation. Migrated raw className string to `cn()` with clean multi-line formatting.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx
+- **Learnings:** Ghost commit pattern recurred (iterations #26 and #29). Always run `git diff --stat` before committing to verify both source and tracker files are staged.
+---

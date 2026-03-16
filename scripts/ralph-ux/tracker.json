@@ -1,5 +1,5 @@
 {
-  "iteration": 32,
+  "iteration": 33,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -259,6 +259,14 @@
       "change": "Fix CircularIcon hardcoded grays — replaced 3 hue-0° gray classes and removed 3 dead dark: overrides with design tokens (text-border for track, text-foreground for percentage text, text-muted-foreground for label)",
       "files_modified": ["packages/web/src/components/custom/circular-icon.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 33,
+      "date": "2026-03-16",
+      "change": "Apply BranchListItem hover fix missed in #29 — replaced hover:bg-gray-100 dark:hover:bg-accent with hover:bg-accent, moved transition-colors to base, migrated raw string to cn()",
+      "files_modified": ["packages/web/src/app/builder/step-settings/router-settings/branches-list.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -296,6 +304,7 @@
     "Place transition-colors as a base class, not inside hover: variant — hover:transition-colors only applies the transition on hover entry, so mouse-out snaps back immediately without animation. Base transition-colors governs both enter and exit symmetrically.",
     "For small status indicator dots (w-2 h-2) in disabled/off state, use bg-border — it's a neutral surface token at 91% lightness, semantically appropriate for inactive indicators. Don't use bg-muted-foreground (a text/icon token, not a surface token). bg-border is already used on the outline badge's own border, making the visual relationship coherent.",
     "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms.",
-    "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels."
+    "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
+    "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged."
   ]
 }
