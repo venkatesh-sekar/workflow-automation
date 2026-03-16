@@ -1,5 +1,5 @@
 {
-  "iteration": 43,
+  "iteration": 44,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -347,6 +347,14 @@
       "change": "Remove dead dark: override from Textarea component — removed dark:aria-invalid:ring-destructive/40 from className. Identical pattern to input (#42), checkbox (#40), radio-group (#41). Light-mode aria-invalid classes untouched.",
       "files_modified": ["packages/web/src/components/ui/textarea.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 44,
+      "date": "2026-03-16",
+      "change": "Remove dead dark: override from Toggle component — removed dark:aria-invalid:ring-destructive/40 from base CVA class string. Identical pattern to input (#42), checkbox (#40), radio-group (#41), textarea (#43). Light-mode aria-invalid classes untouched.",
+      "files_modified": ["packages/web/src/components/ui/toggle.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -387,7 +395,7 @@
     "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
     "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
     "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>.",
-    "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43). Remaining: toggle.tsx, select.tsx, context-menu.tsx, dropdown-menu.tsx, calendar.tsx, chart.tsx, switch.tsx. Next priority: toggle.tsx.",
+    "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43), toggle.tsx (#44). Remaining: select.tsx, context-menu.tsx, dropdown-menu.tsx, calendar.tsx, chart.tsx, switch.tsx. Next priority: select.tsx.",
     "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}."
   ]
 }
