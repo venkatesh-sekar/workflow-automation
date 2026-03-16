@@ -1,5 +1,5 @@
 {
-  "iteration": 24,
+  "iteration": 25,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -195,6 +195,14 @@
       "change": "Fix ghost button hover — replaced hardcoded hover:bg-gray-300/30 (hue 0° raw gray) and dark: override with enabled:hover:bg-accent (220° cool blue-gray token), matching enabled: guard pattern used by all other variants",
       "files_modified": ["packages/web/src/components/ui/button.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 25,
+      "date": "2026-03-16",
+      "change": "Fix skeleton hardcoded bg-gray-200 dark:bg-neutral-700 to bg-border — aligns loading placeholders to 220° cool blue-gray token system. Used bg-border (91% lightness) over bg-muted (96%) for perceptibility against #FAFAFA background during pulse animation dim phase.",
+      "files_modified": ["packages/web/src/components/ui/skeleton.tsx"],
+      "heuristic": "Consistency and Standards (#4), Visibility of System Status (#1)"
     }
   ],
   "learnings": [
@@ -225,6 +233,7 @@
     "When Input/component already has token-based styling via its base class (inputClass), don't override with hardcoded colors in the consumer. Strip all color/border/padding overrides and keep only layout constraints (max-w, flex). The base component is the single source of truth for visual styling.",
     "Button default variant already renders bg-primary text-primary-foreground hover:bg-primary/90 — never override with hardcoded color classes. Remove the className entirely rather than replacing with bg-primary, to avoid tailwind-merge conflicts.",
     "For standalone page cards (login, auth), use shadow-sm instead of drop-shadow-xl. drop-shadow-* uses CSS filter (alpha-shape shadow) while shadow-* uses box-shadow (rectangular). shadow-sm is semantically correct for card elevation and matches shadcn/ui Card conventions. Layout cards inside sidebar containers should use no shadow at all (border only).",
-    "Button variant hover classes must use enabled:hover: not bare hover: — matches the pattern in default/outline/secondary/accent/basic variants. Bare hover: fires on disabled buttons (especially with asChild/Slot where the host element may not be a native button). Ghost variant uses enabled:hover:bg-accent enabled:hover:text-accent-foreground."
+    "Button variant hover classes must use enabled:hover: not bare hover: — matches the pattern in default/outline/secondary/accent/basic variants. Bare hover: fires on disabled buttons (especially with asChild/Slot where the host element may not be a native button). Ghost variant uses enabled:hover:bg-accent enabled:hover:text-accent-foreground.",
+    "For skeleton/loading placeholders, use bg-border (91% lightness) not bg-muted (96%) — bg-muted is nearly invisible against #FAFAFA background (96% vs 98% = 1.03:1 contrast), especially at the 50% opacity dim phase of animate-pulse. bg-border provides enough contrast (91% vs 98% = 1.18:1) to remain perceptible throughout the animation cycle."
   ]
 }

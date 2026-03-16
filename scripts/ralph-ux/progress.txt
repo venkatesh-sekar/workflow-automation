@@ -171,3 +171,10 @@
 - **Files changed:** packages/web/src/components/ui/button.tsx
 - **Learnings:** Button variant hover classes must use `enabled:hover:` not bare `hover:` — bare hover fires on disabled buttons, especially with asChild/Slot where the host may not be a native button element.
 ---
+
+## Iteration #25 - cross-area-polish
+- **Change:** Fixed skeleton component hardcoded `bg-gray-200 dark:bg-neutral-700` to `bg-border` — aligns loading placeholders to 220° cool blue-gray token system. Used `bg-border` (91% lightness) over `bg-muted` (96%) for perceptibility: `bg-muted` is nearly invisible against #FAFAFA background (96% vs 98% = 1.03:1 contrast), especially at animate-pulse dim phase (50% opacity). `bg-border` maintains visible contrast throughout the animation cycle.
+- **Heuristic:** Consistency and Standards (#4), Visibility of System Status (#1)
+- **Files changed:** packages/web/src/components/ui/skeleton.tsx
+- **Learnings:** For skeleton/loading placeholders, use `bg-border` not `bg-muted` — the 5% lightness gap (91% vs 96%) matters for perceptibility against near-white backgrounds, especially when animate-pulse drops to 50% opacity.
+---
