@@ -412,3 +412,9 @@
 - **Files changed:** packages/web/src/features/flow-runs/utils/flow-run-utils.ts
 - **Learnings:** When status badge strings have duplicate conflicting border classes, keep the `-200` step to match sibling variants. The duplicate was likely a leftover from an earlier iteration.
 ---
+## Iteration #60 - cross-area-polish
+- **Change:** Removed 4 dead `dark:` overrides from billing Success component — `dark:bg-success-950` and `dark:text-success-400` from upgrade variant, `dark:bg-orange-950` and `dark:text-orange-400` from downgrade variant. Light-mode classes (`bg-success-50`/`text-success-600`, `bg-orange-50`/`text-orange-600`) already correct and untouched. This was the last in-scope file with `dark:` class overrides.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/billing/components/success.tsx
+- **Learnings:** All in-scope dark: overrides now cleaned across 20+ shared UI and feature components. Remaining out-of-scope: chart.tsx (structural THEMES constant generating CSS variables), flow-canvas files. billing/success.tsx downgrade case uses raw `orange-50`/`orange-600` instead of semantic warning tokens — track as separate follow-up.
+---

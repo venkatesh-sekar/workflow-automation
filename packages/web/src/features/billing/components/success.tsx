@@ -31,16 +31,16 @@ export const Success = () => {
       case 'upgrade':
         return {
           icon: TrendingUp,
-          iconBg: 'bg-success-50 dark:bg-success-950',
-          iconColor: 'text-success-600 dark:text-success-400',
+          iconBg: 'bg-success-50',
+          iconColor: 'text-success-600',
           title: t('Successfully Upgraded!'),
           description: t('Subscription updated successfully'),
         };
       case 'downgrade':
         return {
           icon: TrendingDown,
-          iconBg: 'bg-orange-50 dark:bg-orange-950',
-          iconColor: 'text-orange-600 dark:text-orange-400',
+          iconBg: 'bg-orange-50',
+          iconColor: 'text-orange-600',
           title: t('Plan Downgraded'),
           description: t('Subscription updated successfully'),
         };
