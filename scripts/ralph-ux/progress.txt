@@ -564,3 +564,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/workers/index.tsx
 - **Learnings:** none
 ---
+
+## Iteration #82 - cross-area-polish
+- **Change:** Migrate ProjectAvatar display name text from raw text-black (hue 0° pure black) to text-foreground (220 20% 14° cool blue-gray) in both PERSONAL and non-personal branches. Aligns with design system 220° hue and matches sibling text-muted-foreground on date text.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/components/project-avatar.tsx
+- **Learnings:** none
+---

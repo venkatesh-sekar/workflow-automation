@@ -1,5 +1,5 @@
 {
-  "iteration": 81,
+  "iteration": 82,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -650,6 +650,14 @@
       "date": "2026-03-16",
       "change": "Migrate workers StatBar healthy-state bar from raw bg-emerald-500 to semantic bg-success — completes semantic token adoption where destructive and warning siblings already used semantic tokens",
       "files_modified": ["packages/web/src/app/routes/platform/infra/workers/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 82,
+      "date": "2026-03-16",
+      "change": "Migrate ProjectAvatar display name text from raw text-black (hue 0° pure black) to text-foreground (220 20% 14% cool blue-gray) — both PERSONAL and non-personal branches. Aligns with design system 220° hue and matches sibling text-muted-foreground on date text.",
+      "files_modified": ["packages/web/src/app/components/project-avatar.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],
