@@ -150,3 +150,10 @@
 - **Files changed:** packages/web/src/app/routes/login/index.tsx
 - **Learnings:** Button default variant already has correct primary styling — remove hardcoded color overrides entirely rather than replacing with token equivalents, to avoid tailwind-merge conflicts.
 ---
+
+## Iteration #22 - login-auth
+- **Change:** Replaced harsh `drop-shadow-xl` with subtle `shadow-sm` on both auth cards — team login page (`login/index.tsx`) and sign-in/sign-up auth template (`auth-form-template.tsx`). `drop-shadow-xl` renders a ~20px blurred filter shadow that reads as outdated Bootstrap-era styling. `shadow-sm` (`0 1px 2px / 5% opacity`) provides minimal lift while the Card's border and off-white page background (#FAFAFA vs white card) handle primary visual separation. Login-auth area complete, advancing to cross-area-polish.
+- **Heuristic:** Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/app/routes/login/index.tsx, packages/web/src/features/authentication/components/auth-form-template.tsx
+- **Learnings:** Use `shadow-sm` (box-shadow) not `drop-shadow-*` (CSS filter) for card elevation — different utility families with different rendering. Standalone page cards get `shadow-sm`; layout cards inside sidebar containers get no shadow at all.
+---

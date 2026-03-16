@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center gap-2">
       <span className="text-4xl font-semibold tracking-tight text-primary">Flow</span>
-      <Card className="w-md rounded-sm drop-shadow-xl">
+      <Card className="w-md rounded-sm shadow-sm">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">{t('Welcome to Flow')}</CardTitle>
           <CardDescription>

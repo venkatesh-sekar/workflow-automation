@@ -1,10 +1,8 @@
 {
-  "iteration": 21,
-  "current_area": "login-auth",
-  "queue": [
-    "cross-area-polish"
-  ],
-  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages"],
+  "iteration": 22,
+  "current_area": "cross-area-polish",
+  "queue": [],
+  "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
   "completed": [
     {
       "area": "theme-colors",
@@ -173,6 +171,14 @@
       "change": "Fix login page hardcoded colors — replaced text-red-600 on brand wordmark with text-primary, removed bg-red-600 hover:bg-red-700 from sign-in button (default variant already uses bg-primary), updated brand font-bold to font-semibold tracking-tight",
       "files_modified": ["packages/web/src/app/routes/login/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "login-auth",
+      "iteration": 22,
+      "date": "2026-03-16",
+      "change": "Replace harsh drop-shadow-xl with subtle shadow-sm on both auth cards — team login page and sign-in/sign-up auth template. Card border + off-white bg contrast provides primary separation; shadow-sm adds minimal lift per design spec.",
+      "files_modified": ["packages/web/src/app/routes/login/index.tsx", "packages/web/src/features/authentication/components/auth-form-template.tsx"],
+      "heuristic": "Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
@@ -201,6 +207,7 @@
     "For inline text links in content areas, use text-primary font-medium hover:underline underline-offset-4 transition-colors duration-150. Always remove dark: prefixed overrides — this is a light-mode-only redesign. Never use hardcoded Tailwind colors (text-blue-600) for links when a design token exists.",
     "For status icon/color default cases, use text-muted-foreground — the design system token for secondary/indeterminate content. Don't use two different gray levels (gray-500 vs gray-600) for icon and text of the same semantic state.",
     "When Input/component already has token-based styling via its base class (inputClass), don't override with hardcoded colors in the consumer. Strip all color/border/padding overrides and keep only layout constraints (max-w, flex). The base component is the single source of truth for visual styling.",
-    "Button default variant already renders bg-primary text-primary-foreground hover:bg-primary/90 — never override with hardcoded color classes. Remove the className entirely rather than replacing with bg-primary, to avoid tailwind-merge conflicts."
+    "Button default variant already renders bg-primary text-primary-foreground hover:bg-primary/90 — never override with hardcoded color classes. Remove the className entirely rather than replacing with bg-primary, to avoid tailwind-merge conflicts.",
+    "For standalone page cards (login, auth), use shadow-sm instead of drop-shadow-xl. drop-shadow-* uses CSS filter (alpha-shape shadow) while shadow-* uses box-shadow (rectangular). shadow-sm is semantically correct for card elevation and matches shadcn/ui Card conventions. Layout cards inside sidebar containers should use no shadow at all (border only)."
   ]
 }
