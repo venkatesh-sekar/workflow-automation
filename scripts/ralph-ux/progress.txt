@@ -282,3 +282,10 @@
 - **Files changed:** packages/web/src/components/ui/checkbox.tsx
 - **Learnings:** Some dark: overrides are not just dead but genuinely no-op (restating identical token). Still remove them — they add cognitive noise and parse cost. Radio-group.tsx carries identical base-class overrides and should be cleaned next.
 ---
+
+## Iteration #41 - cross-area-polish
+- **Change:** Removed dead `dark:` overrides from RadioGroupItem component — `dark:bg-input/30` and `dark:aria-invalid:ring-destructive/40` from base class. Identical pattern to checkbox cleanup in #40 (sibling form-control component). Light-mode classes untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/radio-group.tsx
+- **Learnings:** Radio-group and checkbox share identical base-class dark: overrides — clean them together. Updated systematic cleanup tracker: next is input.tsx.
+---
