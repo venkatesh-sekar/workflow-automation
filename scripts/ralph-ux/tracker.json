@@ -1,5 +1,5 @@
 {
-  "iteration": 67,
+  "iteration": 68,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -538,6 +538,14 @@
       "date": "2026-03-16",
       "change": "Fix LockedFeatureGuard heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec. Shared component used across multiple platform locked-feature pages.",
       "files_modified": ["packages/web/src/app/components/locked-feature-guard.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 68,
+      "date": "2026-03-16",
+      "change": "Fix view-release page heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) to match design system heading spec. Continues heading weight normalization sweep from #66 and #67.",
+      "files_modified": ["packages/web/src/app/routes/project-release/view-release.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

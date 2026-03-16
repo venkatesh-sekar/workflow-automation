@@ -466,3 +466,10 @@
 - **Files changed:** packages/web/src/app/components/locked-feature-guard.tsx
 - **Learnings:** Remaining font-bold heading outliers: view-release.tsx (text-3xl), share-template.tsx (text-2xl), 404-page.tsx (text-3xl). Each should be font-semibold tracking-tight in separate iterations.
 ---
+
+## Iteration #68 - cross-area-polish
+- **Change:** Fix view-release page heading typography — replaced font-bold (700) with font-semibold tracking-tight (600) on h1. Continues heading weight normalization sweep from #66 and #67.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/project-release/view-release.tsx
+- **Learnings:** Remaining font-bold heading outliers: share-template.tsx (text-2xl), 404-page.tsx (text-3xl).
+---
