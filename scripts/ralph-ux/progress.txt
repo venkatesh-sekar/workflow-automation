@@ -522,3 +522,10 @@
 - **Files changed:** packages/web/src/app/components/global-search/search-result-item.tsx
 - **Learnings:** none
 ---
+
+## Iteration #76 - cross-area-polish
+- **Change:** Actually migrate billing success downgrade case from raw orange-50/600 to semantic warning-50/600 tokens — iteration #74 was a ghost commit that only updated tracker files without changing the source file.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/features/billing/components/success.tsx
+- **Learnings:** Ghost commits continue to occur despite learning #44. After committing, verify with `git show HEAD --stat` that the source file appears in the diff, not just tracker files.
+---

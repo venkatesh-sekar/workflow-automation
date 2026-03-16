@@ -39,8 +39,8 @@ export const Success = () => {
       case 'downgrade':
         return {
           icon: TrendingDown,
-          iconBg: 'bg-orange-50',
-          iconColor: 'text-orange-600',
+          iconBg: 'bg-warning-50',
+          iconColor: 'text-warning-600',
           title: t('Plan Downgraded'),
           description: t('Subscription updated successfully'),
         };
