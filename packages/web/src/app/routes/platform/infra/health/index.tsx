@@ -51,7 +51,7 @@ export default function SettingsHealthPage() {
                 <span>
                   {t('See the')}{' '}
                   <a
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className="font-medium text-primary hover:underline underline-offset-4 transition-colors duration-150"
                     href=""
                     target="_blank"
                     rel="noopener noreferrer"

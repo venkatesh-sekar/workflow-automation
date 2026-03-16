@@ -1,5 +1,5 @@
 {
-  "iteration": 54,
+  "iteration": 55,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -435,6 +435,14 @@
       "change": "Fix FlowMarkdown TIP variant legibility and remove WARNING dark: overrides — changed text-success-300 (~67% lightness, ~2:1 contrast on bg-success-100) to text-success-700 (24% lightness, ~7:1 contrast). Removed dead dark:bg-amber-950 and dark:text-amber-600 from WARNING variant.",
       "files_modified": ["packages/web/src/components/custom/markdown.tsx"],
       "heuristic": "Visibility of System Status (#1), Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 55,
+      "date": "2026-03-16",
+      "change": "Re-fix health page link color (ghost commit from #18) — replaced hardcoded text-blue-600 dark:text-blue-500 with text-primary, added underline-offset-4 and transition-colors duration-150 to match canonical link pattern",
+      "files_modified": ["packages/web/src/app/routes/platform/infra/health/index.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -480,6 +488,6 @@
     "For small interactive thumb/knob elements (switches, sliders), use shadow-sm not shadow-lg. shadow-lg's 15px blur exceeds the element's own dimensions at small sizes, creating a disproportionate halo. shadow-sm provides enough lift to separate thumb from track without visual noise. Design spec: shadow-lg is reserved for dropdowns/modals only.",
     "For copy/action buttons in code blocks, apply text-muted-foreground on the Button element itself (not the wrapper div) so ghost variant hover/active states can override the muted color during interactions. Wrapper div should only carry positioning classes.",
     "FlowMarkdown Container uses raw Tailwind colors (bg-amber-50, text-amber-700) for WARNING variant instead of semantic tokens (bg-warning-50, text-warning-700). Values are equivalent but should be migrated in a follow-up for full token consistency with alert.tsx base component.",
-    "Remaining in-scope dark: overrides after #54: search-input.tsx, image-with-color-background.tsx, field.tsx, data-selector-node-content.tsx, health/index.tsx (possible regression from #18), billing/success.tsx. Flow-canvas files and chart.tsx are out of scope."
+    "Remaining in-scope dark: overrides after #55: search-input.tsx (dark:bg-transparent — redundant), image-with-color-background.tsx (dark:bg-foreground/10), field.tsx (dark:has-data-[state=checked]:bg-primary/10), data-selector-node-content.tsx (dark:hover:bg-accent/20). Flow-canvas files and chart.tsx are out of scope."
   ]
 }

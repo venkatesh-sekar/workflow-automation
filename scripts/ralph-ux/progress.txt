@@ -379,3 +379,10 @@
 - **Files changed:** packages/web/src/components/custom/markdown.tsx
 - **Learnings:** FlowMarkdown WARNING variant uses raw Tailwind colors (bg-amber-50, text-amber-700) instead of semantic tokens (bg-warning-50, text-warning-700) — follow-up for token migration. Updated remaining dark: override inventory.
 ---
+
+## Iteration #55 - cross-area-polish
+- **Change:** Re-fixed health page "release changelog" link color (ghost commit from #18) — replaced hardcoded `text-blue-600 dark:text-blue-500` with `text-primary`, added `underline-offset-4` and `transition-colors duration-150` to match canonical inline link pattern. This was the last remaining `text-blue-600` instance in the entire `src/` tree.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/health/index.tsx
+- **Learnings:** Fourth ghost commit discovered (#18, #26, #29, #45). Updated remaining dark: override inventory — 4 files remain in scope.
+---
