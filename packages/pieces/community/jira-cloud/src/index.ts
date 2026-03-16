@@ -23,6 +23,8 @@ import { markdownToJiraFormat } from './lib/actions/markdown-to-jira-format';
 import { getIssueAction } from './lib/actions/get-issue';
 
 export const jiraCloud = createPiece({
+	name: '@flow/piece-jira-cloud',
+	version: '0.2.6',
 	displayName: 'Jira Cloud',
 	description: 'Issue tracking and project management',
 

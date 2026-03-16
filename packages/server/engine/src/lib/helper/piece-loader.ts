@@ -1,30 +1,14 @@
-import fs from 'fs/promises'
-import path from 'path'
 import { Action, Piece, PiecePropertyMap, Trigger } from '@flow/pieces-framework'
-import { FlowError, EngineGenericError, ErrorCode, extractPieceFromModule, isNil, trimVersionFromAlias } from '@flow/shared'
-import { utils } from '../utils'
+import { pieceRegistry } from '@flow/piece-registry'
+import { FlowError, EngineGenericError, ErrorCode, isNil } from '@flow/shared'
 
 export const pieceLoader = {
     loadPieceOrThrow: async (
         { pieceName, pieceVersion }: LoadPieceParams,
     ): Promise<Piece> => {
-        const { data: piece, error: pieceError } = await utils.tryCatchAndThrowOnEngineError(async () => {
-            const piecePath = await pieceLoader.getPiecePath({ packageName: pieceName })
-            const module = await import(piecePath)
-
-            const piece = extractPieceFromModule<Piece>({
-                module,
-                pieceName,
-                pieceVersion,
-            })
-
-            if (isNil(piece)) {
-                throw new EngineGenericError('PieceNotFoundError', `Piece not found for piece: ${pieceName}, pieceVersion: ${pieceVersion}`)
-            }
-            return piece
-        })
-        if (pieceError) {
-            throw pieceError
+        const piece = pieceRegistry.get(pieceName)
+        if (isNil(piece)) {
+            throw new EngineGenericError('PieceNotFoundError', `Piece not found for piece: ${pieceName}, pieceVersion: ${pieceVersion}`)
         }
         return piece
     },
@@ -105,80 +89,6 @@ export const pieceLoader = {
     getPackageAlias: ({ pieceName }: { pieceName: string }) => {
         return pieceName
     },
-
-    getPiecePath: async ({ packageName }: { packageName: string }): Promise<string> => {
-        const sourcePiecesPath = path.resolve('packages/pieces')
-        const piecePath = await utils.folderExists(sourcePiecesPath)
-            ? await findInSourceFolder(packageName)
-            : await traverseAllParentFoldersToFindPiece(packageName)
-        if (isNil(piecePath)) {
-            throw new EngineGenericError('PieceNotFoundError', `Piece not found for package: ${packageName}`)
-        }
-        return piecePath
-    },
-}
-
-async function findInSourceFolder(packageName: string): Promise<string | null> {
-    const sourcePiecesPath = path.resolve('packages/pieces')
-    const packageJsonPaths = await findPiecePackageJsonFiles(sourcePiecesPath)
-    for (const packageJsonPath of packageJsonPaths) {
-        const { data: result } = await utils.tryCatchAndThrowOnEngineError(async () => {
-            const content = await fs.readFile(packageJsonPath, 'utf-8')
-            const packageJson = JSON.parse(content)
-            if (packageJson.name === packageName) {
-                return path.join(path.dirname(packageJsonPath), 'src', 'index.ts')
-            }
-            return null
-        })
-        if (result) {
-            return result
-        }
-    }
-    return null
-}
-
-async function findPiecePackageJsonFiles(dirPath: string): Promise<string[]> {
-    const results: string[] = []
-    const ignoredDirs = ['node_modules', '.turbo', 'dist', 'framework', 'common']
-
-    async function scanDir(currentPath: string): Promise<void> {
-        const items = await fs.readdir(currentPath, { withFileTypes: true })
-        for (const item of items) {
-            if (!item.isDirectory() || ignoredDirs.includes(item.name)) {
-                continue
-            }
-            const fullPath = path.join(currentPath, item.name)
-            await scanDir(fullPath)
-        }
-        const pkgJson = path.join(currentPath, 'package.json')
-        if (currentPath !== dirPath && await utils.folderExists(pkgJson)) {
-            results.push(pkgJson)
-        }
-    }
-
-    await scanDir(dirPath)
-    return results
-}
-
-
-async function traverseAllParentFoldersToFindPiece(packageName: string): Promise<string | null> {
-    const rootDir = path.parse(__dirname).root
-    let currentDir = __dirname
-    const maxIterations = currentDir.split(path.sep).length
-    for (let i = 0; i < maxIterations; i++) {
-        const piecePath = path.resolve(currentDir, 'pieces', packageName, 'node_modules', trimVersionFromAlias(packageName))
-
-        if (await utils.folderExists(piecePath)) {
-            return path.join(piecePath, 'src', 'index.js')
-        }
-
-        const parentDir = path.dirname(currentDir)
-        if (parentDir === currentDir || currentDir === rootDir) {
-            break
-        }
-        currentDir = parentDir
-    }
-    return null
 }
 
 type LoadPieceParams = {

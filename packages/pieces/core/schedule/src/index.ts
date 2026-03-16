@@ -8,6 +8,8 @@ import { everyWeekTrigger } from './lib/triggers/every-week.trigger';
 import { everyXMinutesTrigger } from './lib/triggers/every-x-minutes.trigger';
 
 export const schedule = createPiece({
+  name: '@flow/piece-schedule',
+  version: '0.1.17',
   displayName: 'Schedule',
   logoUrl: '',
   description: 'Trigger flow with fixed schedule',

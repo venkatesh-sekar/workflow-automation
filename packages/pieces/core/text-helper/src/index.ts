@@ -12,6 +12,8 @@ import { defaultValue } from './lib/actions/default-value';
 import { jsonToAsciiTable } from './lib/actions/json-to-ascii-table';
 
 export const textHelper = createPiece({
+  name: '@flow/piece-text-helper',
+  version: '0.4.14',
   displayName: 'Text Helper',
   description: 'Tools for text processing',
   auth: PieceAuth.None(),

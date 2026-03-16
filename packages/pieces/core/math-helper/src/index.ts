@@ -12,6 +12,8 @@ Perform mathematical operations.
 `;
 
 export const math = createPiece({
+  name: '@flow/piece-math-helper',
+  version: '0.0.21',
   displayName: 'Math Helper',
   description: markdownDescription,
   auth: PieceAuth.None(),

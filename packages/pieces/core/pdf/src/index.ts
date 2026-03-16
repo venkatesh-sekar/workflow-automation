@@ -10,6 +10,8 @@ import { mergePdfs } from './lib/actions/merge-pdfs';
 import { addTextToPdf } from './lib/actions/add-text-to-pdf';
 
 export const PDF = createPiece({
+  name: '@flow/piece-pdf',
+  version: '0.4.1',
   displayName: 'PDF',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.34.2',

@@ -9,6 +9,8 @@ import { unzipFile } from './lib/actions/unzip-file';
 import { getFileName } from './lib/actions/get-file-name';
 
 export const filesHelper = createPiece({
+  name: '@flow/piece-file-helper',
+  version: '0.1.23',
   displayName: 'Files Helper',
   description: 'Read file content and return it in different formats.',
   auth: PieceAuth.None(),

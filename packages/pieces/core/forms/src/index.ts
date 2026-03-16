@@ -5,6 +5,8 @@ import { onFormSubmission } from './lib/triggers/form-trigger';
 import { returnResponse } from './lib/actions/return-response';
 
 export const forms = createPiece({
+  name: '@flow/piece-forms',
+  version: '0.4.14',
   displayName: 'Human Input',
   description: 'Trigger a flow through human input.',
   auth: PieceAuth.None(),

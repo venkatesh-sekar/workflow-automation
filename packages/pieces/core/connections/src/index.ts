@@ -3,6 +3,8 @@ import { PieceCategory } from '@flow/shared';
 import { readConnection } from './lib/actions/read-connection';
 
 export const connections = createPiece({
+  name: '@flow/piece-connections',
+  version: '0.5.4',
   displayName: 'Connections',
   description: 'Read connections dynamically',
   minimumSupportedRelease: '0.36.1',

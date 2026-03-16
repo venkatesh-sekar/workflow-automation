@@ -10,6 +10,8 @@ import { runAgent } from "./lib/actions/agents/run-agent";
 
 
 export const ai = createPiece({
+  name: '@flow/piece-ai',
+  version: '0.1.19',
   displayName: "AI",
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.78.2',

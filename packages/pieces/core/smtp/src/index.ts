@@ -8,6 +8,8 @@ import { smtpAuth } from './lib/auth';
 export { smtpAuth } from './lib/auth';
 
 export const smtp = createPiece({
+  name: '@flow/piece-smtp',
+  version: '0.4.0',
   displayName: 'SMTP',
   description: 'Send emails using Simple Mail Transfer Protocol',
   minimumSupportedRelease: '0.30.0',

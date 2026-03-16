@@ -11,6 +11,8 @@ import { deletedRecordTrigger } from "./lib/triggers/deleted-record";
 import { updatedRecordTrigger } from "./lib/triggers/updated-record";
 
 export const tables = createPiece({
+  name: '@flow/piece-tables',
+  version: '0.2.17',
   displayName: 'Tables',
   logoUrl: '',
   categories: [PieceCategory.CORE],

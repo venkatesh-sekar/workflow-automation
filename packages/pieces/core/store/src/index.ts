@@ -8,6 +8,8 @@ import { storageRemoveFromList } from './lib/actions/store-remove-from-list';
 import { storageRemoveValue } from './lib/actions/store-remove-value';
 
 export const storage = createPiece({
+  name: '@flow/piece-store',
+  version: '0.6.14',
   displayName: 'Storage',
   description: 'Store or retrieve data from key/value database',
   minimumSupportedRelease: '0.30.0',

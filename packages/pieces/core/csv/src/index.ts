@@ -4,6 +4,8 @@ import { csvToJsonAction } from './lib/actions/convert-csv-to-json';
 import { jsonToCsvAction } from './lib/actions/convert-json-to-csv';
 
 export const csv = createPiece({
+  name: '@flow/piece-csv',
+  version: '0.4.13',
   displayName: 'CSV',
   description: 'Manipulate CSV text',
   minimumSupportedRelease: '0.30.0',

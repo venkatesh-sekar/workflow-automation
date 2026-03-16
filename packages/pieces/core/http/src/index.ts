@@ -3,6 +3,8 @@ import { PieceCategory } from '@flow/shared';
 import { httpSendRequestAction } from './lib/actions/send-http-request-action';
 
 export const http = createPiece({
+  name: '@flow/piece-http',
+  version: '0.11.7',
   displayName: 'HTTP',
   description: 'Sends HTTP requests and return responses',
   logoUrl: '',

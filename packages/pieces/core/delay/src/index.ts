@@ -4,6 +4,8 @@ import { delayForAction } from './lib/actions/delay-for-action';
 import { delayUntilAction } from './lib/actions/delay-until-action';
 
 export const delay = createPiece({
+  name: '@flow/piece-delay',
+  version: '0.3.26',
   displayName: 'Delay',
   description: 'Use it to delay the execution of the next action',
   minimumSupportedRelease: '0.36.1',

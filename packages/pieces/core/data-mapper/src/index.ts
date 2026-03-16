@@ -3,6 +3,8 @@ import { PieceCategory } from '@flow/shared';
 import { advancedMapping } from './lib/actions/advanced-mapping';
 
 export const dataMapper = createPiece({
+  name: '@flow/piece-data-mapper',
+  version: '0.3.15',
   displayName: 'Data Mapper',
   description: 'tools to manipulate data structure',
 

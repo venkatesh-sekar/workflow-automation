@@ -18,6 +18,8 @@ import { extractStructuredDataAction } from './lib/actions/extract-structure-dat
 import { openaiAuth } from './lib/auth';
 
 export const openai = createPiece({
+  name: '@flow/piece-openai',
+  version: '0.7.5',
   displayName: 'OpenAI',
   description: 'Use the many tools ChatGPT has to offer.',
   minimumSupportedRelease: '0.63.0',

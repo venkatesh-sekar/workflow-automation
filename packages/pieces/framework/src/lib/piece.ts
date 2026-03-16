@@ -14,13 +14,15 @@ import * as semver from 'semver';
 
 
 export class Piece<PieceAuth extends PieceAuthProperty | PieceAuthProperty[] | undefined = PieceAuthProperty>
-  implements Omit<PieceBase, 'version' | 'name'>
+  implements Omit<PieceBase, 'getContextInfo'>
 {
   private readonly _actions: Record<string, Action> = {};
   private readonly _triggers: Record<string, Trigger> = {};
   // this method didn't exist in older version
-  public getContextInfo: (() => { version: ContextVersion } )| undefined = () => ({ version: LATEST_CONTEXT_VERSION }); 
+  public getContextInfo: (() => { version: ContextVersion } )| undefined = () => ({ version: LATEST_CONTEXT_VERSION });
   constructor(
+    public readonly name: string,
+    public readonly version: string,
     public readonly displayName: string,
     public readonly logoUrl: string,
     public readonly authors: string[],
@@ -41,8 +43,10 @@ export class Piece<PieceAuth extends PieceAuthProperty | PieceAuthProperty[] | u
   }
 
 
-  metadata(): BackwardCompatiblePieceMetadata {
+  metadata(): PieceMetadata {
     return {
+      name: this.name,
+      version: this.version,
       displayName: this.displayName,
       logoUrl: this.logoUrl,
       actions: this._actions,
@@ -86,6 +90,8 @@ export const createPiece = <PieceAuth extends PieceAuthProperty | PieceAuthPrope
     }
   }
   return new Piece<PieceAuth>(
+    params.name,
+    params.version,
     params.displayName,
     params.logoUrl,
     params.authors ?? [],
@@ -103,6 +109,8 @@ export const createPiece = <PieceAuth extends PieceAuthProperty | PieceAuthPrope
 type CreatePieceParams<
   PieceAuth extends PieceAuthProperty | PieceAuthProperty[] | undefined = undefined
 > = {
+  name: string;
+  version: string;
   displayName: string;
   logoUrl: string;
   authors: string[];
@@ -125,8 +133,4 @@ type PieceEventProcessors = {
   }) => boolean;
 };
 
-type BackwardCompatiblePieceMetadata = Omit<PieceMetadata, 'name' | 'version' | 'authors' | 'i18n' | 'getContextInfo'> & {
-  authors?: PieceMetadata['authors']
-  i18n?: PieceMetadata['i18n']
-}
 

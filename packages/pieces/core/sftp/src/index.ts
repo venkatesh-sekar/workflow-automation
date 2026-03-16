@@ -15,6 +15,8 @@ import { sftpAuth } from './lib/auth';
 export { getProtocolBackwardCompatibility, getClient, endClient } from './lib/common';
 
 export const ftpSftp = createPiece({
+  name: '@flow/piece-sftp',
+  version: '0.5.0',
   displayName: 'FTP/SFTP',
   description: 'Connect to FTP, FTPS or SFTP servers',
   minimumSupportedRelease: '0.30.0',

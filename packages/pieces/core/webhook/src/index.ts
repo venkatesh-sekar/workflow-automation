@@ -5,6 +5,8 @@ import { returnResponse } from './lib/actions/return-response';
 import { returnResponseAndWaitForNextWebhook } from './lib/actions/return-response-and-wait-for-next-webhook';
 
 export const webhook = createPiece({
+  name: '@flow/piece-webhook',
+  version: '0.1.29',
   displayName: 'Webhook',
   description: 'Receive HTTP requests and trigger flows using unique URLs.',
   auth: PieceAuth.None(),

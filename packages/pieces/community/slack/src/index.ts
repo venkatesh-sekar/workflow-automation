@@ -51,6 +51,8 @@ import type { SlackAuthValue } from './lib/common/auth-helpers';
 export { slackAuth, slackOAuth2Auth } from './lib/auth';
 
 export const slack = createPiece({
+  name: '@flow/piece-slack',
+  version: '0.14.0',
   displayName: 'Slack',
   description: 'Channel-based messaging platform',
   minimumSupportedRelease: '0.79.0',

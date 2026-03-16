@@ -21,6 +21,7 @@
       "@flow/pieces-common": ["packages/pieces/common/src/index.ts"],
       "@flow/pieces-framework": ["packages/pieces/framework/src/index.ts"],
       "@flow/server-common": ["packages/server/common/src/index.ts"],
+      "@flow/piece-registry": ["packages/pieces/registry.ts"],
       "@flow/shared": ["packages/shared/src/index.ts"],
       "worker": ["packages/server/worker/src/index.ts"]
     }

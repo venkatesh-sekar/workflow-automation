@@ -4,6 +4,8 @@ import { query } from "./lib/actions/query";
 import { PieceCategory } from "@flow/shared";
     
     export const graphql = createPiece({
+      name: '@flow/piece-graphql',
+      version: '0.0.10',
       displayName: "GraphQL",
       auth: PieceAuth.None(),
       minimumSupportedRelease: '0.30.0',

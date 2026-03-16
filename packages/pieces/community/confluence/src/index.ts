@@ -7,6 +7,8 @@ import { createPageFromTemplateAction } from "./lib/actions/create-page-from-tem
 import { confluenceAuth } from './lib/auth';
 
 export const confluence = createPiece({
+  name: '@flow/piece-confluence',
+  version: '0.2.4',
   displayName: "Confluence",
   auth: confluenceAuth,
   minimumSupportedRelease: '0.30.0',

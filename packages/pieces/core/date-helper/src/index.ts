@@ -13,6 +13,8 @@ import { lastDayOfPreviousMonthAction } from './lib/actions/last-day-of-prior-mo
 const description = `Manipulate, format, and extract time units for all your date and time needs.`;
 
 export const utilityDate = createPiece({
+  name: '@flow/piece-date-helper',
+  version: '0.1.27',
   displayName: 'Date Helper',
   auth: PieceAuth.None(),
   minimumSupportedRelease: '0.36.1',

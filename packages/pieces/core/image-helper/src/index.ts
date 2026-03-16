@@ -8,6 +8,8 @@ import { resizeImage } from './lib/actions/resize-Image.action';
 import { compressImage } from './lib/actions/compress-image.actions';
 
 export const imageHelper = createPiece({
+  name: '@flow/piece-image-helper',
+  version: '0.1.12',
   displayName: 'Image Helper',
   description: 'Tools for image manipulations',
 

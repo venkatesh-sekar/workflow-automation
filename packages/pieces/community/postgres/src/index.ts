@@ -7,6 +7,8 @@ import { newRow } from './lib/triggers/new-row';
 export { postgresAuth } from './lib/auth';
 
 export const postgres = createPiece({
+  name: '@flow/piece-postgres',
+  version: '0.2.3',
   displayName: 'Postgres',
   description: "The world's most advanced open-source relational database",
   minimumSupportedRelease: '0.30.0',

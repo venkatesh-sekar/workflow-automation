@@ -4,6 +4,8 @@ import { createApprovalLink } from './lib/actions/create-approval-link';
 import { waitForApprovalLink } from './lib/actions/wait-for-approval';
 
 export const approval = createPiece({
+  name: '@flow/piece-approval',
+  version: '0.1.18',
   displayName: 'Approval (Legacy)',
   description: 'Build approval process in your workflows',
   auth: PieceAuth.None(),
