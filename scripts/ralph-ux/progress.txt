@@ -255,3 +255,10 @@
 - **Files changed:** packages/web/src/features/project-releases/components/push-to-git-dialog.tsx, packages/web/src/app/routes/project-release/push-everything-dialog/index.tsx
 - **Learnings:** For form field helper/description text, prefer `<FormDescription>` over bare `<div>` — it includes `text-sm text-muted-foreground` and wires `aria-describedby` via FormItem context automatically.
 ---
+
+## Iteration #37 - cross-area-polish
+- **Change:** Removed all dead `dark:` overrides from Badge component — `dark:aria-invalid:ring-destructive/40` from base class, `dark:bg-destructive-950 dark:text-destructive-300 dark:border-destructive-400` from destructive variant, `dark:bg-success-950 dark:text-success-300 dark:border-success-400` from success variant. Light-mode classes (bg-*-50/text-*-700/border-*-600 tonal triplet) are already correct and untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/badge.tsx
+- **Learnings:** Systematic dark: cleanup backlog identified across 13 shared UI components. Priority order by usage frequency: button.tsx > alert.tsx (also has text-destructive-300 inversion bug) > checkbox.tsx > input.tsx > remaining primitives.
+---

@@ -1,5 +1,5 @@
 {
-  "iteration": 36,
+  "iteration": 37,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -291,6 +291,14 @@
       "change": "Fix git push dialog helper text — replaced hardcoded text-gray-500 with text-muted-foreground in push-everything-dialog, and replaced bare <div> with <FormDescription> (which includes text-sm text-muted-foreground + aria-describedby wiring) inside FormItem in push-to-git-dialog",
       "files_modified": ["packages/web/src/features/project-releases/components/push-to-git-dialog.tsx", "packages/web/src/app/routes/project-release/push-everything-dialog/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 37,
+      "date": "2026-03-16",
+      "change": "Remove dead dark: overrides from Badge component — removed dark:aria-invalid:ring-destructive/40 from base class, dark:bg-destructive-950 dark:text-destructive-300 dark:border-destructive-400 from destructive variant, dark:bg-success-950 dark:text-success-300 dark:border-success-400 from success variant",
+      "files_modified": ["packages/web/src/components/ui/badge.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
     }
   ],
   "learnings": [
@@ -330,6 +338,7 @@
     "For composite input containers (tag-input, multi-select), mirror the canonical inputClass tokens: border-input, bg-background, has-focus-visible:ring-ring, placeholder:text-muted-foreground. Don't use hardcoded neutral-* or bg-white — they bypass the 220° cool blue-gray token system and will look hue-mismatched next to standard Input components in composed forms.",
     "For SVG stroke elements using stroke='currentColor', apply color via text-{token} class — same token routing as HTML elements but rendered as a stroke. text-border works for passive/track circles, text-foreground for bold data text, text-muted-foreground for subordinate labels.",
     "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
-    "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>."
+    "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>.",
+    "Systematic dark: cleanup needed across shared UI components: button.tsx (destructive variant has dark: overrides), alert.tsx (has dark: overrides AND a likely text-destructive-300 inversion bug — should be text-destructive-700 for light mode legibility), checkbox.tsx, input.tsx, textarea.tsx, radio-group.tsx, toggle.tsx, select.tsx, context-menu.tsx, dropdown-menu.tsx, calendar.tsx, chart.tsx, switch.tsx. Prioritize by usage frequency: button > alert > checkbox > input."
   ]
 }
