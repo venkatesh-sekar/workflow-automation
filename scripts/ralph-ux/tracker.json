@@ -1,5 +1,5 @@
 {
-  "iteration": 80,
+  "iteration": 81,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -642,6 +642,14 @@
       "date": "2026-03-16",
       "change": "Migrate status-progress-bar warning bars from raw bg-amber-400/500 to semantic bg-warning/warning-600 — completes semantic token adoption where success and fault siblings already used semantic tokens",
       "files_modified": ["packages/web/src/app/routes/platform/infra/triggers/status-progress-bar.tsx"],
+      "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 81,
+      "date": "2026-03-16",
+      "change": "Migrate workers StatBar healthy-state bar from raw bg-emerald-500 to semantic bg-success — completes semantic token adoption where destructive and warning siblings already used semantic tokens",
+      "files_modified": ["packages/web/src/app/routes/platform/infra/workers/index.tsx"],
       "heuristic": "Consistency and Standards (#4)"
     }
   ],

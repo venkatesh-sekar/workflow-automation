@@ -557,3 +557,10 @@
 - **Files changed:** packages/web/src/app/routes/platform/infra/triggers/status-progress-bar.tsx
 - **Learnings:** In light mode, --warning resolves to --warning-500 (not -400). The .dark block aliases --warning to --warning-400. So hover:bg-warning-500 is a no-op in light mode — use hover:bg-warning-600 for a visible darkening, paralleling bg-success hover:bg-success-600.
 ---
+
+## Iteration #81 - cross-area-polish
+- **Change:** Migrate workers StatBar healthy-state bar from raw bg-emerald-500 to semantic bg-success — completes semantic token adoption in the ternary where bg-destructive and bg-warning siblings already used semantic tokens
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/platform/infra/workers/index.tsx
+- **Learnings:** none
+---
