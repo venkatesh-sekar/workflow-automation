@@ -324,3 +324,10 @@
 - **Files changed:** packages/web/src/components/ui/context-menu.tsx
 - **Learnings:** ContextMenuItem and DropdownMenuItem are structural siblings sharing identical Radix primitive patterns and variant shapes. Clean them in sequence. DropdownMenuItem also has `dark:data-[variant=destructive]:focus:bg-destructive/20` to remove next.
 ---
+
+## Iteration #47 - cross-area-polish
+- **Change:** Removed dead `dark:data-[variant=destructive]:focus:bg-destructive/20` override from DropdownMenuItem component. Sibling of ContextMenuItem cleanup in #46. Light-mode rule `data-[variant=destructive]:focus:bg-destructive/10` already correct and untouched.
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/components/ui/dropdown-menu.tsx
+- **Learnings:** DropdownMenuItem and ContextMenuItem dark: cleanup now both complete. Next in systematic cleanup: calendar.tsx.
+---
