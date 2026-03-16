@@ -445,3 +445,10 @@
 - **Files changed:** packages/web/src/features/tables/components/text-editor.tsx
 - **Learnings:** none
 ---
+
+## Iteration #65 - cross-area-polish
+- **Change:** Replace drop-shadow-md with shadow-sm on FlowRunCard retry button — last in-scope drop-shadow on an interactive control. CSS filter shadow on a 32px rounded-full button created disproportionate halo; shadow-sm provides subtle lift matching Switch thumb pattern from #51.
+- **Heuristic:** Consistency and Standards (#4), Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/app/builder/run-list/flow-run-card.tsx
+- **Learnings:** All in-scope drop-shadow-* classes now eliminated. Only remaining drop-shadow-md is in flow-canvas (out of scope). The codebase shadow system is now fully standardized: shadow-sm for small controls, shadow-md for popover-tier overlays (base component), shadow-lg for dialogs/sheets.
+---

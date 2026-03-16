@@ -153,7 +153,7 @@ const FlowRunCard = React.memo(
                         variant="ghost"
                         size={'icon'}
                         className={cn(
-                          'group-hover:opacity-100 opacity-0 rounded-full bg-accent drop-shadow-md',
+                          'group-hover:opacity-100 opacity-0 rounded-full bg-accent shadow-sm',
                           {
                             'opacity-100': isRetryDropdownOpen,
                           },
