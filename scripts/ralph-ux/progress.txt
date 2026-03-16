@@ -351,3 +351,10 @@
 - **Files changed:** packages/web/src/components/ui/switch.tsx
 - **Learnings:** Switch dark: cleanup complete. Chart.tsx THEMES constant is structural (generates CSS variables for chart colors via `<style>` tag) — not a simple `dark:` class to remove. Switch thumb also has shadow-lg which is disproportionate for a 16px element — downgrade to shadow-sm in next iteration.
 ---
+
+## Iteration #51 - cross-area-polish
+- **Change:** Downgraded Switch thumb `shadow-lg` to `shadow-sm` — `shadow-lg` produces a 15px blur radius on elements as small as 12px (sm size), creating a disproportionate halo that reads as visually heavy. `shadow-sm` (`0 1px 2px / 5% opacity`) provides subtle lift to separate thumb from track without visual noise. Design spec reserves `shadow-lg` for dropdowns/modals only. Matches Linear/Notion switch thumb shadow pattern.
+- **Heuristic:** Aesthetic and Minimalist Design (#8)
+- **Files changed:** packages/web/src/components/ui/switch.tsx
+- **Learnings:** For small interactive thumb/knob elements, use shadow-sm not shadow-lg. The blur radius should not exceed the element's own dimensions.
+---

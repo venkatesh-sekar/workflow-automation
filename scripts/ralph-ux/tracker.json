@@ -1,5 +1,5 @@
 {
-  "iteration": 50,
+  "iteration": 51,
   "current_area": "cross-area-polish",
   "queue": [],
   "completed_areas": ["theme-colors", "sidebar-navigation", "dashboard-layout", "automations-page", "runs-page", "connections-page", "tables-page", "settings-pages", "platform-admin-pages", "login-auth"],
@@ -403,6 +403,14 @@
       "change": "Remove dead dark: override from Switch thumb — removed dark:bg-foreground from SwitchPrimitive.Thumb className. Light-mode bg-background already correct for thumb color.",
       "files_modified": ["packages/web/src/components/ui/switch.tsx"],
       "heuristic": "Consistency and Standards (#4)"
+    },
+    {
+      "area": "cross-area-polish",
+      "iteration": 51,
+      "date": "2026-03-16",
+      "change": "Downgrade Switch thumb shadow-lg to shadow-sm — shadow-lg produces 15px blur on a 16px element (disproportionate halo). shadow-sm (1px 2px / 5% opacity) provides subtle lift matching Linear/Notion switch pattern. Design spec reserves shadow-lg for dropdowns/modals only.",
+      "files_modified": ["packages/web/src/components/ui/switch.tsx"],
+      "heuristic": "Aesthetic and Minimalist Design (#8)"
     }
   ],
   "learnings": [
@@ -444,6 +452,7 @@
     "Ghost commit pattern: always run git diff --stat before committing to verify BOTH the source file and tracker files are staged. Iterations #26 and #29 both had tracker-only commits where the actual code change was never staged.",
     "For form field helper/description text, prefer <FormDescription> over bare <div className='text-sm text-muted-foreground'>. FormDescription already includes those classes AND wires aria-describedby via FormItem context, so the field is accessible to screen readers. Place it inside <FormItem> as a sibling to <FormControl>.",
     "Systematic dark: cleanup across shared UI components. Done: badge.tsx (#37), alert.tsx (#38), button.tsx (#39), checkbox.tsx (#40), radio-group.tsx (#41), input.tsx (#42), textarea.tsx (#43), toggle.tsx (#44), select.tsx (#49 — re-fix of ghost commit #45), context-menu.tsx (#46), dropdown-menu.tsx (#47), calendar.tsx (#48), switch.tsx (#50). Remaining: chart.tsx (THEMES constant is structural, not a simple dark: class — needs different approach). Also: switch.tsx shadow-lg on thumb should be downgraded to shadow-sm in next iteration.",
-    "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}."
+    "For semantic alert/badge text on light backgrounds, use the -700 step (e.g. text-destructive-700, text-warning-700) — high chroma at ~41% lightness clears WCAG AA (4.5:1). Never use -300 (82% lightness, ~1.5:1 contrast) — that's the dark-mode-only tint. Pattern: border-{semantic}/50 text-{semantic}-700 [&>svg]:text-{semantic}.",
+    "For small interactive thumb/knob elements (switches, sliders), use shadow-sm not shadow-lg. shadow-lg's 15px blur exceeds the element's own dimensions at small sizes, creating a disproportionate halo. shadow-sm provides enough lift to separate thumb from track without visual noise. Design spec: shadow-lg is reserved for dropdowns/modals only."
   ]
 }
