@@ -480,3 +480,10 @@
 - **Files changed:** packages/web/src/features/templates/components/share-template.tsx
 - **Learnings:** share-template.tsx Card also uses border-2 shadow-lg which is heavier than design system spec — candidate for follow-up. UI review also noted PERMISSION_DENIED toast lacks recovery guidance.
 ---
+
+## Iteration #70 - cross-area-polish
+- **Change:** Fix 404-page heading typography — replaced font-bold (700) with font-semibold (600) to match design system heading spec. Last remaining font-bold heading outlier; completes the heading weight normalization sweep (#66-#70).
+- **Heuristic:** Consistency and Standards (#4)
+- **Files changed:** packages/web/src/app/routes/404-page.tsx
+- **Learnings:** All font-bold headings now normalized. Remaining follow-up: share-template.tsx border-2 shadow-lg Card override.
+---
