@@ -10,7 +10,7 @@ export const opentelemetry = createPiece({
   displayName: 'OpenTelemetry',
   auth: opentelemetryAuth,
   minimumSupportedRelease: '0.36.1',
-  logoUrl: 'https://cdn.activepieces.com/pieces/opentelemetry.png',
+  logoUrl: '/pieces/opentelemetry.svg',
   authors: [],
   categories: [PieceCategory.DEVELOPER_TOOLS],
   actions: [recordCounterAction, recordGaugeAction],
