@@ -11,7 +11,7 @@ DB_ENV = set -a && . ./.env.production && set +a && \
 ## Ctrl+C kills all child processes cleanly
 dev: dev-db dev-build-deps
 	@echo "Starting backend and frontend..."
-	@trap 'echo ""; echo "Shutting down..."; kill 0; wait 2>/dev/null' INT TERM EXIT; \
+	@trap 'trap - INT TERM EXIT; echo ""; echo "Shutting down..."; kill 0; wait 2>/dev/null' INT TERM EXIT; \
 		set -a && . ./.env.production && set +a && \
 		FLOW_POSTGRES_HOST=localhost FLOW_POSTGRES_PORT=5434 \
 		FLOW_REDIS_HOST=localhost FLOW_REDIS_PORT=6381 \
