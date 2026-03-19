@@ -1,12 +1,28 @@
 services:
+  flow-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: flow-ui
+    environment:
+      FLOW_API_URL: http://flow-api:3000
+    ports:
+      - "8080:80"
+    depends_on:
+      flow-api:
+        condition: service_healthy
+    restart: unless-stopped
+
   flow-api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     container_name: flow-api
     env_file: .env.production
     environment:
       FLOW_CONTAINER_TYPE: APP
     ports:
-      - "8080:80"
+      - "3000:3000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -21,7 +37,9 @@ services:
     restart: unless-stopped
 
   flow-worker:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     container_name: flow-worker
     env_file: .env.production
     environment:
@@ -61,24 +79,6 @@ services:
       - "6381:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
-  vault:
-    image: hashicorp/vault:1.15
-    container_name: flow-vault
-    cap_add:
-      - IPC_LOCK
-    environment:
-      VAULT_DEV_ROOT_TOKEN_ID: dev-root-token
-      VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
-      VAULT_ADDR: "http://127.0.0.1:8200"
-    ports:
-      - "8200:8200"
-    healthcheck:
-      test: ["CMD", "vault", "status"]
       interval: 10s
       timeout: 5s
       retries: 5
