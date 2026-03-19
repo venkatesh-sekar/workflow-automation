@@ -7,10 +7,8 @@ import { EntitySchema } from 'typeorm'
 import {
     BaseColumnSchemaPart,
 } from '../database/database-common'
-import { EncryptedObject } from '../helper/encryption'
 
 export type AppConnectionSchema = Omit<AppConnection, 'value'> & {
-    value: EncryptedObject
     owner?: User
 }
 
@@ -49,9 +47,6 @@ export const AppConnectionEntity = new EntitySchema<AppConnectionSchema>({
         },
         scope: {
             type: String,
-        },
-        value: {
-            type: 'jsonb',
         },
         metadata: {
             type: 'jsonb',

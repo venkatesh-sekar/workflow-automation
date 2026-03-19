@@ -36,7 +36,7 @@ import { ArrayContains, Equal, FindOperator, FindOptionsWhere, ILike, In } from 
 import { OperationResponse } from 'worker'
 import { repoFactory } from '../../core/db/repo-factory'
 import { flowService } from '../../flows/flow/flow.service'
-import { encryptUtils } from '../../helper/encryption'
+import { secretStore } from '../../secret-store'
 import { buildPaginator } from '../../helper/pagination/build-paginator'
 import { paginationHelper } from '../../helper/pagination/pagination-utils'
 import { system } from '../../helper/system/system'
@@ -72,10 +72,10 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
             platformId,
         }, log)
 
-        const encryptedConnectionValue = await encryptUtils.encryptObject({
+        const connectionValue = {
             ...validatedConnectionValue,
             ...value,
-        })
+        }
 
         const existingConnection = await appConnectionsRepo().findOneBy({
             externalId,
@@ -89,7 +89,6 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
             displayName,
             ...spreadIfDefined('ownerId', ownerId),
             status: status ?? AppConnectionStatus.ACTIVE,
-            value: encryptedConnectionValue,
             externalId,
             pieceName,
             type,
@@ -103,6 +102,7 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
         }
 
         await appConnectionsRepo().upsert(connection, ['id'])
+        await secretStore().save(platformId, newId, connectionValue)
 
         const updatedConnection = await appConnectionsRepo().findOneByOrFail({
             id: newId,
@@ -248,6 +248,7 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
     },
 
     async delete(params: DeleteParams): Promise<void> {
+        await secretStore().delete(params.platformId, params.id)
         await appConnectionsRepo().delete({
             id: params.id,
             platformId: params.platformId,
@@ -346,6 +347,15 @@ export const appConnectionService = (log: FastifyBaseLogger) => ({
         return oauth2Util(log).removeRefreshTokenAndClientSecret(refreshedConnection)
     },
     async deleteAllProjectConnections(projectId: string) {
+        const connections = await appConnectionsRepo().find({
+            where: {
+                scope: AppConnectionScope.PROJECT,
+                projectIds: ArrayContains([projectId]),
+            },
+        })
+        await Promise.all(
+            connections.map((conn) => secretStore().delete(conn.platformId, conn.id)),
+        )
         await appConnectionsRepo().delete({
             scope: AppConnectionScope.PROJECT,
             projectIds: ArrayContains([projectId]),

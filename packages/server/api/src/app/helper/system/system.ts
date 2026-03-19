@@ -56,6 +56,7 @@ const systemPropDefaultValues: Partial<Record<SystemProp, string>> = {
     [FlowSystemProp.ENABLE_FLOW_ON_PUBLISH]: 'true',
     [FlowSystemProp.ISSUE_ARCHIVE_DAYS]: '7',
     [FlowSystemProp.POSTGRES_IDLE_TIMEOUT_MS]: '300000',
+    [FlowSystemProp.VAULT_MOUNT]: 'secret',
 }
 
 let globalLogger: FastifyBaseLogger

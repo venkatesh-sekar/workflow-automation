@@ -6,6 +6,7 @@ import { DataSource, MigrationInterface } from 'typeorm'
 import { system } from '../helper/system/system'
 import { commonProperties } from './database-connection'
 import { InitialSchema1773594074709 } from './migration/postgres/1773594074709-InitialSchema'
+import { RemoveAppConnectionValueColumn1774022400000 } from './migration/postgres/1774022400000-RemoveAppConnectionValueColumn'
 
 const getSslConfig = (): boolean | TlsOptions => {
     const useSsl = system.get(FlowSystemProp.POSTGRES_USE_SSL)
@@ -20,6 +21,7 @@ const getSslConfig = (): boolean | TlsOptions => {
 export const getMigrations = (): (new () => MigrationInterface)[] => {
     return [
         InitialSchema1773594074709,
+        RemoveAppConnectionValueColumn1774022400000,
     ]
 }
 

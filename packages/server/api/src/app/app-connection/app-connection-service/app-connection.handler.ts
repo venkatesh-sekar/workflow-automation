@@ -6,8 +6,8 @@ import { ArrayContains } from 'typeorm'
 import { distributedLock } from '../../database/redis-connections'
 import { flowService } from '../../flows/flow/flow.service'
 import { flowVersionService } from '../../flows/flow-version/flow-version.service'
-import { encryptUtils } from '../../helper/encryption'
 import { projectService } from '../../project/project-service'
+import { secretStore } from '../../secret-store'
 import { AppConnectionSchema } from '../app-connection.entity'
 import { appConnectionsRepo } from './app-connection-service'
 import { oauth2Handler } from './oauth2'
@@ -95,9 +95,13 @@ export const appConnectionHandler = (log: FastifyBaseLogger) => ({
                     }
                     const refreshedAppConnection = await this.refresh(appConnection, projectId, log)
         
+                    await secretStore().save(
+                        refreshedAppConnection.platformId,
+                        refreshedAppConnection.id,
+                        refreshedAppConnection.value,
+                    )
                     await appConnectionsRepo().update(refreshedAppConnection.id, {
                         status: AppConnectionStatus.ACTIVE,
-                        value: await encryptUtils.encryptObject(refreshedAppConnection.value),
                     })
                     return refreshedAppConnection
                 }
@@ -118,7 +122,10 @@ export const appConnectionHandler = (log: FastifyBaseLogger) => ({
     async decryptConnection(
         encryptedConnection: AppConnectionSchema,
     ): Promise<AppConnection> {
-        const value = await encryptUtils.decryptObject<AppConnectionValue>(encryptedConnection.value)
+        const value = await secretStore().get(
+            encryptedConnection.platformId,
+            encryptedConnection.id,
+        ) as AppConnectionValue
         const connection: AppConnection = {
             ...encryptedConnection,
             value,

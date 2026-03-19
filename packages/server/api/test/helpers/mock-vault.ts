@@ -1,23 +1,9 @@
-import path from 'path'
-import dotenv from 'dotenv'
-import dayjs from 'dayjs'
-import duration from 'dayjs/plugin/duration'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
 import { vi } from 'vitest'
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
-dayjs.extend(duration)
-
-const resolvedPath = path.resolve(__dirname, '.env.tests')
-dotenv.config({ path: resolvedPath })
-console.log('Configuring vitest ' + resolvedPath)
-
-// Mock Vault secret store for all tests
 const vaultStore = new Map<string, object>()
-vi.mock('./src/app/secret-store', () => ({
-    secretStore: () => ({
+
+export function createMockSecretStore() {
+    return {
         save: vi.fn(async (platformId: string, connectionId: string, value: object) => {
             vaultStore.set(`${platformId}/${connectionId}`, value)
         }),
@@ -31,6 +17,6 @@ vi.mock('./src/app/secret-store', () => ({
         delete: vi.fn(async (platformId: string, connectionId: string) => {
             vaultStore.delete(`${platformId}/${connectionId}`)
         }),
-    }),
-    initializeSecretStore: vi.fn(),
-}))
+        clear: () => vaultStore.clear(),
+    }
+}
