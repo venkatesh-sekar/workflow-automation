@@ -23,6 +23,7 @@ enum AuthType {
   NONE = 'NONE',
   BASIC = AuthenticationType.BASIC,
   BEARER_TOKEN = AuthenticationType.BEARER_TOKEN,
+  USER_AUTH = 'USER_AUTH',
 }
 
 export const httpSendRequestAction = createAction({
@@ -53,6 +54,7 @@ export const httpSendRequestAction = createAction({
           { label: 'None', value: AuthType.NONE },
           { label: 'Basic Auth', value: AuthType.BASIC },
           { label: 'Bearer Token', value: AuthType.BEARER_TOKEN },
+          { label: 'User Auth', value: AuthType.USER_AUTH },
         ],
       },
     }),
@@ -90,6 +92,42 @@ export const httpSendRequestAction = createAction({
               token: Property.ShortText({
                 displayName: 'Token',
                 description: 'The Bearer token to use for authentication.',
+                required: true,
+              }),
+            };
+            break;
+          case AuthType.USER_AUTH:
+            fields = {
+              token_url: Property.ShortText({
+                displayName: 'Token URL',
+                description: 'The OAuth2 token endpoint URL.',
+                required: true,
+                defaultValue: 'https://api.example.com/oauth/token',
+              }),
+              scope: Property.ShortText({
+                displayName: 'Scope',
+                description: 'The OAuth2 scope to request.',
+                required: false,
+                defaultValue: 'default',
+              }),
+              client_id: Property.ShortText({
+                displayName: 'Client ID',
+                description: 'The client ID for authentication.',
+                required: true,
+              }),
+              client_secret: Property.ShortText({
+                displayName: 'Client Secret',
+                description: 'The client secret for authentication.',
+                required: true,
+              }),
+              username: Property.ShortText({
+                displayName: 'Username',
+                description: 'The username for authentication.',
+                required: true,
+              }),
+              password: Property.ShortText({
+                displayName: 'Password',
+                description: 'The password for authentication.',
                 required: true,
               }),
             };
@@ -307,6 +345,38 @@ export const httpSendRequestAction = createAction({
         if (authFields) {
           request.authentication = {
             token: authFields['token'],
+            type: AuthenticationType.BEARER_TOKEN,
+          };
+        }
+        break;
+      case AuthType.USER_AUTH:
+        if (authFields) {
+          const tokenUrl = authFields['token_url'];
+          const scope = authFields['scope'] || 'default';
+          const clientId = authFields['client_id'];
+          const clientSecret = authFields['client_secret'];
+          const username = authFields['username'];
+          const password = authFields['password'];
+
+          const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+          const tokenResponse = await axios.post(
+            tokenUrl,
+            new URLSearchParams({
+              grant_type: 'password',
+              username,
+              password,
+              scope,
+            }).toString(),
+            {
+              headers: {
+                'Authorization': `Basic ${basicAuth}`,
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            },
+          );
+
+          request.authentication = {
+            token: tokenResponse.data.access_token,
             type: AuthenticationType.BEARER_TOKEN,
           };
         }
