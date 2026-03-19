@@ -88,13 +88,13 @@ dev-frontend:
 
 ## Install npm dependencies (one-time setup)
 dev-install:
-	npm install
-	cd packages/shared && npm install
-	cd packages/web && npm install
-	cd packages/server/api && npm install
-	cd packages/server/engine && npm install
-	cd packages/server/worker && npm install
-	cd packages/server/common && npm install
+	npm install --legacy-peer-deps
+	cd packages/shared && npm install --legacy-peer-deps
+	cd packages/web && npm install --legacy-peer-deps
+	cd packages/server/api && npm install --legacy-peer-deps
+	cd packages/server/engine && npm install --legacy-peer-deps
+	cd packages/server/worker && npm install --legacy-peer-deps
+	cd packages/server/common && npm install --legacy-peer-deps
 
 ## Build shared libs that the server needs at runtime
 dev-build-deps:
