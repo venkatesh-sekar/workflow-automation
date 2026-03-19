@@ -27,7 +27,7 @@ export async function initializeSecretStore(): Promise<void> {
         await vaultAuth.getToken()
     }
     catch (e) {
-        log.fatal({ error: e }, 'Failed to authenticate with Vault')
+        log.fatal({ err: e }, 'Failed to authenticate with Vault')
         process.exit(1)
     }
 

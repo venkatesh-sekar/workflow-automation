@@ -62,6 +62,6 @@ export const errorHandler = async (
         }
         await reply
             .status(error.statusCode ?? StatusCodes.INTERNAL_SERVER_ERROR)
-            .send(error)
+            .send({ code: 'INTERNAL_SERVER_ERROR', message: 'An internal error occurred' })
     }
 }

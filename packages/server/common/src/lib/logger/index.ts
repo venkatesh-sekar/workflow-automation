@@ -1,6 +1,7 @@
 import { FastifyBaseLogger } from 'fastify'
 import pino, { Level, Logger } from 'pino'
 import 'pino-loki'
+import { sharedSerializers } from './error-serializer'
 import { createHyperDXTransport, HyperDXCredentials } from './hyperdx-pino'
 import { createLokiTransport, LokiCredentials } from './loki-pino'
 
@@ -12,6 +13,7 @@ export const pinoLogging = {
         if (pretty) {
             return pino({
                 level,
+                serializers: sharedSerializers,
                 transport: {
                     target: 'pino-pretty',
                     options: {
@@ -22,7 +24,7 @@ export const pinoLogging = {
                 },
             })
         }
-        
+
         const defaultTargets = [
             {
                 target: 'pino/file',
@@ -44,6 +46,7 @@ export const pinoLogging = {
         // Default logger
         return pino({
             level,
+            serializers: sharedSerializers,
             transport: {
                 targets: defaultTargets,
             },

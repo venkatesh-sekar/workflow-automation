@@ -87,18 +87,10 @@ export const credentialsOauth2Service = (log: FastifyBaseLogger): OAuth2Service<
             }
         }
         catch (e: unknown) {
-            if (e instanceof AxiosError) {
-                log.error('Axios Error:')
-                log.error(e.response?.data)
-                log.error({
-                    clientId: request.clientId,
-                    tokenUrl: request.tokenUrl,
-                })
-            }
-            else {
-                log.error('Unknown Error:')
-                log.error(e)
-            }
+            const errorDetail = e instanceof AxiosError
+                ? { status: e.response?.status, error: e.response?.data?.error, errorDescription: e.response?.data?.error_description }
+                : { message: String(e) }
+            log.error({ ...errorDetail, clientId: request.clientId, tokenUrl: request.tokenUrl }, 'OAuth2 token exchange failed')
             throw new FlowError({
                 code: ErrorCode.INVALID_CLAIM,
                 params: {

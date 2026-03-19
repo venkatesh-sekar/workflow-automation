@@ -1,7 +1,8 @@
 import { Level, Logger, pino, TransportTargetOptions } from 'pino'
 import 'pino-loki'
+import { sharedSerializers } from './error-serializer'
 
-export type LokiCredentials = {        
+export type LokiCredentials = {
     url: string | undefined
     username: string | undefined
     password: string | undefined
@@ -17,6 +18,7 @@ export const createLokiTransport = (level: Level, targets: TransportTargetOption
 
     return pino({
         level,
+        serializers: sharedSerializers,
         transport: {
             targets: [
                 {

@@ -1,5 +1,6 @@
 import * as HyperDX from '@hyperdx/node-opentelemetry'
 import { Level, Logger, pino, transport, TransportTargetOptions } from 'pino'
+import { sharedSerializers } from './error-serializer'
 
 export type HyperDXCredentials = {
     token: string | undefined
@@ -19,7 +20,7 @@ export const createHyperDXTransport = (level: Level, targets: TransportTargetOpt
     })
 
     return pino(
-        { level, mixin: HyperDX.getPinoMixinFunction },
+        { level, serializers: sharedSerializers, mixin: HyperDX.getPinoMixinFunction },
         transport({
             targets: [
                 HyperDX.getPinoTransport(level, {

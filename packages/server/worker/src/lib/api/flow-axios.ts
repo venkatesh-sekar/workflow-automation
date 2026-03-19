@@ -89,11 +89,9 @@ export class FlowAxiosClient {
             request: request && {
                 method: request.method,
                 url: request.path,
-                headers: request._header,
             },
             response: response && {
                 status: response.status,
-                headers: response.headers,
                 data: response.data,
             },
         }))

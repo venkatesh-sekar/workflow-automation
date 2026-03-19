@@ -1,4 +1,5 @@
 import { flowAxios } from '@flow/server-common'
+import { isAxiosError } from 'axios'
 
 type VaultAuthConfig = {
     addr: string
@@ -17,14 +18,20 @@ export function createVaultAuth(config: VaultAuthConfig) {
     let cached: CachedToken | null = null
 
     async function login(): Promise<CachedToken> {
-        const response = await flowAxios.post(
-            `${config.addr}/v1/auth/userpass/login/${config.username}`,
-            { password: config.password },
-        )
-        const { client_token, lease_duration } = response.data.auth
-        return {
-            token: client_token,
-            expiresAt: Date.now() + lease_duration * 1000,
+        try {
+            const response = await flowAxios.post(
+                `${config.addr}/v1/auth/userpass/login/${config.username}`,
+                { password: config.password },
+            )
+            const { client_token, lease_duration } = response.data.auth
+            return {
+                token: client_token,
+                expiresAt: Date.now() + lease_duration * 1000,
+            }
+        }
+        catch (error) {
+            const status = isAxiosError(error) ? `${error.response?.status} ${error.response?.statusText}` : 'unknown error'
+            throw new Error(`Vault authentication failed: ${status}`)
         }
     }
 

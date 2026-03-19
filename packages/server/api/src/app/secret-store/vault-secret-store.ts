@@ -1,4 +1,5 @@
 import { flowAxios } from '@flow/server-common'
+import { isAxiosError } from 'axios'
 import { SecretStore } from './secret-store'
 
 type VaultSecretStoreConfig = {
@@ -17,28 +18,48 @@ export function createVaultSecretStore(config: VaultSecretStoreConfig): SecretSt
         return { 'X-Vault-Token': token }
     }
 
+    function sanitizeVaultError(error: unknown, operation: string, connectionId: string): Error {
+        const status = isAxiosError(error) ? `${error.response?.status} ${error.response?.statusText}` : 'unknown error'
+        return new Error(`Vault ${operation} failed for connection ${connectionId}: ${status}`)
+    }
+
     return {
         async save(platformId: string, connectionId: string, value: object): Promise<void> {
-            await flowAxios.put(
-                vaultUrl(platformId, connectionId),
-                value,
-                { headers: await headers() },
-            )
+            try {
+                await flowAxios.put(
+                    vaultUrl(platformId, connectionId),
+                    value,
+                    { headers: await headers() },
+                )
+            }
+            catch (error) {
+                throw sanitizeVaultError(error, 'PUT', connectionId)
+            }
         },
 
         async get(platformId: string, connectionId: string): Promise<object> {
-            const response = await flowAxios.get(
-                vaultUrl(platformId, connectionId),
-                { headers: await headers() },
-            )
-            return response.data.data
+            try {
+                const response = await flowAxios.get(
+                    vaultUrl(platformId, connectionId),
+                    { headers: await headers() },
+                )
+                return response.data.data
+            }
+            catch (error) {
+                throw sanitizeVaultError(error, 'GET', connectionId)
+            }
         },
 
         async delete(platformId: string, connectionId: string): Promise<void> {
-            await flowAxios.delete(
-                vaultUrl(platformId, connectionId),
-                { headers: await headers() },
-            )
+            try {
+                await flowAxios.delete(
+                    vaultUrl(platformId, connectionId),
+                    { headers: await headers() },
+                )
+            }
+            catch (error) {
+                throw sanitizeVaultError(error, 'DELETE', connectionId)
+            }
         },
     }
 }
