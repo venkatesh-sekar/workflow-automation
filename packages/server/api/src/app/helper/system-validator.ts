@@ -159,12 +159,18 @@ const systemPropValidators: {
         }
         return true
     },
+
+    // Vault
+    [FlowSystemProp.VAULT_ADDR]: urlValidator,
+    [FlowSystemProp.VAULT_USERNAME]: stringValidator,
+    [FlowSystemProp.VAULT_PASSWORD]: stringValidator,
+    [FlowSystemProp.VAULT_MOUNT]: stringValidator,
 }
 
 
 
 const validateSystemPropTypes = () => {
-    const systemProperties: SystemProp[] = [...Object.values(FlowSystemProp), ...Object.values(FlowSystemProp)]
+    const systemProperties: SystemProp[] = [...Object.values(FlowSystemProp), ...Object.values(FlowWorkerSystemProp)]
     const errors: {
         [key in SystemProp]?: string
     } = {}
