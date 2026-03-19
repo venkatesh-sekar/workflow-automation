@@ -73,6 +73,8 @@ function makeConnectionValueCompatibleWithContextV0(connection: AppConnection): 
 
         case AppConnectionType.CUSTOM_AUTH:
             return connection.value.props as unknown as AppConnectionValue
+        case AppConnectionType.USER_AUTH:
+            return connection.value as unknown as AppConnectionValue
         default:
             return connection.value as unknown as AppConnectionValue
     }

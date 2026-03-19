@@ -59,6 +59,7 @@ import { CustomAuthConnectionSettings } from './custom-auth-connection-settings'
 import { MutliAuthList, AuthListItem } from './multi-auth-list';
 import { OAuth2ConnectionSettings } from './oauth2-connection-settings';
 import { SecretTextConnectionSettings } from './secret-text-connection-settings';
+import { UserAuthConnectionSettings } from './user-auth-connection-settings';
 
 function CreateOrEditConnectionSection({
   piece,
@@ -278,6 +279,13 @@ function ConnectionSettings({
     case PropertyType.CUSTOM_AUTH:
       return (
         <CustomAuthConnectionSettings
+          authProperty={selectedAuth.authProperty}
+          isGlobalConnection={isGlobalConnection}
+        />
+      );
+    case PropertyType.USER_AUTH:
+      return (
+        <UserAuthConnectionSettings
           authProperty={selectedAuth.authProperty}
           isGlobalConnection={isGlobalConnection}
         />

@@ -146,6 +146,18 @@ export const newConnectionUtils = {
           },
         };
       }
+      case PropertyType.USER_AUTH:
+        return {
+          ...commmonProps,
+          type: AppConnectionType.USER_AUTH,
+          value: {
+            type: AppConnectionType.USER_AUTH,
+            client_id: '',
+            client_secret: '',
+            username: '',
+            password: '',
+          },
+        };
       case PropertyType.OAUTH2: {
         switch (oauth2App?.oauth2Type) {
           case AppConnectionType.CLOUD_OAUTH2:

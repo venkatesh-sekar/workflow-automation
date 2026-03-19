@@ -12,6 +12,7 @@ import { AppConnectionSchema } from '../app-connection.entity'
 import { appConnectionsRepo } from './app-connection-service'
 import { oauth2Handler } from './oauth2'
 import { oauth2Util } from './oauth2/oauth2-util'
+import { userAuthService } from './user-auth/user-auth-service'
 
 export const appConnectionHandler = (log: FastifyBaseLogger) => ({
     async updateFlowsWithAppConnection(flows: PopulatedFlow[], params: UpdateFlowsWithAppConnectionParams): Promise<void> {
@@ -54,6 +55,9 @@ export const appConnectionHandler = (log: FastifyBaseLogger) => ({
                     projectId,
                     connectionValue: connection.value,
                 })
+                break
+            case AppConnectionType.USER_AUTH:
+                connection.value = await userAuthService(log).refresh(connection.value)
                 break
             default:
                 break
@@ -141,6 +145,8 @@ export const appConnectionHandler = (log: FastifyBaseLogger) => ({
             case AppConnectionType.CLOUD_OAUTH2:
             case AppConnectionType.OAUTH2:
                 return oauth2Util(log).isExpired(connection.value)
+            case AppConnectionType.USER_AUTH:
+                return userAuthService(log).isExpired(connection.value)
             default:
                 return false
         }

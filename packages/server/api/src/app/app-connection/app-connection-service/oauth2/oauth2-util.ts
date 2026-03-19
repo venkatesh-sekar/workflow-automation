@@ -100,6 +100,13 @@ export const oauth2Util = (log: FastifyBaseLogger) => ({
                 refresh_token: '(REDACTED)',
             }
         }
+        if (connection.value.type === AppConnectionType.USER_AUTH) {
+            connection.value = {
+                ...connection.value,
+                client_secret: '(REDACTED)',
+                password: '(REDACTED)',
+            }
+        }
         return connection
     },
 })

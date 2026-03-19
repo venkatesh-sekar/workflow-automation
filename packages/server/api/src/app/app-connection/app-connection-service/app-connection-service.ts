@@ -54,6 +54,7 @@ import {
 import { appConnectionHandler } from './app-connection.handler'
 import { oauth2Handler } from './oauth2'
 import { oauth2Util } from './oauth2/oauth2-util'
+import { userAuthService } from './user-auth/user-auth-service'
 export const appConnectionsRepo = repoFactory(AppConnectionEntity)
 
 export const appConnectionService = (log: FastifyBaseLogger) => ({
@@ -468,6 +469,21 @@ const validateConnectionValue = async (
                 auth,
             }, log)
             return auth
+        }
+        case AppConnectionType.USER_AUTH: {
+            const claimedValue = await userAuthService(log).claim({
+                clientId: value.client_id,
+                clientSecret: value.client_secret,
+                username: value.username,
+                password: value.password,
+            })
+            await engineValidateAuth({
+                pieceName,
+                projectId,
+                platformId,
+                auth: claimedValue,
+            }, log)
+            return claimedValue
         }
         case AppConnectionType.NO_AUTH:
             break

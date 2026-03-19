@@ -25,6 +25,7 @@ import {
   UpsertAppConnectionRequestBody,
   UpsertCustomAuthRequest,
   UpsertBasicAuthRequest,
+  UpsertUserAuthRequest,
   UpsertSecretTextRequest,
   FlowTriggerType,
   FlowActionType,
@@ -141,6 +142,7 @@ function getDefaultPropertyValue({
     case PropertyType.CUSTOM_AUTH:
     case PropertyType.BASIC_AUTH:
     case PropertyType.SECRET_TEXT:
+    case PropertyType.USER_AUTH:
     case PropertyType.CUSTOM: {
       return '';
     }
@@ -220,6 +222,13 @@ function buildConnectionSchema(auth: PieceAuthProperty) {
               }),
             }),
           ),
+      });
+    case PropertyType.USER_AUTH:
+      return z.object({
+        request: UpsertUserAuthRequest.omit({
+          externalId: true,
+          displayName: true,
+        }).merge(connectionSchema),
       });
     case PropertyType.OAUTH2:
       return z.object({

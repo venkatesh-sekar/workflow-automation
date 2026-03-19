@@ -26,6 +26,7 @@ export enum AppConnectionType {
     SECRET_TEXT = 'SECRET_TEXT',
     BASIC_AUTH = 'BASIC_AUTH',
     CUSTOM_AUTH = 'CUSTOM_AUTH',
+    USER_AUTH = 'USER_AUTH',
     NO_AUTH = 'NO_AUTH',
 }
 
@@ -60,6 +61,17 @@ export type CustomAuthConnectionValue<T extends Record<string, unknown> = Record
     props: T
 }
 
+export type UserAuthConnectionValue = {
+    type: AppConnectionType.USER_AUTH
+    client_id: string
+    client_secret: string
+    username: string
+    password: string
+    access_token: string
+    expires_in: number
+    claimed_at: number
+}
+
 export type CloudOAuth2ConnectionValue = {
     type: AppConnectionType.CLOUD_OAUTH2
 } & BaseOAuth2ConnectionValue
@@ -86,8 +98,9 @@ export type AppConnectionValue<T extends AppConnectionType = AppConnectionType, 
                 T extends AppConnectionType.PLATFORM_OAUTH2 ? PlatformOAuth2ConnectionValue :
                     T extends AppConnectionType.OAUTH2 ? OAuth2ConnectionValueWithApp :
                         T extends AppConnectionType.CUSTOM_AUTH ? CustomAuthConnectionValue<PropsType> :
-                            T extends AppConnectionType.NO_AUTH ? NoAuthConnectionValue :
-                                never
+                            T extends AppConnectionType.USER_AUTH ? UserAuthConnectionValue :
+                                T extends AppConnectionType.NO_AUTH ? NoAuthConnectionValue :
+                                    never
 
 export type AppConnection<Type extends AppConnectionType = AppConnectionType> = BaseModel<AppConnectionId> & {
     externalId: string
@@ -112,6 +125,7 @@ export type CloudAuth2Connection = AppConnection<AppConnectionType.CLOUD_OAUTH2>
 export type PlatformOAuth2Connection = AppConnection<AppConnectionType.PLATFORM_OAUTH2>
 export type BasicAuthConnection = AppConnection<AppConnectionType.BASIC_AUTH>
 export type CustomAuthConnection = AppConnection<AppConnectionType.CUSTOM_AUTH>
+export type UserAuthConnection = AppConnection<AppConnectionType.USER_AUTH>
 export type NoAuthConnection = AppConnection<AppConnectionType.NO_AUTH>
 
 export const AppConnectionWithoutSensitiveData = z.object({

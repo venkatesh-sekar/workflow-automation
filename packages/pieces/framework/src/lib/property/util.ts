@@ -44,6 +44,7 @@ function buildSchema(props: PiecePropertyMap, auth: PieceAuthProperty | PieceAut
         case PropertyType.CUSTOM_AUTH:
         case PropertyType.SECRET_TEXT:
         case PropertyType.OAUTH2:
+        case PropertyType.USER_AUTH:
           break;
         case PropertyType.ARRAY: {
           const arrayItemSchema = isNil(property.properties)

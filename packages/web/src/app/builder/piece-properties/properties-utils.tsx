@@ -288,6 +288,7 @@ export const selectGenericFormComponentForProperty = ({
     case PropertyType.CUSTOM_AUTH:
     case PropertyType.BASIC_AUTH:
     case PropertyType.OAUTH2:
+    case PropertyType.USER_AUTH:
       return <></>;
     case PropertyType.CUSTOM:
       return (

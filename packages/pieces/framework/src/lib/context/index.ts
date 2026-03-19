@@ -20,6 +20,7 @@ import {
   InputPropertyMap,
   OAuth2Property,
   SecretTextProperty,
+  UserAuthProperty,
   StaticPropsValue,
 } from '../property';
 import { PieceAuthProperty } from '../property/authentication';
@@ -57,6 +58,7 @@ type AppConnectionValueForSingleAuthProperty<T extends PieceAuthProperty | undef
   T extends BasicAuthProperty ? AppConnectionValue<AppConnectionType.BASIC_AUTH> :
   T extends CustomAuthProperty<any> ? AppConnectionValue<AppConnectionType.CUSTOM_AUTH, StaticPropsValue<ExtractCustomAuthProps<T>>> :
   T extends OAuth2Property<any> ? AppConnectionValue<AppConnectionType.OAUTH2, StaticPropsValue<ExtractOAuth2Props<T>>> :
+  T extends UserAuthProperty ? AppConnectionValue<AppConnectionType.USER_AUTH> :
   T extends undefined ? undefined : never;
 type AppWebhookTriggerHookContext<
   PieceAuth extends PieceAuthProperty | PieceAuthProperty[] | undefined,

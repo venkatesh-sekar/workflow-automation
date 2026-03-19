@@ -35,6 +35,7 @@ export { FileProperty } from './input/file-property';
 export { BasicAuthProperty } from './authentication/basic-auth-prop';
 export { SecretTextProperty } from './authentication/secret-text-property'
 export { CustomAuthProperty } from './authentication/custom-auth-prop';
+export { UserAuthProperty } from './authentication/user-auth-prop';
 
 export { JsonProperty } from './input/json-property'
 export const PieceProperty = z.union([InputProperty, PieceAuthProperty])

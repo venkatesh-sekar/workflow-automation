@@ -79,6 +79,7 @@ async function resolveProperties(
                 PropertyType.BASIC_AUTH,
                 PropertyType.OAUTH2,
                 PropertyType.CUSTOM_AUTH,
+                PropertyType.USER_AUTH,
                 PropertyType.CUSTOM,
                 PropertyType.MARKDOWN,
             ]
