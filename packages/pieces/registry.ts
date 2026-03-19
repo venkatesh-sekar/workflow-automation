@@ -32,6 +32,7 @@ import { jiraCloud } from './community/jira-cloud/src'
 import { mcp } from './community/mcp/src'
 import { openai } from './community/openai/src'
 import { postgres } from './community/postgres/src'
+import { opentelemetry } from './community/opentelemetry/src'
 import { slack } from './community/slack/src'
 
 const allPieces: Piece[] = [
@@ -65,6 +66,7 @@ const allPieces: Piece[] = [
     jiraCloud,
     mcp,
     openai,
+    opentelemetry,
     postgres,
     slack,
 ]
