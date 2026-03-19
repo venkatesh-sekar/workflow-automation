@@ -29,17 +29,30 @@ dev: dev-db dev-build-deps
 		echo "Backend PID: $$BACKEND_PID, Frontend PID: $$FRONTEND_PID"; \
 		wait
 
-## Start only Postgres and Redis containers
+## Start only Postgres, Redis, and Vault containers
 dev-db:
-	docker compose up -d postgres redis
-	@echo "Waiting for databases to be healthy..."
+	docker compose up -d postgres redis vault
+	@echo "Waiting for services to be healthy..."
 	@until docker compose exec postgres pg_isready -U flow -q 2>/dev/null; do \
 		echo "Waiting for Postgres..."; sleep 2; \
 	done
 	@until docker compose exec redis redis-cli ping > /dev/null 2>&1; do \
 		echo "Waiting for Redis..."; sleep 2; \
 	done
-	@echo "Databases are ready (Postgres on :5434, Redis on :6381)"
+	@until docker compose exec vault vault status 2>/dev/null | grep -q 'Sealed.*false'; do \
+		echo "Waiting for Vault..."; sleep 2; \
+	done
+	@echo "Bootstrapping Vault..."
+	@docker compose exec vault sh -c '\
+		export VAULT_ADDR=http://127.0.0.1:8200 && \
+		export VAULT_TOKEN=dev-root-token && \
+		vault secrets disable secret 2>/dev/null; \
+		vault secrets enable -path=secret -version=1 kv && \
+		vault auth enable userpass 2>/dev/null; \
+		vault write auth/userpass/users/flow password=flow-dev-password policies=flow-policy; \
+		echo "path \"secret/*\" { capabilities = [\"create\",\"read\",\"update\",\"delete\",\"list\"] }" | vault policy write flow-policy -; \
+		echo "Vault ready"'
+	@echo "Services are ready (Postgres on :5434, Redis on :6381, Vault on :8200)"
 
 ## Stop the database containers
 dev-db-stop:
