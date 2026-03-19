@@ -23,6 +23,7 @@ import { storage } from './core/store/src'
 import { flows } from './core/subflows/src'
 import { tables } from './core/tables/src'
 import { textHelper } from './core/text-helper/src'
+import { userAuth } from './core/user-auth/src'
 import { webhook } from './core/webhook/src'
 
 // Community pieces
@@ -59,6 +60,7 @@ const allPieces: Piece[] = [
     flows,
     tables,
     textHelper,
+    userAuth,
     webhook,
     // Community
     ai,

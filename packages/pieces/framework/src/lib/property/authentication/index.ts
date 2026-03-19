@@ -17,7 +17,7 @@ export const PieceAuthProperty = z.union([
 ])
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type PieceAuthProperty = BasicAuthProperty | CustomAuthProperty<any> | OAuth2Property<any> | SecretTextProperty<boolean> | UserAuthProperty;
+export type PieceAuthProperty = BasicAuthProperty | CustomAuthProperty<any> | OAuth2Property<any> | SecretTextProperty<boolean> | UserAuthProperty<boolean>;
 
 type AuthProperties<T> = Omit<Properties<T>, 'displayName'> & {
   displayName?: string;
@@ -70,16 +70,15 @@ export const PieceAuth = {
       displayName: request.displayName || DEFAULT_CONNECTION_DISPLAY_NAME,
     } as unknown as CustomAuthProperty<T>
   },
-  UserAuth(
-    request: AuthProperties<UserAuthProperty>
-  ): UserAuthProperty {
+  UserAuth<R extends boolean>(
+    request: Properties<UserAuthProperty<R>>
+  ): R extends true ? UserAuthProperty<true> : UserAuthProperty<false> {
     return {
       ...request,
       valueSchema: undefined,
       type: PropertyType.USER_AUTH,
       displayName: request.displayName || DEFAULT_CONNECTION_DISPLAY_NAME,
-      required: true,
-    } as unknown as UserAuthProperty;
+    } as unknown as R extends true ? UserAuthProperty<true> : UserAuthProperty<false>;
   },
   None() {
     return undefined;

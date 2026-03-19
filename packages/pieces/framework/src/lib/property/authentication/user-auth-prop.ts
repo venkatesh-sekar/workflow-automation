@@ -20,10 +20,10 @@ export const UserAuthProperty = z.object({
     ...TPropertyValue(UserAuthPropertyValue, PropertyType.USER_AUTH).shape,
 })
 
-export type UserAuthProperty =
+export type UserAuthProperty<R extends boolean = boolean> =
     BasePieceAuthSchema<UserAuthPropertyValue> &
     TPropertyValue<
         UserAuthPropertyValue,
         PropertyType.USER_AUTH,
-        true
+        R
     >;
