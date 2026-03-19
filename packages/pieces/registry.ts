@@ -1,7 +1,8 @@
 import { Piece } from '@flow/pieces-framework'
 
-// Core pieces
+import { ai } from './core/ai/src'
 import { approval } from './core/approval/src'
+import { confluence } from './core/confluence/src'
 import { connections } from './core/connections/src'
 import { csv } from './core/csv/src'
 import { dataMapper } from './core/data-mapper/src'
@@ -13,11 +14,17 @@ import { forms } from './core/forms/src'
 import { graphql } from './core/graphql/src'
 import { http } from './core/http/src'
 import { imageHelper } from './core/image-helper/src'
+import { jiraCloud } from './core/jira-cloud/src'
 import { manualTriggerPiece } from './core/manual-trigger/src'
 import { math } from './core/math-helper/src'
+import { mcp } from './core/mcp/src'
+import { openai } from './core/openai/src'
+import { opentelemetry } from './core/opentelemetry/src'
 import { PDF } from './core/pdf/src'
+import { postgres } from './core/postgres/src'
 import { schedule } from './core/schedule/src'
 import { ftpSftp } from './core/sftp/src'
+import { slack } from './core/slack/src'
 import { smtp } from './core/smtp/src'
 import { storage } from './core/store/src'
 import { flows } from './core/subflows/src'
@@ -26,19 +33,10 @@ import { textHelper } from './core/text-helper/src'
 import { userAuth } from './core/user-auth/src'
 import { webhook } from './core/webhook/src'
 
-// Community pieces
-import { ai } from './community/ai/src'
-import { confluence } from './community/confluence/src'
-import { jiraCloud } from './community/jira-cloud/src'
-import { mcp } from './community/mcp/src'
-import { openai } from './community/openai/src'
-import { postgres } from './community/postgres/src'
-import { opentelemetry } from './community/opentelemetry/src'
-import { slack } from './community/slack/src'
-
 const allPieces: Piece[] = [
-    // Core
+    ai,
     approval,
+    confluence,
     connections,
     csv,
     dataMapper,
@@ -50,11 +48,17 @@ const allPieces: Piece[] = [
     graphql,
     http,
     imageHelper,
+    jiraCloud,
     manualTriggerPiece,
     math,
+    mcp,
+    openai,
+    opentelemetry,
     PDF,
+    postgres,
     schedule,
     ftpSftp,
+    slack,
     smtp,
     storage,
     flows,
@@ -62,15 +66,6 @@ const allPieces: Piece[] = [
     textHelper,
     userAuth,
     webhook,
-    // Community
-    ai,
-    confluence,
-    jiraCloud,
-    mcp,
-    openai,
-    opentelemetry,
-    postgres,
-    slack,
 ]
 
 export const pieceRegistry = new Map<string, Piece>(
