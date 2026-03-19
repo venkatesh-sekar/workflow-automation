@@ -89,6 +89,12 @@ dev-frontend:
 ## Install npm dependencies (one-time setup)
 dev-install:
 	npm install
+	cd packages/shared && npm install
+	cd packages/web && npm install
+	cd packages/server/api && npm install
+	cd packages/server/engine && npm install
+	cd packages/server/worker && npm install
+	cd packages/server/common && npm install
 
 ## Build shared libs that the server needs at runtime
 dev-build-deps:
