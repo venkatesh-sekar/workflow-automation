@@ -2,6 +2,17 @@
   "name": "flow",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/shared",
+    "packages/pieces/common",
+    "packages/pieces/framework",
+    "packages/server/common",
+    "packages/server/engine",
+    "packages/server/worker",
+    "packages/server/api/worker-module",
+    "packages/server/api",
+    "packages/web"
+  ],
   "devDependencies": {
     "@types/mime-types": "^3.0.1",
     "@types/node": "^24.11.0",

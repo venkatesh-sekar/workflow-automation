@@ -25,66 +25,23 @@ FROM base AS build
 
 WORKDIR /usr/src/app
 
-# Install TypeScript globally for build steps
-RUN npm install -g typescript@5.5.4
-
 # Copy all source
 COPY . .
 
-# Install root dev dependencies
+# Install all dependencies (workspaces hoists everything to root node_modules)
 RUN --mount=type=cache,target=/root/.npm \
     npm install --legacy-peer-deps 2>&1 | tail -5
-
-# Install dependencies for shared packages
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/shared && npm install --legacy-peer-deps 2>&1 | tail -3
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/pieces/framework && npm install --legacy-peer-deps 2>&1 | tail -3
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/pieces/common && npm install --legacy-peer-deps 2>&1 | tail -3
-
-# Install server/api deps
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/server/api && npm install --legacy-peer-deps 2>&1 | tail -5
-
-# Install server-common deps + symlink typeorm
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/server/common && npm install --legacy-peer-deps 2>&1 | tail -3 && \
-    ln -sf /usr/src/app/packages/server/api/node_modules/typeorm node_modules/typeorm
-
-# Install engine deps
-RUN --mount=type=cache,target=/root/.npm \
-    cd packages/server/engine && npm install --legacy-peer-deps 2>&1 | tail -3
-
-# Install piece package dependencies
-RUN --mount=type=cache,target=/root/.npm \
-    for dir in packages/pieces/community/*/  packages/pieces/core/*/; do \
-        if [ -f "$dir/package.json" ]; then \
-            (cd "$dir" && npm install --legacy-peer-deps 2>&1 | tail -1) || true; \
-        fi; \
-    done
-
-# Build shared packages in dependency order
-RUN cd packages/shared && npm run build
-RUN cd packages/pieces/framework && npm run build
-RUN cd packages/pieces/common && npm run build
-
-# Build all piece packages
-RUN for dir in packages/pieces/community/*/ packages/pieces/core/*/; do \
-        if [ -f "$dir/package.json" ] && grep -q '"build"' "$dir/package.json"; then \
-            (cd "$dir" && npm run build 2>&1 | tail -1) || true; \
-        fi; \
-    done
-
-RUN cd packages/server/common && npm run build
 
 # Build engine (esbuild bundle)
 RUN cd packages/server/engine && npm run build
 
-# Build server API
+# Build server API (esbuild bundle — includes all @flow/* source)
 RUN cd packages/server/api && npm run build
 
-### STAGE 2: Run (no Nginx, no frontend) ###
+# Prune internal workspace symlinks from node_modules (not needed at runtime)
+RUN rm -rf node_modules/@flow
+
+### STAGE 2: Run ###
 FROM base AS run
 
 WORKDIR /usr/src/app
@@ -93,24 +50,17 @@ WORKDIR /usr/src/app
 COPY docker-entrypoint.backend.sh ./docker-entrypoint.sh
 RUN chmod +x docker-entrypoint.sh
 
-# Copy root package.json (required by server-common for version info)
+# Copy root package.json (version info)
 COPY --from=build /usr/src/app/package.json ./package.json
 
-# Copy built server API with dependencies
-COPY --from=build /usr/src/app/packages/server/api/ ./packages/server/api/
+# Copy bundled server API output
+COPY --from=build /usr/src/app/packages/server/api/dist/ ./packages/server/api/dist/
 
-# Copy built shared packages (dist + node_modules for runtime deps)
-COPY --from=build /usr/src/app/packages/shared/ ./packages/shared/
-COPY --from=build /usr/src/app/packages/pieces/framework/ ./packages/pieces/framework/
-COPY --from=build /usr/src/app/packages/pieces/common/ ./packages/pieces/common/
-COPY --from=build /usr/src/app/packages/server/common/ ./packages/server/common/
+# Copy hoisted node_modules (all external deps for runtime)
+COPY --from=build /usr/src/app/node_modules/ ./node_modules/
 
-# Copy built engine
+# Copy bundled engine output
 COPY --from=build /usr/src/app/dist/packages/engine/ ./dist/packages/engine/
-
-# Copy piece packages (runtime needs them for piece loading)
-COPY --from=build /usr/src/app/packages/pieces/community/ ./packages/pieces/community/
-COPY --from=build /usr/src/app/packages/pieces/core/ ./packages/pieces/core/
 
 LABEL service=flow-backend
 

@@ -100,7 +100,6 @@
     "zod": "4.3.6"
   },
   "devDependencies": {
-    "@flow/piece-slack": "file:../../pieces/community/slack",
     "@faker-js/faker": "8.2.0",
     "@types/bcrypt": "5.0.0",
     "@types/content-disposition": "0.5.9",
@@ -122,7 +121,7 @@
     "webpack-ignore-dynamic-require": "1.0.0"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.app.json",
+    "build": "node esbuild.config.mjs",
     "serve": "cd ../../.. && npx tsx watch --exclude 'packages/pieces/**' --exclude 'packages/**/dist/**' --tsconfig packages/server/api/tsconfig.app.json packages/server/api/src/bootstrap.ts",
     "lint": "eslint 'src/**/*.ts'",
     "test": "npm run test-ce && npm run test-ee && npm run test-cloud",
