@@ -1,28 +1,17 @@
-import { FlowEdition, FlowFlagId, TeamProjectsLimit } from '@flow/shared';
 import { ComponentType, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { BotIcon } from '@/components/icons/bot';
 import {
   ChevronLeftIcon,
   ChevronLeftIconHandle,
 } from '@/components/icons/chevron-left';
 import { FileHeartIcon } from '@/components/icons/file-heart';
-import { FileJson2Icon } from '@/components/icons/file-json2';
-import { FrameIcon } from '@/components/icons/frame';
-import { KeyRoundIcon } from '@/components/icons/key-round';
 import { LayoutGridIcon } from '@/components/icons/layout-grid';
-import { LogInIcon } from '@/components/icons/log-in';
 import { MousePointerClickIcon } from '@/components/icons/mouse-pointer-click';
-import { PaletteIcon } from '@/components/icons/palette';
 import { PuzzleIcon } from '@/components/icons/puzzle';
-import { ReceiptIcon } from '@/components/icons/receipt';
 import { ServerIcon } from '@/components/icons/server';
-import { Settings2Icon } from '@/components/icons/settings2';
-import { SquareDashedBottomCodeIcon } from '@/components/icons/square-dashed-bottom-code';
 import { UnplugIcon } from '@/components/icons/unplug';
 import { UsersIcon } from '@/components/icons/users';
-import { WebhookIcon } from '@/components/icons/webhook';
 import { buttonVariants } from '@/components/ui/button';
 import {
   Sidebar,
@@ -36,8 +25,6 @@ import {
   SidebarSeparator,
 } from '@/components/ui/sidebar-shadcn';
 import { useAuthorization } from '@/hooks/authorization-hooks';
-import { flagsHooks } from '@/hooks/flags-hooks';
-import { platformHooks } from '@/hooks/platform-hooks';
 import { determineDefaultRoute } from '@/lib/route-utils';
 import { cn } from '@/lib/utils';
 
@@ -45,56 +32,9 @@ import { FlowSidebarItem } from '../flow-sidebar-item';
 import { SidebarUser } from '../sidebar-user';
 
 export function PlatformSidebar() {
-  const { platform } = platformHooks.useCurrentPlatform();
-  const { data: edition } = flagsHooks.useFlag<FlowEdition>(FlowFlagId.EDITION);
   const { checkAccess } = useAuthorization();
   const defaultRoute = determineDefaultRoute(checkAccess);
   const chevronRef = useRef<ChevronLeftIconHandle>(null);
-  const isEmbeddingEnabled = platform.plan.embeddingEnabled;
-
-  const setupItems = [
-    {
-      to: '/platform/setup/ai',
-      label: 'AI Providers',
-      icon: BotIcon,
-    },
-    {
-      to: '/platform/setup/branding',
-      label: 'Branding',
-      icon: PaletteIcon,
-      locked: !platform.plan.customAppearanceEnabled,
-    },
-    {
-      to: '/platform/setup/connections',
-      label: 'Global Connections',
-      icon: UnplugIcon,
-      locked: !platform.plan.globalConnectionsEnabled,
-    },
-    {
-      to: '/platform/setup/pieces',
-      label: 'Pieces',
-      icon: PuzzleIcon,
-      locked: !platform.plan.managePiecesEnabled,
-    },
-    {
-      to: '/platform/setup/templates',
-      label: 'Templates',
-      icon: LayoutGridIcon,
-      locked: !platform.plan.manageTemplatesEnabled,
-    },
-    {
-      to: '/platform/setup/billing',
-      label: 'Billing',
-      icon: ReceiptIcon,
-      locked: edition === FlowEdition.COMMUNITY,
-    },
-    {
-      to: '/platform/security/signing-keys',
-      label: 'Embedding',
-      icon: FrameIcon,
-      locked: !platform.plan.embeddingEnabled,
-    },
-  ].filter((item) => !(item.label === 'AI Providers' && isEmbeddingEnabled));
 
   const groups: {
     label: string;
@@ -102,7 +42,6 @@ export function PlatformSidebar() {
       to: string;
       label: string;
       icon?: ComponentType<{ className?: string }>;
-      locked?: boolean;
     }[];
   }[] = [
     {
@@ -112,7 +51,6 @@ export function PlatformSidebar() {
           to: '/platform/teams',
           label: 'Teams',
           icon: LayoutGridIcon,
-          locked: platform.plan.teamProjectsLimit === TeamProjectsLimit.NONE,
         },
         {
           to: '/platform/users',
@@ -123,40 +61,21 @@ export function PlatformSidebar() {
     },
     {
       label: 'Setup',
-      items: setupItems,
-    },
-    {
-      label: 'Security',
       items: [
         {
-          to: '/platform/security/audit-logs',
-          label: 'Audit Logs',
-          icon: SquareDashedBottomCodeIcon,
-          locked: !platform.plan.auditLogEnabled,
+          to: '/platform/setup/connections',
+          label: 'Global Connections',
+          icon: UnplugIcon,
         },
         {
-          to: '/platform/security/sso',
-          label: 'Single Sign On',
-          icon: LogInIcon,
-          locked: !platform.plan.ssoEnabled,
+          to: '/platform/setup/pieces',
+          label: 'Pieces',
+          icon: PuzzleIcon,
         },
         {
-          to: '/platform/security/project-roles',
-          label: 'Team Roles',
-          icon: Settings2Icon,
-          locked: !platform.plan.projectRolesEnabled,
-        },
-        {
-          to: '/platform/security/api-keys',
-          label: 'API Keys',
-          icon: FileJson2Icon,
-          locked: !platform.plan.apiKeysEnabled,
-        },
-        {
-          to: '/platform/security/secret-managers',
-          label: 'Secret Managers',
-          icon: KeyRoundIcon,
-          locked: !platform.plan.secretManagersEnabled,
+          to: '/platform/setup/templates',
+          label: 'Templates',
+          icon: LayoutGridIcon,
         },
       ],
     },
@@ -177,12 +96,6 @@ export function PlatformSidebar() {
           to: '/platform/infrastructure/triggers',
           label: 'Triggers',
           icon: MousePointerClickIcon,
-        },
-        {
-          to: '/platform/infrastructure/event-destinations',
-          label: 'Event Streaming',
-          icon: WebhookIcon,
-          locked: !platform.plan.eventStreamingEnabled,
         },
       ],
     },
@@ -219,7 +132,6 @@ export function PlatformSidebar() {
                       to={item.to}
                       label={item.label}
                       icon={item.icon}
-                      locked={item.locked}
                     />
                   ))}
                 </SidebarMenu>

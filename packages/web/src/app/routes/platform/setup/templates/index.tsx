@@ -7,7 +7,6 @@ import { useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 
 import { DashboardPageHeader } from '@/app/components/dashboard-page-header';
-import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { AnimatedIconButton } from '@/components/custom/animated-icon-button';
 import {
   DataTable,
@@ -27,14 +26,11 @@ import {
 } from '@/components/ui/tooltip';
 import { PieceIconList } from '@/features/pieces';
 import { templatesApi, templatesMutations } from '@/features/templates';
-import { platformHooks } from '@/hooks/platform-hooks';
 
 import { CreateTemplateDialog } from './create-template-dialog';
 import { UpdateTemplateDialog } from './update-template-dialog';
 
 const PlatformTemplatesPage = () => {
-  const { platform } = platformHooks.useCurrentPlatform();
-
   const [searchParams] = useSearchParams();
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['templates', searchParams.toString()],
@@ -199,55 +195,47 @@ const PlatformTemplatesPage = () => {
     [refetch],
   );
 
-  const isEnabled = platform.plan.manageTemplatesEnabled;
   return (
-    <LockedFeatureGuard
-      locked={!isEnabled}
-      lockTitle={'Unlock Templates'}
-      lockDescription={'Convert the most common automations into reusable templates 1 click away from your users'}
-      lockVideoUrl=""
-    >
-      <div className="flex flex-col w-full">
-        <DashboardPageHeader
-          description={'Convert the most common automations into reusable templates'}
-          title={'Templates'}
-        />
-        <DataTable
-          emptyStateTextTitle={'No templates found'}
-          emptyStateTextDescription={'Create a template for your user to inspire them'}
-          emptyStateIcon={<FileText className="size-14" />}
-          columns={columnsWithCheckbox}
-          page={data}
-          hidePagination={true}
-          isLoading={isLoading}
-          bulkActions={bulkActions}
-          toolbarButtons={toolbarButtons}
-          actions={[
-            (row) => {
-              return (
-                <div className="flex items-end justify-end">
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <UpdateTemplateDialog
-                        onDone={() => refetch()}
-                        template={row}
-                      >
-                        <Button variant="ghost" className="size-8 p-0">
-                          <Pencil className="size-4" />
-                        </Button>
-                      </UpdateTemplateDialog>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      {'Edit template'}
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              );
-            },
-          ]}
-        />
-      </div>
-    </LockedFeatureGuard>
+    <div className="flex flex-col w-full">
+      <DashboardPageHeader
+        description={'Convert the most common automations into reusable templates'}
+        title={'Templates'}
+      />
+      <DataTable
+        emptyStateTextTitle={'No templates found'}
+        emptyStateTextDescription={'Create a template for your user to inspire them'}
+        emptyStateIcon={<FileText className="size-14" />}
+        columns={columnsWithCheckbox}
+        page={data}
+        hidePagination={true}
+        isLoading={isLoading}
+        bulkActions={bulkActions}
+        toolbarButtons={toolbarButtons}
+        actions={[
+          (row) => {
+            return (
+              <div className="flex items-end justify-end">
+                <Tooltip>
+                  <TooltipTrigger>
+                    <UpdateTemplateDialog
+                      onDone={() => refetch()}
+                      template={row}
+                    >
+                      <Button variant="ghost" className="size-8 p-0">
+                        <Pencil className="size-4" />
+                      </Button>
+                    </UpdateTemplateDialog>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    {'Edit template'}
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            );
+          },
+        ]}
+      />
+    </div>
   );
 };
 

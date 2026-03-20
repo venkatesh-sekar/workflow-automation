@@ -18,7 +18,6 @@ import { useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { DashboardPageHeader } from '@/app/components/dashboard-page-header';
-import { LockedFeatureGuard } from '@/app/components/locked-feature-guard';
 import { NewConnectionDialog } from '@/app/connections/new-connection-dialog';
 import { ReconnectButtonDialog } from '@/app/connections/reconnect-button-dialog';
 import { AnimatedIconButton } from '@/components/custom/animated-icon-button';
@@ -49,7 +48,6 @@ import {
 } from '@/features/connections';
 import { PieceIconWithPieceName } from '@/features/pieces';
 import { useAuthorization } from '@/hooks/authorization-hooks';
-import { platformHooks } from '@/hooks/platform-hooks';
 import { formatUtils } from '@/lib/format-utils';
 
 const STATUS_QUERY_PARAM = 'status';
@@ -81,7 +79,6 @@ const GlobalConnectionsTable = () => {
   >([]);
   const { checkAccess } = useAuthorization();
   const location = useLocation();
-  const { platform } = platformHooks.useCurrentPlatform();
 
   const columns: ColumnDef<
     RowDataWithActions<AppConnectionWithoutSensitiveData>,
@@ -304,30 +301,23 @@ const GlobalConnectionsTable = () => {
 
   return (
     <div className="flex-col w-full">
-      <LockedFeatureGuard
-        locked={!platform.plan.globalConnectionsEnabled}
-        lockTitle={'Enable Global Connections'}
-        lockDescription={'Manage platform-wide connections to external systems.'}
-        lockVideoUrl=""
-      >
-        <DashboardPageHeader
-          description={'Manage platform-wide connections to external systems.'}
-          title={'Global Connections'}
-        />
-        <DataTable
-          emptyStateTextTitle={'No global connections found'}
-          emptyStateTextDescription={'Create a global connection that can be shared to multiple projects'}
-          emptyStateIcon={<Globe className="size-14" />}
-          columns={columns}
-          page={globalConnections}
-          isLoading={isLoadingGlobalConnections}
-          filters={filters}
-          selectColumn={true}
-          onSelectedRowsChange={setSelectedRows}
-          bulkActions={bulkActions}
-          toolbarButtons={toolbarButtons}
-        />
-      </LockedFeatureGuard>
+      <DashboardPageHeader
+        description={'Manage platform-wide connections to external systems.'}
+        title={'Global Connections'}
+      />
+      <DataTable
+        emptyStateTextTitle={'No global connections found'}
+        emptyStateTextDescription={'Create a global connection that can be shared to multiple projects'}
+        emptyStateIcon={<Globe className="size-14" />}
+        columns={columns}
+        page={globalConnections}
+        isLoading={isLoadingGlobalConnections}
+        filters={filters}
+        selectColumn={true}
+        onSelectedRowsChange={setSelectedRows}
+        bulkActions={bulkActions}
+        toolbarButtons={toolbarButtons}
+      />
     </div>
   );
 };

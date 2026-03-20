@@ -15,7 +15,6 @@ import { SyncPiecesButton } from '@/app/routes/platform/setup/pieces/sync-pieces
 import { ConfigurePieceOAuth2Dialog } from '@/app/routes/platform/setup/pieces/update-oauth2-dialog';
 import { DataTable, RowDataWithActions } from '@/components/custom/data-table';
 import { DataTableColumnHeader } from '@/components/custom/data-table/data-table-column-header';
-import { LockedAlert } from '@/components/custom/locked-alert';
 import { Badge } from '@/components/ui/badge';
 import { oauthAppsQueries } from '@/features/connections';
 import { InstallPieceDialog, PieceIcon, piecesHooks } from '@/features/pieces';
@@ -145,12 +144,6 @@ const PlatformPiecesPage = () => {
         title={'Pieces'}
       />
       <div className="mx-auto w-full flex flex-col flex-1 min-h-0">
-        {!isEnabled && (
-          <LockedAlert
-            title={'Control Pieces'}
-            description={"Show the pieces that matter most to your users and hide the ones you don't like."}
-          />
-        )}
         <DataTable
           emptyStateTextTitle={'No pieces found'}
           emptyStateTextDescription={'Start by installing pieces that you want to use in your automations'}

@@ -1,6 +1,5 @@
 import {
   ProjectWithLimits,
-  TeamProjectsLimit,
 } from '@flow/shared';
 import { ColumnDef } from '@tanstack/react-table';
 import { CheckIcon, Package, Pencil, Trash } from 'lucide-react';
@@ -9,7 +8,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 
 import { DashboardPageHeader } from '@/app/components/dashboard-page-header';
-import LockedFeatureGuard from '@/app/components/locked-feature-guard';
 import { AnimatedIconButton } from '@/components/custom/animated-icon-button';
 import {
   DataTable,
@@ -37,7 +35,6 @@ export default function ProjectsPage() {
   const { platform } = platformHooks.useCurrentPlatform();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const isEnabled = platform.plan.teamProjectsLimit !== TeamProjectsLimit.NONE;
   const { project: currentProject } =
     projectCollectionUtils.useCurrentProject();
 
@@ -291,54 +288,47 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <LockedFeatureGuard
-      locked={!isEnabled}
-      lockTitle={'Unlock Teams'}
-      lockDescription={'Orchestrate your automation teams with their own flows, connections and usage quotas'}
-      lockVideoUrl=""
-    >
-      <div className="flex flex-col w-full">
-        <DashboardPageHeader
-          title={'Teams'}
-          description={'Manage your automation teams'}
-        />
-        <DataTable
-          emptyStateTextTitle={'No teams found'}
-          emptyStateTextDescription={'Start by creating teams to manage your automations'}
-          emptyStateIcon={<Package className="size-14" />}
-          onRowClick={async (project) => {
-            await projectCollectionUtils.setCurrentProject(project.id);
-            navigate('/');
-          }}
-          filters={[
-            {
-              type: 'input',
-              title: 'Name',
-              accessorKey: 'displayName',
-              icon: CheckIcon,
-            },
-          ]}
-          columns={columnsWithCheckbox}
-          page={{
-            data: allProjectsWithGlobalConnectionsCount,
-            next: null,
-            previous: null,
-          }}
-          isLoading={false}
-          clientPagination={true}
-          bulkActions={bulkActions}
-          toolbarButtons={toolbarButtons}
-          actions={actions}
-        />
-        <EditProjectDialog
-          open={editDialogOpen}
-          onClose={() => {
-            setEditDialogOpen(false);
-          }}
-          initialValues={editDialogInitialValues}
-          projectId={editDialogProjectId}
-        />
-      </div>
-    </LockedFeatureGuard>
+    <div className="flex flex-col w-full">
+      <DashboardPageHeader
+        title={'Teams'}
+        description={'Manage your automation teams'}
+      />
+      <DataTable
+        emptyStateTextTitle={'No teams found'}
+        emptyStateTextDescription={'Start by creating teams to manage your automations'}
+        emptyStateIcon={<Package className="size-14" />}
+        onRowClick={async (project) => {
+          await projectCollectionUtils.setCurrentProject(project.id);
+          navigate('/');
+        }}
+        filters={[
+          {
+            type: 'input',
+            title: 'Name',
+            accessorKey: 'displayName',
+            icon: CheckIcon,
+          },
+        ]}
+        columns={columnsWithCheckbox}
+        page={{
+          data: allProjectsWithGlobalConnectionsCount,
+          next: null,
+          previous: null,
+        }}
+        isLoading={false}
+        clientPagination={true}
+        bulkActions={bulkActions}
+        toolbarButtons={toolbarButtons}
+        actions={actions}
+      />
+      <EditProjectDialog
+        open={editDialogOpen}
+        onClose={() => {
+          setEditDialogOpen(false);
+        }}
+        initialValues={editDialogInitialValues}
+        projectId={editDialogProjectId}
+      />
+    </div>
   );
 }

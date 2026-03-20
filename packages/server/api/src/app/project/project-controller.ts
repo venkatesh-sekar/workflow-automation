@@ -1,5 +1,5 @@
 import { ProjectResourceType, securityAccess } from '@flow/server-common'
-import { FlowId, assertNotNullOrUndefined, PrincipalType, Project, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@flow/shared'
+import { FlowId, assertNotNullOrUndefined, CreatePlatformProjectRequest, PrincipalType, Project, ProjectType, SeekPage, SERVICE_KEY_SECURITY_OPENAPI, UpdateProjectRequestInCommunity } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
@@ -8,6 +8,25 @@ import { userService } from '../user/user-service'
 import { projectService } from './project-service'
 
 export const projectController: FastifyPluginAsyncZod = async (fastify) => {
+    fastify.post('/', CreateProjectRequest, async (request) => {
+        const user = await userService(request.log).getOneOrFail({ id: request.principal.id })
+        assertNotNullOrUndefined(user.platformId, 'platformId is undefined')
+        return projectService(request.log).create({
+            ownerId: user.id,
+            displayName: request.body.displayName,
+            type: ProjectType.TEAM,
+            platformId: user.platformId,
+            externalId: request.body.externalId ?? undefined,
+            metadata: request.body.metadata ?? undefined,
+            maxConcurrentJobs: request.body.maxConcurrentJobs ?? undefined,
+        })
+    })
+
+    fastify.delete('/:id', DeleteProjectRequest, async (request, reply) => {
+        await projectService(request.log).softDelete(request.params.id)
+        return reply.status(StatusCodes.NO_CONTENT).send()
+    })
+
     fastify.post('/:id', UpdateProjectRequest, async (request) => {
         const project = await projectService(request.log).getOneOrThrow(request.params.id)
         return projectService(request.log).update(request.params.id, {
@@ -78,4 +97,29 @@ const ListProjectsRequest = {
         },
         security: [SERVICE_KEY_SECURITY_OPENAPI],
     },
-}   
+}
+
+const CreateProjectRequest = {
+    config: {
+        security: securityAccess.publicPlatform([PrincipalType.USER]),
+    },
+    schema: {
+        tags: ['projects'],
+        body: CreatePlatformProjectRequest,
+        response: {
+            [StatusCodes.OK]: Project,
+        },
+    },
+}
+
+const DeleteProjectRequest = {
+    config: {
+        security: securityAccess.publicPlatform([PrincipalType.USER]),
+    },
+    schema: {
+        tags: ['projects'],
+        params: z.object({
+            id: z.string(),
+        }),
+    },
+}

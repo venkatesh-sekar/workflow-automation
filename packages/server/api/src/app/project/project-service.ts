@@ -180,6 +180,9 @@ export const projectService = (log: FastifyBaseLogger) => ({
 
         return queryBuilder.getExists()
     },
+    async softDelete(projectId: ProjectId): Promise<void> {
+        await projectRepo().softDelete({ id: projectId })
+    },
     async addProjectToPlatform({ projectId, platformId }: AddProjectToPlatformParams): Promise<void> {
         const query = {
             id: projectId,
