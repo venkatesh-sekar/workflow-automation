@@ -1,4 +1,4 @@
-import { isNil, Permission } from '@flow/shared';
+import { Permission } from '@flow/shared';
 import { useQueryClient } from '@tanstack/react-query';
 import { ChevronsUpDown, LogOut, UserCogIcon, UserPlus } from 'lucide-react';
 import { useState } from 'react';
@@ -25,11 +25,8 @@ import { InviteUserDialog } from '@/features/members';
 import { useAuthorization } from '@/hooks/authorization-hooks';
 import { userHooks } from '@/hooks/user-hooks';
 import { authenticationSession } from '@/lib/authentication-session';
-import { cn } from '@/lib/utils';
 
 import AccountSettingsDialog from '../account-settings';
-import { HelpAndFeedback } from '../help-and-feedback';
-
 export function SidebarUser() {
   const [accountSettingsOpen, setAccountSettingsOpen] = useState(false);
   const [inviteUserOpen, setInviteUserOpen] = useState(false);
@@ -60,12 +57,9 @@ export function SidebarUser() {
             <SidebarMenuButton className="h-10! pl-1! group-data-[collapsible=icon]:h-10! group-data-[collapsible=icon]:pl-1!">
               <div className="size-6 shrink-0 overflow-hidden flex items-center justify-center rounded-full">
                 <UserAvatar
-                  className={cn('size-full object-cover', {
-                    'scale-150': isNil(user.imageUrl),
-                  })}
+                  className="size-full object-cover"
                   name={user.firstName + ' ' + user.lastName}
                   email={user.email}
-                  imageUrl={user.imageUrl}
                   size={24}
                   disableTooltip={true}
                 />
@@ -94,7 +88,6 @@ export function SidebarUser() {
                     className="size-full object-cover"
                     name={user.firstName + ' ' + user.lastName}
                     email={user.email}
-                    imageUrl={user.imageUrl}
                     size={32}
                     disableTooltip={true}
                   />
@@ -120,7 +113,6 @@ export function SidebarUser() {
                   {'Invite User'}
                 </DropdownMenuItem>
               )}
-              <HelpAndFeedback />
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>

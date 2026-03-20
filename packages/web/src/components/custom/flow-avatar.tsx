@@ -1,7 +1,6 @@
 import { isNil } from '@flow/shared';
 import { Mail } from 'lucide-react';
 
-import { UserBadges } from '@/components/custom/user-badges';
 import {
   HoverCard,
   HoverCardTrigger,
@@ -41,7 +40,6 @@ export const FlowAvatar = ({
           <UserAvatar
             name={`${user.firstName} ${user.lastName}`}
             email={user.email}
-            imageUrl={user.imageUrl}
             size={avatarSize}
             disableTooltip={true}
           />
@@ -76,7 +74,6 @@ export const FlowAvatar = ({
           <UserAvatar
             name={`${user.firstName} ${user.lastName}`}
             email={user.email}
-            imageUrl={user.imageUrl}
             size={36}
             disableTooltip={true}
           />
@@ -94,8 +91,6 @@ export const FlowAvatar = ({
             </div>
           </div>
         </div>
-
-        <UserBadges user={user} showLockedBadges={false} showBorder={true} />
       </HoverCardContent>
     </HoverCard>
   );

@@ -1,4 +1,4 @@
-import { AnalyticsFlowReportItem, AnalyticsRunsUsageItem, AnalyticsTimePeriod, flowId, FlowStatus, FlowVersionState, isNil, PlatformAnalyticsReport, PlatformId, ProjectLeaderboardItem, RunEnvironment, UserLeaderboardItem, UserWithMetaInformation } from '@flow/shared'
+import { AnalyticsFlowReportItem, AnalyticsRunsUsageItem, AnalyticsTimePeriod, flowId, FlowStatus, FlowVersionState, isNil, PlatformAnalyticsReport, PlatformId, RunEnvironment, UserWithMetaInformation } from '@flow/shared'
 import dayjs from 'dayjs'
 import { FastifyBaseLogger } from 'fastify'
 import { IsNull } from 'typeorm'
@@ -49,39 +49,6 @@ export const platformAnalyticsReportService = (log: FastifyBaseLogger) => ({
             report = await platformAnalyticsReportService(log).refreshReport(platformId)
         }
         return filterReportByTimePeriod(report, timePeriod)
-    },
-    getProjectLeaderboard: async (platformId: PlatformId, timePeriod: AnalyticsTimePeriod): Promise<ProjectLeaderboardItem[]> => {
-        const report = await platformAnalyticsReportService(log).getOrGenerateReport(platformId)
-        const projects = await listProjects(platformId)
-        
-        return projects.map((project) => {
-            const projectFlows = report.flows.filter((flow) => flow.projectId === project.id)
-            const flowIds = projectFlows.map((flow) => flow.flowId)
-            const flowCount = projectFlows.length
-            const minutesSaved = calculateTimeSaved(flowIds, report, timePeriod)
-            return {
-                projectId: project.id,
-                projectName: project.displayName,
-                flowCount,
-                minutesSaved,
-            }
-        })
-    },
-    getUserLeaderboard: async (platformId: PlatformId, timePeriod: AnalyticsTimePeriod): Promise<UserLeaderboardItem[]> => {
-        const report = await platformAnalyticsReportService(log).getOrGenerateReport(platformId)
-        const users = report.users ?? []
-        
-        return users.map((user) => {
-            const flowsOfUser = report.flows.filter((flow) => flow.ownerId === user.id)
-            const flowIds = flowsOfUser.map((flow) => flow.flowId)
-            const flowCount = flowsOfUser.length
-            const minutesSaved = calculateTimeSaved(flowIds, report, timePeriod)
-            return {
-                userId: user.id,
-                flowCount,
-                minutesSaved,
-            }
-        })
     },
 })
 

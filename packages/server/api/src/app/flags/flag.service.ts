@@ -36,7 +36,6 @@ export const flagService = (log: FastifyBaseLogger) => ({
                 FlowFlagId.PRIVACY_POLICY_URL,
                 FlowFlagId.PRIVATE_PIECES_ENABLED,
                 FlowFlagId.FLOW_RUN_TIME_SECONDS,
-                FlowFlagId.SHOW_COMMUNITY,
                 FlowFlagId.SUPPORTED_APP_WEBHOOKS,
                 FlowFlagId.TEMPLATES_PROJECT_ID,
                 FlowFlagId.TERMS_OF_SERVICE_URL,
@@ -86,12 +85,6 @@ export const flagService = (log: FastifyBaseLogger) => ({
             },
             {
                 id: FlowFlagId.CAN_CONFIGURE_AI_PROVIDER,
-                value: true,
-                created,
-                updated,
-            },
-            {
-                id: FlowFlagId.SHOW_BADGES,
                 value: true,
                 created,
                 updated,
@@ -171,12 +164,6 @@ export const flagService = (log: FastifyBaseLogger) => ({
             {
                 id: FlowFlagId.THEME,
                 value: defaultTheme,
-                created,
-                updated,
-            },
-            {
-                id: FlowFlagId.SHOW_COMMUNITY,
-                value: system.getEdition() !== FlowEdition.ENTERPRISE,
                 created,
                 updated,
             },

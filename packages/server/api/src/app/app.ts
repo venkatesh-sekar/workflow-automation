@@ -43,7 +43,6 @@ import { tablesModule } from './tables/tables.module'
 import { templateModule } from './template/template.module'
 import { appEventRoutingModule } from './trigger/app-event-routing/app-event-routing.module'
 import { triggerModule } from './trigger/trigger.module'
-import { userBadgeModule } from './user/badges/badge-module'
 import { platformUserModule } from './user/platform/platform-user-module'
 import { invitationModule } from './user-invitations/user-invitation.module'
 import { webhookModule } from './webhooks/webhook-module'
@@ -160,7 +159,6 @@ export const setupApp = async (app: FastifyInstance): Promise<FastifyInstance> =
     await app.register(tablesModule)
     await app.register(templateModule)
     await app.register(auditEventModule)
-    await app.register(userBadgeModule)
     await app.register(platformAnalyticsModule)
     await app.register(projectModule)
     await app.register(communityPiecesModule)

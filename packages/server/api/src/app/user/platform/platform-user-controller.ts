@@ -7,7 +7,6 @@ import {
     SeekPage,
     SERVICE_KEY_SECURITY_OPENAPI,
     UpdateUserRequestBody,
-    UserWithBadges,
     UserWithMetaInformation,
 } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
@@ -71,7 +70,7 @@ const GetUserByIdRequest = {
             id: FlowId,
         }),
         response: {
-            [StatusCodes.OK]: UserWithBadges,
+            [StatusCodes.OK]: UserWithMetaInformation,
         },
         tags: ['users'],
         description: 'Get user by ID',

@@ -1,7 +1,6 @@
-import { isNil, UserWithBadges } from '@flow/shared';
+import { isNil, UserWithMetaInformation } from '@flow/shared';
 import {
   QueryClient,
-  useMutation,
   useQuery,
   useSuspenseQuery,
 } from '@tanstack/react-query';
@@ -14,13 +13,9 @@ export const userHooks = {
     const userId = authenticationSession.getCurrentUserId();
     const token = authenticationSession.getToken();
     const expired = authenticationSession.isJwtExpired(token!);
-    return useSuspenseQuery<UserWithBadges | null, Error>({
+    return useSuspenseQuery<UserWithMetaInformation | null, Error>({
       queryKey: ['currentUser', userId],
       queryFn: async () => {
-        // Skip user data fetch if JWT is expired to prevent redirect to sign-in page
-        // This is especially important for embedding scenarios where we need to accept
-        // a new JWT token rather than triggering the global error handler
-
         if (!userId || expired) {
           return null;
         }
@@ -57,21 +52,5 @@ export const userHooks = {
   getCurrentUserPlatformRole: () => {
     const { data: user } = userHooks.useCurrentUser();
     return user?.platformRole;
-  },
-};
-
-export const userMutations = {
-  useUploadProfilePicture: ({
-    onSuccess,
-    onError,
-  }: {
-    onSuccess: () => void;
-    onError: (error: Error) => void;
-  }) => {
-    return useMutation({
-      mutationFn: (file: File) => userApi.updateMe(file),
-      onSuccess,
-      onError,
-    });
   },
 };

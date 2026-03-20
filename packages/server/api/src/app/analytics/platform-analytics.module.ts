@@ -1,5 +1,5 @@
 import { securityAccess } from '@flow/server-common'
-import { AnalyticsReportRequest, LeaderboardRequest, PrincipalType } from '@flow/shared'
+import { AnalyticsReportRequest, PrincipalType } from '@flow/shared'
 import { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { platformMustHaveFeatureEnabled } from '../helper/ee-authorization-stub'
 import { piecesAnalyticsService } from './pieces-analytics.service'
@@ -24,18 +24,6 @@ const platformAnalyticsController: FastifyPluginAsyncZod = async (app) => {
         return platformAnalyticsReportService(request.log).refreshReport(platform.id)
     })
 
-    app.get('/project-leaderboard', ProjectLeaderboardRequest, async (request) => {
-        const { platform } = request.principal
-        const { timePeriod } = request.query
-        return platformAnalyticsReportService(request.log).getProjectLeaderboard(platform.id, timePeriod)
-    })
-
-    app.get('/user-leaderboard', UserLeaderboardRequest, async (request) => {
-        const { platform } = request.principal
-        const { timePeriod } = request.query
-        return platformAnalyticsReportService(request.log).getUserLeaderboard(platform.id, timePeriod)
-    })
-
     app.post('/mark-outdated', MarkAsOutdatedRequest, async (request) => {
         const { platform } = request.principal
         await platformAnalyticsReportService(request.log).markAsOutdated(platform.id)
@@ -53,24 +41,6 @@ const RefreshPlatformAnalyticsRequest = {
 const PlatformAnalyticsRequest = {
     schema: {
         querystring: AnalyticsReportRequest,
-    },
-    config: {
-        security: securityAccess.publicPlatform([PrincipalType.USER]),
-    },
-}
-
-const ProjectLeaderboardRequest = {
-    schema: {
-        querystring: LeaderboardRequest,
-    },
-    config: {
-        security: securityAccess.publicPlatform([PrincipalType.USER]),
-    },
-}
-
-const UserLeaderboardRequest = {
-    schema: {
-        querystring: LeaderboardRequest,
     },
     config: {
         security: securityAccess.publicPlatform([PrincipalType.USER]),

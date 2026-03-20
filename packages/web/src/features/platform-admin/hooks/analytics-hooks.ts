@@ -1,8 +1,6 @@
 import {
   AnalyticsTimePeriod,
   PlatformAnalyticsReport,
-  ProjectLeaderboardItem,
-  UserLeaderboardItem,
 } from '@flow/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useContext } from 'react';
@@ -12,44 +10,8 @@ import { analyticsApi } from '@/features/platform-admin/api/analytics-api';
 import { RefreshAnalyticsContext } from '../stores/refresh-analytics-context';
 
 const analyticsQueryKey = ['analytics'];
-const projectLeaderboardQueryKey = (timePeriod: AnalyticsTimePeriod) => [
-  'project-leaderboard',
-  timePeriod,
-];
-const userLeaderboardQueryKey = (timePeriod: AnalyticsTimePeriod) => [
-  'user-leaderboard',
-  timePeriod,
-];
 
 export const platformAnalyticsHooks = {
-  useUsersLeaderboard: (
-    timePeriod: AnalyticsTimePeriod,
-  ): { data: UserLeaderboardItem[] | null; isLoading: boolean } => {
-    const { data, isLoading } = useQuery({
-      queryKey: userLeaderboardQueryKey(timePeriod),
-      queryFn: () => analyticsApi.getUserLeaderboard(timePeriod),
-    });
-
-    return {
-      data: data ?? null,
-      isLoading,
-    };
-  },
-
-  useProjectLeaderboard: (
-    timePeriod: AnalyticsTimePeriod,
-  ): { data: ProjectLeaderboardItem[] | null; isLoading: boolean } => {
-    const { data, isLoading } = useQuery({
-      queryKey: projectLeaderboardQueryKey(timePeriod),
-      queryFn: () => analyticsApi.getProjectLeaderboard(timePeriod),
-    });
-
-    return {
-      data: data ?? null,
-      isLoading,
-    };
-  },
-
   useAnalytics: (): {
     data: PlatformAnalyticsReport | undefined;
     isLoading: boolean;
@@ -110,8 +72,6 @@ export const platformAnalyticsHooks = {
       onSuccess: () => {
         setIsRefreshing(false);
         queryClient.invalidateQueries({ queryKey: analyticsQueryKey });
-        queryClient.invalidateQueries({ queryKey: ['project-leaderboard'] });
-        queryClient.invalidateQueries({ queryKey: ['user-leaderboard'] });
       },
       retry: true,
       retryDelay: 50000,

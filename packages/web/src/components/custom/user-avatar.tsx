@@ -1,4 +1,3 @@
-import { isNil } from '@flow/shared';
 import Avatar from 'boring-avatars';
 
 import {
@@ -13,7 +12,6 @@ type UserAvatarProps = {
   email: string;
   size: number;
   disableTooltip?: boolean;
-  imageUrl?: string | null;
   className?: string;
   withoutBorder?: boolean;
 };
@@ -23,22 +21,12 @@ export function UserAvatar({
   email,
   size,
   disableTooltip = false,
-  imageUrl,
   className,
   withoutBorder = false,
 }: UserAvatarProps) {
   const tooltip = `${name} (${email})`;
 
-  const avatarElement = !isNil(imageUrl) ? (
-    <img
-      src={imageUrl}
-      alt={name}
-      width={size}
-      height={size}
-      className={cn('rounded-full aspect-square object-cover', className)}
-      style={{ width: `${size}px !important`, height: `${size}px !important` }}
-    />
-  ) : (
+  const avatarElement = (
     <Avatar
       name={email}
       size={size}

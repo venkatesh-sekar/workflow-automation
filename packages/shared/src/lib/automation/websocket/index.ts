@@ -10,7 +10,6 @@ export enum WebsocketClientEvent {
     TEST_STEP_PROGRESS = 'TEST_STEP_PROGRESS',
     REFRESH_PIECE = 'REFRESH_PIECE',
     FLOW_RUN_PROGRESS = 'FLOW_RUN_PROGRESS',
-    BADGE_AWARDED = 'BADGE_AWARDED',
     FLOW_STATUS_UPDATED = 'FLOW_STATUS_UPDATED',
     UPDATE_RUN_PROGRESS = 'UPDATE_RUN_PROGRESS',
 }
@@ -19,13 +18,6 @@ export type FlowStatusUpdatedResponse = {
     flow: PopulatedFlow
     error: TriggerUpdateStatusErrorParams | undefined
 }
-
-export const BadgeAwarded = z.object({
-    badge: z.string(),
-    userId: z.string(),
-})
-
-export type BadgeAwarded = z.infer<typeof BadgeAwarded>
 
 export type EmitTestStepProgressRequest = StepRunResponse & { projectId: string }
 

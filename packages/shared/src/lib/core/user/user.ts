@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { BaseModelSchema, DateOrString, Nullable } from '../common/base-model'
 import { FlowId } from '../common/id-generator'
-import { UserBadge } from './badges'
 
 export type UserId = FlowId
 
@@ -62,37 +61,3 @@ export const UserWithMetaInformation = z.object({
 })
 
 export type UserWithMetaInformation = z.infer<typeof UserWithMetaInformation>
-
-
-export const UserWithBadges = z.object({
-    ...UserWithMetaInformation.shape,
-    badges: z.array(UserBadge.pick({ name: true, created: true })),
-})
-
-export type UserWithBadges = z.infer<typeof UserWithBadges>
-
-export const AP_MAXIMUM_PROFILE_PICTURE_SIZE = 5 * 1024 * 1024 // 5 MB
-
-export const PROFILE_PICTURE_ALLOWED_TYPES = [
-    'image/jpeg',
-    'image/png',
-    'image/gif',
-    'image/webp',
-]
-
-export const UpdateMeRequestBody = z.object({
-    profilePicture: z.any().optional(),
-})
-
-export type UpdateMeRequestBody = z.infer<typeof UpdateMeRequestBody>
-
-export const UpdateMeResponse = z.object({
-    email: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
-    trackEvents: z.boolean(),
-    newsLetter: z.boolean(),
-    imageUrl: Nullable(z.string()),
-})
-
-export type UpdateMeResponse = z.infer<typeof UpdateMeResponse>
